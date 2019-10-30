@@ -1,7 +1,7 @@
-var _x = x
-var _y = y
+var _x = x-160
+var _y = y-160
 for(var _w=0;_w<grid_width;_w++) {
-	_y = y
+	_y = y-160
 	_x += cell_width
 	for(var _h=0;_h<grid_height;_h++) {
 		_y += cell_height
