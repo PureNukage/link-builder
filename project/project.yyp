@@ -111,6 +111,14 @@
             }
         },
         {
+            "Key": "52fe45e0-4831-4e00-8b62-a458765bd215",
+            "Value": {
+                "id": "89bfc350-b78d-4bc3-8a88-70c8fd3b9aa8",
+                "resourcePath": "fonts\\font_reg\\font_reg.yy",
+                "resourceType": "GMFont"
+            }
+        },
+        {
             "Key": "5e77124c-4d87-4c13-8e3b-c248c525cfaa",
             "Value": {
                 "id": "891c8d22-ab62-46da-b56e-0d8c7f13b60b",
@@ -260,6 +268,14 @@
                 "id": "2abf8f13-b192-4450-9236-a153ea5d0449",
                 "resourcePath": "options\\mac\\options_mac.yy",
                 "resourceType": "GMMacOptions"
+            }
+        },
+        {
+            "Key": "f737c5c4-d6d9-4ebb-9f81-563ea44c22ff",
+            "Value": {
+                "id": "eb0a3cc2-5f52-47ff-974f-a857dc00f9ca",
+                "resourcePath": "fonts\\font_bold\\font_bold.yy",
+                "resourceType": "GMFont"
             }
         }
     ],
