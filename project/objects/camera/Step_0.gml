@@ -32,7 +32,7 @@ var edgeY = camera_get_view_height(cam)/2
 x = clamp(x,0+edgeX,room_width-edgeX)
 y = clamp(y,0+edgeY,room_height-edgeY)
 
-//	Edge Pan
+//	Edge Pan Checks
 var panX, panY
 edgeX = camera_get_view_width(cam)/8
 edgeY = camera_get_view_height(cam)/8
@@ -43,7 +43,6 @@ if mouse_gui_x > camera_get_view_width(cam)-edgeX {
 } else {
 	panX = 0	
 }
-if shopmenu.button_mouseover == 0 x += panX * panspeed
 if mouse_gui_y > camera_get_view_height(cam)-edgeY {
 	panY = 1	
 } else if mouse_gui_y < 0+edgeY {
@@ -51,4 +50,11 @@ if mouse_gui_y > camera_get_view_height(cam)-edgeY {
 } else {
 	panY = 0	
 }
-if shopmenu.button_mouseover == 0 y += panY * panspeed
+
+//	Check if we're moused over any gui elements before applying pan
+var _shopmenu = 0
+if shopmenu.menu_mouseover = 1 and shopmenu.open = 1 _shopmenu = 1 else _shopmenu = 0
+if shopmenu.button_mouseover == 0 and _shopmenu = 0 {
+	y += panY * panspeed 
+	x += panX * panspeed
+}
