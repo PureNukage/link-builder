@@ -10,6 +10,11 @@ cam = camera_create_view(0,0,1280,720,0,id,200,200,1280,720)
 
 view_set_camera(0,cam)
 
+#macro mouse_gui_x device_mouse_x_to_gui(0)
+#macro mouse_gui_y device_mouse_y_to_gui(0)
+
+hspd = 0
+vspd = 0
 panspeed = 10
 
 zoom_level = 1

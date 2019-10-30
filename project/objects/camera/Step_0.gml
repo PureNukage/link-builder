@@ -1,30 +1,54 @@
 x += (keyboard_check(ord("D")) - keyboard_check(ord("A")))*panspeed
 y += (keyboard_check(ord("S")) - keyboard_check(ord("W")))*panspeed
 
-//Zooming Up and Down
-zoom_level = clamp((zoom_level + (mouse_wheel_down()-mouse_wheel_up())*0.1),0.1,1.5)
+#region Zooming Up and Down
 
-camera_set_view_pos(camera,
-        clamp( camera_get_view_x(camera), 0, room_width - camera_get_view_width(camera) ),
-        clamp( camera_get_view_y(camera), 0, room_height - camera_get_view_height(camera) ));
+	zoom_level = clamp((zoom_level + (mouse_wheel_down()-mouse_wheel_up())*0.1),0.1,1.5)
 
-var view_w = camera_get_view_width(cam)
-var view_h = camera_get_view_height(cam)
+	camera_set_view_pos(camera,
+	        clamp( camera_get_view_x(camera), 0, room_width - camera_get_view_width(camera) ),
+	        clamp( camera_get_view_y(camera), 0, room_height - camera_get_view_height(camera) ));
 
-var rate = 0.2
+	var view_w = camera_get_view_width(cam)
+	var view_h = camera_get_view_height(cam)
 
-var new_w = lerp(view_w, zoom_level *  default_zoom_width, rate)
-var new_h = lerp(view_h, zoom_level * default_zoom_height, rate)
+	var rate = 0.2
 
-camera_set_view_size(cam, new_w, new_h)
+	var new_w = lerp(view_w, zoom_level *  default_zoom_width, rate)
+	var new_h = lerp(view_h, zoom_level * default_zoom_height, rate)
 
-//ReAlignment
-var shift_x = camera_get_view_x(cam) - (new_w - view_w) * 0.5
-var shift_y = camera_get_view_y(cam) - (new_h - view_h) * 0.5
+	camera_set_view_size(cam, new_w, new_h)
 
-camera_set_view_pos(cam,shift_x, shift_y)
+	//ReAlignment
+	var shift_x = camera_get_view_x(cam) - (new_w - view_w) * 0.5
+	var shift_y = camera_get_view_y(cam) - (new_h - view_h) * 0.5
+
+	camera_set_view_pos(cam,shift_x, shift_y)
+
+#endregion
 
 var edgeX = camera_get_view_width(cam)/2
 var edgeY = camera_get_view_height(cam)/2
 x = clamp(x,0+edgeX,room_width-edgeX)
 y = clamp(y,0+edgeY,room_height-edgeY)
+
+//	Edge Pan
+var panX, panY
+edgeX = camera_get_view_width(cam)/4
+edgeY = camera_get_view_height(cam)/4
+if mouse_gui_x > camera_get_view_width(cam)-edgeX {
+	panX = 1	
+} else if mouse_gui_x < 0+edgeX {
+	panX = -1	
+} else {
+	panX = 0	
+}
+x += panX * panspeed
+if mouse_gui_y > camera_get_view_height(cam)-edgeY {
+	panY = 1	
+} else if mouse_gui_y < 0+edgeY {
+	panY = -1
+} else {
+	panY = 0	
+}
+y += panY * panspeed
