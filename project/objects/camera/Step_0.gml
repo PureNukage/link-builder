@@ -43,7 +43,7 @@ if mouse_gui_x > camera_get_view_width(cam)-edgeX {
 } else {
 	panX = 0	
 }
-x += panX * panspeed
+if shopmenu.button_mouseover == 0 x += panX * panspeed
 if mouse_gui_y > camera_get_view_height(cam)-edgeY {
 	panY = 1	
 } else if mouse_gui_y < 0+edgeY {
@@ -51,4 +51,4 @@ if mouse_gui_y > camera_get_view_height(cam)-edgeY {
 } else {
 	panY = 0	
 }
-y += panY * panspeed
+if shopmenu.button_mouseover == 0 y += panY * panspeed
