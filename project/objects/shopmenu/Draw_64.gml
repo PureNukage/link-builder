@@ -24,4 +24,5 @@ if open == true {
 	//	Drawing the Shop menu outline
 	draw_set_color(c_black)
 	draw_roundrect(menuX,menuY,menuX+menu_width,menuY+menu_height,true)
+	draw_roundrect(menuX+1,menuY+1,menuX+menu_width-1,menuY+menu_height-1,true)
 }	
