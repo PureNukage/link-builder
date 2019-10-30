@@ -9,7 +9,10 @@ for(var _w=0;_w<grid_width;_w++) {
 			grid_mouse_w = _w
 			grid_mouse_h = _h
 			if mouse_check_button_pressed(mb_left) {
-				//ds_grid_add(grid,)
+				ds_grid_add(grid,_w,_h,1)
+				if grid[# _w,_h] == 3 {
+					grid[# _w,_h] = 0
+				}
 			}	
 			exit
 		} else {
