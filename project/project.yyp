@@ -50,7 +50,7 @@
             "Key": "064e9b5a-3dc1-43b4-9944-e26497bd8994",
             "Value": {
                 "id": "c741a242-097e-4740-8542-c54eebba4516",
-                "resourcePath": "objects\\grid\\grid.yy",
+                "resourcePath": "objects\\gridController\\gridController.yy",
                 "resourceType": "GMObject"
             }
         },
