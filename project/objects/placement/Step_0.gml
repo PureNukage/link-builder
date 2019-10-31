@@ -10,3 +10,7 @@ if input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover 
 	gridController.grid[# gridController.grid_mouse_w, gridController.grid_mouse_h] = type
 	instance_destroy()
 }
+
+if input.mouse_right_press {
+	instance_destroy()	
+}
