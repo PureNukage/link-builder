@@ -18,6 +18,7 @@ if point_in_rectangle(mouse_gui_x,mouse_gui_y,menuX,menuY,menuX+menu_width,menuY
 			if input.mouse_left_press {
 				var _placement = instance_create_layer(mouse_x,mouse_y,"Instances",placement)
 				_placement.type = i+1
+				item_placing = _placement.type
 			}
 		}
 		_y += item_height+item_buffer

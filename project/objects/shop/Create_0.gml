@@ -21,3 +21,4 @@ item[1,1] = 1000
 
 item_height = 64
 item_buffer = 16
+item_placing = 0

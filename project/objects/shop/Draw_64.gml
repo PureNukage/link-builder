@@ -32,6 +32,14 @@ if menu_open == true {
 	var _x = menuX+item_buffer
 	var _y = menuY+item_buffer
 	for(var i=0;i<array_height_2d(item);i++) {
+		
+		//	Is this item being placed? If so lets highlight it
+		var _item = i
+		_item += 1
+		if _item == item_placing {
+			draw_set_color(c_gray)
+			draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+item_height,false)
+		}
 		draw_set_halign(fa_left)
 		draw_set_valign(fa_top)
 		draw_set_color(c_black)

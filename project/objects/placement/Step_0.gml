@@ -8,9 +8,11 @@ if !place_snapped(a,a) {
 
 if input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover = 0 {
 	gridController.grid[# gridController.grid_mouse_w, gridController.grid_mouse_h] = type
+	shop.item_placing = 0
 	instance_destroy()
 }
 
 if input.mouse_right_press {
+	shop.item_placing = 0
 	instance_destroy()	
 }
