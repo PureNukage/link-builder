@@ -23,6 +23,9 @@ for(var _w=0;_w<grid_width;_w++) {
 			case 2:
 				draw_sprite(s_database,0,_x+gap,_y+gap)
 			break
+			case 3:
+				draw_sprite(s_kiosk,0,_x+gap,_y+gap)
+			break
 		}	
 		
 	}
