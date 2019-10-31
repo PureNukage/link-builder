@@ -311,6 +311,14 @@
             }
         },
         {
+            "Key": "cc767fc6-842f-4ef8-8568-a43a72e077b7",
+            "Value": {
+                "id": "94d31a95-b68b-49f5-b2ee-0c922f9dd2d6",
+                "resourcePath": "objects\\kiosk\\kiosk.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "cc98d028-7bdd-4680-85f3-c87a7baa481e",
             "Value": {
                 "id": "307e7d90-e7df-4ec6-bd3e-12a3b3ae4185",
