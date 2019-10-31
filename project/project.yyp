@@ -130,7 +130,7 @@
             "Key": "63422127-3c11-4a91-9de8-048346265812",
             "Value": {
                 "id": "bf9fd1c1-a08d-4328-9df0-861a32ba32b2",
-                "resourcePath": "objects\\shopmenu\\shopmenu.yy",
+                "resourcePath": "objects\\shop\\shop.yy",
                 "resourceType": "GMObject"
             }
         },
