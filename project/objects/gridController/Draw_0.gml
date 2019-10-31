@@ -17,12 +17,12 @@ for(var _w=0;_w<grid_width;_w++) {
 		var gap = 80
 		switch(grid[# _w, _h])
 		{
-			case 1:
-				draw_sprite(s_chainlink,0,_x+gap,_y+gap)
-			break
-			case 2:
-				draw_sprite(s_database,0,_x+gap,_y+gap)
-			break
+			//case 1:
+			//	draw_sprite(s_chainlink,0,_x+gap,_y+gap)
+			//break
+			//case 2:
+			//	draw_sprite(s_database,0,_x+gap,_y+gap)
+			//break
 			case 3:
 				draw_sprite(s_kiosk,0,_x+gap,_y+gap)
 			break

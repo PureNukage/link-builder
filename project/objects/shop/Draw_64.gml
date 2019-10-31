@@ -34,21 +34,19 @@ if menu_open == true {
 	for(var i=0;i<array_height_2d(item);i++) {
 		
 		//	Is this item being placed? If so lets highlight it
-		var _item = i
-		_item += 1
-		if _item == item_placing {
+		if item_placing == item[i,2] {
 			draw_set_color(c_gray)
 			draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+item_height,false)
 		}
 		draw_set_halign(fa_left)
 		draw_set_valign(fa_top)
 		draw_set_color(c_black)
-		var item_name = item[0,i]
+		var item_name = item[i,0]
 		item_height = string_height(item_name)
 		draw_text(_x,_y,item_name)
 		
 		draw_set_halign(fa_right)
-		draw_text(menuX+menu_width-item_buffer,_y,string(item[1,i]))
+		draw_text(menuX+menu_width-item_buffer,_y,string(item[i,1]))
 		_y += item_height+item_buffer
 	}
 }	

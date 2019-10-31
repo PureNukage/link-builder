@@ -17,7 +17,7 @@ if point_in_rectangle(mouse_gui_x,mouse_gui_y,menuX,menuY,menuX+menu_width,menuY
 		if point_in_rectangle(mouse_gui_x,mouse_gui_y,_x,_y,_x+menu_width,_y+item_height) {
 			if input.mouse_left_press {
 				var _placement = instance_create_layer(mouse_x,mouse_y,"Instances",placement)
-				_placement.type = i+1
+				_placement.type = item[i,2]
 				item_placing = _placement.type
 			}
 		}
@@ -27,3 +27,5 @@ if point_in_rectangle(mouse_gui_x,mouse_gui_y,menuX,menuY,menuX+menu_width,menuY
 } else {
 	menu_mouseover = false	
 }
+
+debug_log("item array height: "+string(array_height_2d(item)))
