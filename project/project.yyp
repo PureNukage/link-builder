@@ -151,6 +151,14 @@
             }
         },
         {
+            "Key": "83f31156-a50d-4efa-9d8f-a58b020f4e78",
+            "Value": {
+                "id": "76a79413-038b-45e2-bfaf-2646722d87a4",
+                "resourcePath": "objects\\debug\\debug.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "8c1d71b3-3827-4516-be07-a140d3f1e20e",
             "Value": {
                 "id": "3083df9e-c017-4d10-8177-b64921055e13",

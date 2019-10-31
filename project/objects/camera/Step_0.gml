@@ -34,16 +34,16 @@ y = clamp(y,0+edgeY,room_height-edgeY)
 
 //	Edge Pan Checks
 var panX, panY
-edgeX = camera_get_view_width(cam)/8
-edgeY = camera_get_view_height(cam)/8
-if mouse_gui_x > camera_get_view_width(cam)-edgeX {
+edgeX = camera_get_view_border_x(cam)/8
+edgeY = camera_get_view_border_y(cam)/8
+if mouse_gui_x > camera_get_view_border_x(cam)-edgeX {
 	panX = 1	
 } else if mouse_gui_x < 0+edgeX {
 	panX = -1	
 } else {
 	panX = 0	
 }
-if mouse_gui_y > camera_get_view_height(cam)-edgeY {
+if mouse_gui_y > camera_get_view_border_y(cam)-edgeY {
 	panY = 1	
 } else if mouse_gui_y < 0+edgeY {
 	panY = -1
