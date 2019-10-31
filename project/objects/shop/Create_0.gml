@@ -12,9 +12,9 @@ menu_height = 256
 menu_mouseover = false
 menu_open = false
 
-item = ds_grid_create(2,1)
-item[# 0, 0] = "Node"
-item[# 1, 0] = 100
+item = []
+item[0,0] = "Node"
+item[1,0] = 100
 
-item[# 0, 1] = "Data"
-item[# 1, 1] = 100
+item[0,1] = "Data"
+item[1,1] = 1000

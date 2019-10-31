@@ -31,15 +31,15 @@ if menu_open == true {
 	//	Drawing the items
 	var _x = menuX+16
 	var _y = menuY+16
-	for(var i=0;i<ds_grid_height(item);i++) {
+	for(var i=0;i<array_height_2d(item);i++) {
 		draw_set_halign(fa_left)
 		draw_set_valign(fa_top)
 		draw_set_color(c_black)
-		var item_name = item[# 0, i]
+		var item_name = item[0,i]
 		draw_text(_x,_y,item_name)
 		
 		draw_set_halign(fa_right)
-		draw_text(menuX+menu_width-16,_y,string(item[# 1, i]))
-		_y += string_height(item_name)
+		draw_text(menuX+menu_width-16,_y,string(item[1,i]))
+		_y += string_height(item_name)+16
 	}
 }	
