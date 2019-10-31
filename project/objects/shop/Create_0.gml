@@ -18,3 +18,6 @@ item[1,0] = 100
 
 item[0,1] = "Data"
 item[1,1] = 1000
+
+item_height = 64
+item_buffer = 16

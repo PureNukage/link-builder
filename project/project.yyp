@@ -135,6 +135,14 @@
             }
         },
         {
+            "Key": "67b09421-59c2-44da-9f57-4e49eb24a8e9",
+            "Value": {
+                "id": "dfcc2a53-7e35-4948-a105-0aa6290c870a",
+                "resourcePath": "objects\\placement\\placement.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "75ac291e-7061-4bcb-8e8a-3b3545332d41",
             "Value": {
                 "id": "9936a21a-8db8-448e-938e-e18f026cbb8e",

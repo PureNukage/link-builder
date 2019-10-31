@@ -29,17 +29,18 @@ if menu_open == true {
 	draw_roundrect(menuX+1,menuY+1,menuX+menu_width-1,menuY+menu_height-1,true)
 	
 	//	Drawing the items
-	var _x = menuX+16
-	var _y = menuY+16
+	var _x = menuX+item_buffer
+	var _y = menuY+item_buffer
 	for(var i=0;i<array_height_2d(item);i++) {
 		draw_set_halign(fa_left)
 		draw_set_valign(fa_top)
 		draw_set_color(c_black)
 		var item_name = item[0,i]
+		item_height = string_height(item_name)
 		draw_text(_x,_y,item_name)
 		
 		draw_set_halign(fa_right)
-		draw_text(menuX+menu_width-16,_y,string(item[1,i]))
-		_y += string_height(item_name)+16
+		draw_text(menuX+menu_width-item_buffer,_y,string(item[1,i]))
+		_y += item_height+item_buffer
 	}
 }	
