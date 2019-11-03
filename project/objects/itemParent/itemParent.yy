@@ -1,14 +1,23 @@
 {
-    "id": "cc767fc6-842f-4ef8-8568-a43a72e077b7",
+    "id": "89c84c33-2f91-4600-a128-f88570f7bd79",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "kiosk",
+    "name": "itemParent",
     "eventList": [
-        
+        {
+            "id": "05f679ab-a46c-4a7a-b971-8257f055f056",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 0,
+            "m_owner": "89c84c33-2f91-4600-a128-f88570f7bd79"
+        }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
     "overriddenProperties": null,
-    "parentObjectId": "89c84c33-2f91-4600-a128-f88570f7bd79",
+    "parentObjectId": "00000000-0000-0000-0000-000000000000",
     "persistent": false,
     "physicsAngularDamping": 0.1,
     "physicsDensity": 0.5,
