@@ -143,6 +143,14 @@
             }
         },
         {
+            "Key": "41b576c9-c096-4fa3-85e6-f8b791306415",
+            "Value": {
+                "id": "a57d3bd5-77db-4225-874c-7d56155f0a34",
+                "resourcePath": "objects\\systemController\\systemController.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "4886cc05-6a21-4218-a2d4-fd3acf270ddf",
             "Value": {
                 "id": "5cb2f044-b2e7-4b40-9034-092eedbb31a1",

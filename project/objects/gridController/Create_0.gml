@@ -17,6 +17,8 @@ _x = _x + (2*cell_width) + 80
 _y = _y + (2*cell_height) + 80
 var _kiosk = instance_create_layer(_x,_y,"Instances",kiosk)
 _kiosk.sprite_index = s_kiosk
+_kiosk.grid_x = 1
+_kiosk.grid_y = 1
 var _system = instance_create_layer(_x,_y,"Instances",system)
 ds_list_add(_system.parts,_kiosk)
 _kiosk.System = _system

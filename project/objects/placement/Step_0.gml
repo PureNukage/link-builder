@@ -101,8 +101,13 @@ if input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover 
 					} else {
 						ds_list_add(_newsystem.parts,_parts_list[| i])				
 					}
-				}				
+				}
 			}
+			for(var i=0;i<ds_list_size(systems);i++) {
+				instance_destroy(systems[| i])
+			}
+			
+			ds_list_add(_newsystem.parts,_item)
 			_item.System = _newsystem
 			
 		}
@@ -111,7 +116,7 @@ if input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover 
 	else {
 		//	Starting a new system!
 		var _newsystem = instance_create_layer(x+80,y+80,"Instances",system)
-		ds_list_add(_newsystem.parts,id)
+		ds_list_add(_newsystem.parts,_item)
 		_item.System = _newsystem
 	}
 	
