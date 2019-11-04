@@ -7,6 +7,30 @@ switch(mode)
 				draw_text(x,_y,"ID: "+string(ID)) _y -= 16
 			}	
 		}
+		
+		if instance_exists(itemParent) {
+			with itemParent {
+				for(var i=0;i<4;i++) {
+					if cells[i,0] == 1 {
+						var _xx = x
+						var _yy = y 
+						switch(i)
+						{
+							case 0: _yy -= 160 break
+							case 1: _xx += 160 break
+							case 2: _yy += 160 break
+							case 3: _xx -= 160 break
+						}
+						if cells[i,1] > 0 {
+							draw_set_color(c_yellow)	
+						} else {
+							draw_set_color(c_green)
+						}
+						draw_rectangle(_xx-80,_yy-80,_xx+80,_yy+80,false)	
+					}
+				}
+			}
+		}
 	break
 	case 2:
 

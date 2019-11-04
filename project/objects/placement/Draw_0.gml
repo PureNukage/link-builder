@@ -2,6 +2,7 @@ switch(type)
 {
 	case node: sprite = s_chainlink break
 	case data: sprite = s_database break
+	case kiosk: sprite = s_kiosk break
 }
 
 //	Draw item

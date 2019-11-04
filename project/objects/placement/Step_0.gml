@@ -52,6 +52,10 @@ if moved == true {
 					cells[i,1] = _object_id
 					cells[i,2] = _grid_x
 					cells[i,3] = _grid_y
+				} else {
+					cells[i,1] = 0
+					cells[i,2] = _grid_x
+					cells[i,3] = _grid_y
 				}
 
 			}}
@@ -77,7 +81,7 @@ if !place_snapped(a,a) {
 	move_snap(a,a)	
 }
 
-if input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover = 0 and placeable == true {
+if (input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover = 0 and placeable == true) {
 	gridController.grid[# grid_x, grid_y] = type
 	var _item = instance_create_layer(x+80,y+80,"Instances",type)
 	_item.sprite_index = sprite
