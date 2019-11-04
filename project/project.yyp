@@ -383,6 +383,14 @@
             }
         },
         {
+            "Key": "ce49308a-bbdc-4099-ba31-afd59acb6c1e",
+            "Value": {
+                "id": "71807237-cf7a-4bf9-8027-99afe0bd25a5",
+                "resourcePath": "objects\\kioskParent\\kioskParent.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "de52ed34-765f-4539-9ddd-fdbec5b09c83",
             "Value": {
                 "id": "017c1869-ec13-4195-88db-30122951160f",
