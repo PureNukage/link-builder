@@ -23,15 +23,15 @@ if moved == true {
 	else {
 		//	Edge of grid check
 		for(var i=0;i<4;i++) {
-			cells[i] = 1	
+			cells[i,0] = 1	
 		}
-		if grid_y = 0 cells[0] = 0
-		if grid_x = grid_width-1 cells[1] = 0
-		if grid_y = grid_height-1 cells[2] = 0
-		if grid_x = 0 cells[3] = 0
+		if grid_y = 0 cells[0,0] = 0
+		if grid_x = grid_width-1 cells[1,0] = 0
+		if grid_y = grid_height-1 cells[2,0] = 0
+		if grid_x = 0 cells[3,0] = 0
 		
 		for(var i=0;i<4;i++) {
-			if cells[i] == 1 {
+			if cells[i,0] == 1 {
 				var _grid_x = grid_x
 				var _grid_y = grid_y
 				switch(i)
@@ -49,6 +49,9 @@ if moved == true {
 					if ds_list_find_index(systems,_object_id.System) == -1 {
 						ds_list_add(systems,_object_id.System)
 					}
+					cells[i,1] = _object_id
+					cells[i,2] = _grid_x
+					cells[i,3] = _grid_y
 				}
 
 			}}
@@ -83,14 +86,14 @@ if input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover 
 	
 	//	System
 	if ds_list_size(systems) > 0 {
-		//	How many systems are we connecting	
+		//	Joining a system
 		if ds_list_size(systems) == 1 {
 			_item.System = systems[| 0]
 			ds_list_add(systems[| 0].parts,_item)
 		}
 		
 		else {
-			//	Make new system that contains all current systems and their parts 
+			//	Combining systems
 			var _newsystem = instance_create_layer(x+80,y+80,"Instances",system)
 			for(var _oldsystem=0;_oldsystem<ds_list_size(systems);_oldsystem++) {
 				var _parts_list = systems[| _oldsystem].parts
@@ -119,6 +122,8 @@ if input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover 
 		ds_list_add(_newsystem.parts,_item)
 		_item.System = _newsystem
 	}
+	
+	_item.cells = cells
 	
 	shop.item_placing = 0
 	instance_destroy()
