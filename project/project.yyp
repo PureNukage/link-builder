@@ -381,6 +381,14 @@
                 "resourcePath": "fonts\\font_bold\\font_bold.yy",
                 "resourceType": "GMFont"
             }
+        },
+        {
+            "Key": "fd037663-c047-4647-96a4-40ae22a9ab6e",
+            "Value": {
+                "id": "18c46a55-cacb-4a28-a165-c8a655186472",
+                "resourcePath": "sprites\\s_debug\\s_debug.yy",
+                "resourceType": "GMSprite"
+            }
         }
     ],
     "script_order": [
