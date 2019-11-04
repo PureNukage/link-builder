@@ -92,6 +92,50 @@ if (input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover
 	if ds_list_size(systems) > 0 {
 		//	Joining a system
 		if ds_list_size(systems) == 1 {
+			for(var i=0;i<ds_list_size(systems[| 0].parts);i++) {
+				var _part = systems[| 0].parts[| i]
+				with _part {
+					//	Edge of grid check
+					for(var i=0;i<4;i++) {
+						cells[i,0] = 1	
+					}
+					if grid_y = 0 cells[0,0] = 0
+					if grid_x = grid_width-1 cells[1,0] = 0
+					if grid_y = grid_height-1 cells[2,0] = 0
+					if grid_x = 0 cells[3,0] = 0
+		
+					for(var i=0;i<4;i++) {
+						if cells[i,0] == 1 {
+							var _grid_x = grid_x
+							var _grid_y = grid_y
+							switch(i)
+							{
+								case 0:	_grid_y -= 1 break	//	Top cell
+								case 1:	_grid_x += 1 break  //	Right cell
+								case 2:	_grid_y += 1 break  //	Bottom cell
+								case 3:	_grid_x -= 1 break  //	Left cell
+							}
+				
+							if gridController.grid[# _grid_x, _grid_y] > 0 {
+								var _xx = gridController.x+80 + (_grid_x*160)
+								var _yy = gridController.y+80 + (_grid_y*160)
+								var _object_id = instance_nearest(_xx,_yy,itemParent)
+								//show_message(object_get_name(_object_id.object_index)+" at "+string(_xx)+","+string(_yy))
+								cells[i,1] = _object_id
+								cells[i,2] = _grid_x
+								cells[i,3] = _grid_y
+							} else {
+								cells[i,1] = 0
+								cells[i,2] = _grid_x
+								cells[i,3] = _grid_y
+							}
+
+						}}		
+				}
+			}
+			
+			
+			
 			_item.System = systems[| 0]
 			ds_list_add(systems[| 0].parts,_item)
 		}
