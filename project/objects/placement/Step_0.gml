@@ -73,9 +73,9 @@ if moved == true {
 		color = c_red	
 	} else {
 		if ds_list_size(systems) > 0 {
-			color = c_green
+			color = c_orange
 		} else {	
-			color = c_white	
+			color = c_green
 		}
 	}
 	
