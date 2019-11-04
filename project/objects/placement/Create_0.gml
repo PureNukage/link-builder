@@ -2,6 +2,7 @@ type = 0
 sprite = 0
 color = c_white
 alpha = .75
+price = 0
 newsystem = false
 placeable = true
 moved = false

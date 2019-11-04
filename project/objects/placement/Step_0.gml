@@ -19,6 +19,11 @@ if moved == true {
 		placeable = false	
 	}
 	
+	//	Don't have enough points!
+	if systemController.points < price {
+		placeable = false
+	}
+	
 	//	Empty cell
 	else {
 		//	Edge of grid check
@@ -81,7 +86,7 @@ if !place_snapped(a,a) {
 	move_snap(a,a)	
 }
 
-if (input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover = 0 and placeable == true) {
+if (input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover = 0 and placeable == true) and systemController.points >= price {
 	gridController.grid[# grid_x, grid_y] = type
 	var _item = instance_create_layer(x+80,y+80,"Instances",type)
 	_item.sprite_index = sprite
@@ -210,6 +215,8 @@ if (input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover
 	}
 	
 	_item.cells = cells
+	
+	systemController.points -= price
 	
 	shop.item_placing = 0
 	instance_destroy()
