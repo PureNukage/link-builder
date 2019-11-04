@@ -30,9 +30,14 @@ switch(mode)
 						draw_rectangle(_xx-80,_yy-80,_xx+79,_yy+79,false)
 					}
 				}
+				draw_set_alpha(1)
+				draw_set_color(c_white)
+				draw_text(x-64,y-112,"x :"+string(x))
+				draw_text(x-64,y-96,"y: "+string(y))
+				draw_text(x-64,y-80,"grid x: "+string(grid_x))
+				draw_text(x-64,y-64,"grid y: " +string(grid_y))
 			}
 		}
-		draw_set_alpha(1)
 	break
 	case 2:
 

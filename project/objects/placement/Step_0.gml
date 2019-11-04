@@ -130,9 +130,10 @@ if (input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover
 									}
 				
 									if gridController.grid[# _grid_x, _grid_y] > 0 {
-										var _xx = gridController.x + (_grid_x*160)
-										var _yy = gridController.y + (_grid_y*160)
+										var _xx = gridController.x+80 + (_grid_x*160)
+										var _yy = gridController.y+80 + (_grid_y*160)
 										var _object_id = instance_nearest(_xx,_yy,itemParent)
+										//show_message(object_get_name(_object_id.object_index)+" at "+string(_xx)+","+string(_yy))
 										cells[i,1] = _object_id
 										cells[i,2] = _grid_x
 										cells[i,3] = _grid_y
