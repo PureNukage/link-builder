@@ -63,6 +63,14 @@
             }
         },
         {
+            "Key": "08eacd4b-5266-4c41-ab7e-5256bb591f8f",
+            "Value": {
+                "id": "03565828-dab4-4d59-b274-51735136d3fa",
+                "resourcePath": "scripts\\macros_and_enums\\macros_and_enums.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "0efce9e4-6b9b-40ba-8693-12b2287980c3",
             "Value": {
                 "id": "aac4289f-1e32-4cee-92d7-d6ca1e6215c2",
@@ -440,6 +448,7 @@
         }
     ],
     "script_order": [
+        "08eacd4b-5266-4c41-ab7e-5256bb591f8f",
         "0efce9e4-6b9b-40ba-8693-12b2287980c3",
         "cdf46c95-d0d0-44c8-8db0-0d64d777361c"
     ],
