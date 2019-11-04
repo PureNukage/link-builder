@@ -106,7 +106,44 @@ if (input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover
 					if ds_list_find_index(_newsystem.parts,_parts_list[| i]) != -1 {
 							
 					} else {
-						ds_list_add(_newsystem.parts,_parts_list[| i])				
+						ds_list_add(_newsystem.parts,_parts_list[| i])	
+						with _parts_list[| i] {
+							//	Edge of grid check
+							for(var i=0;i<4;i++) {
+								cells[i,0] = 1	
+							}
+							if grid_y = 0 cells[0,0] = 0
+							if grid_x = grid_width-1 cells[1,0] = 0
+							if grid_y = grid_height-1 cells[2,0] = 0
+							if grid_x = 0 cells[3,0] = 0
+		
+							for(var i=0;i<4;i++) {
+								if cells[i,0] == 1 {
+									var _grid_x = grid_x
+									var _grid_y = grid_y
+									switch(i)
+									{
+										case 0:	_grid_y -= 1 break	//	Top cell
+										case 1:	_grid_x += 1 break  //	Right cell
+										case 2:	_grid_y += 1 break  //	Bottom cell
+										case 3:	_grid_x -= 1 break  //	Left cell
+									}
+				
+									if gridController.grid[# _grid_x, _grid_y] > 0 {
+										var _xx = gridController.x + (_grid_x*160)
+										var _yy = gridController.y + (_grid_y*160)
+										var _object_id = instance_nearest(_xx,_yy,itemParent)
+										cells[i,1] = _object_id
+										cells[i,2] = _grid_x
+										cells[i,3] = _grid_y
+									} else {
+										cells[i,1] = 0
+										cells[i,2] = _grid_x
+										cells[i,3] = _grid_y
+									}
+
+								}}	
+						}
 					}
 				}
 			}
