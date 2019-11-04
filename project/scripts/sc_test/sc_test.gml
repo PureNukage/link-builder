@@ -1,5 +1,6 @@
 data_needs[0,0] = "test contract"
 data_needs[0,1] = id
+data_needs[0,2] = 5
 data_needs[1,0] = eData.test
 data_needs[1,1] = 0
 
