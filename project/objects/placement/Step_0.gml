@@ -91,8 +91,28 @@ if input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover 
 		
 		else {
 			//	Make new system that contains all current systems and their parts 
+			var _newsystem = instance_create_layer(x+80,y+80,"Instances",system)
+			for(var _oldsystem=0;_oldsystem<ds_list_size(systems);_oldsystem++) {
+				var _parts_list = systems[| _oldsystem].parts
+				var _parts_amount = ds_list_size(systems[| _oldsystem].parts)
+				for(var i=0;i<_parts_amount;i++) {
+					if ds_list_find_index(_newsystem.parts,_parts_list[| i]) != -1 {
+							
+					} else {
+						ds_list_add(_newsystem.parts,_parts_list[| i])				
+					}
+				}				
+			}
+			_item.System = _newsystem
 			
 		}
+	} 
+	
+	else {
+		//	Starting a new system!
+		var _newsystem = instance_create_layer(x+80,y+80,"Instances",system)
+		ds_list_add(_newsystem.parts,id)
+		_item.System = _newsystem
 	}
 	
 	shop.item_placing = 0
