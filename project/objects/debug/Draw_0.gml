@@ -36,6 +36,10 @@ switch(mode)
 				draw_text(x-64,y-96,"y: "+string(y))
 				draw_text(x-64,y-80,"grid x: "+string(grid_x))
 				draw_text(x-64,y-64,"grid y: " +string(grid_y))
+				
+				if object_index == kiosk {
+					draw_text(x-64,y-128,"complete: "+string(complete))	
+				}
 			}
 		}
 	break
