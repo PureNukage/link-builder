@@ -2,6 +2,7 @@
 initial_person_count = 20
 
 person_list = ds_list_create()
+person_available_list = ds_list_create()
 
 
 
