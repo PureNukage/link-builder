@@ -159,6 +159,14 @@
             }
         },
         {
+            "Key": "3fbe3129-680f-43fd-8220-2d562a6f1abd",
+            "Value": {
+                "id": "6a2cf9d7-8d47-4ac9-aa7a-dfd9635dc187",
+                "resourcePath": "objects\\contracts\\contracts.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "4138bb39-11e9-4099-8c3c-c12adf78774d",
             "Value": {
                 "id": "a5144637-4729-43c8-aa71-c5a42463c1e1",

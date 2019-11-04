@@ -52,7 +52,7 @@ if mouse_gui_y > camera_get_view_border_y(cam)-edgeY {
 }
 
 //	Check if we're moused over any gui elements before applying pan
-if shop.button_mouseover == 0 and shop.menu_mouseover = 0 {
+if shop.menu_open == 0 and contracts.button_open == 0 {
 	y += panY * panspeed 
 	x += panX * panspeed
 }
