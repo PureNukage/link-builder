@@ -21,16 +21,18 @@ switch(mode)
 							case 2: _yy += 160 break
 							case 3: _xx -= 160 break
 						}
+						draw_set_alpha(.25)
 						if cells[i,1] > 0 {
 							draw_set_color(c_yellow)	
 						} else {
 							draw_set_color(c_green)
 						}
-						draw_rectangle(_xx-80,_yy-80,_xx+79,_yy+79,false)	
+						draw_rectangle(_xx-80,_yy-80,_xx+79,_yy+79,false)
 					}
 				}
 			}
 		}
+		draw_set_alpha(1)
 	break
 	case 2:
 
