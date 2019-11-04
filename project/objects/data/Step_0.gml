@@ -6,10 +6,10 @@ if time.seconds_switch {
 					if ds_list_find_index(cells[a,1].input_list,output) == -1 {
 						ds_list_add(cells[a,1].input_list,output)
 					}
-					var _popup = instance_create_layer(x,y-96,"Instances",popup)
-					_popup.color = c_orange
-					_popup.duration = 30
-					_popup.message = "Data created"
+					//var _popup = instance_create_layer(x,y-96,"Instances",popup)
+					//_popup.color = c_orange
+					//_popup.duration = 30
+					//_popup.message = "Data created"
 				}
 			}
 		}

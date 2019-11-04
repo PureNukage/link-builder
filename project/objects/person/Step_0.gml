@@ -31,14 +31,19 @@ switch(states)
 					} else {
 						debug_log("Using the smart contract")
 						//	Using the smart contract
-						if line_pos == 0 and time.seconds_switch {
+						if line_pos == 0 {
 							systemController.points += Kiosk.data_needs[0,2]
 							ds_list_add(personController.person_available_list,id)
 							ds_list_delete(Kiosk.line,0)
 							in_line = false
 							line_pos = 0
 							timer = time.stream + 2
-						}	
+							var _popup = instance_create_layer(Kiosk.x,Kiosk.y-160,"Instances",popup)
+							_popup.message = "Contract used!"
+							_popup.color = c_green
+							_popup.duration = 30
+							
+						}
 					}
 				
 				} else {

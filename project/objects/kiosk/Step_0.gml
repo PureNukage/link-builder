@@ -9,7 +9,7 @@ if time.seconds_switch {
 				}
 			}
 		}
-		//	Update the contract data needs in object contrats
+		//	Update the contract data needs in object contracts
 		ds_list_replace(contracts.contracts_list,contract_pos,data_needs)
 		ds_list_clear(data_list)
 		
