@@ -1,3 +1,3 @@
 systems = ds_list_create()
 
-points = 100
+points = 15000
