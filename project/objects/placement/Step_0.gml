@@ -48,8 +48,8 @@ if moved == true {
 				}
 				
 				if gridController.grid[# _grid_x, _grid_y] > 0 {
-					var _xx = gridController.x + (_grid_x*160)
-					var _yy = gridController.y + (_grid_y*160)
+					var _xx = gridController.x + (_grid_x*cell_width)
+					var _yy = gridController.y + (_grid_y*cell_height)
 					var _object_id = instance_nearest(_xx,_yy,itemParent)
 					if ds_list_find_index(systems,_object_id.System) == -1 {
 						ds_list_add(systems,_object_id.System)
@@ -81,9 +81,10 @@ if moved == true {
 	
 }
 
-var a = 160
-if !place_snapped(a,a) {
-	move_snap(a,a)	
+var a = cell_width
+var b = cell_height
+if !place_snapped(a,b) {
+	move_snap(a,b)	
 }
 
 if (input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover = 0 and placeable == true) and systemController.points >= price {
@@ -122,8 +123,8 @@ if (input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover
 							}
 				
 							if gridController.grid[# _grid_x, _grid_y] > 0 {
-								var _xx = gridController.x+80 + (_grid_x*160)
-								var _yy = gridController.y+80 + (_grid_y*160)
+								var _xx = gridController.x+80 + (_grid_x*cell_width)
+								var _yy = gridController.y+80 + (_grid_y*cell_height)
 								var _object_id = instance_nearest(_xx,_yy,itemParent)
 								//show_message(object_get_name(_object_id.object_index)+" at "+string(_xx)+","+string(_yy))
 								cells[i,1] = _object_id
@@ -179,8 +180,8 @@ if (input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover
 									}
 				
 									if gridController.grid[# _grid_x, _grid_y] > 0 {
-										var _xx = gridController.x+80 + (_grid_x*160)
-										var _yy = gridController.y+80 + (_grid_y*160)
+										var _xx = gridController.x+80 + (_grid_x*cell_width)
+										var _yy = gridController.y+80 + (_grid_y*cell_height)
 										var _object_id = instance_nearest(_xx,_yy,itemParent)
 										//show_message(object_get_name(_object_id.object_index)+" at "+string(_xx)+","+string(_yy))
 										cells[i,1] = _object_id
