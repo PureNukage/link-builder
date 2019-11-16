@@ -81,6 +81,7 @@ if moved == true {
 	
 }
 
+//	Snap placement to grid
 var a = cell_width
 var b = cell_height
 if !place_snapped(a,b) {

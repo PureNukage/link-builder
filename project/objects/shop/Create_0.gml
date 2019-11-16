@@ -6,7 +6,7 @@ button_text = "Shop"
 button_mouseover = false
 
 menuX = buttonX
-menuY = buttonY + button_height + 16 // 64 is a buffer between the elements
+menuY = buttonY + button_height + 16 // 16 is a buffer between the elements
 menu_width = 128
 menu_height = 256
 menu_mouseover = false
