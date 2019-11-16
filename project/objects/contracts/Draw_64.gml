@@ -53,7 +53,7 @@ if button_open == true {
 				
 				draw_set_color(c_white)
 				draw_set_halign(fa_left)
-				draw_text(buttonX+64,_yyy+32,edata_strings[contract_data[a,0]])
+				draw_text(buttonX+64,_yyy+32,datatype_strings[contract_data[a,0]])
 				
 				_yyy += 32
 			}

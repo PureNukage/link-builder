@@ -8,5 +8,5 @@ button_open = false
 
 contracts_list = ds_list_create()
 
-edata_strings = []
-edata_strings[0] = "test"
+datatype_strings = []
+datatype_strings[0] = "test"

@@ -1,4 +1,4 @@
-enum eData {
+enum data_type {
 	test	
 }
 
