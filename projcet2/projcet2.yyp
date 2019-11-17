@@ -135,6 +135,14 @@
             }
         },
         {
+            "Key": "7d6129fa-84f3-4161-8750-3748b4493485",
+            "Value": {
+                "id": "c18145b1-0156-47f7-b565-27c5f0307ba4",
+                "resourcePath": "objects\\time\\time.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "8427047f-9ef8-4c77-89f3-9c20623d07b6",
             "Value": {
                 "id": "8de4f4c1-5789-499c-8971-7cbeefa6b713",
@@ -188,6 +196,22 @@
                 "id": "990ff5da-4e22-42d7-bd9c-17d3201761c4",
                 "resourcePath": "views\\b5c5db7c-f46c-4cd9-9651-c860e127dd22.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "be583977-9c97-4fb1-9cac-d6fb7f3dc4ef",
+            "Value": {
+                "id": "e2da02bf-5bf3-4a27-851e-d9aa2e241420",
+                "resourcePath": "fonts\\fnt_shop\\fnt_shop.yy",
+                "resourceType": "GMFont"
+            }
+        },
+        {
+            "Key": "bfabef34-cab6-4de3-9dfc-274be8ca9924",
+            "Value": {
+                "id": "dbc4a35f-0aad-483c-8e03-ecc529f544db",
+                "resourcePath": "objects\\contracts\\contracts.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -247,11 +271,27 @@
             }
         },
         {
+            "Key": "d6f2877c-459a-438d-8c6e-c10a6b447feb",
+            "Value": {
+                "id": "e5b107eb-dbe1-4061-9355-bfa0d7a0361b",
+                "resourcePath": "objects\\debug\\debug.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "dc4e2fed-4e2b-4e99-8c33-66978d3c45a6",
             "Value": {
                 "id": "ad085fcf-8267-4c54-855d-e6bea9548022",
                 "resourcePath": "sprites\\s_man0\\s_man0.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "e2d015af-4cec-4b61-b2b7-f888142f6b05",
+            "Value": {
+                "id": "1c7308e8-c565-40df-a9bc-a15bfc1ce1d3",
+                "resourcePath": "objects\\shop\\shop.yy",
+                "resourceType": "GMObject"
             }
         },
         {
