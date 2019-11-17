@@ -22,6 +22,8 @@
 					var _placement = instance_create_layer(mouse_x,mouse_y,"Instances",placement)
 					_placement.type = item[i,2]
 					_placement.price = item[i,1]
+					_placement.size_width = item[i,3]
+					_placement.size_height = item[i,4]
 					item_placing = _placement.type
 				}
 			}

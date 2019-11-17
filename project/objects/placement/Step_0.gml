@@ -5,19 +5,48 @@ if moved == true {
 	//	Update grid coordinates
 	grid_x = gridController.grid_mouse_w
 	grid_y = gridController.grid_mouse_h
+	var _x = grid_x - (size_width/2)
+	var _y = grid_y - (size_height/2)
+	
+	for(var size_w=0;size_w<size_width;size_w++) {
+		_y = grid_y - (size_height/2)
+		for(var size_h=0;size_h<size_height;size_h++) {
+			if _x > -1 and _y > -1 {
+				grid_array[_x, _y] = gridController.grid[# _x, _y]
+			}
+			_y++
+		}
+		_x++
+	}
 	placeable = true
 	newsystem = true
 	ds_list_clear(systems)
 	
 	//	Not in grid
-	if grid_x == -1  and grid_y == -1 {
+	if gridController.grid_mouse_w == -1  and gridController.grid_mouse_h == -1 {
 		placeable = false
 	}
 	
-	//	Already an item in this cell
-	if gridController.grid[# grid_x, grid_y] > 0 {
-		placeable = false	
+	var _x = grid_x - (size_width/2)
+	var _y = grid_y - (size_height/2)
+	
+	for(var size_w=0;size_w<size_width;size_w++) {
+		_y = grid_y - (size_height/2)
+		for(var size_h=0;size_h<size_height;size_h++) {
+			if _x > -1 and _y > -1 {
+				if gridController.grid[# _x, _y] > 0 {
+					placeable = false	
+				}
+			}
+			_y++
+		}
+		_x++
 	}
+	
+	////	Already an item in this cell
+	//if gridController.grid[# grid_x, grid_y] > 0 {
+	//	placeable = false	
+	//}
 	
 	//	Don't have enough points!
 	if systemController.points < price {
@@ -25,7 +54,7 @@ if moved == true {
 	}
 	
 	//	Empty cell
-	else {
+	if placeable == true {
 		//	Edge of grid check
 		for(var i=0;i<4;i++) {
 			cells[i,0] = 1	
@@ -89,7 +118,21 @@ if !place_snapped(a,b) {
 }
 
 if (input.mouse_left_press and shop.button_mouseover = 0 and shop.menu_mouseover = 0 and placeable == true) and systemController.points >= price {
-	gridController.grid[# grid_x, grid_y] = type
+	
+	var _x = grid_x - (size_width/2)
+	var _y = grid_y - (size_height/2)
+	
+	for(var size_w=0;size_w<size_width;size_w++) {
+		_y = grid_y - (size_height/2)
+		for(var size_h=0;size_h<size_height;size_h++) {
+			if _x > -1 and _y > -1 {
+				gridController.grid[# _x, _y] = type
+			}
+			_y++
+		}
+		_x++
+	}
+	//gridController.grid[# grid_x, grid_y] = type
 	var _item = instance_create_layer(x+80,y+80,"Instances",type)
 	_item.sprite_index = sprite
 	_item.grid_x = grid_x

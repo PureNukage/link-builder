@@ -16,10 +16,14 @@ item = []
 item[0,0] = "Node"
 item[0,1] = 100
 item[0,2] = node
+item[0,3] = 4
+item[0,4] = 4
 
 item[1,0] = "Data"
 item[1,1] = 1000
 item[1,2] = data
+item[1,3] = 4
+item[1,4] = 4
 
 item_height = 64
 item_buffer = 16

@@ -8,13 +8,15 @@ grid = ds_grid_create(grid_width,grid_height)
 ds_grid_set_region(grid,0,0,grid_width,grid_height,0)
 
 #region	Spawning a starting kiosk 
-grid[# 1, 1] = 3
+var _grid_x = grid_width/2
+var _grid_y = grid_height/2
+grid[# _grid_x, _grid_y] = 3
 var _x = x
 var _y = y
 _x -= cell_width
 _y -= cell_height
-_x = _x + (2*cell_width) + 80
-_y = _y + (2*cell_height) + 80
+_x = _x + ((grid_width/2)*cell_width) + 80
+_y = _y + ((grid_height/2)*cell_height) + 80
 var _kiosk = instance_create_layer(_x,_y,"Instances",kiosk)
 _kiosk.sprite_index = s_kiosk
 _kiosk.grid_x = 1
@@ -45,8 +47,8 @@ with _kiosk {
 			}
 				
 			if gridController.grid[# _grid_x, _grid_y] > 0 {
-				var _xx = gridController.x + (_grid_x*160)
-				var _yy = gridController.y + (_grid_y*160)
+				var _xx = gridController.x + (_grid_x*cell_width)
+				var _yy = gridController.y + (_grid_y*cell_height)
 				var _object_id = instance_nearest(_xx,_yy,itemParent)
 				cells[i,1] = _object_id
 				cells[i,2] = _grid_x
@@ -62,13 +64,13 @@ with _kiosk {
 #endregion
 
 #region Spawning a starting data
-grid[# 3, 1] = 2
+grid[# grid_width/2-4, grid_height/2] = 2
 var _x = x
 var _y = y
 _x -= cell_width
 _y -= cell_height
-_x = _x + (4*cell_width) + 80
-_y = _y + (2*cell_height) + 80
+_x = _x + ((grid_width/2-4)*cell_width) + 80
+_y = _y + ((grid_height/2)*cell_height) + 80
 var _data = instance_create_layer(_x,_y,"Instances",data)
 _data.sprite_index = s_database
 _data.grid_x = 3
@@ -99,8 +101,8 @@ with _data {
 			}
 				
 			if gridController.grid[# _grid_x, _grid_y] > 0 {
-				var _xx = gridController.x+80 + (_grid_x*160)
-				var _yy = gridController.y+80 + (_grid_y*160)
+				var _xx = gridController.x+80 + (_grid_x*cell_width)
+				var _yy = gridController.y+80 + (_grid_y*cell_height)
 				var _object_id = instance_nearest(_xx,_yy,itemParent)
 				cells[i,1] = _object_id
 				cells[i,2] = _grid_x

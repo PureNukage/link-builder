@@ -18,10 +18,10 @@ switch(mode)
 							var _yy = y 
 							switch(i)
 							{
-								case 0: _yy -= 160 break
-								case 1: _xx += 160 break
-								case 2: _yy += 160 break
-								case 3: _xx -= 160 break
+								case 0: _yy -= cell_height break
+								case 1: _xx += cell_width break
+								case 2: _yy += cell_height break
+								case 3: _xx -= cell_width break
 							}
 							draw_set_alpha(.25)
 							if cells[i,1] > 0 {
@@ -55,10 +55,10 @@ switch(mode)
 					var _xx = _part.grid_x
 					var _yy = _part.grid_y
 				
-					var _x = gridController.x-160
-					var _y = gridController.y-160
+					var _x = gridController.x-cell_width
+					var _y = gridController.y-cell_height
 					for(var _w=0;_w<grid_width;_w++) {
-						_y = gridController.y-160
+						_y = gridController.y-cell_height
 						_x += cell_width
 						for(var _h=0;_h<grid_height;_h++) {
 							_y += cell_height
