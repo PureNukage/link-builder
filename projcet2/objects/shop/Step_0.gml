@@ -19,7 +19,7 @@
 		for(var i=0;i<array_height_2d(item);i++) {
 			if point_in_rectangle(mouse_gui_x,mouse_gui_y,_x,_y,_x+menu_width,_y+item_height) {
 				if input.mouse_left_press {
-					
+					instance_create_layer(mouse_x,mouse_y,"Instances",node)
 				}
 			}
 			_y += item_height+item_buffer

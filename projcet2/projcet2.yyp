@@ -151,6 +151,14 @@
             }
         },
         {
+            "Key": "9290d2ab-1f93-491b-9b62-ff17a6c5a43c",
+            "Value": {
+                "id": "2dd29f40-ba44-4d8a-aca1-9cd1f171813b",
+                "resourcePath": "views\\9290d2ab-1f93-491b-9b62-ff17a6c5a43c.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "93566aad-c3b3-48a9-8fa7-9c5ee19f74ac",
             "Value": {
                 "id": "d26a3096-574f-451d-859d-4c81433d5d9e",
@@ -239,6 +247,14 @@
             }
         },
         {
+            "Key": "c65dc474-9f22-4afa-a0e1-2bfac918ee85",
+            "Value": {
+                "id": "eade6a88-be35-4f83-85ab-adead30d162b",
+                "resourcePath": "sprites\\s_32x32\\s_32x32.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "c668a8a9-ddb3-49ab-841d-2518ec2a9e96",
             "Value": {
                 "id": "e051f26a-3b4a-4d15-a767-796f59faf772",
@@ -311,11 +327,35 @@
             }
         },
         {
+            "Key": "e9ee8a04-3bc6-4203-aebf-b8512bbe702b",
+            "Value": {
+                "id": "cfbe31aa-0c18-4891-a4f4-26a511b8b786",
+                "resourcePath": "objects\\node\\node.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "f418569b-3bdd-4706-a0e4-364317f54032",
             "Value": {
                 "id": "04e74bcc-992f-46ae-beae-16c0cf3a7301",
                 "resourcePath": "options\\mac\\options_mac.yy",
                 "resourceType": "GMMacOptions"
+            }
+        },
+        {
+            "Key": "f8fe0e91-5295-4114-b1b6-a3ef6697164b",
+            "Value": {
+                "id": "474e8cad-2194-42f3-8f2b-1199a8df7a14",
+                "resourcePath": "objects\\itemParent\\itemParent.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "fb6c1052-0b90-40eb-afa8-401055604a98",
+            "Value": {
+                "id": "d0d513c5-ff04-4e38-8779-4471ee2bbf36",
+                "resourcePath": "scripts\\macros_and_enums\\macros_and_enums.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -328,7 +368,7 @@
         }
     ],
     "script_order": [
-        
+        "fb6c1052-0b90-40eb-afa8-401055604a98"
     ],
     "tutorial": ""
 }
