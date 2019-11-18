@@ -21,6 +21,6 @@ for(var _w=0;_w<size_width;_w++) {
 	_x += cell_width
 }
 
-sprite = s_chainlink
+sprite = s_32x32
 
 states = states.placement

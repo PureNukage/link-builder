@@ -2,8 +2,8 @@ switch(states)
 {
 	case states.placement:
 		
-		x = mouse_x 
-		y = mouse_y 
+		x = mouse_x
+		y = mouse_y
 		
 		var _x = cell_width
 		var _y = cell_height

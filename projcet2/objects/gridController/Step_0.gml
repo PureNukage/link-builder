@@ -4,7 +4,7 @@ for(var _w=0;_w<grid_width;_w++) {
 	for(var _h=0;_h<grid_height;_h++) {
 		_x = grid_positions_x[# _w, _h]
 		_y = grid_positions_y[# _w, _h]
-		if point_in_rectangle(mouse_x,mouse_y,_x,_y,_x+cell_width,_y+cell_height) { 
+		if point_in_rectangle(mouse_x,mouse_y,_x,_y,_x+cell_width-1,_y+cell_height-1) { 
 			grid_mouse_w = _w
 			grid_mouse_h = _h
 			exit
