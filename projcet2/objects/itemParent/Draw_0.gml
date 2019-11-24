@@ -8,10 +8,10 @@ switch(states)
 		draw_sprite(sprite,-1,x,y)
 
 		//	Draw the grid outline
-		var _x0 = my_cells_x[# 0, 0]
-		var _y0 = my_cells_y[# 0, 0]
-		var _x1 = my_cells_x[# size_width-1, 0]
-		var _y1 = my_cells_y[# 0, size_height-1]
+		var _x0 = my_cells_x[0]
+		var _y0 = my_cells_y[0]
+		var _x1 = my_cells_x[size_width-1]
+		var _y1 = my_cells_y[size_height-1]
 		_x1 += cell_width
 		_y1 += cell_height
 		draw_set_color(c_black)
