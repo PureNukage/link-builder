@@ -13,6 +13,8 @@
 	window_set_rectangle((display_get_width()-view_wport[0])*0.5,(display_get_height()-view_hport[0])*0.5,view_wport[0],view_hport[0])
 	
 	surface_resize(application_surface,view_wport[0],view_hport[0])
+	
+	//display_set_gui_size(window_get_width(),window_get_height())
 
 
 #endregion
@@ -29,8 +31,8 @@
 	camera_set_view_pos(Camera,x,y)
 	camera_set_view_size(Camera,1280,720)
 	
-	camera_set_view_speed(Camera,-1,-1)
-	camera_set_view_border(Camera,32,32)
+	camera_set_view_speed(Camera,200,200)
+	camera_set_view_border(Camera,1280,720)
 	
 	camera_set_view_target(Camera,id)
 
