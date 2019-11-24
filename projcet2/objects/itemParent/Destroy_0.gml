@@ -1,1 +1,3 @@
 ds_grid_destroy(my_cells_items)
+ds_grid_destroy(my_cells_x)
+ds_grid_destroy(my_cells_y)

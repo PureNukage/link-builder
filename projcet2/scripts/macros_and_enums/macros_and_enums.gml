@@ -1,4 +1,5 @@
 enum states {
 	placement,
+	placed,
 	
 }

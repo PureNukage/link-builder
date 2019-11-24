@@ -8,7 +8,7 @@ grid_start_y = 0
 
 grid_items = ds_grid_create(grid_width,grid_height)
 
-ds_grid_set_region(grid_items,0,0,grid_width,grid_height,0)
+ds_grid_set_region(grid_items,0,0,grid_width,grid_height,-1)
 
 grid_positions_x = []
 grid_positions_y = []

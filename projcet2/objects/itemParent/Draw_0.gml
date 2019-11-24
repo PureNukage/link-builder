@@ -19,5 +19,13 @@ switch(states)
 		draw_rectangle(_x0+1,_y0+1,_x1-1,_y1-1,true)
 		
 	break
+	case states.placed:
+	
+		//	Draw the item
+		sprite_set_offset(sprite,sprite_get_width(sprite)/2,sprite_get_height(sprite)/2)
+		draw_sprite(sprite,-1,x,y)
+	
+	
+	break
 	
 }
