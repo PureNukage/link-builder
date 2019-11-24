@@ -10,14 +10,14 @@ grid_items = ds_grid_create(grid_width,grid_height)
 
 ds_grid_set_region(grid_items,0,0,grid_width,grid_height,0)
 
-grid_positions_x = ds_grid_create(grid_width,grid_height)
-grid_positions_y = ds_grid_create(grid_width,grid_height)
+grid_positions_x = []
+grid_positions_y = []
 var _x = grid_start_x
 var _y = grid_start_y
 for(var _w=0;_w<grid_width;_w++) {
 	for(var _h=0;_h<grid_height;_h++) {
-		grid_positions_x[# _w, _h] = _x
-		grid_positions_y[# _w, _h] = _y
+		grid_positions_x[_w] = _x
+		grid_positions_y[_h] = _y
 		_y += cell_height
 	}
 	_x += cell_width
