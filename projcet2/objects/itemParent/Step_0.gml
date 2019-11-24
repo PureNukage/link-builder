@@ -2,14 +2,13 @@ switch(states)
 {
 	case states.placement:
 		
-		x = mouse_x
-		y = mouse_y
+		var _xx = gridController.grid_positions_x[# gridController.grid_mouse_w, gridController.grid_mouse_h]
+		var _yy = gridController.grid_positions_y[# gridController.grid_mouse_w, gridController.grid_mouse_h]
+		_xx += cell_width/2
+		_yy += cell_height/2
 		
-		var _x = cell_width
-		var _y = cell_height
-		if !place_snapped(_x,_y) {
-			move_snap(_x,_y)	
-		}
+		x = _xx
+		y = _yy
 		
 		if moved == true {
 			

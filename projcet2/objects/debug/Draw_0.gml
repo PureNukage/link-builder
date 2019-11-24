@@ -7,6 +7,7 @@ switch(mode)
 	
 		with gridController {
 			
+			draw_set_color(c_white)
 			for(var _w=0;_w<grid_width;_w++) {
 				for(var _h=0;_h<grid_height;_h++) {
 					var _x = grid_positions_x[# _w, _h]
