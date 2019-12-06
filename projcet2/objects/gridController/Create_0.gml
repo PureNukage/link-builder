@@ -15,14 +15,11 @@ grid_positions_y = []
 var _x = grid_start_x
 var _y = grid_start_y
 for(var _w=0;_w<grid_width;_w++) {
+	_y = grid_start_y
 	for(var _h=0;_h<grid_height;_h++) {
 		grid_positions_x[_w] = _x
 		grid_positions_y[_h] = _y
 		_y += cell_height
 	}
 	_x += cell_width
-	_y = 0
 }
-
-grid_mouse_w = -1
-grid_mouse_h = -1

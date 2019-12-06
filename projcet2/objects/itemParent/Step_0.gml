@@ -3,20 +3,20 @@ switch(states)
 	#region State Placement
 		case states.placement:
 		
-			if gridController.grid_mouse_w != -1 and gridController.grid_mouse_h != -1 {
+			if input.grid_x != -1 and input.grid_y != -1 {
 		
-				var _xx = gridController.grid_positions_x[gridController.grid_mouse_w]
-				var _yy = gridController.grid_positions_y[gridController.grid_mouse_h]
-				_xx += cell_width/2
-				_yy += cell_height/2
+				if input.grid_moved == true {
+					
+					var _xx = gridController.grid_positions_x[input.grid_x]
+					var _yy = gridController.grid_positions_y[input.grid_y]
+					_xx += cell_width/2
+					_yy += cell_height/2
 		
-				x = _xx
-				y = _yy
-		
-				if moved == true {
+					x = _xx
+					y = _yy
 			
-					center_cell_x  = gridController.grid_mouse_w
-					center_cell_y = gridController.grid_mouse_h
+					center_cell_x = input.grid_x
+					center_cell_y = input.grid_y
 				
 					topleft_cell_x = center_cell_x-floor(size_width/2)
 					topleft_cell_y = center_cell_y-floor(size_height/2)

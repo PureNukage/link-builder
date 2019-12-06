@@ -17,6 +17,5 @@ switch(mode)
 			}		
 		}
 	
-	
 	break
 }

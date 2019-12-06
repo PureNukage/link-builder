@@ -13,8 +13,8 @@ switch(mode)
 	draw_text(_x,_y,"mouse_gui_x: "+string(mouse_gui_x))						_y += 15 
 	draw_text(_x,_y,"mouse_gui_y: "+string(mouse_gui_y))						_y += 15 
 																				_y += 15
-	draw_text(_x,_y,"grid x: "+string(gridController.grid_mouse_w))				_y += 15 
-	draw_text(_x,_y,"grid y: "+string(gridController.grid_mouse_h))				_y += 15
+	draw_text(_x,_y,"grid x: "+string(input.grid_x))							_y += 15 
+	draw_text(_x,_y,"grid y: "+string(input.grid_y))							_y += 15
 																				_y += 15
 	draw_text(_x,_y,"gui layer width: "+string(display_get_gui_width()))		_y += 15 
 	draw_text(_x,_y,"gui layer height: "+string(display_get_gui_height()))		_y += 15 

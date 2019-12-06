@@ -1,13 +1,11 @@
-moved = false
-
 size_width = 5
 size_height = 5
 my_cells_items = ds_grid_create(size_width,size_height)
 my_cells_x = []
 my_cells_y = []
 
-center_cell_x  = gridController.grid_mouse_w
-center_cell_y = gridController.grid_mouse_h
+center_cell_x = input.grid_x
+center_cell_y = input.grid_y
 
 topleft_cell_x = center_cell_x-floor(size_width/2)
 topleft_cell_y = center_cell_y-floor(size_height/2)
