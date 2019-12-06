@@ -1,28 +1,18 @@
 {
-    "id": "064e9b5a-3dc1-43b4-9944-e26497bd8994",
+    "id": "113b94c4-476a-4d7b-be5f-385546c06e5a",
     "modelName": "GMObject",
     "mvc": "1.0",
     "name": "gridController",
     "eventList": [
         {
-            "id": "f4f028cb-ade3-45f5-957a-0045e0a15f60",
+            "id": "72608aec-2902-4a99-ab2d-872155cd2123",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
             "eventtype": 0,
-            "m_owner": "064e9b5a-3dc1-43b4-9944-e26497bd8994"
-        },
-        {
-            "id": "4b3e5eb8-4d73-4f99-b57a-13c26549a3df",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 0,
-            "eventtype": 3,
-            "m_owner": "064e9b5a-3dc1-43b4-9944-e26497bd8994"
+            "m_owner": "113b94c4-476a-4d7b-be5f-385546c06e5a"
         }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",

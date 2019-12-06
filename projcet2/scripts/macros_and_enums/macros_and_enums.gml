@@ -1,5 +1,0 @@
-enum states {
-	placement,
-	placed,
-	
-}

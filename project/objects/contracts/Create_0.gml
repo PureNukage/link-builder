@@ -1,6 +1,6 @@
 button_width = 128
 button_height = 64
-buttonX = display_get_gui_width()-button_width-32
+buttonX = camera_get_view_width(camera.Camera)-button_width-32
 buttonY = 32
 button_text = "Contracts"
 button_mouseover = false
