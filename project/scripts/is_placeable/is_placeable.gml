@@ -10,7 +10,9 @@ for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 			} else {
 				_placeable++		
 			}
-		} 					
+		} else {
+			_placeable++	
+		}
 								
 	}
 }

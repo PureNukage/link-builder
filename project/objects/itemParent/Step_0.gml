@@ -39,12 +39,11 @@ switch(states)
 							}
 							_x += cell_width
 						}	
-						
-						//	Placeable check
-						placeable = is_placeable()
-						
-						
 					}
+					
+					//	Placeable check
+					placeable = is_placeable()
+					
 				}
 			}
 		
@@ -52,7 +51,7 @@ switch(states)
 				instance_destroy()	
 			}
 		
-			if input.mouse_left_press {
+			if input.mouse_left_press and placeable {
 				
 				states = states.placed
 				
