@@ -39,6 +39,11 @@ switch(states)
 							}
 							_x += cell_width
 						}	
+						
+						//	Placeable check
+						placeable = is_placeable()
+						
+						
 					}
 				}
 			}
