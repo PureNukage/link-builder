@@ -28,8 +28,8 @@ switch(mode)
 			}	
 		}
 		
-		if instance_exists(itemParent) {
-			with itemParent {
+		if instance_exists(c_item) {
+			with c_item {
 				if states = states.placement {
 					if (topleft_cell_x > -1 and topleft_cell_x < grid_width+1) and 
 					(topleft_cell_y > -1 and topleft_cell_y < grid_height+1) {
@@ -41,7 +41,7 @@ switch(mode)
 								var _y = gridController.grid_positions_y[h]
 								draw_set_color(c_orange)
 								draw_set_alpha(.33)
-								draw_rectangle(_x,_y,_x+cell_height,_y+cell_height,false)
+								draw_rectangle(_x+1,_y+1,_x+cell_height,_y+cell_height,false)
 								draw_set_alpha(1)
 							
 							}

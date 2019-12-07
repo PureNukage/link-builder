@@ -103,6 +103,14 @@
             }
         },
         {
+            "Key": "4b4c16f0-c41d-4d5b-ae4d-5a189b07aee7",
+            "Value": {
+                "id": "cab20df7-1d38-4fee-8713-94fe105a0eb1",
+                "resourcePath": "objects\\port\\port.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "4de32780-23b1-41b4-8b84-4af1a8793afa",
             "Value": {
                 "id": "20f45425-87af-40d1-98d9-5c23929be419",
@@ -116,6 +124,14 @@
                 "id": "f726b2ca-128f-401c-8b29-9a60d1f9b9f2",
                 "resourcePath": "sprites\\s_chainlink\\s_chainlink.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "58bb0a3c-c7fb-44bd-a653-74da2af27c79",
+            "Value": {
+                "id": "33bf5284-1549-4040-9153-d7fb0994d809",
+                "resourcePath": "objects\\wire\\wire.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -148,6 +164,14 @@
                 "id": "8de4f4c1-5789-499c-8971-7cbeefa6b713",
                 "resourcePath": "options\\ios\\options_ios.yy",
                 "resourceType": "GMiOSOptions"
+            }
+        },
+        {
+            "Key": "891f2300-30df-460d-ab5d-42068507e6bd",
+            "Value": {
+                "id": "fa51a2b7-4710-491d-aa67-c7f945247308",
+                "resourcePath": "sprites\\s_wire\\s_wire.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -354,7 +378,7 @@
             "Key": "f8fe0e91-5295-4114-b1b6-a3ef6697164b",
             "Value": {
                 "id": "474e8cad-2194-42f3-8f2b-1199a8df7a14",
-                "resourcePath": "objects\\itemParent\\itemParent.yy",
+                "resourcePath": "objects\\c_item\\c_item.yy",
                 "resourceType": "GMObject"
             }
         },
