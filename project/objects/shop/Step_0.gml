@@ -15,16 +15,11 @@
 	
 		//	Menu item mouse click check
 		var _x = menuX+item_buffer
-		var _y = menuY+item_buffer	
+		var _y = menuY+item_buffer
 		for(var i=0;i<array_height_2d(item);i++) {
 			if point_in_rectangle(mouse_gui_x,mouse_gui_y,_x,_y,_x+menu_width,_y+item_height) {
 				if input.mouse_left_press {
-					var _placement = instance_create_layer(mouse_x,mouse_y,"Instances",placement)
-					_placement.type = item[i,2]
-					_placement.price = item[i,1]
-					_placement.size_width = item[i,3]
-					_placement.size_height = item[i,4]
-					item_placing = _placement.type
+					instance_create_layer(mouse_x,mouse_y,"Instances",node)
 				}
 			}
 			_y += item_height+item_buffer
