@@ -36,10 +36,6 @@ switch(states)
 				
 				draw_sprite_ext(s_wire,0,_xx+(cell_width/2),_yy+(cell_height/2),1,1,path_objects[| i].rotation,c_white,1)
 				
-				//if input.grid_moved debug_log("Drawing wire "+string(i)+" with direction: "+string(_rotation))
-				
-				//draw_sprite_ext(s_wire,0,_xx+(cell_width/2),_yy+(cell_height/2),1,1,_rotation,c_white,1)
-				
 			}
 			
 			

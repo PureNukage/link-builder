@@ -29,14 +29,19 @@ switch(states)
 				
 					ds_list_clear(path_points_x)
 					ds_list_clear(path_points_y)
-					for(var i=0;i<ds_list_size(path_objects);i++) {
-						instance_destroy(path_objects[| i])	
-					}
-					ds_list_clear(path_objects)
 				
 					var _placeable = 0
 					var buffer = 0
+					#region While Loop for creating the path
 					while _placeable == 0 {
+						
+						//	Make sure to clear my previous path if any 
+						for(var i=0;i<ds_list_size(path_objects);i++) {
+							instance_destroy(path_objects[| i])	
+						}
+						ds_list_clear(path_objects)
+					
+						//	Start the loop through the grid containing my path + buffer
 						for(var w=top_left_x-buffer;w<=bottom_right_x+buffer;w++) {
 							for(var h=top_left_y-buffer;h<=bottom_right_y+buffer;h++) {
 						
@@ -80,33 +85,31 @@ switch(states)
 							buffer++
 						}
 					}
+					#endregion
 					
-					#region	Sort out path cells in ascending distance from cell_x1
-					var distances = ds_list_create()
-					var distances_sorted = ds_list_create()
-					for(var i=0;i<ds_list_size(path_points_x);i++) {
-						var _x2 = path_points_x[| i]
-						var _y2 = path_points_y[| i]
-						var _distance = abs(point_distance(cell_x1,cell_y1,_x2,_y2))
-						ds_list_add(distances,_distance)
-						
-					}
-					
-					ds_list_copy(distances_sorted,distances)
-					ds_list_sort(distances_sorted,true)
+					#region	Sort out path cells in order as to the path
 					
 					var path_points_x2 = ds_list_create()
 					var path_points_y2 = ds_list_create()
 					var path_objects2 = ds_list_create()
-					for(var i=0;i<ds_list_size(distances_sorted);i++) {
-						for(var a=0;a<ds_list_size(path_points_x);a++) {
-							var _x2 = path_points_x[| a]
-							var _y2 = path_points_y[| a]
-							if abs(point_distance(cell_x1,cell_y1,_x2,_y2)) == distances_sorted[| i] {
-								path_points_x2[| a] = path_points_x[| i]
-								path_points_y2[| a] = path_points_y[| i]
-								path_objects2[| a] = path_objects[| i]
-							}	
+					
+					//	Loop through every point in the path
+					for(var i=0;i<path_get_number(path);i++) {
+						
+						var point_x = path_get_point_x(path,i)
+						var point_y = path_get_point_y(path,i)
+						
+						for(var w=0;w<ds_list_size(path_points_x);w++) {
+							var _w = path_points_x[| w]
+							var _h = path_points_y[| w]
+							var _xx = gridController.grid_positions_x[_w]
+							var _yy = gridController.grid_positions_y[_h]
+								
+							if point_in_rectangle(point_x,point_y,_xx,_yy,_xx+cell_width,_yy+cell_height) {
+								ds_list_add(path_points_x2,_w)
+								ds_list_add(path_points_y2,_h)
+								ds_list_add(path_objects2,path_objects[| w])	
+							}
 						}
 					}
 					
@@ -117,16 +120,15 @@ switch(states)
 					ds_list_copy(path_points_y,path_points_y2)
 					ds_list_copy(path_objects,path_objects2)
 					
-					ds_list_destroy(distances)
-					ds_list_destroy(distances_sorted)
 					ds_list_destroy(path_points_x2)
 					ds_list_destroy(path_points_y2)
 					ds_list_destroy(path_objects2)
+				
 					#endregion
 					
 					
 					#region Assign wires their ports
-					for(var i=0;i<ds_list_size(path_points_x);i++) {
+					for(var i=0;i<ds_list_size(path_objects);i++) {
 						
 						var _wire = path_objects[| i]
 						
@@ -134,11 +136,12 @@ switch(states)
 						if i == 0 {
 							// There are no more wires
 							if i >= ds_list_size(path_objects)-1 {
-									
+								//debug_log("This is a solo wire!")
 							} 
 							//	There is another wire ahead of us
 							else {
 								_wire.port_out[0] = path_objects[| i+1]
+								//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0]))
 							}
 						} 
 						#endregion
@@ -147,13 +150,15 @@ switch(states)
 						if i > 0 and i < ds_list_size(path_objects)-1 {
 							_wire.port_in[0] = path_objects[| i-1]
 							_wire.port_out[0] = path_objects[| i+1]
-							
+							//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0]))
+							//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0]))
 						}
 						#endregion
 						
 						#region Last Wire
 						if i == ds_list_size(path_points_x)-1 {
 							_wire.port_in[0] = path_objects[| i-1]
+						//	debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0]))
 							
 						}
 						
@@ -181,13 +186,15 @@ switch(states)
 						//	In and Out
 						//	and Out and no in
 						if (_wire.port_in[0] > -1 and _wire.port_out[0] > -1)
-						and (_wire.port_in[0] == -1 and _wire.port_out[0] > -1) {
+						or (_wire.port_in[0] == -1 and _wire.port_out[0] > -1) {
 							var w1 = _wire.center_cell_x
 							var h1 = _wire.center_cell_y
 							var w2 = _wire.port_out[0].center_cell_x
 							var h2 = _wire.port_out[0].center_cell_y
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
 						}
+						
+						//debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
 						
 					}
 					
