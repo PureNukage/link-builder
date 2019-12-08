@@ -10,6 +10,8 @@ grid_items = ds_grid_create(grid_width,grid_height)
 
 ds_grid_set_region(grid_items,0,0,grid_width,grid_height,-1)
 
+mp_grid = mp_grid_create(0,0,grid_width,grid_height,cell_width,cell_height)
+
 grid_positions_x = []
 grid_positions_y = []
 var _x = grid_start_x
