@@ -20,7 +20,7 @@ if !mp_grid_path(_grid,_path,_startingx,_startingy,_goalx,_goaly,_allowdiag) {
 	debug_log("ERROR: mp_grid_define_path() - no path created")
 	return false
 } else {
-	path_set_kind(_path,1)
-	path_set_precision(_path,8)
+	path_set_kind(_path,0)
+	//path_set_precision(_path,8)
 	return true
 }

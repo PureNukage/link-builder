@@ -12,7 +12,7 @@ switch(states)
 				cell_y2 = input.grid_y
 			}
 		
-			if input.mouse_left and input.grid_moved and time.stream > time_spawn and cell_x1 > -1 and cell_y1 > -1 {
+			if input.mouse_left and input.grid_moved and time.stream > time_spawn and cell_x1 > -1 and cell_y1 > -1 and placeable {
 				cell_x2 = input.grid_x
 				cell_y2 = input.grid_y
 			
@@ -20,7 +20,14 @@ switch(states)
 				var _y1 = gridController.grid_positions_y[cell_y1]+(cell_height/2)
 				var _x2 = gridController.grid_positions_x[cell_x2]+(cell_width/2)
 				var _y2 = gridController.grid_positions_y[cell_y2]+(cell_height/2)
+				
+				//	Make sure to clear my previous path if any 
+				for(var i=0;i<ds_list_size(path_objects);i++) {
+					instance_destroy(path_objects[| i])	
+				}
+				ds_list_clear(path_objects)
 			
+				//	The path can make it, but are the path cells actually free?
 				if mp_grid_define_path(_x1,_y1,_x2,_y2,path,gridController.mp_grid,false) {
 					var top_left_x = min(cell_x1,cell_x2)
 					var top_left_y = min(cell_y1,cell_y2)
@@ -34,12 +41,6 @@ switch(states)
 					var buffer = 0
 					#region While Loop for creating the path
 					while _placeable == 0 {
-						
-						//	Make sure to clear my previous path if any 
-						for(var i=0;i<ds_list_size(path_objects);i++) {
-							instance_destroy(path_objects[| i])	
-						}
-						ds_list_clear(path_objects)
 					
 						//	Start the loop through the grid containing my path + buffer
 						for(var w=top_left_x-buffer;w<=bottom_right_x+buffer;w++) {
@@ -86,6 +87,9 @@ switch(states)
 						}
 					}
 					#endregion
+					
+					debug_log("Points in path: "+string(path_get_number(path)))
+					debug_log("Size of path_objects: "+string(ds_list_size(path_objects)))
 					
 					#region	Sort out path cells in order as to the path
 					
@@ -163,7 +167,10 @@ switch(states)
 						}
 						
 						
-						#endregion				
+						#endregion			
+						
+						debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0]))
+						debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0]))
 								
 					}
 					#endregion
