@@ -1,9 +1,9 @@
 switch(mode)
 {
-	case 0:
+	case mode.off:
 	
 	break
-	case 2:	//	Object Variables
+	case mode.object:	//	Object Variables
 	
 	var _y = 32
 	var _x = 256

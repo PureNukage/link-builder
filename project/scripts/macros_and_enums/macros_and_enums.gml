@@ -3,3 +3,11 @@ enum states {
 	placed,
 	
 }
+
+enum mode {
+	off,
+	grid,
+	object
+	
+	
+}

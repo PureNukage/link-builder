@@ -29,6 +29,7 @@ switch(states)
 		}
 		
 		//	Draw the individual cells
+		if debug.mode != mode.grid {
 		for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 			for(var h=topleft_cell_y;h<topleft_cell_y+size_height;h++) {
 				
@@ -46,7 +47,7 @@ switch(states)
 					draw_set_alpha(1)
 				}
 			}
-		}
+		}}
 		
 		//	Draw the item
 		sprite_set_offset(sprite,sprite_get_width(sprite)/2-1,sprite_get_height(sprite)/2-1)

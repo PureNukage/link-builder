@@ -1,55 +1,90 @@
 switch(mode) 
 {
-	case 0:
+	case mode.off:
 	
 	break
-	case 1:
+	#region Grid
+		case mode.grid:	
 	
-		with gridController {
+			with gridController {
 			
-			for(var _w=0;_w<grid_width;_w++) {
-				for(var _h=0;_h<grid_height;_h++) {
-					var _x = grid_positions_x[_w]
-					var _y = grid_positions_y[_h]
+				for(var _w=0;_w<grid_width;_w++) {
+					for(var _h=0;_h<grid_height;_h++) {
+						var _x = grid_positions_x[_w]
+						var _y = grid_positions_y[_h]
 					
-					//	Draw outline
-					draw_set_alpha(.33)
-					draw_set_color(c_white)
-					draw_rectangle(_x,_y,_x+cell_width,_y+cell_width,true)
-					draw_set_alpha(1)
-					
-					if grid_items[# _w,_h] != -1 {
+						//	Draw outline
 						draw_set_alpha(.33)
-						draw_set_color(c_orange)
-						draw_rectangle(_x+3,_y+3,_x+cell_width-3,_y+cell_height-3,false)
+						draw_set_color(c_white)
+						draw_rectangle(_x,_y,_x+cell_width,_y+cell_width,true)
 						draw_set_alpha(1)
-					}
-				}	
-			}	
-		}
-		
-		if instance_exists(c_item) {
-			with c_item {
-				if states = states.placement {
-					if (topleft_cell_x > -1 and topleft_cell_x < grid_width+1) and 
-					(topleft_cell_y > -1 and topleft_cell_y < grid_height+1) {
 					
-						for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
-							for(var h=topleft_cell_y;h<topleft_cell_y+size_height;h++) {
+						if grid_items[# _w,_h] != -1 {
+							draw_set_alpha(.33)
+							draw_set_color(c_orange)
+							draw_rectangle(_x+3,_y+3,_x+cell_width-3,_y+cell_height-3,false)
+							draw_set_alpha(1)
+						}
+					}	
+				}	
+			}
+		
+			if instance_exists(c_item) {
+				with c_item {
+					
+					//	If item is being placed
+					if states = states.placement {
+						
+						#region Draw each cell for an item
+						if (topleft_cell_x > -1 and topleft_cell_x < grid_width+1) and 
+						(topleft_cell_y > -1 and topleft_cell_y < grid_height+1) {
+					
+							//	Drawing the rectangle of the item
+							for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
+								for(var h=topleft_cell_y;h<topleft_cell_y+size_height;h++) {
 							
-								var _x = gridController.grid_positions_x[w]
-								var _y = gridController.grid_positions_y[h]
-								draw_set_color(c_orange)
-								draw_set_alpha(.33)
-								draw_rectangle(_x+1,_y+1,_x+cell_height,_y+cell_height,false)
-								draw_set_alpha(1)
+									var _x = gridController.grid_positions_x[w]
+									var _y = gridController.grid_positions_y[h]
+									draw_set_color(c_orange)
+									draw_set_alpha(.33)
+									draw_rectangle(_x+1,_y+1,_x+cell_height,_y+cell_height,false)
+									draw_set_alpha(1)
 							
+								}
 							}
 						}
+						#endregion
+						
 					}
+					
+					
+					#region Draw cell placeable for wire path
+					if object_index == wire and !ds_list_empty(path_points_x) {
+						for(var i=0;i<ds_list_size(path_points_x);i++) {
+						
+							var w = path_points_x[| i]
+							var h = path_points_y[| i]
+							var _xx = gridController.grid_positions_x[w]
+							var _yy = gridController.grid_positions_y[h]
+						
+							if gridController.grid_items[# w,h] == -1 {
+								draw_set_color(c_orange)	
+							} else {
+								draw_set_color(c_red)	
+							}
+						
+							draw_set_alpha(.33)
+							draw_roundrect(_xx+3,_yy+3,_xx+cell_width-3,_yy+cell_height-3,false)
+							draw_set_alpha(1)
+						
+						}
+					}
+					#endregion
+				
+				
 				}
 			}
-		}
 	
-	break
+		break
+	#endregion
 }
