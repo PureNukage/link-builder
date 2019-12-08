@@ -3,12 +3,27 @@ size_width = 5						//	Set; cells width this item takes up
 size_height = 5						//	Set; cells height this item takes up
 sprite = s_chainlink				//	Set; sprite for this item
 states = states.placement			//	Set; inital state of this item
+ports_in = 1						//	Set; holds the number of ports in this item has
+ports_out = 1						//	Set; holds the number of ports out this item has
 */
 	
 my_cells_items = ds_grid_create(size_width,size_height)
 my_cells_x = []
 my_cells_y = []
 
+rotation = 0
+
+//Ports
+port_in = []						
+port_out = []
+for(var i=0;i<ports_in;i++) {
+	port_in[i] = -1
+}
+for(var i=0;i<ports_out;i++) {
+	port_out[i] = -1
+}
+
+//Cells
 center_cell_x = input.grid_x
 center_cell_y = input.grid_y
 

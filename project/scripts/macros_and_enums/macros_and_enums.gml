@@ -1,6 +1,7 @@
 enum states {
 	placement,
 	placed,
+	limbo,
 	
 }
 

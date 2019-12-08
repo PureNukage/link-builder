@@ -4,6 +4,12 @@ switch(states)
 {
 	case states.placement:
 	
+		if cell_x1 == -1 and cell_y1 == -1 {
+			//	Draw the item
+			sprite_set_offset(sprite,sprite_get_width(sprite)/2-1,sprite_get_height(sprite)/2-1)
+			draw_sprite(sprite,-1,x,y)	
+		}
+	
 		if cell_x1 > -1 and cell_y1 > -1 {
 			var _x = gridController.grid_positions_x[cell_x1]+(cell_width/2)
 			var _y = gridController.grid_positions_y[cell_y1]+(cell_height/2)
@@ -28,7 +34,11 @@ switch(states)
 				draw_roundrect(_xx+3,_yy+3,_xx+cell_width-3,_yy+cell_height-3,false)
 				draw_set_alpha(1)
 				
-				draw_sprite(s_wire,0,_xx+(cell_width/2),_yy+(cell_height/2))
+				draw_sprite_ext(s_wire,0,_xx+(cell_width/2),_yy+(cell_height/2),1,1,path_objects[| i].rotation,c_white,1)
+				
+				//if input.grid_moved debug_log("Drawing wire "+string(i)+" with direction: "+string(_rotation))
+				
+				//draw_sprite_ext(s_wire,0,_xx+(cell_width/2),_yy+(cell_height/2),1,1,_rotation,c_white,1)
 				
 			}
 			
