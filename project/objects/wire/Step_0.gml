@@ -28,34 +28,38 @@ switch(states)
 				ds_list_clear(path_points_y)
 				
 				var _placeable = 0
-				for(var w=top_left_x;w<=bottom_right_x;w++) {
-					for(var h=top_left_y;h<=bottom_right_y;h++) {
+				var buffer = 0
+				while _placeable == 0 {
+					for(var w=top_left_x-buffer;w<=bottom_right_x+buffer;w++) {
+						for(var h=top_left_y-buffer;h<=bottom_right_y+buffer;h++) {
 						
-						var _xx = gridController.grid_positions_x[w]
-						var _yy = gridController.grid_positions_y[h]
+							var _xx = gridController.grid_positions_x[w]
+							var _yy = gridController.grid_positions_y[h]
 						
-						for(var i=0;i<path_get_number(path);i++) {
-							var _x = path_get_point_x(path,i)
-							var _y = path_get_point_y(path,i)
-							if point_in_rectangle(_x,_y,_xx,_yy,_xx+cell_width,_yy+cell_height) {
-								ds_list_add(path_points_x,w)
-								ds_list_add(path_points_y,h)
+							for(var i=0;i<path_get_number(path);i++) {
+								var _x = path_get_point_x(path,i)
+								var _y = path_get_point_y(path,i)
+								if point_in_rectangle(_x,_y,_xx,_yy,_xx+cell_width,_yy+cell_height) {
+									ds_list_add(path_points_x,w)
+									ds_list_add(path_points_y,h)
 								
-								if gridController.grid_items[# w,h] == -1 {
-									_placeable++	
+									if gridController.grid_items[# w,h] == -1 {
+										_placeable++	
+									}
+								
 								}
-								
-							}
 							
-						}
+							}
 						
+						}
 					}
-				}
 				
-				if _placeable == path_get_number(path) {
-					placeable = true	
-				} else {
-					placeable = false	
+					if _placeable == path_get_number(path) {
+						placeable = true	
+					} else {
+						_placeable = 0	
+						buffer++
+					}
 				}
 					
 				
