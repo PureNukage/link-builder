@@ -41,39 +41,53 @@ switch(states)
 					var buffer = 0
 					#region While Loop for creating the path
 					while _placeable == 0 {
+						
+						//	Make sure to clear my previous path if any 
+						for(var i=0;i<ds_list_size(path_objects);i++) {
+							instance_destroy(path_objects[| i])	
+						}
+						ds_list_clear(path_objects)
+						ds_list_clear(path_points_x)
+						ds_list_clear(path_points_y)
 					
 						//	Start the loop through the grid containing my path + buffer
 						for(var w=top_left_x-buffer;w<=bottom_right_x+buffer;w++) {
 							for(var h=top_left_y-buffer;h<=bottom_right_y+buffer;h++) {
-						
-								var _xx = gridController.grid_positions_x[w]
-								var _yy = gridController.grid_positions_y[h]
-						
-								for(var i=0;i<path_get_number(path);i++) {
-									var _x = path_get_point_x(path,i)
-									var _y = path_get_point_y(path,i)
-									if point_in_rectangle(_x,_y,_xx,_yy,_xx+cell_width,_yy+cell_height) {
-										ds_list_add(path_points_x,w)
-										ds_list_add(path_points_y,h)
-										
-										//	Spawn a wire in the path
-										var _wire = instance_create_layer(_x,_y,"Instances",wire)
-										_wire.states = states.limbo
-										_wire.center_cell_x = w
-										_wire.center_cell_y = h
-										_wire.topleft_cell_x = w
-										_wire.topleft_cell_y = h
-										_wire.bottomright_cell_x = w
-										_wire.bottomright_cell_y = h
-										
-										ds_list_add(path_objects,_wire)
 								
-										if gridController.grid_items[# w,h] == -1 {
-											_placeable++	
+								//	Is his cell within game boundaries?
+								if (w > -1 and w < grid_width+1)
+								and (h > -1 and h < grid_height+1) {
+						
+									var _xx = gridController.grid_positions_x[w]
+									var _yy = gridController.grid_positions_y[h]
+						
+									for(var i=0;i<path_get_number(path);i++) {
+										var _x = path_get_point_x(path,i)
+										var _y = path_get_point_y(path,i)
+										if point_in_rectangle(_x,_y,_xx,_yy,_xx+cell_width,_yy+cell_height) {
+											ds_list_add(path_points_x,w)
+											ds_list_add(path_points_y,h)
+										
+											//	Spawn a wire in the path
+											var _wire = instance_create_layer(_x,_y,"Instances",wire)
+											_wire.states = states.limbo
+											_wire.center_cell_x = w
+											_wire.center_cell_y = h
+											_wire.topleft_cell_x = w
+											_wire.topleft_cell_y = h
+											_wire.bottomright_cell_x = w
+											_wire.bottomright_cell_y = h
+										
+										
+											ds_list_add(path_objects,_wire)
+								
+											if gridController.grid_items[# w,h] == -1 {
+												_placeable++	
+											}
+								
 										}
-								
-									}
 							
+									}
 								}
 						
 							}
@@ -130,6 +144,54 @@ switch(states)
 				
 					#endregion
 					
+					#region Trim path_objects of any duplicates
+					
+					var trimmed_path_objects = ds_list_create()
+					var trimmed_path_points_x = ds_list_create()
+					var trimmed_path_points_y = ds_list_create()
+					var _x = -1
+					var _x_previous = -1
+					var _y = -1
+					var _y_previous = -1
+					//var duplicates = 0
+					for(var i=0;i<ds_list_size(path_points_x);i++) {
+						
+						var _x = path_points_x[| i]
+						var _y = path_points_y[| i]
+						var duplicates = 0
+						for(var a=0;a<ds_list_size(trimmed_path_points_x);a++) {
+							var _xx = trimmed_path_points_x[| a]
+							var _yy = trimmed_path_points_y[| a]
+							if _x == _xx and _y == _yy {
+								duplicates++
+							}	
+						}
+						if duplicates == 0 {
+							ds_list_add(trimmed_path_objects,path_objects[| i])
+							ds_list_add(trimmed_path_points_x,path_points_x[| i])
+							ds_list_add(trimmed_path_points_y,path_points_y[| i])
+							
+						} else {
+							instance_destroy(path_objects[| i])	
+						}
+						_x_previous = _x
+						_y_previous = _y
+						
+					}
+					//	Make sure to clear my previous path if any 
+					//for(var i=0;i<ds_list_size(path_objects);i++) {
+					//	instance_destroy(path_objects[| i])	
+					//}
+					ds_list_clear(path_objects)
+					ds_list_clear(path_points_x)
+					ds_list_clear(path_points_y)
+					ds_list_copy(path_objects,trimmed_path_objects)
+					ds_list_copy(path_points_x,trimmed_path_points_x)
+					ds_list_copy(path_points_y,trimmed_path_points_y)
+					
+					debug_log("Trimmed path_objects down to: "+string(ds_list_size(path_objects)))
+					
+					#endregion
 					
 					#region Assign wires their ports
 					for(var i=0;i<ds_list_size(path_objects);i++) {
@@ -201,7 +263,7 @@ switch(states)
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
 						}
 						
-						//debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
+						debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
 						
 					}
 					
