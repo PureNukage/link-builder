@@ -4,6 +4,13 @@ switch(states)
 {
 	case states.placement:
 	
+		if cell_x1 > -1 and cell_y1 > -1 {
+			var _x = gridController.grid_positions_x[cell_x1]+(cell_width/2)
+			var _y = gridController.grid_positions_y[cell_y1]+(cell_height/2)
+			draw_path(path,_x,_y,true)	
+		}
+	
+	
 		if !ds_list_empty(path_points_x) {
 			for(var i=0;i<ds_list_size(path_points_x);i++) {
 				

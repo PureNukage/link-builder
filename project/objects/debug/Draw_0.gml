@@ -3,6 +3,7 @@ switch(mode)
 	case mode.off:
 	
 	break
+	
 	#region Grid
 		case mode.grid:	
 	
@@ -87,4 +88,5 @@ switch(mode)
 	
 		break
 	#endregion
+	
 }
