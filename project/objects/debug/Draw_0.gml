@@ -31,7 +31,6 @@ switch(mode)
 			}
 			
 			if draw_mp_grid {
-			
 				mp_grid_draw(gridController.mp_grid)
 			}
 		

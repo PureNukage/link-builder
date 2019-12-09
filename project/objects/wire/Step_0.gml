@@ -300,7 +300,7 @@ switch(states)
 						var _x = gridController.grid_positions_x[input.grid_x]+(cell_width/2)
 						var _y = gridController.grid_positions_y[input.grid_y]+(cell_height/2)
 						gridController.grid_items[# input.grid_x, input.grid_y] = object_index
-						mp_grid_add_cell(gridController.mp_grid, _x, _y)
+						mp_grid_add_instances(gridController.mp_grid,id,false)
 						debug_log("I have no path")
 					}
 				} 
