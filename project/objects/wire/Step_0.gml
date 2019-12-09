@@ -237,7 +237,7 @@ switch(states)
 					}
 					#endregion
 			
-					#region Assign wires their direction
+					#region Assign wires their direction 
 					
 					for(var i=0;i<ds_list_size(path_objects);i++) {
 						
@@ -307,10 +307,10 @@ switch(states)
 				//	Not placeable
 				else {
 					for(var i=0;i<ds_list_size(path_objects);i++) {
-					instance_destroy(path_objects[| i])
-						}
-						instance_destroy()	
+						instance_destroy(path_objects[| i])
 					}
+					instance_destroy()	
+				}
 			
 			}
 			
