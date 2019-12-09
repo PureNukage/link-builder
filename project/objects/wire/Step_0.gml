@@ -202,33 +202,33 @@ switch(states)
 							} 
 							//	There is another wire ahead of us
 							else {
-								_wire.port_out[0] = path_objects[| i+1]
-								//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0]))
+								_wire.port_out[0,0] = path_objects[| i+1]
+								//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0,0]))
 							}
 						} 
 						#endregion
 						
 						#region Middle wire
 						if i > 0 and i < ds_list_size(path_objects)-1 {
-							_wire.port_in[0] = path_objects[| i-1]
-							_wire.port_out[0] = path_objects[| i+1]
-							//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0]))
-							//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0]))
+							_wire.port_in[0,0] = path_objects[| i-1]
+							_wire.port_out[0,0] = path_objects[| i+1]
+							//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0,0]))
+							//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0,0]))
 						}
 						#endregion
 						
 						#region Last Wire
 						if i == ds_list_size(path_points_x)-1 {
-							_wire.port_in[0] = path_objects[| i-1]
-						//	debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0]))
+							_wire.port_in[0,0] = path_objects[| i-1]
+						//	debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0,0]))
 							
 						}
 						
 						
 						#endregion			
 						
-						debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0]))
-						debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0]))
+						debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0,0]))
+						debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0,0]))
 								
 					}
 					#endregion
@@ -240,22 +240,22 @@ switch(states)
 						var _wire = path_objects[| i]
 						
 						//	In but no out
-						if _wire.port_in[0] > -1 and _wire.port_out[0] == -1 {
+						if _wire.port_in[0,0] > -1 and _wire.port_out[0,0] == -1 {
 							var w2 = _wire.center_cell_x
 							var h2 = _wire.center_cell_y
-							var w1 = _wire.port_in[0].center_cell_x
-							var h1 = _wire.port_in[0].center_cell_y
+							var w1 = _wire.port_in[0,0].center_cell_x
+							var h1 = _wire.port_in[0,0].center_cell_y
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
 						}
 						
 						//	In and Out
 						//	and Out and no in
-						if (_wire.port_in[0] > -1 and _wire.port_out[0] > -1)
-						or (_wire.port_in[0] == -1 and _wire.port_out[0] > -1) {
+						if (_wire.port_in[0,0] > -1 and _wire.port_out[0,0] > -1)
+						or (_wire.port_in[0,0] == -1 and _wire.port_out[0,0] > -1) {
 							var w1 = _wire.center_cell_x
 							var h1 = _wire.center_cell_y
-							var w2 = _wire.port_out[0].center_cell_x
-							var h2 = _wire.port_out[0].center_cell_y
+							var w2 = _wire.port_out[0,0].center_cell_x
+							var h2 = _wire.port_out[0,0].center_cell_y
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
 						}
 						

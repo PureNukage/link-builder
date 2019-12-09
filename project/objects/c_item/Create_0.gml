@@ -17,10 +17,10 @@ rotation = 0
 port_in = []						
 port_out = []
 for(var i=0;i<ports_in;i++) {
-	port_in[i] = -1
+	port_in[i,0] = -1
 }
 for(var i=0;i<ports_out;i++) {
-	port_out[i] = -1
+	port_out[i,0] = -1
 }
 
 //Cells
