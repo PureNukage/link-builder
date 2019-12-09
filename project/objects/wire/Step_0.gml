@@ -5,13 +5,13 @@ switch(states)
 	#region Placement
 		case states.placement:
 	
-			if input.mouse_left_press and time.stream > time_spawn {
+			if input.mouse_left_press and time.stream > time_spawn and placeable {
 				cell_x1 = input.grid_x
 				cell_y1 = input.grid_y
-				cell_x2 = input.grid_x
-				cell_y2 = input.grid_y
+
 			}
 		
+			#region	If holding down mouse and moved cells
 			if input.mouse_left and input.grid_moved and time.stream > time_spawn and cell_x1 > -1 and cell_y1 > -1 and placeable {
 				cell_x2 = input.grid_x
 				cell_y2 = input.grid_y
@@ -27,7 +27,7 @@ switch(states)
 				}
 				ds_list_clear(path_objects)
 			
-				//	The path can make it, but are the path cells actually free?
+				//	The path can make it
 				if mp_grid_define_path(_x1,_y1,_x2,_y2,path,gridController.mp_grid,false) {
 					var top_left_x = min(cell_x1,cell_x2)
 					var top_left_y = min(cell_y1,cell_y2)
@@ -272,17 +272,41 @@ switch(states)
 			
 			
 			}	
+			#endregion
 		
-			if input.mouse_left_release and cell_x1 > -1 and cell_y1 > -1 {
+			if input.mouse_left_release and time.stream > time_spawn + 15 {
 				
-				for(var i=0;i<ds_list_size(path_objects);i++) {
-					path_objects[| i].states = states.placed
-					var _x = path_objects[| i].center_cell_x
-					var _y = path_objects[| i].center_cell_y
-					gridController.grid_items[# _x, _y] = path_objects[| i].object_index
-					mp_grid_add_cell(gridController.mp_grid,_x, _y)
-				}
-				instance_destroy()
+				//	Placeable
+				if placeable {
+					//	If we have a path 
+					if cell_x2 > -1 and cell_y2 > -1 {
+						for(var i=0;i<ds_list_size(path_objects);i++) {
+							path_objects[| i].states = states.placed
+							var _x = path_objects[| i].center_cell_x
+							var _y = path_objects[| i].center_cell_y
+							gridController.grid_items[# _x, _y] = path_objects[| i].object_index
+							mp_grid_add_cell(gridController.mp_grid,_x, _y)
+						}
+						instance_destroy()
+						debug_log("I have a path")
+					}
+					//	If its just us
+					else {
+						states = states.placed
+						var _x = gridController.grid_positions_x[input.grid_x]+(cell_width/2)
+						var _y = gridController.grid_positions_y[input.grid_y]+(cell_height/2)
+						gridController.grid_items[# input.grid_x, input.grid_y] = object_index
+						mp_grid_add_cell(gridController.mp_grid, _x, _y)
+						debug_log("I have no path")
+					}
+				} 
+				//	Not placeable
+				else {
+					for(var i=0;i<ds_list_size(path_objects);i++) {
+					instance_destroy(path_objects[| i])
+						}
+						instance_destroy()	
+					}
 			
 			}
 			

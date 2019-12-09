@@ -87,6 +87,14 @@
             }
         },
         {
+            "Key": "3d025c52-9a31-4e4d-88b5-33fe49a95bdd",
+            "Value": {
+                "id": "c5eaa3fb-a1e9-4405-9263-9a2b77e36a32",
+                "resourcePath": "scripts\\wire_rotate\\wire_rotate.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "439ac76c-6e4e-4e39-b2e3-73f710eface2",
             "Value": {
                 "id": "2832a1ac-d5d5-4b15-907c-cf08d49c5fb3",
@@ -287,6 +295,14 @@
             }
         },
         {
+            "Key": "c54315ec-2931-4435-a989-274e26269826",
+            "Value": {
+                "id": "6d24fad5-4621-4f65-8823-28d233c6a12f",
+                "resourcePath": "scripts\\check_cell_ports\\check_cell_ports.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "c65dc474-9f22-4afa-a0e1-2bfac918ee85",
             "Value": {
                 "id": "eade6a88-be35-4f83-85ab-adead30d162b",
@@ -428,7 +444,9 @@
         "dc7ad462-4722-456b-a05e-ebb684bbe344",
         "046ccc19-867e-4bdc-981d-611f151de6a8",
         "ffd5c36c-2a74-454d-970f-f57a52544f82",
-        "aedf22a7-16e3-4f2f-84a5-cefa16102642"
+        "aedf22a7-16e3-4f2f-84a5-cefa16102642",
+        "3d025c52-9a31-4e4d-88b5-33fe49a95bdd",
+        "c54315ec-2931-4435-a989-274e26269826"
     ],
     "tutorial": ""
 }

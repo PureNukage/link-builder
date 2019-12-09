@@ -6,6 +6,10 @@
 grid_start_x = 0
 grid_start_y = 0
 
+grid_socket_x = ds_list_create()
+grid_socket_y = ds_list_create()
+grid_socket = ds_list_create()
+
 grid_items = ds_grid_create(grid_width,grid_height)
 
 ds_grid_set_region(grid_items,0,0,grid_width,grid_height,-1)
