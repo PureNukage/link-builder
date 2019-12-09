@@ -30,7 +30,10 @@ switch(mode)
 				}	
 			}
 			
-			//mp_grid_draw(gridController.mp_grid)
+			if draw_mp_grid {
+			
+				mp_grid_draw(gridController.mp_grid)
+			}
 		
 			if instance_exists(c_item) {
 				with c_item {

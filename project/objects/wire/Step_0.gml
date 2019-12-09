@@ -55,8 +55,8 @@ switch(states)
 							for(var h=top_left_y-buffer;h<=bottom_right_y+buffer;h++) {
 								
 								//	Is his cell within game boundaries?
-								if (w > -1 and w < grid_width+1)
-								and (h > -1 and h < grid_height+1) {
+								if (w > -1 and w < grid_width)
+								and (h > -1 and h < grid_height) {
 						
 									var _xx = gridController.grid_positions_x[w]
 									var _yy = gridController.grid_positions_y[h]
@@ -192,17 +192,19 @@ switch(states)
 					#region Assign wires their ports
 					for(var i=0;i<ds_list_size(path_objects);i++) {
 						
-						var _wire = path_objects[| i]
+						var __wire = path_objects[| i]
+						
+						debug_log("Wire object name: "+object_get_name(__wire.object_index))
 						
 						#region	The first wire
 						if i == 0 {
 							// There are no more wires
 							if i >= ds_list_size(path_objects)-1 {
-								//debug_log("This is a solo wire!")
+								debug_log("This is a solo wire!")
 							} 
 							//	There is another wire ahead of us
 							else {
-								_wire.port_out[0,0] = path_objects[| i+1]
+								__wire.port_out[0,0] = path_objects[| i+1]
 								//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0,0]))
 							}
 						} 
@@ -210,25 +212,25 @@ switch(states)
 						
 						#region Middle wire
 						if i > 0 and i < ds_list_size(path_objects)-1 {
-							_wire.port_in[0,0] = path_objects[| i-1]
-							_wire.port_out[0,0] = path_objects[| i+1]
+							__wire.port_in[0,0] = path_objects[| i-1]
+							__wire.port_out[0,0] = path_objects[| i+1]
 							//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0,0]))
 							//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0,0]))
 						}
 						#endregion
 						
 						#region Last Wire
-						if i == ds_list_size(path_points_x)-1 {
-							_wire.port_in[0,0] = path_objects[| i-1]
-						//	debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0,0]))
+						if i == ds_list_size(path_points_x)-1 and i != 0{
+							__wire.port_in[0,0] = path_objects[| i-1]
+							debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_in to ["+string(i-1)+"] "+string(__wire.port_in[0,0]))
 							
 						}
 						
 						
 						#endregion			
 						
-						debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0,0]))
-						debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0,0]))
+						debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_in to ["+string(i-1)+"] "+string(__wire.port_in[0,0]))
+						debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_out to ["+string(i+1)+"] "+string(__wire.port_out[0,0]))
 								
 					}
 					#endregion
