@@ -47,10 +47,6 @@ switch(states)
 				}
 			}
 		
-			if input.mouse_right_press {
-				instance_destroy()	
-			}
-		
 		break
 	#endregion
 	

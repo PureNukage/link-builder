@@ -18,6 +18,18 @@ switch(states)
 			mp_grid_add_rectangle(gridController.mp_grid,_x1,_y1,_x2,_y2)
 				
 		}
+		
+		if input.mouse_right_press {
+			instance_destroy()	
+		}
 	
+	break
+	case states.placed:
+		
+		// Draw the item
+		sprite_set_offset(sprite,sprite_get_width(sprite)/2-1,sprite_get_height(sprite)/2-1)
+		draw_sprite(sprite,-1,x,y)
+		
+		
 	break
 }

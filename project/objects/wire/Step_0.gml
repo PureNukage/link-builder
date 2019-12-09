@@ -178,10 +178,6 @@ switch(states)
 						_y_previous = _y
 						
 					}
-					//	Make sure to clear my previous path if any 
-					//for(var i=0;i<ds_list_size(path_objects);i++) {
-					//	instance_destroy(path_objects[| i])	
-					//}
 					ds_list_clear(path_objects)
 					ds_list_clear(path_points_x)
 					ds_list_clear(path_points_y)
@@ -280,16 +276,21 @@ switch(states)
 			if input.mouse_left_release and cell_x1 > -1 and cell_y1 > -1 {
 				
 				for(var i=0;i<ds_list_size(path_objects);i++) {
-					instance_destroy(path_objects[| i])	
+					path_objects[| i].states = states.placed
+					var _x = path_objects[| i].center_cell_x
+					var _y = path_objects[| i].center_cell_y
+					gridController.grid_items[# _x, _y] = path_objects[| i].object_index
+					mp_grid_add_cell(gridController.mp_grid,_x, _y)
 				}
-				ds_list_clear(path_points_x)
-				ds_list_clear(path_points_y)
-				cell_x1 = -1
-				cell_y1 = -1
-				cell_x2 = -1
-				cell_y2 = -1
 				instance_destroy()
 			
+			}
+			
+			if input.mouse_right_press {
+				for(var i=0;i<ds_list_size(path_objects);i++) {
+					instance_destroy(path_objects[| i])
+				}
+				instance_destroy()	
 			}
 		
 		
