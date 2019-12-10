@@ -44,7 +44,7 @@ if (topleft_cell_x > -1 and topleft_cell_x < grid_width+1) and
 		for(var _h=0;_h<size_height;_h++) {
 			my_cells_x[_w] = _x
 			my_cells_y[_h] = _y
-			my_cells_items[# _w, _h] = node
+			my_cells_items[# _w, _h] = object_index
 			_y += cell_height
 		}
 		_x += cell_width

@@ -90,7 +90,7 @@
             "Key": "3d025c52-9a31-4e4d-88b5-33fe49a95bdd",
             "Value": {
                 "id": "c5eaa3fb-a1e9-4405-9263-9a2b77e36a32",
-                "resourcePath": "scripts\\wire_rotate\\wire_rotate.yy",
+                "resourcePath": "scripts\\grid_rotation\\grid_rotation.yy",
                 "resourceType": "GMScript"
             }
         },
