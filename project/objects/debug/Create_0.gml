@@ -12,6 +12,17 @@ window_grid_offsetY = -1
 
 #endregion
 
+#region Object Variables Window
+
+window_variable_width = 256
+window_variable_height = 256
+window_variableX = 256
+window_variableY = 32
+window_variable_offsetX = -1
+window_variable_offsetY = -1
+
+#endregion
+
 #region Button mpgrid
 
 button_mpgrid_width = 128

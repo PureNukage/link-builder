@@ -20,11 +20,15 @@ switch(mode)
 	#endregion
 	
 	#region Object Variables
-		case mode.object:	//	Object Variables
+		case mode.object:
 	
-		var _y = 32
-		var _x = 256
-		draw_set_color(c_white)
+		//	Draw Variable window
+		draw_set_color(c_ltgray)
+		draw_roundrect(window_variableX,window_variableY,window_variableX+window_variable_width,window_variableY+window_variable_height,false)
+	
+		var _y = window_variableY + 8
+		var _x = window_variableX + 8
+		draw_set_color(c_black)
 	
 		draw_text(_x,_y,"GENERAL")													_y += 15 
 		draw_text(_x,_y,"mouse_gui_x: "+string(mouse_gui_x))						_y += 15 
