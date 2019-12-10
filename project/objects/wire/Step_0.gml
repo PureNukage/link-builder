@@ -146,48 +146,81 @@ switch(states)
 					
 					#region Trim path_objects of any duplicates
 					
-					if cell_x1 != cell_x2 and cell_y1 != cell_y2 {
-						var trimmed_path_objects = ds_list_create()
-						var trimmed_path_points_x = ds_list_create()
-						var trimmed_path_points_y = ds_list_create()
-						var _x = -1
-						var _x_previous = -1
-						var _y = -1
-						var _y_previous = -1
-						//var duplicates = 0
-						for(var i=0;i<ds_list_size(path_points_x);i++) {
+						#region We dragged and have more than one cell in our path
+						if (cell_x1 != cell_x2 or cell_y1 != cell_y2) {
+							var trimmed_path_objects = ds_list_create()
+							var trimmed_path_points_x = ds_list_create()
+							var trimmed_path_points_y = ds_list_create()
+							var _x = -1
+							var _x_previous = -1
+							var _y = -1
+							var _y_previous = -1
+							//var duplicates = 0
+							for(var i=0;i<ds_list_size(path_points_x);i++) {
 						
-							var _x = path_points_x[| i]
-							var _y = path_points_y[| i]
-							var duplicates = 0
-							for(var a=0;a<ds_list_size(trimmed_path_points_x);a++) {
-								var _xx = trimmed_path_points_x[| a]
-								var _yy = trimmed_path_points_y[| a]
-								if _x == _xx and _y == _yy {
-									duplicates++
-								}	
-							}
-							if duplicates == 0 {
-								ds_list_add(trimmed_path_objects,path_objects[| i])
-								ds_list_add(trimmed_path_points_x,path_points_x[| i])
-								ds_list_add(trimmed_path_points_y,path_points_y[| i])
+								var _x = path_points_x[| i]
+								var _y = path_points_y[| i]
+								var duplicates = 0
+								for(var a=0;a<ds_list_size(trimmed_path_points_x);a++) {
+									var _xx = trimmed_path_points_x[| a]
+									var _yy = trimmed_path_points_y[| a]
+									if _x == _xx and _y == _yy {
+										duplicates++
+									}	
+								}
+								if duplicates == 0 {
+									ds_list_add(trimmed_path_objects,path_objects[| i])
+									ds_list_add(trimmed_path_points_x,path_points_x[| i])
+									ds_list_add(trimmed_path_points_y,path_points_y[| i])
 							
-							} else {
+								} else {
+									instance_destroy(path_objects[| i])	
+								}
+								_x_previous = _x
+								_y_previous = _y
+						
+							}
+							ds_list_clear(path_objects)
+							ds_list_clear(path_points_x)
+							ds_list_clear(path_points_y)
+							ds_list_copy(path_objects,trimmed_path_objects)
+							ds_list_copy(path_points_x,trimmed_path_points_x)
+							ds_list_copy(path_points_y,trimmed_path_points_y)
+					
+						}
+						#endregion
+						
+						#region We have one cell in our path
+						else {
+							
+							for(var i=0;i<ds_list_size(path_points_x);i++) {
 								instance_destroy(path_objects[| i])	
 							}
-							_x_previous = _x
-							_y_previous = _y
-						
+							
+							ds_list_clear(path_objects)
+							ds_list_clear(path_points_x)
+							ds_list_clear(path_points_y)
+							
+							var _x = gridController.grid_positions_x[input.grid_x]+(cell_width/2)
+							var _y = gridController.grid_positions_y[input.grid_y]+(cell_height/2)
+							//	Spawn a wire in the path
+							var _wire = instance_create_layer(_x,_y,"Instances",wire)
+							_wire.states = states.limbo
+							_wire.center_cell_x = input.grid_x
+							_wire.center_cell_y = input.grid_y
+							_wire.topleft_cell_x = input.grid_x
+							_wire.topleft_cell_y = input.grid_y
+							_wire.bottomright_cell_x = input.grid_x
+							_wire.bottomright_cell_y = input.grid_y
+										
+							ds_list_add(path_objects,_wire)
+							ds_list_add(path_points_x,input.grid_x)
+							ds_list_add(path_points_y,input.grid_y)
+							
 						}
-						ds_list_clear(path_objects)
-						ds_list_clear(path_points_x)
-						ds_list_clear(path_points_y)
-						ds_list_copy(path_objects,trimmed_path_objects)
-						ds_list_copy(path_points_x,trimmed_path_points_x)
-						ds_list_copy(path_points_y,trimmed_path_points_y)
+						#endregion
 					
-						debug_log("Trimmed path_objects down to: "+string(ds_list_size(path_objects)))
-					}
+					debug_log("Trimmed path_objects down to: "+string(ds_list_size(path_objects)))
 					
 					#endregion
 					
