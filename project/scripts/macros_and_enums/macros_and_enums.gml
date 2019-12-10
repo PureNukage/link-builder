@@ -19,3 +19,6 @@ enum mode {
 #macro port_direction 1
 #macro port_x 2
 #macro port_y 3
+
+#macro gui_mouse_x device_mouse_x_to_gui(0)
+#macro gui_mouse_y device_mouse_y_to_gui(0)
