@@ -4,6 +4,12 @@ if input.control_press {
 	if mode > 2 mode = 0
 }
 
+if input.space {
+	
+	instance_create_layer(mouse_x,mouse_y,"Instances",test)
+	
+}
+
 switch(mode)
 {
 	#region Grid
