@@ -34,7 +34,7 @@ switch(mode)
 								draw_set_alpha(.33)
 								draw_rectangle(_x+3,_y+3,_x+cell_width-3,_y+cell_height-3,false)
 								draw_set_alpha(1)
-							}
+						}
 					}	
 				}	
 			}

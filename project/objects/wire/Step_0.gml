@@ -4,7 +4,20 @@ switch(states)
 {
 	#region Placement
 		case states.placement:
+		
+			//	Rotation
+			if input.rotate_right or input.rotate_left {
+				var _direction = input.rotate_right - input.rotate_left 
+				ports = grid_rotation(_direction,my_cells_items,ports)
+				if _direction == 1 {
+					rotation -= 90
+				} else {
+					rotation += 90	
+				}
+				
+			}
 	
+			//	Left click to start placing a wire
 			if input.mouse_left_press and time.stream > time_spawn and placeable {
 				cell_x1 = input.grid_x
 				cell_y1 = input.grid_y
@@ -277,11 +290,11 @@ switch(states)
 						var _wire = path_objects[| i]
 						
 						//	In but no out
-						if _wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] == -1 {
+						if _wire.ports[1,port_object] > -1 and _wire.ports[1,port_object] == -1 {
 							var w2 = _wire.center_cell_x
 							var h2 = _wire.center_cell_y
-							var w1 = _wire.ports[1,port_object].center_cell_x
-							var h1 = _wire.ports[1,port_object].center_cell_y
+							var w1 = _wire.ports[0,port_object].center_cell_x
+							var h1 = _wire.ports[0,port_object].center_cell_y
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
 						}
 						
@@ -311,6 +324,7 @@ switch(states)
 			}	
 			#endregion
 		
+			//	Left release to finalize placement of the wire
 			if input.mouse_left_release and time.stream > time_spawn + 15 {
 				
 				//	Placeable
@@ -332,7 +346,7 @@ switch(states)
 						states = states.placed
 						var _x = gridController.grid_positions_x[input.grid_x]+(cell_width/2)
 						var _y = gridController.grid_positions_y[input.grid_y]+(cell_height/2)
-						gridController.grid_items[# input.grid_x, input.grid_y] = object_index
+						ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
 						mp_grid_add_instances(gridController.mp_grid,id,false)
 						debug_log("I have no path")
 					}
@@ -347,6 +361,7 @@ switch(states)
 			
 			}
 			
+			//	Right press to destroy the wire and any path
 			if input.mouse_right_press {
 				for(var i=0;i<ds_list_size(path_objects);i++) {
 					instance_destroy(path_objects[| i])
