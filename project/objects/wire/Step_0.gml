@@ -239,7 +239,7 @@ switch(states)
 							} 
 							//	There is another wire ahead of us
 							else {
-								__wire.ports[1,port_object] = path_objects[| i+1]
+								__wire.ports[0,port_object] = path_objects[| i+1]
 								//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0,0]))
 							}
 						} 
@@ -247,8 +247,8 @@ switch(states)
 						
 						#region Middle wire
 						if i > 0 and i < ds_list_size(path_objects)-1 {
-							__wire.ports[0,port_object] = path_objects[| i-1]
-							__wire.ports[1,port_object] = path_objects[| i+1]
+							__wire.ports[1,port_object] = path_objects[| i-1]
+							__wire.ports[0,port_object] = path_objects[| i+1]
 							//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0,0]))
 							//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0,0]))
 						}
@@ -256,16 +256,16 @@ switch(states)
 						
 						#region Last Wire
 						if i == ds_list_size(path_points_x)-1 and i != 0{
-							__wire.ports[0,port_object] = path_objects[| i-1]
-							debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_in to ["+string(i-1)+"] "+string(__wire.ports[0,port_object]))
+							__wire.ports[1,port_object] = path_objects[| i-1]
+							debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_in to ["+string(i-1)+"] "+string(__wire.ports[1,port_object]))
 							
 						}
 						
 						
 						#endregion			
 						
-						debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_in to ["+string(i-1)+"] "+string(__wire.ports[0,port_object]))
-						debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_out to ["+string(i+1)+"] "+string(__wire.ports[1,port_object]))
+						debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_in to ["+string(i-1)+"] "+string(__wire.ports[1,port_object]))
+						debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_out to ["+string(i+1)+"] "+string(__wire.ports[0,port_object]))
 								
 					}
 					#endregion
@@ -280,19 +280,19 @@ switch(states)
 						if _wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] == -1 {
 							var w2 = _wire.center_cell_x
 							var h2 = _wire.center_cell_y
-							var w1 = _wire.ports[0,port_object].center_cell_x
-							var h1 = _wire.ports[0,port_object].center_cell_y
+							var w1 = _wire.ports[1,port_object].center_cell_x
+							var h1 = _wire.ports[1,port_object].center_cell_y
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
 						}
 						
 						//	In and Out
 						//	and Out and no in
 						if (_wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] > -1)
-						or (_wire.ports[0,port_object] == -1 and _wire.ports[1,port_object] > -1) {
+						or (_wire.ports[1,port_object] == -1 and _wire.ports[0,port_object] > -1) {
 							var w1 = _wire.center_cell_x
 							var h1 = _wire.center_cell_y
-							var w2 = _wire.ports[1,port_object].center_cell_x
-							var h2 = _wire.ports[1,port_object].center_cell_y
+							var w2 = _wire.ports[0,port_object].center_cell_x
+							var h2 = _wire.ports[0,port_object].center_cell_y
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
 						}
 						
