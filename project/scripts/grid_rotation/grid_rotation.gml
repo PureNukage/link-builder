@@ -4,20 +4,22 @@
 
 var _rotation = argument[0]
 var old_grid = argument[1]
-var _ports = argument[2]
+if argument_count == 3 var _ports = argument[2]
 
 var _size_width = ds_grid_width(old_grid)
 var _size_height = ds_grid_height(old_grid)
 
 var new_grid = ds_grid_create(_size_width,_size_height)
 
-var new_array = []
-for(var i=0;i<array_height_2d(_ports);i++) {
-	new_array[i,port_object] = _ports[i,port_object]
-	new_array[i,port_direction] = _ports[i,port_direction]
-	new_array[i,port_x] = -1
-	new_array[i,port_y] = -1
+if argument_count == 3 {
+	var new_array = []
+	for(var i=0;i<array_height_2d(_ports);i++) {
+		new_array[i,port_object] = _ports[i,port_object]
+		new_array[i,port_direction] = _ports[i,port_direction]
+		new_array[i,port_x] = -1
+		new_array[i,port_y] = -1
 	
+	}
 }
 
 switch(_rotation)
@@ -85,4 +87,4 @@ ds_grid_clear(old_grid,-1)
 ds_grid_copy(old_grid,new_grid)
 ds_grid_destroy(new_grid)
 
-return new_array
+if argument_count == 3 return new_array
