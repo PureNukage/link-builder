@@ -268,7 +268,7 @@ switch(states)
 						#endregion
 						
 						#region Last Wire
-						if i == ds_list_size(path_points_x)-1 and i != 0{
+						if i == ds_list_size(path_points_x)-1 and i != 0 {
 							__wire.ports[1,port_object] = path_objects[| i-1]
 							debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_in to ["+string(i-1)+"] "+string(__wire.ports[1,port_object]))
 							
@@ -290,11 +290,11 @@ switch(states)
 						var _wire = path_objects[| i]
 						
 						//	In but no out
-						if _wire.ports[1,port_object] > -1 and _wire.ports[1,port_object] == -1 {
+						if _wire.ports[1,port_object] > -1 and _wire.ports[0,port_object] == -1 {
 							var w2 = _wire.center_cell_x
 							var h2 = _wire.center_cell_y
-							var w1 = _wire.ports[0,port_object].center_cell_x
-							var h1 = _wire.ports[0,port_object].center_cell_y
+							var w1 = _wire.ports[1,port_object].center_cell_x
+							var h1 = _wire.ports[1,port_object].center_cell_y
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
 						}
 						
