@@ -86,11 +86,10 @@ switch(states)
 											_wire.states = states.limbo
 											_wire.center_cell_x = w
 											_wire.center_cell_y = h
-											_wire.topleft_cell_x = w
-											_wire.topleft_cell_y = h
+											_wire.topleft_cell_x = w-1
+											_wire.topleft_cell_y = h-1
 											_wire.bottomright_cell_x = w
 											_wire.bottomright_cell_y = h
-										
 										
 											ds_list_add(path_objects,_wire)
 								
@@ -242,8 +241,6 @@ switch(states)
 						
 						var __wire = path_objects[| i]
 						
-						debug_log("Wire object name: "+object_get_name(__wire.object_index))
-						
 						#region	The first wire
 						if i == 0 {
 							// There are no more wires
@@ -253,7 +250,6 @@ switch(states)
 							//	There is another wire ahead of us
 							else {
 								__wire.ports[0,port_object] = path_objects[| i+1]
-								//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0,0]))
 							}
 						} 
 						#endregion
@@ -262,19 +258,13 @@ switch(states)
 						if i > 0 and i < ds_list_size(path_objects)-1 {
 							__wire.ports[1,port_object] = path_objects[| i-1]
 							__wire.ports[0,port_object] = path_objects[| i+1]
-							//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0,0]))
-							//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0,0]))
 						}
 						#endregion
 						
 						#region Last Wire
 						if i == ds_list_size(path_points_x)-1 and i != 0 {
 							__wire.ports[1,port_object] = path_objects[| i-1]
-							debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_in to ["+string(i-1)+"] "+string(__wire.ports[1,port_object]))
-							
 						}
-						
-						
 						#endregion			
 						
 						debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_in to ["+string(i-1)+"] "+string(__wire.ports[1,port_object]))
@@ -309,6 +299,15 @@ switch(states)
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
 						}
 						
+						//	Rotate my_cells_items grid and update ports
+						if _wire.rotation > 0 {
+							var _rotates = abs(_wire.rotation/90)
+							debug_log("Wire: "+"["+string(i)+"] has: "+string(_rotates)+" rotations to make")
+							for(var a=0;a<_rotates;a++) {
+								_wire.ports = grid_rotation(-1,_wire.my_cells_items,_wire.ports)	
+							}
+						}
+						
 						debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
 						
 					}
@@ -332,10 +331,12 @@ switch(states)
 					//	If we have a path 
 					if cell_x2 > -1 and cell_y2 > -1 {
 						for(var i=0;i<ds_list_size(path_objects);i++) {
-							path_objects[| i].states = states.placed
-							var _x = path_objects[| i].center_cell_x
-							var _y = path_objects[| i].center_cell_y
-							gridController.grid_items[# _x, _y] = path_objects[| i].object_index
+							var _wire = path_objects[| i]
+							_wire.states = states.placed
+							var _x = _wire.center_cell_x
+							var _y = _wire.center_cell_y
+							ds_grid_set_grid_region(gridController.grid_items,_wire.my_cells_items,0,0,size_width,size_height,_wire.topleft_cell_x,_wire.topleft_cell_y)
+							//gridController.grid_items[# _x, _y] = path_objects[| i].object_index
 							mp_grid_add_cell(gridController.mp_grid,_x, _y)
 						}
 						instance_destroy()
