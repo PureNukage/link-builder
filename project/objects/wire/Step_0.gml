@@ -12,8 +12,12 @@ switch(states)
 				if _direction == 1 {
 					rotation -= 90
 				} else {
-					rotation += 90	
+					rotation += 90
 				}
+				size_width = size_width + size_height
+				size_height = size_width - size_height
+				size_width = size_width - size_height
+				debug_log("size_width: "+string(size_width)+", size_height: "+string(size_height))
 				
 			}
 	
@@ -86,8 +90,8 @@ switch(states)
 											_wire.states = states.limbo
 											_wire.center_cell_x = w
 											_wire.center_cell_y = h
-											_wire.topleft_cell_x = w-1
-											_wire.topleft_cell_y = h-1
+											_wire.topleft_cell_x = w
+											_wire.topleft_cell_y = h
 											_wire.bottomright_cell_x = w
 											_wire.bottomright_cell_y = h
 										
@@ -305,6 +309,15 @@ switch(states)
 							debug_log("Wire: "+"["+string(i)+"] has: "+string(_rotates)+" rotations to make")
 							for(var a=0;a<_rotates;a++) {
 								_wire.ports = grid_rotation(-1,_wire.my_cells_items,_wire.ports)	
+								_wire.size_width = _wire.size_width + _wire.size_height
+								_wire.size_height = _wire.size_width - _wire.size_height
+								_wire.size_width = _wire.size_width - _wire.size_height
+								//Cells
+								_wire.topleft_cell_x = _wire.center_cell_x-floor(_wire.size_width/2)
+								_wire.topleft_cell_y = _wire.center_cell_y-floor(_wire.size_height/2)
+
+								_wire.bottomright_cell_x = _wire.topleft_cell_x + (_wire.size_width-1)
+								_wire.bottomright_cell_y = _wire.topleft_cell_y + (_wire.size_height-1)
 							}
 						}
 						

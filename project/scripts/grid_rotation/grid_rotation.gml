@@ -10,6 +10,8 @@ var _size_width = ds_grid_width(old_grid)
 var _size_height = ds_grid_height(old_grid)
 
 var new_grid = ds_grid_create(_size_height,_size_width)
+var new_size_width = _size_height
+var new_size_height = _size_width
 
 if argument_count == 3 {
 	var new_array = []
@@ -27,12 +29,12 @@ switch(_rotation)
 	//	Right 
 	case 1:
 	
-		for(var h=0;h<_size_height;h++) {
-			for(var w=0;w<_size_width;w++) {
+		for(var h=0;h<new_size_height;h++) {
+			for(var w=0;w<new_size_width;w++) {
 		
 				var _cell = old_grid[# w, h]
 		
-				var new_cell_x = (_size_width-1) - h
+				var new_cell_x = (new_size_width-1) - h
 				var new_cell_y = w
 				
 				//	If this cell is a port
@@ -56,13 +58,13 @@ switch(_rotation)
 	//	Left
 	case -1:
 		
-		for(var w=_size_width-1;w>-1;w--) {
-			for(var h=0;h<_size_height;h++) {
+		for(var w=new_size_width-1;w>-1;w--) {
+			for(var h=0;h<new_size_height;h++) {
 		
 				var _cell = old_grid[# w, h]
 		
 				var new_cell_x = h
-				var new_cell_y = (_size_height-1) - w
+				var new_cell_y = (new_size_height-1) - w
 				
 				//	If this cell is a port
 				if _cell == -2 and argument_count == 3 {
