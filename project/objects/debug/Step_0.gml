@@ -6,7 +6,8 @@ if input.control_press {
 
 if input.space {
 	
-	instance_create_layer(mouse_x,mouse_y,"Instances",test)
+	if instance_exists(test) instance_destroy(test)
+	else instance_create_layer(mouse_x,mouse_y,"Instances",test)
 	
 }
 

@@ -1,8 +1,8 @@
 var _x = x - 80
 var _y = y - 80
-for(var w=0;w<5;w++) {
+for(var w=0;w<width;w++) {
 	_y = y - 80
-	for(var h=0;h<5;h++) {
+	for(var h=0;h<height;h++) {
 		
 		//	Draw rectangle
 		draw_rectangle(_x,_y,_x+cell_width,_y+cell_height,true)

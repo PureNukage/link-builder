@@ -7,7 +7,7 @@ switch(states)
 		
 			//	Rotation
 			if input.rotate_right or input.rotate_left {
-				var _direction = input.rotate_right - input.rotate_left 
+				var _direction = input.rotate_right - input.rotate_left
 				ports = grid_rotation(_direction,my_cells_items,ports)
 				if _direction == 1 {
 					rotation -= 90
@@ -16,7 +16,7 @@ switch(states)
 				}
 				size_width = size_width + size_height
 				size_height = size_width - size_height
-				size_width = size_width - size_height		
+				size_width = size_width - size_height
 				debug_log("size_width: "+string(size_width)+", size_height: "+string(size_height))
 				for(var w=0;w<size_width;w++) {
 					for(var h=0;h<size_height;h++) {
