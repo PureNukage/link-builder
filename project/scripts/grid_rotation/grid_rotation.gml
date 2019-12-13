@@ -18,8 +18,8 @@ if argument_count == 3 {
 	for(var i=0;i<array_height_2d(_ports);i++) {
 		new_array[i,port_object] = _ports[i,port_object]
 		new_array[i,port_direction] = _ports[i,port_direction]
-		new_array[i,port_x] = -1
-		new_array[i,port_y] = -1
+		new_array[i,port_x] = _ports[i,port_x]
+		new_array[i,port_y] = _ports[i,port_y]
 	
 	}
 }
@@ -78,7 +78,7 @@ switch(_rotation)
 				}
 		
 				new_grid[# new_cell_x, new_cell_y] = _cell
-		
+				//debug_log("x: "+string(new_cell_x)+", y: "+string(new_cell_y))
 			}
 		}
 		

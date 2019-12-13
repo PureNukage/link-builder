@@ -17,8 +17,8 @@ ports = []
 for(var i=0;i<ports_count;i++) {
 	ports[i,port_object] = -1
 	ports[i,port_direction] = -1
-	ports[i,port_x] = 0
-	ports[i,port_y] = 0
+	ports[i,port_x] = -1
+	ports[i,port_y] = -1
 }
 
 //Cells

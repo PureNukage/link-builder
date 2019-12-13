@@ -16,8 +16,13 @@ switch(states)
 				}
 				size_width = size_width + size_height
 				size_height = size_width - size_height
-				size_width = size_width - size_height
+				size_width = size_width - size_height		
 				debug_log("size_width: "+string(size_width)+", size_height: "+string(size_height))
+				for(var w=0;w<size_width;w++) {
+					for(var h=0;h<size_height;h++) {
+						debug_log("x: "+string(w)+", y: "+string(h)+" contains: "+string(my_cells_items[# w, h]))
+					}
+				}
 				
 			}
 	
