@@ -1,5 +1,5 @@
 size_width = 3						//	Set; cells width this item takes up
-size_height = 3						//	Set; cells height this item takes up
+size_height = 1						//	Set; cells height this item takes up
 sprite = s_wire						//	Set; sprite for this item
 states = states.placement			//	Set; inital state of this item
 ports_count = 2						//	Set; holds the number of ports in this item has
@@ -23,11 +23,11 @@ for(var w=0;w<size_width;w++) {
 	}
 }
 my_cells_items[# floor(size_width/2), floor(size_height/2)] = wire
-my_cells_items[# 0, 1] = -2
-my_cells_items[# 2, 1] = -2
+my_cells_items[# 2, 0] = -2
+my_cells_items[# 0, 0] = -2
 
 ports[0,port_x] = 2
-ports[0,port_y] = 1
+ports[0,port_y] = 0
 
 ports[1,port_x] = 0
-ports[1,port_y] = 1
+ports[1,port_y] = 0

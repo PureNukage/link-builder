@@ -9,7 +9,7 @@ if argument_count == 3 var _ports = argument[2]
 var _size_width = ds_grid_width(old_grid)
 var _size_height = ds_grid_height(old_grid)
 
-var new_grid = ds_grid_create(_size_width,_size_height)
+var new_grid = ds_grid_create(_size_height,_size_width)
 
 if argument_count == 3 {
 	var new_array = []
