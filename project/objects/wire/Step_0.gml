@@ -16,8 +16,7 @@ switch(states)
 					and (topleft_cell_y > -1 and bottomright_cell_y < grid_height) 
 					and (gridController.grid_items[# center_cell_x, center_cell_y] < 0) {
 						placeable = true
-					}
-					
+					}			
 				#endregion
 				var _object_test = port_check(input.grid_x,input.grid_y)
 				if _object_test > 0 {
@@ -46,6 +45,14 @@ switch(states)
 
 				bottomright_cell_x = topleft_cell_x + (size_width-1)
 				bottomright_cell_y = topleft_cell_y + (size_height-1)
+				placeable = is_placeable()
+				#region Placeable check
+					if (topleft_cell_x > -1 and bottomright_cell_x < grid_width)
+					and (topleft_cell_y > -1 and bottomright_cell_y < grid_height) 
+					and (gridController.grid_items[# center_cell_x, center_cell_y] < 0) {
+						placeable = true
+					}			
+				#endregion
 				debug_log("size_width: "+string(size_width)+", size_height: "+string(size_height))
 				for(var w=0;w<size_width;w++) {
 					for(var h=0;h<size_height;h++) {
