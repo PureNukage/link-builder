@@ -11,6 +11,14 @@ switch(states)
 			//	Update ports (and debug if ports are at this cell xy)
 			if input.grid_moved {
 				wire_update_ports_xy(rotation)
+				#region Placeable check
+					if (topleft_cell_x > -1 and bottomright_cell_x < grid_width)
+					and (topleft_cell_y > -1 and bottomright_cell_y < grid_height) 
+					and (gridController.grid_items[# center_cell_x, center_cell_y] < 0) {
+						placeable = true
+					}
+					
+				#endregion
 				var _object_test = port_check(input.grid_x,input.grid_y)
 				if _object_test > 0 {
 					debug_log(object_get_name(_object_test.object_index)+" has a port here!")		
