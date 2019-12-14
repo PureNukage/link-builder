@@ -111,7 +111,7 @@ switch(states)
 										
 											ds_list_add(path_objects,_wire)
 								
-											if gridController.grid_items[# w,h] == -1 {
+											if gridController.grid_items[# w,h] < 0 {
 												_placeable++	
 											}
 								

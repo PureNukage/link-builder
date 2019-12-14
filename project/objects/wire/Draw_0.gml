@@ -28,7 +28,7 @@ switch(states)
 			//	Draw the individual cells
 			if debug.mode != mode.grid {
 				if (input.grid_x > -1 and input.grid_x < grid_width) and (input.grid_y > -1 and input.grid_y < grid_height) {
-					if gridController.grid_items[# center_cell_x, center_cell_y] == -1 {
+					if gridController.grid_items[# center_cell_x, center_cell_y] < 0 {
 						draw_set_color(c_green)	
 					} else {
 						draw_set_color(c_red)	
