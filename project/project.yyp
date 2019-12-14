@@ -95,6 +95,14 @@
             }
         },
         {
+            "Key": "3ade3a16-3ab5-4848-99e0-d75c8b0902d7",
+            "Value": {
+                "id": "472d62a5-86ee-4adb-976f-cb789fdcc65c",
+                "resourcePath": "scripts\\wire_update_ports_xy\\wire_update_ports_xy.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "3d025c52-9a31-4e4d-88b5-33fe49a95bdd",
             "Value": {
                 "id": "c5eaa3fb-a1e9-4405-9263-9a2b77e36a32",
@@ -463,7 +471,8 @@
         "aedf22a7-16e3-4f2f-84a5-cefa16102642",
         "3d025c52-9a31-4e4d-88b5-33fe49a95bdd",
         "c54315ec-2931-4435-a989-274e26269826",
-        "536c46f7-67ec-49c4-94ae-fd835a6a8343"
+        "536c46f7-67ec-49c4-94ae-fd835a6a8343",
+        "3ade3a16-3ab5-4848-99e0-d75c8b0902d7"
     ],
     "tutorial": ""
 }

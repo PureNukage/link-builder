@@ -5,6 +5,18 @@ switch(states)
 	#region Placement
 		case states.placement:
 		
+			//	Clamp rotation
+			if abs(rotation) == 360 rotation = 0
+		
+			//	Update ports (and debug if ports are at this cell xy)
+			if input.grid_moved {
+				wire_update_ports_xy(rotation)
+				var _object_test = port_check(input.grid_x,input.grid_y)
+				if _object_test > 0 {
+					debug_log(object_get_name(_object_test.object_index)+" has a port here!")		
+				}
+			}
+		
 			//	Rotation
 			if input.rotate_right or input.rotate_left {
 				var _direction = input.rotate_right - input.rotate_left
@@ -362,19 +374,19 @@ switch(states)
 							_wire.states = states.placed
 							var _x = _wire.center_cell_x
 							var _y = _wire.center_cell_y
+							with _wire {
+								wire_update_ports_xy(_wire.rotation)	
+							}
 							ds_grid_set_grid_region(gridController.grid_items,_wire.my_cells_items,0,0,_wire.size_width,_wire.size_height,_wire.topleft_cell_x,_wire.topleft_cell_y)
 							mp_grid_add_cell(gridController.mp_grid,_x, _y)
 							//	Add ports
 							for(var _p=0;_p<_wire.ports_count;_p++) {
-								//	Port exists!
-								if _wire.ports[_p,port_object] > -1 {
-									var _grid = gridController.grid_port_objects
-									var _grid_x = gridController.grid_port_x
-									var _grid_y = gridController.grid_port_y
-									ds_list_add(_grid,_wire)
-									ds_list_add(_grid_x,_wire.ports[_p,port_x])
-									ds_list_add(_grid_y,_wire.ports[_p,port_y])
-								}
+								var _grid = gridController.grid_port_objects
+								var _grid_x = gridController.grid_port_x
+								var _grid_y = gridController.grid_port_y
+								ds_list_add(_grid,_wire)
+								ds_list_add(_grid_x,_wire.ports[_p,port_x])
+								ds_list_add(_grid_y,_wire.ports[_p,port_y])
 							}
 						}
 						instance_destroy()
@@ -390,15 +402,12 @@ switch(states)
 						mp_grid_add_instances(gridController.mp_grid,id,false)
 						//	Add ports
 						for(var _p=0;_p<_wire.ports_count;_p++) {
-							//	Port exists!
-							if _wire.ports[_p,port_object] > -1 {
-								var _grid = gridController.grid_port_objects
-								var _grid_x = gridController.grid_port_x
-								var _grid_y = gridController.grid_port_y
-								ds_list_add(_grid,_wire)
-								ds_list_add(_grid_x,_wire.ports[_p,port_x])
-								ds_list_add(_grid_y,_wire.ports[_p,port_y])
-							}
+							var _grid = gridController.grid_port_objects
+							var _grid_x = gridController.grid_port_x
+							var _grid_y = gridController.grid_port_y
+							ds_list_add(_grid,_wire)
+							ds_list_add(_grid_x,_wire.ports[_p,port_x])
+							ds_list_add(_grid_y,_wire.ports[_p,port_y])
 						}
 						debug_log("I have no path")
 					}

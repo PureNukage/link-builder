@@ -26,8 +26,8 @@ my_cells_items[# floor(size_width/2), floor(size_height/2)] = wire
 my_cells_items[# 2, 0] = -2
 my_cells_items[# 0, 0] = -2
 
-ports[0,port_x] = 2
-ports[0,port_y] = 0
+ports[0,port_x] = center_cell_x+1
+ports[0,port_y] = center_cell_y
 
-ports[1,port_x] = 0
-ports[1,port_y] = 0
+ports[1,port_x] = center_cell_x-1
+ports[1,port_y] = center_cell_y
