@@ -87,10 +87,18 @@
             }
         },
         {
+            "Key": "302c39fc-38f8-4a2e-be4a-a56a983b2da7",
+            "Value": {
+                "id": "fe324e5a-6fc0-4408-83e4-f2e0865820f7",
+                "resourcePath": "objects\\test\\test.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "3d025c52-9a31-4e4d-88b5-33fe49a95bdd",
             "Value": {
                 "id": "c5eaa3fb-a1e9-4405-9263-9a2b77e36a32",
-                "resourcePath": "scripts\\wire_rotate\\wire_rotate.yy",
+                "resourcePath": "scripts\\grid_rotation\\grid_rotation.yy",
                 "resourceType": "GMScript"
             }
         },

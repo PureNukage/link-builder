@@ -4,6 +4,11 @@ mouse_left_release = mouse_check_button_released(mb_left)
 
 mouse_right_press = mouse_check_button_pressed(mb_right)
 
+space = keyboard_check_pressed(vk_space)
+
+rotate_right = keyboard_check_pressed(ord("E")) or mouse_wheel_down()
+rotate_left = keyboard_check_pressed(ord("Q")) or mouse_wheel_up()
+
 control_press = keyboard_check_pressed(vk_control)
 
 var _x = gridController.grid_start_x

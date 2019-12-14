@@ -17,8 +17,8 @@ ports = []
 for(var i=0;i<ports_count;i++) {
 	ports[i,port_object] = -1
 	ports[i,port_direction] = -1
-	ports[i,port_x] = 0
-	ports[i,port_y] = 0
+	ports[i,port_x] = -1
+	ports[i,port_y] = -1
 }
 
 //Cells
@@ -28,8 +28,8 @@ center_cell_y = input.grid_y
 topleft_cell_x = center_cell_x-floor(size_width/2)
 topleft_cell_y = center_cell_y-floor(size_height/2)
 
-bottomright_cell_x = topleft_cell_x + size_width
-bottomright_cell_y = topleft_cell_y + size_height
+bottomright_cell_x = topleft_cell_x + (size_width-1)
+bottomright_cell_y = topleft_cell_y + (size_height-1)
 
 placeable = is_placeable()
 
@@ -44,7 +44,7 @@ if (topleft_cell_x > -1 and topleft_cell_x < grid_width+1) and
 		for(var _h=0;_h<size_height;_h++) {
 			my_cells_x[_w] = _x
 			my_cells_y[_h] = _y
-			my_cells_items[# _w, _h] = node
+			my_cells_items[# _w, _h] = object_index
 			_y += cell_height
 		}
 		_x += cell_width

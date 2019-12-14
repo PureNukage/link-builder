@@ -4,7 +4,38 @@ switch(states)
 {
 	#region Placement
 		case states.placement:
+		
+			//	Rotation
+			if input.rotate_right or input.rotate_left {
+				var _direction = input.rotate_right - input.rotate_left
+				ports = grid_rotation(_direction,my_cells_items,ports)
+				if _direction == 1 {
+					rotation -= 90
+				} else {
+					rotation += 90
+				}
+				size_width = size_width + size_height
+				size_height = size_width - size_height
+				size_width = size_width - size_height
+				//Cells
+				center_cell_x = input.grid_x
+				center_cell_y = input.grid_y
+
+				topleft_cell_x = center_cell_x-floor(size_width/2)
+				topleft_cell_y = center_cell_y-floor(size_height/2)
+
+				bottomright_cell_x = topleft_cell_x + (size_width-1)
+				bottomright_cell_y = topleft_cell_y + (size_height-1)
+				debug_log("size_width: "+string(size_width)+", size_height: "+string(size_height))
+				for(var w=0;w<size_width;w++) {
+					for(var h=0;h<size_height;h++) {
+						debug_log("x: "+string(w)+", y: "+string(h)+" contains: "+string(my_cells_items[# w, h]))
+					}
+				}
+				
+			}
 	
+			//	Left click to start placing a wire
 			if input.mouse_left_press and time.stream > time_spawn and placeable {
 				cell_x1 = input.grid_x
 				cell_y1 = input.grid_y
@@ -73,15 +104,14 @@ switch(states)
 											_wire.states = states.limbo
 											_wire.center_cell_x = w
 											_wire.center_cell_y = h
-											_wire.topleft_cell_x = w
+											_wire.topleft_cell_x = w-1
 											_wire.topleft_cell_y = h
-											_wire.bottomright_cell_x = w
+											_wire.bottomright_cell_x = w+1
 											_wire.bottomright_cell_y = h
-										
 										
 											ds_list_add(path_objects,_wire)
 								
-											if gridController.grid_items[# w,h] == -1 {
+											if gridController.grid_items[# w,h] < 0 {
 												_placeable++	
 											}
 								
@@ -229,8 +259,6 @@ switch(states)
 						
 						var __wire = path_objects[| i]
 						
-						debug_log("Wire object name: "+object_get_name(__wire.object_index))
-						
 						#region	The first wire
 						if i == 0 {
 							// There are no more wires
@@ -239,33 +267,26 @@ switch(states)
 							} 
 							//	There is another wire ahead of us
 							else {
-								__wire.ports[1,port_object] = path_objects[| i+1]
-								//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0,0]))
+								__wire.ports[0,port_object] = path_objects[| i+1]
 							}
 						} 
 						#endregion
 						
 						#region Middle wire
 						if i > 0 and i < ds_list_size(path_objects)-1 {
-							__wire.ports[0,port_object] = path_objects[| i-1]
-							__wire.ports[1,port_object] = path_objects[| i+1]
-							//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_in to ["+string(i-1)+"] "+string(_wire.port_in[0,0]))
-							//debug_log("Just set Wire's: ["+string(i)+"] "+string(_wire)+" port_out to ["+string(i+1)+"] "+string(_wire.port_out[0,0]))
+							__wire.ports[1,port_object] = path_objects[| i-1]
+							__wire.ports[0,port_object] = path_objects[| i+1]
 						}
 						#endregion
 						
 						#region Last Wire
-						if i == ds_list_size(path_points_x)-1 and i != 0{
-							__wire.ports[0,port_object] = path_objects[| i-1]
-							debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_in to ["+string(i-1)+"] "+string(__wire.ports[0,port_object]))
-							
+						if i == ds_list_size(path_points_x)-1 and i != 0 {
+							__wire.ports[1,port_object] = path_objects[| i-1]
 						}
-						
-						
 						#endregion			
 						
-						debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_in to ["+string(i-1)+"] "+string(__wire.ports[0,port_object]))
-						debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_out to ["+string(i+1)+"] "+string(__wire.ports[1,port_object]))
+						debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_in to ["+string(i-1)+"] "+string(__wire.ports[1,port_object]))
+						debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_out to ["+string(i+1)+"] "+string(__wire.ports[0,port_object]))
 								
 					}
 					#endregion
@@ -277,23 +298,41 @@ switch(states)
 						var _wire = path_objects[| i]
 						
 						//	In but no out
-						if _wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] == -1 {
+						if _wire.ports[1,port_object] > -1 and _wire.ports[0,port_object] == -1 {
 							var w2 = _wire.center_cell_x
 							var h2 = _wire.center_cell_y
-							var w1 = _wire.ports[0,port_object].center_cell_x
-							var h1 = _wire.ports[0,port_object].center_cell_y
+							var w1 = _wire.ports[1,port_object].center_cell_x
+							var h1 = _wire.ports[1,port_object].center_cell_y
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
 						}
 						
 						//	In and Out
 						//	and Out and no in
 						if (_wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] > -1)
-						or (_wire.ports[0,port_object] == -1 and _wire.ports[1,port_object] > -1) {
+						or (_wire.ports[1,port_object] == -1 and _wire.ports[0,port_object] > -1) {
 							var w1 = _wire.center_cell_x
 							var h1 = _wire.center_cell_y
-							var w2 = _wire.ports[1,port_object].center_cell_x
-							var h2 = _wire.ports[1,port_object].center_cell_y
+							var w2 = _wire.ports[0,port_object].center_cell_x
+							var h2 = _wire.ports[0,port_object].center_cell_y
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
+						}
+						
+						//	Rotate my_cells_items grid and update ports
+						if _wire.rotation > 0 {
+							var _rotates = abs(_wire.rotation/90)
+							debug_log("Wire: "+"["+string(i)+"] has: "+string(_rotates)+" rotations to make")
+							for(var a=0;a<_rotates;a++) {
+								_wire.ports = grid_rotation(-1,_wire.my_cells_items,_wire.ports)	
+								_wire.size_width = _wire.size_width + _wire.size_height
+								_wire.size_height = _wire.size_width - _wire.size_height
+								_wire.size_width = _wire.size_width - _wire.size_height
+								//Cells
+								_wire.topleft_cell_x = _wire.center_cell_x-floor(_wire.size_width/2)
+								_wire.topleft_cell_y = _wire.center_cell_y-floor(_wire.size_height/2)
+
+								_wire.bottomright_cell_x = _wire.topleft_cell_x + (_wire.size_width-1)
+								_wire.bottomright_cell_y = _wire.topleft_cell_y + (_wire.size_height-1)
+							}
 						}
 						
 						debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
@@ -311,6 +350,7 @@ switch(states)
 			}	
 			#endregion
 		
+			//	Left release to finalize placement of the wire
 			if input.mouse_left_release and time.stream > time_spawn + 15 {
 				
 				//	Placeable
@@ -318,10 +358,12 @@ switch(states)
 					//	If we have a path 
 					if cell_x2 > -1 and cell_y2 > -1 {
 						for(var i=0;i<ds_list_size(path_objects);i++) {
-							path_objects[| i].states = states.placed
-							var _x = path_objects[| i].center_cell_x
-							var _y = path_objects[| i].center_cell_y
-							gridController.grid_items[# _x, _y] = path_objects[| i].object_index
+							var _wire = path_objects[| i]
+							_wire.states = states.placed
+							var _x = _wire.center_cell_x
+							var _y = _wire.center_cell_y
+							ds_grid_set_grid_region(gridController.grid_items,_wire.my_cells_items,0,0,_wire.size_width,_wire.size_height,_wire.topleft_cell_x,_wire.topleft_cell_y)
+							//gridController.grid_items[# _x, _y] = path_objects[| i].object_index
 							mp_grid_add_cell(gridController.mp_grid,_x, _y)
 						}
 						instance_destroy()
@@ -332,7 +374,7 @@ switch(states)
 						states = states.placed
 						var _x = gridController.grid_positions_x[input.grid_x]+(cell_width/2)
 						var _y = gridController.grid_positions_y[input.grid_y]+(cell_height/2)
-						gridController.grid_items[# input.grid_x, input.grid_y] = object_index
+						ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
 						mp_grid_add_instances(gridController.mp_grid,id,false)
 						debug_log("I have no path")
 					}
@@ -347,6 +389,7 @@ switch(states)
 			
 			}
 			
+			//	Right press to destroy the wire and any path
 			if input.mouse_right_press {
 				for(var i=0;i<ds_list_size(path_objects);i++) {
 					instance_destroy(path_objects[| i])

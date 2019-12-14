@@ -21,8 +21,8 @@ switch(states)
 					topleft_cell_x = center_cell_x-floor(size_width/2)
 					topleft_cell_y = center_cell_y-floor(size_height/2)
 				
-					bottomright_cell_x = topleft_cell_x + size_width
-					bottomright_cell_y = topleft_cell_y + size_height
+					bottomright_cell_x = topleft_cell_x + (size_width-1)
+					bottomright_cell_y = topleft_cell_y + (size_height-1)
 			
 					if (topleft_cell_x > -1 and topleft_cell_x < grid_width+1) and 
 					(topleft_cell_y > -1 and topleft_cell_y < grid_height+1) and 

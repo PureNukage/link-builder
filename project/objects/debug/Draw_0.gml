@@ -14,17 +14,26 @@ switch(mode)
 						var _x = grid_positions_x[_w]
 						var _y = grid_positions_y[_h]
 					
-						//	Draw outline
+						//	Draw cell outline
 						draw_set_alpha(.33)
 						draw_set_color(c_white)
 						draw_rectangle(_x,_y,_x+cell_width,_y+cell_width,true)
 						draw_set_alpha(1)
 					
+						//	This cell is not empty
 						if grid_items[# _w,_h] != -1 {
-							draw_set_alpha(.33)
-							draw_set_color(c_orange)
-							draw_rectangle(_x+3,_y+3,_x+cell_width-3,_y+cell_height-3,false)
-							draw_set_alpha(1)
+							//	This cell contains an item
+							if grid_items[# _w,_h] > -1 {
+								draw_set_color(c_orange)
+							} 
+							//	This cell contains a port
+							else if grid_items[# _w, _h] == -2 {
+								draw_set_color(c_purple)	
+							}
+								//	Drawing the rectangle
+								draw_set_alpha(.33)
+								draw_rectangle(_x+3,_y+3,_x+cell_width-3,_y+cell_height-3,false)
+								draw_set_alpha(1)
 						}
 					}	
 				}	
