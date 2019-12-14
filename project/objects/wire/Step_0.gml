@@ -268,9 +268,9 @@ switch(states)
 							_wire.states = states.limbo
 							_wire.center_cell_x = input.grid_x
 							_wire.center_cell_y = input.grid_y
-							_wire.topleft_cell_x = input.grid_x
+							_wire.topleft_cell_x = input.grid_x-1
 							_wire.topleft_cell_y = input.grid_y
-							_wire.bottomright_cell_x = input.grid_x
+							_wire.bottomright_cell_x = input.grid_x+1
 							_wire.bottomright_cell_y = input.grid_y
 										
 							ds_list_add(path_objects,_wire)
