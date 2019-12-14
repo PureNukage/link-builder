@@ -17,6 +17,15 @@ switch(states)
 				size_width = size_width + size_height
 				size_height = size_width - size_height
 				size_width = size_width - size_height
+				//Cells
+				center_cell_x = input.grid_x
+				center_cell_y = input.grid_y
+
+				topleft_cell_x = center_cell_x-floor(size_width/2)
+				topleft_cell_y = center_cell_y-floor(size_height/2)
+
+				bottomright_cell_x = topleft_cell_x + (size_width-1)
+				bottomright_cell_y = topleft_cell_y + (size_height-1)
 				debug_log("size_width: "+string(size_width)+", size_height: "+string(size_height))
 				for(var w=0;w<size_width;w++) {
 					for(var h=0;h<size_height;h++) {
@@ -95,9 +104,9 @@ switch(states)
 											_wire.states = states.limbo
 											_wire.center_cell_x = w
 											_wire.center_cell_y = h
-											_wire.topleft_cell_x = w
+											_wire.topleft_cell_x = w-1
 											_wire.topleft_cell_y = h
-											_wire.bottomright_cell_x = w
+											_wire.bottomright_cell_x = w+1
 											_wire.bottomright_cell_y = h
 										
 											ds_list_add(path_objects,_wire)
@@ -353,7 +362,7 @@ switch(states)
 							_wire.states = states.placed
 							var _x = _wire.center_cell_x
 							var _y = _wire.center_cell_y
-							ds_grid_set_grid_region(gridController.grid_items,_wire.my_cells_items,0,0,size_width,size_height,_wire.topleft_cell_x,_wire.topleft_cell_y)
+							ds_grid_set_grid_region(gridController.grid_items,_wire.my_cells_items,0,0,_wire.size_width,_wire.size_height,_wire.topleft_cell_x,_wire.topleft_cell_y)
 							//gridController.grid_items[# _x, _y] = path_objects[| i].object_index
 							mp_grid_add_cell(gridController.mp_grid,_x, _y)
 						}

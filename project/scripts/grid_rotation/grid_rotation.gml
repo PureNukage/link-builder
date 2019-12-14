@@ -30,13 +30,15 @@ if _size_width != _size_height {
 	{
 		//	Right
 		case 1:
-			for(var h=0;h<_size_height;h++) {
-				for(var w=0;w<_size_width;w++) {
+			for(var h=0;h<new_size_height;h++) {
+				for(var w=0;w<new_size_width;w++) {
 					
-					var _cell = old_grid[# w, h]
+					var _cell = old_grid[# h, w]
 					
 					var new_cell_x = w
 					var new_cell_y = h
+					
+					new_grid[# new_cell_x, new_cell_y] = _cell
 					
 				}
 			}
@@ -44,7 +46,18 @@ if _size_width != _size_height {
 		break
 		//	Left
 		case -1:
-		
+			for(var h=0;h<new_size_height;h++) {
+				for(var w=0;w<new_size_width;w++) {
+					
+					var _cell = old_grid[# h, w]
+					
+					var new_cell_x = w
+					var new_cell_y = h
+					
+					new_grid[# new_cell_x, new_cell_y] = _cell
+					
+				}
+			}
 		
 		break
 	}
