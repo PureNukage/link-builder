@@ -51,13 +51,16 @@ switch(states)
 			if input.mouse_left_press and time.stream > time_spawn and placeable {
 				cell_x1 = input.grid_x
 				cell_y1 = input.grid_y
-
+				port1 = port_check(cell_x1,cell_y1)
 			}
 		
 			#region	If holding down mouse and moved cells
 			if input.mouse_left and input.grid_moved and time.stream > time_spawn and cell_x1 > -1 and cell_y1 > -1 and placeable {
 				cell_x2 = input.grid_x
 				cell_y2 = input.grid_y
+				
+				//	Port 2
+				port2 = port_check(cell_x2,cell_y2)
 			
 				var _x1 = gridController.grid_positions_x[cell_x1]+(cell_width/2)
 				var _y1 = gridController.grid_positions_y[cell_y1]+(cell_height/2)
@@ -363,10 +366,16 @@ switch(states)
 			#endregion
 		
 			//	Left release to finalize placement of the wire
-			if input.mouse_left_release and time.stream > time_spawn + 15 {
+			if input.mouse_left_release and time.stream > time_spawn + 15 {	
+				
+				//	Check for item connections
+				
+				port1 = -1
+				port2 = -1
 				
 				//	Placeable
 				if placeable {
+					
 					//	If we have a path 
 					if cell_x2 > -1 and cell_y2 > -1 {
 						for(var i=0;i<ds_list_size(path_objects);i++) {
