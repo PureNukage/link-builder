@@ -363,19 +363,43 @@ switch(states)
 							var _x = _wire.center_cell_x
 							var _y = _wire.center_cell_y
 							ds_grid_set_grid_region(gridController.grid_items,_wire.my_cells_items,0,0,_wire.size_width,_wire.size_height,_wire.topleft_cell_x,_wire.topleft_cell_y)
-							//gridController.grid_items[# _x, _y] = path_objects[| i].object_index
 							mp_grid_add_cell(gridController.mp_grid,_x, _y)
+							//	Add ports
+							for(var _p=0;_p<_wire.ports_count;_p++) {
+								//	Port exists!
+								if _wire.ports[_p,port_object] > -1 {
+									var _grid = gridController.grid_port_objects
+									var _grid_x = gridController.grid_port_x
+									var _grid_y = gridController.grid_port_y
+									ds_list_add(_grid,_wire)
+									ds_list_add(_grid_x,_wire.ports[_p,port_x])
+									ds_list_add(_grid_y,_wire.ports[_p,port_y])
+								}
+							}
 						}
 						instance_destroy()
 						debug_log("I have a path")
 					}
 					//	If its just us
 					else {
+						var _wire = id
 						states = states.placed
 						var _x = gridController.grid_positions_x[input.grid_x]+(cell_width/2)
 						var _y = gridController.grid_positions_y[input.grid_y]+(cell_height/2)
 						ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
 						mp_grid_add_instances(gridController.mp_grid,id,false)
+						//	Add ports
+						for(var _p=0;_p<_wire.ports_count;_p++) {
+							//	Port exists!
+							if _wire.ports[_p,port_object] > -1 {
+								var _grid = gridController.grid_port_objects
+								var _grid_x = gridController.grid_port_x
+								var _grid_y = gridController.grid_port_y
+								ds_list_add(_grid,_wire)
+								ds_list_add(_grid_x,_wire.ports[_p,port_x])
+								ds_list_add(_grid_y,_wire.ports[_p,port_y])
+							}
+						}
 						debug_log("I have no path")
 					}
 				} 
