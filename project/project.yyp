@@ -314,7 +314,7 @@
             "Key": "c54315ec-2931-4435-a989-274e26269826",
             "Value": {
                 "id": "6d24fad5-4621-4f65-8823-28d233c6a12f",
-                "resourcePath": "scripts\\check_cell_ports\\check_cell_ports.yy",
+                "resourcePath": "scripts\\port_check\\port_check.yy",
                 "resourceType": "GMScript"
             }
         },

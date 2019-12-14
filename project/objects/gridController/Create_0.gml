@@ -6,9 +6,9 @@
 grid_start_x = 0
 grid_start_y = 0
 
-grid_socket_x = ds_list_create()
-grid_socket_y = ds_list_create()
-grid_socket = ds_list_create()
+grid_port_x = ds_list_create()
+grid_port_y = ds_list_create()
+grid_port_objects = ds_list_create()
 
 grid_items = ds_grid_create(grid_width,grid_height)
 
