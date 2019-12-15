@@ -30,6 +30,7 @@ switch(states)
 				ds_list_add(_grid,id)
 				ds_list_add(_grid_x,ports[_p,port_x])
 				ds_list_add(_grid_y,ports[_p,port_y])
+				gridController.grid_items[# ports[_p,port_x], ports[_p,port_y]] = -2
 			}
 			
 		}
