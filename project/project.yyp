@@ -194,7 +194,7 @@
             "Key": "5b20ccfc-76b0-47ed-961e-d5336a5d1481",
             "Value": {
                 "id": "326b27a3-1710-4802-a879-304247c2dd5b",
-                "resourcePath": "scripts\\wire_update_ports_connect\\wire_update_ports_connect.yy",
+                "resourcePath": "scripts\\wire_update_ports_xy_connect\\wire_update_ports_xy_connect.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -295,6 +295,14 @@
             }
         },
         {
+            "Key": "b000b01d-cd0b-41eb-9796-a58528a6d4fa",
+            "Value": {
+                "id": "65891a59-132c-437d-b057-0f9056cca3b4",
+                "resourcePath": "sprites\\s_wire_corner\\s_wire_corner.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "b5c5db7c-f46c-4cd9-9651-c860e127dd22",
             "Value": {
                 "id": "990ff5da-4e22-42d7-bd9c-17d3201761c4",
@@ -346,7 +354,7 @@
             "Key": "c54315ec-2931-4435-a989-274e26269826",
             "Value": {
                 "id": "6d24fad5-4621-4f65-8823-28d233c6a12f",
-                "resourcePath": "scripts\\port_check\\port_check.yy",
+                "resourcePath": "scripts\\ports_check\\ports_check.yy",
                 "resourceType": "GMScript"
             }
         },

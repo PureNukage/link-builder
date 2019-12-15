@@ -15,16 +15,17 @@ switch(states)
 						placeable = true
 					}			
 				#endregion
-				var _object_test = port_check(input.grid_x,input.grid_y)
-				if _object_test > 0 {
-					debug_log(object_get_name(_object_test.object_index)+" has a port here!")	
-					
+				var ports_list = ports_check(input.grid_x,input.grid_y)
+				if ports_list > 0 {
+					debug_log("There are "+string(ds_list_size(ports_list))+" ports here!")
+					ds_list_destroy(ports_list)
 					
 				}
 			}
 		
 			//	Rotation
 			if input.rotate_right or input.rotate_left {
+				wire_update_ports_xy(rotation)
 				placeable = is_placeable()
 				#region Placeable check
 					if (topleft_cell_x > -1 and bottomright_cell_x < grid_width)
@@ -46,7 +47,7 @@ switch(states)
 			if input.mouse_left_press and time.stream > time_spawn and placeable {
 				cell_x1 = input.grid_x
 				cell_y1 = input.grid_y
-				port1 = port_check(cell_x1,cell_y1)
+				port1 = ports_check(cell_x1,cell_y1)
 			}
 		
 			#region	If holding down mouse and moved cells
@@ -55,7 +56,7 @@ switch(states)
 				cell_y2 = input.grid_y
 				
 				//	Port 2
-				port2 = port_check(cell_x2,cell_y2)
+				port2 = ports_check(cell_x2,cell_y2)
 			
 				var _x1 = gridController.grid_positions_x[cell_x1]+(cell_width/2)
 				var _y1 = gridController.grid_positions_y[cell_y1]+(cell_height/2)
@@ -114,9 +115,9 @@ switch(states)
 											_wire.states = states.limbo
 											_wire.center_cell_x = w
 											_wire.center_cell_y = h
-											_wire.topleft_cell_x = w-1
+											_wire.topleft_cell_x = w
 											_wire.topleft_cell_y = h
-											_wire.bottomright_cell_x = w+1
+											_wire.bottomright_cell_x = w
 											_wire.bottomright_cell_y = h
 										
 											ds_list_add(path_objects,_wire)
@@ -248,9 +249,9 @@ switch(states)
 							_wire.states = states.limbo
 							_wire.center_cell_x = input.grid_x
 							_wire.center_cell_y = input.grid_y
-							_wire.topleft_cell_x = input.grid_x-1
+							_wire.topleft_cell_x = input.grid_x
 							_wire.topleft_cell_y = input.grid_y
-							_wire.bottomright_cell_x = input.grid_x+1
+							_wire.bottomright_cell_x = input.grid_x
 							_wire.bottomright_cell_y = input.grid_y
 										
 							ds_list_add(path_objects,_wire)
@@ -382,7 +383,6 @@ switch(states)
 							with _wire {
 								wire_update_ports_xy(_wire.rotation)	
 							}
-							ds_grid_set_grid_region(gridController.grid_items,_wire.my_cells_items,0,0,_wire.size_width,_wire.size_height,_wire.topleft_cell_x,_wire.topleft_cell_y)
 							mp_grid_add_cell(gridController.mp_grid,_x, _y)
 							//	Add ports
 							for(var _p=0;_p<_wire.ports_count;_p++) {
@@ -392,7 +392,9 @@ switch(states)
 								ds_list_add(_grid,_wire)
 								ds_list_add(_grid_x,_wire.ports[_p,port_x])
 								ds_list_add(_grid_y,_wire.ports[_p,port_y])
+								gridController.grid_items[# _wire.ports[_p,port_x],_wire.ports[_p,port_y]] = -2
 							}
+							ds_grid_set_grid_region(gridController.grid_items,_wire.my_cells_items,0,0,_wire.size_width,_wire.size_height,_wire.topleft_cell_x,_wire.topleft_cell_y)
 							#region Connecting first and last wires
 							with _wire {
 								if i == 0 and other.port1 > -1 {
@@ -413,7 +415,6 @@ switch(states)
 						states = states.placed
 						var _x = gridController.grid_positions_x[input.grid_x]+(cell_width/2)
 						var _y = gridController.grid_positions_y[input.grid_y]+(cell_height/2)
-						ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
 						mp_grid_add_instances(gridController.mp_grid,id,false)
 						//	Add ports
 						for(var _p=0;_p<_wire.ports_count;_p++) {
@@ -423,7 +424,9 @@ switch(states)
 							ds_list_add(_grid,_wire)
 							ds_list_add(_grid_x,_wire.ports[_p,port_x])
 							ds_list_add(_grid_y,_wire.ports[_p,port_y])
+							gridController.grid_items[# ports[_p,port_x], ports[_p,port_y]] = -2
 						}
+						ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
 						debug_log("I have no path")
 						wire_connect(port1,cell_x1,cell_y1)
 						wire_connect(port2,cell_x2,cell_y2)

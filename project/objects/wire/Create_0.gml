@@ -1,4 +1,4 @@
-size_width = 3						//	Set; cells width this item takes up
+size_width = 1						//	Set; cells width this item takes up
 size_height = 1						//	Set; cells height this item takes up
 sprite = s_wire						//	Set; sprite for this item
 states = states.placement			//	Set; inital state of this item
@@ -15,6 +15,12 @@ path_objects = ds_list_create()		//	Active; holds the instance ids of objects in
 time_spawn = time.stream			//	Active; holds the time this wire spawned
 port1 = -1							//	Active; holds the id of the first item we're connecting to
 port2 = -1							//	Active; holds the id of the second item we're connecting to
+straight = true						//	Active; holds if this wire is a straight piece or a corner piece
+
+directions = []						//	Active; holds which sides ports are on
+for(var i=0;i<4;i++) {
+	directions[i] = -1	
+}
 
 // Inherit the parent event
 event_inherited()
@@ -25,8 +31,8 @@ for(var w=0;w<size_width;w++) {
 	}
 }
 my_cells_items[# floor(size_width/2), floor(size_height/2)] = wire
-my_cells_items[# 2, 0] = -2
-my_cells_items[# 0, 0] = -2
+//my_cells_items[# 2, 0] = -2
+//my_cells_items[# 0, 0] = -2
 
 ports[0,port_x] = center_cell_x+1
 ports[0,port_y] = center_cell_y
