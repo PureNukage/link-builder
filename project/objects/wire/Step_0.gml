@@ -361,10 +361,11 @@ switch(states)
 			//	Left release to finalize placement of the wire
 			if input.mouse_left_release and time.stream > time_spawn + 15 {	
 				
-				//	Check for item connections
+				////	Check for item connections
+				//wire_connect(port1,port2)
 				
-				port1 = -1
-				port2 = -1
+				//port1 = -1
+				//port2 = -1
 				
 				//	Placeable
 				if placeable {
@@ -390,6 +391,16 @@ switch(states)
 								ds_list_add(_grid_x,_wire.ports[_p,port_x])
 								ds_list_add(_grid_y,_wire.ports[_p,port_y])
 							}
+							#region Connecting first and last wires
+							with _wire {
+								if i == 0 and other.port1 > -1 {
+									wire_connect(other.port1,other.cell_x1,other.cell_y1)
+								}
+								if i != 0 and i == ds_list_size(other.path_objects)-1 and other.port2 > -1 {
+									wire_connect(other.port2,other.cell_x2,other.cell_y2)
+								}
+							}	
+							#endregion
 						}
 						instance_destroy()
 						debug_log("I have a path")
@@ -412,6 +423,8 @@ switch(states)
 							ds_list_add(_grid_y,_wire.ports[_p,port_y])
 						}
 						debug_log("I have no path")
+						wire_connect(port1,cell_x1,cell_y1)
+						wire_connect(port2,cell_x2,cell_y2)
 					}
 				} 
 				//	Not placeable
