@@ -175,6 +175,14 @@
             }
         },
         {
+            "Key": "59e5b008-2217-4001-ab6f-11e6cdb7bf85",
+            "Value": {
+                "id": "d49b9670-5719-4af5-8e28-33693f1d31a5",
+                "resourcePath": "scripts\\node_update_ports_xy\\node_update_ports_xy.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "5ae065ec-3491-458e-a0fe-674f6c2377c6",
             "Value": {
                 "id": "88253632-cd5a-48cc-b78c-03e8526d602a",
@@ -481,7 +489,8 @@
         "c54315ec-2931-4435-a989-274e26269826",
         "536c46f7-67ec-49c4-94ae-fd835a6a8343",
         "3ade3a16-3ab5-4848-99e0-d75c8b0902d7",
-        "5cea7cec-65f1-4723-a5c0-26972c71a2dd"
+        "5cea7cec-65f1-4723-a5c0-26972c71a2dd",
+        "59e5b008-2217-4001-ab6f-11e6cdb7bf85"
     ],
     "tutorial": ""
 }

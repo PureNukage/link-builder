@@ -5,9 +5,6 @@ switch(states)
 	#region Placement
 		case states.placement:
 		
-			//	Clamp rotation
-			if abs(rotation) == 360 rotation = 0
-		
 			//	Update ports (and debug if ports are at this cell xy)
 			if input.grid_moved {
 				wire_update_ports_xy(rotation)
@@ -26,25 +23,6 @@ switch(states)
 		
 			//	Rotation
 			if input.rotate_right or input.rotate_left {
-				var _direction = input.rotate_right - input.rotate_left
-				ports = grid_rotation(_direction,my_cells_items,ports)
-				if _direction == 1 {
-					rotation -= 90
-				} else {
-					rotation += 90
-				}
-				size_width = size_width + size_height
-				size_height = size_width - size_height
-				size_width = size_width - size_height
-				//Cells
-				center_cell_x = input.grid_x
-				center_cell_y = input.grid_y
-
-				topleft_cell_x = center_cell_x-floor(size_width/2)
-				topleft_cell_y = center_cell_y-floor(size_height/2)
-
-				bottomright_cell_x = topleft_cell_x + (size_width-1)
-				bottomright_cell_y = topleft_cell_y + (size_height-1)
 				placeable = is_placeable()
 				#region Placeable check
 					if (topleft_cell_x > -1 and bottomright_cell_x < grid_width)

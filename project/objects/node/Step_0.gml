@@ -4,6 +4,10 @@ switch(states)
 {
 	case states.placement:
 	
+		if input.grid_moved {
+			node_update_ports_xy(rotation)	
+		}
+	
 		// Placement
 		if input.mouse_left_press and placeable {
 			
@@ -18,6 +22,16 @@ switch(states)
 			
 			mp_grid_add_rectangle(gridController.mp_grid,_x1,_y1,_x2,_y2)
 			
+			//	Add ports
+			for(var _p=0;_p<ports_count;_p++) {
+				var _grid = gridController.grid_port_objects
+				var _grid_x = gridController.grid_port_x
+				var _grid_y = gridController.grid_port_y
+				ds_list_add(_grid,id)
+				ds_list_add(_grid_x,ports[_p,port_x])
+				ds_list_add(_grid_y,ports[_p,port_y])
+			}
+			
 		}
 		
 		//	Rotation
@@ -25,7 +39,8 @@ switch(states)
 			var port0_x = ports[0,port_x]
 			var port0_y = ports[0,port_y]
 			debug_log("old Port 0: "+string(port0_x)+ ","+string(port0_y))
-			ports = grid_rotation(input.rotate_right - input.rotate_left,my_cells_items,ports)	
+			//ports = grid_rotation(input.rotate_right - input.rotate_left,my_cells_items,ports)	
+			node_update_ports_xy(rotation)
 			var port0_x = ports[0,port_x]
 			var port0_y = ports[0,port_y]
 			debug_log("new Port 0: "+string(port0_x)+ ","+string(port0_y))
