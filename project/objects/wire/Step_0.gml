@@ -17,7 +17,9 @@ switch(states)
 				#endregion
 				var _object_test = port_check(input.grid_x,input.grid_y)
 				if _object_test > 0 {
-					debug_log(object_get_name(_object_test.object_index)+" has a port here!")		
+					debug_log(object_get_name(_object_test.object_index)+" has a port here!")	
+					
+					
 				}
 			}
 		
