@@ -47,6 +47,9 @@ switch(states)
 			debug_log("new Port 0: "+string(port0_x)+ ","+string(port0_y))
 		}
 		
+		//	Clamp rotation
+		if abs(rotation) == 360 rotation = 0
+		
 		//	Delete item
 		if input.mouse_right_press {
 			instance_destroy()

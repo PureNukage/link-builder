@@ -26,6 +26,7 @@ switch(states)
 					for(var i=0;i<_max;i++) {
 						item_direction(id,ports_list[| i])
 					}
+					wire_generate_combinations(ports_list)
 				}
 			}
 		
@@ -47,6 +48,13 @@ switch(states)
 					}
 				}
 				
+			}
+			
+			//	Clamp rotation
+			if abs(rotation) == 360 {
+				straight = !straight
+				sprite = sprites[straight]
+				rotation = 0
 			}
 	
 			//	Left click to start placing a wire

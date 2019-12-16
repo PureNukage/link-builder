@@ -69,9 +69,6 @@ switch(states)
 					bottomright_cell_y = topleft_cell_y + (size_height-1)
 				}
 				
-				//	Clamp rotation
-				if abs(rotation) == 360 rotation = 0
-				
 			}
 		
 		break
