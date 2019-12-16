@@ -27,6 +27,7 @@ switch(states)
 						item_direction(id,ports_list[| i])
 					}
 					
+					
 					//wire_generate_combinations(ports_list)
 				}
 			}
@@ -56,6 +57,7 @@ switch(states)
 				straight = !straight
 				sprite = sprites[straight]
 				rotation = 0
+				wire_update_ports_xy(rotation)
 			}
 	
 			//	Left click to start placing a wire
@@ -325,7 +327,7 @@ switch(states)
 						
 						var _wire = path_objects[| i]
 						
-						//	In but no out
+						//	In but no Out
 						if _wire.ports[1,port_object] > -1 and _wire.ports[0,port_object] == -1 {
 							var w2 = _wire.center_cell_x
 							var h2 = _wire.center_cell_y
@@ -334,10 +336,9 @@ switch(states)
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
 						}
 						
-						//	In and Out
-						//	and Out and no in
-						if (_wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] > -1)
-						or (_wire.ports[1,port_object] == -1 and _wire.ports[0,port_object] > -1) {
+						//	Out but no In
+						if (_wire.ports[1,port_object] == -1 and _wire.ports[0,port_object] > -1)
+						or (_wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] > -1) {
 							var w1 = _wire.center_cell_x
 							var h1 = _wire.center_cell_y
 							var w2 = _wire.ports[0,port_object].center_cell_x
@@ -345,12 +346,23 @@ switch(states)
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
 						}
 						
+						//	In and Out 
+						if (_wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] > -1) {
+							//	Change ports 0 and 1s xy's
+							var _array = port_get_direction(_wire,_wire.ports[0,port_object])
+							_wire.ports[0,port_x] = _wire.center_cell_x+_array[0]
+							_wire.ports[0,port_y] = _wire.center_cell_y+_array[1]
+							var _array = port_get_direction(_wire,_wire.ports[1,port_object])
+							_wire.ports[1,port_x] = _wire.center_cell_x+_array[0]
+							_wire.ports[1,port_y] = _wire.center_cell_y+_array[1]
+						}
+						
 						//	Rotate my_cells_items grid and update ports
 						if _wire.rotation > 0 {
 							var _rotates = abs(_wire.rotation/90)
 							debug_log("Wire: "+"["+string(i)+"] has: "+string(_rotates)+" rotations to make")
 							for(var a=0;a<_rotates;a++) {
-								_wire.ports = grid_rotation(-1,_wire.my_cells_items,_wire.ports)	
+								//_wire.ports = grid_rotation(-1,_wire.my_cells_items,_wire.ports)	
 								_wire.size_width = _wire.size_width + _wire.size_height
 								_wire.size_height = _wire.size_width - _wire.size_height
 								_wire.size_width = _wire.size_width - _wire.size_height
@@ -361,6 +373,17 @@ switch(states)
 								_wire.bottomright_cell_x = _wire.topleft_cell_x + (_wire.size_width-1)
 								_wire.bottomright_cell_y = _wire.topleft_cell_y + (_wire.size_height-1)
 							}
+						}
+						
+						//	In and Out 
+						if (_wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] > -1) {
+							//	Change ports 0 and 1s xy's
+							var _array = port_get_direction(_wire,_wire.ports[0,port_object])
+							_wire.ports[0,port_x] = _wire.center_cell_x+_array[0]
+							_wire.ports[0,port_y] = _wire.center_cell_y+_array[1]
+							var _array = port_get_direction(_wire,_wire.ports[1,port_object])
+							_wire.ports[1,port_x] = _wire.center_cell_x+_array[0]
+							_wire.ports[1,port_y] = _wire.center_cell_y+_array[1]
 						}
 						
 						debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
@@ -380,12 +403,6 @@ switch(states)
 		
 			//	Left release to finalize placement of the wire
 			if input.mouse_left_release and time.stream > time_spawn + 15 {	
-				
-				////	Check for item connections
-				//wire_connect(port1,port2)
-				
-				//port1 = -1
-				//port2 = -1
 				
 				//	Placeable
 				if placeable {
@@ -444,9 +461,41 @@ switch(states)
 							gridController.grid_items[# ports[_p,port_x], ports[_p,port_y]] = -2
 						}
 						ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
+						
+						if port1 > -1 {
+							for(var c=0;c<ds_list_size(port1);c++) {
+								var connecting_port = port1[| c]
+									for(var my_port=0;my_port<ports_count;my_port++) {
+										//	If we're connecting to anything not a wire
+										if connecting_port.object_index != wire {
+											//	loop through the grid and check if our port is within its xy
+											for(var w=connecting_port.topleft_cell_x;w<connecting_port.topleft_cell_x+connecting_port.size_width;w++) {
+												for(var h=connecting_port.topleft_cell_y;h<connecting_port.topleft_cell_y+connecting_port.size_height;h++) {
+													if ports[my_port,port_x] == w and ports[my_port,port_y] == h {
+														//	We're connecting to this object!
+														ports[my_port,port_object] = connecting_port
+														debug_log("Connecting Port["+string(my_port)+"] to "+string(connecting_port))
+													}	
+												}
+											}
+										} 
+										//	If we're connecting to a wire
+										else {
+											if ports[my_port,port_x] == connecting_port.center_cell_x and ports[my_port,port_y] == connecting_port.center_cell_y {
+												//	We're connecting to this object!
+												ports[my_port,port_object] = connecting_port
+												debug_log("Connecting Port["+string(my_port)+"] to "+string(connecting_port))	
+											}
+										}
+									
+									}
+							}
+								
+						}
+							
+						
+						
 						debug_log("I have no path")
-						//wire_connect(port1,cell_x1,cell_y1)
-						//wire_connect(port2,cell_x2,cell_y2)
 					}
 				} 
 				//	Not placeable

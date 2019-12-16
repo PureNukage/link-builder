@@ -49,7 +49,7 @@ switch(states)
 				//	Rotation
 				if (input.rotate_right or input.rotate_left) {
 					var _direction = input.rotate_right - input.rotate_left
-					ports = grid_rotation(_direction,my_cells_items,ports)
+					//ports = grid_rotation(_direction,my_cells_items,ports)
 					if _direction == 1 {
 						rotation -= 90
 					} else {

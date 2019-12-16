@@ -98,7 +98,7 @@
             "Key": "37bebf50-d727-4446-bf8f-556fa2cbd262",
             "Value": {
                 "id": "4dbfe1e7-119a-4076-bd5b-3e7c4f120d6b",
-                "resourcePath": "scripts\\port_direction\\port_direction.yy",
+                "resourcePath": "scripts\\port_get_direction\\port_get_direction.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -415,6 +415,14 @@
             }
         },
         {
+            "Key": "d2061f56-d17f-44b8-8c01-6eb7b6733616",
+            "Value": {
+                "id": "bfa7bfa6-a511-484a-aa77-43cb71e45773",
+                "resourcePath": "scripts\\directions_connecting\\directions_connecting.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "d5b13ef1-e197-48fd-bfa4-88cfef7355ec",
             "Value": {
                 "id": "ef794386-b5c2-4573-9a53-e466fd6506c6",
@@ -533,7 +541,8 @@
         "536c46f7-67ec-49c4-94ae-fd835a6a8343",
         "59e5b008-2217-4001-ab6f-11e6cdb7bf85",
         "938cded2-7e06-40a0-a928-75ec6e6f0d8b",
-        "37bebf50-d727-4446-bf8f-556fa2cbd262"
+        "37bebf50-d727-4446-bf8f-556fa2cbd262",
+        "d2061f56-d17f-44b8-8c01-6eb7b6733616"
     ],
     "tutorial": ""
 }

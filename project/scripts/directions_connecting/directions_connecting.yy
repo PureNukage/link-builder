@@ -1,8 +1,8 @@
 {
-    "id": "3ade3a16-3ab5-4848-99e0-d75c8b0902d7",
+    "id": "d2061f56-d17f-44b8-8c01-6eb7b6733616",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "wire_update_ports_xy",
+    "name": "directions_connecting",
     "IsCompatibility": false,
     "IsDnD": false
 }
