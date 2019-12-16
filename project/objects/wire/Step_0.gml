@@ -26,7 +26,8 @@ switch(states)
 					for(var i=0;i<_max;i++) {
 						item_direction(id,ports_list[| i])
 					}
-					wire_generate_combinations(ports_list)
+					
+					//wire_generate_combinations(ports_list)
 				}
 			}
 		
@@ -61,6 +62,7 @@ switch(states)
 			if input.mouse_left_press and time.stream > time_spawn and placeable {
 				cell_x1 = input.grid_x
 				cell_y1 = input.grid_y
+				if port1 > -1 ds_list_clear(port1)
 				port1 = ports_check(cell_x1,cell_y1)
 			}
 		
@@ -70,6 +72,7 @@ switch(states)
 				cell_y2 = input.grid_y
 				
 				//	Port 2
+				if port2 > -1 ds_list_clear(port2)
 				port2 = ports_check(cell_x2,cell_y2)
 			
 				var _x1 = gridController.grid_positions_x[cell_x1]+(cell_width/2)
@@ -412,10 +415,10 @@ switch(states)
 							#region Connecting first and last wires
 							with _wire {
 								if i == 0 and other.port1 > -1 {
-									wire_connect(other.port1,other.cell_x1,other.cell_y1)
+									//wire_connect(other.port1,other.cell_x1,other.cell_y1)
 								}
 								if i != 0 and i == ds_list_size(other.path_objects)-1 and other.port2 > -1 {
-									wire_connect(other.port2,other.cell_x2,other.cell_y2)
+									//wire_connect(other.port2,other.cell_x2,other.cell_y2)
 								}
 							}	
 							#endregion
@@ -442,8 +445,8 @@ switch(states)
 						}
 						ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
 						debug_log("I have no path")
-						wire_connect(port1,cell_x1,cell_y1)
-						wire_connect(port2,cell_x2,cell_y2)
+						//wire_connect(port1,cell_x1,cell_y1)
+						//wire_connect(port2,cell_x2,cell_y2)
 					}
 				} 
 				//	Not placeable
