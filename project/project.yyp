@@ -55,6 +55,14 @@
             }
         },
         {
+            "Key": "1b7af8bc-3686-49b8-9ca5-c6bef5dc86e4",
+            "Value": {
+                "id": "966c7089-d88e-4d86-9754-c302d26aaebb",
+                "resourcePath": "scripts\\straight_or_corner\\straight_or_corner.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "2284ffcf-174c-4429-8617-b103552689ab",
             "Value": {
                 "id": "5405e7a8-2198-487b-9340-875883907331",
@@ -194,7 +202,7 @@
             "Key": "5b20ccfc-76b0-47ed-961e-d5336a5d1481",
             "Value": {
                 "id": "326b27a3-1710-4802-a879-304247c2dd5b",
-                "resourcePath": "scripts\\wire_update_ports_xy_connect\\wire_update_ports_xy_connect.yy",
+                "resourcePath": "scripts\\wire_check_params\\wire_check_params.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -252,6 +260,14 @@
                 "id": "d26a3096-574f-451d-859d-4c81433d5d9e",
                 "resourcePath": "options\\tvos\\options_tvos.yy",
                 "resourceType": "GMtvOSOptions"
+            }
+        },
+        {
+            "Key": "938cded2-7e06-40a0-a928-75ec6e6f0d8b",
+            "Value": {
+                "id": "809277db-6fe6-40c8-a5d4-ee744dd29c68",
+                "resourcePath": "scripts\\item_direction\\item_direction.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -507,7 +523,9 @@
         "3ade3a16-3ab5-4848-99e0-d75c8b0902d7",
         "5cea7cec-65f1-4723-a5c0-26972c71a2dd",
         "59e5b008-2217-4001-ab6f-11e6cdb7bf85",
-        "5b20ccfc-76b0-47ed-961e-d5336a5d1481"
+        "5b20ccfc-76b0-47ed-961e-d5336a5d1481",
+        "938cded2-7e06-40a0-a928-75ec6e6f0d8b",
+        "1b7af8bc-3686-49b8-9ca5-c6bef5dc86e4"
     ],
     "tutorial": ""
 }

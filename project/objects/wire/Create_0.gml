@@ -19,7 +19,7 @@ straight = true						//	Active; holds if this wire is a straight piece or a corn
 
 directions = []						//	Active; holds which sides ports are on
 for(var i=0;i<4;i++) {
-	directions[i] = -1	
+	directions[i] = 0	
 }
 
 // Inherit the parent event
