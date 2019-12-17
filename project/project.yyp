@@ -159,6 +159,14 @@
             }
         },
         {
+            "Key": "52d37926-dbf4-446e-968b-4f7735ab2a4d",
+            "Value": {
+                "id": "16c7e399-ebb5-4bd1-9694-13f8861260c9",
+                "resourcePath": "scripts\\wire_check_straight\\wire_check_straight.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "536c46f7-67ec-49c4-94ae-fd835a6a8343",
             "Value": {
                 "id": "8206e7c0-8f73-40f6-90cf-8d0c1526e84a",
@@ -418,7 +426,7 @@
             "Key": "d2061f56-d17f-44b8-8c01-6eb7b6733616",
             "Value": {
                 "id": "bfa7bfa6-a511-484a-aa77-43cb71e45773",
-                "resourcePath": "scripts\\directions_connecting\\directions_connecting.yy",
+                "resourcePath": "scripts\\corner_rotation\\corner_rotation.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -538,6 +546,7 @@
         "3ade3a16-3ab5-4848-99e0-d75c8b0902d7",
         "5cea7cec-65f1-4723-a5c0-26972c71a2dd",
         "5b20ccfc-76b0-47ed-961e-d5336a5d1481",
+        "52d37926-dbf4-446e-968b-4f7735ab2a4d",
         "536c46f7-67ec-49c4-94ae-fd835a6a8343",
         "59e5b008-2217-4001-ab6f-11e6cdb7bf85",
         "938cded2-7e06-40a0-a928-75ec6e6f0d8b",

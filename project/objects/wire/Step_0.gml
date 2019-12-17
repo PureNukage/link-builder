@@ -26,9 +26,6 @@ switch(states)
 					for(var i=0;i<_max;i++) {
 						item_direction(id,ports_list[| i])
 					}
-					
-					
-					//wire_generate_combinations(ports_list)
 				}
 			}
 		
@@ -306,6 +303,26 @@ switch(states)
 						if i > 0 and i < ds_list_size(path_objects)-1 {
 							__wire.ports[1,port_object] = path_objects[| i-1]
 							__wire.ports[0,port_object] = path_objects[| i+1]
+							
+							//	Figure out directions
+							var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
+							var _1 = port_get_direction(__wire,__wire.ports[1,port_object])
+							
+							//	Straight
+							if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {
+								__wire.straight = true
+							} else {
+								__wire.straight = false	
+							}
+							
+							__wire.sprite = __wire.sprites[__wire.straight]
+							
+							//	Set ports xy's
+							__wire.ports[0,port_x] = __wire.center_cell_x + _0[0]
+							__wire.ports[0,port_y] = __wire.center_cell_y + _0[1]
+							__wire.ports[1,port_x] = __wire.center_cell_x + _1[0]
+							__wire.ports[1,port_y] = __wire.center_cell_y + _1[1]
+							
 						}
 						#endregion
 						
@@ -315,8 +332,8 @@ switch(states)
 						}
 						#endregion			
 						
-						debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_in to ["+string(i-1)+"] "+string(__wire.ports[1,port_object]))
-						debug_log("Just set Wire's: ["+string(i)+"] "+string(__wire)+" port_out to ["+string(i+1)+"] "+string(__wire.ports[0,port_object]))
+						debug_log("Just set Wire: ["+string(i)+"] "+string(__wire)+" port to ["+string(i-1)+"] "+string(__wire.ports[1,port_object]))
+						debug_log("Just set Wire: ["+string(i)+"] "+string(__wire)+" port to ["+string(i+1)+"] "+string(__wire.ports[0,port_object]))
 								
 					}
 					#endregion
@@ -336,9 +353,23 @@ switch(states)
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
 						}
 						
+						//	Out and In
+						if (_wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] > -1) {
+							with _wire {
+								if straight {
+									var w1 = _wire.center_cell_x
+									var h1 = _wire.center_cell_y
+									var w2 = _wire.ports[0,port_object].center_cell_x
+									var h2 = _wire.ports[0,port_object].center_cell_y
+									_wire.rotation = cell_direction(w1,h1,w2,h2)
+								} else {
+									rotation = corner_rotation(id,ports)
+								}
+							}
+						}
+						
 						//	Out but no In
-						if (_wire.ports[1,port_object] == -1 and _wire.ports[0,port_object] > -1)
-						or (_wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] > -1) {
+						if (_wire.ports[1,port_object] == -1 and _wire.ports[0,port_object] > -1) {
 							var w1 = _wire.center_cell_x
 							var h1 = _wire.center_cell_y
 							var w2 = _wire.ports[0,port_object].center_cell_x
@@ -346,23 +377,11 @@ switch(states)
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
 						}
 						
-						//	In and Out 
-						if (_wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] > -1) {
-							//	Change ports 0 and 1s xy's
-							var _array = port_get_direction(_wire,_wire.ports[0,port_object])
-							_wire.ports[0,port_x] = _wire.center_cell_x+_array[0]
-							_wire.ports[0,port_y] = _wire.center_cell_y+_array[1]
-							var _array = port_get_direction(_wire,_wire.ports[1,port_object])
-							_wire.ports[1,port_x] = _wire.center_cell_x+_array[0]
-							_wire.ports[1,port_y] = _wire.center_cell_y+_array[1]
-						}
-						
 						//	Rotate my_cells_items grid and update ports
 						if _wire.rotation > 0 {
 							var _rotates = abs(_wire.rotation/90)
-							debug_log("Wire: "+"["+string(i)+"] has: "+string(_rotates)+" rotations to make")
+							//debug_log("Wire: "+"["+string(i)+"] has: "+string(_rotates)+" rotations to make")
 							for(var a=0;a<_rotates;a++) {
-								//_wire.ports = grid_rotation(-1,_wire.my_cells_items,_wire.ports)	
 								_wire.size_width = _wire.size_width + _wire.size_height
 								_wire.size_height = _wire.size_width - _wire.size_height
 								_wire.size_width = _wire.size_width - _wire.size_height
@@ -375,18 +394,7 @@ switch(states)
 							}
 						}
 						
-						//	In and Out 
-						if (_wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] > -1) {
-							//	Change ports 0 and 1s xy's
-							var _array = port_get_direction(_wire,_wire.ports[0,port_object])
-							_wire.ports[0,port_x] = _wire.center_cell_x+_array[0]
-							_wire.ports[0,port_y] = _wire.center_cell_y+_array[1]
-							var _array = port_get_direction(_wire,_wire.ports[1,port_object])
-							_wire.ports[1,port_x] = _wire.center_cell_x+_array[0]
-							_wire.ports[1,port_y] = _wire.center_cell_y+_array[1]
-						}
-						
-						debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
+						//debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
 						
 					}
 					

@@ -85,7 +85,9 @@ switch(states)
 	
 	#region Limbo
 		case states.limbo:
-			
+		
+			//	Draw the item
+			sprite_set_offset(sprite,sprite_get_width(sprite)/2-1,sprite_get_height(sprite)/2-1)
 			draw_sprite_ext(sprite,0,x,y,1,1,rotation,c_white,1)
 			
 		break

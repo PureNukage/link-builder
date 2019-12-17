@@ -1,8 +1,8 @@
 {
-    "id": "d2061f56-d17f-44b8-8c01-6eb7b6733616",
+    "id": "52d37926-dbf4-446e-968b-4f7735ab2a4d",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "directions_connecting",
+    "name": "wire_check_straight",
     "IsCompatibility": false,
     "IsDnD": false
 }
