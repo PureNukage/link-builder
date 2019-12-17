@@ -50,8 +50,8 @@ switch(mode)
 					if states = states.placement {
 						
 						#region Draw each cell for an item
-						if (topleft_cell_x > -1 and topleft_cell_x < grid_width+1) and 
-						(topleft_cell_y > -1 and topleft_cell_y < grid_height+1) {
+						if (topleft_cell_x > -1 and topleft_cell_x < grid_width) and 
+						(topleft_cell_y > -1 and topleft_cell_y < grid_height) {
 					
 							//	Drawing the rectangle of the item
 							for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {

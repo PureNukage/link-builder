@@ -95,6 +95,22 @@
             }
         },
         {
+            "Key": "37bebf50-d727-4446-bf8f-556fa2cbd262",
+            "Value": {
+                "id": "4dbfe1e7-119a-4076-bd5b-3e7c4f120d6b",
+                "resourcePath": "scripts\\port_get_direction\\port_get_direction.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "3ade3a16-3ab5-4848-99e0-d75c8b0902d7",
+            "Value": {
+                "id": "472d62a5-86ee-4adb-976f-cb789fdcc65c",
+                "resourcePath": "scripts\\wire_update_ports_xy\\wire_update_ports_xy.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "3d025c52-9a31-4e4d-88b5-33fe49a95bdd",
             "Value": {
                 "id": "c5eaa3fb-a1e9-4405-9263-9a2b77e36a32",
@@ -143,6 +159,14 @@
             }
         },
         {
+            "Key": "52d37926-dbf4-446e-968b-4f7735ab2a4d",
+            "Value": {
+                "id": "16c7e399-ebb5-4bd1-9694-13f8861260c9",
+                "resourcePath": "scripts\\wire_check_straight\\wire_check_straight.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "536c46f7-67ec-49c4-94ae-fd835a6a8343",
             "Value": {
                 "id": "8206e7c0-8f73-40f6-90cf-8d0c1526e84a",
@@ -167,11 +191,35 @@
             }
         },
         {
+            "Key": "59e5b008-2217-4001-ab6f-11e6cdb7bf85",
+            "Value": {
+                "id": "d49b9670-5719-4af5-8e28-33693f1d31a5",
+                "resourcePath": "scripts\\node_update_ports_xy\\node_update_ports_xy.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "5ae065ec-3491-458e-a0fe-674f6c2377c6",
             "Value": {
                 "id": "88253632-cd5a-48cc-b78c-03e8526d602a",
                 "resourcePath": "views\\5ae065ec-3491-458e-a0fe-674f6c2377c6.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "5b20ccfc-76b0-47ed-961e-d5336a5d1481",
+            "Value": {
+                "id": "326b27a3-1710-4802-a879-304247c2dd5b",
+                "resourcePath": "scripts\\wire_generate_combinations\\wire_generate_combinations.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "5cea7cec-65f1-4723-a5c0-26972c71a2dd",
+            "Value": {
+                "id": "7a8ec043-6f44-4fff-8f30-e0c79c1b31a2",
+                "resourcePath": "scripts\\wire_connect\\wire_connect.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -223,10 +271,26 @@
             }
         },
         {
+            "Key": "938cded2-7e06-40a0-a928-75ec6e6f0d8b",
+            "Value": {
+                "id": "809277db-6fe6-40c8-a5d4-ee744dd29c68",
+                "resourcePath": "scripts\\item_direction\\item_direction.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "9d8c70c1-2c6b-484c-9c58-2df8ecf69283",
             "Value": {
                 "id": "760d8b36-7d75-47eb-ae65-6b3564a4283f",
                 "resourcePath": "views\\9d8c70c1-2c6b-484c-9c58-2df8ecf69283.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "9e55cd9c-2af1-4e98-8fa7-efffa76f7356",
+            "Value": {
+                "id": "7fc6f556-a96c-4bad-bfbf-4fb31e960197",
+                "resourcePath": "views\\9e55cd9c-2af1-4e98-8fa7-efffa76f7356.yy",
                 "resourceType": "GMFolder"
             }
         },
@@ -259,6 +323,14 @@
             "Value": {
                 "id": "73ac1475-02f0-4742-9a20-9e4b242da359",
                 "resourcePath": "sprites\\s_man1\\s_man1.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "b000b01d-cd0b-41eb-9796-a58528a6d4fa",
+            "Value": {
+                "id": "65891a59-132c-437d-b057-0f9056cca3b4",
+                "resourcePath": "sprites\\s_wire_corner\\s_wire_corner.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -314,7 +386,7 @@
             "Key": "c54315ec-2931-4435-a989-274e26269826",
             "Value": {
                 "id": "6d24fad5-4621-4f65-8823-28d233c6a12f",
-                "resourcePath": "scripts\\check_cell_ports\\check_cell_ports.yy",
+                "resourcePath": "scripts\\ports_check\\ports_check.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -348,6 +420,14 @@
                 "id": "67a1b7f9-dec7-4608-b7c4-54cb34f2a7d9",
                 "resourcePath": "views\\d11319b4-3630-4ab4-8204-d7c36d652dbe.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "d2061f56-d17f-44b8-8c01-6eb7b6733616",
+            "Value": {
+                "id": "bfa7bfa6-a511-484a-aa77-43cb71e45773",
+                "resourcePath": "scripts\\corner_rotation\\corner_rotation.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -463,7 +543,15 @@
         "aedf22a7-16e3-4f2f-84a5-cefa16102642",
         "3d025c52-9a31-4e4d-88b5-33fe49a95bdd",
         "c54315ec-2931-4435-a989-274e26269826",
-        "536c46f7-67ec-49c4-94ae-fd835a6a8343"
+        "3ade3a16-3ab5-4848-99e0-d75c8b0902d7",
+        "5cea7cec-65f1-4723-a5c0-26972c71a2dd",
+        "5b20ccfc-76b0-47ed-961e-d5336a5d1481",
+        "52d37926-dbf4-446e-968b-4f7735ab2a4d",
+        "536c46f7-67ec-49c4-94ae-fd835a6a8343",
+        "59e5b008-2217-4001-ab6f-11e6cdb7bf85",
+        "938cded2-7e06-40a0-a928-75ec6e6f0d8b",
+        "37bebf50-d727-4446-bf8f-556fa2cbd262",
+        "d2061f56-d17f-44b8-8c01-6eb7b6733616"
     ],
     "tutorial": ""
 }

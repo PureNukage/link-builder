@@ -81,16 +81,16 @@ if _size_width == _size_height {
 					var new_cell_x = (new_size_width-1) - h
 					var new_cell_y = w
 				
-					//	If this cell is a port
-					if _cell == -2 and argument_count == 3 {
-						for(var i=0;i<array_height_2d(_ports);i++) {
-							//	If this is the port we're moving, update its x, y variables
-							if _ports[i,port_x] == w and _ports[i,port_y] == h {
-								new_array[i,port_x] = new_cell_x
-								new_array[i,port_y] = new_cell_y
-							}
-						}
-					}
+					////	If this cell is a port
+					//if _cell == -2 and argument_count == 3 {
+					//	for(var i=0;i<array_height_2d(_ports);i++) {
+					//		//	If this is the port we're moving, update its x, y variables
+					//		if _ports[i,port_x] == w and _ports[i,port_y] == h {
+					//			new_array[i,port_x] = new_cell_x
+					//			new_array[i,port_y] = new_cell_y
+					//		}
+					//	}
+					//}
 		
 					new_grid[# new_cell_x, new_cell_y] = _cell
 		
@@ -111,15 +111,15 @@ if _size_width == _size_height {
 					var new_cell_y = (new_size_height-1) - w
 				
 					//	If this cell is a port
-					if _cell == -2 and argument_count == 3 {
-						for(var i=0;i<array_height_2d(_ports);i++) {
-							//	If this is the port we're moving, update its x, y variables
-							if _ports[i,port_x] == w and _ports[i,port_y] == h {
-								new_array[i,port_x] = new_cell_x
-								new_array[i,port_y] = new_cell_y
-							}
-						}
-					}
+					//if _cell == -2 and argument_count == 3 {
+					//	for(var i=0;i<array_height_2d(_ports);i++) {
+					//		//	If this is the port we're moving, update its x, y variables
+					//		if _ports[i,port_x] == w and _ports[i,port_y] == h {
+					//			new_array[i,port_x] = new_cell_x
+					//			new_array[i,port_y] = new_cell_y
+					//		}
+					//	}
+					//}
 		
 					new_grid[# new_cell_x, new_cell_y] = _cell
 					//debug_log("x: "+string(new_cell_x)+", y: "+string(new_cell_y))

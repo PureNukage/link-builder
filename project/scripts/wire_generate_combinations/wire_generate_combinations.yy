@@ -1,8 +1,8 @@
 {
-    "id": "c54315ec-2931-4435-a989-274e26269826",
+    "id": "5b20ccfc-76b0-47ed-961e-d5336a5d1481",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "check_cell_ports",
+    "name": "wire_generate_combinations",
     "IsCompatibility": false,
     "IsDnD": false
 }
