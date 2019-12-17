@@ -353,6 +353,9 @@ switch(states)
 							var w1 = _wire.ports[1,port_object].center_cell_x
 							var h1 = _wire.ports[1,port_object].center_cell_y
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
+							with _wire {
+								wire_update_ports_xy(rotation)	
+							}
 						}
 						
 						//	Out and In
@@ -367,7 +370,6 @@ switch(states)
 								} else {
 									rotation = corner_rotation(id,ports)
 								}
-								//wire_update_ports_xy(rotation)
 							}
 						}
 						
@@ -378,6 +380,9 @@ switch(states)
 							var w2 = _wire.ports[0,port_object].center_cell_x
 							var h2 = _wire.ports[0,port_object].center_cell_y
 							_wire.rotation = cell_direction(w1,h1,w2,h2)
+							with _wire {
+								wire_update_ports_xy(rotation)	
+							}
 						}
 						
 						//	Rotate my_cells_items grid and update ports
@@ -397,7 +402,7 @@ switch(states)
 							}
 						}
 						
-						//debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
+						debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
 						
 					}
 					
@@ -438,7 +443,7 @@ switch(states)
 								ds_list_add(_grid_x,_wire.ports[_p,port_x])
 								ds_list_add(_grid_y,_wire.ports[_p,port_y])
 								gridController.grid_items[# _wire.ports[_p,port_x],_wire.ports[_p,port_y]] = -2
-								debug_log("Just set Wire["+string(i)+"] port "+string(_p)+" xy to "+string(_wire.ports[_p,port_x])+","+string(_wire.ports[_p,port_y]))
+								//debug_log("Just set Wire["+string(i)+"] port "+string(_p)+" xy to "+string(_wire.ports[_p,port_x])+","+string(_wire.ports[_p,port_y]))
 							}
 							ds_grid_set_grid_region(gridController.grid_items,_wire.my_cells_items,0,0,_wire.size_width,_wire.size_height,_wire.topleft_cell_x,_wire.topleft_cell_y)
 							#region Connecting first and last wires
