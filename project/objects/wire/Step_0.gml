@@ -295,6 +295,37 @@ switch(states)
 							//	There is another wire ahead of us
 							else {
 								__wire.ports[0,port_object] = path_objects[| i+1]
+								
+								//	We are connecting items!
+								if port1 > -1 {
+									for(c=0;c<ds_list_size(port1);c++) {
+										var connecting_item = port1[| c]
+										
+										__wire.ports[1,port_object] = connecting_item
+										var _directions = port_get_direction(__wire,connecting_item)
+										__wire.ports[1,port_x] = __wire.center_cell_x+_directions[0]
+										__wire.ports[1,port_y] = __wire.center_cell_y+_directions[1]
+										
+										//	Figure out directions
+										var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
+										var _1 = port_get_direction(__wire,__wire.ports[1,port_object])
+							
+										//	Straight
+										if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {
+											__wire.straight = true
+										} else {
+											__wire.straight = false	
+										}
+							
+										__wire.sprite = __wire.sprites[__wire.straight]
+							
+										//	Set ports xy's
+										__wire.ports[0,port_x] = __wire.center_cell_x + _0[0]
+										__wire.ports[0,port_y] = __wire.center_cell_y + _0[1]
+										__wire.ports[1,port_x] = __wire.center_cell_x + _1[0]
+										__wire.ports[1,port_y] = __wire.center_cell_y + _1[1]
+									}
+								}	
 							}
 						} 
 						#endregion
@@ -331,6 +362,37 @@ switch(states)
 						#region Last Wire
 						if i == ds_list_size(path_points_x)-1 and i != 0 {
 							__wire.ports[1,port_object] = path_objects[| i-1]
+							
+								//	We are connecting items!
+								if port2 > -1 {
+									for(c=0;c<ds_list_size(port2);c++) {
+										var connecting_item = port2[| c]
+										
+										__wire.ports[0,port_object] = connecting_item
+										var _directions = port_get_direction(__wire,connecting_item)
+										__wire.ports[0,port_x] = __wire.center_cell_x+_directions[0]
+										__wire.ports[0,port_y] = __wire.center_cell_y+_directions[1]
+										
+										//	Figure out directions
+										var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
+										var _1 = port_get_direction(__wire,__wire.ports[1,port_object])
+							
+										//	Straight
+										if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {
+											__wire.straight = true
+										} else {
+											__wire.straight = false	
+										}
+							
+										__wire.sprite = __wire.sprites[__wire.straight]
+							
+										//	Set ports xy's
+										__wire.ports[0,port_x] = __wire.center_cell_x + _0[0]
+										__wire.ports[0,port_y] = __wire.center_cell_y + _0[1]
+										__wire.ports[1,port_x] = __wire.center_cell_x + _1[0]
+										__wire.ports[1,port_y] = __wire.center_cell_y + _1[1]
+									}
+								}	
 						}
 						#endregion			
 						
