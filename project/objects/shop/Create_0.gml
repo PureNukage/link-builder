@@ -21,17 +21,12 @@ item[0,3] = node		//	Object index of the item
 item[1,0] = "Data"
 item[1,1] = 1000
 item[1,2] = 0
-item[1,3] = 0
+item[1,3] = data
 
-item[2,0] = "Port"
+item[2,0] = "Wire"
 item[2,1] = 0
 item[2,2] = 0
-item[2,3] = port
-
-item[3,0] = "Wire"
-item[3,1] = 0
-item[3,2] = 0
-item[3,3] = wire
+item[2,3] = wire
 
 
 item_height = 64

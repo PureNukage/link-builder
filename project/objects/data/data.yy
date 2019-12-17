@@ -2,7 +2,7 @@
     "id": "4b4c16f0-c41d-4d5b-ae4d-5a189b07aee7",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "port",
+    "name": "data",
     "eventList": [
         {
             "id": "5b4f0390-c639-4784-b691-5083b2dfe322",
@@ -12,6 +12,26 @@
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
             "eventtype": 0,
+            "m_owner": "4b4c16f0-c41d-4d5b-ae4d-5a189b07aee7"
+        },
+        {
+            "id": "802117e3-6a5a-4b23-8c8c-006b7ed5a659",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 8,
+            "m_owner": "4b4c16f0-c41d-4d5b-ae4d-5a189b07aee7"
+        },
+        {
+            "id": "f9ba8bab-1975-4142-8d96-c483d85c716d",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 3,
             "m_owner": "4b4c16f0-c41d-4d5b-ae4d-5a189b07aee7"
         }
     ],
