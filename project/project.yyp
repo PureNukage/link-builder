@@ -47,6 +47,14 @@
             }
         },
         {
+            "Key": "14e52a5d-8cc7-4062-a49e-fbed381610f7",
+            "Value": {
+                "id": "4ccea9eb-62f7-4db3-8106-f144af63e6f1",
+                "resourcePath": "objects\\system\\system.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "16fd5f67-b098-4dab-9660-2f23ce169196",
             "Value": {
                 "id": "00c3c48f-b3c0-4cd8-b943-4b366692a0e4",

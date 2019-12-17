@@ -6,6 +6,18 @@ switch(states)
 	
 		if input.grid_moved {
 			node_update_ports_xy(rotation)	
+			
+			for(var i=0;i<ports_count;i++) {
+				var _x = ports[i,port_x] 
+				var _y = ports[i,port_y]
+				var _ports = ports_check(_x,_y)
+				if _ports > -1 {
+					port[i] = _ports[| 0]
+					debug_log("There are "+string(ds_list_size(_ports))+" ports at Port["+string(i)+"]")
+				} else {
+					port[i] = -1	
+				}
+			}
 		}
 	
 		// Placement
@@ -31,6 +43,10 @@ switch(states)
 				ds_list_add(_grid_x,ports[_p,port_x])
 				ds_list_add(_grid_y,ports[_p,port_y])
 				gridController.grid_items[# ports[_p,port_x], ports[_p,port_y]] = -2
+				if port[_p] > 0 {
+					ports[_p,port_object] = port[_p]
+					debug_log("Connecting "+string(port[_p]+" to Port["+string(_p)+"]"))
+				}
 			}
 			
 		}
