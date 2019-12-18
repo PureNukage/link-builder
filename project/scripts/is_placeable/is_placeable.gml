@@ -3,7 +3,7 @@ var _placeable = 0
 for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 	for(var h=topleft_cell_y;h<topleft_cell_y+size_height;h++) {
 		
-		if (w > -1 and w < grid_width+1) and (h > -1 and h < grid_height+1) {
+		if (w > -1 and w < grid_width) and (h > -1 and h < grid_height) {
 								
 			if gridController.grid_items[# w, h] < 0 {
 				

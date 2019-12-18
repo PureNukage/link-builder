@@ -17,6 +17,7 @@ switch(states)
 			states = states.placed
 			
 			ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
+			item_placeid()
 			
 			var _x1 = gridController.grid_positions_x[topleft_cell_x]+(cell_width/2)
 			var _y1 = gridController.grid_positions_y[topleft_cell_y]+(cell_height/2)

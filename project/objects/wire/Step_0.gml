@@ -492,9 +492,6 @@ switch(states)
 							_wire.states = states.placed
 							var _x = _wire.center_cell_x
 							var _y = _wire.center_cell_y
-							//with _wire {
-							//	wire_update_ports_xy(_wire.rotation)	
-							//}
 							mp_grid_add_cell(gridController.mp_grid,_x, _y)
 							//	Add ports
 							for(var _p=0;_p<_wire.ports_count;_p++) {
@@ -508,16 +505,8 @@ switch(states)
 								//debug_log("Just set Wire["+string(i)+"] port "+string(_p)+" xy to "+string(_wire.ports[_p,port_x])+","+string(_wire.ports[_p,port_y]))
 							}
 							ds_grid_set_grid_region(gridController.grid_items,_wire.my_cells_items,0,0,_wire.size_width,_wire.size_height,_wire.topleft_cell_x,_wire.topleft_cell_y)
-							#region Connecting first and last wires
-							with _wire {
-								if i == 0 and other.port1 > -1 {
-									//wire_connect(other.port1,other.cell_x1,other.cell_y1)
-								}
-								if i != 0 and i == ds_list_size(other.path_objects)-1 and other.port2 > -1 {
-									//wire_connect(other.port2,other.cell_x2,other.cell_y2)
-								}
-							}	
-							#endregion
+							debug_log("Placing my index at cell: "+string(_wire.topleft_cell_x)+","+string(_wire.topleft_cell_y))
+							item_placeid(_wire)
 						}
 						instance_destroy()
 						debug_log("I have a path")
@@ -540,6 +529,7 @@ switch(states)
 							gridController.grid_items[# ports[_p,port_x], ports[_p,port_y]] = -2
 						}
 						ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
+						item_placeid()
 						
 						if port1 > -1 {
 							for(var c=0;c<ds_list_size(port1);c++) {

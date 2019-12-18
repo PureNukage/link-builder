@@ -10,10 +10,23 @@ switch(states)
 			for(var i=0;i<ports_count;i++) {
 				var _x = ports[i,port_x] 
 				var _y = ports[i,port_y]
-				var _ports = ports_check(_x,_y)
-				if _ports > -1 {
-					port[i] = _ports[| 0]
-					debug_log("There are "+string(ds_list_size(_ports))+" ports at Port["+string(i)+"]")
+				if gridController.grid_items[# _x, _y] == wire {
+					var _wire = gridController.grid_objects[# _x, _y]
+					var free_ports_array = []
+					var free_ports = 0
+					for(var p=0;p<_wire.ports_count;p++) {
+						if _wire.ports[p,port_object] == -1 {
+							free_ports_array[p] = 1
+							free_ports++
+						} else {
+							free_ports_array[p] = 0
+						}
+					}
+					if free_ports > 0 {
+						
+					}
+						
+					//debug_log("There are "+string(ds_list_size(_ports))+" ports at Port["+string(i)+"]")
 				} else {
 					port[i] = -1	
 				}
@@ -26,6 +39,7 @@ switch(states)
 			states = states.placed
 			
 			ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
+			item_placeid()
 			
 			var _x1 = gridController.grid_positions_x[topleft_cell_x]+(cell_width/2)
 			var _y1 = gridController.grid_positions_y[topleft_cell_y]+(cell_height/2)
@@ -45,7 +59,7 @@ switch(states)
 				gridController.grid_items[# ports[_p,port_x], ports[_p,port_y]] = -2
 				if port[_p] > 0 {
 					ports[_p,port_object] = port[_p]
-					debug_log("Connecting "+string(port[_p]+" to Port["+string(_p)+"]"))
+					debug_log("Connecting "+string(port[_p])+" to Port["+string(_p)+"]")
 				}
 			}
 			

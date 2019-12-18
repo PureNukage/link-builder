@@ -24,10 +24,10 @@ switch(states)
 					bottomright_cell_x = topleft_cell_x + (size_width-1)
 					bottomright_cell_y = topleft_cell_y + (size_height-1)
 			
-					if (topleft_cell_x > -1 and topleft_cell_x < grid_width+1) and 
-					(topleft_cell_y > -1 and topleft_cell_y < grid_height+1) and 
-					(bottomright_cell_x > -1 and bottomright_cell_x < grid_width+1) and
-					(bottomright_cell_y > -1 and bottomright_cell_y < grid_height+1) {
+					if (topleft_cell_x > -1 and topleft_cell_x < grid_width) and 
+					(topleft_cell_y > -1 and topleft_cell_y < grid_height) and 
+					(bottomright_cell_x > -1 and bottomright_cell_x < grid_width) and
+					(bottomright_cell_y > -1 and bottomright_cell_y < grid_height) {
 						var _x, _y
 						_x = gridController.grid_positions_x[topleft_cell_x]
 						for(var _w=0;_w<size_width;_w++) {
