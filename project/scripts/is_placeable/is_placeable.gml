@@ -5,7 +5,7 @@ for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 		
 		if (w > -1 and w < grid_width) and (h > -1 and h < grid_height) {
 								
-			if gridController.grid_items[# w, h] < 0 {
+			if gridController.grid_items[# w, h] == -1 or gridController.grid_items[# w, h] == -2 {
 				
 			} else {
 				_placeable++		

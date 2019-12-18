@@ -508,6 +508,13 @@ switch(states)
 							debug_log("Placing my index at cell: "+string(_wire.topleft_cell_x)+","+string(_wire.topleft_cell_y))
 							item_placeid(_wire)
 						}
+						
+						for(var i=0;i<ds_list_size(path_objects);i++) {
+							with path_objects[| i] {
+								item_index_priority()	
+							}
+						}
+						
 						instance_destroy()
 						debug_log("I have a path")
 					}
