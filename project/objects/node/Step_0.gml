@@ -23,6 +23,19 @@ switch(states)
 						}
 					}
 					if free_ports > 0 {
+						var port_index = -1
+						for(var p=0;p<_wire.ports_count;p++) {
+							if free_ports_array[p] == 1 {
+								port_index = p
+								_wire.port[port_object] = id
+							}
+						}
+						free_ports--
+						if free_ports == 0 {
+								
+						} else if free_ports == 1 {
+								
+						}
 						
 					}
 						

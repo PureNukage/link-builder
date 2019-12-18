@@ -255,6 +255,14 @@
             }
         },
         {
+            "Key": "87b73aae-eecb-4463-9a80-442f2d84b831",
+            "Value": {
+                "id": "29d6d669-91bc-43df-82a7-f80d98d6279d",
+                "resourcePath": "scripts\\wire_connect\\wire_connect.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "891f2300-30df-460d-ab5d-42068507e6bd",
             "Value": {
                 "id": "fa51a2b7-4710-491d-aa67-c7f945247308",
@@ -577,6 +585,7 @@
         "c54315ec-2931-4435-a989-274e26269826",
         "3ade3a16-3ab5-4848-99e0-d75c8b0902d7",
         "5b20ccfc-76b0-47ed-961e-d5336a5d1481",
+        "87b73aae-eecb-4463-9a80-442f2d84b831",
         "59e5b008-2217-4001-ab6f-11e6cdb7bf85",
         "af3d0303-d364-4fc6-9a23-1a88a74f9332",
         "536c46f7-67ec-49c4-94ae-fd835a6a8343",
