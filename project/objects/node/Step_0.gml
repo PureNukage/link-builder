@@ -14,32 +14,64 @@ switch(states)
 					var _wire = gridController.grid_objects[# _x, _y]
 					var free_ports_array = []
 					var free_ports = 0
+					var port_index = -1
 					for(var p=0;p<_wire.ports_count;p++) {
 						if _wire.ports[p,port_object] == -1 {
-							free_ports_array[p] = 1
+							free_ports_array[p,port_object] = id
 							free_ports++
+							port_index = p
 						} else {
-							free_ports_array[p] = 0
+							free_ports_array[p,port_object] = _wire.ports[p,port_object]
 						}
+						free_ports_array[p,port_x] = _wire.ports[p,port_x]
+						free_ports_array[p,port_y] = _wire.ports[p,port_y]
 					}
 					if free_ports > 0 {
-						var port_index = -1
-						for(var p=0;p<_wire.ports_count;p++) {
-							if free_ports_array[p] == 1 {
-								port_index = p
-								_wire.port[port_object] = id
-							}
-						}
 						free_ports--
 						if free_ports == 0 {
-								
+							#region Determine straight or corner
+							//	Figure out directions
+							var _0 = port_get_direction(_wire,free_ports_array[0,port_object])
+							var _1 = port_get_direction(_wire,free_ports_array[1,port_object])
+							
+							//	Straight
+							if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {
+								_wire.straight = true
+							} else {
+								_wire.straight = false	
+							}						
+							#endregion
+							_wire.sprite = _wire.sprites[_wire.straight]
+							if _wire.straight {
+								_wire.rotation = cell_direction(_wire.center_cell_x,_wire.center_cell_y,center_cell_x,center_cell_y)
+							} else {
+								_wire.rotation = corner_rotation(_wire,free_ports_array)	
+							}
 						} else if free_ports == 1 {
-								
+							_wire.straight = true	
+							_wire.rotation = cell_direction(_wire.center_cell_x,_wire.center_cell_y,center_cell_x,center_cell_y)
+							var array = port_get_direction(_wire,id)
+							repeat(2) {
+								var _index = ds_list_find_index(gridController.grid_port_objects,_wire)
+								ds_list_delete(gridController.grid_port_objects,_index)
+								ds_list_delete(gridController.grid_port_x,_index)
+								ds_list_delete(gridController.grid_port_y,_index)
+							}
+							if gridController.grid_items[# _wire.ports[port_index,port_x], _wire.ports[port_index,port_y]] == -2 
+							gridController.grid_items[# _wire.ports[port_index,port_x], _wire.ports[port_index,port_y]] = -1
+							
+							_wire.ports[port_index,port_x] = _wire.center_cell_x + array[0]
+							_wire.ports[port_index,port_y] = _wire.center_cell_y + array[1]
+							gridController.grid_items[# _wire.ports[port_index,port_x], _wire.ports[port_index,port_y]] = -2
+							port_index = !port_index
+							if gridController.grid_items[# _wire.ports[port_index,port_x], _wire.ports[port_index,port_y]] == -2 
+							gridController.grid_items[# _wire.ports[port_index,port_x], _wire.ports[port_index,port_y]] = -1
+							_wire.ports[port_index,port_x] = _wire.center_cell_x + (array[0]*-1)
+							_wire.ports[port_index,port_y] = _wire.center_cell_y + (array[1]*-1)
+							gridController.grid_items[# _wire.ports[port_index,port_x], _wire.ports[port_index,port_y]] = -2
 						}
 						
-					}
-						
-					//debug_log("There are "+string(ds_list_size(_ports))+" ports at Port["+string(i)+"]")
+					}						
 				} else {
 					port[i] = -1	
 				}
