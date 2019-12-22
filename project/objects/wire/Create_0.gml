@@ -19,6 +19,9 @@ time_spawn = time.stream						//	Active; holds the time this wire spawned
 port1 = -1										//	Active; holds the id of the first item we're connecting to
 port2 = -1										//	Active; holds the id of the second item we're connecting to
 straight = true									//	Active; holds if this wire is a straight piece or a corner piece
+sockets = []
+sockets[0] = -1
+sockets[1] = -1
 
 // Inherit the parent event
 event_inherited()

@@ -10,5 +10,7 @@ switch(states)
 		sprite_set_offset(s_eth,sprite_get_width(s_eth)/2-1,sprite_get_height(s_eth)/2-1)
 		draw_sprite(s_eth,-1,x,y-100)
 		
+		draw_sockets()
+		
 	break
 }

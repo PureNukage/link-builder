@@ -283,6 +283,13 @@ switch(states)
 										__wire.ports[1,port_x] = __wire.center_cell_x+_directions[0]
 										__wire.ports[1,port_y] = __wire.center_cell_y+_directions[1]
 										
+										//	Set connecting_items port too
+										for(var p=0;p<connecting_item.ports_count;p++) {
+											if connecting_item.ports[p,port_x] == __wire.center_cell_x and connecting_item.ports[p,port_y] == __wire.center_cell_y {
+												connecting_item.ports[p,port_object] = __wire	
+											}
+										}
+										
 										//	Figure out directions
 										var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
 										var _1 = port_get_direction(__wire,__wire.ports[1,port_object])
@@ -349,6 +356,13 @@ switch(states)
 										var _directions = port_get_direction(__wire,connecting_item)
 										__wire.ports[0,port_x] = __wire.center_cell_x+_directions[0]
 										__wire.ports[0,port_y] = __wire.center_cell_y+_directions[1]
+										
+										//	Set connecting_items port too
+										for(var p=0;p<connecting_item.ports_count;p++) {
+											if connecting_item.ports[p,port_x] == __wire.center_cell_x and connecting_item.ports[p,port_y] == __wire.center_cell_y {
+												connecting_item.ports[p,port_object] = __wire	
+											}
+										}
 										
 										//	Figure out directions
 										var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
@@ -543,6 +557,13 @@ switch(states)
 											}
 										}
 									
+									}
+									
+									//	Set connecting_items port too
+									for(var p=0;p<connecting_port.ports_count;p++) {
+										if connecting_port.ports[p,port_x] == _wire.center_cell_x and connecting_port.ports[p,port_y] == _wire.center_cell_y {
+											connecting_port.ports[p,port_object] = _wire	
+										}
 									}
 							}
 								

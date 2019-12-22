@@ -119,6 +119,14 @@
             }
         },
         {
+            "Key": "272e4579-440a-4927-897d-6382e10fb07f",
+            "Value": {
+                "id": "09274bdb-b7ef-49f9-895b-cc45a6c8649b",
+                "resourcePath": "sprites\\s_wire_socket\\s_wire_socket.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "280b89e1-d35c-42de-965a-c6c68c84c139",
             "Value": {
                 "id": "2374e243-c296-42a8-9694-094606d9fa54",
@@ -364,6 +372,14 @@
                 "id": "bcac542e-fe92-41cb-b4f2-1ee8a1811bea",
                 "resourcePath": "options\\amazonfire\\options_amazonfire.yy",
                 "resourceType": "GMAmazonFireOptions"
+            }
+        },
+        {
+            "Key": "a5879b47-81fd-4984-86b1-bc1097775565",
+            "Value": {
+                "id": "b8433b68-e2cf-41ea-b4be-0e7ae92ea055",
+                "resourcePath": "scripts\\draw_sockets\\draw_sockets.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -675,6 +691,7 @@
         "c54315ec-2931-4435-a989-274e26269826",
         "280b89e1-d35c-42de-965a-c6c68c84c139",
         "a5c07faa-d6cf-456e-af27-b25d8a0f5d2b",
+        "a5879b47-81fd-4984-86b1-bc1097775565",
         "536c46f7-67ec-49c4-94ae-fd835a6a8343",
         "aef694f0-5b8d-495f-b4ca-b32285869617",
         "0869fb7d-84d2-4491-9a4c-5fefc2130f70"
