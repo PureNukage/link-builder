@@ -7,18 +7,10 @@ switch(states)
 		
 			//	Update ports (and debug if ports are at this cell xy)
 			if input.grid_moved {
-				for(var i=0;i<4;i++) {
-					directions[i] = 0	
-				}
 				wire_update_ports_xy(rotation)
 				var ports_list = ports_check(input.grid_x,input.grid_y)
 				if ports_list > 0 {
 					debug_log("There are "+string(ds_list_size(ports_list))+" ports here!")
-					var _max = ds_list_size(ports_list)
-					var _max = clamp(_max,1,4)
-					for(var i=0;i<_max;i++) {
-						item_direction(id,ports_list[| i])
-					}
 				}
 			}
 		

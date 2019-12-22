@@ -1,8 +1,8 @@
 {
-    "id": "938cded2-7e06-40a0-a928-75ec6e6f0d8b",
+    "id": "0fad8366-a0cb-44ec-bf41-961058e7bc9c",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "item_direction",
+    "name": "place_kiosk",
     "IsCompatibility": false,
     "IsDnD": false
 }

@@ -4,10 +4,7 @@ switch(states)
 	case states.placement:
 		
 		//	Draw the grid outline
-		if (topleft_cell_x > -1 and topleft_cell_x < grid_width+1) and 
-		(topleft_cell_y > -1 and topleft_cell_y < grid_height+1) and 
-		(bottomright_cell_x > -1 and bottomright_cell_x < grid_width+1) and
-		(bottomright_cell_y > -1 and bottomright_cell_y < grid_height+1) {
+		if mouse_in_grid {
 			var _x0 = my_cells_x[0]
 			var _y0 = my_cells_y[0]
 			var _x1 = my_cells_x[size_width-1]
