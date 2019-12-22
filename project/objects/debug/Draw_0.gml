@@ -26,10 +26,18 @@ switch(mode)
 							if grid_items[# _w,_h] > -1 {
 								draw_set_color(c_orange)
 							} 
+							
+							if other.draw_systems and grid_items[# _w, _h] > -1 {
+								var _id = grid_objects[# _w, _h]
+								var _index = ds_list_find_index(systemController.systems,_id.System)
+								draw_set_color(system_colors(_index))
+							}
+							
 							//	This cell contains a port
 							else if grid_items[# _w, _h] == -2 {
 								draw_set_color(c_purple)	
 							}
+							
 								//	Drawing the rectangle
 								draw_set_alpha(.33)
 								draw_rectangle(_x+3,_y+3,_x+cell_width-3,_y+cell_height-3,false)
@@ -47,7 +55,7 @@ switch(mode)
 				with c_item {
 					
 					//	If item is being placed
-					if states = states.placement {
+					if states == states.placement {
 						
 						#region Draw each cell for an item
 						if (topleft_cell_x > -1 and topleft_cell_x < grid_width) and 
@@ -67,6 +75,27 @@ switch(mode)
 								}
 							}
 						}
+						#endregion
+						
+						#region Draw ports
+						
+						for(var i=0;i<ports_count;i++) {
+							var _w = ports[i,port_x]
+							var _h = ports[i,port_y]
+							
+							if _w > -1 and _w < grid_width and _h > -1 and _h < grid_height {
+								var _x1 = gridController.grid_positions_x[_w]
+								var _y1 = gridController.grid_positions_y[_h]
+								var _x2 = _x1 + cell_width
+								var _y2 = _y1 + cell_height
+							
+								draw_set_color(c_purple)
+								draw_set_alpha(.33)
+								draw_rectangle(_x1,_y1,_x2,_y2,false)
+								draw_set_alpha(1)
+							}
+						}
+						
 						#endregion
 						
 					}

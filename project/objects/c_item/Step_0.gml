@@ -5,7 +5,7 @@ switch(states)
 		
 			if input.grid_x != -1 and input.grid_y != -1 {
 		
-				if input.grid_moved == true {
+				if input.grid_moved {
 					
 					var _xx = gridController.grid_positions_x[input.grid_x]
 					var _yy = gridController.grid_positions_y[input.grid_y]
@@ -24,10 +24,7 @@ switch(states)
 					bottomright_cell_x = topleft_cell_x + (size_width-1)
 					bottomright_cell_y = topleft_cell_y + (size_height-1)
 			
-					if (topleft_cell_x > -1 and topleft_cell_x < grid_width) and 
-					(topleft_cell_y > -1 and topleft_cell_y < grid_height) and 
-					(bottomright_cell_x > -1 and bottomright_cell_x < grid_width) and
-					(bottomright_cell_y > -1 and bottomright_cell_y < grid_height) {
+					if mouse_in_grid {
 						var _x, _y
 						_x = gridController.grid_positions_x[topleft_cell_x]
 						for(var _w=0;_w<size_width;_w++) {
@@ -49,7 +46,6 @@ switch(states)
 				//	Rotation
 				if (input.rotate_right or input.rotate_left) {
 					var _direction = input.rotate_right - input.rotate_left
-					//ports = grid_rotation(_direction,my_cells_items,ports)
 					if _direction == 1 {
 						rotation -= 90
 					} else {

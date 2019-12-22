@@ -11,6 +11,11 @@ switch(states)
 		if input.rotate_right or input.rotate_left {
 			data_update_ports_xy(rotation)
 		}
+		
+		if abs(rotation) == 360 {
+			rotation = 0
+			data_update_ports_xy(rotation)
+		}
 	
 		if input.mouse_left_press and placeable {
 			
@@ -36,6 +41,8 @@ switch(states)
 				ds_list_add(_grid_y,ports[_p,port_y])
 				gridController.grid_items[# ports[_p,port_x], ports[_p,port_y]] = -2
 			}
+			
+			system_check()
 			
 		}	
 	

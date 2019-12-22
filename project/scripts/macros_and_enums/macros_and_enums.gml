@@ -27,3 +27,5 @@ enum mode {
 
 #macro gui_mouse_x device_mouse_x_to_gui(0)
 #macro gui_mouse_y device_mouse_y_to_gui(0)
+
+#macro mouse_in_grid (topleft_cell_x > -1 and bottomright_cell_x < grid_width) and (topleft_cell_y > -1 and bottomright_cell_y < grid_height)

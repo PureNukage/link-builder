@@ -7,25 +7,10 @@ switch(states)
 		
 			//	Update ports (and debug if ports are at this cell xy)
 			if input.grid_moved {
-				for(var i=0;i<4;i++) {
-					directions[i] = 0	
-				}
 				wire_update_ports_xy(rotation)
-				#region Placeable check
-					if (topleft_cell_x > -1 and bottomright_cell_x < grid_width)
-					and (topleft_cell_y > -1 and bottomright_cell_y < grid_height) 
-					and (gridController.grid_items[# center_cell_x, center_cell_y] < 0) {
-						placeable = true
-					}			
-				#endregion
 				var ports_list = ports_check(input.grid_x,input.grid_y)
 				if ports_list > 0 {
 					debug_log("There are "+string(ds_list_size(ports_list))+" ports here!")
-					var _max = ds_list_size(ports_list)
-					var _max = clamp(_max,1,4)
-					for(var i=0;i<_max;i++) {
-						item_direction(id,ports_list[| i])
-					}
 				}
 			}
 		
@@ -33,20 +18,12 @@ switch(states)
 			if input.rotate_right or input.rotate_left {
 				wire_update_ports_xy(rotation)
 				placeable = is_placeable()
-				#region Placeable check
-					if (topleft_cell_x > -1 and bottomright_cell_x < grid_width)
-					and (topleft_cell_y > -1 and bottomright_cell_y < grid_height) 
-					and (gridController.grid_items[# center_cell_x, center_cell_y] < 0) {
-						placeable = true
-					}			
-				#endregion
 				debug_log("size_width: "+string(size_width)+", size_height: "+string(size_height))
 				for(var w=0;w<size_width;w++) {
 					for(var h=0;h<size_height;h++) {
 						debug_log("x: "+string(w)+", y: "+string(h)+" contains: "+string(my_cells_items[# w, h]))
 					}
 				}
-				
 			}
 			
 			//	Clamp rotation
@@ -472,7 +449,6 @@ switch(states)
 					
 					#endregion
 					
-					
 				}
 			
 			
@@ -507,6 +483,9 @@ switch(states)
 							ds_grid_set_grid_region(gridController.grid_items,_wire.my_cells_items,0,0,_wire.size_width,_wire.size_height,_wire.topleft_cell_x,_wire.topleft_cell_y)
 							debug_log("Placing my index at cell: "+string(_wire.topleft_cell_x)+","+string(_wire.topleft_cell_y))
 							item_placeid(_wire)
+							with _wire {
+								system_check()	
+							}
 						}
 						
 						for(var i=0;i<ds_list_size(path_objects);i++) {
@@ -569,7 +548,9 @@ switch(states)
 								
 						}
 							
-						
+						with _wire {
+							system_check()	
+						}
 						
 						debug_log("I have no path")
 					}

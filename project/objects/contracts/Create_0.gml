@@ -10,3 +10,5 @@ contracts_list = ds_list_create()
 
 datatype_strings = []
 datatype_strings[0] = "test"
+
+place_kiosk(25,17)
