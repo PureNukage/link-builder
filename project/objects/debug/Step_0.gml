@@ -31,6 +31,8 @@ switch(mode)
 				window_gridY = gui_mouse_y - window_grid_offsetY	
 				button_mpgridX = window_gridX + 16
 				button_mpgridY = window_gridY + 16
+				button_systemsX = window_gridX + 16
+				button_systemsY = window_gridY + button_mpgrid_height + 32
 			}
 		
 			if input.mouse_left_release {
@@ -56,6 +58,25 @@ switch(mode)
 				button_mpgrid_mouseover = false	
 				button_mpgrid_color = button_mpgrid_color_free
 			}
+			
+			//	If mouse is over button_systems
+			if point_in_rectangle(gui_mouse_x,gui_mouse_y,button_systemsX,button_systemsY,button_systemsX+button_systems_width,button_systemsY+button_systems_height) {
+			
+				button_systems_mouseover = true
+				button_systems_color = button_systems_color_mouseover
+				if input.mouse_left_press { 
+					button_systems_color = button_systems_color_pressed
+					draw_systems = !draw_systems
+				}
+			
+			} 
+			//	Mouse is not over button_systems
+			else {
+				button_systems_mouseover = false	
+				button_systems_color = button_systems_color_free
+			}
+			
+			
 		}
 		
 		//	Variable window logic

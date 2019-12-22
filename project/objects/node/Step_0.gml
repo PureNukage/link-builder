@@ -108,6 +108,8 @@ switch(states)
 				}
 			}
 			
+			system_check()
+			
 		}
 		
 		//	Rotation

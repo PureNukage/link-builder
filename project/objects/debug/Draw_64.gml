@@ -14,6 +14,8 @@ switch(mode)
 			//	Draw mpgrid button
 			ui_draw_button(button_mpgrid_width,button_mpgrid_height,button_mpgridX,button_mpgridY,button_mpgrid_color,button_mpgrid_string,button_mpgrid_mouseover)
 			
+			ui_draw_button(button_systems_width,button_systems_height,button_systemsX,button_systemsY,button_systems_color,button_systems_string,button_systems_mouseover)
+			
 				#region Object Variables
 
 					//	Draw Variable window

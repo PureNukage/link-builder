@@ -39,6 +39,14 @@
             }
         },
         {
+            "Key": "0869fb7d-84d2-4491-9a4c-5fefc2130f70",
+            "Value": {
+                "id": "1f245268-9d95-4b47-ac1d-f8be5b609ee9",
+                "resourcePath": "scripts\\system_colors\\system_colors.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "0c3266d9-f3d8-4aa7-852d-b95097e1275d",
             "Value": {
                 "id": "a591cda7-0833-4646-8bb8-8f53731911f9",
@@ -383,6 +391,14 @@
             }
         },
         {
+            "Key": "aef694f0-5b8d-495f-b4ca-b32285869617",
+            "Value": {
+                "id": "9a5a4079-6acb-4cde-94d7-335c4cfaa8df",
+                "resourcePath": "scripts\\system_check\\system_check.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "af3d0303-d364-4fc6-9a23-1a88a74f9332",
             "Value": {
                 "id": "dcdc9de4-d151-4817-984c-1f31ae446489",
@@ -615,6 +631,14 @@
             }
         },
         {
+            "Key": "fc0505c8-41cf-4e5a-b673-eb846a952368",
+            "Value": {
+                "id": "ffe55a62-8bd8-4d64-80a9-12da8e2cad84",
+                "resourcePath": "objects\\systemController\\systemController.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "ff103323-a9e3-4316-b6d3-5c243e2451d5",
             "Value": {
                 "id": "5b74fc72-11fd-4b03-964b-ca9415198420",
@@ -651,7 +675,9 @@
         "c54315ec-2931-4435-a989-274e26269826",
         "280b89e1-d35c-42de-965a-c6c68c84c139",
         "a5c07faa-d6cf-456e-af27-b25d8a0f5d2b",
-        "536c46f7-67ec-49c4-94ae-fd835a6a8343"
+        "536c46f7-67ec-49c4-94ae-fd835a6a8343",
+        "aef694f0-5b8d-495f-b4ca-b32285869617",
+        "0869fb7d-84d2-4491-9a4c-5fefc2130f70"
     ],
     "tutorial": ""
 }

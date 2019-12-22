@@ -33,6 +33,8 @@ bottomright_cell_y = topleft_cell_y + (size_height-1)
 
 placeable = is_placeable()
 
+System = -1
+
 if mouse_in_grid {
 	var _x, _y
 	_x = gridController.grid_positions_x[topleft_cell_x]

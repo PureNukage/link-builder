@@ -15,4 +15,6 @@ with _kiosk {
 	kiosk_update_ports_xy(rotation)
 	
 	item_place()
+	
+	system_check()
 }

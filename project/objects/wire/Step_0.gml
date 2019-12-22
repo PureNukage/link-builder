@@ -483,6 +483,9 @@ switch(states)
 							ds_grid_set_grid_region(gridController.grid_items,_wire.my_cells_items,0,0,_wire.size_width,_wire.size_height,_wire.topleft_cell_x,_wire.topleft_cell_y)
 							debug_log("Placing my index at cell: "+string(_wire.topleft_cell_x)+","+string(_wire.topleft_cell_y))
 							item_placeid(_wire)
+							with _wire {
+								system_check()	
+							}
 						}
 						
 						for(var i=0;i<ds_list_size(path_objects);i++) {
@@ -545,7 +548,9 @@ switch(states)
 								
 						}
 							
-						
+						with _wire {
+							system_check()	
+						}
 						
 						debug_log("I have no path")
 					}
