@@ -191,6 +191,14 @@
             }
         },
         {
+            "Key": "41845342-d151-4e02-ba37-83dfb067a273",
+            "Value": {
+                "id": "c1ac03bd-fa84-404f-89f4-4372c8b7ffbd",
+                "resourcePath": "scripts\\draw_sockets_item\\draw_sockets_item.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "439ac76c-6e4e-4e39-b2e3-73f710eface2",
             "Value": {
                 "id": "2832a1ac-d5d5-4b15-907c-cf08d49c5fb3",
@@ -204,6 +212,14 @@
                 "id": "e3a00337-7010-4248-9213-dfed3a5f43af",
                 "resourcePath": "objects\\input\\input.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "47a51364-5507-40b2-85e4-86d3a47fbdf3",
+            "Value": {
+                "id": "c97ecb62-6fe2-455f-85ba-2fc0d3a306ed",
+                "resourcePath": "sprites\\s_wire_socket_connected\\s_wire_socket_connected.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -378,7 +394,7 @@
             "Key": "a5879b47-81fd-4984-86b1-bc1097775565",
             "Value": {
                 "id": "b8433b68-e2cf-41ea-b4be-0e7ae92ea055",
-                "resourcePath": "scripts\\draw_sockets\\draw_sockets.yy",
+                "resourcePath": "scripts\\draw_sockets_wire\\draw_sockets_wire.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -681,6 +697,7 @@
         "3ade3a16-3ab5-4848-99e0-d75c8b0902d7",
         "87b73aae-eecb-4463-9a80-442f2d84b831",
         "d2061f56-d17f-44b8-8c01-6eb7b6733616",
+        "a5879b47-81fd-4984-86b1-bc1097775565",
         "59e5b008-2217-4001-ab6f-11e6cdb7bf85",
         "af3d0303-d364-4fc6-9a23-1a88a74f9332",
         "ff103323-a9e3-4316-b6d3-5c243e2451d5",
@@ -691,7 +708,7 @@
         "c54315ec-2931-4435-a989-274e26269826",
         "280b89e1-d35c-42de-965a-c6c68c84c139",
         "a5c07faa-d6cf-456e-af27-b25d8a0f5d2b",
-        "a5879b47-81fd-4984-86b1-bc1097775565",
+        "41845342-d151-4e02-ba37-83dfb067a273",
         "536c46f7-67ec-49c4-94ae-fd835a6a8343",
         "aef694f0-5b8d-495f-b4ca-b32285869617",
         "0869fb7d-84d2-4491-9a4c-5fefc2130f70"
