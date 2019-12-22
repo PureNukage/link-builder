@@ -1,7 +1,7 @@
 //	Switch modes
 if input.control_press {
 	mode++
-	if mode > 2 mode = 0
+	if mode > 1 mode = 0
 }
 
 if input.space {
@@ -56,16 +56,10 @@ switch(mode)
 				button_mpgrid_mouseover = false	
 				button_mpgrid_color = button_mpgrid_color_free
 			}
-		
-		
 		}
-	break
-	#endregion
-	
-	#region Variables
-		case mode.object:
-			
-			if point_in_rectangle(gui_mouse_x,gui_mouse_y,window_variableX,window_variableY,window_variableX+window_variable_width,window_variableY+window_variable_height) {
+		
+		//	Variable window logic
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y,window_variableX,window_variableY,window_variableX+window_variable_width,window_variableY+window_variable_height) {
 				
 				if input.mouse_left_press {
 					window_variable_offsetX = gui_mouse_x - window_variableX
@@ -89,9 +83,8 @@ switch(mode)
 				}
 				
 			}
-			
-			
-			
-		break
+		
+		
+	break
 	#endregion
 }
