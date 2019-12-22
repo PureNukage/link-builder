@@ -69,6 +69,25 @@ switch(mode)
 						}
 						#endregion
 						
+						#region Draw ports
+						
+						for(var i=0;i<ports_count;i++) {
+							var _w = ports[i,port_x]
+							var _h = ports[i,port_y]
+							
+							var _x1 = gridController.grid_positions_x[_w]
+							var _y1 = gridController.grid_positions_y[_h]
+							var _x2 = _x1 + cell_width
+							var _y2 = _y1 + cell_height
+							
+							draw_set_color(c_purple)
+							draw_set_alpha(.33)
+							draw_rectangle(_x1,_y1,_x2,_y2,false)
+							draw_set_alpha(1)
+						}
+						
+						#endregion
+						
 					}
 					
 					
