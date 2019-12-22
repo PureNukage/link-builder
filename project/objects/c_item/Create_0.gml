@@ -33,10 +33,7 @@ bottomright_cell_y = topleft_cell_y + (size_height-1)
 
 placeable = is_placeable()
 
-if (topleft_cell_x > -1 and topleft_cell_x < grid_width+1) and 
-(topleft_cell_y > -1 and topleft_cell_y < grid_height+1) and 
-(bottomright_cell_x > -1 and bottomright_cell_x < grid_width+1) and
-(bottomright_cell_y > -1 and bottomright_cell_y < grid_height+1) {
+if mouse_in_grid {
 	var _x, _y
 	_x = gridController.grid_positions_x[topleft_cell_x]
 	for(var _w=0;_w<size_width;_w++) {
