@@ -13,6 +13,10 @@ enum mode {
 	
 }
 
+enum data_types {
+	binance_ETHUSD,	
+}
+
 #macro in 0
 #macro out 1
 #macro port_object 0

@@ -43,7 +43,7 @@ switch(states)
 					gridController.grid_items[# ports[_p,port_x], ports[_p,port_y]] = -2
 				}
 			
-				system_check()
+				system_set()
 			
 			}	
 	

@@ -9,10 +9,6 @@ port = []
 event_inherited()
 
 #region Ports
-//my_cells_items[# 4, 2] = -2
-//my_cells_items[# 2, 4] = -2
-//my_cells_items[# 0, 2] = -2
-//my_cells_items[# 2, 0] = -2
 
 ports[0,port_x] = bottomright_cell_x+1
 ports[0,port_y] = center_cell_y
@@ -26,3 +22,5 @@ ports[2,port_y] = center_cell_y
 ports[3,port_x] = center_cell_x
 ports[3,port_y] = topleft_cell_y-1
 #endregion
+
+data_held = ds_list_create()

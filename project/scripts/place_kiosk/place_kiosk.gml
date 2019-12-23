@@ -16,5 +16,5 @@ with _kiosk {
 	
 	item_place()
 	
-	system_check()
+	system_set()
 }

@@ -501,7 +501,7 @@ switch(states)
 							debug_log("Placing my index at cell: "+string(_wire.topleft_cell_x)+","+string(_wire.topleft_cell_y))
 							item_placeid(_wire)
 							with _wire {
-								system_check()	
+								system_set()	
 							}
 						}
 						
@@ -573,7 +573,7 @@ switch(states)
 						}
 							
 						with _wire {
-							system_check()	
+							system_set()	
 						}
 						
 						debug_log("I have no path")

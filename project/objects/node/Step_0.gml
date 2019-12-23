@@ -108,7 +108,7 @@ switch(states)
 				}
 			}
 			
-			system_check()
+			system_set()
 			
 		}
 		
