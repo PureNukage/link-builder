@@ -268,6 +268,28 @@ switch(states)
 							// There are no more wires
 							if i >= ds_list_size(path_objects)-1 {
 								debug_log("This is a solo wire!")
+								
+								if port1 > -1 {
+									var connecting_item = port1[| 0]
+									
+									__wire.ports[0,port_object] = connecting_item
+									
+									//	Figure out directions
+									var _directions = port_get_direction(__wire,connecting_item)
+									__wire.ports[0,port_x] = __wire.center_cell_x+_directions[0]
+									__wire.ports[0,port_y] = __wire.center_cell_y+_directions[1]
+									
+									__wire.ports[1,port_x] = __wire.center_cell_x+(_directions[0]*-1)
+									__wire.ports[1,port_y] = __wire.center_cell_y+(_directions[1]*-1)
+								}
+								
+								for(var a=0;a<ds_list_size(gridController.grid_port_x);a++) {
+									if __wire.ports[1,port_x] == gridController.grid_port_x[| a] and __wire.ports[1,port_y] == gridController.grid_port_y[| a] {
+										var connecting_item = gridController.grid_port_objects[| a]	
+										
+										__wire.ports[1,port_object] = connecting_item
+									}
+								}
 							} 
 							//	There is another wire ahead of us
 							else {
@@ -275,8 +297,8 @@ switch(states)
 								
 								//	We are connecting items!
 								if port1 > -1 {
-									for(c=0;c<ds_list_size(port1);c++) {
-										var connecting_item = port1[| c]
+									//for(c=0;c<ds_list_size(port1);c++) {
+										var connecting_item = port1[| 0]
 										
 										__wire.ports[1,port_object] = connecting_item
 										var _directions = port_get_direction(__wire,connecting_item)
@@ -301,7 +323,7 @@ switch(states)
 										__wire.ports[0,port_y] = __wire.center_cell_y + _0[1]
 										__wire.ports[1,port_x] = __wire.center_cell_x + _1[0]
 										__wire.ports[1,port_y] = __wire.center_cell_y + _1[1]
-									}
+								//	}
 								}	
 							}
 						} 
