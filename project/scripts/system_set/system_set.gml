@@ -18,6 +18,9 @@ for(var p=0;p<ports_count;p++) {
 if connections == 0 {
 	System = instance_create_layer(x,y,"Instances",system)
 	ds_list_add(System.parts,id)
+	with System { 
+		system_dataflow_check()	
+	}
 } 
 //	we have connections
 else if connections > 0 {
@@ -27,6 +30,10 @@ else if connections > 0 {
 	if amount_of_systems == 1 {
 		ds_list_add(_systems[| 0].parts,id)	
 		System = _systems[| 0]
+		
+		with System { 
+			system_dataflow_check()	
+		}
 	} 
 	//	more than one system, lets make a new system and combine the others into it
 	else if amount_of_systems > 1 {
@@ -40,6 +47,10 @@ else if connections > 0 {
 					_systems[| i].parts[| a].System = System
 				}
 			}
+		}
+		
+		with System { 
+			system_dataflow_check()	
 		}
 		
 		//	delete old system objects
