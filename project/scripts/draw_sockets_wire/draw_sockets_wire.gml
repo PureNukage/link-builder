@@ -9,8 +9,8 @@ for(var p=0;p<ports_count;p++) {
 		directionX = sign(_w - center_cell_x)
 		directionY = sign(_h - center_cell_y)
 		
-		var _x = gridController.grid_positions_x[_w]+(cell_width/2)
-		var _y = gridController.grid_positions_y[_h]+(cell_height/2)
+		var _x = gridController.grid_positions_x[_w]+(cell_width/2)-directionX*15
+		var _y = gridController.grid_positions_y[_h]+(cell_height/2)-directionY*15
 					
 		var _rotation = -1
 		if directionX > 0 and directionY == 0 _rotation = 0

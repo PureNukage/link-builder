@@ -18,3 +18,5 @@ with _kiosk {
 	
 	system_set()
 }
+
+return _kiosk

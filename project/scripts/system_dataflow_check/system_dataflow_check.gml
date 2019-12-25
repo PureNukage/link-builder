@@ -224,7 +224,11 @@ if !ds_list_empty(kiosks) {
 	
 			//	this kiosk has all the data it needs!
 			if amount_of_data_had == amount_of_data_req {
-				debug_log("Kiosk "+string(_kiosk)+" is now active!")
+				if !_kiosk.active {
+					_kiosk.active = true
+					contracts.contract[_kiosk.smartcontract, contract_online] = true
+					debug_log("Kiosk "+string(_kiosk)+" is now active with smartcontract ["+contracts.contract[_kiosk.smartcontract, contract_name]+"]")
+				}
 			}
 	
 		}

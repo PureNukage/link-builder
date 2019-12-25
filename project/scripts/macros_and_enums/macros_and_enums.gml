@@ -17,6 +17,13 @@ enum data_types {
 	binance_ETHUSD,	
 }
 
+#macro contract_name 0
+#macro contract_online 1
+#macro contract_kiosk 2
+enum contract_types {
+	eth_transfer,	
+}
+
 #macro in 0
 #macro out 1
 #macro port_object 0

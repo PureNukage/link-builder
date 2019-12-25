@@ -8,7 +8,14 @@ button_open = false
 
 contracts_list = ds_list_create()
 
-datatype_strings = []
-datatype_strings[0] = "test"
+var _kiosk = place_kiosk(25,17)
 
-place_kiosk(25,17)
+contract = []
+contract[contract_types.eth_transfer, contract_name] = "Eth Transfer"
+contract[contract_types.eth_transfer, contract_online] = false
+contract[contract_types.eth_transfer, contract_kiosk] = _kiosk
+
+contracts_list[| contract_types.eth_transfer] = true
+
+_kiosk.smartcontract = contract_types.eth_transfer
+
