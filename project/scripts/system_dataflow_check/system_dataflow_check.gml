@@ -6,7 +6,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 	if parts[| i].object_index == data { 
 		ds_list_add(databases,parts[| i])
 	} else if parts[| i].object_index == node {
-		ds_list_add(nodes,parts[| i])	
+		//ds_list_add(nodes,parts[| i])	
 	} else if parts[| i].object_index == kiosk {
 		ds_list_add(kiosks,parts[| i])
 	}	
@@ -63,6 +63,18 @@ if !ds_list_empty(kiosks) {
 										current_loop = current_loop.ports[other_port,port_object]
 										loop_port = current_loop.ports_count
 									}
+									
+									//	if this is connecting to something NOT a wire, set its incoming port to "in"
+									if current_loop != wire {
+										for(var a=0;a<current_loop.ports_count;a++) {
+											if current_loop.ports[a,port_x] == previous_loop.center_cell_x and current_loop.ports[a,port_y] == previous_loop.center_cell_y { 
+												current_loop.ports[a,port_direction] = in
+												
+											}
+											
+										}
+									}
+									
 								}
 							} else if _object_index == node {
 								//	toss this dbs type into the nodes held list
@@ -96,7 +108,7 @@ if !ds_list_empty(kiosks) {
 		
 				//	Loop through ports
 				for(var p=0;p<current_node.ports_count;p++) {
-					if current_node.ports[p,port_object] > -1 { //and current_node.ports[p,port_direction] != out {
+					if current_node.ports[p,port_object] > -1 and current_node.ports[p,port_direction] != in {
 				
 						var previous_loop = current_node
 						var current_loop = current_node.ports[p,port_object]
@@ -135,6 +147,18 @@ if !ds_list_empty(kiosks) {
 										current_loop = current_loop.ports[other_port,port_object]
 										loop_port = current_loop.ports_count
 									}
+									
+									//	if this is connecting to something NOT a wire, set its incoming port to "in"
+									if current_loop != wire {
+										for(var a=0;a<current_loop.ports_count;a++) {
+											if current_loop.ports[a,port_x] == previous_loop.center_cell_x and current_loop.ports[a,port_y] == previous_loop.center_cell_y { 
+												current_loop.ports[a,port_direction] = in
+												
+											}
+											
+										}
+									}
+									
 								}
 							
 							} else if _object_index == node {
@@ -208,3 +232,7 @@ if !ds_list_empty(kiosks) {
 		#endregion
 	}
 }
+
+ds_list_destroy(databases)
+ds_list_destroy(nodes)
+ds_list_destroy(kiosks)
