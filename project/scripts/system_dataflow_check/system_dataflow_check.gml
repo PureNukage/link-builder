@@ -44,6 +44,7 @@ if !ds_list_empty(kiosks) {
 										loop = false
 										current_loop.ports[other_port,port_direction] = in
 										current_loop.ports[loop_port,port_direction] = out
+										loop_port = current_loop.ports_count
 									} 
 									//	there is something attached to this wire and its not the previous
 									else if current_loop.ports[loop_port,port_object] > -1 and current_loop.ports[loop_port,port_object] != previous_loop {
@@ -53,12 +54,14 @@ if !ds_list_empty(kiosks) {
 									
 										previous_loop = current_loop
 										current_loop = current_loop.ports[loop_port,port_object]
+										loop_port = current_loop.ports_count
 									} else if current_loop.ports[other_port,port_object] > -1 and current_loop.ports[loop_port,port_object] == previous_loop {
 										current_loop.ports[loop_port,port_direction] = in 
 										current_loop.ports[other_port,port_direction] = out
 									
 										previous_loop = current_loop
 										current_loop = current_loop.ports[other_port,port_object]
+										loop_port = current_loop.ports_count
 									}
 								}
 							} else if _object_index == node {
@@ -93,7 +96,7 @@ if !ds_list_empty(kiosks) {
 		
 				//	Loop through ports
 				for(var p=0;p<current_node.ports_count;p++) {
-					if current_node.ports[p,port_object] > -1 and current_node.ports[p,port_direction] != out {
+					if current_node.ports[p,port_object] > -1 { //and current_node.ports[p,port_direction] != out {
 				
 						var previous_loop = current_node
 						var current_loop = current_node.ports[p,port_object]
@@ -113,6 +116,7 @@ if !ds_list_empty(kiosks) {
 										loop = false
 										current_loop.ports[other_port,port_direction] = in
 										current_loop.ports[loop_port,port_direction] = out
+										loop_port = current_loop.ports_count
 									} 
 									//	there is something attached to this wire and its not the previous
 									else if current_loop.ports[loop_port,port_object] > -1 and current_loop.ports[loop_port,port_object] != previous_loop {
@@ -122,12 +126,14 @@ if !ds_list_empty(kiosks) {
 									
 										previous_loop = current_loop
 										current_loop = current_loop.ports[loop_port,port_object]
+										loop_port = current_loop.ports_count
 									} else if current_loop.ports[other_port,port_object] > -1 and current_loop.ports[loop_port,port_object] == previous_loop {
 										current_loop.ports[loop_port,port_direction] = in 
 										current_loop.ports[other_port,port_direction] = out
 									
 										previous_loop = current_loop
 										current_loop = current_loop.ports[other_port,port_object]
+										loop_port = current_loop.ports_count
 									}
 								}
 							
@@ -138,12 +144,11 @@ if !ds_list_empty(kiosks) {
 
 								}
 								loop = false
-								ds_list_delete(nodes,current_node)
 						
 							} else if _object_index == kiosk {
 						
 								//	loop for putting data into kiosk
-								for(var d=0;d<current_node.data_held;d++) {
+								for(var d=0;d<ds_list_size(current_node.data_held);d++) {
 									if ds_list_find_index(current_loop.data_held,current_node.data_held[| d]) == -1 {
 										//	putting this data into the kiosk!
 										ds_list_add(current_loop.data_held,current_node.data_held[| d])
@@ -155,6 +160,7 @@ if !ds_list_empty(kiosks) {
 						
 							} else {
 								//	databases...
+								loop = false
 							}
 						}
 				

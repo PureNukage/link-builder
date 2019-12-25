@@ -353,8 +353,8 @@ switch(states)
 							__wire.ports[1,port_x] = __wire.center_cell_x + _1[0]
 							__wire.ports[1,port_y] = __wire.center_cell_y + _1[1]
 							
-							debug_log("Just set Wire["+string(i)+"] port 0 xy to "+string(__wire.ports[0,port_x])+","+string(__wire.ports[0,port_y]))
-							debug_log("Just set Wire["+string(i)+"] port 1 xy to "+string(__wire.ports[1,port_x])+","+string(__wire.ports[1,port_y]))
+						//	debug_log("Just set Wire["+string(i)+"] port 0 xy to "+string(__wire.ports[0,port_x])+","+string(__wire.ports[0,port_y]))
+						//	debug_log("Just set Wire["+string(i)+"] port 1 xy to "+string(__wire.ports[1,port_x])+","+string(__wire.ports[1,port_y]))
 						}
 						#endregion
 						
@@ -395,8 +395,8 @@ switch(states)
 						}
 						#endregion			
 						
-						debug_log("Just set Wire: ["+string(i)+"] "+string(__wire)+" port to ["+string(i-1)+"] "+string(__wire.ports[1,port_object]))
-						debug_log("Just set Wire: ["+string(i)+"] "+string(__wire)+" port to ["+string(i+1)+"] "+string(__wire.ports[0,port_object]))
+						debug_log("Just set Wire: ["+string(i)+"] "+string(__wire)+" port["+string(i-1)+"] "+" to "+string(__wire.ports[1,port_object]))
+						debug_log("Just set Wire: ["+string(i)+"] "+string(__wire)+" port["+string(i+1)+"] "+" to "+string(__wire.ports[0,port_object]))
 								
 					}
 					#endregion
@@ -463,7 +463,7 @@ switch(states)
 							}
 						}
 						
-						debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
+					//	debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
 						
 					}
 					
@@ -520,7 +520,7 @@ switch(states)
 								//debug_log("Just set Wire["+string(i)+"] port "+string(_p)+" xy to "+string(_wire.ports[_p,port_x])+","+string(_wire.ports[_p,port_y]))
 							}
 							ds_grid_set_grid_region(gridController.grid_items,_wire.my_cells_items,0,0,_wire.size_width,_wire.size_height,_wire.topleft_cell_x,_wire.topleft_cell_y)
-							debug_log("Placing my index at cell: "+string(_wire.topleft_cell_x)+","+string(_wire.topleft_cell_y))
+							//debug_log("Placing my index at cell: "+string(_wire.topleft_cell_x)+","+string(_wire.topleft_cell_y))
 							item_placeid(_wire)
 							with _wire {
 								system_set()	
@@ -568,7 +568,7 @@ switch(states)
 													if ports[my_port,port_x] == w and ports[my_port,port_y] == h {
 														//	We're connecting to this object!
 														ports[my_port,port_object] = connecting_port
-														debug_log("Connecting Port["+string(my_port)+"] to "+string(connecting_port))
+														debug_log("Connecting Port["+string(my_port)+"] to "+object_get_name(connecting_port.object_index)+" "+string(connecting_port))
 													}	
 												}
 											}
@@ -578,7 +578,7 @@ switch(states)
 											if ports[my_port,port_x] == connecting_port.center_cell_x and ports[my_port,port_y] == connecting_port.center_cell_y {
 												//	We're connecting to this object!
 												ports[my_port,port_object] = connecting_port
-												debug_log("Connecting Port["+string(my_port)+"] to "+string(connecting_port))	
+												debug_log("Connecting Port["+string(my_port)+"] to wire "+string(connecting_port))	
 											}
 										}
 									
@@ -588,6 +588,7 @@ switch(states)
 									for(var p=0;p<connecting_port.ports_count;p++) {
 										if connecting_port.ports[p,port_x] == _wire.center_cell_x and connecting_port.ports[p,port_y] == _wire.center_cell_y {
 											connecting_port.ports[p,port_object] = _wire	
+											with connecting_port debug_log("Connecting Port["+string(p)+"] to wire "+string(_wire))
 										}
 									}
 							}
