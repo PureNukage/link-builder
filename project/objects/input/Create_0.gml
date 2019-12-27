@@ -11,6 +11,9 @@ rotate_left = keyboard_check_pressed(ord("Q")) //or mouse_wheel_up()
 
 control_press = keyboard_check_pressed(vk_control)
 
+selection = -1
+selections = ds_list_create()
+
 grid_x = -1
 grid_y = -1
 grid_xprevious = -1

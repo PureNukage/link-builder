@@ -12,6 +12,8 @@ my_cells_y = []
 
 rotation = 0
 
+selected = false
+
 //Ports
 ports = []						
 for(var i=0;i<ports_count;i++) {

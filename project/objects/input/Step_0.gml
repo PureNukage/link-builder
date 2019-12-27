@@ -11,36 +11,38 @@ rotate_left = keyboard_check_pressed(ord("Q")) //or mouse_wheel_up()
 
 control_press = keyboard_check_pressed(vk_control)
 
-var _x = gridController.grid_start_x
-var _y = gridController.grid_start_y
-for(var _w=0;_w<grid_width;_w++) {
-	_y = gridController.grid_start_y
-	for(var _h=0;_h<grid_height;_h++) {
-			if point_in_rectangle(mouse_x,mouse_y,_x,_y,_x+cell_width,_y+cell_height) {
-				grid_xprevious = grid_x
-				grid_yprevious = grid_y
-				grid_x = _w
-				grid_y = _h
-				if grid_xprevious != grid_x or grid_yprevious != grid_y {
-					grid_moved = true	
-				} else {
-					grid_moved = false
-				}	
-				exit
-			} else {
-				if _w == grid_width and _h == grid_height {
+#region Calculating grid_x,y and grid_moved 
+	var _x = gridController.grid_start_x
+	var _y = gridController.grid_start_y
+	for(var _w=0;_w<grid_width;_w++) {
+		_y = gridController.grid_start_y
+		for(var _h=0;_h<grid_height;_h++) {
+				if point_in_rectangle(mouse_x,mouse_y,_x,_y,_x+cell_width,_y+cell_height) {
 					grid_xprevious = grid_x
 					grid_yprevious = grid_y
-					grid_x = -1
-					grid_y = -1
+					grid_x = _w
+					grid_y = _h
 					if grid_xprevious != grid_x or grid_yprevious != grid_y {
 						grid_moved = true	
 					} else {
 						grid_moved = false
+					}	
+					exit
+				} else {
+					if _w == grid_width and _h == grid_height {
+						grid_xprevious = grid_x
+						grid_yprevious = grid_y
+						grid_x = -1
+						grid_y = -1
+						if grid_xprevious != grid_x or grid_yprevious != grid_y {
+							grid_moved = true	
+						} else {
+							grid_moved = false
+						}
 					}
 				}
-			}
-		_y += cell_height
+			_y += cell_height
+		}
+		_x += cell_width
 	}
-	_x += cell_width
-}
+#endregion

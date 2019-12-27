@@ -48,6 +48,18 @@ switch(states)
 
 	break
 	case states.placed:
+		
+		if selected {
+			var x1 = gridController.grid_positions_x[topleft_cell_x]
+			var y1 = gridController.grid_positions_y[topleft_cell_y]
+			var x2 = gridController.grid_positions_x[bottomright_cell_x]+cell_width
+			var y2 = gridController.grid_positions_y[bottomright_cell_y]+cell_height
+			
+			draw_set_color(c_black)
+			draw_roundrect(x1,y1,x2,y2,true)
+			
+			
+		}
 	
 	
 	break

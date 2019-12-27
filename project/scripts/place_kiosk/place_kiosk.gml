@@ -17,6 +17,8 @@ with _kiosk {
 	item_place()
 	
 	system_set()
+	
+	item_placeid()
 }
 
 return _kiosk

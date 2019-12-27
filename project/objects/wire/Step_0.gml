@@ -529,7 +529,7 @@ switch(states)
 						
 						for(var i=0;i<ds_list_size(path_objects);i++) {
 							with path_objects[| i] {
-								item_index_priority()	
+								item_index_priority()
 							}
 						}
 						
