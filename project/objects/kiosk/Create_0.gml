@@ -14,6 +14,7 @@ ports[1,port_x] = bottomright_cell_x + 1
 ports[1,port_y] = center_cell_y
 
 data_held = ds_list_create()
+data_held_ids = ds_list_create()
 
 smartcontract = -1
 active = false
@@ -21,4 +22,4 @@ active = false
 data_needed = []
 data_needed[0,0] = data_types.binance_ETHUSD
 data_needed[0,1] = false
-
+data_needed[0,2] = -1

@@ -15,7 +15,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 	
 }
 
-if !ds_list_empty(kiosks) {
+//if !ds_list_empty(kiosks) {
 	if !ds_list_empty(databases) {
 
 		#region Database loops
@@ -80,8 +80,10 @@ if !ds_list_empty(kiosks) {
 								}
 							} else if _object_index == node {
 								//	toss this dbs type into the nodes held list
-								ds_list_add(current_loop.data_held,db.data_generated)
-								ds_list_add(nodes,current_loop)
+								if ds_list_find_index(current_loop.data_held,db.data_generated) == -1 {
+									ds_list_add(current_loop.data_held,db.data_generated)
+									ds_list_add(nodes,current_loop)
+								}
 								loop = false
 						
 							} else {
@@ -103,7 +105,7 @@ if !ds_list_empty(kiosks) {
 
 		if ds_list_empty(nodes) {
 	
-		} else {
+		} else  if !ds_list_empty(nodes) and !ds_list_empty(kiosks) {
 	
 			while ds_list_size(nodes) > 0 {
 				var current_node = nodes[| 0]
@@ -178,6 +180,7 @@ if !ds_list_empty(kiosks) {
 									if ds_list_find_index(current_loop.data_held,current_node.data_held[| d]) == -1 {
 										//	putting this data into the kiosk!
 										ds_list_add(current_loop.data_held,current_node.data_held[| d])
+										ds_list_add(current_loop.data_held_ids,current_node)
 									} else {
 										//	data is already in this kiosk!	
 									}
@@ -217,6 +220,7 @@ if !ds_list_empty(kiosks) {
 					var _data_held = _kiosk.data_held[| a]
 					if _data_held == _data_needed {
 						_kiosk.data_needed[d,1] = true	
+						_kiosk.data_needed[d,2] = _kiosk.data_held_ids[| a]
 						amount_of_data_had++
 					} else {
 						_kiosk.data_needed[d,1] = false	
@@ -237,7 +241,7 @@ if !ds_list_empty(kiosks) {
 
 		#endregion
 	}
-}
+//}
 
 ds_list_destroy(databases)
 ds_list_destroy(nodes)
