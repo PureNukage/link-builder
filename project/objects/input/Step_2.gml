@@ -4,7 +4,11 @@ if selection_timer > 0 selection_timer--
 
 if selection == -1 and !ds_list_empty(selections) {
 	for(var i=0;i<ds_list_size(selections);i++) {
-		selections[| i].selected = false	
+		if !instance_exists(selections[| i]) {
+
+		} else {
+			selections[| i].selected = false	
+		}
 	}
 	ds_list_clear(selections)
 	debug_log("Clearing selections")
@@ -30,15 +34,19 @@ if grid_x > -1 and grid_y > -1 {
 
 
 	//	Single click selection
-	if (mouse_left_release and selection_timer > 0) or
-	(mouse_left_release and selection_timer == 0 and selection_x2 == -1 and selection_y2 == -1) {
+	if (mouse_left_release and selection_timer > 0) and !shop.menu_mouseover or
+	(mouse_left_release and selection_timer == 0 and selection_x2 == -1 and selection_y2 == -1) and !shop.menu_mouseover {
 		selection_timer = -1
 		var object = gridController.grid_objects[# grid_x, grid_y]
 		
 		//	This object isn't in our selections
 		if !ds_list_empty(selections) and ds_list_find_index(selections,object) == -1 {
 			for(var i=0;i<ds_list_size(selections);i++) {
-				selections[| i].selected = false	
+				if !instance_exists(selections[| i]) {
+
+				} else {
+					selections[| i].selected = false	
+				}
 			}
 			ds_list_clear(selections)
 			debug_log("Clearing selections")
@@ -46,12 +54,14 @@ if grid_x > -1 and grid_y > -1 {
 			selection = object
 			selection.selected = true
 			ds_list_add(selections,object)
-		} else if !ds_list_empty(selections) and ds_list_find_index(selections,object) > -1 {
+		} 
+		//	This object is in our selections, lets switch to it
+		else if !ds_list_empty(selections) and ds_list_find_index(selections,object) > -1 {
 			selection = object
 			
-		} else
+		} 
 		//	We currently already have an item selected, lets unselect it!
-		if selection > -1 and selection != object and object > -1 {
+		else if ds_list_size(selections) == 1 and selection > -1 and selection != object and object > -1 {
 			selection.selected = false
 			if ds_list_find_index(selections,selection) != -1 {
 				ds_list_delete(selections,ds_list_find_index(selections,selection))	
@@ -61,7 +71,7 @@ if grid_x > -1 and grid_y > -1 {
 			if ds_list_find_index(selections,selection) == -1 {
 				ds_list_add(selections,selection)	
 			}	
-		} else if selection > -1 and selection == object {
+		} else if ds_list_size(selections) == 1 and selection > -1 and selection == object {
 			selection.selected = !selection.selected
 			if !selection.selected {
 				if ds_list_find_index(selections,selection) != -1 {
@@ -90,6 +100,29 @@ if grid_x > -1 and grid_y > -1 {
 			
 		}	
 	} 
+	//	Clicking on the menu/selecting anoth
+	else if (mouse_left_release and selection_timer > 0) and shop.menu_mouseover or
+	(mouse_left_release and selection_timer == 0 and selection_x2 == -1 and selection_y2 == -1) and shop.menu_mouseover{
+		selection_x1 = -1
+		selection_y1 = -1	
+		selection_timer = -1
+		
+		var currently_selected = -1
+		for(var i=0;i<ds_list_size(selections);i++) {
+			if selections[| i] = selection {
+				currently_selected = selections[| i]
+			} else {
+				if !instance_exists(selections[| i]) {
+					
+				} else {
+					selections[| i].selected = false	
+				}
+			}
+		}
+		ds_list_clear(selections)
+		ds_list_add(selections,currently_selected)
+		debug_log("Clearing selections")
+	}
 	//	Rectangle selection
 	else if mouse_left_release and selection_timer == 0 and selection_x2 > -1 and selection_y2 > -1 {
 		

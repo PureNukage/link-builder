@@ -28,11 +28,11 @@
 							}
 						}
 					}
-					//input.selection = 
-					instance_create_layer(mouse_x,mouse_y,"Instances",item[i,3])
-					//if ds_list_find_index(input.selections,input.selection) == -1 {
-					//	ds_list_add(input.selections,input.selection)	
-					//}
+					input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",item[i,3])
+					input.selection.selected = true
+					if ds_list_find_index(input.selections,input.selection) == -1 {
+						ds_list_add(input.selections,input.selection)	
+					}
 				}
 			}
 			_y += item_height+item_buffer

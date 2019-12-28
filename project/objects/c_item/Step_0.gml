@@ -3,6 +3,13 @@ switch(states)
 	#region State Placement
 		case states.placement:
 		
+			if input.mouse_right_press {
+				if ds_list_find_index(input.selections,id) > -1 {
+					ds_list_delete(input.selections,id)
+				}
+				if input.selection == id input.selection = -1	
+			}
+		
 			if input.grid_x != -1 and input.grid_y != -1 {
 		
 				if input.grid_moved {
