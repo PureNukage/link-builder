@@ -30,9 +30,26 @@ if grid_x > -1 and grid_y > -1 {
 
 
 	//	Single click selection
-	if mouse_left_release and selection_timer > 0 {
+	if (mouse_left_release and selection_timer > 0) or
+	(mouse_left_release and selection_timer == 0 and selection_x2 == -1 and selection_y2 == -1) {
 		selection_timer = -1
 		var object = gridController.grid_objects[# grid_x, grid_y]
+		
+		//	This object isn't in our selections
+		if !ds_list_empty(selections) and ds_list_find_index(selections,object) == -1 {
+			for(var i=0;i<ds_list_size(selections);i++) {
+				selections[| i].selected = false	
+			}
+			ds_list_clear(selections)
+			debug_log("Clearing selections")
+			
+			selection = object
+			selection.selected = true
+			ds_list_add(selections,object)
+		} else if !ds_list_empty(selections) and ds_list_find_index(selections,object) > -1 {
+			selection = object
+			
+		} else
 		//	We currently already have an item selected, lets unselect it!
 		if selection > -1 and selection != object and object > -1 {
 			selection.selected = false
@@ -74,7 +91,7 @@ if grid_x > -1 and grid_y > -1 {
 		}	
 	} 
 	//	Rectangle selection
-	else if mouse_left_release and selection_timer == 0 {
+	else if mouse_left_release and selection_timer == 0 and selection_x2 > -1 and selection_y2 > -1 {
 		
 		//	Get topleft cell_x1, y1
 		var _x1 = min(selection_cell_x1,selection_cell_x2)
@@ -107,7 +124,7 @@ if grid_x > -1 and grid_y > -1 {
 		selection_cell_x2 = -1
 		selection_cell_y2 = -1
 		selection_timer = -1
-	}
+	} 
 	
 }
 
