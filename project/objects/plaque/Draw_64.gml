@@ -31,17 +31,22 @@ if input.selection > -1 {
 	switch(_item.object_index) 
 	{
 		case node:
+		
+			var _xx = window_twoX + 4
+			var _yy = window_twoY + 4
+			
+			draw_set_color(c_dkgray)
+			draw_text(_xx,_yy,"data")
+			_yy += 15
 			
 			if !ds_list_empty(_item.data_held) {
 				var amount = ds_list_size(_item.data_held)
-				var _xx = window_twoX + 4
-				var _yy = window_twoY + 4
 				for(var i=0;i<amount;i++) {
 					
 					var _data = _item.data_held[| i]
-					
 					draw_set_color(c_black)
 					draw_text(_xx,_yy,datatypes.strings[_data])
+					_yy += 15
 					
 					if (string_width(datatypes.strings[_data]) - window_two_width) > 0 {
 						window_two_width = string_width(datatypes.strings[_data]) + 16
@@ -64,6 +69,7 @@ if input.selection > -1 {
 			if _item.smartcontract > -1 {
 				var _string = contracts.contract[_item.smartcontract, contract_name]
 				draw_text(_xx,_yy,_string)
+				_yy += 15
 			}
 		
 		

@@ -14,3 +14,6 @@ window_twoY = display_get_gui_height() - window_two_height
 selection = -1
 previous_selection = -1
 selection_switch = false
+
+node_info = false
+node_stats = false
