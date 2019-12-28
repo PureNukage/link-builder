@@ -487,6 +487,14 @@
             }
         },
         {
+            "Key": "b72205dd-951c-4004-81ae-7d01d79a81f8",
+            "Value": {
+                "id": "4bf62c9a-4cd3-46a0-a8e3-d845ba5010ae",
+                "resourcePath": "objects\\lighting\\lighting.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "b9407869-6139-4b68-a576-19655cb5ff12",
             "Value": {
                 "id": "7b283da3-c4a4-40f1-8c1e-979adbd373a3",
