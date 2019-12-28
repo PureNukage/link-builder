@@ -66,6 +66,17 @@ switch(states)
 	#region Placed
 		case states.placed:
 		
+			if selected {
+				var x1 = gridController.grid_positions_x[topleft_cell_x]
+				var y1 = gridController.grid_positions_y[topleft_cell_y]
+				var x2 = gridController.grid_positions_x[bottomright_cell_x]+cell_width
+				var y2 = gridController.grid_positions_y[bottomright_cell_y]+cell_height
+			
+				draw_set_color(c_black)
+				draw_roundrect(x1,y1,x2,y2,true)
+			
+			}
+		
 			sprite_set_offset(sprite,sprite_get_width(sprite)/2,sprite_get_height(sprite)/2)
 			draw_sprite_ext(sprite,0,x,y,1,1,rotation,c_white,1)
 			

@@ -327,6 +327,14 @@
             }
         },
         {
+            "Key": "85e9b582-d08c-4bba-9565-57158ccd7956",
+            "Value": {
+                "id": "d0264a2c-1224-45ab-bac3-d5281bbea835",
+                "resourcePath": "objects\\plaque\\plaque.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "87b73aae-eecb-4463-9a80-442f2d84b831",
             "Value": {
                 "id": "29d6d669-91bc-43df-82a7-f80d98d6279d",
