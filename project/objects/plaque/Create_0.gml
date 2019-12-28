@@ -10,6 +10,7 @@ window_two_width = 128
 window_two_height = 128
 window_twoX = (window_portraitX + window_portrait_width) + 16
 window_twoY = display_get_gui_height() - window_two_height
+window_two_mouseover = false
 
 selection = -1
 previous_selection = -1

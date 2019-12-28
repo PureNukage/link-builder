@@ -5,6 +5,8 @@ states = states.placement			//	Set; inital state of this item
 ports_count = 4						//	Set; holds the number of ports in this item has
 //portrait = -1
 name = "Node"
+jobruns = 0
+level = 1
 
 port = []
 
