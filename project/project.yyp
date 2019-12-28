@@ -655,6 +655,22 @@
             }
         },
         {
+            "Key": "f4363ce7-d18c-4d36-90b2-59229f31c132",
+            "Value": {
+                "id": "00f76164-4b46-407f-af1c-741c6ef2b8c8",
+                "resourcePath": "views\\f4363ce7-d18c-4d36-90b2-59229f31c132.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "f4b3426f-eae9-4e0b-a125-c6d1d2188a23",
+            "Value": {
+                "id": "2521ceda-8d44-48f9-84cd-0d67fc52d7b3",
+                "resourcePath": "sprites\\s_portrait_test\\s_portrait_test.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "f8fe0e91-5295-4114-b1b6-a3ef6697164b",
             "Value": {
                 "id": "474e8cad-2194-42f3-8f2b-1199a8df7a14",
@@ -717,9 +733,9 @@
         "59e5b008-2217-4001-ab6f-11e6cdb7bf85",
         "af3d0303-d364-4fc6-9a23-1a88a74f9332",
         "ff103323-a9e3-4316-b6d3-5c243e2451d5",
+        "0fad8366-a0cb-44ec-bf41-961058e7bc9c",
         "60ccca35-21d9-432c-8d06-7ecd12c3aa78",
         "37bebf50-d727-4446-bf8f-556fa2cbd262",
-        "0fad8366-a0cb-44ec-bf41-961058e7bc9c",
         "8ccf824d-4a8b-44b0-b97c-dc302ea2aaed",
         "c54315ec-2931-4435-a989-274e26269826",
         "280b89e1-d35c-42de-965a-c6c68c84c139",

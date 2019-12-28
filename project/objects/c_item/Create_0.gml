@@ -4,7 +4,11 @@ size_height = 5						//	Set; cells height this item takes up
 sprite = s_chainlink				//	Set; sprite for this item
 states = states.placement			//	Set; inital state of this item
 ports_count = 0						//	Set; holds the number of ports in this item has
+portrait = -1						//	Set; holds the portrait for this item
+name = ""							//	Set; holds the name for this item
 */
+	
+portrait = s_portrait_test
 	
 my_cells_items = ds_grid_create(size_width,size_height)
 my_cells_x = []

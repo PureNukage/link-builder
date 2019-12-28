@@ -3,6 +3,9 @@ size_height = 1									//	Set; cells height this item takes up
 sprite = s_wire									//	Set; sprite for this item
 states = states.placement						//	Set; inital state of this item
 ports_count = 2									//	Set; holds the number of ports in this item has
+//portrait = -1
+name = "Wire"
+
 sprites = []
 sprites[1] = s_wire
 sprites[0] = s_wire_corner

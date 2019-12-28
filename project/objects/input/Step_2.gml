@@ -16,6 +16,12 @@ if mouse_left_press and grid_x > -1 and grid_y > -1 {
 		}	
 	} else if selection > -1 and selection == object {
 		selection.selected = !selection.selected
+		if !selection.selected {
+			if ds_list_find_index(selections,selection) != -1 {
+				ds_list_delete(selections,ds_list_find_index(selections,selection))	
+			}	
+			selection = -1
+		}
 		
 	} else if selection == -1 and object > -1 {
 		selection = object
@@ -29,6 +35,7 @@ if mouse_left_press and grid_x > -1 and grid_y > -1 {
 			if ds_list_find_index(selections,selection) != -1 {
 				ds_list_delete(selections,ds_list_find_index(selections,selection))	
 			}	
+			selection = -1
 		}
 		
 	}	
