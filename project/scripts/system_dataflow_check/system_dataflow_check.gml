@@ -6,9 +6,11 @@ for(var i=0;i<ds_list_size(parts);i++) {
 	if parts[| i].object_index == data { 
 		ds_list_add(databases,parts[| i])
 	} else if parts[| i].object_index == node {
+		ds_list_clear(parts[| i].data_held)
 		//ds_list_add(nodes,parts[| i])	
 	} else if parts[| i].object_index == kiosk {
 		ds_list_add(kiosks,parts[| i])
+		ds_list_clear(parts[| i].data_held)
 	}	
 	
 }
