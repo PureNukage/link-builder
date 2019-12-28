@@ -13,6 +13,15 @@ control_press = keyboard_check_pressed(vk_control)
 
 selection = -1
 selections = ds_list_create()
+selection_x1 = -1
+selection_y1 = -1
+selection_x2 = -1
+selection_y2 = -1
+selection_cell_x1 = -1
+selection_cell_y1 = -1
+selection_cell_x2 = -1
+selection_cell_y2 = -1
+selection_timer = -1
 
 grid_x = -1
 grid_y = -1

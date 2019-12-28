@@ -49,6 +49,22 @@ switch(mode)
 						draw_text(_x,_y,"edgeY: "+string(camera_get_view_height(Camera)/2))		_y += 15 
 		
 					}
+					
+					with input {															_y += 15 
+						draw_text(_x,_y,"INPUT SELECTION")									_y += 15 
+						draw_text(_x,_y,"Selection: "+string(selection))					_y += 15 
+						draw_text(_x,_y,"Selections: "+string(ds_list_size(selections)))	_y += 15 
+						draw_text(_x,_y,"Selection_x1: "+string(selection_x1))				_y += 15 
+						draw_text(_x,_y,"Selection_y1: "+string(selection_y1))				_y += 15 
+						draw_text(_x,_y,"Selection_x2: "+string(selection_x2))				_y += 15 
+						draw_text(_x,_y,"Selection_y2: "+string(selection_y2))				_y += 15 
+						draw_text(_x,_y,"Selection_cell_x1: "+string(selection_cell_x1))	_y += 15 
+						draw_text(_x,_y,"Selection_cell_y1: "+string(selection_cell_y1))	_y += 15 
+						draw_text(_x,_y,"Selection_cell_x2: "+string(selection_cell_x2))	_y += 15 
+						draw_text(_x,_y,"Selection_cell_y2: "+string(selection_cell_y2))	_y += 15 
+						draw_text(_x,_y,"Selection timer: "+string(selection_timer))		_y += 15
+						
+					}
 	
 
 	#endregion
