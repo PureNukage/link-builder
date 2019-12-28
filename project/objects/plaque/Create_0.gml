@@ -6,7 +6,11 @@ window_portraitY = display_get_gui_height() - window_portrait_height
 window_portrait_offsetX = 4
 window_portrait_offsetY = 4
 
-window_two_width = 64
+window_two_width = 128
 window_two_height = 128
 window_twoX = (window_portraitX + window_portrait_width) + 16
 window_twoY = display_get_gui_height() - window_two_height
+
+selection = -1
+previous_selection = -1
+selection_switch = false

@@ -1,38 +1,18 @@
 {
-    "id": "85e9b582-d08c-4bba-9565-57158ccd7956",
+    "id": "a76689d6-0b92-4fd5-aa3b-5658dd3a100e",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "plaque",
+    "name": "datatypes",
     "eventList": [
         {
-            "id": "343a10fa-e21d-4f51-878f-1d7fb300905d",
+            "id": "35c52aef-7885-4dee-9a37-a75de82abc11",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
             "eventtype": 0,
-            "m_owner": "85e9b582-d08c-4bba-9565-57158ccd7956"
-        },
-        {
-            "id": "5488271f-8c7c-4fc7-95b1-a768243eebfd",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 64,
-            "eventtype": 8,
-            "m_owner": "85e9b582-d08c-4bba-9565-57158ccd7956"
-        },
-        {
-            "id": "bf9de792-27bd-4772-8a8e-7b2260f70fef",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 0,
-            "eventtype": 3,
-            "m_owner": "85e9b582-d08c-4bba-9565-57158ccd7956"
+            "m_owner": "a76689d6-0b92-4fd5-aa3b-5658dd3a100e"
         }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",

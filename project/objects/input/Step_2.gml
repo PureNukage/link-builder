@@ -25,7 +25,7 @@ if grid_x > -1 and grid_y > -1 {
 	}
 
 	//	Creating our selection x2 and y2
-	if mouse_left and selection_timer == 0 {
+	if mouse_left and selection_timer == 0 and selection == -1 {
 		selection_x2 = mouse_x
 		selection_y2 = mouse_y
 		selection_cell_x2 = grid_x
@@ -56,7 +56,7 @@ if grid_x > -1 and grid_y > -1 {
 			ds_list_add(selections,object)
 		} 
 		//	This object is in our selections, lets switch to it
-		else if !ds_list_empty(selections) and ds_list_find_index(selections,object) > -1 {
+		else if !ds_list_empty(selections)and ds_list_size(selections) > 1 and ds_list_find_index(selections,object) > -1 {
 			selection = object
 			
 		} 
