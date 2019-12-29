@@ -3,12 +3,20 @@ if argument_count == 1 var _id = argument[0]
 //	clear the ports of the items im connected to 
 var items = ds_list_create()
 for(var p=0;p<ports_count;p++) {
+	//	clear the grid of this port x,y
+	var _x = ports[p,port_x]
+	var _y = ports[p,port_y]
+	if gridController.grid_items[# _x, _y] == -2 gridController.grid_items[# _x, _y] = -1	
 	if ports[p,port_object] > -1 {
 		ds_list_add(items,ports[p,port_object])
 		with ports[p,port_object] {
 			for(var other_p=0;other_p<ports_count;other_p++) {
+				//	add this items port x,y to grid
+				var _x = ports[other_p,port_x]
+				var _y = ports[other_p,port_y]
+				gridController.grid_items[# _x, _y] = -2
 				if ports[other_p,port_object] = other.id {
-					ports[other_p,port_object] = -1	
+					ports[other_p,port_object] = -1
 				}
 			}
 		}
@@ -16,16 +24,53 @@ for(var p=0;p<ports_count;p++) {
 }
 
 if ds_list_empty(items) {
-		
+	//	time to die
+	// clear my grid_items
+	for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
+		for(var h=topleft_cell_y;h<bottomright_cell_y+size_height;h++) {
+			gridController.grid_items[# w, h] = -1
+			gridController.grid_objects[# w, h] = -1
+			
+		}
+	}
+	
+	//	delete my ports from the game
+	for(var p=0;p<ports_count;p++) {
+		if ds_list_find_index(gridController.grid_port_objects,id) > -1 {
+			var index = ds_list_find_index(gridController.grid_port_objects,id)
+			ds_list_delete(gridController.grid_port_x,index)
+			ds_list_delete(gridController.grid_port_y,index)
+			ds_list_delete(gridController.grid_port_objects,index)
+		}	
+	}
+	
+	//	if I'm selected, unselected me
+	if input.selection == id {
+		input.selection = -1
+		if ds_list_find_index(input.selections,id) > -1 {
+			ds_list_delete(input.selections,ds_list_find_index(input.selections,id))	
+		}
+	}
+	
+	//  check if my system is still alive, if it is kill it
+	if instance_exists(System) {
+		instance_destroy(System)	
+	}
+	
+	//	delete me 
+	instance_destroy()	
 } 
 //	Refresh these items systems
 else {
-	var master_system = System
+	var master_system_object = System
 	var new_systems = []
+	var systems_list = ds_list_create()
 	for(var i=0;i<ds_list_size(items);i++) {
 		var _item = items[| i]
 		var new_system = ds_list_create()
-		new_systems[i,0] = new_system
+		new_systems[i] = new_system
+		ds_list_add(new_system,_item)
+		ds_list_insert(systems_list,i,new_system)
 		
 		for(var p=0;p<_item.ports_count;p++) {
 			//	if theres something connected to this port
@@ -38,28 +83,178 @@ else {
 				ds_list_add(loops,current_loop)
 				while !ds_list_empty(loops) {
 					
-					var _object_index = current_loop.object_index
-					
 					//	Check this wires ports
 					for(var loop_port=0;loop_port<current_loop.ports_count;loop_port++) {
 						var other_port = loop_port
 						other_port = !other_port
 						//	empty port
 						if current_loop.ports[loop_port,port_object] == -1 {
-							loop = false
+
 						} 
 						//	another object is attached!
-						else if current_loop.ports[loop_port,port_object] > -1 and current_loop.ports[loop_port,port_object] != previous_loop {
-							
+						else if current_loop.ports[loop_port,port_object] > -1 {
+							//	this object isn't in our loop queue, lets add it!
+							if ds_list_find_index(loops,current_loop.ports[loop_port,port_object]) == -1  and ds_list_find_index(new_system,current_loop.ports[loop_port,port_object]) == -1 {
+								ds_list_add(loops,current_loop.ports[loop_port,port_object])
+							}
 						}
 					}
 					
+					ds_list_add(new_system,current_loop)
+					ds_list_delete(loops,0)
+					if !ds_list_empty(loops) {
+						previous_loop = current_loop
+						current_loop = loops[| 0]
+					}
+					
 				}
+				ds_list_destroy(loops)
 				
 			}
 			
 		}
-		ds_list_destroy(new_system)
 		
 	}
+	
+	var final_systems = ds_list_create()
+	
+	//	loop through new systems and filter out the duplicates leaving just the unique systems left
+	while !ds_list_empty(systems_list) {
+		var current_system = systems_list[| 0]
+		
+		//	make new array for marking which systems are duplicates
+		var new_systems_dupes = ds_list_create()
+		
+		//	loop through other systems and check if its a duplicate
+		for(var i=0;i<ds_list_size(systems_list);i++) {
+			var compared_system = systems_list[| i]
+			
+			//	right off the bat, lets compare sizes of items in them. they'll have to be equal to be a duplicate
+			//	these are not the same size and thus are not duplicates
+			if ds_list_size(compared_system) != ds_list_size(current_system) {
+				new_systems_dupes[| i] = 0
+			} 
+			//	these are the same size and could be a duplicate. lets compare items in the lists now 
+			else {
+				var dupes = 0
+				//	loop through items in the compared system
+				for(var an_item=0;an_item<ds_list_size(compared_system);an_item++) {
+					//	this item is in the current system, lets count it as a duplicate
+					if ds_list_find_index(current_system,compared_system[| an_item]) != -1 {
+						dupes++	
+					}
+				}
+				//	current system and compared system are duplicates!
+				if dupes == ds_list_size(compared_system) {
+					new_systems_dupes[| i] = 1
+				} else {
+					new_systems_dupes[| i] = 0	
+				}
+			}
+			
+		}
+		
+		var new_systems2 = ds_list_create()
+		var systems_to_delete = ds_list_create()
+		//	loop through new_systems_dupes and add the non duplicates into the new systems_list
+		for(var i=0;i<ds_list_size(new_systems_dupes);i++) {
+			if new_systems_dupes[| i] == 0 {
+				ds_list_insert(new_systems2,0,systems_list[| i])	
+			} else if systems_list[| i] != current_system{
+				ds_list_add(systems_to_delete,systems_list[| i])
+			}	
+		}
+		
+		//	add current_system to final_systems because it must be unique
+		ds_list_add(final_systems,current_system)
+		
+		//	delete the duplicate systems
+		while !ds_list_empty(systems_to_delete) {
+			ds_list_destroy(systems_to_delete[| 0])	
+			ds_list_delete(systems_to_delete,0)
+		}
+		
+		//	clear systems_list then copy new_systems2 to it
+		ds_list_clear(systems_list)
+		ds_list_copy(systems_list,new_systems2)
+		ds_list_destroy(new_systems2)	
+		ds_list_destroy(new_systems_dupes)
+
+	}
+	
+	//	check how many final systems we have
+	//	we have 1 final system 
+	if ds_list_size(final_systems) == 1 {
+		//	copy the new system onto the master system objects
+		with master_system_object {
+			ds_list_clear(master_system_object.parts)
+			ds_list_copy(master_system_object.parts,final_systems[| 0])
+		}
+	} 
+	//	we have multiple final systems
+	else if ds_list_size(final_systems) > 1 {
+		//	loop through final systems
+		for(var i=0;i<ds_list_size(final_systems);i++) {
+			var final_system = final_systems[| i]
+			
+			//	make new system object
+			var new_system_object = instance_create_layer(0,0,"Instances",system)
+			
+			//	loop through new systems parts
+			for(var p=0;p<ds_list_size(final_system);p++) {
+				var part = final_system[| p]
+				
+				//	delete this parts old system object if it exists
+				if instance_exists(part.System) instance_destroy(part.System)
+				
+				//	set this parts system to our new system object
+				part.System = new_system_object
+				
+				//	add this part to our new system objects parts list
+				ds_list_add(new_system_object.parts,part)
+			}
+		}
+	}
+	
+	for(var i=0;i<ds_list_size(final_systems);i++) {
+		ds_list_destroy(final_systems[| i])	
+	}
+	ds_list_destroy(final_systems)
+	
+	//	time to die
+	// clear my grid_items
+	for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
+		for(var h=topleft_cell_y;h<bottomright_cell_y+size_height;h++) {
+			gridController.grid_items[# w, h] = -1
+			gridController.grid_objects[# w, h] = -1
+			
+		}
+	}
+	
+	//	delete my ports from the game
+	for(var p=0;p<ports_count;p++) {
+		if ds_list_find_index(gridController.grid_port_objects,id) > -1 {
+			var index = ds_list_find_index(gridController.grid_port_objects,id)
+			ds_list_delete(gridController.grid_port_x,index)
+			ds_list_delete(gridController.grid_port_y,index)
+			ds_list_delete(gridController.grid_port_objects,index)
+		}	
+	}
+	
+	//	if I'm selected, unselected me
+	if input.selection == id or ds_list_find_index(input.selections,id) > -1 {
+		input.selection = -1
+		if ds_list_find_index(input.selections,id) > -1 {
+			ds_list_delete(input.selections,ds_list_find_index(input.selections,id))	
+		}
+	}
+	
+	//  check if my system is still alive, if it is kill it
+	if instance_exists(System) {
+		instance_destroy(System)	
+	}
+	
+	//	delete me 
+	instance_destroy()
+	
 }
