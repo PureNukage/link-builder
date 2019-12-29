@@ -38,6 +38,7 @@ if selection > -1 {
 					item_delete()				
 				}
 			}	
+			button_delete_mouseover = false
 		}
 	} else {
 		button_delete_mouseover = false	

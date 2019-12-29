@@ -11,12 +11,13 @@ for(var i=0;i<ds_list_size(parts);i++) {
 	} else if parts[| i].object_index == kiosk {
 		ds_list_add(kiosks,parts[| i])
 		ds_list_clear(parts[| i].data_held)
+		ds_list_clear(parts[| i].data_held_ids)
 	}	
 	
 }
 
 //if !ds_list_empty(kiosks) {
-	if !ds_list_empty(databases) {
+	//if !ds_list_empty(databases) {
 
 		#region Database loops
 			for(var i=0;i<ds_list_size(databases);i++) {
@@ -235,12 +236,20 @@ for(var i=0;i<ds_list_size(parts);i++) {
 					contracts.contract[_kiosk.smartcontract, contract_online] = true
 					debug_log("Kiosk "+string(_kiosk)+" is now active with smartcontract ["+contracts.contract[_kiosk.smartcontract, contract_name]+"]")
 				}
+			} 
+			//	this kiosk does NOT have all the data it needs
+			else {
+				if _kiosk.active {
+					_kiosk.active = false
+					contracts.contract[_kiosk.smartcontract, contract_online] = false
+					debug_log("Kiosk "+string(_kiosk)+" is now inactive")
+				}
 			}
 	
 		}
 
 		#endregion
-	}
+	//}
 //}
 
 ds_list_destroy(databases)

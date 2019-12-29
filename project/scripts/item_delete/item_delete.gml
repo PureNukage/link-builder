@@ -25,7 +25,7 @@ for(var p=0;p<ports_count;p++) {
 
 if ds_list_empty(items) {
 	//	time to die
-	// clear my grid_items
+	//	clear my grid_items
 	for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 		for(var h=topleft_cell_y;h<bottomright_cell_y+size_height;h++) {
 			gridController.grid_items[# w, h] = -1
@@ -190,6 +190,7 @@ else {
 		with master_system_object {
 			ds_list_clear(master_system_object.parts)
 			ds_list_copy(master_system_object.parts,final_systems[| 0])
+			system_dataflow_check()
 		}
 	} 
 	//	we have multiple final systems
@@ -214,6 +215,10 @@ else {
 				//	add this part to our new system objects parts list
 				ds_list_add(new_system_object.parts,part)
 			}
+			
+			with new_system_object {
+				system_dataflow_check()	
+			}
 		}
 	}
 	
@@ -223,7 +228,7 @@ else {
 	ds_list_destroy(final_systems)
 	
 	//	time to die
-	// clear my grid_items
+	//	clear my grid_items
 	for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 		for(var h=topleft_cell_y;h<bottomright_cell_y+size_height;h++) {
 			gridController.grid_items[# w, h] = -1
@@ -245,7 +250,7 @@ else {
 	
 	//	if I'm selected, unselected me
 	if input.selection == id or ds_list_find_index(input.selections,id) > -1 {
-		input.selection = -1
+		input.selection = -1	
 		if ds_list_find_index(input.selections,id) > -1 {
 			ds_list_delete(input.selections,ds_list_find_index(input.selections,id))	
 		}
