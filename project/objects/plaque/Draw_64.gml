@@ -26,6 +26,10 @@ if input.selection > -1 {
 	draw_set_valign(fa_middle)
 	draw_text(window_twoX+window_two_width/2,window_twoY-32,input.selection.name)
 	
+	//	Draw delete button
+	if input.selection.states == states.placed {
+		ui_draw_button(button_delete_width,button_delete_height,button_deleteX,button_deleteY,button_delete_color,button_delete_string,button_delete_mouseover)
+	}
 	
 	draw_set_halign(fa_left)
 	draw_set_valign(fa_top)

@@ -30,6 +30,7 @@ if ds_list_empty(items) {
 		for(var h=topleft_cell_y;h<bottomright_cell_y+size_height;h++) {
 			gridController.grid_items[# w, h] = -1
 			gridController.grid_objects[# w, h] = -1
+			mp_grid_clear_cell(gridController.mp_grid,w,h)
 			
 		}
 	}
@@ -227,6 +228,7 @@ else {
 		for(var h=topleft_cell_y;h<bottomright_cell_y+size_height;h++) {
 			gridController.grid_items[# w, h] = -1
 			gridController.grid_objects[# w, h] = -1
+			mp_grid_clear_cell(gridController.mp_grid,w,h)
 			
 		}
 	}
