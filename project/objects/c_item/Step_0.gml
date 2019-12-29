@@ -78,30 +78,11 @@ switch(states)
 	#endregion
 	
 	#region State Placed
-		case states.placed:
-		
-		var x1 = gridController.grid_positions_x[topleft_cell_x]
-		var y1 = gridController.grid_positions_y[topleft_cell_y]
-		var x2 = gridController.grid_positions_x[bottomright_cell_x]+cell_width
-		var y2 = gridController.grid_positions_y[bottomright_cell_y]+cell_height
-		
-		//if point_in_rectangle(mouse_x,mouse_y,x1,y1,x2,y2) {
-		//	if input.mouse_left_press {
-		//		selected = !selected
-		//		if selected {
-		//			if ds_list_find_index(input.selections,id) == -1 {
-		//				ds_list_add(input.selections,id)	
-		//			}
-		//		} else {
-		//			if ds_list_find_index(input.selections,id) != -1 {
-		//				ds_list_delete(input.selections,ds_list_find_index(input.selections,id))	
-		//			}
-		//		}
-				
-		//	}	
-		//}
+		case states.placed:		
 			
-			
+			if input.delete_press {				
+				item_delete()				
+			}
 			
 		break
 	#endregion

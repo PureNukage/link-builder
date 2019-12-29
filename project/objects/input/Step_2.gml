@@ -34,8 +34,8 @@ if grid_x > -1 and grid_y > -1 and !plaque.window_two_mouseover {
 
 
 	//	Single click selection
-	if (mouse_left_release and selection_timer > 0) and !shop.menu_mouseover or
-	(mouse_left_release and selection_timer == 0 and selection_x2 == -1 and selection_y2 == -1) and !shop.menu_mouseover {
+	if (mouse_left_release and selection_timer > 0 and !shop.menu_mouseover) or
+	(mouse_left_release and selection_timer == 0 and selection_x2 == -1 and selection_y2 == -1 and !shop.menu_mouseover) {
 		selection_timer = -1
 		var object = gridController.grid_objects[# grid_x, grid_y]
 		
