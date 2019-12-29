@@ -222,11 +222,6 @@ else {
 		}
 	}
 	
-	for(var i=0;i<ds_list_size(final_systems);i++) {
-		ds_list_destroy(final_systems[| i])	
-	}
-	ds_list_destroy(final_systems)
-	
 	//	time to die
 	//	clear my grid_items
 	for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
@@ -257,9 +252,14 @@ else {
 	}
 	
 	//  check if my system is still alive, if it is kill it
-	if instance_exists(System) {
+	if instance_exists(System) and ds_list_size(final_systems) > 1 {
 		instance_destroy(System)	
 	}
+	
+	for(var i=0;i<ds_list_size(final_systems);i++) {
+		ds_list_destroy(final_systems[| i])	
+	}
+	ds_list_destroy(final_systems)
 	
 	//	delete me 
 	instance_destroy()
