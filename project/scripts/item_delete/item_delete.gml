@@ -17,6 +17,7 @@ for(var p=0;p<ports_count;p++) {
 				gridController.grid_items[# _x, _y] = -2
 				if ports[other_p,port_object] == other.id {
 					ports[other_p,port_object] = -1
+					debug_log("Clearing "+string(id)+"'s Port["+string(other_p)+"] of "+string(other.id))
 				}
 			}
 		}
@@ -27,7 +28,7 @@ if ds_list_empty(items) {
 	//	time to die
 	//	clear my grid_items
 	for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
-		for(var h=topleft_cell_y;h<bottomright_cell_y+size_height;h++) {
+		for(var h=topleft_cell_y;h<topleft_cell_y+size_height;h++) {
 			gridController.grid_items[# w, h] = -1
 			gridController.grid_objects[# w, h] = -1
 			mp_grid_clear_cell(gridController.mp_grid,w,h)
@@ -46,8 +47,8 @@ if ds_list_empty(items) {
 	}
 	
 	//	if I'm selected, unselected me
-	if input.selection == id {
-		input.selection = -1
+	if input.selection == id or ds_list_find_index(input.selections,id) > -1 {
+		input.selection = -1	
 		if ds_list_find_index(input.selections,id) > -1 {
 			ds_list_delete(input.selections,ds_list_find_index(input.selections,id))	
 		}
@@ -255,7 +256,7 @@ else {
 	//	time to die
 	//	clear my grid_items
 	for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
-		for(var h=topleft_cell_y;h<bottomright_cell_y+size_height;h++) {
+		for(var h=topleft_cell_y;h<topleft_cell_y+size_height;h++) {
 			gridController.grid_items[# w, h] = -1
 			gridController.grid_objects[# w, h] = -1
 			mp_grid_clear_cell(gridController.mp_grid,w,h)
@@ -270,7 +271,7 @@ else {
 			ds_list_delete(gridController.grid_port_x,index)
 			ds_list_delete(gridController.grid_port_y,index)
 			ds_list_delete(gridController.grid_port_objects,index)
-		}	
+		}
 	}
 	
 	//	if I'm selected, unselected me

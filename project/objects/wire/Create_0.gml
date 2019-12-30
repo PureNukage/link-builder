@@ -18,7 +18,6 @@ cell_y2 = -1									//	Active; holds the y2 of the path
 path_points_x = ds_list_create()				//	Active; holds the cells x in the path
 path_points_y = ds_list_create()				//	Active; holds the cells y in the path
 path_objects = ds_list_create()					//	Active; holds the instance ids of objects in the path
-time_spawn = time.stream						//	Active; holds the time this wire spawned
 port1 = -1										//	Active; holds the id of the first item we're connecting to
 port2 = -1										//	Active; holds the id of the second item we're connecting to
 straight = true									//	Active; holds if this wire is a straight piece or a corner piece

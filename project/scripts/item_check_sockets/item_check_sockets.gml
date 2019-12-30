@@ -16,7 +16,7 @@ for(var p=0;p<ports_count;p++) {
 	}
 				
 	//  there is an item at this port, my port is free and I'm placeable
-	if gridController.grid_items[# _x, _y] > -1 and ports[p,port_object] == -1  and placeable {
+	if gridController.grid_objects[# _x, _y] > -1 and ports[p,port_object] == -1  and placeable {
 		//	does this item have its port where it needs to be?
 		//	first lets find the direction this item is in
 		var _item = gridController.grid_objects[# _x, _y]
@@ -28,11 +28,8 @@ for(var p=0;p<ports_count;p++) {
 			//	we're connecting to this object 
 			if _item.ports[other_p,port_x] == target_x and _item.ports[other_p,port_y] == target_y  and _item.ports[other_p,port_object] == -1 {
 				sockets[p] = _item	
-				if _item.object_index == wire {
-					_item.sockets[other_p] = _item
-				} else {
-					_item.sockets[other_p] = 0	
-				}
+				_item.sockets[other_p] = _item
+
 			}
 		}
 					

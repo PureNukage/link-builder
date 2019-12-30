@@ -18,6 +18,8 @@ rotation = 0
 
 selected = false
 
+time_spawn = time.stream						//	Active; holds the time this wire spawned
+
 sockets = []
 for(var i=0;i<ports_count;i++) {
 	sockets[i] = -1	
