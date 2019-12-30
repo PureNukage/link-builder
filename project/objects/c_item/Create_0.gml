@@ -18,6 +18,11 @@ rotation = 0
 
 selected = false
 
+sockets = []
+for(var i=0;i<ports_count;i++) {
+	sockets[i] = -1	
+}
+
 //Ports
 ports = []						
 for(var i=0;i<ports_count;i++) {

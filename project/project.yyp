@@ -167,6 +167,14 @@
             }
         },
         {
+            "Key": "3367900b-e596-4c29-80f6-fcd6999aedd7",
+            "Value": {
+                "id": "2e34425c-3b1b-4f65-949e-9c581b1bc0f3",
+                "resourcePath": "scripts\\item_check_sockets\\item_check_sockets.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "34f8962e-670c-4195-8ad5-c8e0c021b388",
             "Value": {
                 "id": "96fcc52b-b71c-400f-b8a5-afcd1b287f34",
@@ -195,6 +203,14 @@
             "Value": {
                 "id": "472d62a5-86ee-4adb-976f-cb789fdcc65c",
                 "resourcePath": "scripts\\wire_update_ports_xy\\wire_update_ports_xy.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "3c6652a0-1e3e-46aa-8448-8b76bebd8ed5",
+            "Value": {
+                "id": "12ca5dc4-5677-4e89-9881-6a804561ac1a",
+                "resourcePath": "scripts\\item_port_priority\\item_port_priority.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -769,11 +785,13 @@
         "60ccca35-21d9-432c-8d06-7ecd12c3aa78",
         "37bebf50-d727-4446-bf8f-556fa2cbd262",
         "8ccf824d-4a8b-44b0-b97c-dc302ea2aaed",
+        "3c6652a0-1e3e-46aa-8448-8b76bebd8ed5",
         "c54315ec-2931-4435-a989-274e26269826",
         "280b89e1-d35c-42de-965a-c6c68c84c139",
         "a5c07faa-d6cf-456e-af27-b25d8a0f5d2b",
         "da3c824c-4e95-4a0a-8144-c6242b60ac1c",
         "41845342-d151-4e02-ba37-83dfb067a273",
+        "3367900b-e596-4c29-80f6-fcd6999aedd7",
         "536c46f7-67ec-49c4-94ae-fd835a6a8343",
         "aef694f0-5b8d-495f-b4ca-b32285869617",
         "34f8962e-670c-4195-8ad5-c8e0c021b388",

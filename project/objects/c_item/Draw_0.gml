@@ -2,6 +2,8 @@ switch(states)
 {
 
 	case states.placement:
+	
+		draw_sockets_item()
 		
 		//	Draw the grid outline
 		if mouse_in_grid {

@@ -16,11 +16,13 @@ if selection == -1 and !ds_list_empty(selections) {
 
 if grid_x > -1 and grid_y > -1 and !plaque.window_two_mouseover and !plaque.button_delete_mouseover {
 	//	Creating selection rectangle x1 and y1
-	if mouse_left_press and selection_timer == -1 {
+	if mouse_left_press and selection_timer == -1 and selection == -1 {
 		selection_x1 = mouse_x
 		selection_y1 = mouse_y
 		selection_cell_x1 = grid_x
 		selection_cell_y1 = grid_y
+		selection_timer = 5
+	} else if mouse_left_press and selection_timer == -1 and selection > -1 {
 		selection_timer = 5
 	}
 
@@ -101,8 +103,8 @@ if grid_x > -1 and grid_y > -1 and !plaque.window_two_mouseover and !plaque.butt
 		}	
 	} 
 	//	Clicking on the menu/selecting anoth
-	else if (mouse_left_release and selection_timer > 0) and shop.menu_mouseover or
-	(mouse_left_release and selection_timer == 0 and selection_x2 == -1 and selection_y2 == -1) and shop.menu_mouseover{
+	else if (mouse_left_release and selection_timer > 0 and shop.menu_mouseover) or
+	(mouse_left_release and selection_timer == 0 and selection_x2 == -1 and selection_y2 == -1 and shop.menu_mouseover) {
 		selection_x1 = -1
 		selection_y1 = -1	
 		selection_timer = -1

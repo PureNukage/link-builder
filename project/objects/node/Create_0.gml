@@ -8,8 +8,6 @@ name = "Node"
 jobruns = 0
 level = 1
 
-port = []
-
 // Inherit the parent event
 event_inherited()
 

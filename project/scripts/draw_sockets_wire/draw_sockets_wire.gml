@@ -1,5 +1,5 @@
 for(var p=0;p<ports_count;p++) {
-	if ports[p,port_object] == -1 {
+	if sockets[p] == -1 {
 		var _w = ports[p,port_x]
 		var _h = ports[p,port_y]
 					

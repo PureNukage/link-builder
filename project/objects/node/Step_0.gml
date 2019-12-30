@@ -7,75 +7,7 @@ switch(states)
 		if input.grid_moved {
 			node_update_ports_xy(rotation)	
 			
-			for(var i=0;i<ports_count;i++) {
-				var _x = ports[i,port_x] 
-				var _y = ports[i,port_y]
-				if gridController.grid_items[# _x, _y] == wire {
-					var _wire = gridController.grid_objects[# _x, _y]
-					var free_ports_array = []
-					var free_ports = 0
-					var port_index = -1
-					for(var p=0;p<_wire.ports_count;p++) {
-						if _wire.ports[p,port_object] == -1 {
-							free_ports_array[p,port_object] = id
-							free_ports++
-							port_index = p
-						} else {
-							free_ports_array[p,port_object] = _wire.ports[p,port_object]
-						}
-						free_ports_array[p,port_x] = _wire.ports[p,port_x]
-						free_ports_array[p,port_y] = _wire.ports[p,port_y]
-					}
-					if free_ports > 0 {
-						free_ports--
-						if free_ports == 0 {
-							#region Determine straight or corner
-							//	Figure out directions
-							var _0 = port_get_direction(_wire,free_ports_array[0,port_object])
-							var _1 = port_get_direction(_wire,free_ports_array[1,port_object])
-							
-							//	Straight
-							if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {
-								_wire.straight = true
-							} else {
-								_wire.straight = false	
-							}						
-							#endregion
-							_wire.sprite = _wire.sprites[_wire.straight]
-							if _wire.straight {
-								_wire.rotation = cell_direction(_wire.center_cell_x,_wire.center_cell_y,center_cell_x,center_cell_y)
-							} else {
-								_wire.rotation = corner_rotation(_wire,free_ports_array)	
-							}
-						} else if free_ports == 1 {
-							_wire.straight = true	
-							_wire.rotation = cell_direction(_wire.center_cell_x,_wire.center_cell_y,center_cell_x,center_cell_y)
-							var array = port_get_direction(_wire,id)
-							repeat(2) {
-								var _index = ds_list_find_index(gridController.grid_port_objects,_wire)
-								ds_list_delete(gridController.grid_port_objects,_index)
-								ds_list_delete(gridController.grid_port_x,_index)
-								ds_list_delete(gridController.grid_port_y,_index)
-							}
-							if gridController.grid_items[# _wire.ports[port_index,port_x], _wire.ports[port_index,port_y]] == -2 
-							gridController.grid_items[# _wire.ports[port_index,port_x], _wire.ports[port_index,port_y]] = -1
-							
-							_wire.ports[port_index,port_x] = _wire.center_cell_x + array[0]
-							_wire.ports[port_index,port_y] = _wire.center_cell_y + array[1]
-							gridController.grid_items[# _wire.ports[port_index,port_x], _wire.ports[port_index,port_y]] = -2
-							port_index = !port_index
-							if gridController.grid_items[# _wire.ports[port_index,port_x], _wire.ports[port_index,port_y]] == -2 
-							gridController.grid_items[# _wire.ports[port_index,port_x], _wire.ports[port_index,port_y]] = -1
-							_wire.ports[port_index,port_x] = _wire.center_cell_x + (array[0]*-1)
-							_wire.ports[port_index,port_y] = _wire.center_cell_y + (array[1]*-1)
-							gridController.grid_items[# _wire.ports[port_index,port_x], _wire.ports[port_index,port_y]] = -2
-						}
-						
-					}						
-				} else {
-					port[i] = -1	
-				}
-			}
+			item_check_sockets()
 		}
 	
 		// Placement
@@ -102,9 +34,19 @@ switch(states)
 				ds_list_add(_grid_x,ports[_p,port_x])
 				ds_list_add(_grid_y,ports[_p,port_y])
 				gridController.grid_items[# ports[_p,port_x], ports[_p,port_y]] = -2
-				if port[_p] > 0 {
-					ports[_p,port_object] = port[_p]
-					debug_log("Connecting "+string(port[_p])+" to Port["+string(_p)+"]")
+				//	if we have ports to connect
+				if sockets[_p] > -1 and ports[_p,port_object] == -1 {
+					ports[_p,port_object] = sockets[_p]
+					debug_log("Connecting "+string(sockets[_p])+" to Port["+string(_p)+"]")
+					for(var _pp=0;_pp<sockets[_p].ports_count;_pp++) {
+						//	lets connect our items port to us as well
+						if sockets[_p].sockets[_pp] > -1 and sockets[_p].ports[_pp,port_object] == -1 {
+							sockets[_p].ports[_pp,port_object] = id
+							with sockets[_p] {
+								debug_log("Connecting "+string(other.id)+" to Port["+string(_pp)+"]")	
+							}
+						}
+					}
 				}
 			}
 			
@@ -129,6 +71,20 @@ switch(states)
 		
 		//	Delete item
 		if input.mouse_right_press {
+			
+			//	check for sockets 
+			for(var p=0;p<ports_count;p++) {
+				if sockets[p] > -1 {//and _item.ports[p,port_object] == -1 {
+					var socket_item = sockets[p]
+					if instance_exists(socket_item) {
+						for(var pp=0;pp<socket_item.ports_count;pp++) {
+							if socket_item.sockets[pp] > -1 and socket_item.ports[pp,port_object] == -1 {
+								socket_item.sockets[pp] = -1	
+							}
+						}
+					}
+				}
+			}
 			instance_destroy()
 		}
 	

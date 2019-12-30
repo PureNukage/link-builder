@@ -274,6 +274,17 @@ switch(states)
 									
 									__wire.ports[0,port_object] = connecting_item
 									
+									//	set wire sockets and connecting_items sockets
+									__wire.sockets[0] = connecting_item
+									var target_x = __wire.center_cell_x
+									var target_y = __wire.center_cell_y
+									for(var p=0;p<connecting_item.ports_count;p++) {
+										if connecting_item.ports[p,port_x] == target_x and connecting_item.ports[p,port_y] == target_y {
+											connecting_item.sockets[p] = __wire	
+										}
+										
+									}
+									
 									//	Figure out directions
 									var _directions = port_get_direction(__wire,connecting_item)
 									__wire.ports[0,port_x] = __wire.center_cell_x+_directions[0]
@@ -301,6 +312,17 @@ switch(states)
 										var connecting_item = port1[| 0]
 										
 										__wire.ports[1,port_object] = connecting_item
+										//	set wire sockets and connecting_items sockets
+										__wire.sockets[1] = connecting_item
+										var target_x = __wire.center_cell_x
+										var target_y = __wire.center_cell_y
+										for(var p=0;p<connecting_item.ports_count;p++) {
+											if connecting_item.ports[p,port_x] == target_x and connecting_item.ports[p,port_y] == target_y {
+												connecting_item.sockets[p] = __wire	
+											}
+										
+										}
+										
 										var _directions = port_get_direction(__wire,connecting_item)
 										__wire.ports[1,port_x] = __wire.center_cell_x+_directions[0]
 										__wire.ports[1,port_y] = __wire.center_cell_y+_directions[1]							
@@ -333,6 +355,9 @@ switch(states)
 						if i > 0 and i < ds_list_size(path_objects)-1 {
 							__wire.ports[1,port_object] = path_objects[| i-1]
 							__wire.ports[0,port_object] = path_objects[| i+1]
+							
+							__wire.sockets[0] = path_objects[| i+1]
+							__wire.sockets[1] = path_objects[| i-1]
 							
 							//	Figure out directions
 							var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
@@ -368,6 +393,16 @@ switch(states)
 										var connecting_item = port2[| c]
 										
 										__wire.ports[0,port_object] = connecting_item
+										//	set wire sockets and connecting_items sockets
+										__wire.sockets[1] = connecting_item
+										var target_x = __wire.center_cell_x
+										var target_y = __wire.center_cell_y
+										for(var p=0;p<connecting_item.ports_count;p++) {
+											if connecting_item.ports[p,port_x] == target_x and connecting_item.ports[p,port_y] == target_y {
+												connecting_item.sockets[p] = __wire	
+											}
+										
+										}
 										var _directions = port_get_direction(__wire,connecting_item)
 										__wire.ports[0,port_x] = __wire.center_cell_x+_directions[0]
 										__wire.ports[0,port_y] = __wire.center_cell_y+_directions[1]
@@ -395,8 +430,8 @@ switch(states)
 						}
 						#endregion			
 						
-						debug_log("Just set Wire: ["+string(i)+"] "+string(__wire)+" port["+string(i-1)+"] "+" to "+string(__wire.ports[1,port_object]))
-						debug_log("Just set Wire: ["+string(i)+"] "+string(__wire)+" port["+string(i+1)+"] "+" to "+string(__wire.ports[0,port_object]))
+						debug_log("Just set Wire: ["+string(i)+"] "+string(__wire)+" port["+string(1)+"] "+" to "+string(__wire.ports[1,port_object]))
+						debug_log("Just set Wire: ["+string(i)+"] "+string(__wire)+" port["+string(0)+"] "+" to "+string(__wire.ports[0,port_object]))
 								
 					}
 					#endregion
@@ -463,6 +498,11 @@ switch(states)
 							}
 						}
 						
+						//	Check for sockets
+						//with _wire {
+						//	item_check_sockets()	
+						//}
+						
 					//	debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
 						
 					}
@@ -482,6 +522,14 @@ switch(states)
 				
 				//	Placeable
 				if placeable {
+					
+					//	if I'm selected, unselected me
+					if input.selection == id or ds_list_find_index(input.selections,id) > -1 {
+						input.selection = -1	
+						if ds_list_find_index(input.selections,id) > -1 {
+							ds_list_delete(input.selections,ds_list_find_index(input.selections,id))	
+						}
+					}
 					
 					//	If we have a path 
 					if cell_x2 > -1 and cell_y2 > -1 {
@@ -518,6 +566,22 @@ switch(states)
 								ds_list_add(_grid_y,_wire.ports[_p,port_y])
 								gridController.grid_items[# _wire.ports[_p,port_x],_wire.ports[_p,port_y]] = -2
 								//debug_log("Just set Wire["+string(i)+"] port "+string(_p)+" xy to "+string(_wire.ports[_p,port_x])+","+string(_wire.ports[_p,port_y]))
+							}
+							//	add sockets
+							for(var _p=0;_p<_wire.ports_count;_p++) {
+								if _wire.ports[_p,port_object] == -1 {
+									_wire.sockets[_p] = -1
+								} else {
+									_wire.sockets[_p] = _wire.ports[_p,port_object]	
+									//	set this items sockets too
+									var _item = _wire.sockets[_p]
+									for(var pp=0;pp<_item.ports_count;pp++) {
+										//	this socket is connected to now
+										if _item.sockets[pp] == -1 and _item.ports[pp,port_object] > -1 {
+											_item.sockets[pp] = _item.ports[pp,port_object]	
+										}
+									}
+								}
 							}
 							ds_grid_set_grid_region(gridController.grid_items,_wire.my_cells_items,0,0,_wire.size_width,_wire.size_height,_wire.topleft_cell_x,_wire.topleft_cell_y)
 							//debug_log("Placing my index at cell: "+string(_wire.topleft_cell_x)+","+string(_wire.topleft_cell_y))
@@ -594,6 +658,23 @@ switch(states)
 							}
 								
 						}
+						
+							//	add sockets
+							for(var _p=0;_p<_wire.ports_count;_p++) {
+								if _wire.ports[_p,port_object] == -1 {
+									_wire.sockets[_p] = -1
+								} else {
+									_wire.sockets[_p] = _wire.ports[_p,port_object]	
+									//	set this items sockets too
+									var _item = _wire.sockets[_p]
+									for(var pp=0;pp<_item.ports_count;pp++) {
+										//	this socket is connected to now
+										if _item.sockets[pp] == -1 and _item.ports[pp,port_object] > -1 {
+											_item.sockets[pp] = _item.ports[pp,port_object]	
+										}
+									}
+								}
+							}
 							
 						with _wire {
 							system_set()	
@@ -605,7 +686,28 @@ switch(states)
 				//	Not placeable
 				else {
 					for(var i=0;i<ds_list_size(path_objects);i++) {
+						//	check for sockets 
+						var _item = path_objects[| i]
+						for(var p=0;p<_item.ports_count;p++) {
+							if _item.sockets[p] > -1 {//and _item.ports[p,port_object] == -1 {
+								var socket_item = _item.sockets[p]
+								if instance_exists(socket_item) {
+									for(var pp=0;pp<socket_item.ports_count;pp++) {
+										if socket_item.sockets[pp] > -1 and socket_item.ports[pp,port_object] == -1 {
+											socket_item.sockets[pp] = -1	
+										}
+									}
+								}
+							}
+						}
 						instance_destroy(path_objects[| i])
+					}
+					//	if I'm selected, unselected me
+					if input.selection == id or ds_list_find_index(input.selections,id) > -1 {
+						input.selection = -1	
+						if ds_list_find_index(input.selections,id) > -1 {
+							ds_list_delete(input.selections,ds_list_find_index(input.selections,id))	
+						}
 					}
 					instance_destroy()	
 				}
@@ -615,7 +717,28 @@ switch(states)
 			//	Right press to destroy the wire and any path
 			if input.mouse_right_press {
 				for(var i=0;i<ds_list_size(path_objects);i++) {
+					//	check for sockets 
+					var _item = path_objects[| i]
+					for(var p=0;p<_item.ports_count;p++) {
+						if _item.sockets[p] > -1 {//and _item.ports[p,port_object] == -1 {
+							var socket_item = _item.sockets[p]
+							if instance_exists(socket_item) {
+								for(var pp=0;pp<socket_item.ports_count;pp++) {
+									if socket_item.sockets[pp] > -1 and socket_item.ports[pp,port_object] == -1 {
+										socket_item.sockets[pp] = -1	
+									}
+								}
+							}
+						}
+					}
 					instance_destroy(path_objects[| i])
+				}
+				//	if I'm selected, unselected me
+				if input.selection == id or ds_list_find_index(input.selections,id) > -1 {
+					input.selection = -1	
+					if ds_list_find_index(input.selections,id) > -1 {
+						ds_list_delete(input.selections,ds_list_find_index(input.selections,id))	
+					}
 				}
 				instance_destroy()	
 			}

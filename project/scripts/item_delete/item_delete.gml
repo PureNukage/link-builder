@@ -15,7 +15,7 @@ for(var p=0;p<ports_count;p++) {
 				var _x = ports[other_p,port_x]
 				var _y = ports[other_p,port_y]
 				gridController.grid_items[# _x, _y] = -2
-				if ports[other_p,port_object] = other.id {
+				if ports[other_p,port_object] == other.id {
 					ports[other_p,port_object] = -1
 				}
 			}
@@ -60,6 +60,18 @@ if ds_list_empty(items) {
 	
 	//	delete me 
 	instance_destroy()	
+	
+	//	grid priorities
+	for(var i=0;i<ds_list_size(systemController.systems);i++) {
+		var _system = systemController.systems[| i]
+		for(var p=0;p<ds_list_size(_system.parts);p++) {
+			var part = _system.parts[| p]
+			with part {
+				item_port_priority()
+				item_index_priority()
+			}
+		}
+	}
 } 
 //	Refresh these items systems
 else {
@@ -191,6 +203,16 @@ else {
 			ds_list_clear(master_system_object.parts)
 			ds_list_copy(master_system_object.parts,final_systems[| 0])
 			system_dataflow_check()
+			
+			for(var _part=0;_part<ds_list_size(master_system_object.parts);_part++) {
+				var part = master_system_object.parts[| _part]
+				//	recalc sockets
+				for(var _port=0;_port<part.ports_count;_port++) {
+					if part.sockets[_port] > -1 and part.ports[_port,port_object] == -1 {
+						part.sockets[_port] = -1	
+					}
+				}
+			}
 		}
 	} 
 	//	we have multiple final systems
@@ -214,6 +236,14 @@ else {
 				
 				//	add this part to our new system objects parts list
 				ds_list_add(new_system_object.parts,part)
+				
+				//	recalc sockets
+				for(var _port=0;_port<part.ports_count;_port++) {
+					if part.sockets[_port] > -1 and part.ports[_port,port_object] == -1 {
+						part.sockets[_port] = -1	
+					}
+				}
+					
 			}
 			
 			with new_system_object {
@@ -264,4 +294,18 @@ else {
 	//	delete me 
 	instance_destroy()
 	
+	//	grid priorities
+	for(var i=0;i<ds_list_size(systemController.systems);i++) {
+		var _system = systemController.systems[| i]
+		for(var p=0;p<ds_list_size(_system.parts);p++) {
+			var part = _system.parts[| p]
+			with part {
+				item_port_priority()
+				item_index_priority()
+			}
+		}
+	}
+	
 }
+
+ds_list_destroy(items)

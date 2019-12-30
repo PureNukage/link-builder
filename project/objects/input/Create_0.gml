@@ -3,6 +3,7 @@ mouse_left = mouse_check_button(mb_left)
 mouse_left_release = mouse_check_button_released(mb_left)
 
 mouse_right_press = mouse_check_button_pressed(mb_right)
+mouse_right = mouse_check_button(mb_right)
 
 space = keyboard_check_pressed(vk_space)
 
