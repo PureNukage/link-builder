@@ -28,7 +28,11 @@ for(var p=0;p<ports_count;p++) {
 			//	we're connecting to this object 
 			if _item.ports[other_p,port_x] == target_x and _item.ports[other_p,port_y] == target_y  and _item.ports[other_p,port_object] == -1 {
 				sockets[p] = _item	
-				_item.sockets[other_p] = _item
+				if _item.object_index == wire {
+					_item.sockets[other_p] = _item
+				} else {
+					_item.sockets[other_p] = 0	
+				}
 			}
 		}
 					

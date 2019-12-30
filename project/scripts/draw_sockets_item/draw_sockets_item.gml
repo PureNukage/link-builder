@@ -22,7 +22,11 @@ for(var p=0;p<ports_count;p++) {
 		var _sprite
 		if sockets[p] == -1 {
 			_sprite = s_wire_socket 
-		} else if sockets[p] > -1 {
+		} else if sockets[p] == 0 {
+			_sprite = s_wire
+			_x = _x - (directionX*20)
+			_y = _y - (directionY*20)
+		} else if sockets[p] > 0 {
 			_sprite = s_wire_socket_connected	
 		}
 	
