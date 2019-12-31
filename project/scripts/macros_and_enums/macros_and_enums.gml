@@ -50,6 +50,12 @@ enum contract_types {
 	eth_transfer,	
 }
 
+#macro item_name 0
+#macro item_object_index 3
+#macro item_price 1
+#macro item_placed 2
+#macro item_text 4
+
 #macro in 0
 #macro out 1
 #macro port_object 0

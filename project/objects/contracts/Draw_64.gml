@@ -34,30 +34,39 @@ if button_open == true {
 				var _contract_kiosk = contract[i, contract_kiosk]
 				var price = contract[i, contract_price]
 				
-				if _contract_purchased {		
+				//	Contracts purchased
+				if _contract_purchased {	
+					//	Contract is in a kiosk
 					if _contract_kiosk > -1 {
 						//	Mouse over highlight
 						if point_in_rectangle(gui_mouse_x,gui_mouse_y,buttonX-name_width,_yy,buttonX+button_width,_yy+64) {
+							gui_popup(buttonX-name_width,_yy,buttonX+button_width,_yy+64,2,"Go to this kiosk")			
 							draw_set_color(c_gray)	
 						} else {
 							draw_set_color(c_dkgray)
 						}
-					} else {
+					} 
+					//	Contract is NOT in a kiosk
+					else {
 						if input.contract == i {
 							draw_set_color(c_gray)	
 						} else {
 							//	Mouse over highlight
 							if point_in_rectangle(gui_mouse_x,gui_mouse_y,buttonX-name_width,_yy,buttonX+button_width,_yy+64) {
+								gui_popup(buttonX-name_width,_yy,buttonX+button_width,_yy+64,2,"Place this contract into a kiosk")	
 								draw_set_color(c_gray)	
 							} else {
 								draw_set_color(c_dkgray)
 							}	
 						}
 					}
-				} else {
+				} 
+				//	Contract is NOT purchased
+				else {
 					//	Mouse over highlight
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,buttonX-name_width,_yy,buttonX+button_width,_yy+64) {
-						draw_set_color(c_gray)	
+						gui_popup(buttonX-name_width,_yy,buttonX+button_width,_yy+64,2,"Purchase this contract")		
+						draw_set_color(c_gray)							
 					} else {
 						draw_set_color(c_dkgray)
 					}	

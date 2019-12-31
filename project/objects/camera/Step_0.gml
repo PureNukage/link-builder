@@ -33,7 +33,7 @@ if camera_mode == 0 {
 	x = clamp(x,0+edgeX,room_width-edgeX)
 	y = clamp(y,0+edgeY,room_height-edgeY)
 } else {
-	if point_distance(x,y,display_get_gui_width()/2,display_get_gui_height()/2) < 10 {
+	if point_distance(x,y,display_get_gui_width()/2,display_get_gui_height()/2) < 64 {
 		camera_mode = 0	
 	}
 }
