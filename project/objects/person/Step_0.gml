@@ -20,7 +20,7 @@ switch(states)
 							if instance_exists(kiosk) {
 								with kiosk {
 									//	this smartcontracts line isn't filled!
-									if smartcontract == other.smartcontract and ds_list_size(line) < 5 {
+									if smartcontract == other.smartcontract and ds_list_size(line) < contracts.contract[smartcontract, contract_traffic] {
 										var w_index = floor(topleft_cell_x+size_width/2)
 										var h_index = bottomright_cell_y
 										if w_index > -1 and w_index < grid_width and h_index > -1 and h_index < grid_height {
@@ -50,9 +50,6 @@ switch(states)
 				}
 			
 			}
-			
-			//	Cooldown
-			if cooldown > 0 cooldown--
 			
 			
 		break
