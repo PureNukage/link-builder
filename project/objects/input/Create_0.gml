@@ -14,6 +14,8 @@ delete_press = keyboard_check_pressed(vk_delete)
 
 control_press = keyboard_check_pressed(vk_control)
 
+give_money = keyboard_check_pressed(vk_home)
+
 selection = -1
 selections = ds_list_create()
 selection_x1 = -1

@@ -14,6 +14,12 @@ delete_press = keyboard_check_pressed(vk_delete)
 
 control_press = keyboard_check_pressed(vk_control)
 
+give_money = keyboard_check_pressed(vk_home)
+
+if give_money {
+	player.points += 2000	
+}
+
 #region Calculating grid_x,y and grid_moved 
 	var _x = gridController.grid_start_x
 	var _y = gridController.grid_start_y

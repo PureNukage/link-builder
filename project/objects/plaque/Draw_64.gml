@@ -104,11 +104,11 @@ if input.selection > -1 {
 					
 						var _data = _item.data_held[| i]
 						draw_set_color(c_black)
-						draw_text(_xx,_yy,item_data[_data, item_name])
+						draw_text(_xx,_yy,shop.item_data[_data, item_name])
 						_yy += 15
 					
-						if (string_width(item_data[_data, item_name]) - window_two_width) > 0 {
-							window_two_width = string_width(item_data[_data, item_name]) + 16
+						if (string_width(shop.item_data[_data, item_name]) - window_two_width) > 0 {
+							window_two_width = string_width(shop.item_data[_data, item_name]) + 16
 						}
 					
 					}

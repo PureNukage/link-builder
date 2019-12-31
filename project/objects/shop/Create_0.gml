@@ -22,7 +22,10 @@ data_mouseover = false
 item_data = []
 
 var _string = "This endpoint to Binance gives\nthe current USD price of Ether"
-create_data("Binance ETH/USD",500,data,_string)
+create_data("Binance ETH/USD",500,data,_string,data_types.binance_ETHUSD)
+
+var _string = "This endpoint gives access to PayPal"
+create_data("PayPal",750,data,_string,data_types.paypal)
 
 //	CREATE NODES
 item_node[0,item_name] = "Node"

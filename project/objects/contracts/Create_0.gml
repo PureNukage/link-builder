@@ -17,4 +17,7 @@ contract = []
 var _data = create_data_needed(data_types.binance_ETHUSD)
 create_contract("Eth Transfer","",100,150,2,20,_data)
 
+var _data = create_data_needed(data_types.binance_ETHUSD,data_types.paypal)
+create_contract("LinkPal","",200,500,2,20,_data)
+
 

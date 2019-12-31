@@ -7,10 +7,10 @@ if point_in_rectangle(mouse_gui_x,mouse_gui_y,buttonX,buttonY,buttonX+button_wid
 	button_mouseover = false
 }	
 
+var _yy = buttonY+button_height+buttonY
 var _menu_mouseover = 0
 for(var i=0;i<ds_list_size(contracts_purchased);i++) {
 	var name_width = contract[i, contract_width]
-	var _yy = buttonY+button_height+buttonY
 	var contract_active = contract[i, contract_online]
 	var _contract_kiosk = contract[i, contract_kiosk]
 	var _contract_purchased = contract[i, contract_purchased]
@@ -55,6 +55,7 @@ for(var i=0;i<ds_list_size(contracts_purchased);i++) {
 			
 		}
 	}
+	_yy += button_height+buttonY
 	
 }
 if _menu_mouseover > 0 menu_mouseover = true else menu_mouseover = false
