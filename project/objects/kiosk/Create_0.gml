@@ -26,3 +26,4 @@ data_needed[0,2] = -1
 
 busy = false
 line = ds_list_create()
+mental_line = ds_list_create()

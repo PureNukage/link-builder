@@ -25,6 +25,7 @@ switch(states)
 										other.goal_current = instance_create_layer(_xx,_yy,"Instances",goal)
 										other.goal_current.goal_type = goal_type.walking_to_kiosk
 										other.states = states.move
+										ds_list_add(mental_line,other.id)
 										with other debug_log("I am starting a walk to the kiosk")
 									}
 								} 
