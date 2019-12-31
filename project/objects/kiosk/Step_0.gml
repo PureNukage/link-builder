@@ -11,3 +11,5 @@ if active and contracts.contract[smartcontract, contract_traffic_live] < contrac
 		
 	}
 }
+
+depth = -y

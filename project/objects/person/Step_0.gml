@@ -5,44 +5,50 @@ switch(states)
 			
 			speed = 0
 			
-			//	I don't have a smart contract currently
-			if smartcontract == -1 {
-					if !ds_list_empty(smartcontracts) and cooldown == 0 {
-						smartcontract = smartcontracts[| 0]
+			if timer > 0 timer-- 
+			
+			if timer == 0 {
+			
+				//	I don't have a smart contract currently
+				if smartcontract == -1 {
+						if !ds_list_empty(smartcontracts) and cooldown == 0 {
+							smartcontract = smartcontracts[| 0]
 				
-						debug_log("I want to use smartcontract "+string(contracts.contract[smartcontract, contract_name]))
+							debug_log("I want to use smartcontract "+string(contracts.contract[smartcontract, contract_name]))
 				
-						//	Create goal at the kiosk
-						if instance_exists(kiosk) {
-							with kiosk {
-								//	this smartcontracts line isn't filled!
-								if smartcontract == other.smartcontract and ds_list_size(line) < 5 {
-									var w_index = floor(topleft_cell_x+size_width/2)
-									var h_index = bottomright_cell_y
-									if w_index > -1 and w_index < grid_width and h_index > -1 and h_index < grid_height {
-										var _xx = gridController.grid_positions_x[floor(topleft_cell_x+size_width/2)]+(cell_width/2)
-										var _yy = gridController.grid_positions_y[bottomright_cell_y]+cell_height
-										other.goal_current = instance_create_layer(_xx,_yy,"Instances",goal)
-										other.goal_current.goal_type = goal_type.walking_to_kiosk
-										other.states = states.move
-										ds_list_add(mental_line,other.id)
-										with other debug_log("I am starting a walk to the kiosk")
+							//	Create goal at the kiosk
+							if instance_exists(kiosk) {
+								with kiosk {
+									//	this smartcontracts line isn't filled!
+									if smartcontract == other.smartcontract and ds_list_size(line) < 5 {
+										var w_index = floor(topleft_cell_x+size_width/2)
+										var h_index = bottomright_cell_y
+										if w_index > -1 and w_index < grid_width and h_index > -1 and h_index < grid_height {
+											var _xx = gridController.grid_positions_x[floor(topleft_cell_x+size_width/2)]+(cell_width/2)
+											var _yy = gridController.grid_positions_y[bottomright_cell_y]+cell_height
+											other.goal_current = instance_create_layer(_xx,_yy,"Instances",goal)
+											other.goal_current.goal_type = goal_type.walking_to_kiosk
+											other.states = states.move
+											ds_list_add(mental_line,other.id)
+											with other debug_log("I am starting a walk to the kiosk")
+										}
+									} 
+									//	this smartcontracts line is filled! lets idlewalk
+									else {
+										debug_log("This line is filled. I am going to idlewalk")
+										person_idlewalk()
 									}
-								} 
-								//	this smartcontracts line is filled! lets idlewalk
-								else {
-									debug_log("This line is filled. I am going to idlewalk")
-									person_idlewalk()
 								}
 							}
-						}
-				} 
-				//	I either don't want to use any smart contracts or I'm on cooldown, lets idlewalk
-				else {
+					} 
+					//	I either don't want to use any smart contracts or I'm on cooldown, lets idlewalk
+					else {
+						person_idlewalk()
+					}
+				} else {
 					person_idlewalk()
 				}
-			} else {
-				person_idlewalk()
+			
 			}
 			
 			//	Cooldown
@@ -182,8 +188,8 @@ switch(states)
 					var w_index = floor(_kiosk.topleft_cell_x+_kiosk.size_width/2)
 					var h_index = _kiosk.bottomright_cell_y
 					if w_index > -1 and w_index < grid_width and h_index > -1 and h_index < grid_height {
-						var _xx = gridController.grid_positions_x[w_index]
-						var _yy = gridController.grid_positions_y[h_index]
+						var _xx = gridController.grid_positions_x[w_index]+(cell_width/2)
+						var _yy = gridController.grid_positions_y[h_index]+cell_height
 						goal_current = instance_create_layer(_xx,_yy,"Instances",goal)
 						goal_current.goal_type = goal_type.using_smartcontract
 						debug_log("I am using smartcontract "+contracts.contract[smartcontract, contract_name])
@@ -193,26 +199,6 @@ switch(states)
 					
 				}
 			} 
-			//	I am not first in line, lets wait and continue to see if the line advances
-			else {
-				
-					//var w_index = floor(_kiosk.topleft_cell_x+_kiosk.size_width/2)
-					//var h_index = _kiosk.bottomright_cell_y
-					//if w_index > -1 and w_index < grid_width and h_index > -1 and h_index < grid_height {
-					//	var _xx = gridController.grid_positions_x[w_index] - 64 - (pos*64)
-					//	var _yy = gridController.grid_positions_y[h_index]
-						
-					//	//	Advance in line
-					//	if point_distance(x,y,_xx,_yy) > 2 {
-					//		goal_current = instance_create_layer(_xx,_yy,"InstanceS",goal)
-					//		goal_current.goal_type = goal_type.waiting_in_line
-					//		debug_log("Moving up in line")
-					//		states = states.move
-					//	}
-						
-					//}
-				
-			}
 			
 		break
 	#endregion

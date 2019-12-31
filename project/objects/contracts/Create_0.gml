@@ -19,7 +19,7 @@ contract[contract_types.eth_transfer, contract_traffic] = 20
 contract[contract_types.eth_transfer, contract_traffic_live] = 0
 contract[contract_types.eth_transfer, contract_reward] = 100
 contract[contract_types.eth_transfer, contract_price] = 150
-contract[contract_types.eth_transfer, contract_channel] = 30
+contract[contract_types.eth_transfer, contract_channel] = 60
 
 contracts_list[| contract_types.eth_transfer] = true
 
