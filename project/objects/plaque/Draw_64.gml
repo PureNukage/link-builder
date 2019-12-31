@@ -104,11 +104,11 @@ if input.selection > -1 {
 					
 						var _data = _item.data_held[| i]
 						draw_set_color(c_black)
-						draw_text(_xx,_yy,datatypes.strings[_data])
+						draw_text(_xx,_yy,item_data[_data, item_name])
 						_yy += 15
 					
-						if (string_width(datatypes.strings[_data]) - window_two_width) > 0 {
-							window_two_width = string_width(datatypes.strings[_data]) + 16
+						if (string_width(item_data[_data, item_name]) - window_two_width) > 0 {
+							window_two_width = string_width(item_data[_data, item_name]) + 16
 						}
 					
 					}
@@ -144,7 +144,7 @@ if input.selection > -1 {
 			draw_text(_xx,_yy,"data generated")  _yy += 15
 			
 			draw_set_color(c_black)
-			var _string = datatypes.strings[_item.data_generated]
+			var _string = shop.item_data[_item.data_generated, item_name]
 			draw_text(_xx,_yy,_string)
 			
 			if (string_width(_string) - window_two_width) > 0 {

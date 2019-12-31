@@ -12,4 +12,4 @@ event_inherited()
 ports[0,port_x] = bottomright_cell_x+1
 ports[0,port_y] = center_cell_y
 
-data_generated = data_types.binance_ETHUSD
+data_generated = -1 

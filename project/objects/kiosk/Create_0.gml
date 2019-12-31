@@ -20,9 +20,6 @@ smartcontract = -1
 active = false
 
 data_needed = []
-data_needed[0,0] = data_types.binance_ETHUSD
-data_needed[0,1] = false
-data_needed[0,2] = -1
 
 busy = false
 line = ds_list_create()

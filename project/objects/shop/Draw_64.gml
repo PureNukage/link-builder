@@ -226,18 +226,18 @@ if menu_open == true {
 						if item_data[d,2] {
 							draw_set_color(c_gray4)	
 						} else {
-							draw_set_color(c_ltgray)
 							var array = gui_popup(menuX,_y,menuX+menu_width,_y+32,0,string(_price))
-							gui_popup(array[0],array[1],array[2],array[3],1,_item_text)
+							gui_popup(array[0],array[1],array[2],array[3],1,_item_text)						
+							draw_set_color(c_ltgray)
 						}	
 					} else {
 						//	Draw data background
 						if item_data[d,2] {
 							draw_set_color(c_gray4)	
 						} else {
-							draw_set_color(c_gray)
 							var array = gui_popup(menuX,_y,menuX+menu_width,_y+32,0,string(_price))
-							gui_popup(array[0],array[1],array[2],array[3],1,_item_text)
+							gui_popup(array[0],array[1],array[2],array[3],1,_item_text)							
+							draw_set_color(c_gray)
 						}
 					}
 				#endregion

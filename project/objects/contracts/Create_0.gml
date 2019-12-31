@@ -11,22 +11,10 @@ contracts_online = ds_list_create()
 
 menu_mouseover = false
 
-//var _kiosk = place_kiosk(25,17)
-
 contract = []
-contract[contract_types.eth_transfer, contract_name] = "Eth Transfer"
-contract[contract_types.eth_transfer, contract_online] = false
-contract[contract_types.eth_transfer, contract_kiosk] = -1 //_kiosk
-contract[contract_types.eth_transfer, contract_traffic] = 20
-contract[contract_types.eth_transfer, contract_traffic_live] = 0
-contract[contract_types.eth_transfer, contract_reward] = 100
-contract[contract_types.eth_transfer, contract_price] = 150
-contract[contract_types.eth_transfer, contract_purchased] = 0
-contract[contract_types.eth_transfer, contract_channel] = 2		//	in Seconds
-contract[contract_types.eth_transfer, contract_width] = -1
-contract[contract_types.eth_transfer, contract_height] = -1
 
-contracts_purchased[| contract_types.eth_transfer] = true
+//	CREATE CONTRACTS
+var _data = create_data_needed(data_types.binance_ETHUSD)
+create_contract("Eth Transfer","",100,150,2,20,_data)
 
-//_kiosk.smartcontract = contract_types.eth_transfer
 

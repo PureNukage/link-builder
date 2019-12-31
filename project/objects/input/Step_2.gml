@@ -198,6 +198,7 @@ switch(selection_mode)
 						if input.mouse_left_press {
 							contracts.contract[contract, contract_kiosk] = selection
 							selection.smartcontract = contract
+							selection.data_needed = contracts.contract[contract, contract_data]							
 							with selection.System system_dataflow_check()
 							contract = -1
 							selection_mode = selection_mode.free

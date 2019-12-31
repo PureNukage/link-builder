@@ -11,11 +11,25 @@ menu_width = 128
 menu_height = 256
 menu_mouseover = false
 menu_open = false
+menu_pressed = false
 
 nodes_open = false
 nodes_mouseover = false
 data_open = false
 data_mouseover = false
+
+//	CREATE DATA 
+item_data = []
+
+var _string = "This endpoint to Binance gives\nthe current USD price of Ether"
+create_data("Binance ETH/USD",500,data,_string)
+
+//	CREATE NODES
+item_node[0,item_name] = "Node"
+item_node[0,item_price] = 100
+item_node[0,item_placed] = 0
+item_node[0,item_object_index] = node
+item_node[0,item_text] = "A ChainLink node.\n\nSome say its the 4th industrial revolution\nOthers say its made of cheese"
 
 item = []
 item[0,item_name] = "Node"		//	Item name in a string
@@ -23,22 +37,10 @@ item[0,item_price] = 100			//	Item price
 item[0,item_placed] = 0			//	Has this item been placed?
 item[0,item_object_index] = node		//	Object index of the item
 
-item_node[0,item_name] = "Node"
-item_node[0,item_price] = 100
-item_node[0,item_placed] = 0
-item_node[0,item_object_index] = node
-item_node[0,item_text] = "A ChainLink node.\n\nSome say its the 4th industrial revolution\nOthers say its made of cheese"
-
 item[1,item_name] = "Data"
 item[1,item_price] = 500
 item[1,item_placed] = 0
 item[1,item_object_index] = data
-
-item_data[0,item_name] = "Binance ETH/USD"
-item_data[0,item_price] = 500
-item_data[0,item_placed] = 0
-item_data[0,item_object_index] = data
-item_data[0,item_text] = "This endpoint to Binance gives\nthe current USD price of Ether"
 
 item[2,item_name] = "Wire"
 item[2,item_price] = 0
@@ -49,6 +51,8 @@ item[3,item_name] = "Kiosk"
 item[3,item_price] = 0
 item[3,item_placed] = 250
 item[3,item_object_index] = kiosk
+
+
 
 
 item_height = 64

@@ -3,6 +3,7 @@
 		button_mouseover = true
 		if input.mouse_left_press {
 			menu_open = !menu_open
+			menu_pressed = true
 			menu_height = 256
 			menu_width = 128
 		}
@@ -68,7 +69,8 @@
 			nodes_mouseover = true
 			if input.mouse_left_press {
 				nodes_open = !nodes_open
-				menu_width = 128
+				menu_pressed = true				
+				//menu_width = 128
 			}
 			
 		} else {
@@ -107,6 +109,7 @@
 			data_mouseover = true
 			if input.mouse_left_press {
 				data_open = !data_open	
+				menu_pressed = true				
 				menu_width = 128
 			}
 		} else {
@@ -131,7 +134,8 @@
 						input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",item_data[d,3])
 						input.selection.selected = true
 						input.selection.item_index = d
-						input.selection.price = item_data[d,1]
+						input.selection.price = item_data[d,item_price]
+						input.selection.data_generated = item_data[d,item_data_generated]
 						if ds_list_find_index(input.selections,input.selection) == -1 {
 							ds_list_add(input.selections,input.selection)	
 						}	
