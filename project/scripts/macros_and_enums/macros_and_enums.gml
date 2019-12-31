@@ -3,6 +3,11 @@ enum states {
 	placed,
 	limbo,
 	
+	idle,
+	wait_in_line,
+	move,
+	using_smartcontract,
+	
 }
 
 enum mode {
@@ -17,9 +22,22 @@ enum data_types {
 	binance_ETHUSD,	
 }
 
+enum goal_type {
+	walking_to_kiosk,	
+	idlewalk,
+	waiting_in_line,
+	using_smartcontract,
+}
+
 #macro contract_name 0
 #macro contract_online 1
 #macro contract_kiosk 2
+#macro contract_traffic 3
+#macro contract_reward 4
+#macro contract_price 5
+#macro contract_traffic_live 6
+#macro contract_channel 7
+
 enum contract_types {
 	eth_transfer,	
 }

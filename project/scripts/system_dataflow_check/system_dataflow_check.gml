@@ -234,6 +234,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 				if !_kiosk.active {
 					_kiosk.active = true
 					contracts.contract[_kiosk.smartcontract, contract_online] = true
+					ds_list_add(contracts.contracts_online,_kiosk.smartcontract)
 					debug_log("Kiosk "+string(_kiosk)+" is now active with smartcontract ["+contracts.contract[_kiosk.smartcontract, contract_name]+"]")
 				}
 			} 
@@ -242,6 +243,9 @@ for(var i=0;i<ds_list_size(parts);i++) {
 				if _kiosk.active {
 					_kiosk.active = false
 					contracts.contract[_kiosk.smartcontract, contract_online] = false
+					if ds_list_find_index(contracts.contracts_online,_kiosk.smartcontract) > -1 {
+						ds_list_delete(contracts.contracts_online,ds_list_find_index(contracts.contracts_online,_kiosk.smartcontract))	
+					}
 					debug_log("Kiosk "+string(_kiosk)+" is now inactive")
 				}
 			}

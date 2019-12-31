@@ -1,23 +1,25 @@
-//	Drawing the Shop button background
-draw_set_color(c_dkgray)
-draw_roundrect(buttonX,buttonY,buttonX+button_width,buttonY+button_height,false)
+#region Shop Button
+	//	Drawing the Shop button background
+	draw_set_color(c_dkgray)
+	draw_roundrect(buttonX,buttonY,buttonX+button_width,buttonY+button_height,false)
 
-//	Drawing the Shop button outline
-draw_set_color(c_black)
-draw_roundrect(buttonX+1,buttonY+1,buttonX+button_width-1,buttonY+button_height-1,true)
-draw_roundrect(buttonX,buttonY,buttonX+button_width,buttonY+button_height,true)
+	//	Drawing the Shop button outline
+	draw_set_color(c_black)
+	draw_roundrect(buttonX+1,buttonY+1,buttonX+button_width-1,buttonY+button_height-1,true)
+	draw_roundrect(buttonX,buttonY,buttonX+button_width,buttonY+button_height,true)
 
-//	Drawing the Shop button text
-draw_set_halign(fa_center)
-draw_set_valign(fa_middle)
-draw_set_color(c_white)
-draw_set_font(fnt_shop)
-draw_text(buttonX+button_width/2,buttonY+button_height/2,button_text)
-draw_set_font(-1)
-draw_set_halign(fa_left)
-draw_set_valign(fa_top)
+	//	Drawing the Shop button text
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	draw_set_color(c_white)
+	draw_set_font(fnt_shop)
+	draw_text(buttonX+button_width/2,buttonY+button_height/2,button_text)
+	draw_set_font(-1)
+	draw_set_halign(fa_left)
+	draw_set_valign(fa_top)
+#endregion 
 
-//	The Shop menu 
+#region Shop Menu
 if menu_open == true {
 	//	Drawing the Shop menu background
 	draw_set_color(c_dkgray)
@@ -50,3 +52,26 @@ if menu_open == true {
 		_y += item_height+item_buffer
 	}
 }	
+#endregion
+
+#region Points
+
+var _xx = buttonX+button_width+32
+var _yy = buttonY
+
+//	Draw background
+draw_set_color(c_dkgray)
+draw_roundrect(_xx,_yy,_xx+128,_yy+64,false)
+
+//	Draw outline
+draw_set_color(c_black)
+draw_roundrect(_xx,_yy,_xx+128,_yy+64,true)
+draw_roundrect(_xx+1,_yy+1,_xx+128-1,_yy+64-1,true)
+
+//	Draw points
+draw_set_halign(fa_center)
+draw_set_valign(fa_middle)
+draw_set_color(c_white)
+draw_text(_xx+128/2,_yy+32,string(player.points))
+
+#endregion
