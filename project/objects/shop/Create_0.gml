@@ -20,7 +20,7 @@ data_mouseover = false
 item = []
 item[0,0] = "Node"		//	Item name in a string
 item[0,1] = 100			//	Item price
-item[0,2] = 0			//	Is this item being placed currently?
+item[0,2] = 0			//	Has this item been placed?
 item[0,3] = node		//	Object index of the item
 
 item_node[0,0] = "Node"

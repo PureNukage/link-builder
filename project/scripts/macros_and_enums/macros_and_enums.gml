@@ -57,6 +57,8 @@ enum contract_types {
 #macro port_x 2
 #macro port_y 3
 
+#macro c_gray4 make_color_rgb(94,94,94)
+
 #macro right 0
 #macro down 1
 #macro left 2

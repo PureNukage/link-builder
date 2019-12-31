@@ -27,6 +27,10 @@ if shop.nodes_mouseover or shop.data_mouseover or plaque.window_two_mouseover or
 	_placeable++
 }
 
+if item_index > -1 and object_index == data and shop.item_data[item_index,2] {
+	_placeable++	
+}
+
 if !_placeable {
 	return true	
 } else {
