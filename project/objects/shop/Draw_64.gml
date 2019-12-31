@@ -31,26 +31,122 @@ if menu_open == true {
 	draw_roundrect(menuX+1,menuY+1,menuX+menu_width-1,menuY+menu_height-1,true)
 	
 	//	Drawing the items
+	draw_set_halign(fa_left)
+	draw_set_valign(fa_top)
 	var _x = menuX+item_buffer
 	var _y = menuY+item_buffer
-	for(var i=0;i<array_height_2d(item);i++) {
-		
-		//	Is this item being placed? If so lets highlight it
-		if item_placing == item[i,2] {
-			draw_set_color(c_gray)
-			draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+item_height,false)
+	
+	//	Draw Nodes menu
+	draw_set_color(c_gray)
+	draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+32,false)
+	var _string = ""
+	if nodes_open _string = "- Nodes" else _string = "+ Nodes"
+	draw_set_color(c_white)
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	var _xx = _x+(menu_width-item_buffer-item_buffer)/2
+	var _yy = _y + 16
+	draw_text(_xx,_yy,_string)
+	
+	_y += 32+item_buffer
+	
+	if nodes_open {
+		for(var n=0;n<array_height_2d(item_node);n++) {
+			//	Draw node background
+			draw_set_color(c_dkgray)
+			draw_set_valign(fa_top)
+			draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+32,false)
+			draw_set_color(c_black)
+			draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+32,true)
+			
+			draw_set_color(c_white)
+			var _string = item_node[n,0]
+			draw_set_color(c_white)
+			draw_set_color(c_white)
+			draw_set_halign(fa_center)
+			draw_set_valign(fa_middle)
+			var _xx = _x+(menu_width-item_buffer-item_buffer)/2
+			var _yy = _y + 16
+			draw_text(_xx,_yy,_string)
+			
+			if (string_width(_string) - menu_width) > 0 menu_width = string_width(_string) + 16
+			
+			_y += 32+item_buffer	
 		}
-		draw_set_halign(fa_left)
-		draw_set_valign(fa_top)
-		draw_set_color(c_black)
-		var item_name = item[i,0]
-		item_height = string_height(item_name)
-		draw_text(_x,_y,item_name)
-		
-		draw_set_halign(fa_right)
-		draw_text(menuX+menu_width-item_buffer,_y,string(item[i,1]))
-		_y += item_height+item_buffer
 	}
+	
+	//	Draw Data menu
+	draw_set_color(c_gray)
+	draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+32,false)
+	var _string = ""
+	if data_open _string = "- Data" else _string = "+ Data"
+	draw_set_color(c_white)
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	var _xx = _x+(menu_width-item_buffer-item_buffer)/2
+	var _yy = _y + 16
+	draw_text(_xx,_yy,_string)
+	
+	_y += 32+item_buffer
+	
+	if data_open {
+		for(var d=0;d<array_height_2d(item_data);d++) {
+			//	Draw data background
+			draw_set_color(c_dkgray)
+			draw_set_valign(fa_top)
+			draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+32,false)
+			draw_set_color(c_black)
+			draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+32,true)
+			
+			draw_set_color(c_white)
+			var _string = item_data[d,0]
+			draw_set_color(c_white)
+			draw_set_color(c_white)
+			draw_set_halign(fa_center)
+			draw_set_valign(fa_middle)
+			var _xx = _x+(menu_width-item_buffer-item_buffer)/2
+			var _yy = _y + 16
+			draw_text(_xx,_yy,_string)
+			
+			if (string_width(_string) - menu_width) > 0 menu_width = string_width(_string) + 16
+			
+			_y += 32+item_buffer
+			
+		}
+	}
+	
+	//	Draw wire
+	draw_set_color(c_dkgray)
+	draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+32,false)
+	draw_set_color(c_black)
+	draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+32,true)
+	
+	draw_set_color(c_white)
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	var _xx = _x+(menu_width-item_buffer-item_buffer)/2
+	var _yy = _y + 16
+	draw_text(_xx,_yy,"Wire")
+	
+	_y += 32+item_buffer
+	
+	//	Draw kiosk
+	draw_set_color(c_dkgray)
+	draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+32,false)
+	draw_set_color(c_black)
+	draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+32,true)
+	
+	draw_set_color(c_white)
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	var _xx = _x+(menu_width-item_buffer-item_buffer)/2
+	var _yy = _y + 16
+	draw_text(_xx,_yy,"Kiosk")
+	
+	if (_yy - menuY+menu_height) > 10 {
+		menu_height = _yy
+	}	
+	
 }	
 #endregion
 

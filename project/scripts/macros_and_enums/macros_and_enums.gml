@@ -37,6 +37,8 @@ enum goal_type {
 #macro contract_price 5
 #macro contract_traffic_live 6
 #macro contract_channel 7
+#macro contract_width 8
+#macro contract_height 9
 
 enum contract_types {
 	eth_transfer,	

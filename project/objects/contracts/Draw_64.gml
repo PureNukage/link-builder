@@ -19,18 +19,24 @@ draw_set_valign(fa_top)
 
 //	Drawing available contracts
 if button_open == true {
-	if ds_list_size(contracts_list) > 0 {
+	if ds_list_size(contracts_purchased) > 0 {
 		var _yy = buttonY+button_height+buttonY
-		for(var i=0;i<ds_list_size(contracts_list);i++) {
-			if contracts_list[| i] {
+		for(var i=0;i<ds_list_size(contracts_purchased);i++) {
+			if contracts_purchased[| i] {
 				
 				var _contract_name = contract[i, contract_name]
-				var name_width = string_width(_contract_name)
-				var name_height = string_height(_contract_name)
+				contract[i, contract_width] = string_width(_contract_name)
+				contract[i, contract_height] = string_height(_contract_name)
+				var name_width = contract[i, contract_width]
+				var name_height = contract[i, contract_height]
 				var contract_active = contract[i, contract_online]
 				
 				//	Draw the contract background
-				draw_set_color(c_dkgray)
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,buttonX-name_width,_yy,buttonX+button_width,_yy+64) {
+					draw_set_color(c_gray)	
+				} else {
+					draw_set_color(c_dkgray)
+				}
 				draw_roundrect(buttonX-name_width,_yy,buttonX+button_width,_yy+64,false)
 				
 				//	Draw the contract outline

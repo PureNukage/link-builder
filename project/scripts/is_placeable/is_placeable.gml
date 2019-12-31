@@ -18,9 +18,13 @@ for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 }
 
 if item_index > -1 {
-	if player.points < shop.item[item_index,1] {
+	if player.points < price {
 		_placeable++
 	}
+}
+
+if shop.nodes_mouseover or shop.data_mouseover or plaque.window_two_mouseover or contracts.menu_mouseover { 
+	_placeable++
 }
 
 if !_placeable {

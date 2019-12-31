@@ -27,10 +27,16 @@ y += (keyboard_check(ord("S")) - keyboard_check(ord("W")))*panspeed
 
 #endregion
 
-var edgeX = camera_get_view_width(Camera)/2
-var edgeY = camera_get_view_height(Camera)/2
-x = clamp(x,0+edgeX,room_width-edgeX)
-y = clamp(y,0+edgeY,room_height-edgeY)
+if camera_mode == 0 {
+	var edgeX = camera_get_view_width(Camera)/2
+	var edgeY = camera_get_view_height(Camera)/2
+	x = clamp(x,0+edgeX,room_width-edgeX)
+	y = clamp(y,0+edgeY,room_height-edgeY)
+} else {
+	if point_distance(x,y,display_get_gui_width()/2,display_get_gui_height()/2) < 10 {
+		camera_mode = 0	
+	}
+}
 
 //	Edge Pan Checks
 var panX, panY

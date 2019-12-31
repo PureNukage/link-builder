@@ -51,3 +51,5 @@ panspeed = 10
 zoom_level = 1
 default_zoom_width = camera_get_view_width(Camera)
 default_zoom_height = camera_get_view_height(Camera)
+
+camera_mode = 0

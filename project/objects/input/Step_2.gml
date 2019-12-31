@@ -14,7 +14,7 @@ if selection == -1 and !ds_list_empty(selections) {
 	debug_log("Clearing selections")
 }
 
-if grid_x > -1 and grid_y > -1 and !plaque.window_two_mouseover and !plaque.button_delete_mouseover {
+if grid_x > -1 and grid_y > -1 and !plaque.window_two_mouseover and !plaque.button_delete_mouseover and !contracts.menu_mouseover {
 	//	Creating selection rectangle x1 and y1
 	if mouse_left_press and selection_timer == -1 and selection == -1 {
 		selection_x1 = mouse_x

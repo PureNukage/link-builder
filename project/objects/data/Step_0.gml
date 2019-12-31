@@ -22,7 +22,7 @@ switch(states)
 	
 			if input.mouse_left_press and placeable {
 				
-				player.points -= shop.item[item_index,1]
+				player.points -= shop.item_data[item_index,1]
 			
 				states = states.placed
 			
