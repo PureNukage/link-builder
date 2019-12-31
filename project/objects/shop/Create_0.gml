@@ -19,7 +19,7 @@ item[0,2] = 0			//	Is this item being placed currently?
 item[0,3] = node		//	Object index of the item
 
 item[1,0] = "Data"
-item[1,1] = 1000
+item[1,1] = 500
 item[1,2] = 0
 item[1,3] = data
 

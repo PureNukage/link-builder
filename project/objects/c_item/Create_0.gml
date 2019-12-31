@@ -16,6 +16,8 @@ my_cells_y = []
 
 rotation = 0
 
+item_index = -1									//	Active; helps find where this object is in the shop item array
+
 selected = false
 
 time_spawn = time.stream						//	Active; holds the time this wire spawned

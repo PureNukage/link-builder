@@ -30,6 +30,7 @@
 					}
 					input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",item[i,3])
 					input.selection.selected = true
+					input.selection.item_index = i
 					if ds_list_find_index(input.selections,input.selection) == -1 {
 						ds_list_add(input.selections,input.selection)	
 					}

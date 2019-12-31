@@ -111,6 +111,14 @@
             }
         },
         {
+            "Key": "1d034f8d-70cc-4b19-89b0-07d61ba9b2f8",
+            "Value": {
+                "id": "c9660eda-9787-46a8-a3ac-ca53f9dc4c3c",
+                "resourcePath": "objects\\popup\\popup.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "1f5a4a4e-2b47-4051-b09d-2dfe28f99cfd",
             "Value": {
                 "id": "c0228b37-3072-453e-9518-e0bf52305f7d",
@@ -188,6 +196,14 @@
                 "id": "96fcc52b-b71c-400f-b8a5-afcd1b287f34",
                 "resourcePath": "scripts\\system_refresh\\system_refresh.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "365ed927-0965-4e4b-ab9a-cff9057b6d94",
+            "Value": {
+                "id": "0e0781ec-37f7-4abc-83c7-0e87a6455221",
+                "resourcePath": "fonts\\fnt_popup\\fnt_popup.yy",
+                "resourceType": "GMFont"
             }
         },
         {
@@ -428,6 +444,14 @@
                 "id": "d26a3096-574f-451d-859d-4c81433d5d9e",
                 "resourcePath": "options\\tvos\\options_tvos.yy",
                 "resourceType": "GMtvOSOptions"
+            }
+        },
+        {
+            "Key": "9b29cd33-a9c8-4ad2-9a6a-dfd953e17202",
+            "Value": {
+                "id": "ae9c20c0-3eae-4e2e-9b69-49fcd26a1b68",
+                "resourcePath": "scripts\\create_popup\\create_popup.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -862,7 +886,8 @@
         "0869fb7d-84d2-4491-9a4c-5fefc2130f70",
         "1776f376-acf4-4637-832d-da4dfc77d6a8",
         "7d967c31-5e9a-48ee-9c14-ec349f7e25fc",
-        "d6a84429-b46f-4c4e-96c3-fe94b57cd82c"
+        "d6a84429-b46f-4c4e-96c3-fe94b57cd82c",
+        "9b29cd33-a9c8-4ad2-9a6a-dfd953e17202"
     ],
     "tutorial": ""
 }

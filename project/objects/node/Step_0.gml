@@ -13,6 +13,8 @@ switch(states)
 		// Placement
 		if input.mouse_left_press and placeable {
 			
+			player.points -= shop.item[item_index,1]
+			
 			states = states.placed
 			
 			ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)

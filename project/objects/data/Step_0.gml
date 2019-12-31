@@ -21,6 +21,8 @@ switch(states)
 			}
 	
 			if input.mouse_left_press and placeable {
+				
+				player.points -= shop.item[item_index,1]
 			
 				states = states.placed
 			

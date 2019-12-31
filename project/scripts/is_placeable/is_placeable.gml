@@ -17,6 +17,12 @@ for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 	}
 }
 
+if item_index > -1 {
+	if player.points < shop.item[item_index,1] {
+		_placeable++
+	}
+}
+
 if !_placeable {
 	return true	
 } else {

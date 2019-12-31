@@ -10,6 +10,8 @@ sprites = []
 sprites[1] = s_wire
 sprites[0] = s_wire_corner
 
+item_index = 2
+
 path = path_add()								//	Active; holds the path
 cell_x1 = -1									//	Active; holds the x1 of the path
 cell_y1 = -1									//	Active; holds the y1 of the path

@@ -158,7 +158,7 @@ switch(states)
 									instance_destroy(goal_current)
 								}
 								goal_current = -1
-								timer = contracts.contract[smartcontract, contract_channel]
+								timer = time.seconds + contracts.contract[smartcontract, contract_channel]
 								states = states.using_smartcontract		
 								speed = 0
 													
@@ -205,10 +205,8 @@ switch(states)
 	#region Using smartcontract
 		case states.using_smartcontract:
 			
-			if timer > 0 timer--
-			
 			//	finished using smart contract
-			if timer == 0 {
+			if time.seconds >= timer {
 				
 				contract_used()
 				
@@ -217,6 +215,8 @@ switch(states)
 				
 				//	walk out of line
 				person_idlewalk()
+				
+				timer = 0
 				
 			}
 			
