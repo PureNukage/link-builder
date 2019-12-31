@@ -32,6 +32,11 @@ if button_open == true {
 				var contract_active = contract[i, contract_online]
 				var _contract_purchased = contract[i, contract_purchased]
 				var _contract_kiosk = contract[i, contract_kiosk]
+				var _contract_data = contract[i, contract_data]
+				var _contract_data_names_array = []
+				for(var d=0;d<array_height_2d(_contract_data);d++) {
+					_contract_data_names_array[d] = shop.item_data[_contract_data[d,0], item_name]
+				}
 				var price = contract[i, contract_price]
 				
 				//	Contracts purchased
@@ -65,7 +70,15 @@ if button_open == true {
 				else {
 					//	Mouse over highlight
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,buttonX-name_width,_yy,buttonX+button_width,_yy+64) {
-						gui_popup(buttonX-name_width,_yy,buttonX+button_width,_yy+64,2,"Purchase this contract")		
+						var array = gui_popup(buttonX-name_width,_yy,buttonX+button_width,_yy+64,2,"Purchase this contract")
+						var _string = ""
+						for(var d=0;d<array_length_1d(_contract_data_names_array);d++) {
+							if d == 0 _string += "Data required: "+string(_contract_data_names_array[d])
+							else {
+							_string += "\nData required: "+string(_contract_data_names_array[d])	
+							}
+						}
+						gui_popup(array[0],array[1],array[2],array[3],1,_string)
 						draw_set_color(c_gray)							
 					} else {
 						draw_set_color(c_dkgray)
