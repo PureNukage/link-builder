@@ -29,6 +29,9 @@ switch(mode)
 					draw_set_valign(fa_top)
 	
 					draw_text(_x,_y,"GENERAL")													_y += 15 
+					draw_text(_x,_y,"time_stream: "+string(time.stream))						_y += 15 
+					draw_text(_x,_y,"time_seconds: "+string(time.seconds))						_y += 15 
+																								_y += 15 
 					draw_text(_x,_y,"mouse_gui_x: "+string(mouse_gui_x))						_y += 15 
 					draw_text(_x,_y,"mouse_gui_y: "+string(mouse_gui_y))						_y += 15 
 																								_y += 15
@@ -64,6 +67,10 @@ switch(mode)
 						draw_text(_x,_y,"Selection_cell_y2: "+string(selection_cell_y2))	_y += 15 
 						draw_text(_x,_y,"Selection timer: "+string(selection_timer))		_y += 15
 						
+					}
+					
+					if _y > window_variableY+window_variable_height {
+						window_variable_height = _y	
 					}
 	
 

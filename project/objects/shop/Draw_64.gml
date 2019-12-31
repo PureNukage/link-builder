@@ -143,8 +143,9 @@ if menu_open == true {
 	var _yy = _y + 16
 	draw_text(_xx,_yy,"Kiosk")
 	
-	if (_yy - menuY+menu_height) > 10 {
-		menu_height = _yy
+	//if (_y - menuY+menu_height) > 32+item_buffer {
+	if _y+32 > menuY+menu_height {
+		menu_height = _y-64
 	}	
 	
 }	

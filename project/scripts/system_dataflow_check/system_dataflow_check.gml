@@ -212,44 +212,45 @@ for(var i=0;i<ds_list_size(parts);i++) {
 		for(var i=0;i<ds_list_size(kiosks);i++) {
 	
 			var _kiosk = kiosks[| i]
-			var amount_of_data_req = array_height_2d(_kiosk.data_needed)
-			var amount_of_data_had = 0
+			if _kiosk.smartcontract > -1 {
+				var amount_of_data_req = array_height_2d(_kiosk.data_needed)
+				var amount_of_data_had = 0
 	
-			for(var d=0;d<amount_of_data_req;d++) {
-				var _data_needed = _kiosk.data_needed[d,0]
-				for(var a=0;a<ds_list_size(_kiosk.data_held);a++) {
-					var _data_held = _kiosk.data_held[| a]
-					if _data_held == _data_needed {
-						_kiosk.data_needed[d,1] = true	
-						_kiosk.data_needed[d,2] = _kiosk.data_held_ids[| a]
-						amount_of_data_had++
-					} else {
-						_kiosk.data_needed[d,1] = false	
+				for(var d=0;d<amount_of_data_req;d++) {
+					var _data_needed = _kiosk.data_needed[d,0]
+					for(var a=0;a<ds_list_size(_kiosk.data_held);a++) {
+						var _data_held = _kiosk.data_held[| a]
+						if _data_held == _data_needed {
+							_kiosk.data_needed[d,1] = true	
+							_kiosk.data_needed[d,2] = _kiosk.data_held_ids[| a]
+							amount_of_data_had++
+						} else {
+							_kiosk.data_needed[d,1] = false	
+						}
+					}
+				}
+	
+				//	this kiosk has all the data it needs!
+				if amount_of_data_had == amount_of_data_req {
+					if !_kiosk.active {
+						_kiosk.active = true
+						contracts.contract[_kiosk.smartcontract, contract_online] = true
+						ds_list_add(contracts.contracts_online,_kiosk.smartcontract)
+						debug_log("Kiosk "+string(_kiosk)+" is now active with smartcontract ["+contracts.contract[_kiosk.smartcontract, contract_name]+"]")
+					}
+				} 
+				//	this kiosk does NOT have all the data it needs
+				else {
+					if _kiosk.active {
+						_kiosk.active = false
+						contracts.contract[_kiosk.smartcontract, contract_online] = false
+						if ds_list_find_index(contracts.contracts_online,_kiosk.smartcontract) > -1 {
+							ds_list_delete(contracts.contracts_online,ds_list_find_index(contracts.contracts_online,_kiosk.smartcontract))	
+						}
+						debug_log("Kiosk "+string(_kiosk)+" is now inactive")
 					}
 				}
 			}
-	
-			//	this kiosk has all the data it needs!
-			if amount_of_data_had == amount_of_data_req {
-				if !_kiosk.active {
-					_kiosk.active = true
-					contracts.contract[_kiosk.smartcontract, contract_online] = true
-					ds_list_add(contracts.contracts_online,_kiosk.smartcontract)
-					debug_log("Kiosk "+string(_kiosk)+" is now active with smartcontract ["+contracts.contract[_kiosk.smartcontract, contract_name]+"]")
-				}
-			} 
-			//	this kiosk does NOT have all the data it needs
-			else {
-				if _kiosk.active {
-					_kiosk.active = false
-					contracts.contract[_kiosk.smartcontract, contract_online] = false
-					if ds_list_find_index(contracts.contracts_online,_kiosk.smartcontract) > -1 {
-						ds_list_delete(contracts.contracts_online,ds_list_find_index(contracts.contracts_online,_kiosk.smartcontract))	
-					}
-					debug_log("Kiosk "+string(_kiosk)+" is now inactive")
-				}
-			}
-	
 		}
 
 		#endregion

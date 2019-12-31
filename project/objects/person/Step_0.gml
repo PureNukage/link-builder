@@ -159,6 +159,8 @@ switch(states)
 								}
 								goal_current = -1
 								timer = time.seconds + contracts.contract[smartcontract, contract_channel]
+								if timer >= 60 timer -= 60
+								debug_log("[DEBUG] timer set to: "+string(timer))
 								states = states.using_smartcontract		
 								speed = 0
 													
@@ -192,7 +194,7 @@ switch(states)
 						var _yy = gridController.grid_positions_y[h_index]+cell_height
 						goal_current = instance_create_layer(_xx,_yy,"Instances",goal)
 						goal_current.goal_type = goal_type.using_smartcontract
-						debug_log("I am using smartcontract "+contracts.contract[smartcontract, contract_name])
+						debug_log("I am moving to use smartcontract "+contracts.contract[smartcontract, contract_name])
 						states = states.move
 						_kiosk.busy = true
 					}

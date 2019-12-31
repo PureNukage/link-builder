@@ -31,3 +31,7 @@ grid_y = -1
 grid_xprevious = -1
 grid_yprevious = -1
 grid_moved = false
+
+contract = -1
+
+selection_mode = selection_mode.free

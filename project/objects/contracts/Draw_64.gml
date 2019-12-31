@@ -30,12 +30,37 @@ if button_open == true {
 				var name_width = contract[i, contract_width]
 				var name_height = contract[i, contract_height]
 				var contract_active = contract[i, contract_online]
+				var _contract_purchased = contract[i, contract_purchased]
+				var _contract_kiosk = contract[i, contract_kiosk]
+				var price = contract[i, contract_price]
 				
-				//	Draw the contract background
-				if point_in_rectangle(gui_mouse_x,gui_mouse_y,buttonX-name_width,_yy,buttonX+button_width,_yy+64) {
-					draw_set_color(c_gray)	
+				if _contract_purchased {		
+					if _contract_kiosk > -1 {
+						//	Mouse over highlight
+						if point_in_rectangle(gui_mouse_x,gui_mouse_y,buttonX-name_width,_yy,buttonX+button_width,_yy+64) {
+							draw_set_color(c_gray)	
+						} else {
+							draw_set_color(c_dkgray)
+						}
+					} else {
+						if input.contract == i {
+							draw_set_color(c_gray)	
+						} else {
+							//	Mouse over highlight
+							if point_in_rectangle(gui_mouse_x,gui_mouse_y,buttonX-name_width,_yy,buttonX+button_width,_yy+64) {
+								draw_set_color(c_gray)	
+							} else {
+								draw_set_color(c_dkgray)
+							}	
+						}
+					}
 				} else {
-					draw_set_color(c_dkgray)
+					//	Mouse over highlight
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,buttonX-name_width,_yy,buttonX+button_width,_yy+64) {
+						draw_set_color(c_gray)	
+					} else {
+						draw_set_color(c_dkgray)
+					}	
 				}
 				draw_roundrect(buttonX-name_width,_yy,buttonX+button_width,_yy+64,false)
 				
@@ -49,15 +74,27 @@ if button_open == true {
 				draw_set_valign(fa_middle)
 				draw_text(((buttonX-name_width)+buttonX+button_width)/2,_yy+32,_contract_name)
 				
-				//	Draw if its active or not
-				if contract_active {
-					draw_set_color(c_green)	
-				} else {
-					draw_set_color(c_red)	
+				//	This contract is purchased
+				if _contract_purchased {
+					//	Draw if its active or not
+					if contract_active {
+						draw_set_color(c_green)	
+					} else {
+						draw_set_color(c_red)	
+					}	
+					draw_circle(buttonX+button_width-32,_yy+32,16,false)
+					draw_set_color(c_black)
+					draw_circle(buttonX+button_width-32,_yy+32,16,true)
+				} 
+				//	This contract is not purchased
+				else {
+					//	Draw price
+					draw_set_color(c_white)
+					draw_set_halign(fa_right)
+					draw_set_valign(fa_middle)
+					draw_text(buttonX+button_width-64,_yy+32,string(price))
+					draw_sprite(s_lock,0,buttonX+button_width-32,_yy+32)	
 				}
-				draw_circle(buttonX+button_width-32,_yy+32,16,false)
-				draw_set_color(c_black)
-				draw_circle(buttonX+button_width-32,_yy+32,16,true)
 				
 			}		
 			_yy += button_height+buttonY

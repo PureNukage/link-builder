@@ -15,6 +15,11 @@ enum mode {
 	grid,
 	object
 	
+}
+
+enum selection_mode {
+	free,
+	contract_placement,
 	
 }
 
@@ -39,6 +44,7 @@ enum goal_type {
 #macro contract_channel 7
 #macro contract_width 8
 #macro contract_height 9
+#macro contract_purchased 10
 
 enum contract_types {
 	eth_transfer,	
@@ -60,3 +66,4 @@ enum contract_types {
 #macro gui_mouse_y device_mouse_y_to_gui(0)
 
 #macro mouse_in_grid (topleft_cell_x > -1 and bottomright_cell_x < grid_width) and (topleft_cell_y > -1 and bottomright_cell_y < grid_height)
+#macro mouse_in_grid2 (input.grid_x > -1 and input.grid_x < grid_width and input.grid_y > -1 and input.grid_y < grid_height)
