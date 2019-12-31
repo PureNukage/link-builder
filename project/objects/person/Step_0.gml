@@ -35,8 +35,8 @@ switch(states)
 									} 
 									//	this smartcontracts line is filled! lets idlewalk
 									else {
-										debug_log("This line is filled. I am going to idlewalk")
-										person_idlewalk()
+										with other debug_log("This line is filled. I am going to idlewalk")
+										with other person_idlewalk()
 									}
 								}
 							}
@@ -66,7 +66,7 @@ switch(states)
 				if point_distance(x,y,goal_current.x,goal_current.y) > 2 {
 					
 					//	lets go into an idlewalk if the line is filled
-					if smartcontract > -1 and goal_current.goal_type == goal_type.walking_to_kiosk and ds_list_size(contracts.contract[smartcontract, contract_kiosk].line) >= 5 {
+					if smartcontract > -1 and goal_current.goal_type == goal_type.walking_to_kiosk and ds_list_size(contracts.contract[smartcontract, contract_kiosk].line) >= contracts.contract[smartcontract, contract_traffic] {
 						if goal_current.object_index == goal {
 							instance_destroy(goal_current)
 						}
@@ -88,7 +88,7 @@ switch(states)
 						#region Getting into line
 						case goal_type.walking_to_kiosk:
 							//	line is under 5, lets get into line!
-							if smartcontract > -1 and ds_list_size(contracts.contract[smartcontract, contract_kiosk].line) < 5 {
+							if smartcontract > -1 and ds_list_size(contracts.contract[smartcontract, contract_kiosk].line) < contracts.contract[smartcontract, contract_traffic] {
 								
 								//	hop into line
 								ds_list_add(contracts.contract[smartcontract, contract_kiosk].line,id)
