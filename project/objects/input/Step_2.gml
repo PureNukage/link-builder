@@ -174,8 +174,9 @@ switch(selection_mode)
 			//	we just moved cells!
 			if grid_moved and mouse_in_grid2 {
 				//	we have an item here
-				if gridController.grid_items[# grid_x, grid_y] > -1 {
-					var _item = gridController.grid_items[# grid_x, grid_y]
+				if gridController.grid_objects[# grid_x, grid_y] > -1 {
+					var _item = gridController.grid_objects[# grid_x, grid_y]
+					if selection > -1 selection.selected = false
 					selection = _item
 					_item.selected = true
 					
