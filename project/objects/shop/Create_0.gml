@@ -27,6 +27,9 @@ create_data("Binance ETH/USD",500,data,_string,s_portrait_binance,data_types.bin
 var _string = "This endpoint gives access to PayPal"
 create_data("PayPal",750,data,_string,s_portrait_paypal,data_types.paypal)
 
+var _string = "This endpoint gives access to Github"
+create_data("Github",1000,data,_string,s_portrait_github,data_types.github)
+
 //	CREATE NODES
 item_node[0,item_name] = "Node"
 item_node[0,item_price] = 100

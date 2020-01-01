@@ -367,6 +367,14 @@
             }
         },
         {
+            "Key": "5e22f2ec-3ef2-4044-a66b-ca773cbf85d0",
+            "Value": {
+                "id": "6a3ec3a7-431a-4c97-a653-b7c4cbce94b2",
+                "resourcePath": "sprites\\s_portrait_github\\s_portrait_github.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "6014bf7c-0ddd-44fe-853d-e5635b85611e",
             "Value": {
                 "id": "e1b0b340-e1c0-4f6f-a8cc-19a147ae6689",
@@ -868,6 +876,14 @@
                 "id": "bfad4585-29e7-4123-8a74-a75ff728cf7d",
                 "resourcePath": "objects\\person\\person.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "f3281168-d2f0-43e0-8233-e72959c1f17a",
+            "Value": {
+                "id": "1792429e-d967-4154-827d-030e24f9d81a",
+                "resourcePath": "sprites\\s_portrait_bountibot\\s_portrait_bountibot.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

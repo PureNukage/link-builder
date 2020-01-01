@@ -1,7 +1,7 @@
 if input.selection > -1 {
 	
 	if selection_switch {
-		window_two_width = 128
+		window_two_width = 148
 		node_stats = false
 		node_info = false
 	}
@@ -147,7 +147,7 @@ if input.selection > -1 {
 			var _string = shop.item_data[_item.data_generated, item_name]
 			draw_text(_xx,_yy,_string)
 			
-			if (string_width(_string) - window_two_width) > 0 {
+			if string_width(_string) > window_two_width {
 				window_two_width = string_width(_string) + 16
 			}
 			

@@ -26,6 +26,7 @@ enum selection_mode {
 enum data_types {
 	binance_ETHUSD,	
 	paypal,
+	github,
 	
 }
 
