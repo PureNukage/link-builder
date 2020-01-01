@@ -27,6 +27,14 @@ for(var i=0;i<ds_list_size(contracts_purchased);i++) {
 					camera.camera_mode = 1
 					camera.x = _contract_kiosk.x
 					camera.y = _contract_kiosk.y
+					
+					if input.selection > -1 {
+						input.selection.selected = false
+						if ds_list_find_index(input.selections,input.selection) > -1 {
+							ds_list_delete(input.selections,ds_list_find_index(input.selections,input.selection))	
+						}
+						input.selection = -1
+					}
 				
 					input.selection = _contract_kiosk
 					input.selection.selected = true

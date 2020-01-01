@@ -735,6 +735,14 @@
             }
         },
         {
+            "Key": "d9fd7604-e7fb-4980-bb90-d607b871eb59",
+            "Value": {
+                "id": "5f532e61-b273-42f8-8762-91113c907c66",
+                "resourcePath": "sprites\\s_eth_docked\\s_eth_docked.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "da3c824c-4e95-4a0a-8144-c6242b60ac1c",
             "Value": {
                 "id": "8a4d64a7-362e-4302-91f0-b367fd0da1b9",

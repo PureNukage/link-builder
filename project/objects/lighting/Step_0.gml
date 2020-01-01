@@ -17,7 +17,7 @@ if surface_exists(surf) {
 			if gridController.grid_fog[# w, h] > 0 {
 				var _xx = gridController.grid_positions_x[w]
 				var _yy = gridController.grid_positions_y[h]
-				draw_rectangle(_xx,_yy,_xx+cell_width+1,_yy+cell_height+1,false)	
+				draw_rectangle(_xx,_yy,_xx+cell_width-1,_yy+cell_height-1,false)	
 			}
 		}	
 	}
