@@ -17,6 +17,7 @@ for(var p=0;p<ports_count;p++) {
 				gridController.grid_items[# _x, _y] = -2
 				if ports[other_p,port_object] == other.id {
 					ports[other_p,port_object] = -1
+					sockets[other_p] = -1
 					debug_log("Clearing "+string(id)+"'s Port["+string(other_p)+"] of "+string(other.id))
 				}
 			}
@@ -319,4 +320,52 @@ if object_index != wire {
 if object_index == kiosk and smartcontract > -1 {
 	contracts.contract[smartcontract, contract_kiosk] = -1
 	contracts.contract[smartcontract, contract_online] = false
+	
+	if ds_list_size(line) > 0 {
+		for(var i=0;i<ds_list_size(line);i++) {
+			var _person = line[| i]
+			with _person {
+				if goal_current > -1 {
+					instance_destroy(goal_current)
+					goal_current = -1
+				}
+				if smartcontract > -1 {
+					ds_list_delete(smartcontracts,0)
+					smartcontract = -1	
+				}
+				
+				states = states.idle
+			}
+		}
+	}
+	
+	with person {
+		if ds_list_find_index(smartcontracts,other.smartcontract) {
+			ds_list_delete(smartcontracts,other.smartcontract)	
+		}
+		if smartcontract == other.smartcontract smartcontract = -1
+	}
+}
+
+if object_index == wire {
+	var _kiosk = -1
+	var _smartcontract = -1
+	if instance_exists(kiosk) {
+		with kiosk {
+			for(var d=0;d<array_height_2d(data_needed);d++) {
+				if data_needed[d,2] == other.id {
+					_smartcontract = smartcontract
+					_kiosk = id
+				}
+			}
+		}
+	}
+	if _smartcontract > -1 {
+		with person {
+			if ds_list_find_index(smartcontracts,_smartcontract) {
+				ds_list_delete(smartcontracts,_smartcontract)	
+			}
+			if smartcontract == _smartcontract smartcontract = -1
+		}	
+	}
 }

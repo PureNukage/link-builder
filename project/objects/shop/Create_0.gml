@@ -51,8 +51,8 @@ item[2,item_placed] = 0
 item[2,item_object_index] = wire
 
 item[3,item_name] = "Kiosk"
-item[3,item_price] = 0
-item[3,item_placed] = 250
+item[3,item_price] = 250
+item[3,item_placed] = 0
 item[3,item_object_index] = kiosk
 
 

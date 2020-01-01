@@ -1,5 +1,5 @@
 for(var p=0;p<ports_count;p++) {
-	if sockets[p] == -1 {
+	if sockets[p] == -1 and instance_exists(sockets[p]) {
 		var _w = ports[p,port_x]
 		var _h = ports[p,port_y]
 					

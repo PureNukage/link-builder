@@ -248,6 +248,39 @@ for(var i=0;i<ds_list_size(parts);i++) {
 							ds_list_delete(contracts.contracts_online,ds_list_find_index(contracts.contracts_online,_kiosk.smartcontract))	
 						}
 						debug_log("Kiosk "+string(_kiosk)+" is now inactive")
+						
+						with _kiosk {
+							busy = false
+							if ds_list_size(line) > 0 {
+								for(var k=0;k<ds_list_size(line);k++) {
+									var _person = line[| k]
+									with _person {
+										if goal_current > -1 {
+											instance_destroy(goal_current)
+											goal_current = -1
+										}
+										if smartcontract > -1 {
+											ds_list_delete(smartcontracts,0)
+											contracts.contract[smartcontract, contract_traffic_live]--
+											smartcontract = -1	
+										}
+				
+										states = states.idle
+									}
+								}
+							}
+							
+							ds_list_clear(line)
+	
+							with person {
+								if ds_list_find_index(smartcontracts,other.smartcontract) > -1 {
+									ds_list_delete(smartcontracts,ds_list_find_index(smartcontracts,other.smartcontract))	
+									contracts.contract[other.smartcontract, contract_traffic_live]--
+								}
+								if smartcontract == other.smartcontract smartcontract = -1
+							}						
+								
+						}
 					}
 				}
 			}

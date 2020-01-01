@@ -7,8 +7,11 @@ mouse_right = mouse_check_button(mb_right)
 
 space = keyboard_check_pressed(vk_space)
 
-rotate_right = keyboard_check_pressed(ord("E")) //or mouse_wheel_down()
-rotate_left = keyboard_check_pressed(ord("Q")) //or mouse_wheel_up()
+rotate_right = keyboard_check_pressed(ord("E")) 
+rotate_left = keyboard_check_pressed(ord("Q"))
+
+scroll_up = mouse_wheel_up()
+scroll_down = mouse_wheel_down()
 
 delete_press = keyboard_check_pressed(vk_delete)
 

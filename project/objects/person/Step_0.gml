@@ -11,7 +11,7 @@ switch(states)
 			
 				//	I don't have a smart contract currently
 				if smartcontract == -1 {
-						if !ds_list_empty(smartcontracts) and cooldown == 0 {
+						if !ds_list_empty(smartcontracts) and cooldown == 0 and contracts.contract[smartcontracts[| 0], contract_kiosk] > -1 {
 							smartcontract = smartcontracts[| 0]
 				
 							debug_log("I want to use smartcontract "+string(contracts.contract[smartcontract, contract_name]))
@@ -19,25 +19,60 @@ switch(states)
 							//	Create goal at the kiosk
 							if instance_exists(kiosk) {
 								with kiosk {
-									//	this smartcontracts line isn't filled!
-									if smartcontract == other.smartcontract and ds_list_size(line) < contracts.contract[smartcontract, contract_linesize] {
-										var w_index = floor(topleft_cell_x+size_width/2)
-										var h_index = bottomright_cell_y
-										if w_index > -1 and w_index < grid_width and h_index > -1 and h_index < grid_height {
-											var _xx = gridController.grid_positions_x[floor(topleft_cell_x+size_width/2)]+(cell_width/2)
-											var _yy = gridController.grid_positions_y[bottomright_cell_y]+cell_height
-											other.goal_current = instance_create_layer(_xx,_yy,"Instances",goal)
-											other.goal_current.goal_type = goal_type.walking_to_kiosk
-											other.states = states.move
-											with other debug_log("I am starting a walk to the kiosk")
+									//	this kiosk is ours
+									if smartcontract == other.smartcontract {
+										//	this kiosk is active
+										if active {
+											//	this smartcontracts line isn't filled!
+											if ds_list_size(line) < contracts.contract[smartcontract, contract_linesize] {
+												var w_index = floor(topleft_cell_x+size_width/2)
+												var h_index = bottomright_cell_y
+												if w_index > -1 and w_index < grid_width and h_index > -1 and h_index < grid_height {
+													var _xx = gridController.grid_positions_x[floor(topleft_cell_x+size_width/2)]+(cell_width/2)
+													var _yy = gridController.grid_positions_y[bottomright_cell_y]+cell_height
+													other.goal_current = instance_create_layer(_xx,_yy,"Instances",goal)
+													other.goal_current.goal_type = goal_type.walking_to_kiosk
+													other.states = states.move
+													with other debug_log("I am starting a walk to the kiosk")
+													
+												} 
+											} 
+											//	this smartcontracts line is filled! lets idlewalk
+											else {
+												with other {
+													if ds_list_size(smartcontracts) > 1 {
+														smartcontract = smartcontracts[| irandom_range(0,ds_list_size(smartcontracts)-1)]	
+													}
+													debug_log("This line is filled. I am going to idlewalk")
+													person_idlewalk()
+												}
+											}
+										}
+										//	this kiosk is NOT active
+										else {
+											with other {
+												if smartcontract > -1 {
+													ds_list_delete(smartcontracts,0)
+													contracts.contract[smartcontract, contract_traffic_live]--
+													smartcontract = -1
+												}
+												debug_log("This kiosk is not active")
+												person_idlewalk()
+											}
+											
 										}
 									} 
-									//	this smartcontracts line is filled! lets idlewalk
-									else if smartcontract == other.smartcontract {
-										with other debug_log("This line is filled. I am going to idlewalk")
-										with other person_idlewalk()
-									}
+
 								}
+							}
+							//	There are no kiosks!
+							else {
+								if smartcontract > -1 {
+									ds_list_delete(smartcontracts,0)
+									smartcontract = -1
+								}
+								debug_log("ERROR No Kiosks!")
+								person_idlewalk()
 							}
 					} 
 					//	I either don't want to use any smart contracts or I'm on cooldown, lets idlewalk
@@ -87,6 +122,15 @@ switch(states)
 			if goal_current > -1 {
 			
 				if point_distance(x,y,goal_current.x,goal_current.y) > 2 {
+					
+					//	Make sure kiosk exists
+					if smartcontract > -1 and !contracts.contract[smartcontract, contract_online] {
+						if goal_current.object_index == goal {
+							instance_destroy(goal_current)
+						}
+						goal_current = -1
+						person_idlewalk()	
+					}
 					
 					//	lets go into an idlewalk if the line is filled
 					if smartcontract > -1 and goal_current.goal_type == goal_type.walking_to_kiosk and ds_list_size(contracts.contract[smartcontract, contract_kiosk].line) >= contracts.contract[smartcontract, contract_linesize] {
@@ -194,6 +238,10 @@ switch(states)
 				}
 			
 			
+			}
+			//	I have no goal
+			else {
+				states = states.idle
 			}
 			
 			
