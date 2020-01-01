@@ -12,9 +12,11 @@ grid_port_objects = ds_list_create()
 
 grid_items = ds_grid_create(grid_width,grid_height)
 grid_objects = ds_grid_create(grid_width,grid_height)
+grid_fog = ds_grid_create(grid_width,grid_height)
 
 ds_grid_set_region(grid_items,0,0,grid_width,grid_height,-1)
 ds_grid_set_region(grid_objects,0,0,grid_width,grid_height,-1)
+ds_grid_set_region(grid_fog,0,0,grid_width,grid_height,0)
 
 mp_grid = mp_grid_create(0,0,grid_width,grid_height,cell_width,cell_height)
 

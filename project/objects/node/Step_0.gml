@@ -13,6 +13,8 @@ switch(states)
 		// Placement
 		if input.mouse_left_press and placeable {
 			
+			ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)
+			
 			player.points -= shop.item_node[item_index,1]
 			
 			states = states.placed

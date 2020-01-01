@@ -17,6 +17,8 @@ switch(states)
 				
 				states = states.placed
 				
+				ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)
+				
 				ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
 				item_placeid()
 			
