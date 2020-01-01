@@ -47,8 +47,8 @@ contract[contract_index, contract_online] = false
 contract[contract_index, contract_kiosk] = -1
 contract[contract_index, contract_traffic_live] = 0
 contract[contract_index, contract_purchased] = false
-contract[contract_index, contract_width] = -1
-contract[contract_index, contract_height] = -1
+contract[contract_index, contract_width] = 128
+contract[contract_index, contract_height] = 64
 
 contracts_purchased[| contract_index] = true
 

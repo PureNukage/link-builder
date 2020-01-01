@@ -19,7 +19,7 @@ data_open = false
 data_mouseover = false
 
 //	CREATE DATA 
-item_data = []
+item_data = 0
 
 var _string = "This endpoint to Binance gives\nthe current USD price of Ether"
 create_data("Binance ETH/USD",500,data,_string,s_portrait_binance,data_types.binance_ETHUSD)
@@ -57,9 +57,6 @@ item[3,item_name] = "Kiosk"
 item[3,item_price] = 250
 item[3,item_placed] = 0
 item[3,item_object_index] = kiosk
-
-
-
 
 item_height = 64
 item_buffer = 16

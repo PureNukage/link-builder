@@ -212,7 +212,7 @@ if menu_open == true {
 	
 	if data_open {
 		for(var d=0;d<array_height_2d(item_data);d++) {
-			var _string = item_data[d,0]
+			var _string = item_data[d,item_name]
 			var _price = item_data[d,item_price]
 			var _item_text = item_data[d,item_text]
 			var default_width = menu_width-item_buffer-item_buffer

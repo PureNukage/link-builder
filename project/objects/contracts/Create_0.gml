@@ -13,7 +13,7 @@ menu_mouseover = false
 menu_cap = 5
 menu_index = 0
 
-contract = []
+contract = 0
 
 //	CREATE CONTRACTS
 var _data = create_data_needed(data_types.binance_ETHUSD)
