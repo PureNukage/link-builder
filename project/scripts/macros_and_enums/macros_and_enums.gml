@@ -50,6 +50,7 @@ enum goal_type {
 #macro contract_text 11
 #macro contract_data 12
 #macro contract_portrait 13
+#macro contract_linesize 14
 
 enum contract_types {
 	eth_transfer,	

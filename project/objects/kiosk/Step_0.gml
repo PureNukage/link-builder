@@ -101,7 +101,7 @@ switch(states)
 		case states.placed:
 			
 			//	lets add our contract into a persons queue
-			if active and ds_list_size(line) < contracts.contract[smartcontract, contract_traffic] and contracts.contract[smartcontract, contract_traffic_live] < contracts.contract[smartcontract, contract_traffic] {
+			if active and ds_list_size(line) < contracts.contract[smartcontract, contract_linesize] and contracts.contract[smartcontract, contract_traffic_live] < contracts.contract[smartcontract, contract_traffic] {
 				for(var i=0;i<ds_list_size(personController.people);i++) {
 					var _person = personController.people[| i]
 					//	this contract is not in this persons queue, lets add it

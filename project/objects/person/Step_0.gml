@@ -20,7 +20,7 @@ switch(states)
 							if instance_exists(kiosk) {
 								with kiosk {
 									//	this smartcontracts line isn't filled!
-									if smartcontract == other.smartcontract and ds_list_size(line) < contracts.contract[smartcontract, contract_traffic] {
+									if smartcontract == other.smartcontract and ds_list_size(line) < contracts.contract[smartcontract, contract_linesize] {
 										var w_index = floor(topleft_cell_x+size_width/2)
 										var h_index = bottomright_cell_y
 										if w_index > -1 and w_index < grid_width and h_index > -1 and h_index < grid_height {
@@ -46,8 +46,33 @@ switch(states)
 						person_idlewalk()
 					}
 				} else {
-					debug_log("ERROR I already have a smartcontract")
-					person_idlewalk()
+					if cooldown == 0 {
+						debug_log("I want to use smartcontract "+string(contracts.contract[smartcontract, contract_name]))
+				
+						//	Create goal at the kiosk
+						if instance_exists(kiosk) {
+							with kiosk {
+								//	this smartcontracts line isn't filled!
+								if smartcontract == other.smartcontract and ds_list_size(line) < contracts.contract[smartcontract, contract_linesize] {
+									var w_index = floor(topleft_cell_x+size_width/2)
+									var h_index = bottomright_cell_y
+									if w_index > -1 and w_index < grid_width and h_index > -1 and h_index < grid_height {
+										var _xx = gridController.grid_positions_x[floor(topleft_cell_x+size_width/2)]+(cell_width/2)
+										var _yy = gridController.grid_positions_y[bottomright_cell_y]+cell_height
+										other.goal_current = instance_create_layer(_xx,_yy,"Instances",goal)
+										other.goal_current.goal_type = goal_type.walking_to_kiosk
+										other.states = states.move
+										with other debug_log("I am starting a walk to the kiosk")
+									}
+								} 
+								//	this smartcontracts line is filled! lets idlewalk
+								else if smartcontract == other.smartcontract {
+									with other debug_log("This line is filled. I am going to idlewalk")
+									with other person_idlewalk()
+								}
+							}
+						}
+					}
 				}
 			
 			}
@@ -64,7 +89,7 @@ switch(states)
 				if point_distance(x,y,goal_current.x,goal_current.y) > 2 {
 					
 					//	lets go into an idlewalk if the line is filled
-					if smartcontract > -1 and goal_current.goal_type == goal_type.walking_to_kiosk and ds_list_size(contracts.contract[smartcontract, contract_kiosk].line) >= contracts.contract[smartcontract, contract_traffic] {
+					if smartcontract > -1 and goal_current.goal_type == goal_type.walking_to_kiosk and ds_list_size(contracts.contract[smartcontract, contract_kiosk].line) >= contracts.contract[smartcontract, contract_linesize] {
 						if goal_current.object_index == goal {
 							instance_destroy(goal_current)
 						}
@@ -86,7 +111,7 @@ switch(states)
 						#region Getting into line
 						case goal_type.walking_to_kiosk:
 							//	line is under 5, lets get into line!
-							if smartcontract > -1 and ds_list_size(contracts.contract[smartcontract, contract_kiosk].line) < contracts.contract[smartcontract, contract_traffic] {
+							if smartcontract > -1 and ds_list_size(contracts.contract[smartcontract, contract_kiosk].line) < contracts.contract[smartcontract, contract_linesize] {
 								
 								//	hop into line
 								ds_list_add(contracts.contract[smartcontract, contract_kiosk].line,id)
