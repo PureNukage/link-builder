@@ -114,6 +114,7 @@ if button_open == true {
 					draw_set_color(c_white)
 					draw_set_halign(fa_right)
 					draw_set_valign(fa_middle)
+					draw_set_color(c_yellow)
 					draw_text(buttonX+button_width-64,_yy+32,string(price))
 					draw_sprite(s_lock,0,buttonX+button_width-32,_yy+32)	
 				}

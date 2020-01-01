@@ -80,7 +80,7 @@ if menu_open == true {
 	
 	//	Draw kiosk
 	var _string = "Kiosk"
-	var _price = item[3,2]
+	var _price = item[3,item_price]
 	var default_width = menu_width-item_buffer-item_buffer
 	var name_width = string_width(_string)
 	if name_width > default_width default_width = name_width+item_buffer
