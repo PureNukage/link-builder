@@ -28,7 +28,7 @@ contract[contract_index, contract_text] = _text
 contract[contract_index, contract_reward] = _reward
 contract[contract_index, contract_price] = _price
 if argument_count >= 6 contract[contract_index, contract_traffic] = _max_traffic else contract[contract_index, contract_traffic] = default_max_traffic
-if argument_count >= 5 contract[contract_index, contract_channel] = _channel_time else contract[contract_index, contract_traffic] = default_channel_time
+if argument_count >= 5 contract[contract_index, contract_channel] = _channel_time else contract[contract_index, contract_channel] = default_channel_time
 if argument_count >= 7 contract[contract_index, contract_data] = _data
 else {
 	var new_data = create_data_needed(data_types.binance_ETHUSD)

@@ -29,12 +29,11 @@ switch(states)
 											other.goal_current = instance_create_layer(_xx,_yy,"Instances",goal)
 											other.goal_current.goal_type = goal_type.walking_to_kiosk
 											other.states = states.move
-											ds_list_add(mental_line,other.id)
 											with other debug_log("I am starting a walk to the kiosk")
 										}
 									} 
 									//	this smartcontracts line is filled! lets idlewalk
-									else {
+									else if smartcontract == other.smartcontract {
 										with other debug_log("This line is filled. I am going to idlewalk")
 										with other person_idlewalk()
 									}
@@ -43,9 +42,11 @@ switch(states)
 					} 
 					//	I either don't want to use any smart contracts or I'm on cooldown, lets idlewalk
 					else {
+						debug_log("Either smartcontracts list is empty or I'm on cooldown")
 						person_idlewalk()
 					}
 				} else {
+					debug_log("ERROR I already have a smartcontract")
 					person_idlewalk()
 				}
 			

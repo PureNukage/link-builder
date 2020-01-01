@@ -106,6 +106,7 @@ switch(states)
 					if ds_list_find_index(_person.smartcontracts,smartcontract) == -1 {
 						ds_list_add(_person.smartcontracts,smartcontract)
 						contracts.contract[smartcontract, contract_traffic_live]++
+						debug_log("Giving person the smart contract: "+string(contracts.contract[smartcontract, contract_name]))
 					}
 		
 		
