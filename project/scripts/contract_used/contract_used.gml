@@ -20,7 +20,7 @@ debug_log("CONTRACT USED Player to receive: "+string(_points)+" points")
 
 //	Refresh is_placeable in the selected unit if there is one
 if input.selection > -1 and input.selection.states == states.placement {
-	with input.selection placeable = is_placeable	
+	with input.selection placeable = is_placeable()	
 }
 		
 //	I'm now on cooldown and can't use a contract again for a bit
