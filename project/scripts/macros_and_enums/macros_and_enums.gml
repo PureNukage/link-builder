@@ -49,6 +49,7 @@ enum goal_type {
 #macro contract_purchased 10
 #macro contract_text 11
 #macro contract_data 12
+#macro contract_portrait 13
 
 enum contract_types {
 	eth_transfer,	
@@ -60,6 +61,7 @@ enum contract_types {
 #macro item_placed 2
 #macro item_text 4
 #macro item_data_generated 5
+#macro item_portrait 6
 
 #macro in 0
 #macro out 1

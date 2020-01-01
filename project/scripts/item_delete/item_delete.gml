@@ -315,3 +315,8 @@ ds_list_destroy(items)
 if object_index != wire {
 	ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,-1)
 }
+
+if object_index == kiosk and smartcontract > -1 {
+	contracts.contract[smartcontract, contract_kiosk] = -1
+	contracts.contract[smartcontract, contract_online] = false
+}

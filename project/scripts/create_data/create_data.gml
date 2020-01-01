@@ -2,13 +2,15 @@
 ///@param price
 ///@param object_index
 ///@param text
+///@param portrait
 ///@param [data_type]
 
 var _name = argument[0]
 var _price = argument[1]
 var _object_index = argument[2]
 var _text = argument[3]
-if argument_count >= 5 var _data_generated = argument[4]
+var _portrait = argument[4]
+if argument_count >= 6 var _data_generated = argument[5]
 
 var item_index = array_height_2d(item_data)
 
@@ -21,3 +23,4 @@ else item_data[item_index, item_data_generated] = default_data_type
 item_data[item_index, item_placed] = false
 item_data[item_index, item_object_index] = _object_index
 item_data[item_index, item_text] = _text
+item_data[item_index, item_portrait] = _portrait

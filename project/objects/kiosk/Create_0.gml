@@ -3,7 +3,7 @@ size_height = 5						//	Set; cells height this item takes up
 sprite = s_kiosk					//	Set; sprite for this item
 states = states.placement			//	Set; inital state of this item
 ports_count = 2						//	Set; holds the number of ports in this item has
-//portrait = -1
+portrait = s_portrait_ethereum		//	Set; holds the portrait for this item
 name = "Kiosk"
 
 event_inherited()

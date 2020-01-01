@@ -8,8 +8,6 @@ portrait = -1						//	Set; holds the portrait for this item
 name = ""							//	Set; holds the name for this item
 */
 	
-portrait = s_portrait_test
-	
 my_cells_items = ds_grid_create(size_width,size_height)
 my_cells_x = []
 my_cells_y = []

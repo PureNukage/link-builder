@@ -6,6 +6,8 @@
 			menu_pressed = true
 			menu_height = 256
 			menu_width = 128
+			nodes_open = false
+			data_open = false
 		}
 	} else {
 		button_mouseover = false
@@ -134,6 +136,7 @@
 						input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",item_data[d,3])
 						input.selection.selected = true
 						input.selection.item_index = d
+						input.selection.portrait = item_data[d,item_portrait]
 						input.selection.price = item_data[d,item_price]
 						input.selection.data_generated = item_data[d,item_data_generated]
 						if ds_list_find_index(input.selections,input.selection) == -1 {
