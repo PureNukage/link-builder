@@ -120,8 +120,13 @@ switch(states)
 		
 			//If I have a goal
 			if goal_current > -1 {
+				
+				var distance_away_from_goal = -1
+				if goal_current.goal_type = goal_type.walking_to_kiosk {
+					distance_away_from_goal = 256	
+				} else distance_away_from_goal = 2
 			
-				if point_distance(x,y,goal_current.x,goal_current.y) > 2 {
+				if point_distance(x,y,goal_current.x,goal_current.y) > distance_away_from_goal {
 					
 					//	Make sure kiosk exists
 					if smartcontract > -1 and !contracts.contract[smartcontract, contract_online] {

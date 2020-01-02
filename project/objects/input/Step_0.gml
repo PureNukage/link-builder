@@ -10,6 +10,29 @@ space = keyboard_check_pressed(vk_space)
 rotate_right = keyboard_check_pressed(ord("E"))
 rotate_left = keyboard_check_pressed(ord("Q"))
 
+#region wip finger camera scrolling
+	//finger_left_x_previous = finger_left_x
+	//finger_left_y_previous = finger_left_y
+	//finger_right_x_previous = finger_right_x
+	//finger_right_y_previous = finger_right_y
+
+	//finger_left_x = device_mouse_x(0)
+	//finger_left_y = device_mouse_y(0)
+	//finger_right_x = device_mouse_x(1)
+	//finger_right_y = device_mouse_y(1)
+
+	//var finger_left_x_diff = abs(finger_left_x_previous - finger_left_x)
+	//var finger_right_x_diff = abs(finger_right_x_previous - finger_right_x)
+	////	calc if fingers have moved since last frame AND are moving away from each other
+	//var finger_left_y_diff = abs(finger_left_y_previous - finger_left_y)
+	//var finger_right_y_diff = abs(finger_right_y_previous - finger_right_y)
+	//if finger_left_y_diff > 5 and finger_right_y_diff > 5 {
+	//	var finger_left_y_dir = finger_left_y_previous - finger_left_y
+	//}
+
+	//if finger_left_x_diff < 10 and finger_right_x_diff < 10 and
+#endregion
+
 scroll_up = mouse_wheel_up()
 scroll_down = mouse_wheel_down()
 

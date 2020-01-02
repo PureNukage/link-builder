@@ -17,10 +17,21 @@ enum mode {
 	
 }
 
+enum menu {
+	main,
+	options,
+}
+
 enum selection_mode {
 	free,
 	contract_placement,
 	
+}
+
+enum camera_mode {
+	free,
+	moved_to,
+	fixed,
 }
 
 enum data_types {
@@ -65,6 +76,13 @@ enum contract_types {
 #macro item_data_generated 5
 #macro item_portrait 6
 
+#macro menu_name 0
+#macro menu_selected 1
+#macro menu_active 2
+#macro menu_submenu 3
+#macro menu_data0 4
+#macro menu_data1 5
+
 #macro in 0
 #macro out 1
 #macro port_object 0
@@ -72,7 +90,8 @@ enum contract_types {
 #macro port_x 2
 #macro port_y 3
 
-#macro c_gray4 make_color_rgb(94,94,94)
+#macro c_gray4 make_color_rgb(85,85,85)
+#macro c_gray5 make_color_rgb(60,60,60)
 
 #macro right 0
 #macro down 1

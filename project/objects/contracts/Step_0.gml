@@ -24,7 +24,7 @@ for(var i=0;i<ds_list_size(contracts_purchased);i++) {
 			if _contract_purchased { 
 				//	this contract is placed in a kiosk already
 				if _contract_kiosk > -1 {
-					camera.camera_mode = 1
+					camera.camera_mode = camera_mode.moved_to
 					camera.x = _contract_kiosk.x
 					camera.y = _contract_kiosk.y
 					

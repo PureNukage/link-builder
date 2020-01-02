@@ -123,7 +123,7 @@ if menu_open == true {
 	_y += 32+item_buffer
 	
 	//	Draw Nodes menu
-	draw_set_color(c_gray4)
+	draw_set_color(c_gray5)
 	var _string = ""
 	if nodes_open _string = "- NODES" else _string = "+ NODES"
 	
@@ -195,7 +195,7 @@ if menu_open == true {
 	}
 	
 	//	Draw Data menu
-	draw_set_color(c_gray4)
+	draw_set_color(c_gray5)
 	draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+32,false)
 	draw_set_color(c_black)
 	draw_roundrect(_x,_y,_x+menu_width-item_buffer-item_buffer,_y+32,true)

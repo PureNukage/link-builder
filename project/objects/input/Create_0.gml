@@ -10,6 +10,18 @@ space = keyboard_check_pressed(vk_space)
 rotate_right = keyboard_check_pressed(ord("E")) 
 rotate_left = keyboard_check_pressed(ord("Q"))
 
+#region wip finger scrolling
+	//finger_left_x = device_mouse_x(0)
+	//finger_left_y = device_mouse_y(0)
+	//finger_left_y_previous = -1
+	//finger_left_x_previous = -1
+
+	//finger_right_x = device_mouse_y(1)
+	//finger_right_y = device_mouse_y(1)
+	//finger_right_y_previous = -1
+	//finger_right_x_previous = -1
+#endregion
+
 scroll_up = mouse_wheel_up()
 scroll_down = mouse_wheel_down()
 

@@ -45,6 +45,9 @@ switch(mode)
 																								_y += 15
 					with camera {
 						draw_text(_x,_y,"CAMERA")												_y += 15 
+						
+						draw_text(_x,_y,"camera zoom: "+string(zoom_level))					    _y += 15 
+																								_y += 15
 						draw_text(_x,_y,"camera view border x: "+string(camera_get_view_border_x(Camera)))	_y += 15 
 						draw_text(_x,_y,"camera view border y: "+string(camera_get_view_border_y(Camera)))	_y += 15 
 																								_y += 15
