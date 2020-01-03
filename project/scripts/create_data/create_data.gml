@@ -24,4 +24,5 @@ item_data[item_index, item_placed] = false
 item_data[item_index, item_object_index] = _object_index
 item_data[item_index, item_text] = _text
 item_data[item_index, item_portrait] = _portrait
+item_data[item_index, item_calls] = 0
 item_data[item_index, item_corruption] = 0

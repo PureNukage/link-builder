@@ -20,19 +20,19 @@ for(var p=0;p<ports_count;p++) {
 			
 		var _sprite
 		if sockets[p] == -1 {
-			debug_log(string(id)+" sockets["+string(p)+"] is: "+string(sockets[p]))
+			//debug_log(string(id)+" sockets["+string(p)+"] is: "+string(sockets[p]))
 			_sprite = s_wire_socket
 		} else {
 			if sockets[p] > -1 and sockets[p].object_index != wire {
-				debug_log(string(id)+" sockets["+string(p)+"] is: "+string(sockets[p]))
+				//debug_log(string(id)+" sockets["+string(p)+"] is: "+string(sockets[p]))
 				_sprite = s_wire_socket_connected
 			} else if sockets[p] > -1 and sockets[p].object_index == wire {
-				debug_log(string(id)+" sockets["+string(p)+"] is: "+string(sockets[p]))
+				//debug_log(string(id)+" sockets["+string(p)+"] is: "+string(sockets[p]))
 				_sprite = s_wire	
 			}
 		}
 					
 		sprite_set_offset(_sprite,sprite_get_width(_sprite)/2,sprite_get_height(_sprite)/2)
-		draw_sprite_ext(_sprite,0,_x,_y,1,1,_rotation,c_white,1)	
+		draw_sprite_ext(_sprite,0,_x,_y,1,1,_rotation,color,1)	
 	}
 }

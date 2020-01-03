@@ -9,7 +9,9 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 		//	the data was used
 		with data {
 			if data_generated == _data {
-				calls++	
+				shop.item_data[item_index, item_calls]++	
+				
+				//	Check for data corruption increase
 			}
 		}
 		

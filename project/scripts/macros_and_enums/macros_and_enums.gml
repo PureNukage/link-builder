@@ -76,7 +76,8 @@ enum contract_types {
 #macro item_text 4
 #macro item_data_generated 5
 #macro item_portrait 6
-#macro item_corruption 7
+#macro item_calls 7
+#macro item_corruption 8
 
 #macro menu_name 0
 #macro menu_selected 1

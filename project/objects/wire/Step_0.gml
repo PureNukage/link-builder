@@ -396,8 +396,8 @@ switch(states)
 							__wire.sockets[1] = __wire.ports[1,port_object]							
 								//	We are connecting items!
 								if port2 > -1 {
-									for(c=0;c<ds_list_size(port2);c++) {
-										var connecting_item = port2[| c]
+									//for(c=0;c<ds_list_size(port2);c++) {
+										var connecting_item = port2[| 0]
 										
 										__wire.ports[0,port_object] = connecting_item
 										//	set wire sockets and connecting_items sockets
@@ -434,7 +434,7 @@ switch(states)
 										__wire.ports[0,port_y] = __wire.center_cell_y + _0[1]
 										__wire.ports[1,port_x] = __wire.center_cell_x + _1[0]
 										__wire.ports[1,port_y] = __wire.center_cell_y + _1[1]
-									}
+									//}
 								}	
 						}
 						#endregion			

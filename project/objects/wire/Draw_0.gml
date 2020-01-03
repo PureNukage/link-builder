@@ -58,7 +58,7 @@ switch(states)
 		
 			//	Draw the item
 			sprite_set_offset(sprite,sprite_get_width(sprite)/2,sprite_get_height(sprite)/2)
-			draw_sprite_ext(sprite,0,x,y,1,1,rotation,c_white,1)
+			draw_sprite_ext(sprite,0,x,y,1,1,rotation,color,1)
 			
 			if pos == 0 or pos == path_get_number(ID.path)-1 {
 				draw_sockets_wire_limbo()
@@ -82,7 +82,7 @@ switch(states)
 			}
 		
 			sprite_set_offset(sprite,sprite_get_width(sprite)/2,sprite_get_height(sprite)/2)
-			draw_sprite_ext(sprite,0,x,y,1,1,rotation,c_white,1)
+			draw_sprite_ext(sprite,0,x,y,1,1,rotation,color,1)
 			
 			draw_sockets_wire()
 		
