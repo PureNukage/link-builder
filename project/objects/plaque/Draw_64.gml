@@ -141,7 +141,7 @@ if input.selection > -1 {
 			var _yy = window_twoY + 4
 			
 			draw_set_color(c_dkgray)
-			draw_text(_xx,_yy,"data generated")  _yy += 16
+			draw_text(_xx,_yy,"Data Generated")  _yy += 16
 			
 			draw_set_color(c_black)
 			var _string = shop.item_data[_item.data_generated, item_name]

@@ -14,7 +14,7 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 				var chance = irandom_range(1,100)
 				//	This data misfired!
 				if chance < shop.item_data[item_index, item_corruption] {
-					contract_misfire++			
+					contract_misfire++
 				}
 				
 				shop.item_data[item_index, item_calls]++	

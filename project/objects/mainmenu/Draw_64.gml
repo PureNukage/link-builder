@@ -100,7 +100,7 @@ switch(menu)
 							}
 						}
 					} else {
-						draw_set_color(c_gray)	
+						draw_set_color(c_dkgray)	
 					}
 					if option_submenu[s ,menu_active] {
 						draw_set_color(c_white)	
