@@ -655,6 +655,14 @@
             }
         },
         {
+            "Key": "b3f951d7-7bc6-48eb-889a-756e153ca377",
+            "Value": {
+                "id": "b23a2c19-bacf-470f-992f-354bb5ae196f",
+                "resourcePath": "fonts\\fnt_header\\fnt_header.yy",
+                "resourceType": "GMFont"
+            }
+        },
+        {
             "Key": "b5c5db7c-f46c-4cd9-9651-c860e127dd22",
             "Value": {
                 "id": "990ff5da-4e22-42d7-bd9c-17d3201761c4",
@@ -916,6 +924,14 @@
                 "id": "bfad4585-29e7-4123-8a74-a75ff728cf7d",
                 "resourcePath": "objects\\person\\person.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "eeb0fe6d-bcf1-423c-b70b-1435432b510b",
+            "Value": {
+                "id": "95b859e6-dddc-4395-8ece-961a8b82ec61",
+                "resourcePath": "sprites\\s_blueprint\\s_blueprint.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

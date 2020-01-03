@@ -9,7 +9,13 @@ switch(menu)
 			var _yy = _y
 			_yy -= 200
 			_yy = clamp(_yy,0,_yy)
-			draw_sprite(s_logo,0,_x,_y-200)
+			draw_set_color(c_white)
+			draw_set_font(fnt_header)
+			draw_set_halign(fa_center)
+			draw_set_valign(fa_middle)
+			draw_text(_x,_yy,"Smart Contract Builder")
+			draw_set_font(-1)
+			//draw_sprite(s_logo,0,_x,_y-200)
 		
 			for(var i=0;i<array_height_2d(mainMenu);i++) {
 				var menu_string = mainMenu[i, menu_name]
@@ -20,8 +26,9 @@ switch(menu)
 				var box_width = _width + buffer
 				var box_height = _height + buffer
 				
+				draw_set_color(c_black)
 				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height) {
-					draw_set_color(c_ltgray)
+					draw_set_alpha(.3)
 					if mouse_check_button_pressed(mb_left) {
 						switch(i)
 						{
@@ -35,7 +42,7 @@ switch(menu)
 						}
 					}
 				} else {
-					draw_set_color(c_gray)
+					draw_set_alpha(.5)
 				}
 
 				draw_roundrect(_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height,false)
@@ -43,6 +50,7 @@ switch(menu)
 				draw_roundrect(_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height,true)
 				draw_roundrect(_x-box_width/2+1,_y+1,_x-box_width/2+box_width-1,_y+box_height-1,true)
 			
+				draw_set_alpha(1)
 				draw_set_color(c_white)
 				draw_set_halign(fa_center)
 				draw_set_valign(fa_middle)
