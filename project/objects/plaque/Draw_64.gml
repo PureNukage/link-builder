@@ -141,11 +141,24 @@ if input.selection > -1 {
 			var _yy = window_twoY + 4
 			
 			draw_set_color(c_dkgray)
-			draw_text(_xx,_yy,"data generated")  _yy += 15
+			draw_text(_xx,_yy,"data generated")  _yy += 16
 			
 			draw_set_color(c_black)
 			var _string = shop.item_data[_item.data_generated, item_name]
-			draw_text(_xx,_yy,_string)
+			draw_text(_xx,_yy,_string)				_yy += 16
+			
+			draw_set_color(c_dkgray)
+			draw_text(_xx,_yy,"Calls")				_yy += 16
+			
+			draw_set_color(c_black)
+			draw_text(_xx,_yy,string(shop.item_data[_item.item_index, item_calls])) _yy += 16
+			
+			draw_set_color(c_dkgray)
+			draw_text(_xx,_yy,"Corruption")			_yy += 16
+			
+			draw_set_color(c_black)
+			var _corruption = string(shop.item_data[_item.item_index, item_corruption]) + " %"
+			draw_text(_xx,_yy,_corruption)
 			
 			if string_width(_string) > window_two_width {
 				window_two_width = string_width(_string) + 16

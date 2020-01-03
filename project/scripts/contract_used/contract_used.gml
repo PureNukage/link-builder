@@ -1,4 +1,5 @@
 var _kiosk = contracts.contract[smartcontract, contract_kiosk]
+var contract_misfire = 0
 
 for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 	var _data = _kiosk.data_needed[i,0]
@@ -9,9 +10,17 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 		//	the data was used
 		with data {
 			if data_generated == _data {
+				//	Check for data misfire
+				var chance = irandom_range(1,100)
+				//	This data misfired!
+				if chance < shop.item_data[item_index, item_corruption] {
+					contract_misfire++			
+				}
+				
 				shop.item_data[item_index, item_calls]++	
 				
 				//	Check for data corruption increase
+				data_corruption_check()
 			}
 		}
 		
@@ -25,11 +34,15 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 		debug_log("ERROR No node id set for this data being given!")
 	}	
 }
+
+if contract_misfire > 0 debug_log("Contract "+contracts.contract[smartcontract, contract_name]+" misfired!")
 		
 //	give the player the reward
-player.points += contracts.contract[smartcontract, contract_reward]
-var _points = contracts.contract[smartcontract, contract_reward]
-debug_log("CONTRACT USED Player to receive: "+string(_points)+" points")
+if !contract_misfire {
+	player.points += contracts.contract[smartcontract, contract_reward]
+	var _points = contracts.contract[smartcontract, contract_reward]
+	debug_log("CONTRACT USED Player to receive: "+string(_points)+" points")
+} else var _points = 0
 
 //	Refresh is_placeable in the selected unit if there is one
 if input.selection > -1 and input.selection.states == states.placement {
