@@ -10,8 +10,8 @@ for(var p=0;p<ports_count;p++) {
 		directionX = sign(_w - center_cell_x)
 		directionY = sign(_h - center_cell_y)
 		
-		var _x = gridController.grid_positions_x[_w]+(cell_width/2)-(directionX*20)
-		var _y = gridController.grid_positions_y[_h]+(cell_height/2)-(directionY*20)
+		var _x = gridController.grid_positions_x[_w]+(cell_width/2)-(directionX*15)
+		var _y = gridController.grid_positions_y[_h]+(cell_height/2)-(directionY*15)
 					
 		var _rotation = -1
 		if directionX > 0 and directionY == 0 _rotation = 0
@@ -22,17 +22,20 @@ for(var p=0;p<ports_count;p++) {
 		var _sprite = s_wire_socket
 		if sockets[p] == -1 {
 			_sprite = s_wire_socket 
-		} else if sockets[p] > -1 and instance_exists(sockets[p]) and sockets[p].object_index != wire {
-			if time_spawn > sockets[p].time_spawn {
-				_sprite = s_wire
-			} else {
-				_sprite = s_wire_socket_connected
-			}
-			_x = _x - (directionX*10)
-			_y = _y - (directionY*10)
-		} else if sockets[p] > -1 and instance_exists(sockets[p]) and sockets[p].object_index == wire {
+		} //else if sockets[p] > -1 and instance_exists(sockets[p]) and sockets[p].object_index != wire {
+		//	if time_spawn > sockets[p].time_spawn {
+		//		_sprite = s_wire
+		//	} else {
+		//		_sprite = s_wire_socket_connected
+		//	}
+		//	_x = _x - (directionX*10)
+		//	_y = _y - (directionY*10)
+		//} else if sockets[p] > -1 and instance_exists(sockets[p]) and sockets[p].object_index == wire {
+		//	_sprite = s_wire_socket_connected	
+		//} 
+		else {
 			_sprite = s_wire_socket_connected	
-		} 
+		}
 		
 		sprite_set_offset(_sprite,sprite_get_width(_sprite)/2,sprite_get_height(_sprite)/2)
 		draw_sprite_ext(_sprite,0,_x,_y,1,1,_rotation,c_white,1)	

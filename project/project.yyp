@@ -583,6 +583,14 @@
             }
         },
         {
+            "Key": "a89fd004-8f62-419e-9dcf-50068245b980",
+            "Value": {
+                "id": "700984ac-75b5-40df-a30a-f7ada591505a",
+                "resourcePath": "scripts\\draw_sockets_wire_limbo\\draw_sockets_wire_limbo.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "a9188620-a624-4a5a-83ae-a1b53faf038b",
             "Value": {
                 "id": "48a3310a-b8a4-4445-9f77-c9cf5ce58f71",
@@ -1042,6 +1050,7 @@
         "87b73aae-eecb-4463-9a80-442f2d84b831",
         "d2061f56-d17f-44b8-8c01-6eb7b6733616",
         "a5879b47-81fd-4984-86b1-bc1097775565",
+        "a89fd004-8f62-419e-9dcf-50068245b980",
         "59e5b008-2217-4001-ab6f-11e6cdb7bf85",
         "af3d0303-d364-4fc6-9a23-1a88a74f9332",
         "ff103323-a9e3-4316-b6d3-5c243e2451d5",

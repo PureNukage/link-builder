@@ -13,3 +13,4 @@ ports[0,port_x] = bottomright_cell_x+1
 ports[0,port_y] = center_cell_y
 
 data_generated = -1 
+calls = 0

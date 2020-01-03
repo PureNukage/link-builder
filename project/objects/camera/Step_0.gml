@@ -21,8 +21,15 @@ switch(camera_mode)
 
 			var rate = 0.2
 
-			var new_w = lerp(view_w, zoom_level *  default_zoom_width, rate)
-			var new_h = lerp(view_h, zoom_level * default_zoom_height, rate)
+			var new_w = round(lerp(view_w, zoom_level *  default_zoom_width, rate))
+			var new_h = round(lerp(view_h, zoom_level * default_zoom_height, rate))
+			
+			if new_w & 1 {
+				new_w++	
+			}
+			if new_h & 1 {
+				new_h++	
+			}
 
 			camera_set_view_size(Camera, new_w, new_h)
 
@@ -41,7 +48,7 @@ switch(camera_mode)
 	
 		//	Edge Pan Checks
 		var panX, panY, pan
-		pan = -1
+		pan = 0
 		edgeX = camera_get_view_border_x(Camera)/8
 		edgeY = camera_get_view_border_y(Camera)/8
 		if mouse_gui_x > camera_get_view_border_x(Camera)-edgeX {
@@ -60,12 +67,12 @@ switch(camera_mode)
 		}
 		
 		//	We're clicking in a pan box, lets move
-		if mouse_check_button(mb_left) and (panX != 0 or panY != 0) {
-			y += panY * panspeed 
-			x += panX * panspeed 
-			input.selection_x1 = -1
-			input.selection_y1 = -1
-		} else pan = 0
+		//if mouse_check_button(mb_left) and (panX != 0 or panY != 0) {
+		//	y += panY * panspeed 
+		//	x += panX * panspeed 
+		//	input.selection_x1 = -1
+		//	input.selection_y1 = -1
+		//} else pan = 0
 
 		//	Check if we're moused over any gui elements before applying pan
 		if shop.menu_open == 0 and contracts.button_open == 0 and pan == 0 {

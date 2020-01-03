@@ -1,12 +1,23 @@
 var _kiosk = contracts.contract[smartcontract, contract_kiosk]
 
 for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
+	var _data = _kiosk.data_needed[i,0]
 	
 	if _kiosk.data_needed[i,2] > -1 {
 		var _node = _kiosk.data_needed[i,2]
 		
+		//	the data was used
+		with data {
+			if data_generated == _data {
+				calls++	
+			}
+		}
+		
 		//	the node did a job
 		_node.jobruns++
+		
+		//	this smart contract was run
+		
 		
 	} else {
 		debug_log("ERROR No node id set for this data being given!")

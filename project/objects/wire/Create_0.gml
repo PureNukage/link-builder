@@ -26,6 +26,8 @@ straight = true									//	Active; holds if this wire is a straight piece or a c
 sockets = []
 sockets[0] = -1
 sockets[1] = -1
+pos = -1
+ID = -1
 
 // Inherit the parent event
 event_inherited()

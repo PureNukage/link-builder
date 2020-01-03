@@ -112,6 +112,10 @@ switch(states)
 											_wire.topleft_cell_y = h
 											_wire.bottomright_cell_x = w
 											_wire.bottomright_cell_y = h
+											
+											//	add id
+											_wire.ID = id
+											_wire.pos = i
 										
 											ds_list_add(path_objects,_wire)
 								
@@ -278,11 +282,13 @@ switch(states)
 									__wire.sockets[0] = connecting_item
 									var target_x = __wire.center_cell_x
 									var target_y = __wire.center_cell_y
-									for(var p=0;p<connecting_item.ports_count;p++) {
-										if connecting_item.ports[p,port_x] == target_x and connecting_item.ports[p,port_y] == target_y {
-											connecting_item.sockets[p] = __wire	
-										}
+									if __wire.sockets[0] != wire {
+										for(var p=0;p<connecting_item.ports_count;p++) {
+											if connecting_item.ports[p,port_x] == target_x and connecting_item.ports[p,port_y] == target_y {
+												connecting_item.sockets[p] = __wire	
+											}
 										
+										}
 									}
 									
 									//	Figure out directions
@@ -305,6 +311,7 @@ switch(states)
 							//	There is another wire ahead of us
 							else {
 								__wire.ports[0,port_object] = path_objects[| i+1]
+								__wire.sockets[0] = __wire.ports[0,port_object]
 								
 								//	We are connecting items!
 								if port1 > -1 {
@@ -386,7 +393,7 @@ switch(states)
 						#region Last Wire
 						if i == ds_list_size(path_points_x)-1 and i != 0 {
 							__wire.ports[1,port_object] = path_objects[| i-1]
-							
+							__wire.sockets[1] = __wire.ports[1,port_object]							
 								//	We are connecting items!
 								if port2 > -1 {
 									for(c=0;c<ds_list_size(port2);c++) {
@@ -394,14 +401,16 @@ switch(states)
 										
 										__wire.ports[0,port_object] = connecting_item
 										//	set wire sockets and connecting_items sockets
-										__wire.sockets[1] = connecting_item
+										__wire.sockets[0] = connecting_item
 										var target_x = __wire.center_cell_x
 										var target_y = __wire.center_cell_y
-										for(var p=0;p<connecting_item.ports_count;p++) {
-											if connecting_item.ports[p,port_x] == target_x and connecting_item.ports[p,port_y] == target_y {
-												connecting_item.sockets[p] = __wire	
-											}
+										if __wire.sockets[1] != wire {
+											for(var p=0;p<connecting_item.ports_count;p++) {
+												if connecting_item.ports[p,port_x] == target_x and connecting_item.ports[p,port_y] == target_y {
+													connecting_item.sockets[p] = __wire	
+												}
 										
+											}
 										}
 										var _directions = port_get_direction(__wire,connecting_item)
 										__wire.ports[0,port_x] = __wire.center_cell_x+_directions[0]
