@@ -131,7 +131,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 						if _object_index == wire {
 							
 							//if _object_index.color != c_white {
-								current_loop.color = c_blue
+								current_loop.color = c_sergey_blue
 							//}
 						
 							//	check this wires ports

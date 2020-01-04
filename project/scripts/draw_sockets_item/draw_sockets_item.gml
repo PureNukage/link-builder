@@ -30,7 +30,7 @@ for(var p=0;p<ports_count;p++) {
 		if object_index == data {
 			_color = c_white	
 		} else {
-			_color = c_blue	
+			_color = c_sergey_blue	
 		}
 		
 		sprite_set_offset(_sprite,sprite_get_width(_sprite)/2,sprite_get_height(_sprite)/2)

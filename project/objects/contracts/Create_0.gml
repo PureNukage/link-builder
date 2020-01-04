@@ -17,7 +17,7 @@ contract = 0
 
 //	CREATE CONTRACTS
 var _data = create_data_needed(data_types.binance_ETHUSD)
-create_contract("Eth Transfer","",100,150,s_portrait_ethereum,2,10,5,_data)
+create_contract("Eth Transfer","",100,150,s_portrait_ethereum,2,0,5,_data)
 
 var _data = create_data_needed(data_types.binance_ETHUSD,data_types.paypal)
 var _string = "Blockchain users can now trade their ETH with\neach other for USD by querying a PayPal invoice"

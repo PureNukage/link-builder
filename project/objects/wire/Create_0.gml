@@ -9,7 +9,7 @@ name = "Wire"
 sprites = []
 sprites[1] = s_wire
 sprites[0] = s_wire_corner
-color = c_blue
+color = c_sergey_blue
 
 item_index = 2
 

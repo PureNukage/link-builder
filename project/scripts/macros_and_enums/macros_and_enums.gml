@@ -46,6 +46,7 @@ enum goal_type {
 	idlewalk,
 	waiting_in_line,
 	using_smartcontract,
+	
 }
 
 #macro contract_name 0
@@ -95,6 +96,7 @@ enum contract_types {
 
 #macro c_gray4 make_color_rgb(85,85,85)
 #macro c_gray5 make_color_rgb(60,60,60)
+#macro c_sergey_blue make_color_rgb(42,89,218)
 
 #macro right 0
 #macro down 1
