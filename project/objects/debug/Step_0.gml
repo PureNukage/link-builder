@@ -20,6 +20,7 @@ switch(mode)
 			if input.mouse_left_press {
 				window_grid_offsetX = gui_mouse_x - window_gridX
 				window_grid_offsetY = gui_mouse_y - window_gridY
+				window_grid_pressed = true
 			}
 		
 			if input.mouse_left {
@@ -33,6 +34,7 @@ switch(mode)
 				button_mpgridY = window_gridY + 16
 				button_systemsX = window_gridX + 16
 				button_systemsY = window_gridY + button_mpgrid_height + 32
+				window_grid_pressed = true
 			}
 		
 			if input.mouse_left_release {
@@ -40,6 +42,7 @@ switch(mode)
 				window_grid_offsetY = -1
 				button_mpgridX = window_gridX + 16
 				button_mpgridY = window_gridY + 16
+				window_grid_pressed = false
 			}
 		
 			//	If mouse is over button_mpgrid
@@ -85,7 +88,7 @@ switch(mode)
 				if input.mouse_left_press {
 					window_variable_offsetX = gui_mouse_x - window_variableX
 					window_variable_offsetY = gui_mouse_y - window_variableY
-					
+					window_variable_pressed = true
 				}
 				
 				if input.mouse_left {
@@ -95,12 +98,13 @@ switch(mode)
 					}
 					window_variableX = gui_mouse_x - window_variable_offsetX
 					window_variableY = gui_mouse_y - window_variable_offsetY
-					
+					window_variable_pressed = true
 				}
 				
 				if input.mouse_left_release {
 					window_variable_offsetX = -1
 					window_variable_offsetY = -1
+					window_variable_pressed = false
 				}
 				
 			}

@@ -10,6 +10,7 @@ window_gridX = 180
 window_gridY = 24
 window_grid_offsetX = -1
 window_grid_offsetY = -1
+window_grid_pressed = false
 
 #endregion
 
@@ -21,6 +22,7 @@ window_variableX = 480
 window_variableY = 32
 window_variable_offsetX = -1
 window_variable_offsetY = -1
+window_variable_pressed = false
 
 #endregion
 

@@ -343,6 +343,14 @@
             }
         },
         {
+            "Key": "54d2b4c4-a98e-42c7-8ce8-03c2b58262ff",
+            "Value": {
+                "id": "93297bf2-900c-45a9-bde5-2fd426a9b42a",
+                "resourcePath": "scripts\\wave\\wave.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "55dbc4aa-0ae4-44b9-8ea7-027248176ac8",
             "Value": {
                 "id": "f726b2ca-128f-401c-8b29-9a60d1f9b9f2",
@@ -399,6 +407,14 @@
             }
         },
         {
+            "Key": "5eb5c9e4-7f2b-4525-9165-24a0f6e75b07",
+            "Value": {
+                "id": "6df78ca0-28d7-43ad-9e6e-7fffb7fa44c1",
+                "resourcePath": "scripts\\approach\\approach.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "6014bf7c-0ddd-44fe-853d-e5635b85611e",
             "Value": {
                 "id": "e1b0b340-e1c0-4f6f-a8cc-19a147ae6689",
@@ -411,6 +427,14 @@
             "Value": {
                 "id": "d63d3623-8e94-4ada-a25e-36c417feb876",
                 "resourcePath": "scripts\\item_placeid\\item_placeid.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "6e4b06ea-de1d-451e-bb76-a135b71a8647",
+            "Value": {
+                "id": "4096c0ea-b1a1-4502-b45a-44ea57df0664",
+                "resourcePath": "scripts\\wrap\\wrap.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -460,6 +484,14 @@
                 "id": "8de4f4c1-5789-499c-8971-7cbeefa6b713",
                 "resourcePath": "options\\ios\\options_ios.yy",
                 "resourceType": "GMiOSOptions"
+            }
+        },
+        {
+            "Key": "851f8a76-2b6f-49a4-a83e-a5898e166f70",
+            "Value": {
+                "id": "139f64f1-d79c-42d5-8b52-6c2d61332ddd",
+                "resourcePath": "sprites\\s_blueprint_32x32\\s_blueprint_32x32.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -1072,6 +1104,9 @@
         }
     ],
     "script_order": [
+        "5eb5c9e4-7f2b-4525-9165-24a0f6e75b07",
+        "54d2b4c4-a98e-42c7-8ce8-03c2b58262ff",
+        "6e4b06ea-de1d-451e-bb76-a135b71a8647",
         "fb6c1052-0b90-40eb-afa8-401055604a98",
         "dc7ad462-4722-456b-a05e-ebb684bbe344",
         "046ccc19-867e-4bdc-981d-611f151de6a8",
