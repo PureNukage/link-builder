@@ -27,5 +27,5 @@ selection = -1
 previous_selection = -1
 selection_switch = false
 
-node_info = false
-node_stats = false
+node_info = true
+node_stats = true

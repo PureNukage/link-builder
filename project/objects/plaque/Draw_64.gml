@@ -2,8 +2,8 @@ if input.selection > -1 {
 	
 	if selection_switch {
 		window_two_width = 148
-		node_stats = false
-		node_info = false
+		node_stats = true
+		node_info = true
 	}
 	
 	//	Draw portrait background

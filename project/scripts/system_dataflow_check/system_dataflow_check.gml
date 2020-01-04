@@ -85,11 +85,11 @@ for(var i=0;i<ds_list_size(parts);i++) {
 						}
 								
 						//	set the connected port direction
-						//for(var d=0;d<current_loop.ports_count;d++) {
-						//	if current_loop.ports[d,port_object] == previous_loop {
-						//		current_loop.ports[d,port_direction] = in	
-						//	}
-						//}
+						for(var d=0;d<current_loop.ports_count;d++) {
+							if current_loop.ports[d,port_object] == previous_loop {
+								current_loop.ports[d,port_direction] = in	
+							}
+						}
 								
 						loop = false
 						

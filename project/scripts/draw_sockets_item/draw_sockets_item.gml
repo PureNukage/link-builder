@@ -27,7 +27,7 @@ for(var p=0;p<ports_count;p++) {
 		}
 		
 		var _color
-		if object_index == data {
+		if object_index == data or ports[p,port_direction] = in {
 			_color = c_white	
 		} else {
 			_color = c_sergey_blue	

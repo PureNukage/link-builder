@@ -7,7 +7,7 @@ if input.selection > -1 and input.selection != selection {
 		previous_selection = selection	
 		selection_switch = true
 	}
-} else if input.selection = -1 {
+} else if input.selection == -1 {
 	selection = -1
 	previous_selection = -1
 }
