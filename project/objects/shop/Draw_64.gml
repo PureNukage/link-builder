@@ -331,6 +331,20 @@ draw_set_valign(fa_top)
 
 draw_text(_xx,_yy,"E to rotate item")				_yy += 16
 draw_text(_xx,_yy,"Press Home to give $2000")		_yy += 16
+var _string = "Press and hold to drag a long wire"
 if input.selection > -1 and input.selection.object_index == wire {
-	draw_text(_xx,_yy,"Press and hold to drag a long wire")	_yy += 16
+	draw_text(_xx,_yy,_string)	_yy += 16
 }
+
+
+
+//	ALPHA INFO
+var _xx = buttonX+button_width+32+128+16+string_width(_string)+16
+var _yy = buttonY
+
+draw_text(_xx,_yy,"This game is currently in ALPHA. It is not balanced and will contain bugs")_yy += 20
+draw_text(_xx,_yy,"white wires = off-chain; blue wires = on-chain")	_yy += 20
+draw_text(_xx,_yy,"Nodes cannot get data from other nodes") _yy += 20
+draw_text(_xx,_yy,"Data gets corrupted the more its used. Corruption increases the chance of a misfire") _yy += 20
+draw_text(_xx,_yy,"Contracts Price data only needs 1 source to be successful. Decentralize to give more sources") _yy += 20
+draw_text(_xx,_yy,"Contracts needs to have 0 misfires to work properly. People don't like apps that don't work") _yy += 20

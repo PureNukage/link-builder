@@ -23,7 +23,7 @@ if item_index > -1 {
 	}
 }
 
-if shop.nodes_mouseover or shop.data_mouseover or plaque.window_two_mouseover or contracts.menu_mouseover { 
+if shop.menu_mouseover or shop.menu_mouseover or plaque.window_two_mouseover or contracts.menu_mouseover { 
 	_placeable++
 }
 

@@ -23,10 +23,10 @@ for(var p=0;p<ports_count;p++) {
 			_sprite = s_wire_socket
 			//debug_log(string(id)+" sockets["+string(p)+"] is: "+string(sockets[p]))
 		} else {
-			if sockets[p] > -1 and sockets[p].object_index != wire {
+			if sockets[p] > -1 and instance_exists(sockets[p]) and sockets[p].object_index != wire {
 				_sprite = s_wire_socket_connected	
 				//debug_log(string(id)+" sockets["+string(p)+"] is: "+string(sockets[p]))
-			} else if sockets[p] > -1 and sockets[p].object_index == wire {
+			} else if sockets[p] > -1 and instance_exists(sockets[p]) and sockets[p].object_index == wire {
 				_sprite = s_wire	
 				//debug_log(string(id)+" sockets["+string(p)+"] is: "+string(sockets[p]))
 			}

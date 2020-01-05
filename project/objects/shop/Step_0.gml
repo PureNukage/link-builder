@@ -17,6 +17,8 @@
 #region Shop Menu Interaction
 	if point_in_rectangle(mouse_gui_x,mouse_gui_y,menuX,menuY,menuX+menu_width,menuY+menu_height) and menu_open == true {
 		menu_mouseover = true	
+		
+		if input.selection > -1 with input.selection placeable = is_placeable()
 	
 		//	Menu item mouse click check
 		var _x = menuX+item_buffer
