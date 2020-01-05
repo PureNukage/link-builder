@@ -71,6 +71,7 @@ switch(states)
 				var port0_x = ports[0,port_x]
 				var port0_y = ports[0,port_y]
 				debug_log("new Port 0: "+string(port0_x)+ ","+string(port0_y))
+				item_check_sockets()
 			}		
 			
 		//	Clamp rotation
@@ -104,50 +105,50 @@ switch(states)
 			#region We have a smart contract
 			if smartcontract > -1 {
 				
-				#region People Contract
-				if contracts.contract[smartcontract, contract_type] == contract_types.people {
-		
-					//	I was used!
-					if used {
-						//	First frame 
-						if used_time == -1 {
-							used_time = time.stream
-							used_logo_speedincrease = true
-							used_blocks_play = true
+				//	I was used!
+				if used {
+					//	First frame 
+					if used_time == -1 {
+						used_time = time.stream
+						used_logo_speedincrease = true
+						used_blocks_play = true
+					}
+					//	Animation
+					else {
+						image_speed = used_logo_speed
+						var speed_max = 8
+						var speed_change = .1
+						if used_blocks_play used_blocks_frame++
+						if used_blocks_frame > sprite_get_number(s_kiosk_blocks_animation)-1 {
+							used_blocks_play = false
+							used_blocks_frame = 0
 						}
-						//	Animation
-						else {
-							image_speed = used_logo_speed
-							var speed_max = 8
-							var speed_change = .1
-							if used_blocks_play used_blocks_frame++
-							if used_blocks_frame > sprite_get_number(s_kiosk_blocks_animation)-1 {
-								used_blocks_play = false
-								used_blocks_frame = 0
+						if used_logo_speedincrease {
+							used_logo_speed = lerp(used_logo_speed,speed_max,speed_change)
+							if used_logo_speed > speed_max - speed_change - speed_change {
+								used_logo_speedincrease = false	
 							}
-							if used_logo_speedincrease {
-								used_logo_speed = lerp(used_logo_speed,speed_max,speed_change)
-								if used_logo_speed > speed_max - speed_change - speed_change {
-									used_logo_speedincrease = false	
-								}
-							}
+						}
 					
-							else {
-								used_logo_speed = lerp(used_logo_speed,0,speed_change)
-								if used_logo_speed < 0 + speed_change + speed_change {
-									used = false
-									used_logo_speed = 0
-									used_time = -1
-								}
+						else {
+							used_logo_speed = lerp(used_logo_speed,0,speed_change)
+							if used_logo_speed < 0 + speed_change + speed_change {
+								used = false
+								used_logo_speed = 0
+								used_time = -1
 							}
-						}
-					} else {
-						if active {
-							image_speed = .5
-						} else {
-							image_speed = 0	
 						}
 					}
+				} else {
+					if active {
+						image_speed = .5
+					} else {
+						image_speed = 0	
+					}
+				}
+				
+				#region People Contract
+				if contracts.contract[smartcontract, contract_type] == contract_types.people {
 			
 					//	lets add our contract into a persons queue
 					if active and ds_list_size(line) < contracts.contract[smartcontract, contract_linesize] and contracts.contract[smartcontract, contract_traffic_live] < contracts.contract[smartcontract, contract_traffic] {
@@ -184,6 +185,8 @@ switch(states)
 						if time.stream_seconds >= timer {
 							if player.points >= contracts.contract[smartcontract, contract_price] {
 								debug_log("Using reference price feed!")
+								
+								used = true
 							
 								player.points -= contracts.contract[smartcontract, contract_price]
 								var _points = contracts.contract[smartcontract, contract_price]

@@ -13,6 +13,8 @@ switch(states)
 	
 			if input.rotate_right or input.rotate_left {
 				data_update_ports_xy(rotation)
+				
+				item_check_sockets()
 			}
 		
 			if abs(rotation) == 360 {

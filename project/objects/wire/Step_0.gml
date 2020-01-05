@@ -24,6 +24,7 @@ switch(states)
 						debug_log("x: "+string(w)+", y: "+string(h)+" contains: "+string(my_cells_items[# w, h]))
 					}
 				}
+				item_check_sockets()
 			}
 			
 			//	Clamp rotation

@@ -72,6 +72,8 @@ switch(states)
 				var port0_x = ports[0,port_x]
 				var port0_y = ports[0,port_y]
 				debug_log("new Port 0: "+string(port0_x)+ ","+string(port0_y))
+				
+				item_check_sockets()
 			}
 		
 			//	Clamp rotation
