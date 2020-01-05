@@ -13,85 +13,92 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 		var _node = _kiosk.data_needed[i,2]
 		
 		//	the data was used
-		//with data {
-			//	Our needed data is a price
-			if is_price(_data_string) {
+		//	Our needed data is a price
+		if is_price(_data_string) {
 				
-				//	This price feed is sufficiently decentralized!
-				if _kiosk.data_needed[i,3] {
-					
-				} else {
+			//	This price feed is sufficiently decentralized!
+			if _kiosk.data_needed[i,3] {
 				
-					var got_at_least_one = 0
-					for(var dd=0;dd<ds_list_size(_kiosk.data_held);dd++) {
-						var _data_held = _kiosk.data_held[| dd]
-						var _data_held_string = shop.item_data[_data_held, item_name]
-						//	This data is the correct price that I need!
-						if string_pos(needed_price_string,_data_held_string) != 0 {
-							with data {
-								if data_generated == _data_held {
-									//	Check for data misfire
-									var chance = irandom_range(1,100)
-									//	This data misfired!
-									if chance < shop.item_data[item_index, item_corruption] {
-										//contract_misfire++
-										used = true
-										misfire = true
-									} else {
-										got_at_least_one++
-										used = true
-										misfire = false
-									}
-								
-									shop.item_data[item_index, item_calls]++
+			} else {
 				
-									//	Check for data corruption increase
-									data_corruption_check()
+				var got_at_least_one = 0
+				var _jobruns = 0
+				for(var dd=0;dd<ds_list_size(_kiosk.data_held);dd++) {
+					var _data_held = _kiosk.data_held[| dd]
+					var _data_held_string = shop.item_data[_data_held, item_name]
+					//	This data is the correct price that I need!
+					if string_pos(needed_price_string,_data_held_string) != 0 {
+						with data {
+							if data_generated == _data_held {
+								//	Check for data misfire
+								var chance = irandom_range(1,100)
+								//	This data misfired!
+								if chance < shop.item_data[item_index, item_corruption] {
+									//contract_misfire++
+									used = true
+									misfire = true
+								} else {
+									got_at_least_one++
+									used = true
+									misfire = false
 								}
+								
+								shop.item_data[item_index, item_calls]++
+				
+								//	Check for data corruption increase
+								data_corruption_check()
+								
+								_jobruns++
 							}
-						
 						}
-						//	This data is NOT the correct price that I need
-						else {
 						
-						}
 					}
-				
-					if got_at_least_one > 0 {
+					//	This data is NOT the correct price that I need
+					else {
 						
-					} else {
-						contract_misfire++	
 					}
 				}
+				
+				if got_at_least_one > 0 {
+						
+				} else {
+					contract_misfire++	
+				}
 			}
+		}
 			
-			else {
-				with data {
-					if data_generated == _data {
-						//	Check for data misfire
-						var chance = irandom_range(1,100)
-						//	This data misfired!
-						if chance < shop.item_data[item_index, item_corruption] {
-							contract_misfire++
-							used = true
-							misfire = true
-						} else {
-							used = true
-							misfire = false
-						}
-				
-						shop.item_data[item_index, item_calls]++
-				
-						//	Check for data corruption increase
-						data_corruption_check()
+		else {
+			with data {
+				if data_generated == _data {
+					//	Check for data misfire
+					var chance = irandom_range(1,100)
+					//	This data misfired!
+					if chance < shop.item_data[item_index, item_corruption] {
+						contract_misfire++
+						used = true
+						misfire = true
+					} else {
+						used = true
+						misfire = false
 					}
+				
+					shop.item_data[item_index, item_calls]++
+				
+					//	Check for data corruption increase
+					data_corruption_check()
 				}
 			}
-		//}
+		}
 		
-		//	the node did a job
-		_node.jobruns++
-		_node.used = true
+		//	If this is decentralized data
+		if _kiosk.data_needed[i,3] {
+
+			
+		} else {	
+			//	the node did a job
+			_node.jobruns += _jobruns
+			_node.used = true
+		}
 		
 		//	this smart contract was run
 		

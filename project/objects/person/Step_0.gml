@@ -230,8 +230,7 @@ switch(states)
 									instance_destroy(goal_current)
 								}
 								goal_current = -1
-								timer = time.seconds + contracts.contract[smartcontract, contract_channel]
-								if timer >= 60 timer -= 60
+								timer = time.stream_seconds + contracts.contract[smartcontract, contract_channel]
 								debug_log("[DEBUG] timer set to: "+string(timer))
 								states = states.using_smartcontract		
 								speed = 0
@@ -292,7 +291,7 @@ switch(states)
 		case states.using_smartcontract:
 			
 			//	finished using smart contract
-			if time.seconds >= timer {
+			if time.stream_seconds >= timer {
 				
 				contract_used()
 				
