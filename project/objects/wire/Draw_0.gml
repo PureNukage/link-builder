@@ -71,14 +71,21 @@ switch(states)
 		case states.placed:
 		
 			if selected {
-				var x1 = gridController.grid_positions_x[topleft_cell_x]
-				var y1 = gridController.grid_positions_y[topleft_cell_y]
-				var x2 = gridController.grid_positions_x[bottomright_cell_x]+cell_width
-				var y2 = gridController.grid_positions_y[bottomright_cell_y]+cell_height
-			
-				draw_set_color(c_black)
-				draw_roundrect(x1,y1,x2,y2,true)
-			
+				draw_set_alpha(.25)
+				draw_set_color(c_white)
+				var buffer = 4
+				for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
+					for(var h=topleft_cell_y;h<topleft_cell_y+size_height;h++) {
+						if w > -1 and w < grid_width and h > -1 and h < grid_height {
+							var x1 = gridController.grid_positions_x[w]
+							var y1 = gridController.grid_positions_y[h]
+							var x2 = x1+cell_width
+							var y2 = y1+cell_height
+							draw_rectangle(x1+buffer,y1+buffer,x2-buffer,y2-buffer,false)	
+						}
+					}
+				}
+				draw_set_alpha(1)
 			}
 		
 			sprite_set_offset(sprite,sprite_get_width(sprite)/2,sprite_get_height(sprite)/2)

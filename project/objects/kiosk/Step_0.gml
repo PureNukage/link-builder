@@ -97,8 +97,44 @@ switch(states)
 			
 		break
 	#endregion
+	
 	#region Placed
 		case states.placed:
+		
+			//	I was used!
+			if used {
+				//	First frame 
+				if used_time == -1 {
+					used_time = time.stream
+					used_logo_speedincrease = true
+					used_blocks_play = true
+				}
+				//	Animation
+				else {
+					var speed_max = 4
+					var speed_change = .166
+					if used_blocks_play used_blocks_frame++
+					if used_blocks_frame > sprite_get_number(s_kiosk_blocks_animation)-1 {
+						used_blocks_play = false
+						used_blocks_frame = 0
+					}
+					if used_logo_speedincrease {
+						used_logo_speed = lerp(used_logo_speed,speed_max,speed_change)
+						if used_logo_speed > speed_max - speed_change - speed_change {
+							used_logo_speedincrease = false	
+						}
+					}
+					
+					else {
+						used_logo_speed = lerp(used_logo_speed,0,speed_change)
+						if used_logo_speed < 0 + speed_change + speed_change {
+							used = false
+							used_logo_speed = 0
+							used_time = -1
+						}
+					}
+				}
+			}
 			
 			//	lets add our contract into a persons queue
 			if active and ds_list_size(line) < contracts.contract[smartcontract, contract_linesize] and contracts.contract[smartcontract, contract_traffic_live] < contracts.contract[smartcontract, contract_traffic] {

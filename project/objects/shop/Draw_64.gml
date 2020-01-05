@@ -321,3 +321,13 @@ draw_set_color(c_white)
 draw_text(_xx+128/2,_yy+32,string(player.points))
 
 #endregion
+
+//	Help text
+var _xx = buttonX+button_width+32+128+16
+var _yy = buttonY
+
+draw_set_halign(fa_left)
+draw_set_valign(fa_top)
+
+draw_text(_xx,_yy,"E to rotate item")				_yy += 16
+draw_text(_xx,_yy,"Press Home to give $2000")

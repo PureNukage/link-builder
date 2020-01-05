@@ -28,3 +28,9 @@ ports[3,port_y] = topleft_cell_y-1
 #endregion
 
 data_held = ds_list_create()
+
+used = false
+used_alpha_max = .3
+used_alpha = used_alpha_max
+used_time = -1
+used_lightup = false

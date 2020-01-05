@@ -13,4 +13,9 @@ ports[0,port_x] = bottomright_cell_x+1
 ports[0,port_y] = center_cell_y
 
 data_generated = -1 
-calls = 0
+used = false
+used_alpha = 0
+used_color = c_green
+used_lightup = false
+used_time = -1
+misfire = false

@@ -94,6 +94,39 @@ switch(states)
 	#endregion
 	#region Placed
 		case states.placed:
+		
+			if used {
+				//	First frame of being used
+				if used_time == -1 {
+					used_time = time.stream
+					used_lightup = true
+				}
+				//  Lighting up then lighting down
+				else {
+					//	 lighting up
+					if used_lightup {
+						used_alpha = lerp(used_alpha,.75,.1)
+						if used_alpha > .65 {
+							used_lightup = false	
+						}
+					} 
+					//	lighting down
+					else {
+						used_alpha = lerp(used_alpha,0,.1)
+						if used_alpha < 0.11 {
+							used_alpha = 0
+							used = false
+							used_time = -1
+						}
+					}
+				}
+				
+				if misfire {
+					if used_color != c_red used_color = c_red
+				} else {
+					if used_color != c_green used_color = c_green
+				}
+			}
 			
 		break
 	#endregion

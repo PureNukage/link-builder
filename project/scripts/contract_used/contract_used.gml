@@ -15,6 +15,11 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 				//	This data misfired!
 				if chance < shop.item_data[item_index, item_corruption] {
 					contract_misfire++
+					used = true
+					misfire = true
+				} else {
+					used = true
+					misfire = false
 				}
 				
 				shop.item_data[item_index, item_calls]++	
@@ -26,6 +31,7 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 		
 		//	the node did a job
 		_node.jobruns++
+		_node.used = true
 		
 		//	this smart contract was run
 		
@@ -36,6 +42,8 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 }
 
 if contract_misfire > 0 debug_log("Contract "+contracts.contract[smartcontract, contract_name]+" misfired!")
+
+_kiosk.used = true
 		
 //	give the player the reward
 if !contract_misfire {

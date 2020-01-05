@@ -1,6 +1,6 @@
 size_width = 5						//	Set; cells width this item takes up
 size_height = 5						//	Set; cells height this item takes up
-sprite = s_kiosk					//	Set; sprite for this item
+sprite = s_kiosk_stand				//	Set; sprite for this item
 states = states.placement			//	Set; inital state of this item
 ports_count = 2						//	Set; holds the number of ports in this item has
 portrait = s_portrait_ethereum		//	Set; holds the portrait for this item
@@ -23,4 +23,13 @@ data_needed = []
 
 busy = false
 line = ds_list_create()
-mental_line = ds_list_create()
+
+used = false
+used_time = -1
+used_logo_speedincrease = false
+used_logo_speed = 0
+used_blocks_play = false
+used_blocks_frame = 0
+
+logoX = -1
+logoY = y-200
