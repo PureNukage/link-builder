@@ -71,7 +71,13 @@ ds_list_delete(_kiosk.line,index)
 _kiosk.busy = false
 		
 //	Spawn a popup for the kiosk
-create_popup(_kiosk.x,_kiosk.y-64,string(_points),c_green,1,3)
+var _color 
+if !contract_misfire {
+	_color = c_green	
+} else {
+	_color = c_red	
+}
+create_popup(_kiosk.x,_kiosk.y-64,string(_points),_color,1,3)
 		
 //	Move everyone up in line
 for(var i=0;i<ds_list_size(_kiosk.line);i++) {
