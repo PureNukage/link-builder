@@ -639,6 +639,14 @@
             }
         },
         {
+            "Key": "a21ffa94-ed81-447f-a78d-860b7292425d",
+            "Value": {
+                "id": "6cd8a97c-791f-4a2f-a113-ef58db5b2303",
+                "resourcePath": "scripts\\draw_text_outlined\\draw_text_outlined.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "a5879b47-81fd-4984-86b1-bc1097775565",
             "Value": {
                 "id": "b8433b68-e2cf-41ea-b4be-0e7ae92ea055",
@@ -1155,6 +1163,7 @@
         "5eb5c9e4-7f2b-4525-9165-24a0f6e75b07",
         "54d2b4c4-a98e-42c7-8ce8-03c2b58262ff",
         "6e4b06ea-de1d-451e-bb76-a135b71a8647",
+        "a21ffa94-ed81-447f-a78d-860b7292425d",
         "fb6c1052-0b90-40eb-afa8-401055604a98",
         "dc7ad462-4722-456b-a05e-ebb684bbe344",
         "046ccc19-867e-4bdc-981d-611f151de6a8",

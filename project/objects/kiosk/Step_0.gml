@@ -111,8 +111,9 @@ switch(states)
 				}
 				//	Animation
 				else {
-					var speed_max = 4
-					var speed_change = .166
+					image_speed = used_logo_speed
+					var speed_max = 8
+					var speed_change = .1
 					if used_blocks_play used_blocks_frame++
 					if used_blocks_frame > sprite_get_number(s_kiosk_blocks_animation)-1 {
 						used_blocks_play = false
@@ -133,6 +134,10 @@ switch(states)
 							used_time = -1
 						}
 					}
+				}
+			} else {
+				if image_index != 8 {
+					image_index = lerp(image_index,8,1)
 				}
 			}
 			

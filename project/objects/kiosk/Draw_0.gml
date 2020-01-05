@@ -44,14 +44,15 @@ switch(states)
 			var _subimage = -1
 			logoX = gridController.grid_positions_x[center_cell_x]+(cell_width/2)
 			if used {
-				image_speed = used_logo_speed
+				_subimage = image_index
 			} else {
-				_subimage = 9
+				//if image_index != 9 lerp(image_index,9,1)
+				_subimage = image_index
 			}			
 			logoY = wave(y-100,y-80,.5,5)
 		
 			sprite_set_offset(s_eth,sprite_get_width(s_eth)/2-1,sprite_get_height(s_eth)/2-1)
-			draw_sprite(s_eth,_subimage,logoX,logoY)
+			draw_sprite_ext(s_eth,image_index,logoX,logoY,1,1,0,c_white,1)
 		}
 		
 	break
