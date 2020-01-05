@@ -647,6 +647,14 @@
             }
         },
         {
+            "Key": "a30cf3e9-9c1a-4178-9360-51741a008e3f",
+            "Value": {
+                "id": "40e8633e-3a1f-4634-950d-0de16fb464b8",
+                "resourcePath": "sprites\\s_madface\\s_madface.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "a5879b47-81fd-4984-86b1-bc1097775565",
             "Value": {
                 "id": "b8433b68-e2cf-41ea-b4be-0e7ae92ea055",

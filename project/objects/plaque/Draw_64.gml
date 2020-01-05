@@ -36,136 +36,163 @@ if input.selection > -1 {
 	var _item = input.selection
 	switch(_item.object_index) 
 	{
-		case node:
+		#region Node
+			case node:
 		
-			var _xx = window_twoX + 4
-			var _yy = window_twoY + 4
+				var _xx = window_twoX + 4
+				var _yy = window_twoY + 4
 			
-			var _string = ""
-			var x1 = _xx
-			var y1 = _yy
-			var x2 = x1 + string_width("- Info")
-			var y2 = y1 + string_height("- Info")
-			if point_in_rectangle(gui_mouse_x,gui_mouse_y,x1,y1,x2,y2) {
-				draw_set_color(c_white)	
+				var _string = ""
+				var x1 = _xx
+				var y1 = _yy
+				var x2 = x1 + string_width("- Info")
+				var y2 = y1 + string_height("- Info")
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,x1,y1,x2,y2) {
+					draw_set_color(c_white)	
 				
-				if input.mouse_left_press {
-					node_info = !node_info
-				}
-			} else {
-				draw_set_color(c_dkgray)	
-			}
-			
-			if node_info {
-				_string = "- Info"	
-			} else {
-				_string = "+ Info"	
-			}
-			
-			draw_text(_xx,_yy,_string)
-			_yy += 15
-			
-			if node_info {
-				draw_set_color(c_black)
-				draw_text(_xx,_yy,"Level: "+string(_item.level))
-				_yy += 15
-				draw_text(_xx,_yy,"Jobruns: "+string(_item.jobruns))
-				_yy += 15
-			}
-			
-			var _string = ""
-			var x1 = _xx
-			var y1 = _yy
-			var x2 = x1 + string_width("- Data")
-			var y2 = y1 + string_height("- Data")
-			if point_in_rectangle(gui_mouse_x,gui_mouse_y,x1,y1,x2,y2) {
-				draw_set_color(c_white)	
-				
-				if input.mouse_left_press {
-					node_stats = !node_stats
-				}
-			} else {
-				draw_set_color(c_dkgray)	
-			}
-			
-			if node_stats {
-				_string = "- Data"	
-			} else {
-				_string = "+ Data"	
-			}
-			
-			draw_text(_xx,_yy,_string)
-			_yy += 15
-			
-			if node_stats {
-				if !ds_list_empty(_item.data_held) {
-					var amount = ds_list_size(_item.data_held)
-					for(var i=0;i<amount;i++) {
-					
-						var _data = _item.data_held[| i]
-						draw_set_color(c_black)
-						draw_text(_xx,_yy,shop.item_data[_data, item_name])
-						_yy += 15
-					
-						if (string_width(shop.item_data[_data, item_name]) - window_two_width) > 0 {
-							window_two_width = string_width(shop.item_data[_data, item_name]) + 16
-						}
-					
+					if input.mouse_left_press {
+						node_info = !node_info
 					}
+				} else {
+					draw_set_color(c_dkgray)	
 				}
-			}
 			
-		break
-		
-		case kiosk:
+				if node_info {
+					_string = "- Info"	
+				} else {
+					_string = "+ Info"	
+				}
 			
-			var _xx = window_twoX + 4
-			var _yy = window_twoY + 4
-			
-			draw_set_color(c_dkgray)
-			draw_text(_xx,_yy,"contract")  _yy += 15
-			
-			draw_set_color(c_black)
-			if _item.smartcontract > -1 {
-				var _string = contracts.contract[_item.smartcontract, contract_name]
 				draw_text(_xx,_yy,_string)
 				_yy += 15
-			}
+			
+				if node_info {
+					draw_set_color(c_black)
+					draw_text(_xx,_yy,"Level: "+string(_item.level))
+					_yy += 15
+					draw_text(_xx,_yy,"Jobruns: "+string(_item.jobruns))
+					_yy += 15
+				}
+			
+				var _string = ""
+				var x1 = _xx
+				var y1 = _yy
+				var x2 = x1 + string_width("- Data")
+				var y2 = y1 + string_height("- Data")
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,x1,y1,x2,y2) {
+					draw_set_color(c_white)	
+				
+					if input.mouse_left_press {
+						node_stats = !node_stats
+					}
+				} else {
+					draw_set_color(c_dkgray)	
+				}
+			
+				if node_stats {
+					_string = "- Data"	
+				} else {
+					_string = "+ Data"	
+				}
+			
+				draw_text(_xx,_yy,_string)
+				_yy += 15
+			
+				if node_stats {
+					if !ds_list_empty(_item.data_held) {
+						var amount = ds_list_size(_item.data_held)
+						for(var i=0;i<amount;i++) {
+					
+							var _data = _item.data_held[| i]
+							draw_set_color(c_black)
+							draw_text(_xx,_yy,shop.item_data[_data, item_name])
+							_yy += 15
+					
+							if (string_width(shop.item_data[_data, item_name]) - window_two_width) > 0 {
+								window_two_width = string_width(shop.item_data[_data, item_name]) + 16
+							}
+					
+						}
+					}
+				}
+			
+			break
+		#endregion
+		
+		#region Kiosk
+			case kiosk:
+			
+				var _xx = window_twoX + 4
+				var _yy = window_twoY + 4
+			
+				draw_set_color(c_dkgray)
+				draw_text(_xx,_yy,"contract")  _yy += 15
+			
+				draw_set_color(c_black)
+				if _item.smartcontract > -1 {
+					var _string = contracts.contract[_item.smartcontract, contract_name]
+					draw_text(_xx,_yy,_string)
+					_yy += 15
+				}
+				
+				if _item.smartcontract > -1 {
+					
+					//	Draw uses
+					draw_set_color(c_dkgray)
+					draw_text(_xx,_yy,"Uses") 
+					_yy += 15
+					
+					draw_set_color(c_black)
+					draw_text(_xx,_yy,string(contracts.contract[_item.smartcontract, contract_uses]))
+					_yy += 15
+					
+					//	Draw reliability
+					draw_set_color(c_dkgray)
+					draw_text(_xx,_yy,"Reliability")
+					_yy += 15 
+					
+					draw_set_color(c_black)
+					draw_text(_xx,_yy,string(contracts.contract[_item.smartcontract, contract_reliability])+" %")
+					
+					
+				}
 		
 		
-		break
+			break
+		#endregion
 		
-		case data:
+		#region Data
+			case data:
 			
-			var _xx = window_twoX + 4
-			var _yy = window_twoY + 4
+				var _xx = window_twoX + 4
+				var _yy = window_twoY + 4
 			
-			draw_set_color(c_dkgray)
-			draw_text(_xx,_yy,"Data Generated")  _yy += 16
+				draw_set_color(c_dkgray)
+				draw_text(_xx,_yy,"Data Generated")  _yy += 16
 			
-			draw_set_color(c_black)
-			var _string = shop.item_data[_item.data_generated, item_name]
-			draw_text(_xx,_yy,_string)				_yy += 16
+				draw_set_color(c_black)
+				var _string = shop.item_data[_item.data_generated, item_name]
+				draw_text(_xx,_yy,_string)				_yy += 16
 			
-			draw_set_color(c_dkgray)
-			draw_text(_xx,_yy,"Calls")				_yy += 16
+				draw_set_color(c_dkgray)
+				draw_text(_xx,_yy,"Calls")				_yy += 16
 			
-			draw_set_color(c_black)
-			draw_text(_xx,_yy,string(shop.item_data[_item.item_index, item_calls])) _yy += 16
+				draw_set_color(c_black)
+				draw_text(_xx,_yy,string(shop.item_data[_item.item_index, item_calls])) _yy += 16
 			
-			draw_set_color(c_dkgray)
-			draw_text(_xx,_yy,"Corruption")			_yy += 16
+				draw_set_color(c_dkgray)
+				draw_text(_xx,_yy,"Corruption")			_yy += 16
 			
-			draw_set_color(c_black)
-			var _corruption = string(shop.item_data[_item.item_index, item_corruption]) + " %"
-			draw_text(_xx,_yy,_corruption)
+				draw_set_color(c_black)
+				var _corruption = string(shop.item_data[_item.item_index, item_corruption]) + " %"
+				draw_text(_xx,_yy,_corruption)
 			
-			if string_width(_string) > window_two_width {
-				window_two_width = string_width(_string) + 16
-			}
-			
+				if string_width(_string) > window_two_width {
+					window_two_width = string_width(_string) + 16
+				}	
 		
-		break
+			break
+		#endregion
 		
 	}
 }

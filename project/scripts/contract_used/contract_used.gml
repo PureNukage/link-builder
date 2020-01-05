@@ -44,6 +44,18 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 if contract_misfire > 0 debug_log("Contract "+contracts.contract[smartcontract, contract_name]+" misfired!")
 
 _kiosk.used = true
+
+contracts.contract[smartcontract, contract_uses]++
+
+//	This smart contract misfired
+if contract_misfire > 0 {
+	contracts.contract[smartcontract, contract_misfires]++
+	
+	//	Calculate new reliability percentage
+	var _misfires = contracts.contract[smartcontract, contract_misfires]
+	var _successes = contracts.contract[smartcontract, contract_uses] - _misfires
+	contracts.contract[smartcontract, contract_reliability] = (_successes / contracts.contract[smartcontract, contract_uses]) * 100
+}
 		
 //	give the player the reward
 if !contract_misfire {
@@ -76,6 +88,7 @@ if !contract_misfire {
 	_color = c_green	
 } else {
 	_color = c_red	
+	pissed = true
 }
 create_popup(_kiosk.x,_kiosk.y-64,string(_points),_color,1,3)
 		

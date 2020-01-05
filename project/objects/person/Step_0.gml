@@ -239,6 +239,14 @@ switch(states)
 							break
 						#endregion
 						
+						#region I'm outta here
+							case goal_type.leaving:
+								
+								instance_destroy()
+								
+							break
+						#endregion
+						
 					}
 				}
 			
@@ -291,8 +299,35 @@ switch(states)
 				ds_list_delete(smartcontracts,0)
 				smartcontract = -1
 				
-				//	walk out of line
-				person_idlewalk()
+				//	check if pissed
+				if pissed {
+					
+					//	lets remove free up all our contracts-to-use data
+					if !ds_list_empty(smartcontracts) {
+						for(var i=0;i<ds_list_size(smartcontracts);i++) {
+							var _contract = smartcontracts[| i]
+							contracts.contract[_contract, contract_traffic_live]--
+						}
+					}
+					
+					//	Remove ourselves from personController
+					if ds_list_find_index(personController.people,id) > -1 {
+						ds_list_delete(personController.people,ds_list_find_index(personController.people,id))	
+					}
+					
+					//	We're outta here
+					var _xx = choose(-200,room_width+200)
+					var _yy = irandom_range(0,room_height)
+					
+					var _goal = instance_create_layer(_xx,_yy,"Instances",goal)
+					goal_current = _goal
+					_goal.goal_type = goal_type.leaving 
+					states = states.move
+					
+				} else {			
+					//	walk out of line
+					person_idlewalk()
+				}
 				
 				timer = 0
 				

@@ -3,7 +3,9 @@ population = ds_list_size(people)
 var _needed_population = 0
 //	calculate needed population
 for(var i=0;i<ds_list_size(contracts.contracts_online);i++) {
-	_needed_population += contracts.contract[contracts.contracts_online[| i], contract_traffic]
+	if contracts.contract[contracts.contracts_online[| i], contract_reliability] > 50 {
+		_needed_population += contracts.contract[contracts.contracts_online[| i], contract_traffic]
+	}
 }
 needed_population = _needed_population
 

@@ -8,6 +8,7 @@ smartcontracts = ds_list_create()
 cooldown = 0
 movespeed = 4
 timer = 0
+pissed = false
 
 states = states.idle
 

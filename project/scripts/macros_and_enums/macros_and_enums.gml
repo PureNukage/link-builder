@@ -46,6 +46,7 @@ enum goal_type {
 	idlewalk,
 	waiting_in_line,
 	using_smartcontract,
+	leaving
 	
 }
 
@@ -65,6 +66,9 @@ enum goal_type {
 #macro contract_portrait 13
 #macro contract_linesize 14
 #macro contract_value 15
+#macro contract_misfires 16
+#macro contract_reliability 17
+#macro contract_uses 18
 
 enum contract_types {
 	eth_transfer,	

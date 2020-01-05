@@ -41,14 +41,7 @@ switch(states)
 		}
 		
 		if smartcontract > -1 {
-			var _subimage = -1
-			logoX = gridController.grid_positions_x[center_cell_x]+(cell_width/2)
-			if used {
-				_subimage = image_index
-			} else {
-				//if image_index != 9 lerp(image_index,9,1)
-				_subimage = image_index
-			}			
+			logoX = gridController.grid_positions_x[center_cell_x]+(cell_width/2)			
 			logoY = wave(y-100,y-80,.5,5)
 		
 			sprite_set_offset(s_eth,sprite_get_width(s_eth)/2-1,sprite_get_height(s_eth)/2-1)

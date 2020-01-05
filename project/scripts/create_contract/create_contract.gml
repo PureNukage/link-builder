@@ -49,6 +49,9 @@ contract[contract_index, contract_traffic_live] = 0
 contract[contract_index, contract_purchased] = false
 contract[contract_index, contract_width] = 128
 contract[contract_index, contract_height] = 64
+contract[contract_index, contract_misfires] = 0
+contract[contract_index, contract_reliability] = 100
+contract[contract_index, contract_uses] = 0
 
 contracts_purchased[| contract_index] = true
 
