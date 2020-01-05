@@ -71,9 +71,11 @@ enum goal_type {
 #macro contract_misfires 16
 #macro contract_reliability 17
 #macro contract_uses 18
+#macro contract_type 19
 
 enum contract_types {
-	eth_transfer,	
+	people,
+	utility
 }
 
 #macro item_name 0

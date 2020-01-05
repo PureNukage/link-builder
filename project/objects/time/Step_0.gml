@@ -3,6 +3,7 @@ stream++
 
 if frames >= 60 {
 	seconds++
+	stream_seconds++
 	frames = 0
 	seconds_switch = 1
 } else {

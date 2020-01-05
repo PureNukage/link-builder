@@ -101,66 +101,164 @@ switch(states)
 	#region Placed
 		case states.placed:
 		
-			//	I was used!
-			if used {
-				//	First frame 
-				if used_time == -1 {
-					used_time = time.stream
-					used_logo_speedincrease = true
-					used_blocks_play = true
-				}
-				//	Animation
-				else {
-					image_speed = used_logo_speed
-					var speed_max = 8
-					var speed_change = .1
-					if used_blocks_play used_blocks_frame++
-					if used_blocks_frame > sprite_get_number(s_kiosk_blocks_animation)-1 {
-						used_blocks_play = false
-						used_blocks_frame = 0
-					}
-					if used_logo_speedincrease {
-						used_logo_speed = lerp(used_logo_speed,speed_max,speed_change)
-						if used_logo_speed > speed_max - speed_change - speed_change {
-							used_logo_speedincrease = false	
+			#region We have a smart contract
+			if smartcontract > -1 {
+				
+				#region People Contract
+				if contracts.contract[smartcontract, contract_type] == contract_types.people {
+		
+					//	I was used!
+					if used {
+						//	First frame 
+						if used_time == -1 {
+							used_time = time.stream
+							used_logo_speedincrease = true
+							used_blocks_play = true
 						}
-					}
+						//	Animation
+						else {
+							image_speed = used_logo_speed
+							var speed_max = 8
+							var speed_change = .1
+							if used_blocks_play used_blocks_frame++
+							if used_blocks_frame > sprite_get_number(s_kiosk_blocks_animation)-1 {
+								used_blocks_play = false
+								used_blocks_frame = 0
+							}
+							if used_logo_speedincrease {
+								used_logo_speed = lerp(used_logo_speed,speed_max,speed_change)
+								if used_logo_speed > speed_max - speed_change - speed_change {
+									used_logo_speedincrease = false	
+								}
+							}
 					
-					else {
-						used_logo_speed = lerp(used_logo_speed,0,speed_change)
-						if used_logo_speed < 0 + speed_change + speed_change {
-							used = false
-							used_logo_speed = 0
-							used_time = -1
+							else {
+								used_logo_speed = lerp(used_logo_speed,0,speed_change)
+								if used_logo_speed < 0 + speed_change + speed_change {
+									used = false
+									used_logo_speed = 0
+									used_time = -1
+								}
+							}
+						}
+					} else {
+						if active {
+							image_speed = .5
+						} else {
+							image_speed = 0	
 						}
 					}
-				}
-			} else {
-				if active {
-					image_speed = .5
-				} else {
-					image_speed = 0	
-				}
-			}
 			
-			//	lets add our contract into a persons queue
-			if active and ds_list_size(line) < contracts.contract[smartcontract, contract_linesize] and contracts.contract[smartcontract, contract_traffic_live] < contracts.contract[smartcontract, contract_traffic] {
-				if contracts.contract[smartcontract, contract_reliability] > 50 {
-					for(var i=0;i<ds_list_size(personController.people);i++) {
-						var _person = personController.people[| i]
-						//	this contract is not in this persons queue, lets add it
-						if ds_list_find_index(_person.smartcontracts,smartcontract) == -1 {
-							ds_list_add(_person.smartcontracts,smartcontract)
-							contracts.contract[smartcontract, contract_traffic_live]++
-							debug_log("Giving person the smart contract: "+string(contracts.contract[smartcontract, contract_name]))
+					//	lets add our contract into a persons queue
+					if active and ds_list_size(line) < contracts.contract[smartcontract, contract_linesize] and contracts.contract[smartcontract, contract_traffic_live] < contracts.contract[smartcontract, contract_traffic] {
+						if contracts.contract[smartcontract, contract_reliability] > 50 {
+							for(var i=0;i<ds_list_size(personController.people);i++) {
+								var _person = personController.people[| i]
+								//	this contract is not in this persons queue, lets add it
+								if ds_list_find_index(_person.smartcontracts,smartcontract) == -1 {
+									ds_list_add(_person.smartcontracts,smartcontract)
+									contracts.contract[smartcontract, contract_traffic_live]++
+									debug_log("Giving person the smart contract: "+string(contracts.contract[smartcontract, contract_name]))
+								}
+		
+		
+							}
+						} else {
+							if time.seconds_switch debug_log("Contract: "+string(contracts.contract[smartcontract, contract_name]+" is too unreliable! Nobody wants to use it!"))	
 						}
-		
-		
-					}
-				} else {
-					if time.seconds_switch debug_log("Contract: "+string(contracts.contract[smartcontract, contract_name]+" is too unreliable! Nobody wants to use it!"))	
+					}	
 				}
-			}	
+				#endregion
+				
+				#region Utility Contract
+				else {
+					
+					//if active {
+					
+						//	Setting new spawn time
+						if timer == -1 {
+							timer = time.stream_seconds + contracts.contract[smartcontract, contract_channel]
+						}
+					
+						//	Time to use the utility contract!
+						if time.stream_seconds >= timer {
+							if player.points >= contracts.contract[smartcontract, contract_price] {
+								debug_log("Using reference price feed!")
+							
+								player.points -= contracts.contract[smartcontract, contract_price]
+								var _points = contracts.contract[smartcontract, contract_price]
+								create_popup(x,y-150,"-"+string(_points),c_orange,1,3)
+							
+								with System system_dataflow_check()
+						
+								var got_at_least_one = 0
+								var price_i_need = is_price(shop.item_data[data_needed[0,0],item_name], true)
+								for(var i=0;i<ds_list_size(data_held);i++) {
+									var _data_held = data_held[| i]
+									var data_held_string = shop.item_data[_data_held, item_name]
+									//	This is a price data I can use
+									if is_price(data_held_string) and string_pos(price_i_need,data_held_string) {
+										with data {
+											if data_generated == _data_held {
+												//	Check for data misfire
+												var chance = irandom_range(1,100)
+												//	This data misfired!
+												if chance < shop.item_data[item_index, item_corruption] {
+													//contract_misfire++
+													used = true
+													misfire = true
+												} else {
+													got_at_least_one++
+													used = true
+													misfire = false
+												}
+								
+												shop.item_data[item_index, item_calls]++
+												
+												//	Lets find the node with this data and bump it up
+												with node {
+													if ds_list_find_index(data_held,_data_held) != -1 {
+														used = true
+														jobruns++
+													}
+												}	
+				
+												//	Check for data corruption increase
+												data_corruption_check()	
+											}
+										}
+									}
+								}
+						
+								if got_at_least_one > 0 {
+									decentralized = true	
+								} else {
+									if decentralized {
+										debug_log("Reference price feed is no longer accurate enough")
+										decentralized = false	
+										with System system_dataflow_check()
+									}
+								}
+							
+								timer = -1
+							}
+							//	Not enough money 
+							else {
+								if decentralized {
+									debug_log("Reference price feed is no longer accurate enough")
+									decentralized = false	
+									with System system_dataflow_check()
+								}
+							}
+							
+						}
+					
+					//}
+					
+				}	
+				#endregion
+			}
+			#endregion
 			
 		break
 	#endregion

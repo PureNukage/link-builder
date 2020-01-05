@@ -1,5 +1,6 @@
 frames = 0
 stream = 0
+stream_seconds = 0
 seconds = 0
 minutes = 0 
 

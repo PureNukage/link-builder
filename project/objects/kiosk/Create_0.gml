@@ -31,6 +31,10 @@ used_logo_speed = 0
 used_blocks_play = false
 used_blocks_frame = 0
 
+decentralized = false
+
+timer = -1
+
 logoX = -1
 logoY = y-200
 sprite_index = s_eth

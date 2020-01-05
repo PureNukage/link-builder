@@ -41,11 +41,36 @@ switch(states)
 		}
 		
 		if smartcontract > -1 {
+			
+
 			logoX = gridController.grid_positions_x[center_cell_x]+(cell_width/2)			
 			logoY = wave(y-100,y-80,.5,5)
 		
-			sprite_set_offset(s_eth,sprite_get_width(s_eth)/2-1,sprite_get_height(s_eth)/2-1)
-			draw_sprite_ext(s_eth,image_index,logoX,logoY,1,1,0,c_white,1)
+			if contracts.contract[smartcontract, contract_type] == contract_types.people {
+				sprite_set_offset(s_eth,sprite_get_width(s_eth)/2-1,sprite_get_height(s_eth)/2-1)
+				draw_sprite_ext(s_eth,image_index,logoX,logoY,1,1,0,c_white,1)
+			} else if contracts.contract[smartcontract, contract_type] == contract_types.utility {
+				//	Draw the reference feed background
+				sprite_set_offset(s_reference_feed_background,sprite_get_width(s_reference_feed_background)/2-1,sprite_get_height(s_reference_feed_background)/2-1)
+				if decentralized {
+					var _color = c_green
+					var _sprite = s_reference_feed_checkmark
+				} else {
+					var _color = c_red	
+					var _sprite = s_reference_feed_x
+				}
+				draw_sprite(s_reference_feed_background,-1,logoX,logoY)	
+				draw_sprite_ext(s_reference_feed_background,-1,logoX,logoY,1,1,0,_color,.3)	
+				
+				//	Draw the reference feed outline
+				sprite_set_offset(s_reference_feed_outline,sprite_get_width(s_reference_feed_outline)/2-1,sprite_get_height(s_reference_feed_outline)/2-1)
+				draw_sprite(s_reference_feed_outline,-1,logoX,logoY)
+				
+				//	Draw the reference feed checkmark or X
+				sprite_set_offset(_sprite,sprite_get_width(_sprite)/2-1,sprite_get_height(_sprite)/2-1)
+				draw_sprite(_sprite,-1,logoX,logoY)
+				
+			}
 		}
 		
 	break

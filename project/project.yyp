@@ -239,6 +239,14 @@
             }
         },
         {
+            "Key": "39b8a3c2-53a7-4721-8b08-ced0c7641626",
+            "Value": {
+                "id": "24cdbcba-d39c-4b07-924b-235c1bb649ac",
+                "resourcePath": "sprites\\s_reference_feed_background\\s_reference_feed_background.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "39dfaea0-5ff4-48ae-9c1d-be129136de02",
             "Value": {
                 "id": "25b3794c-459e-4f3f-aead-b0079ea17147",
@@ -439,6 +447,14 @@
             }
         },
         {
+            "Key": "5f86836a-f3ae-4cef-857c-f0d78f7966e9",
+            "Value": {
+                "id": "997c5cc5-f82c-4724-8e9f-f9f79714905f",
+                "resourcePath": "sprites\\s_reference_feed_checkmark\\s_reference_feed_checkmark.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "6014bf7c-0ddd-44fe-853d-e5635b85611e",
             "Value": {
                 "id": "e1b0b340-e1c0-4f6f-a8cc-19a147ae6689",
@@ -551,6 +567,14 @@
             }
         },
         {
+            "Key": "8be7d066-45cd-49d9-be7e-bed17e200817",
+            "Value": {
+                "id": "fa4089c3-1e0e-41e9-b53f-3fad21f93c9d",
+                "resourcePath": "sprites\\s_reference_feed_outline\\s_reference_feed_outline.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "8c0fa4d8-8cf5-412e-86f1-808e597c5512",
             "Value": {
                 "id": "a6cd5500-6d11-43ff-bcfb-0ea5d8c483f8",
@@ -635,6 +659,14 @@
             "Value": {
                 "id": "4c34bd27-1d19-4485-8b5b-e64a9f328892",
                 "resourcePath": "sprites\\s_eth\\s_eth.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "a0c3973f-5ecd-43f1-8522-f48de5db7bbb",
+            "Value": {
+                "id": "fde2b867-eee7-47d8-be79-84128a887d4b",
+                "resourcePath": "sprites\\s_reference_feed_x\\s_reference_feed_x.yy",
                 "resourceType": "GMSprite"
             }
         },

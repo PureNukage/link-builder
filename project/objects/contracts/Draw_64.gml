@@ -35,7 +35,12 @@ if button_open == true {
 				var _contract_data = contract[i, contract_data]
 				var _contract_data_names_array = []
 				for(var d=0;d<array_height_2d(_contract_data);d++) {
-					_contract_data_names_array[d] = shop.item_data[_contract_data[d,0], item_name]
+					var _item_name = shop.item_data[_contract_data[d,0], item_name]
+					if is_price(_item_name) {
+						_contract_data_names_array[d] = is_price(_item_name,true)
+					} else {
+						_contract_data_names_array[d] = _item_name
+					}
 				}
 				var price = contract[i, contract_price]
 				
