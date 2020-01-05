@@ -173,7 +173,7 @@ switch(states)
 				#region Utility Contract
 				else {
 					
-					//if active {
+					if active {
 					
 						//	Setting new spawn time
 						if timer == -1 {
@@ -253,7 +253,7 @@ switch(states)
 							
 						}
 					
-					//}
+					}
 					
 				}	
 				#endregion
