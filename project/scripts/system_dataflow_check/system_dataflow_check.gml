@@ -228,20 +228,43 @@ for(var i=0;i<ds_list_size(parts);i++) {
 	
 			for(var d=0;d<amount_of_data_req;d++) {
 				var _data_needed = _kiosk.data_needed[d,0]
+				var _data_needed_string = shop.item_data[_data_needed, item_name]
+				
+				//	This needed data is a price
+				if is_price(_data_needed_string) {
+					var needed_price_string = is_price(_data_needed_string,true)
+				}
 				for(var a=0;a<ds_list_size(_kiosk.data_held);a++) {
 					var _data_held = _kiosk.data_held[| a]
-					if _data_held == _data_needed {
-						_kiosk.data_needed[d,1] = true	
-						_kiosk.data_needed[d,2] = _kiosk.data_held_ids[| a]
-						amount_of_data_had++
-					} else {
-						_kiosk.data_needed[d,1] = false	
+					//	This needed data is a price
+					if is_price(_data_needed_string) {
+						var this_data_string = shop.item_data[_data_held, item_name]
+						//	This is a price we need!
+						if string_pos(needed_price_string,this_data_string) != 0 {
+							_kiosk.data_needed[d,1] = true
+							_kiosk.data_needed[d,2] = _kiosk.data_held_ids[| a]
+							amount_of_data_had++
+						} 
+						//	This is not a price we need
+						else {
+							_kiosk.data_needed[d,1] = false	
+						}
+					} 
+					//	This needed data is NOT a price
+					else {
+						if _data_held == _data_needed {
+							_kiosk.data_needed[d,1] = true	
+							_kiosk.data_needed[d,2] = _kiosk.data_held_ids[| a]
+							amount_of_data_had++
+						} else {
+							_kiosk.data_needed[d,1] = false	
+						}
 					}
 				}
 			}
 	
 			//	this kiosk has all the data it needs!
-			if amount_of_data_had == amount_of_data_req {
+			if amount_of_data_had >= amount_of_data_req {
 				if !_kiosk.active {
 					_kiosk.active = true
 					contracts.contract[_kiosk.smartcontract, contract_online] = true

@@ -36,6 +36,8 @@ enum camera_mode {
 
 enum data_types {
 	binance_ETHUSD,	
+	cryptocompare_ETHUSD,
+	bravenewcoin_ETHUSD,
 	paypal,
 	github,
 	

@@ -24,6 +24,12 @@ item_data = 0
 var _string = "This endpoint to Binance gives\nthe current USD price of Ether"
 create_data("Binance ETH/USD",500,data,_string,s_portrait_binance,data_types.binance_ETHUSD)
 
+var _string = ""
+create_data("CryptoCompare ETH/USD",500,data,_string,s_portrait_blank,data_types.cryptocompare_ETHUSD)
+
+var _string = ""
+create_data("BraveNewCoin ETH/USD",500,data,_string,s_portrait_blank,data_types.bravenewcoin_ETHUSD)
+
 var _string = "This endpoint gives access to PayPal"
 create_data("PayPal",750,data,_string,s_portrait_paypal,data_types.paypal)
 

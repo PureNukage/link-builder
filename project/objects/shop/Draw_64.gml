@@ -330,4 +330,7 @@ draw_set_halign(fa_left)
 draw_set_valign(fa_top)
 
 draw_text(_xx,_yy,"E to rotate item")				_yy += 16
-draw_text(_xx,_yy,"Press Home to give $2000")
+draw_text(_xx,_yy,"Press Home to give $2000")		_yy += 16
+if input.selection > -1 and input.selection.object_index == wire {
+	draw_text(_xx,_yy,"Press and hold to drag a long wire")	_yy += 16
+}
