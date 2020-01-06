@@ -2,6 +2,28 @@ switch(selection_mode)
 {
 	#region Free Selection 
 	case selection_mode.free:
+	
+		if doubleclick doubleclick = false
+		
+		if time.stream > doubleclick_time {
+			doubleclick_first = -1
+			doubleclick_time = -1
+		}
+	
+		if mouse_left_press {
+			//	First click of a doubleclick
+			if doubleclick_first == -1 {
+				doubleclick_time = time.stream + doubleclick_time_diff
+				doubleclick_first = 1
+			} 
+			//	Second click of a double that is valid
+			else if doubleclick_time > time.stream {
+				debug_log("Doubleclick")
+				doubleclick = true
+				doubleclick_time = -1
+				doubleclick_first = -1
+			}
+		}
 
 		if selection_timer > 0 selection_timer-- 
 

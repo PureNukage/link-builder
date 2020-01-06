@@ -43,6 +43,11 @@ selection_cell_x2 = -1
 selection_cell_y2 = -1
 selection_timer = -1
 
+doubleclick_first = -1
+doubleclick = -1
+doubleclick_time_diff = 10
+doubleclick_time = -1
+
 grid_x = -1
 grid_y = -1
 grid_xprevious = -1
