@@ -33,7 +33,7 @@ for(var p=0;p<ports_count;p++) {
 		}
 		
 		var _color
-		if object_index == data or (ports[p,port_direction] = in and object_index == node) or (sockets[p] > -1 and sockets[p].object_index == data and object_index == node) {
+		if object_index == data or (ports[p,port_direction] = in and object_index == node) or (sockets[p] > -1 and instance_exists(sockets[p]) and sockets[p].object_index == data and object_index == node) {
 			_color = c_white	
 		} else {
 			_color = c_sergey_blue	

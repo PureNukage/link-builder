@@ -46,27 +46,6 @@
 		}
 		
 		_y += 32+item_buffer
-		//	Check for Kiosk click
-		if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x,_y,_x+menu_width-item_buffer-item_buffer,_y+32) {
-			if input.mouse_left_press {
-				//	Delete the item we're currently placing if there is one 
-				if instance_exists(c_item) {
-					with c_item {
-						if states == states.placement {
-							instance_destroy()	
-						}
-					}
-				}
-				input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",item[3,3])
-				input.selection.selected = true
-				input.selection.item_index = 3
-				input.selection.price = item[3,1]
-				if ds_list_find_index(input.selections,input.selection) == -1 {
-					ds_list_add(input.selections,input.selection)	
-				}			
-			}
-		}
-		_y += 32+item_buffer
 		
 		//	Check for Nodes click
 		if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x,_y,_x+menu_width-item_buffer-item_buffer,_y+32) {

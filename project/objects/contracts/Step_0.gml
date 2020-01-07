@@ -57,8 +57,28 @@ for(var i=0;i<ds_list_size(contracts_purchased);i++) {
 			}
 			//	this contract isn't purchased yet
 			else if player.points >= _price {
-				player.points -= _price
-				contract[i, contract_purchased] = true
+				
+				//	Delete the item we're currently placing if there is one 
+				if instance_exists(c_item) {
+					with c_item {
+						if states == states.placement {
+							instance_destroy()	
+						}
+					}
+				}
+				input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",kiosk)
+				input.selection.selected = true
+				input.selection.item_index = 3
+				input.selection.price = _price
+				input.selection.smartcontract = i
+				input.selection.data_needed = contracts.contract[i, contract_data]	
+				input.selection.portrait = contracts.contract[i, contract_portrait]
+				if ds_list_find_index(input.selections,input.selection) == -1 {
+					ds_list_add(input.selections,input.selection)	
+				}	
+				
+				//player.points -= _price
+				//contract[i, contract_purchased] = true
 			}
 			
 		}

@@ -13,7 +13,10 @@ switch(states)
 			
 			if input.mouse_left_press and placeable {
 				
-				player.points -= shop.item[item_index,item_price]
+				player.points -= price
+				
+				contracts.contract[smartcontract, contract_purchased] = true
+				contracts.contract[smartcontract, contract_kiosk] = id
 				
 				states = states.placed
 				

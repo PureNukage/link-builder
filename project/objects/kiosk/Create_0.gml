@@ -39,3 +39,4 @@ logoX = -1
 logoY = y-200
 sprite_index = s_eth
 image_index = 8
+image_speed = 0

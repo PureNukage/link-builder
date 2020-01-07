@@ -78,50 +78,6 @@ if menu_open == true {
 	
 	_y += 32+item_buffer
 	
-	//	Draw kiosk
-	var _string = "Kiosk"
-	var _price = item[3,item_price]
-	var default_width = menu_width-item_buffer-item_buffer
-	var name_width = string_width(_string)
-	if name_width > default_width default_width = name_width+item_buffer
-	else if name_width < default_width default_width = name_width	
-	if string_width(_string) > menu_width-item_buffer-item_buffer {
-		if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x,_y,_x+default_width,_y+32) {
-			var array = gui_popup(menuX,_y,menuX+menu_width,_y+32,0,"Kiosks allow for the storing and using of contracts")
-			gui_popup(array[0],array[1],array[2],array[3],1,string(_price))
-			draw_set_color(c_ltgray)	
-		} else {
-			draw_set_color(c_gray)		
-		}
-		draw_roundrect(_x,_y,_x+default_width,_y+32,false)
-		draw_set_color(c_black)
-		draw_roundrect(_x,_y,_x+default_width,_y+32,true)
-	} else {
-		var _xx = _x+(menu_width-item_buffer-item_buffer)/2
-		var difference = abs(_xx - _x)
-		var buffer = 16
-		default_width += buffer
-		if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x+difference-(default_width/2),_y,_x+default_width+difference-(default_width/2),_y+32) {
-			var array = gui_popup(menuX,_y,menuX+menu_width,_y+32,0,string(_price))
-			gui_popup(array[0],array[1],array[2],array[3],1,"Kiosks allow for the storing and using of contracts")
-			draw_set_color(c_ltgray)	
-		} else {
-			draw_set_color(c_gray)		
-		}
-		draw_roundrect(_x+difference-(default_width/2),_y,_x+default_width+difference-(default_width/2),_y+32,false)
-		draw_set_color(c_black)
-		draw_roundrect(_x+difference-(default_width/2),_y,_x+default_width+difference-(default_width/2),_y+32,true)	
-	}
-	
-	draw_set_color(c_white)
-	draw_set_halign(fa_center)
-	draw_set_valign(fa_middle)
-	var _xx = _x+(menu_width-item_buffer-item_buffer)/2
-	var _yy = _y + 16
-	draw_text(_xx,_yy,_string)
-	
-	_y += 32+item_buffer
-	
 	//	Draw Nodes menu
 	draw_set_color(c_gray5)
 	var _string = ""

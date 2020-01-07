@@ -8,7 +8,7 @@
         "0fad8366-a0cb-44ec-bf41-961058e7bc9c"
     ],
     "filterType": "GMScript",
-    "folderName": "kiosk",
+    "folderName": "kiosks",
     "isDefaultView": false,
     "localisedFolderName": ""
 }
