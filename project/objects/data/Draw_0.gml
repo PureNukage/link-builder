@@ -27,6 +27,9 @@ switch(states)
 		sprite_set_offset(sprite,sprite_get_width(sprite)/2-1,sprite_get_height(sprite)/2+12)
 		draw_sprite(sprite,-1,x,y)
 		
+		//	Draw database overlay
+		draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,used_alpha2)
+		
 		
 	break
 }

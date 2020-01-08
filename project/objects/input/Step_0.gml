@@ -10,6 +10,8 @@ space = keyboard_check_pressed(vk_space)
 rotate_right = keyboard_check_pressed(ord("E"))
 rotate_left = keyboard_check_pressed(ord("Q"))
 
+keypress_r = keyboard_check_pressed(ord("R"))
+
 #region wip finger camera scrolling
 	//finger_left_x_previous = finger_left_x
 	//finger_left_y_previous = finger_left_y

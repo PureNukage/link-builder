@@ -19,3 +19,9 @@ used_color = c_green
 used_lightup = false
 used_time = -1
 misfire = false
+
+used_alpha_max = 0
+used_alpha = 0
+
+used_alpha2 = 0
+used_alpha2_max = 0

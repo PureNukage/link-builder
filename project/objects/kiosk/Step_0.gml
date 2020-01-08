@@ -13,7 +13,7 @@ switch(states)
 			
 			if input.mouse_left_press and placeable {
 				
-				player.points -= price
+				if !replace player.points -= price
 				
 				contracts.contract[smartcontract, contract_purchased] = true
 				contracts.contract[smartcontract, contract_kiosk] = id
@@ -62,6 +62,13 @@ switch(states)
 				x = gridController.grid_positions_x[center_cell_x]+(cell_width/2)
 				y = gridController.grid_positions_y[center_cell_y]+(cell_height/2)
 				
+				//	If this node was already placed 
+				if replace and instance_exists(replace_id) {
+					
+					with replace_id item_delete()
+					
+				}
+				
 			}
 			
 			//	Rotation
@@ -96,6 +103,15 @@ switch(states)
 						}
 					}
 				}
+				
+				if replace {
+					replace_id.selected = true
+					if ds_list_find_index(input.selections,replace_id) == -1 {
+						ds_list_add(input.selections,replace_id)
+					}
+					input.selection = replace_id
+				}
+				
 				instance_destroy()
 			}
 			
@@ -104,6 +120,44 @@ switch(states)
 	
 	#region Placed
 		case states.placed:
+		
+			//	I am being replaced, darken myself
+			if input.selection > -1 and input.selection.object_index == object_index and input.selection.replace_id == id {
+				used_alpha = .6
+			} else if used_alpha != used_alpha_max used_alpha = used_alpha_max
+			
+			if selected {
+				
+				//	I want to move this item somewhere else
+				if input.keypress_r {
+					
+					var _xx = gridController.grid_positions_x[input.grid_x]+(cell_width/2)
+					var _yy = gridController.grid_positions_y[input.grid_y]+(cell_height/2)
+					var new_item = instance_create_layer(_xx,_yy,"Instances",object_index)
+					
+					//	pass important data into this new item
+					new_item.smartcontract = smartcontract
+					new_item.portrait = portrait
+					new_item.data_needed = data_needed
+					
+					//	deselect this item
+					selected = false
+					if ds_list_find_index(input.selections,id) > -1 {
+						ds_list_delete(input.selections,ds_list_find_index(input.selections,id))
+					}
+					
+					//	select new item
+					new_item.selected = true
+					if ds_list_find_index(input.selections,new_item) == -1 {
+						ds_list_add(input.selections,new_item)	
+					}
+					input.selection = new_item
+					
+					new_item.replace = true
+					new_item.replace_id = id
+					
+				}	
+			}
 		
 			#region We have a smart contract
 			if smartcontract > -1 {

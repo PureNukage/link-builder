@@ -17,7 +17,7 @@ for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 	}
 }
 
-if item_index > -1 {
+if item_index > -1 and !replace {
 	if player.points < price {
 		_placeable++
 	}
@@ -27,7 +27,7 @@ if shop.menu_mouseover or shop.menu_mouseover or plaque.window_two_mouseover or 
 	_placeable++
 }
 
-if item_index > -1 and object_index == data and shop.item_data[item_index,2] {
+if item_index > -1 and object_index == data and !replace and shop.item_data[item_index,item_placed] {
 	_placeable++	
 }
 

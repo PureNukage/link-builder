@@ -31,6 +31,9 @@ used_logo_speed = 0
 used_blocks_play = false
 used_blocks_frame = 0
 
+used_alpha_max = 0
+used_alpha = 0
+
 decentralized = false
 
 timer = -1

@@ -10,6 +10,8 @@ space = keyboard_check_pressed(vk_space)
 rotate_right = keyboard_check_pressed(ord("E")) 
 rotate_left = keyboard_check_pressed(ord("Q"))
 
+keypress_r = keyboard_check_pressed(ord("R"))
+
 #region wip finger scrolling
 	//finger_left_x = device_mouse_x(0)
 	//finger_left_y = device_mouse_y(0)

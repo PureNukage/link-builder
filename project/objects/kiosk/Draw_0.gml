@@ -27,6 +27,9 @@ switch(states)
 		sprite_set_offset(sprite,sprite_get_width(sprite)/2-1,sprite_get_height(sprite)/2-1)
 		draw_sprite(sprite,-1,x,y)
 		
+		//	Draw stand overlay
+		draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,used_alpha)
+		
 		//	Draw chains
 		sprite_set_offset(s_kiosk_chains,sprite_get_width(s_kiosk_chains)/2-1,sprite_get_height(s_kiosk_chains)/2-1)
 		draw_sprite(s_kiosk_chains,-1,x,y)

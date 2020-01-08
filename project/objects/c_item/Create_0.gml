@@ -14,6 +14,9 @@ my_cells_y = []
 
 rotation = 0
 
+replace = false	
+replace_id = -1
+
 points = -1
 
 item_index = -1									//	Active; helps find where this object is in the shop item array
