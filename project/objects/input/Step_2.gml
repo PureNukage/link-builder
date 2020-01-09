@@ -190,6 +190,7 @@ switch(selection_mode)
 
 	break
 #endregion	
+	
 	#region Contract Placement
 		case selection_mode.contract_placement:
 			
@@ -240,6 +241,25 @@ switch(selection_mode)
 				selection_mode = selection_mode.free
 			}
 			
+			
+		break
+	#endregion
+	
+	#region Port Placement
+		case selection_mode.port_placement:
+			
+			//	I want to place a port in this cell
+			if input.mouse_left_press {
+				
+				
+				
+			}
+			
+			
+			//	Exit port placement
+			if input.mouse_right_press {
+				selection_mode = selection_mode.free				
+			}
 			
 		break
 	#endregion

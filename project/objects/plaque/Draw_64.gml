@@ -18,13 +18,13 @@ if input.selection > -1 {
 	draw_sprite(_portrait,0,window_portraitX+window_portrait_offsetX,window_portraitY+window_portrait_offsetY)
 	
 	//	Draw name background
-	draw_roundrect(window_twoX,window_twoY-16,window_twoX+window_two_width,window_twoY-48,false)
+	draw_roundrect(window_nameX,window_nameY,window_nameX+window_name_width,window_nameY+window_name_height,false)
 	
 	//	Draw name
 	draw_set_color(c_black)
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_middle)
-	draw_text(window_twoX+window_two_width/2,window_twoY-32,input.selection.name)
+	draw_text(window_nameX+(window_name_width/2),window_nameY+(window_name_height/2),input.selection.name)
 	
 	//	Draw delete button
 	if input.selection.states == states.placed {
@@ -137,6 +137,33 @@ if input.selection > -1 {
 				
 				if _item.smartcontract > -1 {
 					
+					//	Level up!
+					var level = contracts.contract[_item.smartcontract, contract_level]
+					var ports_level = contracts.contract[_item.smartcontract, contract_level_ports]
+					//	I have unassigned ports!
+					if _item.ports_count < ports_level[level] {
+						var how_many = ports_level[level] - _item.ports_count
+						var _string = string(how_many)+" levels to assign"
+						var _string_width = string_width(_string)
+						var _string_height = string_height(_string)
+						var buffer = 16
+						
+						window_level_width = _string_width + buffer
+						window_level_height = _string_height
+						
+						draw_set_color(c_yellow)
+						draw_roundrect(window_levelX,window_levelY,window_levelX+window_level_width,window_levelY+window_level_height,false)
+						
+						draw_set_color(c_black)
+						draw_roundrect(window_levelX,window_levelY,window_levelX+window_level_width,window_levelY+window_level_height,true)
+						
+						draw_set_halign(fa_center)
+						draw_set_valign(fa_middle)
+						draw_text(window_levelX+(window_level_width/2),window_levelY+(window_level_height/2),_string)
+					}
+					
+					draw_set_halign(fa_left)
+					draw_set_valign(fa_top)
 					//	Draw uses
 					draw_set_color(c_dkgray)
 					draw_text(_xx,_yy,"Uses") 

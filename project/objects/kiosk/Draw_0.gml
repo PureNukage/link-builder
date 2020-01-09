@@ -45,6 +45,28 @@ switch(states)
 		
 		if smartcontract > -1 {
 			
+			//	Draw the possible port cells if we're selected and input is in port_placement mode
+			if input.selection_mode == selection_mode.port_placement and selected {
+				
+				//	Loop through cells, only draw the possible port cells
+				for(var w=topleft_cell_x-1;w<topleft_cell_x+size_width+1;w++) {
+					for(var h=topleft_cell_y-1;h<topleft_cell_y+size_height+1;h++) {
+						if w > -1 and w < grid_width and h > -1 and h < grid_height {
+							if w == topleft_cell_x-1 or w == bottomright_cell_x+1
+							or h == topleft_cell_y-1 or h == bottomright_cell_y+1 {
+								if gridController.grid_items[# w, h] == -1 {
+									draw_set_color(c_yellow)
+									var _xx = gridController.grid_positions_x[w]
+									var _yy = gridController.grid_positions_y[h]
+									draw_rectangle(_xx+3,_yy+3,_xx+cell_width-3,_yy+cell_height-3,false)
+								}
+							}	
+						}
+					}
+				}	
+				
+			}
+			
 
 			logoX = gridController.grid_positions_x[center_cell_x]+(cell_width/2)			
 			logoY = wave(y-100,y-80,.5,5)

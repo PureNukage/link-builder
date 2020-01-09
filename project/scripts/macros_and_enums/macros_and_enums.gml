@@ -25,6 +25,7 @@ enum menu {
 enum selection_mode {
 	free,
 	contract_placement,
+	port_placement,
 	
 }
 
@@ -72,6 +73,8 @@ enum goal_type {
 #macro contract_reliability 17
 #macro contract_uses 18
 #macro contract_type 19
+#macro contract_level 20
+#macro contract_level_ports 21
 
 enum contract_types {
 	people,

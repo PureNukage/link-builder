@@ -73,12 +73,13 @@ for(var i=0;i<ds_list_size(contracts_purchased);i++) {
 				input.selection.smartcontract = i
 				input.selection.data_needed = contracts.contract[i, contract_data]	
 				input.selection.portrait = contracts.contract[i, contract_portrait]
+				var level = contracts.contract[i, contract_level]
+				var ports_level = contracts.contract[i, contract_level_ports]
+				input.selection.ports_count = ports_level[level]
 				if ds_list_find_index(input.selections,input.selection) == -1 {
 					ds_list_add(input.selections,input.selection)	
 				}	
-				
-				//player.points -= _price
-				//contract[i, contract_purchased] = true
+
 			}
 			
 		}

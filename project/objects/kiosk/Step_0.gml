@@ -157,6 +157,14 @@ switch(states)
 					new_item.replace_id = id
 					
 				}	
+				
+				//	DEBUG level up this contract
+				if keyboard_check_pressed(vk_pageup) and contracts.contract[smartcontract, contract_level] < 3 {
+					contracts.contract[smartcontract, contract_level]++
+					//var level = contracts.contract[smartcontract, contract_level]
+					//var ports_level = contracts.contract[smartcontract, contract_level_ports]
+					//ports_count = ports_level[level]
+				} 
 			}
 		
 			#region We have a smart contract
