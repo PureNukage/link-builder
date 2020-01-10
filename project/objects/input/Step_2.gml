@@ -250,7 +250,23 @@ switch(selection_mode)
 			
 			//	I want to place a port in this cell
 			if input.mouse_left_press {
-				
+				//	Loop through cells, only draw the possible port cells
+				for(var w=selection.topleft_cell_x-1;w<selection.topleft_cell_x+selection.size_width+1;w++) {
+					for(var h=selection.topleft_cell_y-1;h<selection.topleft_cell_y+selection.size_height+1;h++) {
+						if w > -1 and w < grid_width and h > -1 and h < grid_height {
+							if w == selection.topleft_cell_x-1 or w == selection.bottomright_cell_x+1
+							or h == selection.topleft_cell_y-1 or h == selection.bottomright_cell_y+1 {
+								if w == grid_x and h == grid_y {
+									if gridController.grid_items[# w, h] == -1 {
+										port_add(w,h,selection)
+										gridController.grid_items[# w, h] = -2
+										
+									}
+								}
+							}	
+						}
+					}
+				}	
 				
 				
 			}

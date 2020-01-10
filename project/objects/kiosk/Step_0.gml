@@ -6,7 +6,9 @@ switch(states)
 		case states.placement:
 			
 			if input.grid_moved {
-				kiosk_update_ports_xy(rotation)
+				//kiosk_update_ports_xy(rotation)
+				
+				ports_xyupdate_movement()
 				
 				item_check_sockets()
 			}
@@ -73,14 +75,16 @@ switch(states)
 			
 			//	Rotation
 			if input.rotate_right or input.rotate_left {
-				var port0_x = ports[0,port_x]
-				var port0_y = ports[0,port_y]
-				debug_log("old Port 0: "+string(port0_x)+ ","+string(port0_y))
-				//ports = grid_rotation(input.rotate_right - input.rotate_left,my_cells_items,ports)	
-				node_update_ports_xy(rotation)
-				var port0_x = ports[0,port_x]
-				var port0_y = ports[0,port_y]
-				debug_log("new Port 0: "+string(port0_x)+ ","+string(port0_y))
+				
+				//var port0_x = ports[0,port_x]
+				//var port0_y = ports[0,port_y]
+				//debug_log("old Port 0: "+string(port0_x)+ ","+string(port0_y))
+				////ports = grid_rotation(input.rotate_right - input.rotate_left,my_cells_items,ports)	
+				//kiosk_update_ports_xy(rotation)
+				ports_xyupdate_rotation(input.rotate_right - input.rotate_left)
+				//var port0_x = ports[0,port_x]
+				//var port0_y = ports[0,port_y]
+				//debug_log("new Port 0: "+string(port0_x)+ ","+string(port0_y))
 				item_check_sockets()
 			}		
 			
@@ -139,6 +143,21 @@ switch(states)
 					new_item.smartcontract = smartcontract
 					new_item.portrait = portrait
 					new_item.data_needed = data_needed
+					new_item.ports_count = ports_count
+					new_item.rotation = rotation
+					
+					//	Pass along ports xy but not objects
+					for(var p=0;p<ports_count;p++) {
+						new_item.ports[p,port_x] = ports[p,port_x]
+						new_item.ports[p,port_y] = ports[p,port_y]
+						new_item.ports[p,port_x_diff] = ports[p,port_x_diff]
+						new_item.ports[p,port_y_diff] = ports[p,port_y_diff]
+					}
+					
+					with new_item {
+						ports_xyupdate_movement()
+						ports_xyupdate_rotation(rotation)
+					}
 					
 					//	deselect this item
 					selected = false

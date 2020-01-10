@@ -63,8 +63,7 @@ switch(states)
 							}	
 						}
 					}
-				}	
-				
+				}		
 			}
 			
 

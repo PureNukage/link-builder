@@ -39,6 +39,14 @@
             }
         },
         {
+            "Key": "025443a1-08a0-4556-bbe6-7c051ee8ae00",
+            "Value": {
+                "id": "7e776e41-e34e-45f9-a86f-d050bfac8009",
+                "resourcePath": "scripts\\ports_xyupdate_movement\\ports_xyupdate_movement.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "046ccc19-867e-4bdc-981d-611f151de6a8",
             "Value": {
                 "id": "f439cab7-8fbc-460e-8000-19e0a91522f7",
@@ -495,6 +503,14 @@
             }
         },
         {
+            "Key": "71487b34-832c-48cc-941a-b96236156c6c",
+            "Value": {
+                "id": "eb04378a-082e-4cba-afad-cb9059402d0e",
+                "resourcePath": "scripts\\ports_xyupdate_rotation\\ports_xyupdate_rotation.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "75ac291e-7061-4bcb-8e8a-3b3545332d41",
             "Value": {
                 "id": "d394e732-1ca8-4c04-8e7b-87be2405b396",
@@ -523,6 +539,14 @@
             "Value": {
                 "id": "365427e7-fda0-4643-81be-da95d1dba8f5",
                 "resourcePath": "scripts\\person_idlewalk\\person_idlewalk.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "7e2e028c-474b-4782-b782-0657b6e9291e",
+            "Value": {
+                "id": "b5d39ca0-bd80-4fe2-98b6-6994b2b2bb73",
+                "resourcePath": "scripts\\port_add\\port_add.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -1261,7 +1285,10 @@
         "58336315-3a31-4dae-a4fc-7e11c435e739",
         "f01366f3-87ec-48e6-82fa-54a3d746b195",
         "c0d7d985-af00-4738-b5b1-a59ffc89e8ff",
-        "67a72b29-8995-4163-8eea-962a695f4862"
+        "67a72b29-8995-4163-8eea-962a695f4862",
+        "025443a1-08a0-4556-bbe6-7c051ee8ae00",
+        "71487b34-832c-48cc-941a-b96236156c6c",
+        "7e2e028c-474b-4782-b782-0657b6e9291e"
     ],
     "tutorial": ""
 }
