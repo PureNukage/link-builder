@@ -44,15 +44,27 @@ for(var i=0;i<ds_list_size(contracts_purchased);i++) {
 				}
 				//	this contract is not in a kiosk, lets place it into one
 				else {
-					if input.selection > -1 {
-						input.selection.selected = false
-						if ds_list_find_index(input.selections,input.selection) > -1 {
-							ds_list_delete(input.selections,ds_list_find_index(input.selections,input.selection))	
+					//	Delete the item we're currently placing if there is one 
+					if instance_exists(c_item) {
+						with c_item {
+							if states == states.placement {
+								instance_destroy()	
+							}
 						}
-						input.selection = -1
 					}
-					input.selection_mode = selection_mode.contract_placement
-					input.contract = i
+					input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",kiosk)
+					input.selection.selected = true
+					input.selection.item_index = 3
+					input.selection.price = _price
+					input.selection.smartcontract = i
+					input.selection.data_needed = contracts.contract[i, contract_data]	
+					input.selection.portrait = contracts.contract[i, contract_portrait]
+					var level = contracts.contract[i, contract_level]
+					var ports_level = contracts.contract[i, contract_level_ports]
+					input.selection.ports_count = ports_level[0]
+					if ds_list_find_index(input.selections,input.selection) == -1 {
+						ds_list_add(input.selections,input.selection)	
+					}	
 				}
 			}
 			//	this contract isn't purchased yet

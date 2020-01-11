@@ -237,7 +237,7 @@ else {
 				part.System = new_system_object
 				
 				//	add this part to our new system objects parts list
-				ds_list_add(new_system_object.parts,part)
+				if instance_exists(new_system_object) ds_list_add(new_system_object.parts,part)
 				
 				//	recalc sockets
 				for(var _port=0;_port<part.ports_count;_port++) {
@@ -248,7 +248,7 @@ else {
 					
 			}
 			
-			with new_system_object {
+			if instance_exists(new_system_object) with new_system_object {
 				system_dataflow_check()	
 			}
 		}
