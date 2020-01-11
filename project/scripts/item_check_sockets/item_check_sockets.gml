@@ -23,8 +23,8 @@ for(var p=0;p<ports_count;p++) {
 			//	first lets find the direction this item is in
 			var _item = gridController.grid_objects[# _x, _y]
 			var array = port_get_direction(id,_item)
-			var target_x = _x - array[0]
-			var target_y = _y - array[1]
+			var target_x = _x + array[0]
+			var target_y = _y + array[1]
 					
 			for(var other_p=0;other_p<_item.ports_count;other_p++) {
 				//	we're connecting to this object 

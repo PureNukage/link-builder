@@ -39,22 +39,16 @@ for(var p=0;p<ports_count;p++) {
 		var _x = gridController.grid_positions_x[_w]+(cell_width/2)-(directionX*15)
 		var _y = gridController.grid_positions_y[_h]+(cell_height/2)-(directionY*15)
 					
-		//	Right
-		if directionX > 0 _x -= directionX*7
-		//	Bottom
-		if directionY > 0 _y -= directionY*7
-		//	Left
-		if directionX < 0 _x -= directionX*7
-		//	Top
-		if directionY < 0 _y -= directionY*7
+		//	Vertical
+		if directionX > 0 or directionX < 0 _x -= directionX*7
+		//	Horizontal
+		if directionY > 0 or directionY < 0 _y -= directionY*7
 					
 		var _sprite = s_wire_socket
 		if sockets[p] == -1 {
 			_sprite = s_wire_socket 
 		} else {
-			_sprite = s_wire_socket_connected	
-			//_x -= (directionX*7)
-			//_y -= (directionY*7)
+			_sprite = s_wire_socket_connected
 		}
 		
 		var _color
