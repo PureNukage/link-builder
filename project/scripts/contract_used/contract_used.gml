@@ -10,6 +10,7 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 	}
 	
 	if _kiosk.data_needed[i,2] > -1 {
+		var _jobruns = 0
 		var _node = _kiosk.data_needed[i,2]
 		
 		//	the data was used
@@ -22,7 +23,6 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 			} else {
 				
 				var got_at_least_one = 0
-				var _jobruns = 0
 				for(var dd=0;dd<ds_list_size(_kiosk.data_held);dd++) {
 					var _data_held = _kiosk.data_held[| dd]
 					var _data_held_string = shop.item_data[_data_held, item_name]
@@ -81,6 +81,8 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 						used = true
 						misfire = false
 					}
+					
+					_jobruns++
 				
 					shop.item_data[item_index, item_calls]++
 				

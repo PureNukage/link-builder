@@ -21,6 +21,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 		
 		//	If its a people contract, lets clear out its decentralization real quick
 		for(var dd=0;dd<array_height_2d(_kiosk.data_needed);dd++) {
+			_kiosk.data_needed[dd,1] = false
 			_kiosk.data_needed[dd,3] = false
 		}
 		
@@ -401,7 +402,7 @@ for(var i=0;i<ds_list_size(kiosks_other);i++) {
 						} 
 						//	This is not a price we need
 						else {
-							_kiosk.data_needed[d,1] = false	
+							//_kiosk.data_needed[d,1] = false	
 						}
 					} 
 					//	This needed data is NOT a price
@@ -411,10 +412,17 @@ for(var i=0;i<ds_list_size(kiosks_other);i++) {
 							_kiosk.data_needed[d,2] = _kiosk.data_held_ids[| a]
 							amount_of_data_had++
 						} else {
-							_kiosk.data_needed[d,1] = false	
+							//_kiosk.data_needed[d,1] = false	
 						}
 					}
 				}
+			}
+		}
+		
+		var amount_of_data_had = 0
+		for(var d=0;d<array_height_2d(_kiosk.data_needed);d++) {
+			if _kiosk.data_needed[d,1] {
+				amount_of_data_had++
 			}
 		}
 	
