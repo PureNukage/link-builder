@@ -293,7 +293,7 @@ switch(states)
 									}
 									
 									//	Figure out directions
-									var _directions = port_get_direction(__wire,connecting_item)
+									var _directions = item_get_direction(__wire,connecting_item)
 									__wire.ports[0,port_x] = __wire.center_cell_x+_directions[0]
 									__wire.ports[0,port_y] = __wire.center_cell_y+_directions[1]
 									
@@ -331,13 +331,13 @@ switch(states)
 										
 										}
 										
-										var _directions = port_get_direction(__wire,connecting_item)
+										var _directions = item_get_direction(__wire,connecting_item)
 										__wire.ports[1,port_x] = __wire.center_cell_x+_directions[0]
-										__wire.ports[1,port_y] = __wire.center_cell_y+_directions[1]							
+										__wire.ports[1,port_y] = __wire.center_cell_y+_directions[1]	
 										
 										//	Figure out directions
-										var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
-										var _1 = port_get_direction(__wire,__wire.ports[1,port_object])
+										var _0 = item_get_direction(__wire,__wire.ports[0,port_object])
+										var _1 = item_get_direction(__wire,__wire.ports[1,port_object])
 							
 										//	Straight
 										if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {
@@ -368,8 +368,8 @@ switch(states)
 							__wire.sockets[1] = path_objects[| i-1]
 							
 							//	Figure out directions
-							var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
-							var _1 = port_get_direction(__wire,__wire.ports[1,port_object])
+							var _0 = item_get_direction(__wire,__wire.ports[0,port_object])
+							var _1 = item_get_direction(__wire,__wire.ports[1,port_object])
 							
 							//	Straight
 							if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {
@@ -413,13 +413,13 @@ switch(states)
 										
 											}
 										}
-										var _directions = port_get_direction(__wire,connecting_item)
+										var _directions = item_get_direction(__wire,connecting_item)
 										__wire.ports[0,port_x] = __wire.center_cell_x+_directions[0]
 										__wire.ports[0,port_y] = __wire.center_cell_y+_directions[1]
 										
 										//	Figure out directions
-										var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
-										var _1 = port_get_direction(__wire,__wire.ports[1,port_object])
+										var _0 = item_get_direction(__wire,__wire.ports[0,port_object])
+										var _1 = item_get_direction(__wire,__wire.ports[1,port_object])
 							
 										//	Straight
 										if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {
@@ -472,7 +472,7 @@ switch(states)
 									var h1 = _wire.center_cell_y
 									var w2 = _wire.ports[0,port_object].center_cell_x
 									var h2 = _wire.ports[0,port_object].center_cell_y
-									_wire.rotation = cell_direction(w1,h1,w2,h2)
+									rotation = cell_direction(w1,h1,w2,h2)
 								} else {
 									rotation = corner_rotation(id,ports)
 								}
@@ -485,7 +485,7 @@ switch(states)
 							var h1 = _wire.center_cell_y
 							var w2 = _wire.ports[0,port_object].center_cell_x
 							var h2 = _wire.ports[0,port_object].center_cell_y
-							_wire.rotation = cell_direction(w1,h1,w2,h2)
+							_wire.rotation = port_get_rotation(_wire,_wire.ports[0,port_object])
 							with _wire {
 								wire_update_ports_xy(rotation)	
 							}

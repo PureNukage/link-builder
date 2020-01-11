@@ -52,8 +52,10 @@ switch(states)
 				for(var w=topleft_cell_x-1;w<topleft_cell_x+size_width+1;w++) {
 					for(var h=topleft_cell_y-1;h<topleft_cell_y+size_height+1;h++) {
 						if w > -1 and w < grid_width and h > -1 and h < grid_height {
-							if w == topleft_cell_x-1 or w == bottomright_cell_x+1
-							or h == topleft_cell_y-1 or h == bottomright_cell_y+1 {
+							if w == topleft_cell_x-1 and (h != topleft_cell_y-1 and h != bottomright_cell_y+1)
+							or w == bottomright_cell_x+1 and (h != bottomright_cell_y+1 and h != topleft_cell_y-1)
+							or h == topleft_cell_y-1 and w != topleft_cell_x-1 and w != bottomright_cell_x+1
+							or h == bottomright_cell_y+1 and w != bottomright_cell_x+1 and w != topleft_cell_x-1 {
 								if gridController.grid_items[# w, h] == -1 {
 									draw_set_color(c_yellow)
 									var _xx = gridController.grid_positions_x[w]

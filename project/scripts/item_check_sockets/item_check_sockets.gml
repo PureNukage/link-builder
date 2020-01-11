@@ -22,7 +22,7 @@ for(var p=0;p<ports_count;p++) {
 			//	does this item have its port where it needs to be?
 			//	first lets find the direction this item is in
 			var _item = gridController.grid_objects[# _x, _y]
-			var array = port_get_direction(id,_item)
+			var array = item_get_direction(id,_item)
 			var target_x = _x - array[0]
 			var target_y = _y - array[1]
 					

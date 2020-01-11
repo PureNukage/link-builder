@@ -4,8 +4,8 @@
 var _id = argument[0]
 var _ports = argument[1]
 
-var port0_direction = port_get_direction(_id,_ports[0,port_object])
-var port1_direction = port_get_direction(_id,_ports[1,port_object])
+var port0_direction = item_get_direction(_id,_ports[0,port_object])
+var port1_direction = item_get_direction(_id,_ports[1,port_object])
 
 var _right = 0
 var _down = 0

@@ -7,7 +7,7 @@ var ports_count = argument[1]
 var port_index = argument[2]
 
 if ports_count == 1 {
-	var _0 = port_get_direction(_id,_id.ports[port_index,port_object])
+	var _0 = item_get_direction(_id,_id.ports[port_index,port_object])
 	
 	_id.ports[port_index,port_x] = _id.center_cell_x + _0[0]
 	_id.ports[port_index,port_y] = _id.center_cell_y + _0[1]
@@ -16,13 +16,13 @@ if ports_count == 1 {
 	
 	var x2 = _id.ports[port_index,port_x]
 	var y2 = _id.ports[port_index,port_y]
-	_id.rotation = cell_direction(_id.center_cell_x,id.center_cell_y,x2,y2)
+	_id.rotation = cell_direction(_id.center_cell_x,_id.center_cell_y,x2,y2)
 	
 } else if ports_count == 2 {
 	
 	//	Figure out directions
-	var _0 = port_get_direction(_id,_id.ports[0,port_object])
-	var _1 = port_get_direction(_id,_id.ports[1,port_object])
+	var _0 = item_get_direction(_id,_id.ports[0,port_object])
+	var _1 = item_get_direction(_id,_id.ports[1,port_object])
 							
 	//	Straight
 	if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {

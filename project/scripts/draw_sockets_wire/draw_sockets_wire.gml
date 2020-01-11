@@ -3,9 +3,9 @@ for(var p=0;p<ports_count;p++) {
 	var _h = ports[p,port_y]
 					
 	if _w > -1 and _w < grid_width and _h > -1 and _h < grid_height {
-		var directionX = -1
-		var directionY = -1
-					
+		var directionX = 0
+		var directionY = 0
+		
 		directionX = sign(_w - center_cell_x)
 		directionY = sign(_h - center_cell_y)
 		
@@ -25,6 +25,9 @@ for(var p=0;p<ports_count;p++) {
 		} else {
 			if sockets[p] > -1 and instance_exists(sockets[p]) and sockets[p].object_index != wire {
 				_sprite = s_wire_socket_connected	
+				if ports[p,port_x] == sockets[p].bottomright_cell_x+1 {
+						
+				}
 				//debug_log(string(id)+" sockets["+string(p)+"] is: "+string(sockets[p]))
 			} else if sockets[p] > -1 and instance_exists(sockets[p]) and sockets[p].object_index == wire {
 				_sprite = s_wire	
