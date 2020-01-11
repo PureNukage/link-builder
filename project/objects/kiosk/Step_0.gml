@@ -306,6 +306,7 @@ switch(states)
 												with node {
 													if ds_list_find_index(data_held,_data_held) != -1 {
 														used = true
+														shop.item_node[item_index, node_jobruns]++
 														jobruns++
 													}
 												}	

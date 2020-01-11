@@ -95,6 +95,7 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 			
 		} else {	
 			//	the node did a job
+			shop.item_node[_node.item_index, node_jobruns] += _jobruns
 			_node.jobruns += _jobruns
 			_node.used = true
 		}

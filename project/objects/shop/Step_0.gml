@@ -78,6 +78,9 @@
 						input.selection.selected = true
 						input.selection.item_index = n
 						input.selection.price = item_node[n,node_price]
+						input.selection.jobruns = item_node[n,node_jobruns]
+						input.selection.jobruns_previous = item_node[n,node_jobruns]
+						input.selection.level = item_node[n,node_level]
 						if ds_list_find_index(input.selections,input.selection) == -1 {
 							ds_list_add(input.selections,input.selection)	
 						}		
