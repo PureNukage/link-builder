@@ -15,6 +15,7 @@ _id.ports[this_port,port_x] = _x
 _id.ports[this_port,port_y] = _y
 _id.ports[this_port,port_x_diff] = _id.ports[this_port,port_x] - _id.center_cell_x 
 _id.ports[this_port,port_y_diff] = _id.ports[this_port,port_y] - _id.center_cell_y
+_id.sockets[this_port] = -1
 ds_list_add(gridController.grid_port_objects,_id)
 ds_list_add(gridController.grid_port_x,_id.ports[this_port,port_x])
 ds_list_add(gridController.grid_port_y,_id.ports[this_port,port_y])

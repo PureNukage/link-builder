@@ -260,6 +260,7 @@ switch(selection_mode)
 									if gridController.grid_items[# w, h] == -1 {
 										port_add(w,h,selection)
 										gridController.grid_items[# w, h] = -2
+										selection_mode = selection_mode.free
 										
 									}
 								}
