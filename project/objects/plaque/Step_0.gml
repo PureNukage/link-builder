@@ -43,6 +43,38 @@ if selection > -1 {
 			}
 		
 		}
+	} 
+	
+	else if selection.object_index == node {
+		//	Collision check Level Up
+		var level = shop.item_node[selection.item_index, node_level]
+		var ports_level = shop.item_node[selection.item_index, node_level_ports]
+		//	I have unassigned ports!
+		if selection.ports_count < ports_level[level] {
+			if point_in_rectangle(gui_mouse_x,gui_mouse_y,window_levelX,window_levelY,window_levelX+window_level_width,window_levelY+window_level_height) {
+				window_level_mouseover = true	
+				
+				//	Go into port placement mode
+				if input.mouse_left_press {
+					
+					if ds_list_size(input.selections) > 1 {
+						for(var i=0;i<ds_list_size(input.selections);i++) {
+							input.selections[| i].selected = false
+						}	
+						ds_list_clear(input.selections)
+					}
+					if ds_list_find_index(input.selections,selection) == -1 {
+						ds_list_add(input.selections,selection)
+					}
+					input.selection_mode = selection_mode.port_placement
+					
+				}
+			} else {
+				window_level_mouseover = false	
+			}
+		
+		}
+		
 	}
 	
 	//	Collision check window two

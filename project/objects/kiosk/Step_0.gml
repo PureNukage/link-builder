@@ -6,7 +6,6 @@ switch(states)
 		case states.placement:
 			
 			if input.grid_moved {
-				//kiosk_update_ports_xy(rotation)
 				
 				ports_xyupdate_movement()
 				
@@ -75,20 +74,12 @@ switch(states)
 			
 			//	Rotation
 			if input.rotate_right or input.rotate_left {
-				
-				//var port0_x = ports[0,port_x]
-				//var port0_y = ports[0,port_y]
-				//debug_log("old Port 0: "+string(port0_x)+ ","+string(port0_y))
-				////ports = grid_rotation(input.rotate_right - input.rotate_left,my_cells_items,ports)	
-				//kiosk_update_ports_xy(rotation)
 				ports_xyupdate_rotation(input.rotate_right - input.rotate_left)
-				//var port0_x = ports[0,port_x]
-				//var port0_y = ports[0,port_y]
-				//debug_log("new Port 0: "+string(port0_x)+ ","+string(port0_y))
+
 				item_check_sockets()
 			}		
 			
-		//	Clamp rotation
+			//	Clamp rotation
 			if abs(rotation) == 360 rotation = 0
 		
 			//	Delete item
@@ -180,9 +171,6 @@ switch(states)
 				//	DEBUG level up this contract
 				if keyboard_check_pressed(vk_pageup) and contracts.contract[smartcontract, contract_level] < 3 {
 					contracts.contract[smartcontract, contract_level]++
-					//var level = contracts.contract[smartcontract, contract_level]
-					//var ports_level = contracts.contract[smartcontract, contract_level_ports]
-					//ports_count = ports_level[level]
 				} 
 			}
 		

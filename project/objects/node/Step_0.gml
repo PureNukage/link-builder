@@ -6,7 +6,7 @@ switch(states)
 		case states.placement:
 	
 			if input.grid_moved {
-				node_update_ports_xy(rotation)	
+				ports_xyupdate_movement()
 			
 				item_check_sockets()
 			}
@@ -71,14 +71,7 @@ switch(states)
 		
 			//	Rotation
 			if input.rotate_right or input.rotate_left {
-				var port0_x = ports[0,port_x]
-				var port0_y = ports[0,port_y]
-				debug_log("old Port 0: "+string(port0_x)+ ","+string(port0_y))
-				//ports = grid_rotation(input.rotate_right - input.rotate_left,my_cells_items,ports)	
-				node_update_ports_xy(rotation)
-				var port0_x = ports[0,port_x]
-				var port0_y = ports[0,port_y]
-				debug_log("new Port 0: "+string(port0_x)+ ","+string(port0_y))
+				ports_xyupdate_rotation(input.rotate_right - input.rotate_left)
 				
 				item_check_sockets()
 			}
@@ -154,6 +147,10 @@ switch(states)
 					new_item.replace_id = id
 					
 				}	
+				
+				if keyboard_check_pressed(vk_pageup) and shop.item_node[item_index, node_level] < 3 {
+					shop.item_node[item_index, node_level]++
+				}
 			}
 			
 			if used {

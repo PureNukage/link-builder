@@ -382,7 +382,8 @@ for(var i=0;i<ds_list_size(kiosks_other);i++) {
 			var _data_needed = _kiosk.data_needed[d,0]
 			var _data_needed_string = shop.item_data[_data_needed, item_name]
 			
-			if _kiosk.data_needed[d,3] {	
+			if _kiosk.data_needed[d,3] {
+				_kiosk.data_needed[d,1] = true
 				amount_of_data_had++	
 			} else {
 				//	This needed data is a price

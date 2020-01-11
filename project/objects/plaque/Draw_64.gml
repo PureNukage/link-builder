@@ -41,7 +41,34 @@ if input.selection > -1 {
 		
 				var _xx = window_twoX + 4
 				var _yy = window_twoY + 4
-			
+				
+				//	Level up!
+				var level = shop.item_node[_item.item_index, node_level]
+				var ports_level = shop.item_node[_item.item_index, node_level_ports]
+				//	I have unassigned ports!
+				if _item.ports_count < ports_level[level] {
+					var how_many = ports_level[level] - _item.ports_count
+					var _string = string(how_many)+" levels to assign"
+					var _string_width = string_width(_string)
+					var _string_height = string_height(_string)
+					var buffer = 16
+						
+					window_level_width = _string_width + buffer
+					window_level_height = _string_height
+						
+					draw_set_color(c_yellow)
+					draw_roundrect(window_levelX,window_levelY,window_levelX+window_level_width,window_levelY+window_level_height,false)
+						
+					draw_set_color(c_black)
+					draw_roundrect(window_levelX,window_levelY,window_levelX+window_level_width,window_levelY+window_level_height,true)
+						
+					draw_set_halign(fa_center)
+					draw_set_valign(fa_middle)
+					draw_text(window_levelX+(window_level_width/2),window_levelY+(window_level_height/2),_string)
+				}
+				
+				draw_set_halign(fa_left)
+				draw_set_valign(fa_top)
 				var _string = ""
 				var x1 = _xx
 				var y1 = _yy

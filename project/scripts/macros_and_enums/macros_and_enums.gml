@@ -87,6 +87,7 @@ enum contract_types {
 #macro node_placed 2
 #macro node_text 4
 #macro node_level 5
+#macro node_level_ports 8
 #macro node_jobruns 6
 #macro node_uptime 7
 

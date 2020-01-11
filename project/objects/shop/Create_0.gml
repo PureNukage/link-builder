@@ -44,6 +44,7 @@ item_node[0,node_object_index] = node
 item_node[0,node_text] = "A ChainLink node.\n\nSome say its the 4th industrial revolution\nOthers say its made of cheese"
 item_node[0,node_jobruns] = 0
 item_node[0,node_level] = 0
+item_node[0,node_level_ports] = create_level_ports(2,4,6,8)
 item_node[0,node_uptime] = 0
 
 item = []
