@@ -11,6 +11,8 @@ event_inherited()
 
 ports[0,port_x] = bottomright_cell_x+1
 ports[0,port_y] = center_cell_y
+ports[0,port_x_diff] = ports[0,port_x] - center_cell_x
+ports[0,port_y_diff] = ports[0,port_y] - center_cell_y
 
 data_generated = -1 
 used = false

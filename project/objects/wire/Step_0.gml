@@ -381,13 +381,13 @@ switch(states)
 							__wire.sprite = __wire.sprites[__wire.straight]
 							
 							//	Set ports xy's
-							__wire.ports[0,port_x] = __wire.center_cell_x + _0[0]
-							__wire.ports[0,port_y] = __wire.center_cell_y + _0[1]
-							__wire.ports[1,port_x] = __wire.center_cell_x + _1[0]
-							__wire.ports[1,port_y] = __wire.center_cell_y + _1[1]
+							__wire.ports[0,port_x] = __wire.center_cell_x - _0[0]
+							__wire.ports[0,port_y] = __wire.center_cell_y - _0[1]
+							__wire.ports[1,port_x] = __wire.center_cell_x - _1[0]
+							__wire.ports[1,port_y] = __wire.center_cell_y - _1[1]
 							
-						//	debug_log("Just set Wire["+string(i)+"] port 0 xy to "+string(__wire.ports[0,port_x])+","+string(__wire.ports[0,port_y]))
-						//	debug_log("Just set Wire["+string(i)+"] port 1 xy to "+string(__wire.ports[1,port_x])+","+string(__wire.ports[1,port_y]))
+							debug_log("Just set Wire["+string(i)+"] port 0 xy to "+string(__wire.ports[0,port_x])+","+string(__wire.ports[0,port_y]))
+							debug_log("Just set Wire["+string(i)+"] port 1 xy to "+string(__wire.ports[1,port_x])+","+string(__wire.ports[1,port_y]))
 						}
 						#endregion
 						
@@ -575,7 +575,7 @@ switch(states)
 								ds_list_add(_grid_x,_wire.ports[_p,port_x])
 								ds_list_add(_grid_y,_wire.ports[_p,port_y])
 								gridController.grid_items[# _wire.ports[_p,port_x],_wire.ports[_p,port_y]] = -2
-								//debug_log("Just set Wire["+string(i)+"] port "+string(_p)+" xy to "+string(_wire.ports[_p,port_x])+","+string(_wire.ports[_p,port_y]))
+								debug_log("Just set Wire["+string(i)+"] port "+string(_p)+" xy to "+string(_wire.ports[_p,port_x])+","+string(_wire.ports[_p,port_y]))
 							}
 							//	add sockets
 							for(var _p=0;_p<_wire.ports_count;_p++) {
@@ -769,5 +769,3 @@ switch(states)
 		break
 	#endregion
 }
-
-//if sprite_index == s_wire_corner depth = -1 else depth = 0

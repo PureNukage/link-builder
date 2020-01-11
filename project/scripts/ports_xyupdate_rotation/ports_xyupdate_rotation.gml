@@ -59,6 +59,8 @@ if _direction == 1 {
 		ports[p,port_y] = new_y
 		ports[p,port_x_diff] = ports[p,port_x] - center_cell_x
 		ports[p,port_y_diff] = ports[p,port_y] - center_cell_y
+		
+		debug_log("Port["+string(p)+"] xy set to "+string(new_x)+","+string(new_y))
 	}
 } else if _direction == -1 {
 	//	Rotate to the left
@@ -114,5 +116,7 @@ if _direction == 1 {
 		ports[p,port_y] = new_y
 		ports[p,port_x_diff] = ports[p,port_x] - center_cell_x
 		ports[p,port_y_diff] = ports[p,port_y] - center_cell_y
+		
+		debug_log("Port["+string(p)+"] xy set to "+string(new_x)+","+string(new_y))
 	}
 }	

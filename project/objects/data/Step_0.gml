@@ -6,21 +6,23 @@ switch(states)
 		case states.placement:
 	
 			if input.grid_moved {
-				data_update_ports_xy(rotation)
+				ports_xyupdate_movement()
+				//data_update_ports_xy(rotation)
 				
 				item_check_sockets()
 			}
 	
 			if input.rotate_right or input.rotate_left {
-				data_update_ports_xy(rotation)
+				//data_update_ports_xy(rotation)
+				ports_xyupdate_rotation(input.rotate_right - input.rotate_left)
 				
 				item_check_sockets()
 			}
 		
-			if abs(rotation) == 360 {
-				rotation = 0
-				data_update_ports_xy(rotation)
-			}
+			//if abs(rotation) == 360 {
+			//	rotation = 0
+			//	data_update_ports_xy(rotation)
+			//}
 	
 			if input.mouse_left_press and placeable {
 				

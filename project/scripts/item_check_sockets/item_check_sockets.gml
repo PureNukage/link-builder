@@ -27,12 +27,16 @@ for(var p=0;p<ports_count;p++) {
 			var target_y = _y + array[1]
 					
 			for(var other_p=0;other_p<_item.ports_count;other_p++) {
-				//	we're connecting to this object 
-				if _item.ports[other_p,port_x] == target_x and _item.ports[other_p,port_y] == target_y  and _item.ports[other_p,port_object] == -1 {
-					sockets[p] = _item	
-					_item.sockets[other_p] = id
-					debug_log("Soft connecting "+object_get_name(object_index)+" to "+object_get_name(_item.object_index))
+				for(var pp=0;pp<ports_count;pp++) {
+					//	we're connecting to this object 
+					if (_item.ports[other_p,port_x] == target_x and _item.ports[other_p,port_y] == target_y)
+					and point_in_rectangle(ports[pp,port_x],ports[pp,port_y],_item.topleft_cell_x,_item.topleft_cell_y,_item.bottomright_cell_x,_item.bottomright_cell_y)
+					and _item.ports[other_p,port_object] == -1 {
+						sockets[p] = _item	
+						_item.sockets[other_p] = id
+						debug_log("Soft connecting "+object_get_name(object_index)+" to "+object_get_name(_item.object_index))
 
+					}
 				}
 			}
 					
