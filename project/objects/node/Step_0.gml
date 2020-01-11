@@ -123,7 +123,7 @@ switch(states)
 			//	I am being replaced, darken myself
 			if input.selection > -1 and input.selection.object_index == node and input.selection.replace_id == id {
 				used_alpha = .6
-			} else if used_alpha != used_alpha_max used_alpha = used_alpha_max
+			} else if used_alpha != used_alpha_max and !used used_alpha = used_alpha_max
 		
 			if selected {
 				

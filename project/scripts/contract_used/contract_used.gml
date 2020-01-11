@@ -92,7 +92,6 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 		
 		//	If this is decentralized data
 		if _kiosk.data_needed[i,3] {
-
 			
 		} else {	
 			//	the node did a job
