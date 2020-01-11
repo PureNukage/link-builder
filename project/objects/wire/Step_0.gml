@@ -332,8 +332,8 @@ switch(states)
 										}
 										
 										var _directions = port_get_direction(__wire,connecting_item)
-										__wire.ports[1,port_x] = __wire.center_cell_x+_directions[0]
-										__wire.ports[1,port_y] = __wire.center_cell_y+_directions[1]							
+										__wire.ports[1,port_x] = __wire.center_cell_x-_directions[0]
+										__wire.ports[1,port_y] = __wire.center_cell_y-_directions[1]							
 										
 										//	Figure out directions
 										var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
@@ -349,10 +349,10 @@ switch(states)
 										__wire.sprite = __wire.sprites[__wire.straight]
 							
 										//	Set ports xy's
-										__wire.ports[0,port_x] = __wire.center_cell_x + _0[0]
-										__wire.ports[0,port_y] = __wire.center_cell_y + _0[1]
-										__wire.ports[1,port_x] = __wire.center_cell_x + _1[0]
-										__wire.ports[1,port_y] = __wire.center_cell_y + _1[1]
+										__wire.ports[0,port_x] = __wire.center_cell_x - _0[0]
+										__wire.ports[0,port_y] = __wire.center_cell_y - _0[1]
+										__wire.ports[1,port_x] = __wire.center_cell_x - _1[0]
+										__wire.ports[1,port_y] = __wire.center_cell_y - _1[1]
 								//	}
 								}	
 							}
@@ -769,3 +769,5 @@ switch(states)
 		break
 	#endregion
 }
+
+//if sprite_index == s_wire_corner depth = -1 else depth = 0

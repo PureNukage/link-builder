@@ -14,25 +14,25 @@ var _up = 0
 
 var _rotation = -1
 
-//	Is a port on the right?
-if port0_direction[0] > 0 or port1_direction[0] > 0 {
-	_right = 1
-}
 //	Is a port on the left?
-if port0_direction[0] < 0 or port1_direction[0] < 0 {
+if port0_direction[0] > 0 or port1_direction[0] > 0 {
 	_left = 1	
 }
-//	Is a port under us?
-if port0_direction[1] > 0 or port1_direction[1] > 0 {
-	_down = 1	
+//	Is a port on the right?
+if port0_direction[0] < 0 or port1_direction[0] < 0 {
+	_right = 1
 }
 //	Is a port above us?
-if port0_direction[1] < 0 or port1_direction[1] < 0 {
+if port0_direction[1] > 0 or port1_direction[1] > 0 {
 	_up = 1	
+}
+//	Is a port under us?
+if port0_direction[1] < 0 or port1_direction[1] < 0 {
+	_down = 1	
 }
 
 if _up and _right {
-	_rotation = 0	
+	_rotation = 0
 }
 if _right and _down {
 	_rotation = 270

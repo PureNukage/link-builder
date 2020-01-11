@@ -88,10 +88,10 @@ switch(states)
 				draw_set_alpha(1)
 			}
 		
+			draw_sockets_wire()
+		
 			sprite_set_offset(sprite,sprite_get_width(sprite)/2,sprite_get_height(sprite)/2)
 			draw_sprite_ext(sprite,0,x,y,1,1,rotation,color,1)
-			
-			draw_sockets_wire()
 		
 		break
 	#endregion
