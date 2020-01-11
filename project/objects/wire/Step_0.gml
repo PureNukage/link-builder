@@ -264,6 +264,7 @@ switch(states)
 					#endregion
 					
 					#region Assign wires their ports
+					var wire_color = -1
 					for(var i=0;i<ds_list_size(path_objects);i++) {
 						
 						var __wire = path_objects[| i]
@@ -318,6 +319,12 @@ switch(states)
 								if port1 > -1 {
 									//for(c=0;c<ds_list_size(port1);c++) {
 										var connecting_item = port1[| 0]
+										
+										if connecting_item.object_index == data wire_color = c_white 
+										else {
+											if connecting_item.object_index == wire and connecting_item.color == c_white wire_color = c_white
+											else wire_color = c_sergey_blue
+										}
 										
 										__wire.ports[1,port_object] = connecting_item
 										//	set wire sockets and connecting_items sockets
@@ -399,6 +406,12 @@ switch(states)
 								if port2 > -1 {
 									//for(c=0;c<ds_list_size(port2);c++) {
 										var connecting_item = port2[| 0]
+										
+										if connecting_item.object_index == data wire_color = c_white 
+										else {
+											if connecting_item.object_index == wire and connecting_item.color == c_white wire_color = c_white
+											else if wire_color == -1 wire_color = c_sergey_blue
+										}
 										
 										__wire.ports[0,port_object] = connecting_item
 										//	set wire sockets and connecting_items sockets
@@ -521,11 +534,21 @@ switch(states)
 					
 					#endregion
 					
+					#region Set Wire Color
+					for(var i=0;i<ds_list_size(path_objects);i++) {
+						var _wire = path_objects[| i]
+						
+						_wire.color = wire_color
+						
+						
+					}
+					#endregion
 				}
 			
 			
 			}	
-			#endregion
+					
+					#endregion
 		
 			//	Left release to finalize placement of the wire
 			if input.mouse_left_release and time.stream > time_spawn + 15 {	
