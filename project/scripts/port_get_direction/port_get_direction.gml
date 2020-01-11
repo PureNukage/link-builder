@@ -15,11 +15,11 @@ with _target_id {
 			if w > -1 and w < grid_width and h > -1 and h < grid_height {
 				if point_in_rectangle(w,h,_id.topleft_cell_x,_id.topleft_cell_y,_id.bottomright_cell_x,_id.bottomright_cell_y)  and !found {
 					//	Right side
-					if w == bottomright_cell_x+1 {
+					if w == bottomright_cell_x+1 and w == _id.topleft_cell_x {
 						directionX = 1
 					}	
 					//	Bottom side
-					else if h == bottomright_cell_y+1 {
+					else if h == bottomright_cell_y+1 and h == _id.topleft_cell_y {
 						directionY = 1
 					}
 					//	Left side
@@ -27,7 +27,7 @@ with _target_id {
 						directionX = -1
 					}
 					//	Top side
-					else if h == topleft_cell_y-1 {
+					else if h == topleft_cell_y-1 and h == _id.bottomright_cell_y {
 						directionY = -1
 					}
 					found = 1

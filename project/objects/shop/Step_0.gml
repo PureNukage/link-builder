@@ -74,10 +74,10 @@
 								}
 							}
 						}
-						input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",item_node[n,3])
+						input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",item_node[n,node_object_index])
 						input.selection.selected = true
 						input.selection.item_index = n
-						input.selection.price = item_node[n,1]
+						input.selection.price = item_node[n,node_price]
 						if ds_list_find_index(input.selections,input.selection) == -1 {
 							ds_list_add(input.selections,input.selection)	
 						}		

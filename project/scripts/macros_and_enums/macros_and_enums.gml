@@ -81,6 +81,15 @@ enum contract_types {
 	utility
 }
 
+#macro node_name 0
+#macro node_object_index 3
+#macro node_price 1
+#macro node_placed 2
+#macro node_text 4
+#macro node_level 5
+#macro node_jobruns 6
+#macro node_uptime 7
+
 #macro item_name 0
 #macro item_object_index 3
 #macro item_price 1

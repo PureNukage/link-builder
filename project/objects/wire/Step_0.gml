@@ -444,10 +444,10 @@ switch(states)
 										__wire.sprite = __wire.sprites[__wire.straight]
 							
 										//	Set ports xy's
-										__wire.ports[0,port_x] = __wire.center_cell_x + _0[0]
-										__wire.ports[0,port_y] = __wire.center_cell_y + _0[1]
-										__wire.ports[1,port_x] = __wire.center_cell_x + _1[0]
-										__wire.ports[1,port_y] = __wire.center_cell_y + _1[1]
+										__wire.ports[0,port_x] = __wire.center_cell_x - _0[0]
+										__wire.ports[0,port_y] = __wire.center_cell_y - _0[1]
+										__wire.ports[1,port_x] = __wire.center_cell_x - _1[0]
+										__wire.ports[1,port_y] = __wire.center_cell_y - _1[1]
 									//}
 								}	
 						}
