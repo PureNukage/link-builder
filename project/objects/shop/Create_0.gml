@@ -7,11 +7,21 @@ button_mouseover = false
 
 menuX = buttonX
 menuY = buttonY + button_height + 16 // 16 is a buffer between the elements
-menu_width = 128
+menu_width = 370
 menu_height = 256
 menu_mouseover = false
 menu_open = false
 menu_pressed = false
+
+//menu_button_left_width = 80
+//menu_button_left_height = 100
+//menu_button_leftX = 61
+//menu_button_leftY = 171
+
+//menu_button_right_width = 80
+//menu_button_right_height = 100
+//menu_button_rightX = 340
+//menu_button_rightY = 171
 
 nodes_open = false
 nodes_mouseover = false
