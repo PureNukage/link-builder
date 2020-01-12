@@ -54,11 +54,11 @@ enum goal_type {
 }
 
 #macro contract_name 0
-#macro contract_online 1
+#macro contract_online 5
 #macro contract_kiosk 2
 #macro contract_traffic 3
 #macro contract_reward 4
-#macro contract_price 5
+#macro contract_price 1
 #macro contract_traffic_live 6
 #macro contract_channel 7
 #macro contract_width 8

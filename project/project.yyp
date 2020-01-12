@@ -551,6 +551,14 @@
             }
         },
         {
+            "Key": "6a8a2012-ad5e-49ef-bf06-a5c018a8b3a2",
+            "Value": {
+                "id": "62c78ede-0934-4da2-bb5b-96c711590059",
+                "resourcePath": "sprites\\s_resource_link_shop\\s_resource_link_shop.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "6e4b06ea-de1d-451e-bb76-a135b71a8647",
             "Value": {
                 "id": "4096c0ea-b1a1-4502-b45a-44ea57df0664",
@@ -579,6 +587,14 @@
             "Value": {
                 "id": "17c130c7-6399-4636-8e3c-ed2cbab8ca88",
                 "resourcePath": "sprites\\s_goal\\s_goal.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "7d2a77ca-4002-4616-9979-e46dd0f932ff",
+            "Value": {
+                "id": "a3447c41-fb13-4897-8b88-b4262fd167df",
+                "resourcePath": "sprites\\s_resource_value\\s_resource_value.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -716,6 +732,14 @@
                 "id": "d26a3096-574f-451d-859d-4c81433d5d9e",
                 "resourcePath": "options\\tvos\\options_tvos.yy",
                 "resourceType": "GMtvOSOptions"
+            }
+        },
+        {
+            "Key": "95cbd150-9a78-4721-aaa6-b4710cd5b3e4",
+            "Value": {
+                "id": "958d43f4-6ee0-425a-af47-f2b6f9c5a104",
+                "resourcePath": "sprites\\s_resource_link\\s_resource_link.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -996,6 +1020,14 @@
                 "id": "0c39c13c-fc63-4b8e-ad79-f804a59ece0b",
                 "resourcePath": "views\\c1b41122-02c8-469f-bf12-b109127902d1.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "c260b72d-eabd-4e33-8c25-204f741fce63",
+            "Value": {
+                "id": "a5a4ea09-6e91-496d-ad32-09264f8ec6d0",
+                "resourcePath": "sprites\\s_resource_eth\\s_resource_eth.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -1284,6 +1316,14 @@
                 "id": "67a17b01-47ad-4e08-81b9-0b037908a00a",
                 "resourcePath": "scripts\\create_contract\\create_contract.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "fa812e42-975b-49d6-8ae9-83e0056a399a",
+            "Value": {
+                "id": "b97ac5a5-4d33-4438-b9d5-e15e3fa5bd58",
+                "resourcePath": "sprites\\s_resource_value_shop\\s_resource_value_shop.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
