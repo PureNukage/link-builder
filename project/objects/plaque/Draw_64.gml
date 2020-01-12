@@ -95,7 +95,7 @@ if input.selection > -1 {
 			
 				if node_info {
 					draw_set_color(c_black)
-					draw_text(_xx,_yy,"Level: "+string(_item.level))
+					draw_text(_xx,_yy,"Level: "+string(shop.item_node[_item.item_index, node_level]+1))
 					_yy += 15
 					draw_text(_xx,_yy,"Jobruns: "+string(_item.jobruns))
 					_yy += 15
