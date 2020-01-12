@@ -9,8 +9,10 @@ switch(camera_mode)
 		y += (keyboard_check(ord("S")) - keyboard_check(ord("W")))*panspeed
 	
 		#region Zooming Up and Down
-
-			zoom_level = clamp((zoom_level + (mouse_wheel_down()-mouse_wheel_up())*0.1),0.25,1.0)
+		
+			if !shop.menu_mouseover {
+				zoom_level = clamp((zoom_level + (mouse_wheel_down()-mouse_wheel_up())*0.1),0.25,1.0)
+			}
 
 			camera_set_view_pos(Camera,
 			        clamp( camera_get_view_x(Camera), 0, room_width - camera_get_view_width(Camera) ),
