@@ -13,6 +13,13 @@ switch(states)
 	
 			// Placement
 			if input.mouse_left_press and placeable {
+				
+				//	If this node was already placed 
+				if replace and instance_exists(replace_id) {
+					
+					with replace_id item_delete()
+					
+				}
 			
 				ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)
 			
@@ -62,12 +69,6 @@ switch(states)
 				x = gridController.grid_positions_x[center_cell_x]+(cell_width/2)
 				y = gridController.grid_positions_y[center_cell_y]+(cell_height/2)
 				
-				//	If this node was already placed 
-				if replace and instance_exists(replace_id) {
-					
-					with replace_id item_delete()
-					
-				}
 			
 			}
 		
@@ -123,7 +124,7 @@ switch(states)
 			if selected {
 				
 				//	I want to move this item somewhere else
-				if input.keypress_r {
+				if input.keypress_r and input.selection == id {
 					
 					var _xx = gridController.grid_positions_x[input.grid_x]+(cell_width/2)
 					var _yy = gridController.grid_positions_y[input.grid_y]+(cell_height/2)

@@ -88,13 +88,78 @@
 		item_mouseover = -1
 		for(var i=0;i<array_height_2d(array);i++) {
 			if i > item_index-1 and i < item_index + item_clamp {
-				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+list_width,_yy+list_height) {
-					item_mouseover = i
-					if input.mouse_left_press {
-					
-					}
+				var good = true
+				if menu_index_string == "Contracts" and array[i, contract_purchased] {
+					good = false
 				}
-				_yy += 60
+				if good {
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+list_width,_yy+list_height) {
+						item_mouseover = i
+						if input.mouse_left_press {
+						
+							switch(menu_index_string)
+							{
+								case "Nodes":
+								
+									input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",node)
+									input.selection.selected = true
+									input.selection.item_index = i
+									input.selection.price = item_node[i, node_price]
+									input.selection.jobruns = item_node[i, node_jobruns]
+									input.selection.jobruns_previous = item_node[i, node_jobruns]
+									if ds_list_find_index(input.selections,input.selection) == -1 {
+										ds_list_add(input.selections,input.selection)	
+									}
+								
+								
+								break
+								case "Data":
+								
+									input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",data)
+									input.selection.selected = true
+									input.selection.item_index = i
+									input.selection.portrait = item_data[i, item_portrait]
+									input.selection.price = item_data[i, item_price]
+									input.selection.data_generated = item_data[i, item_data_generated]
+									if ds_list_find_index(input.selections,input.selection) == -1 {
+										ds_list_add(input.selections,input.selection)	
+									}
+								
+								break
+								case "Contracts":
+								
+									//	Delete the item we're currently placing if there is one 
+									if instance_exists(c_item) {
+										with c_item {
+											if states == states.placement {
+												instance_destroy()	
+											}
+										}
+									}
+									input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",kiosk)
+									input.selection.selected = true
+									input.selection.item_index = 3
+									input.selection.price = contracts.contract[i, contract_price]
+									input.selection.smartcontract = i
+									input.selection.data_needed = contracts.contract[i, contract_data]	
+									input.selection.portrait = contracts.contract[i, contract_portrait]
+									var level = contracts.contract[i, contract_level]
+									var ports_level = contracts.contract[i, contract_level_ports]
+									input.selection.ports_count = ports_level[level]
+									if ds_list_find_index(input.selections,input.selection) == -1 {
+										ds_list_add(input.selections,input.selection)	
+									}	
+								
+								break
+								
+							}
+						
+						
+						
+						}
+					}
+					_yy += 60
+				}
 			}
 		}
 		

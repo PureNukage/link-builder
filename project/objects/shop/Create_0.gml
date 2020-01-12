@@ -141,6 +141,12 @@ item_placing = 0
 	icon_width = 40
 		
 	amount_of_items = array_height_2d(array)
+	if menu_index_string == "Contracts" {
+		amount_of_items = 0
+		for(var i=0;i<array_height_2d(array);i++) {
+			if !array[i, contract_purchased] amount_of_items++
+		}
+	}
 	item_index = 0
 	item_clamp = 4
 	item_mouseover = -1
