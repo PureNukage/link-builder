@@ -12,18 +12,13 @@ switch(states)
 				if ports_list > 0 {
 					debug_log("There are "+string(ds_list_size(ports_list))+" ports here!")
 				}
+				item_check_sockets()
 			}
 		
 			//	Rotation
 			if input.rotate_right or input.rotate_left {
 				wire_update_ports_xy(rotation)
 				placeable = is_placeable()
-				debug_log("size_width: "+string(size_width)+", size_height: "+string(size_height))
-				for(var w=0;w<size_width;w++) {
-					for(var h=0;h<size_height;h++) {
-						debug_log("x: "+string(w)+", y: "+string(h)+" contains: "+string(my_cells_items[# w, h]))
-					}
-				}
 				item_check_sockets()
 			}
 			
@@ -322,7 +317,7 @@ switch(states)
 										
 										if connecting_item.object_index == data wire_color = c_white 
 										else {
-											if connecting_item.object_index == wire and connecting_item.color == c_white wire_color = c_white
+											if connecting_item.object_index == wire wire_color = connecting_item.color
 											else wire_color = c_sergey_blue
 										}
 										
@@ -409,7 +404,7 @@ switch(states)
 										
 										if connecting_item.object_index == data wire_color = c_white 
 										else {
-											if connecting_item.object_index == wire and connecting_item.color == c_white wire_color = c_white
+											if connecting_item.object_index == wire wire_color = connecting_item.color
 											else if wire_color == -1 wire_color = c_sergey_blue
 										}
 										
