@@ -407,6 +407,14 @@
             }
         },
         {
+            "Key": "579eba77-fc30-4969-b757-4dd30d757ef8",
+            "Value": {
+                "id": "00a71f3b-0db4-498c-b7e9-2330082d99fe",
+                "resourcePath": "scripts\\create_node\\create_node.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "57f5d91a-c4ed-4435-8991-1a2ce3cfd5db",
             "Value": {
                 "id": "b015c34b-de2d-4244-92de-8a06869c5c20",
@@ -1279,6 +1287,7 @@
         "9b29cd33-a9c8-4ad2-9a6a-dfd953e17202",
         "9b65c91d-3b32-414e-a99f-45b6c2f0d9a8",
         "f8ce7e5c-4df8-48cf-be29-770d24c2b80d",
+        "579eba77-fc30-4969-b757-4dd30d757ef8",
         "f9c6403e-3ea9-4950-837b-688c8c9585ce",
         "8c0fa4d8-8cf5-412e-86f1-808e597c5512",
         "004a7cc1-f07a-4d4d-877e-faef3e3724cf",

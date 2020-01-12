@@ -99,18 +99,22 @@ if menu_open == true {
 	if nodes_open {
 		for(var n=0;n<array_height_2d(item_node);n++) {
 			//	Draw node background
-			var _string = item_node[n,0]
-			var _price = item_node[n,item_price]
-			var _item_string = item_node[n,item_text]
+			var _string = item_node[n, node_name]
+			var _price = item_node[n, node_price]
+			var _item_string = item_node[n, node_text]
 			var default_width = menu_width-item_buffer-item_buffer
 			var name_width = string_width(_string)
 			if name_width > default_width default_width = name_width+item_buffer
 			else if name_width < default_width default_width = name_width
 			if string_width(_string) > menu_width-item_buffer-item_buffer {
-				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x,_y,_x+default_width,_y+32) {
-					draw_set_color(c_ltgray)	
+				if item_node[n,node_placed] {
+					draw_set_color(c_gray4)	
 				} else {
-					draw_set_color(c_gray)		
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x,_y,_x+default_width,_y+32) {
+						draw_set_color(c_ltgray)	
+					} else {
+						draw_set_color(c_gray)		
+					}
 				}
 				draw_roundrect(_x,_y,_x+default_width,_y+32,false)
 				draw_set_color(c_black)
@@ -121,13 +125,18 @@ if menu_open == true {
 				var buffer = 16
 				default_width += buffer
 				
-				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x+difference-(default_width/2),_y,_x+default_width+difference-(default_width/2),_y+32) {
-					var array = gui_popup(menuX,_y,menuX+menu_width,_y+32,0,string(_price))
-					gui_popup(array[0],array[1],array[2],array[3],1,_item_string)
-					
-					draw_set_color(c_ltgray)	
+				if item_node[n,node_placed] {
+					draw_set_color(c_gray4)	
 				} else {
-					draw_set_color(c_gray)		
+				
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x+difference-(default_width/2),_y,_x+default_width+difference-(default_width/2),_y+32) {
+						var array = gui_popup(menuX,_y,menuX+menu_width,_y+32,0,string(_price))
+						gui_popup(array[0],array[1],array[2],array[3],1,_item_string)
+					
+						draw_set_color(c_ltgray)	
+					} else {
+						draw_set_color(c_gray)		
+					}
 				}
 				
 				draw_roundrect(_x+difference-(default_width/2),_y,_x+default_width+difference-(default_width/2),_y+32,false)
@@ -144,7 +153,7 @@ if menu_open == true {
 			var _yy = _y + 16
 			draw_text(_xx,_yy,_string)
 			
-			if (string_width(_string) - menu_width) > 0 menu_width = string_width(_string) + 16
+			if (default_width - menu_width) > 0 menu_width = default_width + 16
 			
 			_y += 32+item_buffer	
 		}
@@ -179,7 +188,7 @@ if menu_open == true {
 				#region Mouseover check
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x,_y,_x+default_width,_y+32) {
 						//	Draw data background
-						if item_data[d,2] {
+						if item_data[d,item_placed] {
 							draw_set_color(c_gray4)	
 						} else {
 							var array = gui_popup(menuX,_y,menuX+menu_width,_y+32,0,string(_price))
@@ -188,7 +197,7 @@ if menu_open == true {
 						}	
 					} else {
 						//	Draw data background
-						if item_data[d,2] {
+						if item_data[d,item_placed] {
 							draw_set_color(c_gray4)	
 						} else {
 							var array = gui_popup(menuX,_y,menuX+menu_width,_y+32,0,string(_price))

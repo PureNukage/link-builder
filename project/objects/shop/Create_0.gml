@@ -37,15 +37,14 @@ var _string = "This endpoint gives access to Github"
 create_data("Github",1000,data,_string,s_portrait_github,data_types.github)
 
 //	CREATE NODES
-item_node[0,node_name] = "Node"
-item_node[0,node_price] = 100
-item_node[0,node_placed] = 0
-item_node[0,node_object_index] = node
-item_node[0,node_text] = "A ChainLink node.\n\nSome say its the 4th industrial revolution\nOthers say its made of cheese"
-item_node[0,node_jobruns] = 0
-item_node[0,node_level] = 0
-item_node[0,node_level_ports] = create_level_ports(2,4,6,8)
-item_node[0,node_uptime] = 0
+item_node = 0
+
+var _string = "A ChainLink node.\n\nSome say its the 4th industrial revolution\nOthers say its made of cheese"
+create_node("YorkyRoad",_string,100)
+
+create_node("gonsinator",_string,100)
+
+create_node("DataBlaster",_string,100)
 
 item = []
 item[0,item_name] = "Node"		//	Item name in a string

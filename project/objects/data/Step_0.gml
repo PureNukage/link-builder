@@ -18,17 +18,12 @@ switch(states)
 				
 				item_check_sockets()
 			}
-		
-			//if abs(rotation) == 360 {
-			//	rotation = 0
-			//	data_update_ports_xy(rotation)
-			//}
 	
 			if input.mouse_left_press and placeable {
 				
 				if !replace {
-					player.points -= shop.item_data[item_index,1]
-					shop.item_data[item_index,2] = true
+					player.points -= shop.item_data[item_index, item_price]
+					shop.item_data[item_index, item_placed] = true
 				}
 			
 				states = states.placed

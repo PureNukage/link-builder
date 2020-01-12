@@ -347,6 +347,10 @@ if object_index == kiosk and smartcontract > -1 {
 	}
 }
 
+if object_index == node {
+	shop.item_node[item_index, node_placed] = false	
+}
+
 if object_index == wire {
 	var _kiosk = -1
 	var _smartcontract = -1

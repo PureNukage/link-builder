@@ -16,7 +16,9 @@ switch(states)
 			
 				ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)
 			
-				if !replace player.points -= shop.item_node[item_index,1]
+				if !replace player.points -= shop.item_node[item_index, node_price]
+				
+				shop.item_node[item_index, node_placed] = true
 			
 				states = states.placed
 			

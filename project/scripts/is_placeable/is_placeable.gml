@@ -31,6 +31,10 @@ if item_index > -1 and object_index == data and !replace and shop.item_data[item
 	_placeable++	
 }
 
+if item_index > -1 and object_index == node and !replace and shop.item_node[item_index, node_placed] {
+	_placeable++	
+}
+
 if !_placeable {
 	return true	
 } else {
