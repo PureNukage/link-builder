@@ -131,6 +131,7 @@ switch(states)
 					
 					//	pass important data into this new item
 					new_item.jobruns = jobruns
+					new_item.jobruns_previous = jobruns
 					
 					//	deselect this item
 					selected = false
