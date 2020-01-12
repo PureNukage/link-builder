@@ -145,6 +145,7 @@ switch(states)
 					}
 					input.selection = new_item
 					
+					new_item.item_index = item_index
 					new_item.replace = true
 					new_item.replace_id = id
 					
