@@ -23,6 +23,7 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 			} else {
 				
 				var got_at_least_one = 0
+				var how_many_sources = 0
 				for(var dd=0;dd<ds_list_size(_kiosk.data_held);dd++) {
 					var _data_held = _kiosk.data_held[| dd]
 					var _data_held_string = shop.item_data[_data_held, item_name]
@@ -30,6 +31,7 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 					if string_pos(needed_price_string,_data_held_string) != 0 {
 						with data {
 							if data_generated == _data_held {
+								how_many_sources++
 								//	Check for data misfire
 								var chance = irandom_range(1,100)
 								//	This data misfired!
@@ -59,7 +61,7 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 					}
 				}
 				
-				if got_at_least_one > 0 {
+				if ((got_at_least_one / how_many_sources)*100)-1 > 65 {
 						
 				} else {
 					contract_misfire++	

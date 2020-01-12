@@ -267,6 +267,7 @@ switch(states)
 								with System system_dataflow_check()
 						
 								var got_at_least_one = 0
+								var how_many_sources = 0
 								var price_i_need = is_price(shop.item_data[data_needed[0,0],item_name], true)
 								for(var i=0;i<ds_list_size(data_held);i++) {
 									var _data_held = data_held[| i]
@@ -275,6 +276,7 @@ switch(states)
 									if is_price(data_held_string) and string_pos(price_i_need,data_held_string) {
 										with data {
 											if data_generated == _data_held {
+												how_many_sources++
 												//	Check for data misfire
 												var chance = irandom_range(1,100)
 												//	This data misfired!
@@ -305,8 +307,8 @@ switch(states)
 										}
 									}
 								}
-						
-								if got_at_least_one > 0 {
+								
+								if ((got_at_least_one / how_many_sources)*100)-1 > 65 {
 									decentralized = true	
 								} else {
 									if decentralized {
