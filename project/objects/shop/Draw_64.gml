@@ -1,3 +1,5 @@
+live_call()
+
 #region Shop Button
 	//	Drawing the Shop button background
 	draw_set_color(c_dkgray)
