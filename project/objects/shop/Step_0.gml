@@ -101,6 +101,21 @@
 							{
 								case "Nodes":
 								
+									//	Delete the item we're currently placing if there is one 
+									if ds_list_size(input.selections) > 0 {
+										for(var i=0;i<ds_list_size(input.selections);i++) {
+											input.selections[| i].selected = false	
+										}
+									}
+									ds_list_clear(input.selections)
+									if instance_exists(c_item) {
+										with c_item {
+											if states == states.placement {
+												instance_destroy()	
+											}
+										}
+									}
+								
 									input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",node)
 									input.selection.selected = true
 									input.selection.item_index = i
@@ -114,6 +129,21 @@
 								
 								break
 								case "Data":
+								
+									//	Delete the item we're currently placing if there is one 
+									if ds_list_size(input.selections) > 0 {
+										for(var i=0;i<ds_list_size(input.selections);i++) {
+											input.selections[| i].selected = false	
+										}
+									}
+									ds_list_clear(input.selections)
+									if instance_exists(c_item) {
+										with c_item {
+											if states == states.placement {
+												instance_destroy()	
+											}
+										}
+									}
 								
 									input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",data)
 									input.selection.selected = true
@@ -129,6 +159,12 @@
 								case "Contracts":
 								
 									//	Delete the item we're currently placing if there is one 
+									if ds_list_size(input.selections) > 0 {
+										for(var i=0;i<ds_list_size(input.selections);i++) {
+											input.selections[| i].selected = false	
+										}
+									}
+									ds_list_clear(input.selections)
 									if instance_exists(c_item) {
 										with c_item {
 											if states == states.placement {

@@ -64,6 +64,8 @@ item_placing = 0
 	button_height = 64
 	button_text = "Shop"
 	button_mouseover = false
+	
+	button_wire_mouseover = false
 
 	#region Shop Menu Header Stuff
 

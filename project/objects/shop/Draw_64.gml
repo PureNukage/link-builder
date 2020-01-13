@@ -197,25 +197,63 @@ if menu_open == true {
 }	
 #endregion
 
-#region Points
+#region Wire button
 
-var _xx = buttonX+button_width+32
+var _xx = buttonX+button_width+64
 var _yy = buttonY
 
 //	Draw background
-draw_set_color(c_dkgray)
-draw_roundrect(_xx,_yy,_xx+128,_yy+64,false)
+if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+64,_yy+32) {
+	button_wire_mouseover = true
+	draw_set_color(c_gray)	
+	if input.mouse_left_press {
+		input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",wire)
+		input.selection.selected = true
+		if ds_list_find_index(input.selections,input.selection) == -1 {
+			ds_list_add(input.selections,input.selection)	
+		}
+	}
+} else {
+	draw_set_color(c_dkgray)
+	button_wire_mouseover = false	
+}
+draw_roundrect(_xx,_yy,_xx+64,_yy+32,false)
 
 //	Draw outline
-draw_set_color(c_black)
-draw_roundrect(_xx,_yy,_xx+128,_yy+64,true)
-draw_roundrect(_xx+1,_yy+1,_xx+128-1,_yy+64-1,true)
 
-//	Draw points
+//	Draw text
 draw_set_halign(fa_center)
 draw_set_valign(fa_middle)
 draw_set_color(c_white)
-draw_text(_xx+128/2,_yy+32,string(player.points))
+draw_set_font(-1)
+draw_text(_xx+32,_yy+16,"Wire")
+
+
+#endregion
+
+#region Resources
+
+#endregion
+
+#region Points
+
+//var _xx = buttonX+button_width+32
+//var _yy = buttonY
+
+////	Draw background
+//draw_set_color(c_dkgray)
+//draw_roundrect(_xx,_yy,_xx+128,_yy+64,false)
+
+////	Draw outline
+//draw_set_color(c_black)
+//draw_roundrect(_xx,_yy,_xx+128,_yy+64,true)
+//draw_roundrect(_xx+1,_yy+1,_xx+128-1,_yy+64-1,true)
+
+////	Draw points
+//draw_set_halign(fa_center)
+//draw_set_valign(fa_middle)
+//draw_set_color(c_white)
+//draw_text(_xx+128/2,_yy+32,string(player.points))
 
 #endregion
 
@@ -223,6 +261,7 @@ draw_text(_xx+128/2,_yy+32,string(player.points))
 var _xx = buttonX+button_width+32+128+16
 var _yy = buttonY
 
+draw_set_font(-1)
 draw_set_halign(fa_left)
 draw_set_valign(fa_top)
 
