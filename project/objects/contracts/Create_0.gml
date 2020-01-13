@@ -10,8 +10,8 @@ contracts_purchased = ds_list_create()
 contracts_online = ds_list_create()
 
 menu_mouseover = false
-menu_cap = 5
-menu_index = 0
+
+item_index = 0
 
 contract = 0
 

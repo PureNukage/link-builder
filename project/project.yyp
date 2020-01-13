@@ -551,6 +551,14 @@
             }
         },
         {
+            "Key": "68678cd3-84e5-4115-a39e-950b9402fec7",
+            "Value": {
+                "id": "1cfe488d-d71b-46e3-ae1c-1ae4b7a27d07",
+                "resourcePath": "scripts\\draw_contract_info\\draw_contract_info.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "6a8a2012-ad5e-49ef-bf06-a5c018a8b3a2",
             "Value": {
                 "id": "62c78ede-0934-4da2-bb5b-96c711590059",
@@ -1428,6 +1436,7 @@
         "f9c6403e-3ea9-4950-837b-688c8c9585ce",
         "8c0fa4d8-8cf5-412e-86f1-808e597c5512",
         "004a7cc1-f07a-4d4d-877e-faef3e3724cf",
+        "68678cd3-84e5-4115-a39e-950b9402fec7",
         "58336315-3a31-4dae-a4fc-7e11c435e739",
         "f01366f3-87ec-48e6-82fa-54a3d746b195",
         "c0d7d985-af00-4738-b5b1-a59ffc89e8ff",
