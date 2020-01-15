@@ -138,8 +138,8 @@ switch(menu)
 }
 
 //	Version and credential
-var version = GM_version
-var credit = "@PureNukage"
+var version = app.version
+var credit = app.me
 var total_string = "v"+string(version) + " by " + credit
 var _string_width = string_width(total_string)
 var _string_height = string_height(total_string)
