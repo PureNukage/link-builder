@@ -29,6 +29,8 @@ switch(states)
 				contracts.contract[smartcontract, contract_purchased] = true
 				contracts.contract[smartcontract, contract_kiosk] = id
 				
+				with contracts contract_refresh()
+				
 				states = states.placed
 				
 				ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)

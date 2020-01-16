@@ -223,6 +223,14 @@
             }
         },
         {
+            "Key": "2be330d8-bed5-4b5e-9d66-ecf9a49281b4",
+            "Value": {
+                "id": "87af5556-7154-43f7-96c2-be84e396ca8e",
+                "resourcePath": "scripts\\contract_refresh\\contract_refresh.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "2de67e40-d9d3-46d5-9e4c-5f6a5c00da23",
             "Value": {
                 "id": "38a5e7ae-8b62-464f-9df6-55d55d7172ab",
@@ -1445,6 +1453,7 @@
         "8c0fa4d8-8cf5-412e-86f1-808e597c5512",
         "004a7cc1-f07a-4d4d-877e-faef3e3724cf",
         "68678cd3-84e5-4115-a39e-950b9402fec7",
+        "2be330d8-bed5-4b5e-9d66-ecf9a49281b4",
         "58336315-3a31-4dae-a4fc-7e11c435e739",
         "f01366f3-87ec-48e6-82fa-54a3d746b195",
         "c0d7d985-af00-4738-b5b1-a59ffc89e8ff",

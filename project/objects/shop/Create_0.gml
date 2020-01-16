@@ -29,9 +29,9 @@
 	create_node("DataBlaster",_string,100)
 
 	item = []
-	item[0,item_name] = "Node"		//	Item name in a string
-	item[0,item_price] = 100			//	Item price
-	item[0,item_placed] = 0			//	Has this item been placed?
+	item[0,item_name] = "Node"				//	Item name in a string
+	item[0,item_price] = 100				//	Item price
+	item[0,item_placed] = 0					//	Has this item been placed?
 	item[0,item_object_index] = node		//	Object index of the item
 
 	item[1,item_name] = "Data"

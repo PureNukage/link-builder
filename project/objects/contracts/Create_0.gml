@@ -10,6 +10,8 @@ contracts_purchased = ds_list_create()
 contracts_online = ds_list_create()
 
 menu_mouseover = false
+data_open = false
+stats_open = false
 
 item_index = 0
 
@@ -35,4 +37,36 @@ var _string = ""
 var levels = create_level_ports(1,2,3,4)
 create_contract("Price Reference Feed",_string,0,50,s_portrait_blank,2,0,0,contract_types.utility,levels,_data)
 
+//	GUI stuff
+menu_width = 340
+menu_height = 256
+side_spacer = 16
+menuX = display_get_gui_width() - menu_width - side_spacer
+menuY = 120
+
+amount_of_contracts = 0
+	
+contract_index = 0
+contract_clamp = 5
+contract_open = -1
+	
+name_width = 100
+icon_width = 64
+name_spacer = 32
+icon_spacer = 16
+	
+line_width = name_width + icon_width + (name_spacer*2) + (icon_spacer*2)
+line_height = 64
+
+bar_width = 55
+bar_height =  amount_of_contracts*line_height-20
+barX = menuX + 6
+barY = menuY + 6
+	
+handle_width = 42
+handle_height = round(bar_height/(amount_of_contracts-1))
+handleX = menuX + 12
+handleY = barY + (contract_index*round(bar_height/(amount_of_contracts-1)))
+handle_mouseover = false
+	
 

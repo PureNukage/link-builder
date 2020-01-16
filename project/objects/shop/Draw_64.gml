@@ -118,7 +118,7 @@ if menu_open == true {
 				
 				//	Draw the contract info
 				if menu_index_string == "Contracts" and item_mouseover == i {
-					draw_contract_info(menuX+menu_width+8,_yy,256,256,item_mouseover)
+					draw_contract_info(menuX+menu_width+8,menuY+menu_header_height-header_buffer,item_mouseover,true)
 				}
 				
 				var good = true
@@ -225,17 +225,22 @@ draw_roundrect(_xx,_yy,_xx+64,_yy+32,false)
 //	Draw outline
 
 //	Draw text
-draw_set_halign(fa_center)
-draw_set_valign(fa_middle)
-draw_set_color(c_white)
-draw_set_font(-1)
-draw_text(_xx+32,_yy+16,"Wire")
+//draw_set_halign(fa_center)
+//draw_set_valign(fa_middle)
+//draw_set_color(c_white)
+//draw_set_font(-1)
+//draw_text(_xx+32,_yy+16,"Wire")
+sprite_set_offset(s_wire_socket,sprite_get_width(s_wire_socket)/2,sprite_get_height(s_wire_socket)/2)
+draw_sprite_ext(s_wire_socket,0,_xx+sprite_get_width(s_wire_socket)/2,_yy+sprite_get_height(s_wire_socket)/2,1,1,0,c_sergey_blue,1)
 
 
 #endregion
 
 #region Resources
 
+
+draw_set_halign(fa_center)
+draw_set_valign(fa_middle)
 
 var _xx = display_get_gui_width()/2
 var _yy = buttonY
