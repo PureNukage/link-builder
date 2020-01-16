@@ -25,42 +25,41 @@ live_call()
 if menu_open == true {
 	
 	#region Shop Header
+	//	Draw the Shop menu header outline
+	draw_set_color(c_black)
+	draw_roundrect(menuX-2,menuY-2,menuX+menu_header_width+2,menuY+menu_header_height+2,false)
+	
 	//	Draw the Shop menu header background
 	draw_set_color(c_gray5)
 	draw_roundrect(menuX,menuY,menuX+menu_header_width,menuY+menu_header_height,false)
 	
-	//	Draw the Shop menu header outline
-	draw_set_color(c_black)
-	draw_roundrect(menuX,menuY,menuX+menu_header_width,menuY+menu_header_height,true)
-	draw_roundrect(menuX+1,menuY+1,menuX+menu_header_width-1,menuY+menu_header_height-1,true)
-	
 	#endregion
 	
 	#region Shop Menu Background
-		//	Draw the Shop menu background
 	
+		//	Draw the Shop menu outline
+		draw_set_color(c_black)
+		draw_roundrect(menuX-2,menuY+menu_header_height-header_buffer-2,menuX+menu_width+2,menuY+menu_header_height+menu_height-header_buffer+2,false)
+		
+		//	Draw the Shop menu background
 		draw_set_color(c_gray5)
 		draw_roundrect(menuX,menuY+menu_header_height-header_buffer,menuX+menu_width,menuY+menu_header_height+menu_height-header_buffer,false)
-	
-		draw_set_color(c_black)
-		draw_roundrect(menuX,menuY+menu_header_height-header_buffer,menuX+menu_width,menuY+menu_header_height+menu_height-header_buffer,true)
-		draw_roundrect(menuX+1,menuY+1+menu_header_height-header_buffer,menuX+menu_width-1,menuY+menu_height-1+menu_header_height-header_buffer,true)
 	
 		draw_set_color(c_gray5)
 		draw_roundrect(menuX+2,menuY+2,menuX+menu_header_width-1,menuY+menu_header_height+10,false)
 	#endregion
 	
 	#region	Draw the Shop menu left and right buttons
+		
+		//	Left button outline
+		draw_set_color(c_black)
+		draw_roundrect(menu_button_leftX-2,menu_button_leftY-2,menu_button_leftX+menu_button_left_width+2,menu_button_leftY+menu_button_left_height+2,false)
+
 		//	Left button background
 		if menu_button_left_mouseover {
 			draw_set_color(c_ltgray)
 		} else draw_set_color(c_gray)
 		draw_roundrect(menu_button_leftX,menu_button_leftY,menu_button_leftX+menu_button_left_width,menu_button_leftY+menu_button_left_height,false)
-	
-		//	Left button outline
-		draw_set_color(c_black)
-		draw_roundrect(menu_button_leftX,menu_button_leftY,menu_button_leftX+menu_button_left_width,menu_button_leftY+menu_button_left_height,true)
-		draw_roundrect(menu_button_leftX-1,menu_button_leftY+1,menu_button_leftX+menu_button_left_width-1,menu_button_leftY+menu_button_left_height-1,true)
 	
 		//	Left button Arrow
 		draw_set_halign(fa_center)
@@ -69,16 +68,15 @@ if menu_open == true {
 		draw_text_outlined(menu_button_leftX+menu_button_left_width/2,menu_button_leftY+menu_button_left_height/2,"<",c_white,c_black)
 		draw_set_font(fnt_shop)
 	
+		//	Right button outline
+		draw_set_color(c_black)
+		draw_roundrect(menu_button_rightX-2,menu_button_rightY-2,menu_button_rightX+menu_button_right_width+2,menu_button_rightY+menu_button_right_height+2,false)
+		
 		//	Right button background
 		if menu_button_right_mouseover {
 			draw_set_color(c_ltgray)	
 		} else draw_set_color(c_gray)
 		draw_roundrect(menu_button_rightX,menu_button_rightY,menu_button_rightX+menu_button_right_width,menu_button_rightY+menu_button_right_height,false)
-	
-		//	Right button outline
-		draw_set_color(c_black)
-		draw_roundrect(menu_button_rightX,menu_button_rightY,menu_button_rightX+menu_button_right_width,menu_button_rightY+menu_button_right_height,true)
-		draw_roundrect(menu_button_rightX+1,menu_button_rightY+1,menu_button_rightX+menu_button_right_width-1,menu_button_rightY+menu_button_right_height-1,true)
 	
 		//	Right button Arrow
 		draw_set_halign(fa_center)
@@ -86,18 +84,18 @@ if menu_open == true {
 		draw_set_font(fnt_shop_menu_name)
 		draw_text_outlined(menu_button_rightX+menu_button_right_width/2,menu_button_rightY+menu_button_right_height/2,">",c_white,c_black)
 		draw_set_font(fnt_shop)
+		
 	#endregion
 	
 	
 	#region	Draw the current Shop menu name stuff
+		//	Menu name outline
+		draw_set_color(c_black)
+		draw_roundrect(menu_button_nameX-2,menu_button_nameY-2,menu_button_nameX+menu_button_name_width+2,menu_button_nameY+menu_button_name_height+2,false)
+	
 		//	Menu name background
 		draw_set_color(c_gray)
 		draw_roundrect(menu_button_nameX,menu_button_nameY,menu_button_nameX+menu_button_name_width,menu_button_nameY+menu_button_name_height,false)
-	
-		//	Menu name outline
-		draw_set_color(c_black)
-		draw_roundrect(menu_button_nameX,menu_button_nameY,menu_button_nameX+menu_button_name_width,menu_button_nameY+menu_button_name_height,true)
-		draw_roundrect(menu_button_nameX+1,menu_button_nameY+1,menu_button_nameX+menu_button_name_width-1,menu_button_nameY+menu_button_name_height-1,true)
 	
 		//	Menu name string
 		draw_set_color(c_white)
@@ -135,6 +133,10 @@ if menu_open == true {
 					//var name_width = string_width(_item_name)
 					//var name_height = string_height(data_name)
 					var price_width = string_width(string(_item_price))
+					
+					//	Draw line outline
+					draw_set_color(c_black)
+					draw_roundrect(_xx-2,_yy-2,_xx+list_width+2,_yy+42,false)
 				
 					if item_mouseover == i {
 						draw_set_color(c_ltgray)	
@@ -148,12 +150,9 @@ if menu_open == true {
 					}
 					#endregion
 				
-				
-					draw_roundrect(_xx,_yy,_xx+list_width,_yy+list_height,false)
 					
-					draw_set_color(c_black)
-					draw_roundrect(_xx,_yy,_xx+list_width,_yy+40,true)
-					draw_roundrect(_xx+1,_yy+1,_xx+list_width-1,_yy+40-1,true)
+					//	Draw line background
+					draw_roundrect(_xx,_yy,_xx+list_width,_yy+list_height,false)
 					
 					//	Draw name
 					draw_set_color(c_white)
@@ -197,7 +196,6 @@ if menu_open == true {
 		}
 	
 	#endregion
-
 	
 }	
 #endregion
