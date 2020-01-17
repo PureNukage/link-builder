@@ -1,5 +1,3 @@
-live_call()
-
 //	Drawing the Contract button outline
 draw_set_color(c_black)
 draw_roundrect(buttonX-2,buttonY-2,buttonX+button_width+2,buttonY+button_height+2,false)

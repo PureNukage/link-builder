@@ -10,7 +10,7 @@ switch(camera_mode)
 	
 		#region Zooming Up and Down
 		
-			if !shop.menu_mouseover {
+			if !shop.menu_mouseover and !contracts.menu_mouseover {
 				zoom_level = clamp((zoom_level + (mouse_wheel_down()-mouse_wheel_up())*0.1),0.25,1.0)
 			}
 
