@@ -1,0 +1,7 @@
+ds_grid_destroy(grid_items)
+ds_grid_destroy(grid_objects)
+ds_grid_destroy(grid_fog)
+mp_grid_destroy(mp_grid)
+ds_list_destroy(grid_port_x)
+ds_list_destroy(grid_port_y)
+ds_list_destroy(grid_port_objects)

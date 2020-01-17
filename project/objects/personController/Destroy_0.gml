@@ -1,0 +1,2 @@
+ds_list_destroy(people)
+ds_list_destroy(spawners)

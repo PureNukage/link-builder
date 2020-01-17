@@ -6,8 +6,17 @@ if input.control_press {
 
 if input.space {
 	
-	if instance_exists(test) instance_destroy(test)
-	else instance_create_layer(mouse_x,mouse_y,"Instances",test)
+	app.world_width = 3840
+	app.world_height = 3840
+	//room_restart()
+	with all {
+		if object_index == app or object_index == camera {
+			
+		} else {
+			instance_destroy()	
+		}
+	}
+	instance_create_layer(0,0,"Instances",game)
 	
 }
 
