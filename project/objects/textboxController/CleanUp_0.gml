@@ -1,0 +1,2 @@
+ds_list_destroy(previous_messages)
+ds_list_destroy(message_queue)
