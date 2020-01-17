@@ -35,7 +35,7 @@ for(var p=0;p<ports_count;p++) {
 		if directionX > 0 or directionX < 0 _x -= directionX*0
 		if directionY > 0 or directionY < 0 _y -= directionY*0
 			
-		var _sprite
+		var _sprite = -1
 		if sockets[p] == -1 {
 			_sprite = s_wire_socket
 			//debug_log(string(id)+" sockets["+string(p)+"] is: "+string(sockets[p]))

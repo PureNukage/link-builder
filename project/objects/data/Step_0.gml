@@ -21,10 +21,18 @@ switch(states)
 	
 			if input.mouse_left_press and placeable {
 				
+				//	If this node was already placed 
+				if replace and instance_exists(replace_id) {
+					
+					with replace_id item_delete()
+					
+				}
+				
 				if !replace {
 					player.points -= shop.item_data[item_index, item_price]
-					shop.item_data[item_index, item_placed] = true
 				}
+				
+				shop.item_data[item_index, item_placed] = true
 			
 				states = states.placed
 				
@@ -69,13 +77,6 @@ switch(states)
 				
 				x = gridController.grid_positions_x[center_cell_x]+(cell_width/2)
 				y = gridController.grid_positions_y[center_cell_y]+(cell_height/2)
-				
-				//	If this node was already placed 
-				if replace and instance_exists(replace_id) {
-					
-					with replace_id item_delete()
-					
-				}
 			
 			}	
 	
@@ -120,7 +121,7 @@ switch(states)
 			if selected {
 				
 				//	I want to move this item somewhere else
-				if input.keypress_r {
+				if input.keypress_r and input.selection == id {
 					
 					var _xx = gridController.grid_positions_x[input.grid_x]+(cell_width/2)
 					var _yy = gridController.grid_positions_y[input.grid_y]+(cell_height/2)
