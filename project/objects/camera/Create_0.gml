@@ -1,5 +1,5 @@
-base_width = 1920
-base_height = 1080
+base_width = app.resolution_width
+base_height = app.resolution_height
 width = base_width
 height = base_height
 

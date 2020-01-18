@@ -148,6 +148,8 @@ switch(states)
 					new_item.replace = true
 					new_item.replace_id = id
 					
+					with new_item placeable = is_placeable()
+					
 				}	
 			}
 		

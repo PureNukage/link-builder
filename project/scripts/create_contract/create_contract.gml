@@ -9,6 +9,7 @@
 ///@param [contract_type]
 ///@param [level_ports]
 ///@param [data]
+///@param [available]
 
 var _name = argument[0]
 var _text = argument[1]

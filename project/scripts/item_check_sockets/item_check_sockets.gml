@@ -25,6 +25,11 @@ for(var p=0;p<ports_count;p++) {
 			var array = port_get_direction(id,_item)
 			var target_x = _x + array[0]
 			var target_y = _y + array[1]
+			
+			//	Don't soft-connect if its myself
+			if replace and replace_id == _item {
+				continue	
+			}
 					
 			for(var other_p=0;other_p<_item.ports_count;other_p++) {
 				for(var pp=0;pp<ports_count;pp++) {

@@ -4,29 +4,29 @@
 	item_data = 0
 
 	var _string = "This endpoint to Binance gives\nthe current USD price of Ether"
-	create_data("Binance ETH/USD",500,data,_string,s_portrait_binance,data_types.binance_ETHUSD)
+	create_data("Binance ETH/USD",500,data,_string,s_portrait_binance,data_types.binance_ETHUSD,true)
 
 	var _string = ""
-	create_data("CryptoCompare ETH/USD",500,data,_string,s_portrait_blank,data_types.cryptocompare_ETHUSD)
+	create_data("CryptoCompare ETH/USD",500,data,_string,s_portrait_blank,data_types.cryptocompare_ETHUSD,true)
 
 	var _string = ""
-	create_data("BraveNewCoin ETH/USD",500,data,_string,s_portrait_blank,data_types.bravenewcoin_ETHUSD)
+	create_data("BraveNewCoin ETH/USD",500,data,_string,s_portrait_blank,data_types.bravenewcoin_ETHUSD,true)
 
 	var _string = "This endpoint gives access to PayPal"
-	create_data("PayPal",750,data,_string,s_portrait_paypal,data_types.paypal)
+	create_data("PayPal",750,data,_string,s_portrait_paypal,data_types.paypal,true)
 
 	var _string = "This endpoint gives access to Github"
-	create_data("Github",1000,data,_string,s_portrait_github,data_types.github)
+	create_data("Github",1000,data,_string,s_portrait_github,data_types.github,true)
 
 	//	CREATE NODES
 	item_node = 0
 
 	var _string = "A ChainLink node.\n\nSome say its the 4th industrial revolution\nOthers say its made of cheese"
-	create_node("YorkyRoad",_string,100)
+	create_node("YorkyRoad",_string,100,0,0,true)
 
-	create_node("gonsinator",_string,100)
+	create_node("gonsinator",_string,100,0,0,true)
 
-	create_node("DataBlaster",_string,100)
+	create_node("DataBlaster",_string,100,0,0,true)
 
 	item = []
 	item[0,item_name] = "Node"				//	Item name in a string

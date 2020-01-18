@@ -1,3 +1,5 @@
+if instance_exists(mainmenu) exit
+
 switch(selection_mode)
 {
 	#region Free Selection 

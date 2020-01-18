@@ -1,3 +1,5 @@
+if instance_exists(mainmenu) exit
+
 switch(camera_mode) 
 {
 	case camera_mode.fixed:

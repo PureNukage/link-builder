@@ -208,7 +208,7 @@ var _xx = buttonX+button_width+64
 var _yy = buttonY
 
 //	Draw background
-if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+64,_yy+32) {
+if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+64,_yy+32) and !instance_exists(mainmenu) {
 	button_wire_mouseover = true
 	draw_set_color(c_gray)	
 	if input.mouse_left_press {

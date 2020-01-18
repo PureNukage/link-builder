@@ -1,3 +1,20 @@
+//	Darken the screen if we're in_game
+if in_game {
+	draw_set_alpha(.5)
+	draw_set_color(c_black)
+	draw_rectangle(0,0,display_get_gui_width(),display_get_gui_height(),false)	
+	
+	var width = 512
+	var height = 600
+	var xx = display_get_gui_width()/2 - width/2
+	var yy = display_get_gui_height()/6
+	
+	draw_set_color(c_gray)
+	draw_rectangle(xx,yy,xx+width,yy+height,false)
+	draw_set_alpha(1)
+	
+}
+
 switch(menu)
 {
 	#region Main Menu
@@ -70,7 +87,7 @@ switch(menu)
 		case menu.options:
 			
 			var _x = display_get_gui_width()/2
-			var _y = display_get_gui_height()/2 - ((array_height_2d(options) + array_height_2d(resolutions)) * 32) - (display_get_gui_height()/4)
+			var _y = display_get_gui_height()/2 - ((array_height_2d(options) + array_height_2d(resolutions)) * 32) - (display_get_gui_height()/5)
 			
 			for(var o=0;o<array_height_2d(options);o++) {
 				var option_name = options[o, menu_name]
@@ -156,7 +173,9 @@ switch(menu)
 			_y += 128
 			
 			//	Back button
-			var _string = "Back to Main Menu"
+			if in_game {
+				var _string = "Back to Game"	
+			} else var _string = "Back to Main Menu"
 			var _string_width = string_width(_string)
 			var _string_height = string_height(_string)
 			
@@ -164,7 +183,9 @@ switch(menu)
 				draw_set_color(c_white)	
 				
 				if mouse_check_button_pressed(mb_left) {
-					menu = menu.main
+					if in_game {
+						instance_destroy()
+					} else menu = menu.main
 				}	
 			} else {
 				draw_set_color(c_black)
@@ -195,7 +216,8 @@ switch(menu)
 				if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-buffer,_y-buffer,xx+menu_string_width+buffer,_y+menu_string_height+buffer) {
 					draw_set_alpha(.3)	
 					
-					if mouse_check_button_pressed(mb_left) {					
+					if mouse_check_button_pressed(mb_left) {	
+						camera.camera_mode = camera_mode.free
 						app.tutorial = i
 						app.world_width = 1920
 						app.world_height = 1088			

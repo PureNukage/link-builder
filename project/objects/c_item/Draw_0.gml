@@ -33,7 +33,7 @@ switch(states)
 			for(var h=topleft_cell_y;h<topleft_cell_y+size_height;h++) {
 				
 				if (w > -1 and w < grid_width) and (h > -1 and h < grid_height) {
-					if gridController.grid_items[# w, h] < 0 {
+					if gridController.grid_items[# w, h] < 0 or (replace and replace_id == gridController.grid_objects[# w, h]) {
 						draw_set_color(c_green)	
 					} else {
 						draw_set_color(c_red)	

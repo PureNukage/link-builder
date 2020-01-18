@@ -12,6 +12,8 @@ rotate_left = keyboard_check_pressed(ord("Q"))
 
 keypress_r = keyboard_check_pressed(ord("R"))
 
+escape = keyboard_check_pressed(vk_escape)
+
 #region wip finger scrolling
 	//finger_left_x = device_mouse_x(0)
 	//finger_left_y = device_mouse_y(0)

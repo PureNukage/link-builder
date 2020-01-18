@@ -4,11 +4,21 @@ for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 	for(var h=topleft_cell_y;h<topleft_cell_y+size_height;h++) {
 		
 		if (w > -1 and w < grid_width) and (h > -1 and h < grid_height) {
-								
+			
+			//	This cell is empty
 			if gridController.grid_items[# w, h] == -1 or gridController.grid_items[# w, h] < 0 {
 				
-			} else {
-				_placeable++		
+			} 
+			//	This cell is NOT empty
+			else {
+				//	This cell contains myself
+				if replace and replace_id == gridController.grid_objects[# w, h] {
+						
+				}
+				//	This cell contains another object
+				else {
+					_placeable++		
+				}
 			}
 		} else {
 			_placeable++	
@@ -25,7 +35,7 @@ if item_index > -1 and !replace {
 	}
 }
 
-if shop.menu_mouseover or shop.menu_mouseover or plaque.window_two_mouseover or contracts.menu_mouseover { 
+if shop.menu_mouseover or plaque.window_two_mouseover or contracts.menu_mouseover { 
 	_placeable++
 }
 

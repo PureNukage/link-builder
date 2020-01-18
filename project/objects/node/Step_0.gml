@@ -151,6 +151,8 @@ switch(states)
 					new_item.replace = true
 					new_item.replace_id = id
 					
+					with new_item placeable = is_placeable()
+					
 				}	
 				
 				if keyboard_check_pressed(vk_pageup) and shop.item_node[item_index, node_level] < 3 {

@@ -12,6 +12,19 @@ rotate_left = keyboard_check_pressed(ord("Q"))
 
 keypress_r = keyboard_check_pressed(ord("R"))
 
+escape = keyboard_check_pressed(vk_escape)
+
+if escape {
+	
+	if instance_exists(mainmenu) instance_destroy(mainmenu)
+	else {
+		var _menu = instance_create_layer(0,0,"Instances",mainmenu)
+		_menu.menu = menu.options
+		_menu.in_game = true
+	}
+	
+}
+
 #region wip finger camera scrolling
 	//finger_left_x_previous = finger_left_x
 	//finger_left_y_previous = finger_left_y
