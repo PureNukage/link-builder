@@ -199,6 +199,14 @@
             }
         },
         {
+            "Key": "2873f924-68e3-4207-903e-ad6d822d9db6",
+            "Value": {
+                "id": "e596f466-c789-4590-b745-8ea5a7069cb6",
+                "resourcePath": "sprites\\s_rory\\s_rory.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "288d9d8f-de03-473c-82e3-9f633e865bcc",
             "Value": {
                 "id": "c88ea601-95be-4ba0-9984-5098ea2f44a4",
@@ -404,6 +412,14 @@
                 "id": "06bf12b1-f846-4fcf-a0a2-258f342bd931",
                 "resourcePath": "sprites\\s_lock\\s_lock.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "536ab3f1-2067-492a-9d05-fe3b701d3822",
+            "Value": {
+                "id": "1035e17b-ad9b-4545-a684-e25107e0c124",
+                "resourcePath": "objects\\textboxController\\textboxController.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -815,6 +831,14 @@
             }
         },
         {
+            "Key": "a6bba72d-c636-43a8-8f42-dc53f65c73b5",
+            "Value": {
+                "id": "93db05d0-34da-44f4-883e-bf9d661fd1b4",
+                "resourcePath": "scripts\\create_textbox\\create_textbox.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "a89fd004-8f62-419e-9dcf-50068245b980",
             "Value": {
                 "id": "700984ac-75b5-40df-a30a-f7ada591505a",
@@ -1067,6 +1091,14 @@
             "Value": {
                 "id": "f45ed1c0-f82a-48d2-9cdb-cd67e1468664",
                 "resourcePath": "views\\cf17f5ab-2bc7-453e-aa23-1143522a1031.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "d037ec0c-289c-4f81-a4a3-56b3ca0400a5",
+            "Value": {
+                "id": "c3cd19dc-7ddd-4fbe-ab9a-23e3e2aafc17",
+                "resourcePath": "views\\d037ec0c-289c-4f81-a4a3-56b3ca0400a5.yy",
                 "resourceType": "GMFolder"
             }
         },
@@ -1397,7 +1429,7 @@
         "025443a1-08a0-4556-bbe6-7c051ee8ae00",
         "71487b34-832c-48cc-941a-b96236156c6c",
         "7e2e028c-474b-4782-b782-0657b6e9291e",
-        "0fedb7dd-b4af-47b6-91c8-42caa22628df"
+        "a6bba72d-c636-43a8-8f42-dc53f65c73b5"
     ],
     "tutorial": ""
 }
