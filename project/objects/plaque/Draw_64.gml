@@ -24,6 +24,7 @@ if input.selection > -1 {
 	draw_set_color(c_black)
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_middle)
+	draw_set_font(fnt_shop)
 	draw_text(window_nameX+(window_name_width/2),window_nameY+(window_name_height/2),input.selection.name)
 	
 	//	Draw delete button

@@ -70,7 +70,7 @@ switch(menu)
 		case menu.options:
 			
 			var _x = display_get_gui_width()/2
-			var _y = display_get_gui_height()/2 - ((array_height_2d(options) + array_height_2d(resolutions)) * 32)
+			var _y = display_get_gui_height()/2 - ((array_height_2d(options) + array_height_2d(resolutions)) * 32) - (display_get_gui_height()/4)
 			
 			for(var o=0;o<array_height_2d(options);o++) {
 				var option_name = options[o, menu_name]
@@ -120,6 +120,41 @@ switch(menu)
 				
 			}
 			
+			_y += 128
+			
+			//	Volume Options
+			//	Draw bar rectangle
+			var bar_width = 256
+			var bar_height = 32
+			var barX = _x - bar_width/2
+			var barY = _y
+			draw_set_color(c_dkgray)
+			draw_roundrect(barX,barY,barX+bar_width,barY+bar_height,false)
+			
+			//	Draw volume amount
+			draw_set_color(c_black)
+			draw_text(_x,_y-64,"Volume: "+string(soundSystem.current_volume*100)+"%")
+			
+			//	Draw volume handle
+			var segment = round(bar_width / 10)
+			var handleX = barX + ((soundSystem.current_volume*10) * segment)
+			var handleY = barY
+			var handle_width = segment
+			var handle_height = 48
+			draw_set_color(c_gray)
+			draw_circle(handleX+(handle_width/2),handleY+(handle_width/2),handle_width,false)
+			
+			var xx = barX
+			var yy = barY
+			for(var i=0;i<=10;i++) {
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy,xx+bar_width,yy+bar_height) and mouse_check_button(mb_left) {
+					soundSystem.new_volume = i/10
+				}
+				xx += segment
+			}
+			
+			_y += 128
+			
 			//	Back button
 			var _string = "Back to Main Menu"
 			var _string_width = string_width(_string)
@@ -154,7 +189,7 @@ switch(menu)
 				var menu_string_height = string_height(menu_string)
 				var buffer = 32
 			
-				var xx = _x - (menu_string_width/2)+buffer
+				var xx = _x - (menu_string_width/2) + (buffer/2)
 			
 				draw_set_color(c_black)
 				if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-buffer,_y-buffer,xx+menu_string_width+buffer,_y+menu_string_height+buffer) {

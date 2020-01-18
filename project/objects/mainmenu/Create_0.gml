@@ -31,6 +31,9 @@ options[0, menu_submenu] = resolutions
 tutorials[tutorial.my_first_contract, tutorial_name] = "Your first externally-aware contract"
 tutorials[tutorial.my_first_contract, tutorial_selected] = false
 
+tutorials[tutorial.decentralizing, tutorial_name] = "Needing to decentralize"
+tutorials[tutorial.decentralizing, tutorial_selected] = false
+
 tutorials[tutorial.price_feed, tutorial_name] = "How to build a Decentralized Price Feed"
 tutorials[tutorial.price_feed, tutorial_selected] = false
 
