@@ -13,7 +13,8 @@ enum states {
 enum mode {
 	off,
 	grid,
-	object
+	object,
+	on,
 	
 }
 

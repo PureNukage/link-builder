@@ -48,7 +48,7 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 								shop.item_data[item_index, item_calls]++
 				
 								//	Check for data corruption increase
-								data_corruption_check()
+								if app.data_corruption == mode.on data_corruption_check()
 								
 								_jobruns++
 							}
@@ -89,7 +89,7 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 					shop.item_data[item_index, item_calls]++
 				
 					//	Check for data corruption increase
-					data_corruption_check()
+					if app.data_corruption == mode.on data_corruption_check()
 				}
 			}
 		}

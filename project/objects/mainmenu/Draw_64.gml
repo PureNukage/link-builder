@@ -53,6 +53,7 @@ switch(menu)
 								camera.camera_mode = camera_mode.free
 								app.world_width = 3840
 								app.world_height = 3840
+								app.data_corruption = mode.on
 								room_goto_next()
 							break
 							case 1:	//	Tutorials

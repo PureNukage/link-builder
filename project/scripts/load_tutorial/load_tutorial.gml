@@ -5,6 +5,8 @@ var _tutorial = argument[0]
 //	Disable everything in the shop
 disable_shopitems()
 
+app.data_corruption = mode.off
+
 switch(_tutorial)
 {
 	case tutorial.my_first_contract:

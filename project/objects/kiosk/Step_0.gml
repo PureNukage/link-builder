@@ -309,7 +309,7 @@ switch(states)
 												}	
 				
 												//	Check for data corruption increase
-												data_corruption_check()	
+												if app.data_corruption == mode.on data_corruption_check()	
 											}
 										}
 									}
