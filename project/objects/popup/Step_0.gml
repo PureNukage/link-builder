@@ -1,5 +1,5 @@
 y -= movespeed
 
-if time.seconds >= spawntime+duration {
+if time.stream >= spawntime+(60*duration) {
 	instance_destroy()	
 }

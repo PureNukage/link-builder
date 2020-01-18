@@ -28,7 +28,14 @@ for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 }
 
 if item_index > -1 and !replace {
-	if player.points < price {
+	var resource_amount
+	switch(object_index) 
+	{
+		case node:	resource_amount = player.link break
+		case data: resource_amount = player.link break
+		case kiosk: resource_amount = player.value break
+	}
+	if resource_amount < price {
 		if app.tutorial == -1 {
 			_placeable++
 		}

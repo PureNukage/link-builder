@@ -23,7 +23,7 @@ switch(states)
 			
 				ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)
 			
-				if !replace player.points -= shop.item_node[item_index, node_price]
+				if !replace resource_changed("LINK",price,gui_mouse_x,gui_mouse_y,true)
 				
 				shop.item_node[item_index, node_placed] = true
 			

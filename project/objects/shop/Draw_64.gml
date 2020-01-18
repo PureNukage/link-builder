@@ -148,6 +148,13 @@ if menu_open == true {
 							}
 						}
 						#endregion
+						
+						//	Check if we have enough currency
+						if menu_index_string == "Contracts" and player.value < _item_price {
+							draw_set_color(c_dkgray)
+						} else if (menu_index_string == "Data" or menu_index_string ="Nodes") and player.link < _item_price {
+							draw_set_color(c_dkgray)
+						}	
 				
 					
 						//	Draw line background

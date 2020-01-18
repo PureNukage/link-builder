@@ -22,7 +22,7 @@ switch(states)
 				}
 				
 				if !replace {
-					player.points -= price
+					//player.points -= price
 					with shop shop_refresh()	
 				}
 				
