@@ -165,7 +165,9 @@ if instance_exists(mainmenu) exit
 										//	Delete the item we're currently placing if there is one 
 										if ds_list_size(input.selections) > 0 {
 											for(var i=0;i<ds_list_size(input.selections);i++) {
-												input.selections[| i].selected = false	
+												if instance_exists(input.selections[| i]) {
+													input.selections[| i].selected = false	
+												}
 											}
 										}
 										ds_list_clear(input.selections)

@@ -35,7 +35,7 @@ create_contract("BountiBot",_string,300,2000,s_portrait_bountibot,2,10,5,contrac
 var _data = create_data_needed(data_types.binance_ETHUSD)
 var _string = ""
 var levels = create_level_ports(1,2,3,4)
-create_contract("Price Reference Feed",_string,0,50,s_portrait_blank,2,0,0,contract_types.utility,levels,_data)
+create_contract("Price Feed",_string,0,50,s_portrait_blank,2,0,0,contract_types.utility,levels,_data,true)
 
 //	GUI stuff
 menu_width = 340

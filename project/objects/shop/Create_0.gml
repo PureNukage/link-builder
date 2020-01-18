@@ -132,7 +132,7 @@ item_placing = 0
 	
 	list_spacer = 8
 	name_spacer = 16
-	name_width = 100	//	default
+	name_width = 120	//	default
 	icon_width = sprite_get_width(icon)
 	price_spacer = 8
 	price_width = 28
