@@ -19,7 +19,9 @@ for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 
 if item_index > -1 and !replace {
 	if player.points < price {
-		_placeable++
+		if app.tutorial == -1 {
+			_placeable++
+		}
 	}
 }
 

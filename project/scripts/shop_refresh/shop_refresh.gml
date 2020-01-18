@@ -45,15 +45,17 @@ amount_of_items = clamp(amount_of_items,0,item_clamp)
 #region	Lets get our list width (todo: height)
 	draw_set_font(fnt_shop)
 	for(var i=0;i<array_height_2d(array);i++) {
-		var _name = array[i, item_name]
-		var _price = array[i, item_price]
-		var _name_width = string_width(_name)
-		//var _string_height = string_height(_name)
-		var _price_width = string_width(string(_price))
+		//if array[item_available] {
+			var _name = array[i, item_name]
+			var _price = array[i, item_price]
+			var _name_width = string_width(_name)
+			//var _string_height = string_height(_name)
+			var _price_width = string_width(string(_price))
 		
-		var this_list_width = (list_spacer*2)+(name_spacer*2)+_name_width+icon_width+(price_spacer*2)+_price_width
+			var this_list_width = (list_spacer*2)+(name_spacer*2)+_name_width+icon_width+(price_spacer*2)+_price_width
 		
-		if this_list_width > list_width list_width = this_list_width
+			if this_list_width > list_width list_width = this_list_width
+		//}
 		
 	}
 	draw_set_font(-1)

@@ -20,6 +20,7 @@ enum mode {
 enum menu {
 	main,
 	options,
+	tutorials
 }
 
 enum selection_mode {
@@ -53,6 +54,16 @@ enum goal_type {
 	
 }
 
+enum tutorial {
+	my_first_contract,
+	price_feed,
+	
+	
+}
+
+#macro tutorial_name 0
+#macro tutorial_selected 1
+
 #macro contract_name 0
 #macro contract_online 5
 #macro contract_kiosk 2
@@ -75,6 +86,7 @@ enum goal_type {
 #macro contract_type 19
 #macro contract_level 20
 #macro contract_level_ports 21
+#macro contract_available 22
 
 enum contract_types {
 	people,
@@ -90,6 +102,7 @@ enum contract_types {
 #macro node_level_ports 8
 #macro node_jobruns 6
 #macro node_uptime 7
+#macro node_available 22
 
 #macro item_name 0
 #macro item_object_index 3
@@ -100,6 +113,7 @@ enum contract_types {
 #macro item_portrait 6
 #macro item_calls 7
 #macro item_corruption 8
+#macro item_available 22
 
 #macro menu_name 0
 #macro menu_selected 1

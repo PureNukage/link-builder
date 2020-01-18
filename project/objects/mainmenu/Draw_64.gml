@@ -34,9 +34,14 @@ switch(menu)
 						{
 							case 0:	//	Play
 								camera.camera_mode = camera_mode.free
+								app.world_width = 3840
+								app.world_height = 3840
 								room_goto_next()
 							break
-							case 1:	//	Options
+							case 1:	//	Tutorials
+								menu = menu.tutorials
+							break
+							case 2:	//	Options
 								menu = menu.options
 							break
 						}
@@ -132,6 +137,72 @@ switch(menu)
 			draw_set_halign(fa_center)
 			draw_set_valign(fa_middle)
 			draw_text(_x,_y+_string_height/2,_string)
+			
+		break
+	#endregion
+	
+	#region Tutorials
+		case menu.tutorials:
+	
+			var _x = display_get_gui_width()/2
+			var _y = display_get_gui_height()/2 - (array_height_2d(tutorials) * 32)
+		
+			for(var i=0;i<array_height_2d(tutorials);i++) {
+			
+				var menu_string = tutorials[i, tutorial_name]
+				var menu_string_width = string_width(menu_string)
+				var menu_string_height = string_height(menu_string)
+				var buffer = 32
+			
+				var xx = _x - (menu_string_width/2)+buffer
+			
+				draw_set_color(c_black)
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-buffer,_y-buffer,xx+menu_string_width+buffer,_y+menu_string_height+buffer) {
+					draw_set_alpha(.3)	
+					
+					if mouse_check_button_pressed(mb_left) {					
+						app.tutorial = i
+						app.world_width = 1920
+						app.world_height = 1088			
+						room_goto_next()
+					}
+					
+				} else {
+					draw_set_alpha(.5)
+				}
+			
+				draw_roundrect(xx-buffer,_y-buffer,xx+menu_string_width+buffer,_y+menu_string_height+buffer,false)
+				
+				//	Draw name
+				draw_set_halign(fa_center)
+				draw_set_valign(fa_middle)
+				draw_set_color(c_white)
+				draw_set_alpha(1)
+				draw_text(xx+menu_string_width/2,_y+menu_string_height/2,menu_string)
+				
+				_y += 128
+			}
+			draw_set_alpha(1)
+			
+			//	Back button
+			var _string = "Back to Main Menu"
+			var _string_width = string_width(_string)
+			var _string_height = string_height(_string)
+			
+			var xx = _x - _string_width/2 + buffer/2
+			
+			if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-_string_width/2,_y,xx+_string_width/2+_string_width,_y+_string_height) {
+				draw_set_color(c_white)	
+				
+				if mouse_check_button_pressed(mb_left) {
+					menu = menu.main
+				}	
+			} else {
+				draw_set_color(c_black)
+			}
+			draw_set_halign(fa_center)
+			draw_set_valign(fa_middle)
+			draw_text(xx+_string_width/2,_y+_string_height/2,_string)
 			
 		break
 	#endregion

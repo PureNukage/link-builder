@@ -5,8 +5,11 @@ mainMenu = []
 mainMenu[0, menu_name] = "Play"
 mainMenu[0, menu_selected] = false
 
-mainMenu[1, menu_name] = "Options"
+mainMenu[1, menu_name] = "Tutorials"
 mainMenu[1, menu_selected] = false
+
+mainMenu[2, menu_name] = "Options"
+mainMenu[2, menu_selected] = false
 
 options[0, menu_name] = "Resolution"
 
@@ -23,5 +26,12 @@ resolutions[1, menu_data0] = 1280
 resolutions[1, menu_data1] = 720
 
 options[0, menu_submenu] = resolutions
+
+//	Tutorials
+tutorials[tutorial.my_first_contract, tutorial_name] = "Your first externally-aware contract"
+tutorials[tutorial.my_first_contract, tutorial_selected] = false
+
+tutorials[tutorial.price_feed, tutorial_name] = "How to build a Decentralized Price Feed"
+tutorials[tutorial.price_feed, tutorial_selected] = false
 
 menu = menu.main

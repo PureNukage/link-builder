@@ -21,6 +21,7 @@ if argument_count >= 8 var _line_size = argument[7]
 if argument_count >= 9 var _contract_type = argument[8]
 if argument_count >= 10 var _port_levels = argument[9]
 if argument_count >= 11 var _data = argument[10]
+if argument_count >= 12 var _available = argument[11]
 
 var contract_index = array_height_2d(contract)
 
@@ -56,6 +57,7 @@ else {
 	var new_data = create_data_needed(data_types.binance_ETHUSD)
 	contract[contract_index, contract_data] = new_data
 }
+if argument_count >= 12 contract[contract_index, contract_available] = _available else contract[contract_index, contract_available] = false
 
 contract[contract_index, contract_online] = false
 contract[contract_index, contract_kiosk] = -1

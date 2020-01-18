@@ -13,3 +13,8 @@ instance_create_layer(0,0,"Instances",debug)
 instance_create_layer(0,0,"Instances",personController)
 instance_create_layer(0,0,"Instances",player)
 instance_create_layer(0,0,"Instances",textboxController)
+
+if app.tutorial > -1 {
+	var _tutorial = instance_create_layer(0,0,"Instances",tutorialHelper)
+	_tutorial.tutorial = app.tutorial
+}

@@ -123,7 +123,9 @@ draw_set_halign(fa_right)
 
 //	Draw needed data
 if data_open {
-	var needed_contract_data = contracts.contract[contract_index, contract_data]
+	if contracts.contract[contract_index, contract_kiosk] > -1 var needed_contract_data = contracts.contract[contract_index, contract_kiosk].data_needed
+	else var needed_contract_data = contracts.contract[contract_index, contract_data]
+	//var needed_contract_data = contracts.contract[contract_index, contract_kiosk].data_needed
 	for(var d=0;d<array_height_2d(needed_contract_data);d++) {
 		var data_enum = needed_contract_data[d,0]
 		var getting_it = needed_contract_data[d,1]

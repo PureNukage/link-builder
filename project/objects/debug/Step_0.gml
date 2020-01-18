@@ -6,18 +6,6 @@ if input.control_press {
 
 if input.space {
 	
-	app.world_width = 3840
-	app.world_height = 3840
-	//room_restart()
-	with all {
-		if object_index == app or object_index == camera {
-			
-		} else {
-			instance_destroy()	
-		}
-	}
-	instance_create_layer(0,0,"Instances",game)
-	
 }
 
 switch(mode)

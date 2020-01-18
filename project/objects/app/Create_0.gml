@@ -3,3 +3,5 @@ me = "@PureNukage"
 
 world_width = 1920
 world_height  = 1088
+
+tutorial = -1

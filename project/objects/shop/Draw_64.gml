@@ -113,58 +113,62 @@ if menu_open == true {
 		
 		for(var i=0;i<array_height_2d(array);i++) {
 			if i > item_index-1 and i < item_index + item_clamp {
+				if array[i, item_available] {
 				
-				//	Draw the contract info
-				if menu_index_string == "Contracts" and item_mouseover == i {
-					draw_contract_info(menuX+menu_width+8,menuY+menu_header_height-header_buffer,item_mouseover,true)
-				}
-				
-				var good = true
-				//	Only show unpurchased contracts
-				if menu_index_string == "Contracts" and array[i, contract_purchased] {
-					good = false
-				}
-				if good {
-					var _item_name = array[i, item_name]
-					var _item_price = array[i, item_price]
-					
-					//var name_width = string_width(_item_name)
-					//var name_height = string_height(data_name)
-					var price_width = string_width(string(_item_price))
-					
-					//	Draw line outline
-					draw_set_color(c_black)
-					draw_roundrect(_xx-2,_yy-2,_xx+list_width+2,_yy+42,false)
-				
-					if item_mouseover == i {
-						draw_set_color(c_ltgray)	
-					} else draw_set_color(c_gray)
-				
-					#region Check if its placed
-					if array == item_data or array == item_node {
-						if array[i, item_placed] {
-							draw_set_color(c_dkgray)		
-						}
+					//	Draw the contract info
+					if menu_index_string == "Contracts" and item_mouseover == i {
+						draw_contract_info(menuX+menu_width+8,menuY+menu_header_height-header_buffer,item_mouseover,true)
 					}
-					#endregion
+				
+					var good = true
+					//	Only show unpurchased contracts
+					if menu_index_string == "Contracts" and array[i, contract_purchased] {
+						good = false
+					}
+					if good {
+						var _item_name = array[i, item_name]
+						var _item_price = array[i, item_price]
+					
+						//var name_width = string_width(_item_name)
+						//var name_height = string_height(data_name)
+						var price_width = string_width(string(_item_price))
+					
+						//	Draw line outline
+						draw_set_color(c_black)
+						draw_roundrect(_xx-2,_yy-2,_xx+list_width+2,_yy+42,false)
+				
+						if item_mouseover == i {
+							draw_set_color(c_ltgray)	
+						} else draw_set_color(c_gray)
+				
+						#region Check if its placed
+						if array == item_data or array == item_node {
+							if array[i, item_placed] {
+								draw_set_color(c_dkgray)		
+							}
+						}
+						#endregion
 				
 					
-					//	Draw line background
-					draw_roundrect(_xx,_yy,_xx+list_width,_yy+list_height,false)
+						//	Draw line background
+						draw_roundrect(_xx,_yy,_xx+list_width,_yy+list_height,false)
 					
-					//	Draw name
-					draw_set_color(c_white)
-					draw_set_halign(fa_left)
-					draw_text(_xx+name_spacer,_yy+40/2,_item_name)
+						//	Draw name
+						draw_set_color(c_white)
+						draw_set_halign(fa_left)
+						draw_text(_xx+name_spacer,_yy+40/2,_item_name)
 						
-					//	Draw icon
-					sprite_set_offset(icon,sprite_get_width(icon)/2,sprite_get_height(icon)/2)
-					draw_sprite_ext(icon,0,_xx+list_width-(price_width)-32,_yy+42/2,1,1,0,c_white,1)
+						if app.tutorial == -1 {
+							//	Draw icon
+							sprite_set_offset(icon,sprite_get_width(icon)/2,sprite_get_height(icon)/2)
+							draw_sprite_ext(icon,0,_xx+list_width-(price_width)-32,_yy+42/2,1,1,0,c_white,1)
 					
-					//	Draw price
-					draw_set_halign(fa_right)
-					draw_text(_xx+menu_width-116,_yy+40/2,string(_item_price))
-					_yy += 60
+							//	Draw price
+							draw_set_halign(fa_right)
+							draw_text(_xx+menu_width-116,_yy+40/2,string(_item_price))
+						}
+						_yy += 60
+					}
 				}
 			}
 					
