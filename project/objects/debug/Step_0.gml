@@ -18,8 +18,6 @@ if input.space {
 	}
 	instance_create_layer(0,0,"Instances",game)
 	
-	create_textbox("Poop")
-	
 }
 
 switch(mode)

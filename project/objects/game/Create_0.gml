@@ -1,3 +1,6 @@
+room_width = app.world_width
+room_height = app.world_height
+
 instance_create_layer(0,0,"Instances",time)
 instance_create_layer(0,0,"Instances",input)
 instance_create_layer(0,0,"Instances",lighting)
