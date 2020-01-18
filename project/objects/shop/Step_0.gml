@@ -123,6 +123,7 @@ if instance_exists(mainmenu) exit
 										input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",node)
 										input.selection.selected = true
 										input.selection.item_index = i
+										input.selection.name = item_node[i, node_name]
 										input.selection.price = item_node[i, node_price]
 										input.selection.jobruns = item_node[i, node_jobruns]
 										input.selection.jobruns_previous = item_node[i, node_jobruns]
@@ -152,6 +153,7 @@ if instance_exists(mainmenu) exit
 										input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",data)
 										input.selection.selected = true
 										input.selection.item_index = i
+										input.selection.name = item_data[i, item_name]
 										input.selection.portrait = item_data[i, item_portrait]
 										input.selection.price = item_data[i, item_price]
 										input.selection.data_generated = item_data[i, item_data_generated]
@@ -181,6 +183,7 @@ if instance_exists(mainmenu) exit
 										input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",kiosk)
 										input.selection.selected = true
 										input.selection.item_index = 3
+										input.selection.name = contracts.contract[i, contract_name]
 										input.selection.price = contracts.contract[i, contract_price]
 										input.selection.smartcontract = i
 										input.selection.data_needed = contracts.contract[i, contract_data]	
