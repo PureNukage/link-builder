@@ -56,10 +56,10 @@ enum goal_type {
 }
 
 enum tutorial {
+	basics,
 	my_first_contract,
 	decentralizing,
 	price_feed,
-	
 	
 }
 
