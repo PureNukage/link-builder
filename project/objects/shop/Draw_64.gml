@@ -309,7 +309,7 @@ draw_set_color(c_dkgray)
 draw_roundrect(valueX,_yy,valueX+value_width,_yy+_height,false)
 
 draw_set_color(c_white)
-draw_text(valueX+value_width/2,_yy+_height/2,string(player.eth))
+draw_text(valueX+value_width/2,_yy+_height/2,string(player.value))
 
 sprite_set_offset(s_resource_value_shop,sprite_get_width(s_resource_value_shop)/2,sprite_get_height(s_resource_value_shop)/2)
 draw_sprite_ext(s_resource_value_shop,0,valueX+28,_yy+32,1,1,0,c_white,1)
@@ -331,8 +331,8 @@ draw_roundrect(ethX,_yy,ethX+eth_width,_yy+_height,false)
 draw_set_color(c_white)
 draw_text(ethX+eth_width/2,_yy+_height/2,string(player.eth))
 
-sprite_set_offset(s_resource_eth,sprite_get_width(s_resource_eth)/2,sprite_get_height(s_resource_eth)/2)
-draw_sprite_ext(s_resource_eth,0,ethX+32,_yy+32,.5,.5,0,c_white,1)
+sprite_set_offset(s_resource_eth_shop,sprite_get_width(s_resource_eth_shop)/2,sprite_get_height(s_resource_eth_shop)/2)
+draw_sprite_ext(s_resource_eth_shop,0,ethX+32,_yy+32,1,1,0,c_white,1)
 
 
 #endregion

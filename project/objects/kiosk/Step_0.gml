@@ -267,15 +267,16 @@ switch(states)
 								
 								used = true
 							
-								player.points -= contracts.contract[smartcontract, contract_price]
-								var _points = contracts.contract[smartcontract, contract_price]
-								create_popup(x,y-150,"-"+string(_points),c_orange,1,3)
+								//player.points -= contracts.contract[smartcontract, contract_price]
+								//var _points = contracts.contract[smartcontract, contract_price]
+								//create_popup(x,y-150,"-"+string(_points),c_orange,1,3)
 							
 								with System system_dataflow_check()
 						
 								var got_at_least_one = 0
 								var how_many_sources = 0
 								var price_i_need = is_price(shop.item_data[data_needed[0,0],item_name], true)
+								var nodes = ds_list_create()
 								for(var i=0;i<ds_list_size(data_held);i++) {
 									var _data_held = data_held[| i]
 									var data_held_string = shop.item_data[_data_held, item_name]
@@ -305,6 +306,10 @@ switch(states)
 														used = true
 														shop.item_node[item_index, node_jobruns]++
 														jobruns++
+														if ds_list_find_index(nodes,id) == -1 {
+															resource_changed("ETH",1,x,y-128,false)
+															ds_list_add(nodes,id)
+														}
 													}
 												}	
 				
@@ -314,6 +319,7 @@ switch(states)
 										}
 									}
 								}
+								ds_list_destroy(nodes)
 								
 								if ((got_at_least_one / how_many_sources)*100)-1 > 65 {
 									decentralized = true	

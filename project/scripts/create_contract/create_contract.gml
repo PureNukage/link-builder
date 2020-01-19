@@ -71,6 +71,10 @@ contract[contract_index, contract_reliability] = 100
 contract[contract_index, contract_uses] = 0
 contract[contract_index, contract_level] = 0
 
+contract[contract_index, contract_gasfee_base] = 1
+contract[contract_index, contract_gasfee_total] = 1
+contract[contract_index, contract_linkfee] = 0
+
 contracts_purchased[| contract_index] = true
 
 

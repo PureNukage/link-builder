@@ -12,6 +12,8 @@ var _name = contracts.contract[contract_index, contract_name]
 var _price = contracts.contract[contract_index, contract_price]
 var _online = contracts.contract[contract_index, contract_online]
 var _reliability = contracts.contract[contract_index, contract_reliability]
+var _gasfee = contracts.contract[contract_index, contract_gasfee_total]
+var _linkfee = contracts.contract[contract_index, contract_linkfee]
 
 var name_spacer = 32
 var icon_width = 32
@@ -52,7 +54,7 @@ if data_open {
 }
 if stats_open {
 	var stats_header_string = "- Stats"
-	line_height += 32*1
+	line_height += 32*3
 } else {
 	var stats_header_string = "+ Stats"
 }
@@ -167,16 +169,34 @@ draw_set_halign(fa_left)
 //_y += 64
 draw_text(_xx+data_spacerX,_y,stats_header_string)
 
-draw_set_halign(fa_right)
 _y += 48
 
 if stats_open {
 	//	Draw the reliability
 	draw_set_color(c_white)
+	draw_set_halign(fa_right)
 	draw_text(_x,_y,"Reliability")
 
 	draw_set_halign(fa_center)
-	draw_text_transformed(_x+(data_spacerX*2),_y,string(_reliability),1.5,1.5,0)
+	draw_text_transformed(_x+(data_spacerX*2),_y-4,string(_reliability),1.5,1.5,0)
+	
+	_y += 48
+	
+	//	Draw the Gas Fee
+	draw_set_halign(fa_right)
+	draw_text(_x,_y,"ETH fee")
+	
+	draw_set_halign(fa_center)
+	draw_text_transformed(_x+(data_spacerX*2),_y-4,string(_gasfee),1.5,1.5,0)
+	
+	_y += 48
+	
+	//	Draw the Link fee
+	draw_set_halign(fa_right)
+	draw_text(_x,_y,"LINK fee")
+	
+	draw_set_halign(fa_center)
+	draw_text_transformed(_x+(data_spacerX*2),_y-4,string(_linkfee),1.5,1.5,0)
 }
 
 //	Return the width and height of this window if they are different than default

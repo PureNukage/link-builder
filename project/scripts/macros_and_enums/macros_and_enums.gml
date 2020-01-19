@@ -89,6 +89,9 @@ enum tutorial {
 #macro contract_level 20
 #macro contract_level_ports 21
 #macro contract_available 22
+#macro contract_gasfee_base 23
+#macro contract_gasfee_total 24
+#macro contract_linkfee 25
 
 enum contract_types {
 	people,

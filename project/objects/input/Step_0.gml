@@ -58,7 +58,9 @@ control_press = keyboard_check_pressed(vk_control)
 give_money = keyboard_check_pressed(vk_home)
 
 if give_money {
-	player.points += 2000	
+	player.link += 2000
+	player.eth += 2000
+	player.value += 2000
 }
 
 #region Calculating grid_x,y and grid_moved 

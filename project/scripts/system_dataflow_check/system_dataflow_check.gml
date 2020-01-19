@@ -19,10 +19,17 @@ for(var i=0;i<ds_list_size(parts);i++) {
 		ds_list_clear(parts[| i].data_held)
 		ds_list_clear(parts[| i].data_held_ids)
 		
-		//	If its a people contract, lets clear out its decentralization real quick
+		//	lets clear out its decentralization real quick
 		for(var dd=0;dd<array_height_2d(_kiosk.data_needed);dd++) {
 			_kiosk.data_needed[dd,1] = false
 			_kiosk.data_needed[dd,3] = false
+		}
+		
+		//	Reset this contracts gasfee and linkfee
+		if _kiosk.smartcontract > -1 {
+			contracts.contract[_kiosk.smartcontract, contract_gasfee_base] = 1
+			contracts.contract[_kiosk.smartcontract, contract_gasfee_total] = 1
+			contracts.contract[_kiosk.smartcontract, contract_linkfee] = 0
 		}
 		
 		//	This is a utility contract
@@ -245,244 +252,265 @@ for(var i=0;i<ds_list_size(parts);i++) {
 
 #region Kiosk loops
 
-if !ds_list_empty(kiosks_utility) {
-	for(var i=0;i<ds_list_size(kiosks_utility);i++) {
-		var _kiosk = kiosks_utility[| i]
+	#region Utility Contract 
+		if !ds_list_empty(kiosks_utility) {
+			for(var i=0;i<ds_list_size(kiosks_utility);i++) {
+				var _kiosk = kiosks_utility[| i]
+				var _nodes = ds_list_create()
 		
-		var _data_needed = _kiosk.data_needed[0,0]
-		var price_string = is_price(shop.item_data[_data_needed, item_name],true)
+				var _data_needed = _kiosk.data_needed[0,0]
+				var price_string = is_price(shop.item_data[_data_needed, item_name],true)
 		
-		var any_of_my_type = 0
-		for(var d=0;d<ds_list_size(_kiosk.data_held);d++) {
-			var _data_held = _kiosk.data_held[| d]
-			var _data_held_string = shop.item_data[_data_held, item_name]
-			if string_pos(price_string,_data_held_string) != 0 {
-				_kiosk.data_needed[0,1] = true
-				_kiosk.data_needed[0,2] = _kiosk.data_held_ids[| d]
-				any_of_my_type++
-			}
-		}
-		if any_of_my_type > 0 {
-			if _kiosk.active = false {
-				_kiosk.active = true
-				contracts.contract[_kiosk.smartcontract, contract_online] = true
-				ds_list_add(contracts.contracts_online,_kiosk.smartcontract)
-				debug_log("Kiosk "+string(_kiosk)+" is now active with smartcontract ["+contracts.contract[_kiosk.smartcontract, contract_name]+"]")
-			}
-		} else {
-			_kiosk.active = false	
-			_kiosk.decentralized = false
-		}
+				var any_of_my_type = 0
+				for(var d=0;d<ds_list_size(_kiosk.data_held);d++) {
+					var _data_held = _kiosk.data_held[| d]
+					var _data_held_string = shop.item_data[_data_held, item_name]
+					if string_pos(price_string,_data_held_string) != 0 {
+						_kiosk.data_needed[0,1] = true
+						_kiosk.data_needed[0,2] = _kiosk.data_held_ids[| d]
+						any_of_my_type++
+						contracts.contract[_kiosk.smartcontract, contract_linkfee]++
+						if ds_list_find_index(_nodes,_kiosk.data_needed[0,2]) == -1 {
+							contracts.contract[_kiosk.smartcontract, contract_gasfee_total]++
+							ds_list_add(_nodes,_kiosk.data_needed[0,2])
+						}
+					}
+				}
+				if any_of_my_type > 0 {
+					if _kiosk.active == false {
+						_kiosk.active = true
+						contracts.contract[_kiosk.smartcontract, contract_online] = true
+						ds_list_add(contracts.contracts_online,_kiosk.smartcontract)
+						debug_log("Kiosk "+string(_kiosk)+" is now active with smartcontract ["+contracts.contract[_kiosk.smartcontract, contract_name]+"]")
+					}
+				} else {
+					_kiosk.active = false	
+					_kiosk.decentralized = false
+				}
 			
-		if _kiosk.decentralized {
+				if _kiosk.decentralized {
 				
-			for(var p=0;p<_kiosk.ports_count;p++) {
-				if _kiosk.ports[p,port_object] > -1 and _kiosk.ports[p,port_direction] != in {
+					for(var p=0;p<_kiosk.ports_count;p++) {
+						if _kiosk.ports[p,port_object] > -1 and _kiosk.ports[p,port_direction] != in {
 						
-					var current_loop = _kiosk.ports[p,port_object]
-					var previous_loop = -1
-					var loop = true
-					while loop {
+							var current_loop = _kiosk.ports[p,port_object]
+							var previous_loop = -1
+							var loop = true
+							while loop {
 							
-						var _object_index = current_loop.object_index
+								var _object_index = current_loop.object_index
 							
-						switch(_object_index) 
-						{
-							#region Wire 
-								case wire:
+								switch(_object_index) 
+								{
+									#region Wire 
+										case wire:
 
-									current_loop.color = c_sergey_blue
+											current_loop.color = c_sergey_blue
 
 						
-									//	check this wires ports
-									for(var loop_port=0;loop_port<current_loop.ports_count;loop_port++) {
-										var other_port = loop_port
-										other_port = !other_port
-										//	this port is empty, this is a dead end!
-										if current_loop.ports[loop_port,port_object] == -1 {
-											loop = false
-											current_loop.ports[other_port,port_direction] = in
-											current_loop.ports[loop_port,port_direction] = out
-											loop_port = current_loop.ports_count
-										} 
-										//	there is something attached to this wire and its not the previous
-										else if current_loop.ports[loop_port,port_object] > -1 and current_loop.ports[loop_port,port_object] != previous_loop {
-											//	set my port In and Out directions
-											current_loop.ports[loop_port,port_direction] = out
-											current_loop.ports[other_port,port_direction] = in
+											//	check this wires ports
+											for(var loop_port=0;loop_port<current_loop.ports_count;loop_port++) {
+												var other_port = loop_port
+												other_port = !other_port
+												//	this port is empty, this is a dead end!
+												if current_loop.ports[loop_port,port_object] == -1 {
+													loop = false
+													current_loop.ports[other_port,port_direction] = in
+													current_loop.ports[loop_port,port_direction] = out
+													loop_port = current_loop.ports_count
+												} 
+												//	there is something attached to this wire and its not the previous
+												else if current_loop.ports[loop_port,port_object] > -1 and current_loop.ports[loop_port,port_object] != previous_loop {
+													//	set my port In and Out directions
+													current_loop.ports[loop_port,port_direction] = out
+													current_loop.ports[other_port,port_direction] = in
 									
-											previous_loop = current_loop
-											current_loop = current_loop.ports[loop_port,port_object]
-											loop_port = current_loop.ports_count
-										} else if current_loop.ports[other_port,port_object] > -1 and current_loop.ports[loop_port,port_object] == previous_loop {
-											current_loop.ports[loop_port,port_direction] = in 
-											current_loop.ports[other_port,port_direction] = out
+													previous_loop = current_loop
+													current_loop = current_loop.ports[loop_port,port_object]
+													loop_port = current_loop.ports_count
+												} else if current_loop.ports[other_port,port_object] > -1 and current_loop.ports[loop_port,port_object] == previous_loop {
+													current_loop.ports[loop_port,port_direction] = in 
+													current_loop.ports[other_port,port_direction] = out
 									
-											previous_loop = current_loop
-											current_loop = current_loop.ports[other_port,port_object]
-											loop_port = current_loop.ports_count
-										}
-									
-										//	if this is connecting to a kiosk, set its incoming port to "in"
-										if current_loop.object_index == kiosk {
-											for(var a=0;a<current_loop.ports_count;a++) {
-												if current_loop.ports[a,port_x] == previous_loop.center_cell_x and current_loop.ports[a,port_y] == previous_loop.center_cell_y { 
-													current_loop.ports[a,port_direction] = in
-												
+													previous_loop = current_loop
+													current_loop = current_loop.ports[other_port,port_object]
+													loop_port = current_loop.ports_count
 												}
+									
+												//	if this is connecting to a kiosk, set its incoming port to "in"
+												if current_loop.object_index == kiosk {
+													for(var a=0;a<current_loop.ports_count;a++) {
+														if current_loop.ports[a,port_x] == previous_loop.center_cell_x and current_loop.ports[a,port_y] == previous_loop.center_cell_y { 
+															current_loop.ports[a,port_direction] = in
+												
+														}
 											
+													}
+												}									
 											}
-										}									
-									}
-								break
-							#endregion
+										break
+									#endregion
 								
-							case node:
+									case node:
 									
-							break
-							#region Kiosk
-							case kiosk:
+									break
+									#region Kiosk
+									case kiosk:
 									
-								if current_loop.smartcontract > -1 and contracts.contract[current_loop.smartcontract, contract_type] == contract_types.people {
-									for(var dd=0;dd<array_height_2d(current_loop.data_needed);dd++) {
-										var _other_data_needed = current_loop.data_needed[dd,0]
-										var _other_data_needed_string = shop.item_data[_other_data_needed, item_name]
-										//	This contract can use my reference feed!
-										if string_pos(price_string,_other_data_needed_string) != 0 {
-											current_loop.data_needed[dd,3] = true
+										if current_loop.smartcontract > -1 and contracts.contract[current_loop.smartcontract, contract_type] == contract_types.people {
+											for(var dd=0;dd<array_height_2d(current_loop.data_needed);dd++) {
+												var _other_data_needed = current_loop.data_needed[dd,0]
+												var _other_data_needed_string = shop.item_data[_other_data_needed, item_name]
+												//	This contract can use my reference feed!
+												if string_pos(price_string,_other_data_needed_string) != 0 {
+													current_loop.data_needed[dd,3] = true
+												}
+											}	
 										}
-									}	
-								}
 									
-								loop = false
+										loop = false
 									
-							break
-							#endregion
-						}
-
-					}
-				}
-			}
-				
-		}
-	}
-}
-
-
-
-for(var i=0;i<ds_list_size(kiosks_other);i++) {
-	
-	var _kiosk = kiosks_other[| i]
-	if _kiosk.smartcontract > -1 {
-			
-		var amount_of_data_req = array_height_2d(_kiosk.data_needed)
-		var amount_of_data_had = 0
-	
-		for(var d=0;d<amount_of_data_req;d++) {
-			var _data_needed = _kiosk.data_needed[d,0]
-			var _data_needed_string = shop.item_data[_data_needed, item_name]
-			
-			if _kiosk.data_needed[d,3] {
-				_kiosk.data_needed[d,1] = true
-				amount_of_data_had++	
-			} else {
-				//	This needed data is a price
-				if is_price(_data_needed_string) {
-					var needed_price_string = is_price(_data_needed_string,true)
-				}
-				for(var a=0;a<ds_list_size(_kiosk.data_held);a++) {
-					var _data_held = _kiosk.data_held[| a]
-					//	This needed data is a price
-					if is_price(_data_needed_string) {
-						var this_data_string = shop.item_data[_data_held, item_name]
-						//	This is a price we need!
-						if string_pos(needed_price_string,this_data_string) != 0 {
-							_kiosk.data_needed[d,1] = true
-							_kiosk.data_needed[d,2] = _kiosk.data_held_ids[| a]
-							amount_of_data_had++
-						} 
-						//	This is not a price we need
-						else {
-							//_kiosk.data_needed[d,1] = false	
-						}
-					} 
-					//	This needed data is NOT a price
-					else {
-						if _data_held == _data_needed {
-							_kiosk.data_needed[d,1] = true	
-							_kiosk.data_needed[d,2] = _kiosk.data_held_ids[| a]
-							amount_of_data_had++
-						} else {
-							//_kiosk.data_needed[d,1] = false	
-						}
-					}
-				}
-			}
-		}
-		
-		var amount_of_data_had = 0
-		for(var d=0;d<array_height_2d(_kiosk.data_needed);d++) {
-			if _kiosk.data_needed[d,1] {
-				amount_of_data_had++
-			}
-		}
-	
-		//	this kiosk has all the data it needs!
-		if amount_of_data_had >= amount_of_data_req {
-			if !_kiosk.active {
-				_kiosk.active = true
-				contracts.contract[_kiosk.smartcontract, contract_online] = true
-				ds_list_add(contracts.contracts_online,_kiosk.smartcontract)
-				debug_log("Kiosk "+string(_kiosk)+" is now active with smartcontract ["+contracts.contract[_kiosk.smartcontract, contract_name]+"]")
-			}
-		} 
-		//	this kiosk does NOT have all the data it needs
-		else {
-			if _kiosk.active {
-				_kiosk.active = false
-				contracts.contract[_kiosk.smartcontract, contract_online] = false
-				if ds_list_find_index(contracts.contracts_online,_kiosk.smartcontract) > -1 {
-					ds_list_delete(contracts.contracts_online,ds_list_find_index(contracts.contracts_online,_kiosk.smartcontract))	
-				}
-				debug_log("Kiosk "+string(_kiosk)+" is now inactive")
-						
-				with _kiosk {
-					busy = false
-					if ds_list_size(line) > 0 {
-						for(var k=0;k<ds_list_size(line);k++) {
-							var _person = line[| k]
-							with _person {
-								if goal_current > -1 {
-									instance_destroy(goal_current)
-									goal_current = -1
+									break
+									#endregion
 								}
-								if smartcontract > -1 {
-									ds_list_delete(smartcontracts,0)
-									contracts.contract[smartcontract, contract_traffic_live]--
-									smartcontract = -1	
-								}
-				
-								states = states.idle
+
 							}
 						}
 					}
-							
-					ds_list_clear(line)
-	
-					with person {
-						if ds_list_find_index(smartcontracts,other.smartcontract) > -1 {
-							ds_list_delete(smartcontracts,ds_list_find_index(smartcontracts,other.smartcontract))	
-							contracts.contract[other.smartcontract, contract_traffic_live]--
-						}
-						if smartcontract == other.smartcontract smartcontract = -1
-					}						
-								
+				
 				}
+				ds_list_destroy(_nodes)
 			}
 		}
+	#endregion
 
-	}
-}
+	#region dApp Contracts
+		for(var i=0;i<ds_list_size(kiosks_other);i++) {
+	
+			var _kiosk = kiosks_other[| i]
+			var _nodes = ds_list_create()
+			if _kiosk.smartcontract > -1 {
+			
+				var amount_of_data_req = array_height_2d(_kiosk.data_needed)
+				var amount_of_data_had = 0
+	
+				for(var d=0;d<amount_of_data_req;d++) {
+					var _data_needed = _kiosk.data_needed[d,0]
+					var _data_needed_string = shop.item_data[_data_needed, item_name]
+			
+					if _kiosk.data_needed[d,3] {
+						_kiosk.data_needed[d,1] = true
+						amount_of_data_had++	
+					} else {
+						//	This needed data is a price
+						if is_price(_data_needed_string) {
+							var needed_price_string = is_price(_data_needed_string,true)
+						}
+						for(var a=0;a<ds_list_size(_kiosk.data_held);a++) {
+							var _data_held = _kiosk.data_held[| a]
+							//	This needed data is a price
+							if is_price(_data_needed_string) {
+								var this_data_string = shop.item_data[_data_held, item_name]
+								//	This is a price we need!
+								if string_pos(needed_price_string,this_data_string) != 0 {
+									_kiosk.data_needed[d,1] = true
+									_kiosk.data_needed[d,2] = _kiosk.data_held_ids[| a]
+									amount_of_data_had++
+									contracts.contract[_kiosk.smartcontract, contract_linkfee]++
+									if ds_list_find_index(_nodes,_kiosk.data_needed[d,2]) == -1 {
+										ds_list_add(_nodes,_kiosk.data_needed[d,2])
+										contracts.contract[_kiosk.smartcontract, contract_gasfee_total]++
+									}
+								} 
+								//	This is not a price we need
+								else {
+									//_kiosk.data_needed[d,1] = false	
+								}
+							} 
+							//	This needed data is NOT a price
+							else {
+								if _data_held == _data_needed {
+									_kiosk.data_needed[d,1] = true	
+									_kiosk.data_needed[d,2] = _kiosk.data_held_ids[| a]
+									amount_of_data_had++
+									contracts.contract[_kiosk.smartcontract, contract_linkfee]++
+									if ds_list_find_index(_nodes,_kiosk.data_needed[d,2]) == -1 {
+										ds_list_add(_nodes,_kiosk.data_needed[d,2])
+										contracts.contract[_kiosk.smartcontract, contract_gasfee_total]++
+									}
+								} else {
+									//_kiosk.data_needed[d,1] = false	
+								}
+							}
+						}
+					}
+				}
+		
+				var amount_of_data_had = 0
+				for(var d=0;d<array_height_2d(_kiosk.data_needed);d++) {
+					if _kiosk.data_needed[d,1] {
+						amount_of_data_had++
+					}
+				}
+	
+				//	this kiosk has all the data it needs!
+				if amount_of_data_had >= amount_of_data_req and player.link >= contracts.contract[_kiosk.smartcontract, contract_linkfee] and player.eth >= contracts.contract[_kiosk.smartcontract, contract_gasfee_total] {
+					if !_kiosk.active {
+						_kiosk.active = true
+						contracts.contract[_kiosk.smartcontract, contract_online] = true
+						ds_list_add(contracts.contracts_online,_kiosk.smartcontract)
+						debug_log("Kiosk "+string(_kiosk)+" is now active with smartcontract ["+contracts.contract[_kiosk.smartcontract, contract_name]+"]")
+					}
+				} 
+				//	this kiosk does NOT have all the data it needs
+				else {
+					if _kiosk.active {
+						_kiosk.active = false
+						contracts.contract[_kiosk.smartcontract, contract_online] = false
+						if ds_list_find_index(contracts.contracts_online,_kiosk.smartcontract) > -1 {
+							ds_list_delete(contracts.contracts_online,ds_list_find_index(contracts.contracts_online,_kiosk.smartcontract))	
+						}
+						debug_log("Kiosk "+string(_kiosk)+" is now inactive")
+						
+						with _kiosk {
+							busy = false
+							if ds_list_size(line) > 0 {
+								for(var k=0;k<ds_list_size(line);k++) {
+									var _person = line[| k]
+									with _person {
+										if goal_current > -1 {
+											instance_destroy(goal_current)
+											goal_current = -1
+										}
+										if smartcontract > -1 {
+											ds_list_delete(smartcontracts,0)
+											contracts.contract[smartcontract, contract_traffic_live]--
+											smartcontract = -1	
+										}
+				
+										states = states.idle
+									}
+								}
+							}
+							
+							ds_list_clear(line)
+	
+							with person {
+								if ds_list_find_index(smartcontracts,other.smartcontract) > -1 {
+									ds_list_delete(smartcontracts,ds_list_find_index(smartcontracts,other.smartcontract))	
+									contracts.contract[other.smartcontract, contract_traffic_live]--
+								}
+								if smartcontract == other.smartcontract smartcontract = -1
+							}						
+								
+						}
+					}
+				}
+
+			}
+			ds_list_destroy(_nodes)
+		}
+	#endregion
 
 #endregion
 
