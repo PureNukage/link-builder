@@ -86,7 +86,7 @@ if selection > -1 {
 	}
 	
 	//	Collision check delete button
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,button_deleteX,button_deleteY,button_deleteX+button_delete_width,button_deleteY+button_delete_height) and selection.states == states.placed {
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,button_deleteX,button_deleteY,button_deleteX+button_delete_width,button_deleteY+button_delete_height) and selection.states == states.placed and app.tutorial == -1 {
 		button_delete_mouseover = true	
 		button_delete_color = button_delete_color_mouseover
 		

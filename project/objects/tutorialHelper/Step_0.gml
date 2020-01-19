@@ -3,7 +3,10 @@ if timer == -1 and stage == -1 {
 			
 	timer = time.stream
 
-	load_tutorial(tutorial)
+	//	Disable everything in the shop
+	disable_shopitems()
+
+	app.data_corruption = mode.off
 	
 	stage = 0
 			
@@ -16,7 +19,9 @@ switch(tutorial)
 			switch(stage) 
 			{
 				case 0:
-			
+					create_textbox("Welcome to the Smart Contract Builder basics")
+		
+					create_textbox("This tutorial is going to introduce you to the basics of the game")
 				break
 			}
 		break
@@ -26,13 +31,22 @@ switch(tutorial)
 		case tutorial.my_first_contract:
 			switch(stage)
 			{
-				//	Make LinkPal available
+				//	Tutorial start
 				case 0:
+					create_textbox("Welcome to Your first externally-aware contract")
+
+					create_textbox("This tutorial is going to take you through building the LinkPal contract")
+
+					create_textbox("To start, select the LinkPal contract from the Shop")
+					stage++
+				break	
+				//	Make LinkPal available
+				case 1:
 					contracts.contract[1, contract_available] = true
 					stage++
 				break
 				//	Wait for LinkPal to be placed 
-				case 1:
+				case 2:
 					if instance_exists(kiosk) and kiosk.states == states.placed and kiosk.smartcontract == 1 {
 						create_textbox("Good job!")
 						create_textbox("A Smart Contract is code that lives and executes on a blockchain. LinkPal is written for the Ethereum blockchain specifically.")
@@ -42,7 +56,7 @@ switch(tutorial)
 					}
 				break
 				//	Wait for the LinkPal contract data info to be opened
-				case 2:
+				case 3:
 					if contracts.data_open {
 						create_textbox("Since LinkPal executes a trade of Ether it will need access to the price of ETH")
 						create_textbox("Place down the CryptoCompare ETH/USD Data Source")
@@ -51,14 +65,14 @@ switch(tutorial)
 					}
 				break
 				//	Wait for the CryptoCompare data source to be placed 
-				case 3:
+				case 4:
 					if instance_exists(data) and data.data_generated == data_types.cryptocompare_ETHUSD and data.states == states.placed {
 						create_textbox("Use Wires to connect different items and build systems")	
 						stage++
 					}
 				break
 				//	Wait for the Data to be connected to the Kiosk
-				case 4:
+				case 5:
 					for(var i=0;i<ds_list_size(systemController.systems);i++) {
 						var _system = systemController.systems[| i]
 						var data_found = false
@@ -84,7 +98,7 @@ switch(tutorial)
 					}
 				break
 				//	Wait for them to place down a node
-				case 5:
+				case 6:
 					if instance_exists(node) and node.states == states.placed {
 						//	Is it connected to the contract?
 						for(var s=0;s<ds_list_size(systemController.systems);s++) {
@@ -110,7 +124,7 @@ switch(tutorial)
 					}	
 				break
 				//	Wait for the data to get hooked up
-				case 6:
+				case 7:
 					if contracts.contract[1, contract_kiosk].data_needed[0,1] {
 						create_textbox("Good work. The ETH/USD data in the Contract window has turned green indicating that data source has been connected")
 						create_textbox("Since LinkPal enables trades of Ether to USD using an Ether transfer and a PayPal invoice, it requires connection to PayPal to see the status of the invoice")
@@ -122,7 +136,7 @@ switch(tutorial)
 			
 				break
 				//	Wait for the paypal to get hooked up
-				case 7:
+				case 8:
 					if contracts.contract[1, contract_kiosk].active {
 						create_textbox("Congratulations, you've built your first decentralized application, or dApp")
 						create_textbox("Press OK to go back to the Main Menu",-1,-1,1234)
@@ -130,7 +144,7 @@ switch(tutorial)
 					}
 				break
 				//	Wait for the player to head back to the main menu
-				case 8:
+				case 9:
 					if instance_exists(textboxController) {
 						for(var m=0;m<ds_list_size(textboxController.previous_messages);m++) {
 							var messageID = textboxController.previous_messages[| m]

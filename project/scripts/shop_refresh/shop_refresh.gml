@@ -2,11 +2,11 @@ menu_index_string = menu_choices[menu_index]
 switch(menu_index_string)
 {
 	case "Data":
-		icon = s_resource_link_shop
+		icon = s_resource_money
 		array = item_data
 	break
 	case "Nodes":
-		icon = s_resource_link_shop
+		icon = s_resource_money
 		array = item_node
 	break
 	case "Contracts":

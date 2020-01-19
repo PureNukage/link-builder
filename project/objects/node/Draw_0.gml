@@ -61,7 +61,18 @@ switch(states)
 		}
 		
 		//	Draw the node used
-		draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,used_alpha)
+		sprite_set_offset(s_chainlink_highlights,sprite_get_width(s_chainlink_highlights)/2,sprite_get_height(s_chainlink_highlights)/2)
+		draw_sprite_ext(s_chainlink_highlights,-1,x,y,1,1,0,c_white,used_alpha)
+		
+		//	Draw the node not connected
+		if !connected {
+			draw_sprite_ext(sprite,0,x,y,1,1,0,c_black,.3)	
+		}
+		
+		//	Darken ourselves if we're being replaced
+		if input.selection > -1 and input.selection.object_index == node and input.selection.replace_id == id {
+			draw_sprite_ext(sprite,0,x,y,1,1,0,c_black,.5)	
+		}
 		
 		//	Draw the possible port cells if we're selected and input is in port_placement mode
 		if input.selection_mode == selection_mode.port_placement and selected {

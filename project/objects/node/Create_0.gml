@@ -23,18 +23,15 @@ ports[1,port_y] = center_cell_y
 ports[1,port_x_diff] = ports[1,port_x] - center_cell_x
 ports[1,port_y_diff] = ports[1,port_y] - center_cell_y
 
-//ports[2,port_x] = center_cell_x
-//ports[2,port_y] = bottomright_cell_y+1
-
-//ports[3,port_x] = center_cell_x
-//ports[3,port_y] = topleft_cell_y-1
 #endregion
 
 data_held = ds_list_create()
 
+connected = false
+
 used = false
-used_alpha_max = .3
-used_alpha = used_alpha_max
+used_alpha_max = .6
+used_alpha = 0
 used_time = -1
 used_lightup = false
 

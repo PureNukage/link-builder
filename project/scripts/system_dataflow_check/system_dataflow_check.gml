@@ -9,6 +9,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 		parts[| i].connected = false
 	} else if parts[| i].object_index == node {
 		ds_list_clear(parts[| i].data_held)
+		parts[| i].connected = false
 		
 		//	Clear out ports_directions real quick
 		for(var pp=0;pp<parts[| i].ports_count;pp++) {
@@ -110,6 +111,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 							ds_list_add(current_loop.data_held,db.data_generated)
 							ds_list_add(nodes,current_loop)
 							db.connected = true
+							current_loop.connected = true
 						}
 								
 						//	set the connected port direction

@@ -80,7 +80,7 @@ switch(states)
 	#region State Placed
 		case states.placed:		
 			
-			if selected and input.delete_press {				
+			if selected and input.delete_press and app.tutorial == -1 {				
 				item_delete()				
 			}
 			

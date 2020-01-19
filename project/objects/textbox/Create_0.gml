@@ -24,3 +24,5 @@ button_string = "OK"
 button_mouseover = false
 
 width_max = 348
+
+depth = -9000

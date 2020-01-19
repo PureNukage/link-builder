@@ -17,4 +17,5 @@ with camera {
 	app.resolution_width = _width
 	app.resolution_height = _height
 	if instance_exists(plaque) with plaque plaque_refresh()
+	if instance_exists(contracts) with contracts contract_refresh()
 }

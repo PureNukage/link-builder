@@ -29,7 +29,7 @@ switch(states)
 				}
 				
 				if !replace {
-					resource_changed("LINK",price,gui_mouse_x,gui_mouse_y,true)
+					resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
 				}
 				
 				shop.item_data[item_index, item_placed] = true

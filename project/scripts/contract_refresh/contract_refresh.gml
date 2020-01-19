@@ -1,4 +1,5 @@
 amount_of_contracts = 0
+buttonX = display_get_gui_width()-button_width-32
 for(var i=0;i<array_height_2d(contract);i++) {
 	if contract[i, contract_purchased] amount_of_contracts++
 }	
@@ -22,21 +23,6 @@ for(i=0;i<array_height_2d(contract);i++) {
 			if hypo_width > biggest_width {
 				biggest_width = hypo_width
 				biggest_name_width = _name_width
-				//menu_width = hypo_width
-				//menuX = display_get_gui_width() - menu_width - side_spacer
-					
-				//bar_width = 55
-				//bar_height =  amount_of_contracts*line_height-20
-				//barX = menuX + 6
-				//barY = menuY + 6
-	
-				//handle_width = 42
-				//handle_height = round(bar_height/(amount_of_contracts-1))
-				//handleX = menuX + 12
-				//handleY = barY + (contract_index*round(bar_height/(amount_of_contracts-1)))
-				//handle_mouseover = false
-			
-				//line_width = 100 + (_name_width-51) + icon_width + (name_spacer*2) + (icon_spacer*2)
 			}
 		}
 		if _name_width > 155 {
@@ -44,21 +30,6 @@ for(i=0;i<array_height_2d(contract);i++) {
 			if hypo_width > biggest_width { 
 				biggest_width = hypo_width
 				biggest_name_width = _name_width
-				//menu_width += 128
-				//menuX = display_get_gui_width() - menu_width - side_spacer
-					
-				//bar_width = 55
-				//bar_height =  amount_of_contracts*line_height-20
-				//barX = menuX + 6
-				//barY = menuY + 6
-	
-				//handle_width = 42
-				//handle_height = round(bar_height/(amount_of_contracts-1))
-				//handleX = menuX + 12
-				//handleY = barY + (contract_index*round(bar_height/(amount_of_contracts-1)))
-				//handle_mouseover = false
-					
-				//line_width = 100 + _name_width + 128 + icon_width + (name_spacer*2) + (icon_spacer*2)
 			}
 		}
 	}

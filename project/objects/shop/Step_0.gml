@@ -6,27 +6,11 @@ if instance_exists(mainmenu) exit
 		if input.mouse_left_press {
 			menu_open = !menu_open
 			menu_pressed = true
-			//menu_height = 256
-			//menu_width = 128
 			nodes_open = false
 			data_open = false
 			
 			#region Calculate menu variables
 			if menu_open {
-				
-				//draw_set_font(fnt_shop)
-				//for(var i=0;i<array_height_2d(array);i++) {
-				//	var _name = array[i, item_name]
-				//	var _price = array[i, item_price]
-				//	var _name_width = string_width(_name)
-				//	//var _string_height = string_height(_name)
-				//	var _price_width = string_width(string(_price))
-		
-				//	var this_list_width = (list_spacer*2)+(name_spacer*2)+_name_width+icon_width+(price_spacer*2)+_price_width
-		
-				//	if this_list_width > list_width list_width = this_list_width	
-				//}
-				//draw_set_font(-1)
 			
 				
 			}

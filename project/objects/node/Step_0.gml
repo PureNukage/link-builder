@@ -23,7 +23,7 @@ switch(states)
 			
 				ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)
 			
-				if !replace resource_changed("LINK",price,gui_mouse_x,gui_mouse_y,true)
+				if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
 				
 				shop.item_node[item_index, node_placed] = true
 			
@@ -117,9 +117,9 @@ switch(states)
 		case states.placed:
 		
 			//	I am being replaced, darken myself
-			if input.selection > -1 and input.selection.object_index == node and input.selection.replace_id == id {
-				used_alpha = .6
-			} else if used_alpha != used_alpha_max and !used used_alpha = used_alpha_max
+			//if input.selection > -1 and input.selection.object_index == node and input.selection.replace_id == id {
+			//	//used_alpha = .6
+			//} else if used_alpha != used_alpha_max and !used used_alpha = 0
 		
 			if selected {
 				
@@ -170,17 +170,17 @@ switch(states)
 				else {
 					var amount = 0.08
 					if used_lightup {
-						used_alpha = lerp(used_alpha,0,amount)
-						if used_alpha < amount-0.01 {
+						used_alpha = lerp(used_alpha,used_alpha_max,amount)
+						if used_alpha > used_alpha_max-amount-0.01 {
 							used_lightup = false	
 						}
 					}
 					
 					else { 
-						used_alpha = lerp(used_alpha,used_alpha_max,amount)	
-						if used_alpha > used_alpha_max-amount-0.01 {
+						used_alpha = lerp(used_alpha,0,amount)	
+						if used_alpha < amount-0.01 {
 							used = false
-							used_alpha = used_alpha_max
+							used_alpha = 0
 							used_time = -1
 						}
 					}

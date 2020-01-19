@@ -28,7 +28,7 @@ if input.selection > -1 {
 	draw_text(window_nameX+(window_name_width/2),window_nameY+(window_name_height/2),input.selection.name)
 	
 	//	Draw delete button
-	if input.selection.states == states.placed {
+	if input.selection.states == states.placed and app.tutorial == -1 {
 		ui_draw_button(button_delete_width,button_delete_height,button_deleteX,button_deleteY,button_delete_color,button_delete_string,button_delete_mouseover)
 	}
 	
