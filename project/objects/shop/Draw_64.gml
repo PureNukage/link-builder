@@ -283,7 +283,19 @@ linkX = _xx - link_width/2
 draw_set_color(c_black)
 draw_roundrect(linkX-2,_yy-2,linkX+link_width+2,_yy+66,false)
 
-draw_set_color(c_dkgray)
+if point_in_rectangle(gui_mouse_x,gui_mouse_y,linkX,_yy,linkX+link_width,_yy+64) {
+	draw_set_font(fnt_shop)
+	gui_popup(linkX,_yy,linkX+link_width,_yy+64,1,"10 VALUE / 5 LINK")
+	draw_set_color(c_gray)		
+	if input.mouse_left_press and player.value >= 10 {
+		resource_changed("VALUE",10,gui_mouse_x,gui_mouse_y+128,true)
+		resource_changed("LINK",-5,gui_mouse_x,gui_mouse_y+256,true)
+		//player.value -= 10
+		//player.link += 5
+	}
+} else {
+	draw_set_color(c_dkgray)
+}
 draw_roundrect(linkX,_yy,linkX+link_width,_yy+64,false)
 
 draw_set_halign(fa_left)
@@ -305,10 +317,18 @@ valueX = linkX - (link_width * spacer)
 draw_set_color(c_black)
 draw_roundrect(valueX-2,_yy-2,valueX+value_width+2,_yy+_height+2,false)
 
-draw_set_color(c_dkgray)
+if point_in_rectangle(gui_mouse_x,gui_mouse_y,valueX,_yy,valueX+value_width,_yy+_height) {
+	gui_popup(valueX,_yy,valueX+value_width,_yy+_height,1,"Used to purchase LINK and ETH")
+	draw_set_color(c_gray)		
+} else {
+	draw_set_color(c_dkgray)	
+}
+
 draw_roundrect(valueX,_yy,valueX+value_width,_yy+_height,false)
 
 draw_set_color(c_white)
+draw_set_halign(fa_left)
+draw_set_font(fnt_shop)
 draw_text(valueX+value_width/2,_yy+_height/2,string(player.value))
 
 sprite_set_offset(s_resource_value_shop,sprite_get_width(s_resource_value_shop)/2,sprite_get_height(s_resource_value_shop)/2)
@@ -325,10 +345,23 @@ ethX = linkX + (link_width*spacer)
 draw_set_color(c_black)
 draw_roundrect(ethX-2,_yy-2,ethX+eth_width+2,_yy+_height+2,false)
 
-draw_set_color(c_dkgray)
+if point_in_rectangle(gui_mouse_x,gui_mouse_y,ethX,_yy,ethX+eth_width,_yy+_height) {
+	gui_popup(ethX,_yy,ethX+eth_width,_yy+_height,1,"10 VALUE / 10 ETH")
+	draw_set_color(c_gray)		
+	if input.mouse_left_press and player.value >= 10 {
+		resource_changed("VALUE",10,gui_mouse_x,gui_mouse_y+128,true)
+		resource_changed("ETH",-10,gui_mouse_x,gui_mouse_y+256,true)
+		//player.value -= 10
+		//player.eth += 10
+	}
+} else {
+	draw_set_color(c_dkgray)
+}
 draw_roundrect(ethX,_yy,ethX+eth_width,_yy+_height,false)
 
 draw_set_color(c_white)
+draw_set_halign(fa_left)
+draw_set_font(fnt_shop)
 draw_text(ethX+eth_width/2,_yy+_height/2,string(player.eth))
 
 sprite_set_offset(s_resource_eth_shop,sprite_get_width(s_resource_eth_shop)/2,sprite_get_height(s_resource_eth_shop)/2)
