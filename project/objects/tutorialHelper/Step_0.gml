@@ -113,8 +113,20 @@ switch(tutorial)
 			case 7:
 				if contracts.contract[1, contract_kiosk].active {
 					create_textbox("Congratulations, you've built your first decentralized application, or dApp")
+					create_textbox("Press OK to go back to the Main Menu",-1,-1,1234)
 					stage++
 				}
+			break
+			//	Wait for the player to head back to the main menu
+			case 8:
+				for(var m=0;m<ds_list_size(textboxController.previous_messages);m++) {
+					var messageID = textboxController.previous_messages[| m]
+					var message_uniqueID = messageID.uniqueID
+					if message_uniqueID == 1234 {
+						room_goto(main_menu)
+					}
+				}
+				
 			break
 		}
 		

@@ -12,8 +12,8 @@ if room == main_menu {
 
 //	We switched tracks!
 if current_track != new_track {
-	audio_stop_sound(current_track)
-	audio_play_sound(new_track,0,true)
+	audio_pause_sound(current_track)
+	audio_resume_sound(new_track)
 	current_track = new_track
 	audio_sound_gain(current_track,current_volume,0)
 }

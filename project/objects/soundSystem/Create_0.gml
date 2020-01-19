@@ -7,3 +7,8 @@ new_track = -1
 
 current_volume = -1
 new_volume = 0
+
+audio_play_sound(music_menu,0,true)
+audio_play_sound(music_options,0,true)
+audio_pause_sound(music_menu)
+audio_pause_sound(music_options)
