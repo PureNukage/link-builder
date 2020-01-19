@@ -39,7 +39,17 @@ if point_in_rectangle(gui_mouse_x,gui_mouse_y,buttonX,buttonY,buttonX+button_wid
 	draw_set_color(c_gray)	
 	
 	if input.mouse_left_press {
-		instance_destroy()	
+		//	put our ID into the previous_message list and wait for eventual cleanup	
+		if textboxController.current_message == id {
+			textboxController.current_message = -1	
+			ds_list_add(textboxController.previous_messages,id)
+			if ds_list_size(textboxController.previous_messages) > 25 {
+				if instance_exists(textboxController.previous_messages[| 0]) instance_destroy(textboxController.previous_messages[| 0])
+				ds_list_delete(textboxController.previous_messages,0)	
+			}
+		}	
+		fade = 0
+		done = true
 	}
 } else {
 	button_mouseover = false

@@ -13,6 +13,8 @@ iconY = y-(sprite_get_height(icon)/2)+(height/2)+iconBuffer
 
 timer = -1
 fade = -1
+done = false
+uniqueID = -1
 
 button_width = 64
 button_height = 48

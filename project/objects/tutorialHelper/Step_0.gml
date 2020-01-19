@@ -1,5 +1,5 @@
 //	The first frame of this tutorial
-if timer == -1 {
+if timer == -1 and stage == -1 {
 			
 	timer = time.stream
 

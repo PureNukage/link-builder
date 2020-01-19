@@ -1359,6 +1359,14 @@
             }
         },
         {
+            "Key": "f46fd7a1-3cb1-4945-b7d9-ad06eecf62c0",
+            "Value": {
+                "id": "fd8552ce-8dae-43c0-abba-abad0a7fdc97",
+                "resourcePath": "sprites\\s_alarm\\s_alarm.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "f4b3426f-eae9-4e0b-a125-c6d1d2188a23",
             "Value": {
                 "id": "2521ceda-8d44-48f9-84cd-0d67fc52d7b3",
