@@ -13,7 +13,7 @@ switch(_tutorial)
 		
 		create_textbox("Welcome to the Smart Contract Builder basics")
 		
-		create_textbox("")
+		create_textbox("This tutorial is going to take you through the ")
 		
 	break
 	case tutorial.my_first_contract:

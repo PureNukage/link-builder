@@ -24,7 +24,7 @@ create_contract("Eth Transfer","",5,150,s_portrait_ethereum,2,10,5,contract_type
 
 var _data = create_data_needed(data_types.binance_ETHUSD,data_types.paypal)
 var levels = create_level_ports(2,3,4,5)
-var _string = "Blockchain users can now trade their ETH with\neach other for USD by querying a PayPal invoice"
+var _string = "DeFi users can now trade their ETH with\neach other for USD by querying a PayPal invoice"
 create_contract("LinkPal",_string,5,500,s_portrait_linkpal,2,10,5,contract_types.people,levels,_data,true)
 
 var _data = create_data_needed(data_types.binance_ETHUSD,data_types.github)
@@ -68,5 +68,7 @@ handle_height = round(bar_height/(amount_of_contracts-1))
 handleX = menuX + 12
 handleY = barY + (contract_index*round(bar_height/(amount_of_contracts-1)))
 handle_mouseover = false
+
+contract_refresh()
 	
 

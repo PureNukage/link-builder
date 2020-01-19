@@ -24,16 +24,17 @@ var _price_width = string_width(string(_price))
 var default_window_width = 260
 var default_window_height = 240
 
+var line_width = default_window_width
 //	Calculate width
 if string_width(_name) > 51 { 
-	var line_width = default_window_width + string_width(_name)	
+	line_width = default_window_width + (string_width(_name)-51)
 } else var line_width = default_window_width
 if string_width(_name) > 155 {
-	line_width += 32	
+	//line_width += 32	
 }
 
 if _price_width > 29 {
-	line_width = line_width + _price_width - 29
+	//line_width = line_width + _price_width - 29
 }	
 
 if _shop == false {
@@ -58,6 +59,21 @@ if stats_open {
 } else {
 	var stats_header_string = "+ Stats"
 }
+
+var portrait_radius = 164
+var portrait_buffer = 32
+
+var contract_text_string = contracts.contract[contract_index, contract_text]
+var contract_text_width = string_width_ext(contract_text_string,string_height(contract_text_string),200)
+var contract_text_height = string_height_ext(contract_text_string,string_height(contract_text_string),contract_text_width)
+
+if line_width <= portrait_radius+(portrait_buffer*2) + contract_text_width { 
+	var hypothetical_line_width = line_width + contract_text_width
+	var difference = hypothetical_line_width - line_width
+	line_width += difference
+}
+
+line_height += max(portrait_radius+(portrait_buffer*2), contract_text_height)
 
 //debug_log("price width: "+string(_price_width))
 //debug_log("name width: "+string(string_width(_name)))
@@ -98,9 +114,26 @@ if !contracts.contract[contract_index, contract_purchased] {
 	draw_circle(_xx+line_width-icon_width-(icon_spacer*2)+18,_yy+name_spacer,icon_width,false)
 					
 }
+
+var portraitX = _xx
+var portraitY = _yy + (name_spacer/2+90)
+
+//	Draw the portrait
+draw_sprite_part(contracts.contract[contract_index, contract_portrait],0,14,46,164,164,portraitX+32,portraitY-32)
+
+//	Draw the contract text
+draw_set_color(c_white)
+draw_set_halign(fa_left)
+draw_set_valign(fa_top)
+var _string = contracts.contract[contract_index, contract_text]
+draw_text_ext(portraitX+portrait_radius+portrait_buffer+32,portraitY,_string,string_height(_string),contract_text_width)
+
+_yy += portrait_radius+(portrait_buffer*2)
 				
 var data_spacerX = 32
 var data_spacerY = 90
+
+draw_set_valign(fa_middle)
 
 //	Draw Data Header
 var dh_xx = _xx+data_spacerX

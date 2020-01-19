@@ -57,7 +57,13 @@ if button_open == true {
 					//debug_log("line height: "+string(line_height))
 					var array = draw_contract_info(_xx,_yy,c)
 					if is_array(array) {
-						if array[0] >= line_width line_width = array[0]
+						if array[0] >= line_width {
+							line_width = array[0]
+							if line_width > menu_width {
+								menu_width = line_width + 64
+								menuX = display_get_gui_width() - menu_width - side_spacer
+							}
+						}
 						if array[1] >= line_height line_height = array[1]
 						//contract_refresh()
 					}
