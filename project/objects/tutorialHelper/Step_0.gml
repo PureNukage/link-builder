@@ -102,9 +102,9 @@ switch(tutorial)
 				if contracts.contract[1, contract_kiosk].data_needed[0,1] {
 					create_textbox("Good work. The ETH/USD data in the Contract window has turned green indicating that data source has been connected")
 					create_textbox("Since LinkPal enables trades of Ether to USD using an Ether transfer and a PayPal invoice, it requires connection to PayPal to see the status of the invoice")
-					create_textbox("Place down and connect the PayPal data source to the node")
+					create_textbox("Place down a second node then connect the PayPal data source to the node")
+					shop.item_node[1, node_available] = true
 					shop.item_data[3, item_available] = true
-					port_add(node.center_cell_x,node.center_cell_y+3,node.id)
 					stage++	
 				}
 			
