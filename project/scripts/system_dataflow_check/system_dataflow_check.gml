@@ -6,6 +6,7 @@ var kiosks_utility = ds_list_create()
 for(var i=0;i<ds_list_size(parts);i++) {
 	if parts[| i].object_index == data { 
 		ds_list_add(databases,parts[| i])
+		parts[| i].connected = false
 	} else if parts[| i].object_index == node {
 		ds_list_clear(parts[| i].data_held)
 		
@@ -108,6 +109,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 						if ds_list_find_index(current_loop.data_held,db.data_generated) == -1 {
 							ds_list_add(current_loop.data_held,db.data_generated)
 							ds_list_add(nodes,current_loop)
+							db.connected = true
 						}
 								
 						//	set the connected port direction
@@ -122,6 +124,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 					} else {
 						//	databases and kiosks...
 						loop = false
+						db.connected = connected.incorrect_connected
 					}
 						
 						

@@ -16,4 +16,5 @@ with camera {
 	display_set_gui_size(_width,_height)
 	app.resolution_width = _width
 	app.resolution_height = _height
+	if instance_exists(plaque) with plaque plaque_refresh()
 }

@@ -18,6 +18,12 @@ enum mode {
 	
 }
 
+enum connected {
+	not_connected,
+	is_connected,
+	incorrect_connected,
+}
+
 enum menu {
 	main,
 	options,

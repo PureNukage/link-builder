@@ -22,6 +22,9 @@ used_lightup = false
 used_time = -1
 misfire = false
 
+iconY = y-64
+connected = connected.not_connected
+
 used_alpha_max = 0
 used_alpha = 0
 

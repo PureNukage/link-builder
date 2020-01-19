@@ -30,6 +30,18 @@ switch(states)
 		//	Draw database overlay
 		draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,used_alpha2)
 		
+		//	Draw an icon if we're not connected
+		if !connected {
+			iconY = wave(y-64,y-96,.5,0)
+			draw_sprite_ext(s_wire_socket,0,x,iconY,1,1,0,c_sergey_blue,1)
+			draw_sprite(s_notconnected,0,x,iconY)
+		} else if connected == connected.incorrect_connected {
+			iconY = wave(y-64,y-96,.5,0)
+			sprite_set_offset(s_chainlink,sprite_get_width(s_chainlink)/2,sprite_get_height(s_chainlink)/2)
+			draw_sprite_ext(s_chainlink,0,x,iconY+5,.33,.33,0,c_white,1)
+			draw_sprite(s_notconnected,0,x,iconY)
+		}
+		
 		
 	break
 }
