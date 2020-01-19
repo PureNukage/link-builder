@@ -1,8 +1,8 @@
 var xx = contracts.buttonX - (contracts.button_width + 16)
 var yy = contracts.buttonY
 
-if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-4,yy-4,xx+sprite_get_width(s_alarm)+4,yy+sprite_get_height(s_alarm)+4) {
-	messages_mouseover = true
+if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-4,yy-4,xx+sprite_get_width(s_alarm)+4,yy+sprite_get_height(s_alarm)+4) and !instance_exists(mainmenu) {
+	button_mouseover = true
 	draw_set_color(c_gray)
 	if input.mouse_left_press {
 		messages_open = !messages_open	
@@ -14,7 +14,7 @@ if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-4,yy-4,xx+sprite_get_width(s_al
 		}
 	}
 } else {
-	messages_mouseover = false
+	button_mouseover = false
 	draw_set_color(c_dkgray)
 }
 draw_roundrect(xx-4,yy-4,xx+sprite_get_width(s_alarm)+4,yy+sprite_get_height(s_alarm)+4,false)

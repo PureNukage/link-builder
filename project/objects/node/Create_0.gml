@@ -37,3 +37,9 @@ used_alpha_max = .3
 used_alpha = used_alpha_max
 used_time = -1
 used_lightup = false
+
+gold_flash = false
+gold_flash_alpha = 0
+gold_flash_alpha_max = .6
+gold_flash_lightup = false
+gold_flash_time = -1

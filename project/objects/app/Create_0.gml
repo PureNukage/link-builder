@@ -11,4 +11,4 @@ data_corruption = -1
 
 tutorial = -1
 
-instance_create_layer(0,0,"Instances",soundSystem)
+if !instance_exists(soundSystem) instance_create_layer(0,0,"Instances",soundSystem)

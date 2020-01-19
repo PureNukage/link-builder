@@ -4,8 +4,8 @@ if in_game {
 	draw_set_color(c_black)
 	draw_rectangle(0,0,display_get_gui_width(),display_get_gui_height(),false)	
 	
-	var width = 512
-	var height = 600
+	var width = 600
+	var height = 700
 	var xx = display_get_gui_width()/2 - width/2
 	var yy = display_get_gui_height()/6
 	
@@ -51,6 +51,7 @@ switch(menu)
 						{
 							case 0:	//	Play
 								camera.camera_mode = camera_mode.free
+								app.tutorials = -1
 								app.world_width = 3840
 								app.world_height = 3840
 								app.data_corruption = mode.on
@@ -194,6 +195,27 @@ switch(menu)
 			draw_set_halign(fa_center)
 			draw_set_valign(fa_middle)
 			draw_text(_x,_y+_string_height/2,_string)
+			
+			_y += 64
+			
+			//	Back to Main Menu
+			if in_game {
+				var _string = "EXIT to Main Menu (WARNING: will lose current game session)"
+				var xx = _x - string_width(_string)/2
+				
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-string_width(_string)/2,_y,_x+string_width(_string)/2+string_width(_string),_y+string_height(_string)) {
+					draw_set_color(c_white)
+					if mouse_check_button_pressed(mb_left) {
+						back_to_mainmenu()	
+					}
+				} else {
+					draw_set_color(c_black)	
+				}
+				
+				draw_set_halign(fa_center)
+				draw_set_valign(fa_middle)
+				draw_text(_x,_y+string_height(_string)/2,_string)
+			}
 			
 		break
 	#endregion

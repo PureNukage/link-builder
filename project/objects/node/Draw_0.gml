@@ -35,6 +35,31 @@ switch(states)
 		sprite_set_offset(sprite,sprite_get_width(sprite)/2-1,sprite_get_height(sprite)/2-1)
 		draw_sprite(sprite,-1,x,y)
 		
+		//	Determine if I have unassigned new ports, if so make flash me gold!
+		var level = shop.item_node[item_index, node_level]
+		var ports_level = shop.item_node[item_index, node_level_ports]
+		var amount = 0.08
+		//	I have unassigned ports!
+		if ports_count < ports_level[level] and !gold_flash {
+			gold_flash = true
+			gold_flash_time = time.stream
+		} else {
+			if gold_flash gold_flash = false	
+		}
+		
+		if gold_flash {
+			if gold_flash_lightup {
+				gold_flash_alpha = lerp(gold_flash_alpha,gold_flash_alpha_max + amount,amount)
+				if gold_flash_alpha >= gold_flash_alpha_max + amount-0.01 {
+					gold_flash_lightup = false	
+				}
+			} else {
+				gold_flash_alpha = lerp(gold_flash_alpha,0,amount)
+				if gold_flash_alpha <= amount+0.01 gold_flash_lightup = true
+			}
+			draw_sprite_ext(sprite,-1,x,y,1,1,0,c_yellow,gold_flash_alpha)	
+		}
+		
 		//	Draw the node used
 		draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,used_alpha)
 		

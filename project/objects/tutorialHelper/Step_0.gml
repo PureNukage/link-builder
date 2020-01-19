@@ -123,7 +123,7 @@ switch(tutorial)
 					var messageID = textboxController.previous_messages[| m]
 					var message_uniqueID = messageID.uniqueID
 					if message_uniqueID == 1234 {
-						room_goto(main_menu)
+						back_to_mainmenu()
 					}
 				}
 				

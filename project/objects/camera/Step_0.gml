@@ -12,8 +12,10 @@ switch(camera_mode)
 	
 		#region Zooming Up and Down
 		
-			if !shop.menu_mouseover and !contracts.menu_mouseover and !shop.link_mouseover and !shop.eth_mouseover and !textboxController.messages_mouseover {
-				zoom_level = clamp((zoom_level + (mouse_wheel_down()-mouse_wheel_up())*0.1),0.25,1.0)
+			if instance_exists(shop) and instance_exists(contracts) and instance_exists(textboxController) {
+				if !shop.menu_mouseover and !contracts.menu_mouseover and !shop.link_mouseover and !shop.eth_mouseover and !textboxController.messages_mouseover {
+					zoom_level = clamp((zoom_level + (mouse_wheel_down()-mouse_wheel_up())*0.1),0.25,1.0)
+				}
 			}
 
 			camera_set_view_pos(Camera,
@@ -79,10 +81,12 @@ switch(camera_mode)
 		//} else pan = 0
 
 		//	Check if we're moused over any gui elements before applying pan
-		if shop.menu_open == 0 and contracts.button_open == 0 and pan == 0 {
-			y += panY * panspeed 
-			x += panX * panspeed
-			if pan = -1 pan = 1
+		if instance_exists(shop) and instance_exists(contracts) {
+			if shop.menu_open == 0 and contracts.button_open == 0 and pan == 0 {
+				y += panY * panspeed 
+				x += panX * panspeed
+				if pan = -1 pan = 1
+			}
 		}
 		
 	break	
