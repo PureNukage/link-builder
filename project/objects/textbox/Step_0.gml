@@ -14,7 +14,9 @@ if fade == 0 {
 		ds_list_add(textboxController.previous_messages,id)
 		if ds_list_size(textboxController.previous_messages) > 25 {
 			if instance_exists(textboxController.previous_messages[| 0]) instance_destroy(textboxController.previous_messages[| 0])
-			ds_list_delete(textboxController.previous_messages,0)	
+			ds_list_delete(textboxController.previous_messages,0)
+			//textboxController.message_index++
+			//textboxController.message_index = clamp(textboxController.message_index,0,ds_list_size(textboxController.previous_messages)-2)
 		}
 	}
 	done = true

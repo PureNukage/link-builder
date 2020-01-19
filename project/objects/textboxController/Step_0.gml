@@ -20,3 +20,7 @@ if !ds_list_empty(message_queue) and current_message == -1 {
 		iconY = y-(sprite_get_height(icon)/2)+(height/2)+iconBuffer
 	}
 }
+
+if input.mouse_left_press and messages_open and !shop.menu_mouseover and !shop.button_mouseover {
+	messages_open = false	
+}

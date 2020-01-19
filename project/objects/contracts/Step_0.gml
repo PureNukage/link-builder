@@ -7,6 +7,7 @@ if point_in_rectangle(mouse_gui_x,mouse_gui_y,buttonX,buttonY,buttonX+button_wid
 		
 		if button_open {
 			contract_refresh()
+			if textboxController.messages_open textboxController.messages_open = false
 		}
 	}
 } else {
