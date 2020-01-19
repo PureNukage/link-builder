@@ -8,6 +8,9 @@ if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-4,yy-4,xx+sprite_get_width(s_al
 		messages_open = !messages_open	
 		
 		if messages_open {
+			if ds_list_size(previous_messages) > message_clamp {
+				message_index = floor(bar_height/round(bar_height / ds_list_size(previous_messages))-1)
+			}
 			if contracts.button_open {
 				contracts.button_open = false	
 			}

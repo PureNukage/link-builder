@@ -6,4 +6,6 @@ with all {
 	}
 }
 
+if app.tutorial > -1 app.tutorial = -1
+
 room_goto(main_menu)

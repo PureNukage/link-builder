@@ -131,11 +131,15 @@ switch(tutorial)
 				break
 				//	Wait for the player to head back to the main menu
 				case 8:
-					for(var m=0;m<ds_list_size(textboxController.previous_messages);m++) {
-						var messageID = textboxController.previous_messages[| m]
-						var message_uniqueID = messageID.uniqueID
-						if message_uniqueID == 1234 {
-							back_to_mainmenu()
+					if instance_exists(textboxController) {
+						for(var m=0;m<ds_list_size(textboxController.previous_messages);m++) {
+							var messageID = textboxController.previous_messages[| m]
+							var message_uniqueID = messageID.uniqueID
+							if message_uniqueID == 1234 {
+								back_to_mainmenu()
+								exit
+								stage++
+							}
 						}
 					}
 				
