@@ -102,7 +102,7 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 			shop.item_node[_node.item_index, node_jobruns] += _jobruns
 			_node.jobruns += _jobruns
 			_node.used = true
-			resource_changed("ETH",1,_node.x,_node.y-64,false)
+			resource_changed("ETH",1,_node.x,_node.y-128,false)
 		}
 		
 		//	this smart contract was run
@@ -131,7 +131,9 @@ if contract_misfire > 0 {
 		
 //	give the player the reward
 if !contract_misfire {
-	player.points += contracts.contract[smartcontract, contract_reward]
+	resource_changed("$$",-contracts.contract[smartcontract, contract_reward],_kiosk.x,_kiosk.y-64,false)
+	resource_changed("ETH",contracts.contract[smartcontract, contract_gasfee_base],_kiosk.x,_kiosk.y-128,false)
+	//player.money += contracts.contract[smartcontract, contract_reward]
 	var _points = contracts.contract[smartcontract, contract_reward]
 	debug_log("CONTRACT USED Player to receive: "+string(_points)+" points")
 } else var _points = 0
@@ -162,7 +164,6 @@ if !contract_misfire {
 	_color = c_red	
 	pissed = true
 }
-create_popup(_kiosk.x,_kiosk.y-64,string(_points),_color,1,3)
 		
 //	Move everyone up in line
 for(var i=0;i<ds_list_size(_kiosk.line);i++) {

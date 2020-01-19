@@ -26,6 +26,10 @@ switch(resource)
 		player.value -= amount
 		_icon = s_resource_value_shop
 	break
+	case "$$":
+		player.money -= amount
+		_icon = s_resource_money
+	break
 }
 
 var _string = ""
@@ -43,4 +47,8 @@ _string += string(amount)
 
 if amount < 0 _string = string_replace(_string,"-","")
 
-create_popup(xx,yy,_string,_color,1,3,_icon,_gui)
+if app.tutorial == -1 create_popup(xx,yy,_string,_color,1,3,_icon,_gui)
+
+with system {
+	system_dataflow_check()	
+}

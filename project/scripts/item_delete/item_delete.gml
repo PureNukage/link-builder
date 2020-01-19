@@ -321,7 +321,7 @@ if object_index == kiosk and smartcontract > -1 {
 	contracts.contract[smartcontract, contract_kiosk] = -1
 	contracts.contract[smartcontract, contract_online] = false
 	
-	if ds_list_size(line) > 0 {
+	if ds_exists(line,ds_type_list) and ds_list_size(line) > 0 {
 		for(var i=0;i<ds_list_size(line);i++) {
 			var _person = line[| i]
 			with _person {

@@ -454,7 +454,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 				}
 	
 				//	this kiosk has all the data it needs!
-				if amount_of_data_had >= amount_of_data_req and player.link >= contracts.contract[_kiosk.smartcontract, contract_linkfee] and player.eth >= contracts.contract[_kiosk.smartcontract, contract_gasfee_total] {
+				if amount_of_data_had >= amount_of_data_req and (player.link >= contracts.contract[_kiosk.smartcontract, contract_linkfee] and player.eth >= contracts.contract[_kiosk.smartcontract, contract_gasfee_total] or app.tutorial > -1) {
 					if !_kiosk.active {
 						_kiosk.active = true
 						contracts.contract[_kiosk.smartcontract, contract_online] = true

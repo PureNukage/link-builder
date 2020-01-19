@@ -58,6 +58,16 @@ item_placing = 0
 
 #region GUI
 
+	//	Resources
+	link_trade = 1
+	eth_trade = 1
+	
+	link_price = 2
+	eth_price = 1
+	
+	link_mouseover = false
+	eth_mouseover = false
+
 	buttonX = 32
 	buttonY = 32
 	button_width = 128

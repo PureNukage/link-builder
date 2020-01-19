@@ -150,11 +150,11 @@ if menu_open == true {
 						#endregion
 						
 						//	Check if we have enough currency
-						if menu_index_string == "Contracts" and player.value < _item_price {
+						if menu_index_string == "Contracts" and player.value < _item_price and app.tutorial == -1 {
 							draw_set_color(c_dkgray)
-						} else if (menu_index_string == "Data" or menu_index_string ="Nodes") and player.link < _item_price {
+						} else if (menu_index_string == "Data" or menu_index_string = "Nodes") and player.link < _item_price and app.tutorial == -1 {
 							draw_set_color(c_dkgray)
-						}	
+						}
 				
 					
 						//	Draw line background
@@ -247,125 +247,171 @@ draw_sprite_ext(s_wire_socket,0,_xx+sprite_get_width(s_wire_socket)/2,_yy+sprite
 
 #region Resources
 
+if app.tutorial == -1 {
 
-draw_set_halign(fa_center)
-draw_set_valign(fa_middle)
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
 
-var _xx = display_get_gui_width()/2
-var _yy = buttonY
+	var _xx = display_get_gui_width()/2
+	var _yy = buttonY
 
-var spacer = 1.2
-var _width_base = 128
-var _height = 64
+	var spacer = 1.2
+	var _width_base = 128
+	var _height = 64
 
-var linkX = display_get_gui_width()/2
-var linkY = buttonY
-var link_width = 128
-//var link_height = 64
+	var linkX = display_get_gui_width()/2
+	var linkY = buttonY
+	var link_width = 128
+	//var link_height = 64
 
-var valueX = linkX - (link_width * spacer)
-var valueY = buttonY
-var value_width = 128
-//var value_height = 64
+	var moneyX = linkX - (link_width * spacer)
+	var moneyY = buttonY
+	var money_width = 128
+	//var value_height = 64
 
-var ethX = 90
-var ethY = buttonY
-var eth_width = 128
-//var eth_height = 64
+	var valueX = moneyX
+	var valueY = -1
+	var value_width = 128
 
-//	LINK
-if string_width(string(player.link)) > 36 {
-	link_width = _width_base + (string_width(string(player.link)) - 36)
-} else link_width = _width_base
+	var ethX = 90
+	var ethY = buttonY
+	var eth_width = 128
+	//var eth_height = 64
 
-linkX = _xx - link_width/2
+	//	LINK
+	if string_width(string(player.link)) > 36 {
+		link_width = _width_base + (string_width(string(player.link)) - 36)
+	} else link_width = _width_base
 
-draw_set_color(c_black)
-draw_roundrect(linkX-2,_yy-2,linkX+link_width+2,_yy+66,false)
+	linkX = _xx - link_width/2
 
-if point_in_rectangle(gui_mouse_x,gui_mouse_y,linkX,_yy,linkX+link_width,_yy+64) {
+	draw_set_color(c_black)
+	draw_roundrect(linkX-2,_yy-2,linkX+link_width+2,_yy+66,false)
+
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,linkX,_yy,linkX+link_width,_yy+64) {
+		link_mouseover = true
+		draw_set_font(fnt_shop)
+		var amount_of_money = link_trade * link_price
+		var _string = string(amount_of_money) + " $$ / " + string(link_trade) + " LINK"
+		gui_popup(linkX,_yy,linkX+link_width,_yy+64,1,_string)
+		draw_set_color(c_gray)		
+		if input.mouse_left_press and player.money >= amount_of_money and amount_of_money > 0 {
+			resource_changed("$$",amount_of_money,gui_mouse_x,gui_mouse_y+128,true)
+			resource_changed("LINK",-link_trade,gui_mouse_x,gui_mouse_y+256,true)
+		}
+		if input.scroll_up or input.scroll_down {
+			link_trade += input.scroll_up - input.scroll_down
+			link_trade = clamp(link_trade,0,50)
+		}
+	} else {
+		link_mouseover = false
+		draw_set_color(c_dkgray)
+	}
+	draw_roundrect(linkX,_yy,linkX+link_width,_yy+64,false)
+
+	draw_set_halign(fa_left)
+	draw_set_color(c_white)
 	draw_set_font(fnt_shop)
-	gui_popup(linkX,_yy,linkX+link_width,_yy+64,1,"10 VALUE / 5 LINK")
-	draw_set_color(c_gray)		
-	if input.mouse_left_press and player.value >= 10 {
-		resource_changed("VALUE",10,gui_mouse_x,gui_mouse_y+128,true)
-		resource_changed("LINK",-5,gui_mouse_x,gui_mouse_y+256,true)
-		//player.value -= 10
-		//player.link += 5
+	draw_text(_xx,_yy+_height/2,string(player.link))
+
+	sprite_set_offset(s_resource_link_shop,sprite_get_width(s_resource_link_shop)/2,sprite_get_height(s_resource_link_shop)/2)
+	draw_sprite(s_resource_link_shop,0,_xx-32,_yy+32)
+
+	//	MONEY
+
+	if string_width(string(player.money)) > 36 {
+		var money_width = _width_base + (string_width(string(player.money)) - 36)
+	} else money_width = _width_base
+
+	moneyX = linkX - (link_width * spacer)
+
+	draw_set_color(c_black)
+	draw_roundrect(moneyX-2,_yy-2,moneyX+money_width+2,_yy+_height+2,false)
+
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,moneyX,_yy,moneyX+money_width,_yy+_height) {
+		gui_popup(moneyX,_yy,moneyX+money_width,_yy+_height,1,"Used to purchase LINK and ETH")
+		draw_set_color(c_gray)		
+	} else {
+		draw_set_color(c_dkgray)	
 	}
-} else {
-	draw_set_color(c_dkgray)
-}
-draw_roundrect(linkX,_yy,linkX+link_width,_yy+64,false)
 
-draw_set_halign(fa_left)
-draw_set_color(c_white)
-draw_set_font(fnt_shop)
-draw_text(_xx,_yy+_height/2,string(player.link))
+	draw_roundrect(moneyX,_yy,moneyX+money_width,_yy+_height,false)
 
-sprite_set_offset(s_resource_link_shop,sprite_get_width(s_resource_link_shop)/2,sprite_get_height(s_resource_link_shop)/2)
-draw_sprite(s_resource_link_shop,0,_xx-32,_yy+32)
+	draw_set_color(c_white)
+	draw_set_halign(fa_left)
+	draw_set_font(fnt_shop)
+	draw_text(moneyX+money_width/2,_yy+_height/2,string(player.money))
 
-//	VALUE
+	sprite_set_offset(s_resource_money,sprite_get_width(s_resource_money)/2,sprite_get_height(s_resource_money)/2)
+	draw_sprite_ext(s_resource_money,0,moneyX+28,_yy+32,1,1,0,c_white,1)
 
-if string_width(string(player.value)) > 36 {
-	var value_width = _width_base + (string_width(string(player.value)) - 36)
-} else value_width = _width_base
+	//	VALUE
 
-valueX = linkX - (link_width * spacer)
+	if string_width(string(player.value)) > 36 {
+		var value_width = _width_base + (string_width(string(player.value))- 36)
+	} else value_width = _width_base
 
-draw_set_color(c_black)
-draw_roundrect(valueX-2,_yy-2,valueX+value_width+2,_yy+_height+2,false)
+	valueX = moneyX - (money_width * spacer)
 
-if point_in_rectangle(gui_mouse_x,gui_mouse_y,valueX,_yy,valueX+value_width,_yy+_height) {
-	gui_popup(valueX,_yy,valueX+value_width,_yy+_height,1,"Used to purchase LINK and ETH")
-	draw_set_color(c_gray)		
-} else {
-	draw_set_color(c_dkgray)	
-}
+	draw_set_color(c_black)
+	draw_roundrect(valueX-2,_yy-2,valueX+value_width+2,_yy+_height+2,false)
 
-draw_roundrect(valueX,_yy,valueX+value_width,_yy+_height,false)
-
-draw_set_color(c_white)
-draw_set_halign(fa_left)
-draw_set_font(fnt_shop)
-draw_text(valueX+value_width/2,_yy+_height/2,string(player.value))
-
-sprite_set_offset(s_resource_value_shop,sprite_get_width(s_resource_value_shop)/2,sprite_get_height(s_resource_value_shop)/2)
-draw_sprite_ext(s_resource_value_shop,0,valueX+28,_yy+32,1,1,0,c_white,1)
-
-//	ETH
-
-if string_width(string(player.eth)) > 36 {
-	var eth_width = _width_base + (string_width(string(player.eth)) - 36)
-} else eth_width = _width_base
-
-ethX = linkX + (link_width*spacer)
-
-draw_set_color(c_black)
-draw_roundrect(ethX-2,_yy-2,ethX+eth_width+2,_yy+_height+2,false)
-
-if point_in_rectangle(gui_mouse_x,gui_mouse_y,ethX,_yy,ethX+eth_width,_yy+_height) {
-	gui_popup(ethX,_yy,ethX+eth_width,_yy+_height,1,"10 VALUE / 10 ETH")
-	draw_set_color(c_gray)		
-	if input.mouse_left_press and player.value >= 10 {
-		resource_changed("VALUE",10,gui_mouse_x,gui_mouse_y+128,true)
-		resource_changed("ETH",-10,gui_mouse_x,gui_mouse_y+256,true)
-		//player.value -= 10
-		//player.eth += 10
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,valueX,_yy,valueX+value_width,_yy+_height) {
+		gui_popup(valueX,_yy,valueX+value_width,_yy+_height,1,"Total value of the space")
+		draw_set_color(c_gray)		
+	} else {
+		draw_set_color(c_dkgray)	
 	}
-} else {
-	draw_set_color(c_dkgray)
+	draw_roundrect(valueX,_yy,valueX+value_width,_yy+_height,false)
+
+	draw_set_color(c_white)
+	draw_set_halign(fa_left)
+	draw_set_font(fnt_shop)
+	draw_text(valueX+value_width/2,_yy+_height/2,string(player.value))
+
+	sprite_set_offset(s_resource_value_shop,sprite_get_width(s_resource_value_shop)/2,sprite_get_height(s_resource_value_shop)/2)
+	draw_sprite_ext(s_resource_value_shop,0,valueX+28,_yy+32,1,1,0,c_white,1)
+
+	//	ETH
+
+	if string_width(string(player.eth)) > 36 {
+		var eth_width = _width_base + (string_width(string(player.eth)) - 36)
+	} else eth_width = _width_base
+
+	ethX = linkX + (link_width*spacer)
+
+	draw_set_color(c_black)
+	draw_roundrect(ethX-2,_yy-2,ethX+eth_width+2,_yy+_height+2,false)
+
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,ethX,_yy,ethX+eth_width,_yy+_height) {
+		eth_mouseover = true
+		var amount_of_money = eth_trade * eth_price
+		var _string = string(amount_of_money) + " $$ / " + string(eth_trade) + " ETH"
+		gui_popup(ethX,_yy,ethX+eth_width,_yy+_height,1,_string)
+		draw_set_color(c_gray)		
+		if input.mouse_left_press and player.money >= amount_of_money and amount_of_money > 0 {
+			resource_changed("$$",amount_of_money,gui_mouse_x,gui_mouse_y+128,true)
+			resource_changed("ETH",-eth_trade,gui_mouse_x,gui_mouse_y+256,true)
+		}
+		if input.scroll_up or input.scroll_down {
+			eth_trade += input.scroll_up - input.scroll_down
+			eth_trade = clamp(eth_trade,0,50)
+		}
+	} else {
+		eth_mouseover = false
+		draw_set_color(c_dkgray)
+	}
+	draw_roundrect(ethX,_yy,ethX+eth_width,_yy+_height,false)
+
+	draw_set_color(c_white)
+	draw_set_halign(fa_left)
+	draw_set_font(fnt_shop)
+	draw_text(ethX+eth_width/2,_yy+_height/2,string(player.eth))
+
+	sprite_set_offset(s_resource_eth_shop,sprite_get_width(s_resource_eth_shop)/2,sprite_get_height(s_resource_eth_shop)/2)
+	draw_sprite_ext(s_resource_eth_shop,0,ethX+32,_yy+32,1,1,0,c_white,1)
+	
 }
-draw_roundrect(ethX,_yy,ethX+eth_width,_yy+_height,false)
-
-draw_set_color(c_white)
-draw_set_halign(fa_left)
-draw_set_font(fnt_shop)
-draw_text(ethX+eth_width/2,_yy+_height/2,string(player.eth))
-
-sprite_set_offset(s_resource_eth_shop,sprite_get_width(s_resource_eth_shop)/2,sprite_get_height(s_resource_eth_shop)/2)
-draw_sprite_ext(s_resource_eth_shop,0,ethX+32,_yy+32,1,1,0,c_white,1)
 
 
 #endregion
@@ -399,23 +445,3 @@ var _yy = buttonY
 draw_set_font(-1)
 draw_set_halign(fa_left)
 draw_set_valign(fa_top)
-
-//draw_text(_xx,_yy,"E to rotate item")				_yy += 16
-//draw_text(_xx,_yy,"Press Home to give $2000")		_yy += 16
-//var _string = "Press and hold to drag a long wire"
-//if input.selection > -1 and input.selection.object_index == wire {
-//	draw_text(_xx,_yy,_string)	_yy += 16
-//}
-
-
-
-//	ALPHA INFO
-var _xx = buttonX+button_width+32+128+16+200+16
-var _yy = buttonY
-
-//draw_text(_xx,_yy,"This game is currently in ALPHA. It is not balanced and will contain bugs")_yy += 20
-//draw_text(_xx,_yy,"white wires = off-chain; blue wires = on-chain")	_yy += 20
-//draw_text(_xx,_yy,"Nodes cannot get data from other nodes") _yy += 20
-//draw_text(_xx,_yy,"Data gets corrupted the more its used. Corruption increases the chance of a misfire") _yy += 20
-//draw_text(_xx,_yy,"Contracts Price data only needs 1 source to be successful. Decentralize to give more sources") _yy += 20
-//draw_text(_xx,_yy,"Contracts needs to have 0 misfires to work properly. People don't like apps that don't work") _yy += 20

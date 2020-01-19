@@ -5,7 +5,7 @@ current_message = -1
 
 if app.tutorial == -1 {
 	//	Welcome message
-	create_textbox("Welcome to Smart Contract Builder\nThis game is in ALPHA and will contain bugs")
+	create_textbox("Welcome to Smart Contract Builder\nThis game is in ALPHA and may contain bugs")
 }
 
 //create_textbox("This game is in ALPHA and will contain bugs",s_rory)

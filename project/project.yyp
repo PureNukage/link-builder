@@ -1055,6 +1055,14 @@
             }
         },
         {
+            "Key": "beb5b751-9a6d-458d-87c5-0a2e7c1b0095",
+            "Value": {
+                "id": "74c277d7-0a40-4c8f-b40e-5015d4ddbb77",
+                "resourcePath": "sprites\\s_resource_money\\s_resource_money.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "bfabef34-cab6-4de3-9dfc-274be8ca9924",
             "Value": {
                 "id": "dbc4a35f-0aad-483c-8e03-ecc529f544db",
