@@ -5,7 +5,9 @@ if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-4,yy-4,xx+sprite_get_width(s_al
 	button_mouseover = true
 	draw_set_color(c_gray)
 	if input.mouse_left_press {
-		messages_open = !messages_open	
+		if !clickfix {
+			messages_open = !messages_open	
+		}
 		
 		if messages_open {
 			if ds_list_size(previous_messages) > message_clamp {
@@ -21,6 +23,8 @@ if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-4,yy-4,xx+sprite_get_width(s_al
 	draw_set_color(c_dkgray)
 }
 draw_roundrect(xx-4,yy-4,xx+sprite_get_width(s_alarm)+4,yy+sprite_get_height(s_alarm)+4,false)
+
+clickfix = false
 
 draw_sprite(s_alarm,0,xx,yy)
 

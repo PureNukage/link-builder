@@ -18,10 +18,24 @@ switch(tutorial)
 		case tutorial.basics:
 			switch(stage) 
 			{
+				//	Tutorial Start
 				case 0:
+					shop.resources_active = false
+					shop.wire_active = false
+					shop.button_active = false
+					contracts.button_active = false
+					
 					create_textbox("Welcome to the Smart Contract Builder basics")
 		
 					create_textbox("This tutorial is going to introduce you to the basics of the game")
+					
+					create_textbox("Everything I've said can be found by clicking on the alarm icon")
+					stage++
+				break
+				//	Active the shop menu and tell them about it
+				case 1:
+					
+					
 				break
 			}
 		break
@@ -33,6 +47,8 @@ switch(tutorial)
 			{
 				//	Tutorial start
 				case 0:
+					shop.resources_active = false
+				
 					create_textbox("Welcome to Your first externally-aware contract")
 
 					create_textbox("This tutorial is going to take you through building the LinkPal contract")

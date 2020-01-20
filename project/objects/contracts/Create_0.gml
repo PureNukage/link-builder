@@ -1,3 +1,4 @@
+button_active = true
 button_width = 128
 button_height = 64
 buttonX = display_get_gui_width()-button_width-32

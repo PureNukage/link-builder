@@ -22,5 +22,6 @@ if !ds_list_empty(message_queue) and current_message == -1 {
 }
 
 if input.mouse_left_press and messages_open and !shop.menu_mouseover and !shop.button_mouseover and !messages_mouseover {
-	messages_open = false	
+	messages_open = false
+	clickfix = true
 }

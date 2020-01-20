@@ -37,10 +37,10 @@ if app.resolution_width == 1920 {
 options[0, menu_submenu] = resolutions
 
 //	Tutorials
-tutorials[tutorial.basics, tutorial_name] = "Smart Contract Builder basics"
-tutorials[tutorial.basics, tutorial_selected] = false
+tutorials[tutorial.basics, tutorial_name] = "1. Smart Contract Builder basics"
+tutorials[tutorial.basics, tutorial_selected] = true
 
-tutorials[tutorial.my_first_contract, tutorial_name] = "Your first externally-aware contract"
+tutorials[tutorial.my_first_contract, tutorial_name] = "2. Your first externally-aware contract"
 tutorials[tutorial.my_first_contract, tutorial_selected] = true
 
 tutorials[tutorial.decentralizing, tutorial_name] = "Needing to decentralize"

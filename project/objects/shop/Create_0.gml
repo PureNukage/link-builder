@@ -67,6 +67,10 @@ item_placing = 0
 	
 	link_mouseover = false
 	eth_mouseover = false
+	
+	button_active = true
+	wire_active = true
+	resources_active = true
 
 	buttonX = 32
 	buttonY = 32

@@ -1,4 +1,5 @@
 #region Shop Button
+if button_active {
 	//	Drawing the Shop button background
 	draw_set_color(c_dkgray)
 	draw_roundrect(buttonX,buttonY,buttonX+button_width,buttonY+button_height,false)
@@ -17,6 +18,7 @@
 	draw_set_font(-1)
 	draw_set_halign(fa_left)
 	draw_set_valign(fa_top)
+}
 #endregion 
 
 #region Shop Menu
@@ -211,43 +213,38 @@ if menu_open == true {
 
 #region Wire button
 
-var _xx = buttonX+button_width+64
-var _yy = buttonY
+if wire_active {
 
-//	Draw background
-if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+64,_yy+32) and !instance_exists(mainmenu) {
-	button_wire_mouseover = true
-	draw_set_color(c_gray)	
-	if input.mouse_left_press {
-		input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",wire)
-		input.selection.selected = true
-		if ds_list_find_index(input.selections,input.selection) == -1 {
-			ds_list_add(input.selections,input.selection)	
+	var _xx = buttonX+button_width+64
+	var _yy = buttonY
+
+	//	Draw background
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+64,_yy+32) and !instance_exists(mainmenu) {
+		button_wire_mouseover = true
+		draw_set_color(c_gray)	
+		if input.mouse_left_press {
+			input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",wire)
+			input.selection.selected = true
+			if ds_list_find_index(input.selections,input.selection) == -1 {
+				ds_list_add(input.selections,input.selection)	
+			}
 		}
+	} else {
+		draw_set_color(c_dkgray)
+		button_wire_mouseover = false	
 	}
-} else {
-	draw_set_color(c_dkgray)
-	button_wire_mouseover = false	
+	draw_roundrect(_xx,_yy,_xx+64,_yy+32,false)
+
+	sprite_set_offset(s_wire_socket,sprite_get_width(s_wire_socket)/2,sprite_get_height(s_wire_socket)/2)
+	draw_sprite_ext(s_wire_socket,0,_xx+sprite_get_width(s_wire_socket)/2,_yy+sprite_get_height(s_wire_socket)/2,1,1,0,c_sergey_blue,1)
+
 }
-draw_roundrect(_xx,_yy,_xx+64,_yy+32,false)
-
-//	Draw outline
-
-//	Draw text
-//draw_set_halign(fa_center)
-//draw_set_valign(fa_middle)
-//draw_set_color(c_white)
-//draw_set_font(-1)
-//draw_text(_xx+32,_yy+16,"Wire")
-sprite_set_offset(s_wire_socket,sprite_get_width(s_wire_socket)/2,sprite_get_height(s_wire_socket)/2)
-draw_sprite_ext(s_wire_socket,0,_xx+sprite_get_width(s_wire_socket)/2,_yy+sprite_get_height(s_wire_socket)/2,1,1,0,c_sergey_blue,1)
-
 
 #endregion
 
 #region Resources
 
-if app.tutorial == -1 {
+if resources_active {
 
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_middle)

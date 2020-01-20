@@ -20,6 +20,8 @@ handleY = -1
 handle_width = 32
 handle_height = -1
 
+clickfix = false
+
 if app.tutorial == -1 {
 	//	Welcome message
 	create_textbox("Welcome to Smart Contract Builder\nThis game is in ALPHA and may contain bugs")
