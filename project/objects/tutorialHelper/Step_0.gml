@@ -29,12 +29,48 @@ switch(tutorial)
 		
 					create_textbox("This tutorial is going to introduce you to the basics of the game")
 					
-					create_textbox("Everything I've said can be found by clicking on the alarm icon")
+					create_textbox("Messages such as this are stored in the Message menu")
+					
+					create_textbox("Open the Message menu",-1,-1,24)
 					stage++
 				break
-				//	Active the shop menu and tell them about it
+				//	Wait for the previous menu to close
 				case 1:
-					
+					if textbox_in_history(24) {
+						var xx = contracts.buttonX - (contracts.button_width + 16)
+						var yy = contracts.buttonY
+						create_pointer(xx-128,yy+32,contracts.buttonX,contracts.buttonY+32,true,32)
+						stage++	
+					}
+				break
+				//	Wait for player to open the alarm menu
+				case 2:
+					if textboxController.messages_open {
+						destroy_pointer(32)
+						create_textbox("Good job!")
+						create_textbox("Open the Shop menu to advance",-1,-1,101)
+						stage++
+					}
+				break
+				//	Wait for player to press the previous message
+				case 3:
+					if textbox_in_history(101) {
+						shop.button_active = true
+						create_pointer(shop.buttonX+shop.button_width+128,shop.buttonY+32,shop.buttonX,shop.buttonY+32,true,66)
+						stage++
+					}
+				break
+				//	Wait for the player to open the Shop
+				case 4:
+					if shop.menu_open {
+						destroy_pointer(66)
+						create_textbox("The Shop sells Nodes, Data and Contracts. All the things needed to build decentralized apps")
+						create_textbox("Place down a contract")
+						stage++
+					}
+				
+				break
+				case 5:
 					
 				break
 			}
@@ -161,18 +197,10 @@ switch(tutorial)
 				break
 				//	Wait for the player to head back to the main menu
 				case 9:
-					if instance_exists(textboxController) {
-						for(var m=0;m<ds_list_size(textboxController.previous_messages);m++) {
-							var messageID = textboxController.previous_messages[| m]
-							var message_uniqueID = messageID.uniqueID
-							if message_uniqueID == 1234 {
-								back_to_mainmenu()
-								exit
-								stage++
-							}
-						}
-					}
-				
+					if textbox_in_history(1234) {
+						back_to_mainmenu()
+						stage++
+					}			
 				break
 			}
 		

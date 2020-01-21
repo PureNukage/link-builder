@@ -367,6 +367,22 @@
             }
         },
         {
+            "Key": "4314609c-a5c5-4a5f-b5ee-60472e794976",
+            "Value": {
+                "id": "6b2b7119-29a0-45a3-9676-ddfd4129d44b",
+                "resourcePath": "objects\\finger\\finger.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "434cb936-da63-413c-ad0c-54d48fdbe513",
+            "Value": {
+                "id": "aa2cb3b0-f090-455f-b167-9b4c75b67d83",
+                "resourcePath": "scripts\\create_pointer\\create_pointer.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "435140f2-b2ec-49bb-9560-148dd343fb1b",
             "Value": {
                 "id": "8313870d-271f-4a07-91cb-e93fb3aac9a4",
@@ -483,6 +499,14 @@
             "Value": {
                 "id": "f726b2ca-128f-401c-8b29-9a60d1f9b9f2",
                 "resourcePath": "sprites\\s_chainlink\\s_chainlink.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "576a88ea-27cd-41ca-a594-8551e456bf1e",
+            "Value": {
+                "id": "56bab51c-5b58-4a06-930f-36b2da6fdaac",
+                "resourcePath": "sprites\\s_hand\\s_hand.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -1295,6 +1319,14 @@
             }
         },
         {
+            "Key": "e6d63a33-a2b1-4c9a-bb41-29adb56fcc68",
+            "Value": {
+                "id": "9ee10e14-6bd4-4869-b2ce-fe5ee329eddf",
+                "resourcePath": "scripts\\textbox_in_history\\textbox_in_history.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "e9ee8a04-3bc6-4203-aebf-b8512bbe702b",
             "Value": {
                 "id": "cfbe31aa-0c18-4891-a4f4-26a511b8b786",
@@ -1331,6 +1363,14 @@
             "Value": {
                 "id": "241a86e8-2fae-44b4-aa22-d4f9837bed66",
                 "resourcePath": "scripts\\resolution_resize\\resolution_resize.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "f251d325-d8cc-4dff-86fe-17a4504ad02b",
+            "Value": {
+                "id": "8dcf1eeb-8e4a-4600-b928-d25340a7f41b",
+                "resourcePath": "scripts\\destroy_pointer\\destroy_pointer.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -1551,11 +1591,14 @@
         "71487b34-832c-48cc-941a-b96236156c6c",
         "7e2e028c-474b-4782-b782-0657b6e9291e",
         "a6bba72d-c636-43a8-8f42-dc53f65c73b5",
+        "e6d63a33-a2b1-4c9a-bb41-29adb56fcc68",
         "0fedb7dd-b4af-47b6-91c8-42caa22628df",
         "ae11147b-b2a4-4331-81d3-38b09ebade77",
         "b10c3fa6-3291-4a27-a5db-e5ef0fc4529f",
         "177ed56c-b15d-4055-bfcc-b9ffe4f22e36",
-        "fb8b0d44-0929-4755-b1c4-610e3566ccfe"
+        "fb8b0d44-0929-4755-b1c4-610e3566ccfe",
+        "434cb936-da63-413c-ad0c-54d48fdbe513",
+        "f251d325-d8cc-4dff-86fe-17a4504ad02b"
     ],
     "tutorial": ""
 }
