@@ -30,20 +30,6 @@ switch(states)
 				
 					bottomright_cell_x = topleft_cell_x + (size_width-1)
 					bottomright_cell_y = topleft_cell_y + (size_height-1)
-			
-					if mouse_in_grid {
-						var _x, _y
-						_x = gridController.grid_positions_x[topleft_cell_x]
-						for(var _w=0;_w<size_width;_w++) {
-							_y = gridController.grid_positions_y[topleft_cell_y]
-							for(var _h=0;_h<size_height;_h++) {
-								my_cells_x[_w] = _x
-								my_cells_y[_h] = _y
-								_y += cell_height
-							}
-							_x += cell_width
-						}	
-					}
 					
 					//	Placeable check
 					placeable = is_placeable()

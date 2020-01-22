@@ -7,12 +7,8 @@ switch(states)
 		
 		//	Draw the grid outline
 		if mouse_in_grid {
-			var _x0 = my_cells_x[0]
-			var _y0 = my_cells_y[0]
-			var _x1 = my_cells_x[size_width-1]
-			var _y1 = my_cells_y[size_height-1]
-			_x1 += cell_width
-			_y1 += cell_height
+			var xx = gridController.grid_positions_x[topleft_cell_x]
+			var yy = gridController.grid_positions_y[topleft_cell_y]
 			
 			if placeable {
 				draw_set_color(c_black)
@@ -20,9 +16,8 @@ switch(states)
 				draw_set_color(c_red)	
 			}
 			
-			draw_set_alpha(.33)
-			draw_roundrect(_x0,_y0,_x1,_y1,true)
-			draw_roundrect(_x0+1,_y0+1,_x1-1,_y1-1,true)	
+			draw_set_alpha(.33)	
+			draw_roundrect(xx,yy,xx+(size_width*cell_width),yy+(size_height*cell_height),true)
 			draw_set_alpha(1)
 			
 		}
