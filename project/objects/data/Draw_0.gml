@@ -28,7 +28,13 @@ switch(states)
 		draw_sprite(sprite,-1,x,y)
 		
 		//	Draw database overlay
-		draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,used_alpha2)
+		//draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,used_alpha2)
+		if input.selection > -1 and input.selection.object_index == data and input.selection.replace_id == id {
+			draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,.5)
+			draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,.5)
+			used_color = c_black
+			used_alpha = .5
+		}
 		
 		//	Draw an icon if we're not connected
 		if !connected {

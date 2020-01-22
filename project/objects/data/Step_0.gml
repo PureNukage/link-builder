@@ -112,11 +112,6 @@ switch(states)
 	#endregion
 	#region Placed
 		case states.placed:
-		
-			//	I am being replaced, darken myself
-			if input.selection > -1 and input.selection.object_index == object_index and input.selection.replace_id == id {
-				used_alpha = .6
-			} else if used_alpha2 != used_alpha2_max used_alpha2 = used_alpha2_max
 			
 			if selected {
 				
