@@ -80,7 +80,7 @@ switch(states)
 			
 			}	
 	
-			if input.mouse_right_press {
+			if input.mouse_right_press and !(app.tutorial == tutorial.basics and tutorialHelper.stage < 7) {
 				
 				//	check for sockets 
 				for(var p=0;p<ports_count;p++) {

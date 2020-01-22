@@ -54,6 +54,10 @@ if item_index > -1 and object_index == node and !replace and shop.item_node[item
 	_placeable++	
 }
 
+if app.tutorial == tutorial.basics and tutorialHelper.stage < 7 {
+	_placeable++	
+}
+
 if !_placeable {
 	return true	
 } else {

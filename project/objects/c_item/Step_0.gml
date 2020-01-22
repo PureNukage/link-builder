@@ -3,7 +3,7 @@ switch(states)
 	#region State Placement
 		case states.placement:
 		
-			if input.mouse_right_press {
+			if input.mouse_right_press and !(app.tutorial == tutorial.basics and tutorialHelper.stage < 7) {
 				if ds_list_find_index(input.selections,id) > -1 {
 					ds_list_delete(input.selections,id)
 				}

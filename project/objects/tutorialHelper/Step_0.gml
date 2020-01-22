@@ -65,12 +65,65 @@ switch(tutorial)
 					if shop.menu_open {
 						destroy_pointer(66)
 						create_textbox("The Shop sells Nodes, Data and Contracts. All the things needed to build decentralized apps")
-						create_textbox("Place down a contract")
+						create_textbox("Select the PayPal data source from the Shop menu")
+						shop.item_data[3, item_available] = true
 						stage++
 					}
 				
 				break
+				//	Wait for the player to select the PayPal data
 				case 5:
+					if instance_exists(data) and data.data_generated == data_types.paypal {
+						create_textbox("Good job! Items in placement can be rotated by pressing Q or E")
+						create_textbox("Rotate the data now")
+						conditions[0] = false
+						conditions[1] = false
+						stage++
+					}
+				break
+				//	Wait for the player to rotate the data
+				case 6:
+					if input.rotate_left {
+						conditions[0] = true
+					}
+					if input.rotate_right {
+						conditions[1] = true	
+					}
+					if conditions[0] and conditions[1] {
+						create_textbox("Good job! Place the data source somewhere into the level")
+						stage++	
+					}
+				break
+				//	Wait for the player to place the data
+				case 7:
+					if data.states == states.placed {
+						create_textbox("Good job! Items can be re-placed by selecting it and pressing R")
+						//conditions[0] = false
+						conditions[0] = data.center_cell_x
+						conditions[1] = data.center_cell_y
+						stage++
+					} 
+					
+				break
+				//	Wait for the player to replace the data
+				case 8:
+					if instance_number(data) == 1 and (conditions[0] != data.center_cell_x or conditions[1] != data.center_cell_y) {
+						create_textbox("Good job!")
+						stage++
+						
+					}
+					
+					//if instance_exists(node) and node.states == states.placed {
+					//	create_textbox("Good job!")
+					//	create_textbox("White wires represent off-chain while blue wires represent on-chain")
+					//	create_textbox("Press the Wire button to place down a wire")
+					//	shop.wire_active = true
+					//	stage++
+					//}
+				break
+				//	Spawn a node horizontally to the 
+				case 9:
+					
 					
 				break
 			}
