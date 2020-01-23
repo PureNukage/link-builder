@@ -159,8 +159,8 @@ switch(tutorial)
 							create_textbox("Good job!")
 							create_textbox("A Price Feed Contract has been placed into the level")
 							create_textbox("After Contracts are purchased, they will appear in the Contracts menu")
-							create_textbox("Open the Contracts Menu and then open the Price Feed Contract")
-							stage++	
+							create_textbox("To build it we will need to know the Data sources it needs connected")
+							create_textbox("Open the Contracts Menu and then open the Price Feed Contract to view this",-1,-1,22)
 							
 							var distance_between_items = 5
 							var max_distance_between_items = 7
@@ -182,17 +182,74 @@ switch(tutorial)
 				break
 				//	Unlock the Contracts menu and point to it
 				case 12:
-					contracts.button_active = true
-					create_pointer(contracts.buttonX-128,contracts.buttonY+32,contracts.buttonX,contracts.buttonY+32,true,42)
-					stage++
+					if textbox_in_history(22) {
+						contracts.button_active = true
+						create_pointer(contracts.buttonX+contracts.button_width/2,contracts.buttonY+192,contracts.buttonX+contracts.button_width/2,contracts.buttonY,true,42)
+						stage++
+					}
 				break
 				//	Wait for player to open the Price Feed Contract
 				case 13:
+					if contracts.button_open {
+						destroy_pointer(42)
+						//	Pointer aiming at the Contract
+						if instance_number(finger) == 0 create_pointer(contracts.menuX - 128,contracts.menuY+92,contracts.menuX,contracts.menuY,true,99)
+						
+					}
 					if contracts.button_open and contracts.contract_open == 3 {
-						create_textbox("Good job!")
+						destroy_pointer(99)
+						create_pointer(contracts.menuX-128,430,contracts.menuX,430,true,38)
 						stage++
 					}
 				
+				break
+				//	Wait for them to open the required data
+				case 14:
+					if contracts.button_open and contracts.contract_open == 3 and contracts.data_open {
+						destroy_pointer(38)
+						create_textbox("Good job! We can see that this Contract requires an ETH/USD Price Feed")
+						create_textbox("Luckily for us we have a Node connected to Binance's ETH/USD API")
+						create_textbox("Lets go ahead and connect the Node to the Price Feed Contract now")
+						stage++
+					}
+				break
+				//	Wait for the Node to be connected and then start a timer
+				case 15:
+					for(var s=0;s<ds_list_size(systemController.systems);s++) {
+						var System = systemController.systems[| s]
+						var items_i_need = 0
+						for(var p=0;p<ds_list_size(System.parts);p++) {
+							var item = System.parts[| p]
+							if item.object_index == node {
+								items_i_need++	
+							}
+							if item.object_index == data {
+								items_i_need++	
+							}
+							if item.object_index == kiosk {
+								items_i_need++	
+							}
+						}
+						if items_i_need == 3 {
+							timer = time.stream + 240
+							stage++
+						}
+					}
+				break
+				//	Wait four seconds
+				case 16:
+					if time.stream >= timer {
+						create_textbox("Good job! This Contract is now online")
+						create_textbox("This completes the Smart Contract Builder basics tutorial")
+						create_textbox("Press OK to return to the Tutorial menu",-1,-1,6969)
+						stage++
+					}
+				break
+				//	Wait for the OK button to be hit and send them back to the main menu
+				case 17:
+					if textbox_in_history(6969) {
+						back_to_mainmenu()	
+					}
 				break
 			}
 		break

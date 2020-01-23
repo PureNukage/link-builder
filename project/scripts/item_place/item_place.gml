@@ -1,3 +1,8 @@
+//	If this item was already placed
+if replace and instance_exists(replace_id) {					
+	with replace_id item_delete()			
+}
+
 //	object_index specific stuff
 switch(object_index)
 {
@@ -17,11 +22,6 @@ switch(object_index)
 		contracts.contract[smartcontract, contract_kiosk] = id
 		with contracts contract_refresh()
 	break
-}
-
-//	If this item was already placed
-if replace and instance_exists(replace_id) {					
-	with replace_id item_delete()			
 }
 
 ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)
