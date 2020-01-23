@@ -815,6 +815,14 @@
             }
         },
         {
+            "Key": "9342044f-0b6c-4749-a90e-9ce2aba52115",
+            "Value": {
+                "id": "bbda138b-6d82-4078-8a23-197d88b15d63",
+                "resourcePath": "sprites\\s_tutorial_offchain\\s_tutorial_offchain.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "93566aad-c3b3-48a9-8fa7-9c5ee19f74ac",
             "Value": {
                 "id": "d26a3096-574f-451d-859d-4c81433d5d9e",
@@ -1324,6 +1332,14 @@
                 "id": "6e566e98-56d1-41cd-81e7-1ef8b46556a4",
                 "resourcePath": "options\\android\\options_android.yy",
                 "resourceType": "GMAndroidOptions"
+            }
+        },
+        {
+            "Key": "e5d38cf3-c580-48ec-8e82-4664d7ef16cb",
+            "Value": {
+                "id": "cd6a89a7-ac40-4018-ac1c-0ca9cd51ca0a",
+                "resourcePath": "sprites\\s_tutorial_onchain\\s_tutorial_onchain.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

@@ -255,7 +255,7 @@ switch(tutorial)
 		break
 	#endregion
 	
-	#region #2 Building the the first contract LinkPal
+	#region #2 Building the first contract LinkPal
 		case tutorial.my_first_contract:
 			switch(stage)
 			{
@@ -263,17 +263,31 @@ switch(tutorial)
 				case 0:
 					shop.resources_active = false
 				
-					create_textbox("Welcome to Your first externally-aware contract")
+					create_textbox("Welcome to The Oracle Problem, or Your First dApp")
 
 					create_textbox("This tutorial is going to take you through building the LinkPal contract")
-
-					create_textbox("To start, select the LinkPal contract from the Shop")
+					
+					var _kiosk = item_create(kiosk,0,0,3,"LinkPal",s_portrait_linkpal,0,3)
+					with _kiosk {
+						item_move(22,12)
+						item_place()
+					}
 					stage++
 				break	
-				//	Make LinkPal available
+				//	Information regarding Wires
 				case 1:
-					contracts.contract[1, contract_available] = true
+					create_textbox("dApps or Decentralized Applications consist of one or more Smart Contracts")
+					create_textbox("A Smart Contract is code that lives and executes on a blockchain")
+					create_textbox("The apps that we know utilize data in systems. dApps are no different however there exists a problem")
+					create_textbox("Smart Contracts cannot access the systems that code for regular apps can. This is known as The Oracle Problem")
+					create_textbox("To solve this problem and create Smart Contracts that provide tremendous value we must utilize blockchain middleware")
+					create_textbox("Also known as a Node")
+					create_textbox("To get the LinkPal Contract online you will have to use 2 Nodes")
+				
+					create_textbox("White Wires represent Off-Chain Data",s_tutorial_offchain)
+					create_textbox("Blue Wires represent On-Chain Data",s_tutorial_onchain)
 					stage++
+					
 				break
 				//	Wait for LinkPal to be placed 
 				case 2:
