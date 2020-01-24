@@ -70,6 +70,7 @@ if messages_open {
 			draw_set_color(c_white)
 			draw_set_halign(fa_left)
 			draw_set_valign(fa_top)
+			draw_set_font(fnt_shop)
 			draw_text_ext(_xx+2,_yy+2,message_string,string_height(message_string),width-20)
 		
 			_yy += height + 8

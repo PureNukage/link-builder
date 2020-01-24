@@ -343,5 +343,159 @@ switch(tutorial)
 		
 		break
 	#endregion
+	
+	#region #3 The Need For Decentralizing 
+		case tutorial.decentralizing:
+			switch(stage)
+			{
+				//	spawn all the parts needed for a working linkpal contract
+				case 0:
+					var Node1 = item_create(node,0,0,0,"BryceMathsters",s_portrait_node,0)
+					var Node2 = item_create(node,0,0,1,"Feetsy",s_portrait_node,0)
+					var Paypal = item_create(data,0,0,3,"PayPal",s_portrait_paypal,0)
+					var ethusd = item_create(data,0,0,2,"BraveNewCoin ETH/USD",s_portrait_ethereum,0)
+					var Contract = item_create(kiosk,0,0,1,"LinkPal",s_portrait_linkpal,0,1)
+					
+					with Contract { 
+						item_move(24, 10)
+						item_place()
+					}
+					with Node1 {
+						item_move(29, 10)
+						item_place()
+					}
+					with Node2 {
+						item_move(19 ,10)
+						item_place()
+					}
+					with Paypal {
+						item_move(33, 10)
+						ports_xyupdate_rotation(1)
+						item_check_sockets()
+						ports_xyupdate_rotation(1)
+						item_check_sockets()
+						item_place()
+					}
+					with ethusd {
+						item_move(15, 10)
+						item_place()
+					}	
+					stage++
+					timer = time.stream + 240
+				
+				break
+				//	Wait 4 seconds then give the player information
+				case 1:
+					if time.stream >= timer {
+						create_textbox("Welcome to The Need to Decentralize")
+						
+						create_textbox("This tutorial will explain Data misfires and what happens if a Contract uses bad data",-1,-1,55)
+						
+						stage++
+					}
+				break
+				//	Wait for the player to close the last message then wait 1.5 seconds
+				case 2:
+					if textbox_in_history(55) {
+						timer = time.stream + 90		
+						stage++
+					}
+				break
+				//	Wait for the timer then give the player more information
+				case 3:
+					if time.stream >= timer {
+						create_textbox("Jane has $100 in PayPal and wants to buy $100 worth of ETH. Meanwhile Bob has ETH and is willing to trade with her")
+						create_textbox("Money in PayPal is not a cryptocurrency and on a blockchain therefore it cannot natively be traded for ETH")
+						create_textbox("To solve this, LinkPal requires that Bob opens an invoice on PayPal for $100 while also having $100 of ETH")
+						create_textbox("When Jane sees that Bob has $100 of ETH, Jane will pay $100 to the Invoice, the Node will see and release the $100 ETH to Jane")
+						create_textbox("This means it is very important that the LinkPal Contract is able to know the price of ETH. If the wrong price of ETH was used Jane could end up receiving more or less than $100. That's not good!",-1,-1,1234)
+						stage++
+					}
+				break
+				//	If the player has clicked on the last message
+				case 4:
+					if textbox_in_history(1234) {
+						timer = time.stream + 90
+						stage++
+					}
+				break
+				//	Wait for the timer to go then tell the player more information
+				case 5:
+					if time.stream >= timer {
+						create_textbox("The ETH/USD Data source is going to get a 100% corruption level meaning when it is called by a Contract it has a 100% chance of giving bad data",-1,-1,6969)
+						stage++
+					}
+				break
+				//	Wait for the player to click the textbox then set the timer
+				case 6:
+					if textbox_in_history(6969) {
+						timer = time.stream + 90
+						stage++
+					}
+				break
+				//	Wait for the timer to go then give the data source a 100% chance of corruption
+				case 7:
+					var corruption_level = 100
+					if time.stream >= timer {
+						with data {
+							if data_generated == data_types.bravenewcoin_ETHUSD {
+								shop.item_data[item_index, item_corruption] = corruption_level	
+								other.stage++
+								other.timer = time.stream + 360
+							}
+						}
+					}
+				break
+				//	Wait a few seconds and let the contract run
+				case 8:
+					if time.stream >= timer {
+						create_textbox("People don't like it when technology doesn't work, especially when it comes to their money")
+						create_textbox("To make sure the Contract gets a reliable price of ETH we can use Decentralization")
+						create_textbox("This means placing down multiple sources of ETH/USD data to call and average them out")
+						create_textbox("You've been given 3 sources of ETH/USD to place")
+						create_textbox("You need at least 2/3 of the data to not Misfire for a successful Contract use",-1,-1,777)
+						stage++
+						shop.item_data[0,item_available] = true
+						shop.item_data[1,item_available] = true
+						shop.item_data[2,item_available] = true
+						with node {
+							if name == "Feetsy" {
+								port_add(center_cell_x-1,bottomright_cell_y+1,id)
+								port_add(center_cell_x+1,bottomright_cell_y+1,id)
+							}
+						}
+					}
+				break
+				//	Wait for the player to press the final textbox
+				case 9:
+					if textbox_in_history(777) {
+						stage++
+					}
+				break
+				//	Wait for them to connect the other 2 ETH/USD sources and then reset the Contracts reliability to 100
+				case 10:
+					var sources = 0
+					with node {
+						for(var d=0;d<ds_list_size(data_held);d++) {
+							var Data = data_held[| d]
+							var data_string = shop.item_data[Data, item_name]
+							if is_price(data_string) {
+								sources++	
+							}
+						}
+					}
+					if sources == 3 {
+						create_textbox("Good job!")
+						contracts.contract[1, contract_reliability] = 100
+						stage++
+					}
+					
+				break
+				
+				
+				
+			}
+		break
+	#endregion
 
 }

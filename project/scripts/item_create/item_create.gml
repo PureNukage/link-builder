@@ -31,4 +31,8 @@ if argument_count >= 8 {
 	Item.ports_count = ports_level[level]
 }	
 
+if Item.object_index == data {
+	Item.data_generated = shop.item_data[index, item_data_generated]	
+}
+
 return Item

@@ -63,7 +63,7 @@ switch(states)
 			if selected {
 				
 				//	I want to move this item somewhere else
-				if input.keypress_r and input.selection == id {
+				if input.keypress_r and input.selection == id and !app.tutorial == tutorial.decentralizing {
 					
 					var _xx = gridController.grid_positions_x[input.grid_x]+(cell_width/2)
 					var _yy = gridController.grid_positions_y[input.grid_y]+(cell_height/2)

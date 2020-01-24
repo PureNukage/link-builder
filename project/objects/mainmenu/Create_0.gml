@@ -43,8 +43,8 @@ tutorials[tutorial.basics, tutorial_selected] = true
 tutorials[tutorial.my_first_contract, tutorial_name] = "2. The Oracle Problem, or Your First dApp"
 tutorials[tutorial.my_first_contract, tutorial_selected] = true
 
-tutorials[tutorial.decentralizing, tutorial_name] = "Needing to decentralize"
-tutorials[tutorial.decentralizing, tutorial_selected] = false
+tutorials[tutorial.decentralizing, tutorial_name] = "3. The Need to Decentralize"
+tutorials[tutorial.decentralizing, tutorial_selected] = true
 
 tutorials[tutorial.price_feed, tutorial_name] = "How to build a Decentralized Price Feed"
 tutorials[tutorial.price_feed, tutorial_selected] = false
