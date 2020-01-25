@@ -39,6 +39,13 @@ used_alpha_max = 0
 used_alpha = 0
 
 decentralized = false
+contracts_supporting = ds_list_create()
+
+sonar = false
+sonar_size = 0
+sonar_cooldown = 5
+sonar_time = -1
+sonar_alpha = 1
 
 timer = -1
 

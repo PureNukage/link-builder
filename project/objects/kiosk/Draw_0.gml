@@ -96,6 +96,32 @@ switch(states)
 				sprite_set_offset(_sprite,sprite_get_width(_sprite)/2-1,sprite_get_height(_sprite)/2-1)
 				draw_sprite(_sprite,-1,logoX,logoY)
 				
+				//	Draw the sonar
+				//	Start the next sonar drawing
+				if active and time.stream_seconds >= timer and !sonar {//and !sonar and time.stream >= sonar_time {
+					sonar_time = time.stream + (60*sonar_cooldown)
+					sonar = true
+				} 
+				//	Expand the sonar
+				else if sonar {
+					
+					var max_radius = contracts.contract[smartcontract, contract_radius]
+					
+					sonar_size = lerp(sonar_size,max_radius,0.05)
+					sonar_alpha = lerp(sonar_alpha,0,0.05)
+					
+					draw_set_color(c_white)
+					draw_set_alpha(sonar_alpha)
+					draw_circle(x,y,sonar_size,true)
+					draw_set_alpha(1)
+					
+					if sonar_alpha <= 0.06 {
+						sonar_size = 0
+						sonar = false
+						sonar_alpha = 1
+					}
+				}
+				
 			}
 		}
 		

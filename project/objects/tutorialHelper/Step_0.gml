@@ -460,8 +460,8 @@ switch(tutorial)
 						shop.item_data[2,item_available] = true
 						with node {
 							if name == "Feetsy" {
-								port_add(center_cell_x-1,bottomright_cell_y+1,id)
-								port_add(center_cell_x+1,bottomright_cell_y+1,id)
+								port_add(center_cell_x-1,topleft_cell_y-1,id)
+								port_add(center_cell_x+1,topleft_cell_y-1,id)
 							}
 						}
 					}
@@ -487,7 +487,23 @@ switch(tutorial)
 					if sources == 3 {
 						create_textbox("Good job!")
 						contracts.contract[1, contract_reliability] = 100
+						contracts.contract[1, contract_misfires] = 0
 						stage++
+						timer = time.stream + 240
+					}
+					
+				break
+				//	Wait for 4 seconds then allow them to return to the main menu
+				case 11:
+					if time.stream >= timer {
+						create_textbox("Press OK to return to the Main Menu",-1,-1,123456)
+						stage++
+					}
+				break
+				//	Wait to return to main menu
+				case 12:
+					if textbox_in_history(123456) {
+						back_to_mainmenu()	
 					}
 					
 				break
@@ -496,6 +512,10 @@ switch(tutorial)
 				
 			}
 		break
+	#endregion
+	
+	#region #4 Building a Decentralized Price Feed
+	
 	#endregion
 
 }

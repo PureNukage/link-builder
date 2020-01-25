@@ -98,6 +98,7 @@ enum tutorial {
 #macro contract_gasfee_base 23
 #macro contract_gasfee_total 24
 #macro contract_linkfee 25
+#macro contract_radius 26
 
 enum contract_types {
 	people,

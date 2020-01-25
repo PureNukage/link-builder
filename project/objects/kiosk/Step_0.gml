@@ -80,6 +80,7 @@ switch(states)
 					new_item.data_needed = data_needed
 					new_item.ports_count = ports_count
 					new_item.rotation = rotation
+					ds_list_copy(new_item.contracts_supporting,contracts_supporting)
 					
 					//	Pass along ports xy but not objects
 					for(var p=0;p<ports_count;p++) {
@@ -169,7 +170,7 @@ switch(states)
 				if contracts.contract[smartcontract, contract_type] == contract_types.people {
 			
 					//	lets add our contract into a persons queue
-					if active and ds_list_size(line) < contracts.contract[smartcontract, contract_linesize] and contracts.contract[smartcontract, contract_traffic_live] < contracts.contract[smartcontract, contract_traffic] {
+					if active and ds_exists(line,ds_type_list) and ds_list_size(line) < contracts.contract[smartcontract, contract_linesize] and contracts.contract[smartcontract, contract_traffic_live] < contracts.contract[smartcontract, contract_traffic] {
 						if contracts.contract[smartcontract, contract_reliability] > 50 {
 							for(var i=0;i<ds_list_size(personController.people);i++) {
 								var _person = personController.people[| i]
@@ -206,11 +207,7 @@ switch(states)
 								
 								used = true
 							
-								//player.points -= contracts.contract[smartcontract, contract_price]
-								//var _points = contracts.contract[smartcontract, contract_price]
-								//create_popup(x,y-150,"-"+string(_points),c_orange,1,3)
-							
-								with System system_dataflow_check()
+								price_feed_push()
 						
 								var got_at_least_one = 0
 								var how_many_sources = 0

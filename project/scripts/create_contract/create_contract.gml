@@ -10,6 +10,7 @@
 ///@param [level_ports]
 ///@param [data]
 ///@param [available]
+///@param [radius]
 
 var _name = argument[0]
 var _text = argument[1]
@@ -23,6 +24,7 @@ if argument_count >= 9 var _contract_type = argument[8]
 if argument_count >= 10 var _port_levels = argument[9]
 if argument_count >= 11 var _data = argument[10]
 if argument_count >= 12 var _available = argument[11]
+if argument_count >= 13 var _radius = argument[12]
 
 var contract_index = array_height_2d(contract)
 
@@ -59,6 +61,7 @@ else {
 	contract[contract_index, contract_data] = new_data
 }
 if argument_count >= 12 contract[contract_index, contract_available] = _available else contract[contract_index, contract_available] = false
+if argument_count >= 13 contract[contract_index, contract_radius] = _radius else contract[contract_index, contract_radius] = 0
 
 contract[contract_index, contract_online] = false
 contract[contract_index, contract_kiosk] = -1

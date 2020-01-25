@@ -24,7 +24,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 		//	lets clear out its decentralization real quick
 		for(var dd=0;dd<array_height_2d(_kiosk.data_needed);dd++) {
 			_kiosk.data_needed[dd,1] = false
-			_kiosk.data_needed[dd,3] = false
+			//_kiosk.data_needed[dd,3] = false
 		}
 		
 		//	Reset this contracts gasfee and linkfee
@@ -43,6 +43,11 @@ for(var i=0;i<ds_list_size(parts);i++) {
 	}	
 	
 }
+
+//if contracts.contract[3, contract_kiosk] > -1 
+//if ds_list_find_index(kiosks_utility,contracts.contract[3,contract_kiosk]) == -1 {
+//	ds_list_add(kiosks_utility,contracts.contract[3,contract_kiosk])
+//}	
 
 #region Database loops
 	for(var i=0;i<ds_list_size(databases);i++) {
@@ -291,97 +296,52 @@ for(var i=0;i<ds_list_size(parts);i++) {
 				} else {
 					_kiosk.active = false	
 					_kiosk.decentralized = false
+					with _kiosk price_feed_refresh()
 				}
 			
 				if _kiosk.decentralized {
-				
-					for(var p=0;p<_kiosk.ports_count;p++) {
-						if _kiosk.ports[p,port_object] > -1 and _kiosk.ports[p,port_direction] != in {
-						
-							var current_loop = _kiosk.ports[p,port_object]
-							var previous_loop = -1
-							var loop = true
-							while loop {
-							
-								var _object_index = current_loop.object_index
-							
-								switch(_object_index) 
-								{
-									#region Wire 
-										case wire:
-
-											current_loop.color = c_sergey_blue
-
-						
-											//	check this wires ports
-											for(var loop_port=0;loop_port<current_loop.ports_count;loop_port++) {
-												var other_port = loop_port
-												other_port = !other_port
-												//	this port is empty, this is a dead end!
-												if current_loop.ports[loop_port,port_object] == -1 {
-													loop = false
-													current_loop.ports[other_port,port_direction] = in
-													current_loop.ports[loop_port,port_direction] = out
-													loop_port = current_loop.ports_count
-												} 
-												//	there is something attached to this wire and its not the previous
-												else if current_loop.ports[loop_port,port_object] > -1 and current_loop.ports[loop_port,port_object] != previous_loop {
-													//	set my port In and Out directions
-													current_loop.ports[loop_port,port_direction] = out
-													current_loop.ports[other_port,port_direction] = in
-									
-													previous_loop = current_loop
-													current_loop = current_loop.ports[loop_port,port_object]
-													loop_port = current_loop.ports_count
-												} else if current_loop.ports[other_port,port_object] > -1 and current_loop.ports[loop_port,port_object] == previous_loop {
-													current_loop.ports[loop_port,port_direction] = in 
-													current_loop.ports[other_port,port_direction] = out
-									
-													previous_loop = current_loop
-													current_loop = current_loop.ports[other_port,port_object]
-													loop_port = current_loop.ports_count
-												}
-									
-												//	if this is connecting to a kiosk, set its incoming port to "in"
-												if current_loop.object_index == kiosk {
-													for(var a=0;a<current_loop.ports_count;a++) {
-														if current_loop.ports[a,port_x] == previous_loop.center_cell_x and current_loop.ports[a,port_y] == previous_loop.center_cell_y { 
-															current_loop.ports[a,port_direction] = in
-												
-														}
-											
-													}
-												}									
-											}
-										break
-									#endregion
-								
-									case node:
-									
-									break
-									#region Kiosk
-									case kiosk:
-									
-										if current_loop.smartcontract > -1 and contracts.contract[current_loop.smartcontract, contract_type] == contract_types.people {
-											for(var dd=0;dd<array_height_2d(current_loop.data_needed);dd++) {
-												var _other_data_needed = current_loop.data_needed[dd,0]
-												var _other_data_needed_string = shop.item_data[_other_data_needed, item_name]
-												//	This contract can use my reference feed!
-												if string_pos(price_string,_other_data_needed_string) != 0 {
-													current_loop.data_needed[dd,3] = true
-												}
-											}	
-										}
-									
-										loop = false
-									
-									break
-									#endregion
-								}
-
-							}
-						}
-					}
+					
+					//var radius = contracts.contract[_kiosk.smartcontract, contract_radius]
+					//var width = (radius/32)
+					
+					//var tempgrid = ds_grid_create(grid_width,grid_height)
+					//ds_grid_set_region(tempgrid,0,0,grid_width-1,grid_height-1,0)
+					
+					//ds_grid_set_disk(tempgrid,_kiosk.center_cell_x,_kiosk.center_cell_y,width,1)
+					
+					////	Loop through my sonar cells and decentralize any contracts that require my price
+					//var kiosks = ds_list_create()
+					//var data_im_giving = _kiosk.data_needed[0,0]
+					//var data_string = shop.item_data[data_im_giving, item_name]
+					//for(var w=0;w<grid_width;w++) {
+					//	for(var h=0;h<grid_height;h++) {
+					//		if tempgrid[# w, h] {
+					//			//	This is a contract that I haven't added before, lets check if it needs my price
+					//			if gridController.grid_items[# w, h] == kiosk and ds_list_find_index(kiosks,gridController.grid_objects[# w, h]) == -1 {
+					//				var Kiosk = gridController.grid_objects[# w, h]
+					//				if Kiosk != _kiosk {
+					//					for(var d=0;d<array_height_2d(Kiosk.data_needed);d++) {
+					//						var Data = Kiosk.data_needed[d,0]
+					//						var needed_data_string = shop.item_data[Data, item_name]
+					//						var price_string = is_price(needed_data_string, true)
+					//						if is_string(price_string) and string_pos(price_string,data_string) != 0 {
+					//							//	Lets make this guy decentralized
+					//							Kiosk.data_needed[d,3] = true
+					//							//if ds_list_find_index(Kiosk.System.parts,_kiosk) == -1 {
+					//							//	ds_list_add(Kiosk.System.parts,_kiosk)	
+					//							//}
+					//							//with Kiosk.System system_dataflow_check()
+					//						}	
+					//					}
+					//					ds_list_add(kiosks,Kiosk)
+					//				}
+					//			}
+					//		}	
+					//	}
+					//}
+					//ds_list_copy(_kiosk.contracts_supporting,kiosks)
+					//ds_list_destroy(kiosks)
+					//ds_grid_destroy(tempgrid)
 				
 				}
 				ds_list_destroy(_nodes)
