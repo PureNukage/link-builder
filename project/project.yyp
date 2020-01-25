@@ -1247,6 +1247,14 @@
             }
         },
         {
+            "Key": "d0893538-96ed-4e13-b3f9-a6aa56438e48",
+            "Value": {
+                "id": "958dbc72-99bc-429b-a662-66dab8b0008d",
+                "resourcePath": "scripts\\camera_refresh\\camera_refresh.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "d11319b4-3630-4ab4-8204-d7c36d652dbe",
             "Value": {
                 "id": "67a1b7f9-dec7-4608-b7c4-54cb34f2a7d9",
@@ -1641,7 +1649,8 @@
         "434cb936-da63-413c-ad0c-54d48fdbe513",
         "f251d325-d8cc-4dff-86fe-17a4504ad02b",
         "9607a234-c356-4012-b7ef-13f6b252091f",
-        "9428baf0-9a29-4db7-b03e-cdb0b26bfb79"
+        "9428baf0-9a29-4db7-b03e-cdb0b26bfb79",
+        "d0893538-96ed-4e13-b3f9-a6aa56438e48"
     ],
     "tutorial": ""
 }

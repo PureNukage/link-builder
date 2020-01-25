@@ -31,8 +31,8 @@ if item_index > -1 and !replace {
 	var resource_amount
 	switch(object_index) 
 	{
-		case node:	resource_amount = player.link break
-		case data: resource_amount = player.link break
+		case node:	resource_amount = player.money break
+		case data: resource_amount = player.money break
 		case kiosk: resource_amount = player.value break
 	}
 	if resource_amount < price {
