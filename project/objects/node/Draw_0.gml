@@ -38,13 +38,16 @@ switch(states)
 		//	Determine if I have unassigned new ports, if so make flash me gold!
 		var level = shop.item_node[item_index, node_level]
 		var ports_level = shop.item_node[item_index, node_level_ports]
-		var amount = 0.08
+		var amount = 0.04
 		//	I have unassigned ports!
-		if ports_count < ports_level[level] and !gold_flash {
-			gold_flash = true
+		if ports_count < ports_level[level] {
+			if !gold_flash gold_flash = true
 			gold_flash_time = time.stream
 		} else {
-			if gold_flash gold_flash = false	
+			if gold_flash {
+				gold_flash = false	
+				gold_flash_alpha = 0
+			}
 		}
 		
 		if gold_flash {
@@ -56,9 +59,9 @@ switch(states)
 			} else {
 				gold_flash_alpha = lerp(gold_flash_alpha,0,amount)
 				if gold_flash_alpha <= amount+0.01 gold_flash_lightup = true
-			}
-			draw_sprite_ext(sprite,-1,x,y,1,1,0,c_yellow,gold_flash_alpha)	
+			}	
 		}
+		draw_sprite_ext(sprite,-1,x,y,1,1,0,c_yellow,gold_flash_alpha)
 		
 		//	Draw the node used
 		sprite_set_offset(s_chainlink_highlights,sprite_get_width(s_chainlink_highlights)/2,sprite_get_height(s_chainlink_highlights)/2)
