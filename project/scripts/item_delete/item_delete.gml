@@ -339,12 +339,27 @@ if object_index == kiosk and smartcontract > -1 {
 		}
 	}
 	
-	with person {
-		if ds_list_find_index(smartcontracts,other.smartcontract) {
-			ds_list_delete(smartcontracts,other.smartcontract)	
+	for(var p=0;p<ds_list_size(personController.people);p++) {
+		var Person = personController.people[| p]
+		with Person {
+			if smartcontract > -1 and smartcontract == other.smartcontract {
+				smartcontract = -1
+				ds_list_delete(smartcontracts,0)
+				while ds_list_find_index(smartcontracts,other.smartcontract) > -1 {
+					ds_list_delete(smartcontracts,ds_list_find_index(smartcontracts,other.smartcontract))	
+				}
+				states = states.idle
+				contracts.contract[other.smartcontract,contract_traffic_live]--
+			}			
 		}
-		if smartcontract == other.smartcontract smartcontract = -1
 	}
+	
+	//with person {
+	//	if ds_list_find_index(smartcontracts,other.smartcontract) > -1 {
+	//		ds_list_delete(smartcontracts,other.smartcontract)	
+	//	}
+	//	if smartcontract == other.smartcontract smartcontract = -1
+	//}
 }
 
 if object_index == node {

@@ -1,5 +1,5 @@
 //	If this item was already placed
-if replace and instance_exists(replace_id) {					
+if replace and instance_exists(replace_id) {
 	with replace_id item_delete()			
 }
 

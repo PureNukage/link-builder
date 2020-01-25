@@ -82,6 +82,11 @@ switch(states)
 					new_item.rotation = rotation
 					ds_list_copy(new_item.contracts_supporting,contracts_supporting)
 					
+					//	Turn off decentralized data
+					for(var d=0;d<array_height_2d(new_item.data_needed);d++) {
+						new_item.data_needed[d,3] = false	
+					}
+					
 					//	Pass along ports xy but not objects
 					for(var p=0;p<ports_count;p++) {
 						new_item.ports[p,port_x] = ports[p,port_x]

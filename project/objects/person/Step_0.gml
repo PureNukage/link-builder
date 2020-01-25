@@ -211,8 +211,14 @@ switch(states)
 						
 						#region Waiting in Line
 							case goal_type.waiting_in_line:
+							
+								//	Check if I still have a smart contract 
 								
-								states = states.wait_in_line
+								if smartcontract > -1 {
+									states = states.wait_in_line
+								} else {
+									states = states.idle	
+								}
 								
 								if goal_current.object_index == goal {
 									instance_destroy(goal_current)
