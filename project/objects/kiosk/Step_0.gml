@@ -177,16 +177,17 @@ switch(states)
 					//	lets add our contract into a persons queue
 					if active and ds_exists(line,ds_type_list) and ds_list_size(line) < contracts.contract[smartcontract, contract_linesize] and contracts.contract[smartcontract, contract_traffic_live] < contracts.contract[smartcontract, contract_traffic] {
 						if contracts.contract[smartcontract, contract_reliability] > 50 {
-							for(var i=0;i<ds_list_size(personController.people);i++) {
-								var _person = personController.people[| i]
+							if !ds_list_empty(personController.people) {
+								if ds_list_size(personController.people) > 1 {
+									var Random = irandom_range(0,ds_list_size(personController.people)-1)
+								} else var Random = 0
+								var _person = personController.people[| Random]
 								//	this contract is not in this persons queue, lets add it
 								if ds_list_find_index(_person.smartcontracts,smartcontract) == -1 {
 									ds_list_add(_person.smartcontracts,smartcontract)
 									contracts.contract[smartcontract, contract_traffic_live]++
 									debug_log("Giving person the smart contract: "+string(contracts.contract[smartcontract, contract_name]))
 								}
-		
-		
 							}
 						} else {
 							if time.seconds_switch debug_log("Contract: "+string(contracts.contract[smartcontract, contract_name]+" is too unreliable! Nobody wants to use it!"))	
