@@ -113,10 +113,12 @@ if menu_open == true {
 		var _xx = 40
 		var _yy = menuY+menu_header_height-header_buffer+6 //210
 		
-		for(var i=item_index;i<item_index+item_clamp;i++) {
+		var items = 0
+		for(var i=item_index;i<array_height_2d(array);i++) {
 			if i < array_height_2d(array) {
-				if array[i, item_available] {	
-				
+				if array[i, item_available] and items < item_clamp {			
+					items++
+			
 					//	Draw the contract info
 					if menu_index_string == "Contracts" and item_mouseover == i {
 						draw_contract_info(menuX+menu_width+8,menuY+menu_header_height-header_buffer,item_mouseover,true)

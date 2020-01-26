@@ -29,8 +29,8 @@ var line_width = default_window_width
 if string_width(_name) > 51 { 
 	line_width = default_window_width + (string_width(_name)-51)
 } else var line_width = default_window_width
-if string_width(_name) > 155 {
-	//line_width += 32	
+if string_width(_name) > 120 {
+	line_width += string_width(_name)	
 }
 
 if _price_width > 29 {

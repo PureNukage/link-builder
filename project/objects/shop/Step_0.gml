@@ -73,9 +73,11 @@ if instance_exists(mainmenu) exit
 		var _yy = menuY+menu_header_height-header_buffer+6 //210
 		
 		item_mouseover = -1
-		for(var i=item_index;i<item_index+item_clamp;i++) {
+		var items = 0
+		for(var i=item_index;i<item_index+array_height_2d(array);i++) {
 			if i < array_height_2d(array) {
-				if array[i, item_available] {	
+				if array[i, item_available] and items < item_clamp {
+					items++
 					var good = true
 					if menu_index_string == "Contracts" and array[i, contract_kiosk] > -1 {
 						good = false
