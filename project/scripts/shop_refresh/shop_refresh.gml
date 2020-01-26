@@ -68,6 +68,6 @@ barX = menuX+menu_width - bar_width - 6
 barY = menuY+menu_header_height-header_buffer+6
 	
 handle_width = const_handle_width
-handle_height = round(bar_height/(amount_of_items-1))
+handle_height = round(bar_height/(amount_of_items))
 handleX = menuX+menu_width - handle_width - 12
-handleY = menuY+menu_header_height-header_buffer+6  +(item_index*round(bar_height/(amount_of_items-1)))
+handleY = barY + (item_index*round(bar_height/(amount_of_items)))

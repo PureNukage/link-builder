@@ -29,7 +29,8 @@ if instance_exists(mainmenu) exit
 		#region Scroll through List
 		
 			if input.scroll_up or input.scroll_down {
-				item_index -= input.scroll_up - input.scroll_down
+				var Direction = input.scroll_up - input.scroll_down
+				item_index -= Direction
 				item_index = clamp(item_index,0,amount_of_items-2)
 				handleY = menuY+menu_header_height-header_buffer+6  +(item_index*round(bar_height/(amount_of_items-1)))
 				//shop_refresh()
@@ -72,9 +73,9 @@ if instance_exists(mainmenu) exit
 		var _yy = menuY+menu_header_height-header_buffer+6 //210
 		
 		item_mouseover = -1
-		for(var i=0;i<array_height_2d(array);i++) {
-			if i > item_index-1 and i < item_index + item_clamp {
-				if array[i, item_available] {
+		for(var i=item_index;i<item_index+item_clamp;i++) {
+			if i < array_height_2d(array) {
+				if array[i, item_available] {	
 					var good = true
 					if menu_index_string == "Contracts" and array[i, contract_kiosk] > -1 {
 						good = false

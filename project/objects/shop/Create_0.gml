@@ -22,6 +22,10 @@
 	var _string = "This endpoint gives access to Github"
 	var Corruption = create_data_corruption(0,-1,0)
 	create_data("Github",1000,data,_string,s_portrait_github,data_types.github,Corruption,true)
+	
+	var _string = ""
+	var Corruption = create_data_corruption(0,-1,0)
+	create_data("Email API",500,data,_string,s_portrait_blank,data_types.emailAPI,Corruption,true)
 
 	//	CREATE NODES
 	item_node = 0
@@ -166,7 +170,7 @@ item_placing = 0
 	if menu_index_string == "Contracts" {
 		amount_of_items = 0
 		for(var i=0;i<array_height_2d(array);i++) {
-			if !array[i, contract_purchased] amount_of_items++
+			if array[i, contract_kiosk] == -1 amount_of_items++
 		}
 	}
 	item_index = 0
@@ -198,9 +202,9 @@ item_placing = 0
 	barY = menuY+menu_header_height-header_buffer+6
 	
 	handle_width = const_handle_width
-	handle_height = round(bar_height/(amount_of_items-1))
+	handle_height = round(bar_height/(amount_of_items))
 	handleX = menuX+menu_width - handle_width - 12
-	handleY = menuY+menu_header_height-header_buffer+6  +(item_index*round(bar_height/(amount_of_items-1)))
+	handleY = barY + (item_index*round(bar_height/(amount_of_items)))
 	handle_mouseover = false
 
 

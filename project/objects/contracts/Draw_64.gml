@@ -35,7 +35,7 @@ if button_open == true {
 	#region	Draw Contracts
 	for(var c=0;c<array_height_2d(contract);c++) {
 		if c > contract_index-1 and c < contract_index + contract_clamp {
-			if contract[c, contract_purchased] {
+			if contract[c, contract_kiosk] > -1 {
 		
 				var _name = contract[c, contract_name]
 				var _price = contract[c, contract_price]
@@ -122,11 +122,17 @@ if button_open == true {
 	}
 	#endregion
 	
+	var amount = 0
 	//	No Contracts
-	if amount_of_contracts == 0 {
+	for(var c=0;c<array_height_2d(contract);c++) {
+		if contract[c, contract_kiosk] > -1 {
+			amount++	
+		}
+	}
+	if amount == 0 {
 		draw_set_color(c_white)
 		draw_set_halign(fa_middle)
-		draw_text(menuX+menu_width/2,menuY+64,"No contracts purchased!")	
+		draw_text(menuX+menu_width/2,menuY+64,"No Contracts placed!")	
 	}
 	
 	if amount_of_contracts > contract_clamp - 2 {	

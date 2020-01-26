@@ -113,9 +113,9 @@ if menu_open == true {
 		var _xx = 40
 		var _yy = menuY+menu_header_height-header_buffer+6 //210
 		
-		for(var i=0;i<array_height_2d(array);i++) {
-			if i > item_index-1 and i < item_index + item_clamp {
-				if array[i, item_available] {
+		for(var i=item_index;i<item_index+item_clamp;i++) {
+			if i < array_height_2d(array) {
+				if array[i, item_available] {	
 				
 					//	Draw the contract info
 					if menu_index_string == "Contracts" and item_mouseover == i {

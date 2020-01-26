@@ -49,6 +49,7 @@ enum data_types {
 	bravenewcoin_ETHUSD,
 	paypal,
 	github,
+	emailAPI,
 	
 }
 

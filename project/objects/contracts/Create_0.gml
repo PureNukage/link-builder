@@ -41,6 +41,12 @@ var levels = create_level_ports(1,2,3,4)
 var Conditions = create_conditions(conditions.cnd_active,0)
 create_contract("Price Feed",_string,0,500,s_portrait_ethereum,2,0,0,contract_types.utility,levels,_data,true,Conditions,384)
 
+var _data = create_data_needed(data_types.emailAPI)
+var _string = ""
+var levels = create_level_ports(1,1,1,1)
+var Conditions = create_conditions(conditions.cnd_active,200)
+create_contract("Cerberus Wallet 2FA",_string,10,500,s_portrait_blank,2,10,5,contract_types.people,levels,_data,true,Conditions)
+
 //	GUI stuff
 menu_width = 340
 menu_height = 256
