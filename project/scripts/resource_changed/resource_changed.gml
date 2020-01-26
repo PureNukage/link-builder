@@ -47,7 +47,7 @@ _string += string(amount)
 
 if amount < 0 _string = string_replace(_string,"-","")
 
-if app.tutorial == -1 create_popup(xx,yy,_string,_color,1,3,_icon,_gui)
+if app.tutorial == -1 and amount != 0 create_popup(xx,yy,_string,_color,1,3,_icon,_gui)
 
 with system {
 	system_dataflow_check()	

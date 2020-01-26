@@ -33,3 +33,4 @@ item_data[item_index, item_text] = _text
 item_data[item_index, item_portrait] = _portrait
 item_data[item_index, item_calls] = 0
 item_data[item_index, item_corruption] = 0
+item_data[item_index, item_purchased] = false

@@ -9,10 +9,12 @@ switch(object_index)
 	case node:
 		if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
 		shop.item_node[item_index, node_placed] = true
+		shop.item_node[item_index, node_purchased] = true
 	break
 	case data:
 		if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
 		shop.item_data[item_index, item_placed] = true
+		shop.item_data[item_index, item_purchased] = true
 	break
 	case kiosk:
 		if !replace {

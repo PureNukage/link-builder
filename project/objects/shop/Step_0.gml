@@ -108,7 +108,8 @@ if instance_exists(mainmenu) exit
 										input.selection.selected = true
 										input.selection.item_index = i
 										input.selection.name = item_node[i, node_name]
-										input.selection.price = item_node[i, node_price]
+										if !item_node[i, node_purchased] input.selection.price = item_node[i, node_price]
+										else input.selection.price = 0
 										input.selection.jobruns = item_node[i, node_jobruns]
 										input.selection.jobruns_previous = item_node[i, node_jobruns]
 										if ds_list_find_index(input.selections,input.selection) == -1 {
@@ -139,7 +140,8 @@ if instance_exists(mainmenu) exit
 										input.selection.item_index = i
 										input.selection.name = item_data[i, item_name]
 										input.selection.portrait = item_data[i, item_portrait]
-										input.selection.price = item_data[i, item_price]
+										if !item_data[i, item_purchased] input.selection.price = item_data[i, item_price]
+										else input.selection.price = 0
 										input.selection.data_generated = item_data[i, item_data_generated]
 										if ds_list_find_index(input.selections,input.selection) == -1 {
 											ds_list_add(input.selections,input.selection)	

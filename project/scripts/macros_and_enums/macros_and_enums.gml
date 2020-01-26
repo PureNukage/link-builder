@@ -96,7 +96,7 @@ enum conditions {
 #macro contract_channel 7
 #macro contract_width 8
 #macro contract_height 9
-#macro contract_purchased 10
+#macro contract_purchased 30
 #macro contract_text 11
 #macro contract_data 12
 #macro contract_portrait 13
@@ -130,6 +130,7 @@ enum contract_types {
 #macro node_jobruns 6
 #macro node_uptime 7
 #macro node_levels 9
+#macro node_purchased 30
 #macro node_available 22
 
 #macro item_name 0
@@ -142,6 +143,7 @@ enum contract_types {
 #macro item_calls 7
 #macro item_corruption 8
 #macro item_corruption_levels 9 
+#macro item_purchased 30
 #macro item_available 22
 
 #macro menu_name 0
