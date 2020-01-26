@@ -94,8 +94,14 @@ switch(states)
 					
 				}	
 				
-				if keyboard_check_pressed(vk_pageup) and shop.item_node[item_index, node_level] < 3 {
+				if keyboard_check_pressed(vk_pageup) and shop.item_node[item_index, node_level] < array_height_2d(shop.item_node[item_index, node_levels])-1 {
 					shop.item_node[item_index, node_level]++
+				}
+				
+				if keyboard_check_pressed(vk_insert) {
+					shop.item_node[item_index, node_jobruns] += 125
+					jobruns += 125
+					node_levelCheck()
 				}
 			}
 			

@@ -129,6 +129,7 @@ enum contract_types {
 #macro node_level_ports 8
 #macro node_jobruns 6
 #macro node_uptime 7
+#macro node_levels 9
 #macro node_available 22
 
 #macro item_name 0

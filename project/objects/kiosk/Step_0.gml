@@ -269,6 +269,7 @@ switch(states)
 														used = true
 														shop.item_node[item_index, node_jobruns]++
 														jobruns++
+														node_levelCheck()
 														if ds_list_find_index(nodes,id) == -1 {
 															resource_changed("ETH",1,x,y-128,false)
 															ds_list_add(nodes,id)

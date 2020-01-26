@@ -37,6 +37,6 @@ used_lightup = false
 
 gold_flash = false
 gold_flash_alpha = 0
-gold_flash_alpha_max = .6
+gold_flash_alpha_max = .5
 gold_flash_lightup = false
-gold_flash_time = -1
+gold_flash_cd = -1

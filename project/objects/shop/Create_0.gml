@@ -27,11 +27,12 @@
 	item_node = 0
 
 	var _string = "A ChainLink node.\n\nSome say its the 4th industrial revolution\nOthers say its made of cheese"
-	create_node("YorkyRoad",_string,100,0,0,true)
+	var levels = create_levels(0,2, 125,4, 300,6)
+	create_node("YorkyRoad",_string,100,0,0,levels,true)
+	
+	create_node("gonsinator",_string,100,0,0,levels,true)
 
-	create_node("gonsinator",_string,100,0,0,true)
-
-	create_node("DataBlaster",_string,100,0,0,true)
+	create_node("DataBlaster",_string,100,0,0,levels,true)
 
 	item = []
 	item[0,item_name] = "Node"				//	Item name in a string

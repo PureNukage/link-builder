@@ -45,26 +45,27 @@ if input.selection > -1 {
 				
 				//	Level up!
 				var level = shop.item_node[_item.item_index, node_level]
-				var ports_level = shop.item_node[_item.item_index, node_level_ports]
+				var ports_level = shop.item_node[_item.item_index, node_levels]
 				//	I have unassigned ports!
-				if _item.ports_count < ports_level[level] {
-					var how_many = ports_level[level] - _item.ports_count
-					var _string = string(how_many)+" levels to assign"
+				if _item.ports_count < ports_level[level, 1] {
+					var how_many = ports_level[level, 1] - _item.ports_count
+					var _string = string(how_many)+" Inputs/Outputs to assign"
 					var _string_width = string_width(_string)
 					var _string_height = string_height(_string)
 					var buffer = 16
 						
 					window_level_width = _string_width + buffer
 					window_level_height = _string_height
+					
+					draw_set_color(c_black)
+					draw_roundrect(window_levelX-buffer-4,window_levelY-buffer-4,window_levelX+window_level_width+buffer+4,window_levelY+window_level_height+buffer+4,false)
 						
 					draw_set_color(c_yellow)
-					draw_roundrect(window_levelX,window_levelY,window_levelX+window_level_width,window_levelY+window_level_height,false)
-						
-					draw_set_color(c_black)
-					draw_roundrect(window_levelX,window_levelY,window_levelX+window_level_width,window_levelY+window_level_height,true)
+					draw_roundrect(window_levelX-buffer,window_levelY-buffer,window_levelX+window_level_width+buffer,window_levelY+window_level_height+buffer,false)
 						
 					draw_set_halign(fa_center)
 					draw_set_valign(fa_middle)
+					draw_set_color(c_black)
 					draw_text(window_levelX+(window_level_width/2),window_levelY+(window_level_height/2),_string)
 				}
 				

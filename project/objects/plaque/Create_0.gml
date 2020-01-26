@@ -19,7 +19,7 @@ window_nameY = window_twoY - 48
 
 window_level_width = 148
 window_level_height = 48
-window_levelX = window_nameX
+window_levelX = window_nameX + 20
 window_levelY = window_nameY - window_level_height
 window_level_mouseover = false
 

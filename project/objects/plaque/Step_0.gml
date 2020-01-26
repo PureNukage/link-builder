@@ -51,7 +51,8 @@ if selection > -1 {
 		var ports_level = shop.item_node[selection.item_index, node_level_ports]
 		//	I have unassigned ports!
 		if selection.ports_count < ports_level[level] {
-			if point_in_rectangle(gui_mouse_x,gui_mouse_y,window_levelX,window_levelY,window_levelX+window_level_width,window_levelY+window_level_height) {
+			var buffer = 16
+			if point_in_rectangle(gui_mouse_x,gui_mouse_y,window_levelX-buffer-4,window_levelY-buffer-4,window_levelX+window_level_width+buffer+4,window_levelY+window_level_height+buffer+4) {
 				window_level_mouseover = true	
 				
 				//	Go into port placement mode

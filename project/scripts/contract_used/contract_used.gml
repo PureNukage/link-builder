@@ -103,6 +103,7 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 			shop.item_node[_node.item_index, node_jobruns] += _jobruns
 			_node.jobruns += _jobruns
 			_node.used = true
+			with _node node_levelCheck()
 			resource_changed("ETH",1,_node.x,_node.y-128,false)
 		}
 		
