@@ -76,7 +76,7 @@ if instance_exists(mainmenu) exit
 			if i > item_index-1 and i < item_index + item_clamp {
 				if array[i, item_available] {
 					var good = true
-					if menu_index_string == "Contracts" and array[i, contract_purchased] {
+					if menu_index_string == "Contracts" and array[i, contract_kiosk] > -1 {
 						good = false
 					}
 					if good {

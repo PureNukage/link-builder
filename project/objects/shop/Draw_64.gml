@@ -124,17 +124,13 @@ if menu_open == true {
 				
 					var good = true
 					//	Only show unpurchased contracts
-					if menu_index_string == "Contracts" and array[i, contract_purchased] {
+					if menu_index_string == "Contracts" and array[i, contract_kiosk] > -1 {
 						good = false
 					}
 					if good {
 						var _item_name = array[i, item_name]
-						if !array[i, item_purchased] {
-							var _item_price = array[i, item_price]
-						} else {
-							var _item_price = 0	
-						}
-					
+						var _item_price = array[i, item_price]
+	
 						//var name_width = string_width(_item_name)
 						//var name_height = string_height(data_name)
 						var price_width = string_width(string(_item_price))
@@ -171,7 +167,7 @@ if menu_open == true {
 						draw_set_halign(fa_left)
 						draw_text(_xx+name_spacer,_yy+40/2,_item_name)
 						
-						if app.tutorial == -1 and !array[i, item_purchased] {
+						if app.tutorial == -1 and (!array[i, item_purchased] or menu_index_string == "Contracts") {
 							//	Draw icon
 							sprite_set_offset(icon,sprite_get_width(icon)/2,sprite_get_height(icon)/2)
 							draw_sprite_ext(icon,0,_xx+list_width-(price_width)-32,_yy+42/2,1,1,0,c_white,1)
