@@ -269,7 +269,14 @@ switch(states)
 														used = true
 														shop.item_node[item_index, node_jobruns]++
 														jobruns++
-														node_levelCheck()
+														if node_levelCheck() {
+															//	Event leveled up
+															var Node_name = name
+															var Node_level = shop.item_node[item_index, node_level]
+															if !textbox_in_queue(Node_level,event_types.levelup,id) {
+																create_textbox(Node_name+" is now Level "+string(Node_level+1),-1,event_duration,Node_level,event_types.levelup,id)	
+															}
+														}
 														if ds_list_find_index(nodes,id) == -1 {
 															resource_changed("ETH",1,x,y-128,false)
 															ds_list_add(nodes,id)

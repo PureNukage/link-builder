@@ -101,7 +101,14 @@ switch(states)
 				if keyboard_check_pressed(vk_insert) {
 					shop.item_node[item_index, node_jobruns] += 125
 					jobruns += 125
-					node_levelCheck()
+					if node_levelCheck() {
+						//	Event leveled up
+						var Node_name = name
+						var Node_level = shop.item_node[item_index, node_level]
+						if !textbox_in_queue(Node_level,event_types.levelup,id) {
+							create_textbox(Node_name+" is now Level "+string(Node_level+1),-1,event_duration,Node_level,event_types.levelup,id)	
+						}	
+					}
 				}
 			}
 			

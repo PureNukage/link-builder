@@ -103,7 +103,16 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 			shop.item_node[_node.item_index, node_jobruns] += _jobruns
 			_node.jobruns += _jobruns
 			_node.used = true
-			with _node node_levelCheck()
+			with _node {
+				if node_levelCheck() {
+					//	Event leveled up
+					var Node_name = name
+					var Node_level = shop.item_node[item_index, node_level]
+					if !textbox_in_queue(Node_level,event_types.levelup,id) {
+						create_textbox(Node_name+" is now Level "+string(Node_level+1),Node_level,event_duration,-1,event_types.levelup,id)	
+					}	
+				}
+			}
 			resource_changed("ETH",1,_node.x,_node.y-128,false)
 		}
 		

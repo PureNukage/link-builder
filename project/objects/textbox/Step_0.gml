@@ -11,7 +11,7 @@ if fade == 0 {
 	//	put our ID into the previous_message list and wait for eventual cleanup	
 	if textboxController.current_message == id {
 		textboxController.current_message = -1	
-		if (uniqueID == -1 and event_types == -1 and object_id == -1) or (uniqueID > -1 and !textbox_in_history(uniqueID)) or (uniqueID == -1 and !textbox_in_history(-1,event_types,object_id)) {
+		if (uniqueID == -1 and event_types == -1 and object_id == -1) or (uniqueID > -1 and !textbox_in_history(uniqueID)) or (uniqueID > -1 and !textbox_in_history(uniqueID,event_types,object_id)) {
 			ds_list_add(textboxController.previous_messages,id)
 		} else {
 			//	Debug log why this message wasn't added

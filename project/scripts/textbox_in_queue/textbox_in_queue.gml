@@ -18,13 +18,13 @@ for(var i=0;i<ds_list_size(textboxController.message_queue);i++) {
 	var UniqueID = buffer_read(buffer,buffer_s32)
 	var _Event_type = buffer_read(buffer,buffer_s8)
 	var _Object_id = buffer_read(buffer,buffer_s32)
-	if argument_count == 1 or (argument_count > 1 and _uniqueID > -1) {
+	if argument_count == 1 {
 		if UniqueID == _uniqueID {
 			found_it = true
 		}
 	} else {
 		if Event_type > -1 and Object_id > -1 {
-			if Event_type == _Event_type and Object_id == _Object_id {
+			if Event_type == _Event_type and Object_id == _Object_id and _uniqueID != UniqueID {
 				found_it = true	
 			}
 		} 

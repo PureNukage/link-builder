@@ -15,13 +15,13 @@ if instance_exists(textboxController) {
 		var message_uniqueID = messageID.uniqueID
 		var message_event_type = messageID.event_types
 		var message_object_id = messageID.object_id
-		if argument_count == 1 or (argument_count > 1 and _uniqueID > -1) {
+		if argument_count == 1 {
 			if message_uniqueID == _uniqueID {
 				found_it = true
 			}
 		} else {
 			if Event_type > -1 and Object_id > -1 {
-				if Event_type == message_event_type and Object_id == message_object_id {
+				if Event_type == message_event_type and Object_id == message_object_id and _uniqueID != message_uniqueID {
 					found_it = true	
 				}
 			} 
