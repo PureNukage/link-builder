@@ -1,9 +1,9 @@
 points = 1000
 
-link = 1000
+link = 25
 
-eth = 1000
+eth = 15
 
 value = 0
 
-money = 5000
+money = 1500

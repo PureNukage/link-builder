@@ -55,7 +55,19 @@ if data_open {
 }
 if stats_open {
 	var stats_header_string = "- Stats"
-	line_height += 32*3
+	
+	//	Calculate how many Stats
+	var stats = 5
+	
+	var conditions_amount = array_height_2d(contracts.contract[contract_index, contract_conditions])
+	
+	if contracts.contract[contract_index, contract_type] == contract_types.utility {
+		var conditions_amount = 0	
+	}
+	
+	stats += conditions_amount
+	
+	line_height += 48*stats
 } else {
 	var stats_header_string = "+ Stats"
 }
@@ -211,7 +223,22 @@ if stats_open {
 	draw_text(_x,_y,"Reliability")
 
 	draw_set_halign(fa_center)
-	draw_text_transformed(_x+(data_spacerX*2),_y-4,string(_reliability),1.5,1.5,0)
+	draw_text_transformed(_x+(data_spacerX*2),_y-4,string(_reliability)+"%",1.5,1.5,0)
+	
+	_y += 48
+	
+	//	Draw the Reward
+	draw_set_halign(fa_right)
+	draw_text(_x,_y,"$$ Reward")
+	
+	draw_set_halign(fa_center)
+	var reward = contracts.contract[contract_index, contract_reward]
+	draw_text_transformed(_x+(data_spacerX*2),_y-4,string(reward),1.5,1.5,0)
+	
+	draw_set_font(fnt_shop_menu_name)
+	draw_text_outlined(_x+(data_spacerX*2)+64,_y-4,"$$",c_green,c_black)
+	draw_set_font(fnt_shop)
+	draw_set_color(c_white)
 	
 	_y += 48
 	
@@ -222,6 +249,8 @@ if stats_open {
 	draw_set_halign(fa_center)
 	draw_text_transformed(_x+(data_spacerX*2),_y-4,string(_gasfee),1.5,1.5,0)
 	
+	draw_sprite(s_resource_eth_shop,0,_x+(data_spacerX*2)+64,_y-4)
+	
 	_y += 48
 	
 	//	Draw the Link fee
@@ -230,6 +259,50 @@ if stats_open {
 	
 	draw_set_halign(fa_center)
 	draw_text_transformed(_x+(data_spacerX*2),_y-4,string(_linkfee),1.5,1.5,0)
+	
+	draw_sprite(s_resource_link_shop,0,_x+(data_spacerX*2)+64,_y-4)
+	
+	_y += 48
+	
+	//	Draw the total $$ fee
+	draw_set_halign(fa_right)
+	draw_text(_x,_y,"Total $$ Cost")
+	
+	draw_set_halign(fa_center)
+	var fee = (_linkfee * shop.link_price) + (_gasfee * shop.eth_price)
+	draw_text_transformed(_x+(data_spacerX*2),_y-4,string(fee),1.5,1.5,0)
+	
+	draw_set_font(fnt_shop_menu_name)
+	draw_text_outlined(_x+(data_spacerX*2)+64,_y-4,"$$",c_red,c_black)
+	draw_set_color(c_white)
+	draw_set_font(fnt_shop)
+	
+	_y += 48
+	
+	if contracts.contract[contract_index, contract_type] == contract_types.people {
+		//	Draw VALUE Header
+		draw_set_halign(fa_right)
+		draw_text(_x-32,_y,"VALUE")
+		_y += 36
+	
+		//	Draw the Value Gained from Conditions
+		var Conditions = contracts.contract[contract_index, contract_conditions]
+		for(var c=0;c<array_height_2d(Conditions);c++) {
+			var String = Conditions[c,condition_string]
+			var Value = Conditions[c, condition_value]
+		
+			draw_set_halign(fa_right)
+			draw_text(_x,_y,String)
+		
+			draw_set_halign(fa_center)
+			draw_text_transformed(_x+(data_spacerX*2),_y-4,string(Value),1.5,1.5,0)
+			
+			draw_sprite(s_resource_value_shop,0,_x+(data_spacerX*2)+64,_y-4)
+		
+			_y += 48
+		
+		}
+	}
 }
 
 //	Return the width and height of this window if they are different than default

@@ -1,4 +1,5 @@
 var _kiosk = contracts.contract[smartcontract, contract_kiosk]
+var Smartcontract = smartcontract
 var contract_misfire = 0
 
 for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
@@ -113,7 +114,7 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 	}	
 }
 
-if contract_misfire > 0 debug_log("Contract "+contracts.contract[smartcontract, contract_name]+" misfired!")
+if contract_misfire > 0 debug_log("Contract "+contracts.contract[Smartcontract, contract_name]+" misfired!")
 
 _kiosk.used = true
 
@@ -129,11 +130,11 @@ if contract_misfire > 0 {
 	//var _successes = contracts.contract[smartcontract, contract_uses] - _misfires
 	//contracts.contract[smartcontract, contract_reliability] = (_successes / contracts.contract[smartcontract, contract_uses]) * 100
 } else {
-	ds_list_add(contracts.contract[smartcontract, contract_uses],true)	
+	ds_list_add(contracts.contract[Smartcontract, contract_uses],true)	
 }
 
 //	Calculate reliability based on the past 100 uses
-var list = contracts.contract[smartcontract, contract_uses]
+var list = contracts.contract[Smartcontract, contract_uses]
 var list_size = ds_list_size(list)
 var succeses = 0
 var misfires = 0
@@ -153,14 +154,14 @@ for(var u=0;u<list_size;u++) {
 		misfires++
 	}	
 }
-contracts.contract[smartcontract, contract_reliability] = (succeses / (misfires+succeses)) * 100
+contracts.contract[Smartcontract, contract_reliability] = (succeses / (misfires+succeses)) * 100
 		
 //	give the player the reward
 if !contract_misfire {
-	resource_changed("$$",-contracts.contract[smartcontract, contract_reward],_kiosk.x,_kiosk.y-64,false)
-	resource_changed("ETH",contracts.contract[smartcontract, contract_gasfee_base],_kiosk.x,_kiosk.y-128,false)
+	resource_changed("$$",-contracts.contract[Smartcontract, contract_reward],_kiosk.x,_kiosk.y-64,false)
+	resource_changed("ETH",contracts.contract[Smartcontract, contract_gasfee_base],_kiosk.x,_kiosk.y-128,false)
 	//player.money += contracts.contract[smartcontract, contract_reward]
-	var _points = contracts.contract[smartcontract, contract_reward]
+	var _points = contracts.contract[Smartcontract, contract_reward]
 	debug_log("CONTRACT USED Player to receive: "+string(_points)+" points")
 } else var _points = 0
 
@@ -173,7 +174,7 @@ if input.selection > -1 and input.selection.states == states.placement {
 cooldown = 80
 		
 //	Get me out of the contracts_traffic_live
-contracts.contract[smartcontract, contract_traffic_live]--
+contracts.contract[Smartcontract, contract_traffic_live]--
 		
 //	I'm hopping out of line now
 var index = ds_list_find_index(_kiosk.line,id)

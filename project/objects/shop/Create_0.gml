@@ -62,8 +62,8 @@ item_placing = 0
 	link_trade = 1
 	eth_trade = 1
 	
-	link_price = 2
-	eth_price = 1
+	link_price = 1
+	eth_price = 2
 	
 	link_mouseover = false
 	eth_mouseover = false

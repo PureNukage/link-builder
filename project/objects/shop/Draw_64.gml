@@ -154,7 +154,7 @@ if menu_open == true {
 						//	Check if we have enough currency
 						if menu_index_string == "Contracts" and player.value < _item_price and app.tutorial == -1 {
 							draw_set_color(c_dkgray)
-						} else if (menu_index_string == "Data" or menu_index_string = "Nodes") and player.link < _item_price and app.tutorial == -1 {
+						} else if (menu_index_string == "Data" or menu_index_string = "Nodes") and player.money < _item_price and app.tutorial == -1 {
 							draw_set_color(c_dkgray)
 						}
 				
