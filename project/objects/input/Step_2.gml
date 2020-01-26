@@ -1,5 +1,11 @@
 if instance_exists(mainmenu) exit
 
+//	Calculate mouse speed
+xPrevious = X
+yPrevious = Y
+X = gui_mouse_x
+Y = gui_mouse_y
+
 switch(selection_mode)
 {
 	#region Free Selection 

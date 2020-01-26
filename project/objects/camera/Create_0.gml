@@ -57,4 +57,12 @@ zoom_level = 1
 default_zoom_width = camera_get_view_width(Camera)
 default_zoom_height = camera_get_view_height(Camera)
 
+xInput = 0
+yInput = 0
+
+dragging = false
+
+anchorX = -1
+anchorY = -1
+
 camera_mode = camera_mode.fixed

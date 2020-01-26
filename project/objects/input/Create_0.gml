@@ -12,7 +12,17 @@ rotate_left = keyboard_check_pressed(ord("Q"))
 
 keypress_r = keyboard_check_pressed(ord("R"))
 
+middle_mouse_press = mouse_check_button_pressed(mb_middle)
+middle_mouse = mouse_check_button(mb_middle)
+middle_mouse_release = mouse_check_button_released(mb_middle)
+
 escape = keyboard_check_pressed(vk_escape)
+
+//	Calculate mouse speed
+X = gui_mouse_x
+Y = gui_mouse_y
+xPrevious = -1
+yPrevious = -1
 
 #region wip finger scrolling
 	//finger_left_x = device_mouse_x(0)

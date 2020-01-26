@@ -6,9 +6,45 @@ switch(camera_mode)
 		
 	break
 	case camera_mode.free:
-	
-		x += (keyboard_check(ord("D")) - keyboard_check(ord("A")))*panspeed
-		y += (keyboard_check(ord("S")) - keyboard_check(ord("W")))*panspeed
+		
+		//	Keyboard controls
+		if keyboard_check(ord("D")) or keyboard_check(ord("A")) or keyboard_check(ord("S")) or keyboard_check(ord("W")) {
+			xInput += (keyboard_check(ord("D")) - keyboard_check(ord("A")))*panspeed
+			yInput += (keyboard_check(ord("S")) - keyboard_check(ord("W")))*panspeed
+			
+			xInput = clamp(xInput,-panspeed,panspeed)
+			yInput = clamp(yInput,-panspeed,panspeed)
+		} else {
+			var fric = 0.3
+			xInput = lerp(xInput,0,fric)	
+			yInput = lerp(yInput,0,fric)
+		}
+		
+		//	Middle Mouse Drag
+		if instance_exists(input) {
+			if input.middle_mouse_press and anchorX == -1 and !dragging {
+				dragging = true
+				anchorX = mouse_x
+				anchorY = mouse_y
+			} 
+			if input.middle_mouse and dragging {
+				var new_xview = camera_get_view_x(Camera) + anchorX - mouse_x
+				var new_yview = camera_get_view_y(Camera) + anchorY - mouse_y
+				camera_set_view_pos(Camera,new_xview,new_yview)
+				var edgeX = camera_get_view_x(Camera)+camera_get_view_width(Camera)/2
+				var edgeY = camera_get_view_y(Camera)+camera_get_view_height(Camera)/2
+				x = edgeX
+				y = edgeY
+			}
+			if input.middle_mouse_release and anchorX > -1 {
+				dragging = false
+				anchorX = -1
+				anchorY = -1
+			}
+		}
+		
+		x += xInput
+		y += yInput
 	
 		#region Zooming Up and Down
 		

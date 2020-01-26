@@ -12,7 +12,12 @@ rotate_left = keyboard_check_pressed(ord("Q"))
 
 keypress_r = keyboard_check_pressed(ord("R"))
 
+middle_mouse_press = mouse_check_button_pressed(mb_middle)
+middle_mouse = mouse_check_button(mb_middle)
+middle_mouse_release = mouse_check_button_released(mb_middle)
+
 escape = keyboard_check_pressed(vk_escape)
+
 
 if escape {
 	
