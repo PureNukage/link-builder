@@ -192,6 +192,27 @@ switch(states)
 							if time.seconds_switch debug_log("Contract: "+string(contracts.contract[smartcontract, contract_name]+" is too unreliable! Nobody wants to use it!"))	
 						}
 					}	
+					//	Why can't I assign a contract ??
+					else {
+						if time.seconds_switch {
+							
+							//	line list data structure doesn't exist
+							if !ds_exists(line,ds_type_list) {
+								debug_log("CONTRACT ASSIGN ERROR "+string(contracts.contract[smartcontract, contract_name])+"'s ds_list 'line' does not exist!")	
+							}
+							
+							//	line is filled
+							if ds_list_size(line) >= contracts.contract[smartcontract, contract_linesize] {
+								debug_log("CONTRACT ASSIGN ERROR "+string(contracts.contract[smartcontract, contract_name])+"'s line is filled!")	
+							}
+							
+							//	enough people have my contract already!
+							if contracts.contract[smartcontract, contract_traffic_live] >= contracts.contract[smartcontract, contract_traffic] {
+								debug_log("CONTRACT ASSIGN ERROR enough people have "+string(contracts.contract[smartcontract, contract_name])+" already!")
+							}
+							
+						}
+					}
 				}
 				#endregion
 				
