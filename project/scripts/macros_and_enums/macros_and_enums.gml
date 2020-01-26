@@ -79,6 +79,10 @@ enum conditions {
 	cnd_reliability_high,
 }
 
+#macro corruption_calls_min 0
+#macro corruption_calls_max 1
+#macro corruption_amount 2
+
 #macro tutorial_name 0
 #macro tutorial_selected 1
 
@@ -136,6 +140,7 @@ enum contract_types {
 #macro item_portrait 6
 #macro item_calls 7
 #macro item_corruption 8
+#macro item_corruption_levels 9 
 #macro item_available 22
 
 #macro menu_name 0

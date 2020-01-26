@@ -4,19 +4,24 @@
 	item_data = 0
 
 	var _string = "This endpoint to Binance gives\nthe current USD price of Ether"
-	create_data("Binance ETH/USD",500,data,_string,s_portrait_binance,data_types.binance_ETHUSD,true)
+	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
+	create_data("Binance ETH/USD",500,data,_string,s_portrait_binance,data_types.binance_ETHUSD,Corruption,true)
 
 	var _string = ""
-	create_data("CryptoCompare ETH/USD",500,data,_string,s_portrait_blank,data_types.cryptocompare_ETHUSD,true)
+	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
+	create_data("CryptoCompare ETH/USD",500,data,_string,s_portrait_blank,data_types.cryptocompare_ETHUSD,Corruption,true)
 
 	var _string = ""
-	create_data("BraveNewCoin ETH/USD",500,data,_string,s_portrait_blank,data_types.bravenewcoin_ETHUSD,true)
+	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
+	create_data("BraveNewCoin ETH/USD",500,data,_string,s_portrait_blank,data_types.bravenewcoin_ETHUSD,Corruption,true)
 
 	var _string = "This endpoint gives access to PayPal"
-	create_data("PayPal",750,data,_string,s_portrait_paypal,data_types.paypal,true)
+	var Corruption = create_data_corruption(0,-1,0)
+	create_data("PayPal",750,data,_string,s_portrait_paypal,data_types.paypal,Corruption,true)
 
 	var _string = "This endpoint gives access to Github"
-	create_data("Github",1000,data,_string,s_portrait_github,data_types.github,true)
+	var Corruption = create_data_corruption(0,-1,0)
+	create_data("Github",1000,data,_string,s_portrait_github,data_types.github,Corruption,true)
 
 	//	CREATE NODES
 	item_node = 0

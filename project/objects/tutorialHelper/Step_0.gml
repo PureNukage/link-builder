@@ -350,6 +350,8 @@ switch(tutorial)
 			{
 				//	spawn all the parts needed for a working linkpal contract
 				case 0:
+					shop.resources_active = false
+				
 					var Node1 = item_create(node,0,0,0,"BryceMathsters",s_portrait_node,0)
 					var Node2 = item_create(node,0,0,1,"Feetsy",s_portrait_node,0)
 					var Paypal = item_create(data,0,0,3,"PayPal",s_portrait_paypal,0)

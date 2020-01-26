@@ -1407,6 +1407,14 @@
             }
         },
         {
+            "Key": "ec03827d-517c-4482-9b30-c899676a7300",
+            "Value": {
+                "id": "386f4ef4-efa7-4ae1-ba14-9e1a315168cf",
+                "resourcePath": "scripts\\create_data_corruption\\create_data_corruption.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "ed0d5855-88e4-48ed-80ab-72077e20c41f",
             "Value": {
                 "id": "cbb4c5ba-593f-4e69-8385-0ec916234d9c",
@@ -1650,6 +1658,7 @@
         "f8ce7e5c-4df8-48cf-be29-770d24c2b80d",
         "579eba77-fc30-4969-b757-4dd30d757ef8",
         "fab8c6f0-cd41-49b2-8726-de6bcbb7a3a7",
+        "ec03827d-517c-4482-9b30-c899676a7300",
         "f9c6403e-3ea9-4950-837b-688c8c9585ce",
         "8c0fa4d8-8cf5-412e-86f1-808e597c5512",
         "004a7cc1-f07a-4d4d-877e-faef3e3724cf",
