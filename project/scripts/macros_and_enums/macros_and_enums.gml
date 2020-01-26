@@ -70,6 +70,15 @@ enum tutorial {
 	
 }
 
+enum event_types {
+	out_of_link,
+	out_of_eth,
+	reliability_change,
+	levelup,
+	online
+	
+}
+
 #macro condition_type 0 
 #macro condition_value 1
 #macro condition_string 2
@@ -171,6 +180,8 @@ enum contract_types {
 #macro down 1
 #macro left 2
 #macro up 3
+
+#macro event_duration textboxController.Event_duration
 
 #macro gui_mouse_x device_mouse_x_to_gui(0)
 #macro gui_mouse_y device_mouse_y_to_gui(0)

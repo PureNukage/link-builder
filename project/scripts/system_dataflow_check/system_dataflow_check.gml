@@ -379,10 +379,16 @@ for(var i=0;i<ds_list_size(parts);i++) {
 						ds_list_add(contracts.contracts_online,_kiosk.smartcontract)
 						with _kiosk contract_conditionCheck()
 						debug_log("Kiosk "+string(_kiosk)+" is now active with smartcontract ["+contracts.contract[_kiosk.smartcontract, contract_name]+"]")
+						
+						//	Push an event
+						var Contract_name = contracts.contract[_kiosk.smartcontract, contract_name]
+						if !textbox_in_queue(-1,event_types.online,_kiosk) {
+							create_textbox(Contract_name+" is now online!",-1,event_duration,-1,event_types.online,_kiosk)	
+						}
 					}
 				} 
 				//	this kiosk does NOT have all the data it needs
-				else {
+				else {				
 					if _kiosk.active {
 						_kiosk.active = false
 						with _kiosk contract_conditionCheck()
@@ -431,7 +437,22 @@ for(var i=0;i<ds_list_size(parts);i++) {
 							}						
 								
 						}
+						//	Check if out of LINK
+						var Contract_name = contracts.contract[_kiosk.smartcontract, contract_name]
+						if player.link < contracts.contract[_kiosk.smartcontract, contract_linkfee] {
+							if !textbox_in_queue(-1,event_types.out_of_link,_kiosk) {
+								create_textbox(Contract_name+" does not have enough LINK",s_event_out_of_link,event_duration,-1,event_types.out_of_link,_kiosk)
+							}
+						}
+						//	Check if out of ETH
+						if player.eth < contracts.contract[_kiosk.smartcontract, contract_gasfee_total] {
+							if !textbox_in_queue(-1,event_types.out_of_link,_kiosk) {
+								create_textbox(Contract_name+" does not have enough ETH",s_event_out_of_eth,event_duration,-1,event_types.out_of_eth,_kiosk)
+							}
+						}
+						
 					}
+					
 				}
 
 			}

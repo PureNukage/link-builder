@@ -20,6 +20,8 @@ handleY = -1
 handle_width = 32
 handle_height = -1
 
+Event_duration = 60
+
 clickfix = false
 
 if app.tutorial == -1 {

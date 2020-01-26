@@ -42,7 +42,7 @@ if point_in_rectangle(gui_mouse_x,gui_mouse_y,buttonX,buttonY,buttonX+button_wid
 		//	put our ID into the previous_message list and wait for eventual cleanup	
 		if textboxController.current_message == id {
 			textboxController.current_message = -1	
-			if uniqueID == -1 or (uniqueID > -1 and !textbox_in_history(uniqueID)) {
+			if (uniqueID == -1 and event_types == -1 and object_id == -1) or (uniqueID > -1 and !textbox_in_history(uniqueID)) or (uniqueID == -1 and !textbox_in_history(-1,event_types,object_id)) {
 				ds_list_add(textboxController.previous_messages,id)
 			} 
 			if ds_list_size(textboxController.previous_messages) > 25 {
