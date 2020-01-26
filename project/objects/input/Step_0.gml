@@ -61,6 +61,7 @@ if give_money {
 	player.link += 2000
 	player.eth += 2000
 	player.value += 2000
+	player.money += 2000
 }
 
 #region Calculating grid_x,y and grid_moved 

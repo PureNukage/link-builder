@@ -10,6 +10,7 @@
 ///@param [level_ports]
 ///@param [data]
 ///@param [available]
+///@param [conditions]
 ///@param [radius]
 
 var _name = argument[0]
@@ -24,7 +25,8 @@ if argument_count >= 9 var _contract_type = argument[8]
 if argument_count >= 10 var _port_levels = argument[9]
 if argument_count >= 11 var _data = argument[10]
 if argument_count >= 12 var _available = argument[11]
-if argument_count >= 13 var _radius = argument[12]
+if argument_count >= 13 var _conditions = argument[12]
+if argument_count >= 14 var _radius = argument[13]
 
 var contract_index = array_height_2d(contract)
 
@@ -61,7 +63,11 @@ else {
 	contract[contract_index, contract_data] = new_data
 }
 if argument_count >= 12 contract[contract_index, contract_available] = _available else contract[contract_index, contract_available] = false
-if argument_count >= 13 contract[contract_index, contract_radius] = _radius else contract[contract_index, contract_radius] = 0
+if argument_count >= 13 contract[contract_index, contract_conditions] = _conditions else {
+	var new_conditions = create_conditions(conditions.cnd_active,200)
+	contract[contract_index, contract_conditions] = new_conditions
+}	
+if argument_count >= 14 contract[contract_index, contract_radius] = _radius else contract[contract_index, contract_radius] = 0
 
 contract[contract_index, contract_online] = false
 contract[contract_index, contract_kiosk] = -1
@@ -71,12 +77,14 @@ contract[contract_index, contract_width] = 128
 contract[contract_index, contract_height] = 64
 contract[contract_index, contract_misfires] = 0
 contract[contract_index, contract_reliability] = 100
-contract[contract_index, contract_uses] = 0
+contract[contract_index, contract_uses] = ds_list_create()
 contract[contract_index, contract_level] = 0
 
 contract[contract_index, contract_gasfee_base] = 1
 contract[contract_index, contract_gasfee_total] = 1
 contract[contract_index, contract_linkfee] = 0
+
+contract[contract_index, contract_value] = 0
 
 contracts_purchased[| contract_index] = true
 

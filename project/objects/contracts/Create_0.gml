@@ -21,22 +21,25 @@ contract = 0
 //	CREATE CONTRACTS
 var _data = create_data_needed(data_types.binance_ETHUSD)
 var levels = create_level_ports(1,1,1,1)
-create_contract("Eth Transfer","",5,150,s_portrait_ethereum,2,10,5,contract_types.people,levels,_data,true)
+create_contract("Eth Transfer","",5,150,s_portrait_ethereum,2,10,5,contract_types.people,levels,_data,false)
 
 var _data = create_data_needed(data_types.binance_ETHUSD,data_types.paypal)
 var levels = create_level_ports(2,3,4,5)
 var _string = "DeFi users can now trade their ETH with\neach other for USD by querying a PayPal invoice"
-create_contract("LinkPal",_string,5,500,s_portrait_linkpal,2,10,5,contract_types.people,levels,_data,true)
+var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_payment_eth,200,conditions.cnd_reliability_high,100)
+create_contract("LinkPal",_string,5,0,s_portrait_linkpal,2,10,5,contract_types.people,levels,_data,true,Conditions)
 
 var _data = create_data_needed(data_types.binance_ETHUSD,data_types.github)
 var levels = create_level_ports(2,3,4,5)
 var _string = "An open-source software contributor is paid\nwhen their code gets merged into a project"
-create_contract("BountiBot",_string,10,2000,s_portrait_bountibot,2,10,5,contract_types.people,levels,_data,true)
+var Conditions = create_conditions(conditions.cnd_active,400,conditions.cnd_payment_eth,200,conditions.cnd_reliability_high,250)
+create_contract("BountiBot",_string,10,2000,s_portrait_bountibot,2,10,5,contract_types.people,levels,_data,true,Conditions)
 
 var _data = create_data_needed(data_types.binance_ETHUSD)
-var _string = ""
+var _string = "Price Feeds can generate\na Decentralized price that nearby Contracts may use"
 var levels = create_level_ports(1,2,3,4)
-create_contract("Price Feed",_string,0,50,s_portrait_blank,2,0,0,contract_types.utility,levels,_data,true,384)
+var Conditions = create_conditions(conditions.cnd_active,0)
+create_contract("Price Feed",_string,0,500,s_portrait_ethereum,2,0,0,contract_types.utility,levels,_data,true,Conditions,384)
 
 //	GUI stuff
 menu_width = 340

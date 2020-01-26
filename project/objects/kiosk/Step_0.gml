@@ -268,7 +268,7 @@ switch(states)
 									if decentralized {
 										debug_log("Reference price feed is no longer accurate enough")
 										decentralized = false	
-										with System system_dataflow_check()
+										price_feed_refresh()
 									}
 								}
 							
@@ -279,7 +279,7 @@ switch(states)
 								if decentralized {
 									debug_log("Reference price feed is no longer accurate enough")
 									decentralized = false	
-									with System system_dataflow_check()
+									price_feed_refresh()
 								}
 							}
 							

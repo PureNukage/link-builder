@@ -69,6 +69,16 @@ enum tutorial {
 	
 }
 
+#macro condition_type 0 
+#macro condition_value 1
+#macro condition_met 2
+
+enum conditions {
+	cnd_active,
+	cnd_payment_eth,
+	cnd_reliability_high,
+}
+
 #macro tutorial_name 0
 #macro tutorial_selected 1
 
@@ -99,6 +109,7 @@ enum tutorial {
 #macro contract_gasfee_total 24
 #macro contract_linkfee 25
 #macro contract_radius 26
+#macro contract_conditions 27
 
 enum contract_types {
 	people,

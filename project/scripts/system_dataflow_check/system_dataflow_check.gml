@@ -44,11 +44,6 @@ for(var i=0;i<ds_list_size(parts);i++) {
 	
 }
 
-//if contracts.contract[3, contract_kiosk] > -1 
-//if ds_list_find_index(kiosks_utility,contracts.contract[3,contract_kiosk]) == -1 {
-//	ds_list_add(kiosks_utility,contracts.contract[3,contract_kiosk])
-//}	
-
 #region Database loops
 	for(var i=0;i<ds_list_size(databases);i++) {
 		
@@ -300,48 +295,6 @@ for(var i=0;i<ds_list_size(parts);i++) {
 				}
 			
 				if _kiosk.decentralized {
-					
-					//var radius = contracts.contract[_kiosk.smartcontract, contract_radius]
-					//var width = (radius/32)
-					
-					//var tempgrid = ds_grid_create(grid_width,grid_height)
-					//ds_grid_set_region(tempgrid,0,0,grid_width-1,grid_height-1,0)
-					
-					//ds_grid_set_disk(tempgrid,_kiosk.center_cell_x,_kiosk.center_cell_y,width,1)
-					
-					////	Loop through my sonar cells and decentralize any contracts that require my price
-					//var kiosks = ds_list_create()
-					//var data_im_giving = _kiosk.data_needed[0,0]
-					//var data_string = shop.item_data[data_im_giving, item_name]
-					//for(var w=0;w<grid_width;w++) {
-					//	for(var h=0;h<grid_height;h++) {
-					//		if tempgrid[# w, h] {
-					//			//	This is a contract that I haven't added before, lets check if it needs my price
-					//			if gridController.grid_items[# w, h] == kiosk and ds_list_find_index(kiosks,gridController.grid_objects[# w, h]) == -1 {
-					//				var Kiosk = gridController.grid_objects[# w, h]
-					//				if Kiosk != _kiosk {
-					//					for(var d=0;d<array_height_2d(Kiosk.data_needed);d++) {
-					//						var Data = Kiosk.data_needed[d,0]
-					//						var needed_data_string = shop.item_data[Data, item_name]
-					//						var price_string = is_price(needed_data_string, true)
-					//						if is_string(price_string) and string_pos(price_string,data_string) != 0 {
-					//							//	Lets make this guy decentralized
-					//							Kiosk.data_needed[d,3] = true
-					//							//if ds_list_find_index(Kiosk.System.parts,_kiosk) == -1 {
-					//							//	ds_list_add(Kiosk.System.parts,_kiosk)	
-					//							//}
-					//							//with Kiosk.System system_dataflow_check()
-					//						}	
-					//					}
-					//					ds_list_add(kiosks,Kiosk)
-					//				}
-					//			}
-					//		}	
-					//	}
-					//}
-					//ds_list_copy(_kiosk.contracts_supporting,kiosks)
-					//ds_list_destroy(kiosks)
-					//ds_grid_destroy(tempgrid)
 				
 				}
 				ds_list_destroy(_nodes)
@@ -424,6 +377,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 						_kiosk.active = true
 						contracts.contract[_kiosk.smartcontract, contract_online] = true
 						ds_list_add(contracts.contracts_online,_kiosk.smartcontract)
+						with _kiosk contract_conditionCheck()
 						debug_log("Kiosk "+string(_kiosk)+" is now active with smartcontract ["+contracts.contract[_kiosk.smartcontract, contract_name]+"]")
 					}
 				} 
@@ -431,6 +385,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 				else {
 					if _kiosk.active {
 						_kiosk.active = false
+						with _kiosk contract_conditionCheck()
 						contracts.contract[_kiosk.smartcontract, contract_online] = false
 						if ds_list_find_index(contracts.contracts_online,_kiosk.smartcontract) > -1 {
 							ds_list_delete(contracts.contracts_online,ds_list_find_index(contracts.contracts_online,_kiosk.smartcontract))	

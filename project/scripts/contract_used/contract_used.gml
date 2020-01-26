@@ -117,17 +117,43 @@ if contract_misfire > 0 debug_log("Contract "+contracts.contract[smartcontract, 
 
 _kiosk.used = true
 
-contracts.contract[smartcontract, contract_uses]++
+//contracts.contract[smartcontract, contract_uses]++
 
 //	This smart contract misfired
 if contract_misfire > 0 {
 	contracts.contract[smartcontract, contract_misfires]++
+	ds_list_add(contracts.contract[smartcontract, contract_uses],false)
 	
 	//	Calculate new reliability percentage
 	var _misfires = contracts.contract[smartcontract, contract_misfires]
-	var _successes = contracts.contract[smartcontract, contract_uses] - _misfires
-	contracts.contract[smartcontract, contract_reliability] = (_successes / contracts.contract[smartcontract, contract_uses]) * 100
+	//var _successes = contracts.contract[smartcontract, contract_uses] - _misfires
+	//contracts.contract[smartcontract, contract_reliability] = (_successes / contracts.contract[smartcontract, contract_uses]) * 100
+} else {
+	ds_list_add(contracts.contract[smartcontract, contract_uses],true)	
 }
+
+//	Calculate reliability based on the past 100 uses
+var list = contracts.contract[smartcontract, contract_uses]
+var list_size = ds_list_size(list)
+var succeses = 0
+var misfires = 0
+//	Only remember the past 100 uses
+while ds_list_size(list) > 100 {
+	ds_list_delete(list,0)
+}
+var list_size = ds_list_size(list)
+for(var u=0;u<list_size;u++) {
+	var Use = list[| u]
+	//	This use was a success
+	if Use {
+		succeses++
+	} 
+	//	This was use a failure
+	else {
+		misfires++
+	}	
+}
+contracts.contract[smartcontract, contract_reliability] = (succeses / (misfires+succeses)) * 100
 		
 //	give the player the reward
 if !contract_misfire {
