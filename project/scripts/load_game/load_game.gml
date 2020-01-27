@@ -12,6 +12,17 @@ ini_open(working_directory + "savedgame.ini")
 //	whats the general game information
 var node_count = ini_read_real("General","Node Count",0)
 
+//	copy the item databases
+var section = "Item Databases"
+var database_encoded = ini_read_string(section,"Nodes DB",0)
+if is_string(database_encoded) {
+	var list = ds_list_create()
+	ds_list_read(list,database_encoded)
+	var database_copy = list[| 0]
+	shop.item_node = database_copy
+	ds_list_destroy(list)
+}
+
 //	load the nodes that are in the level
 var section = "Nodes"
 for(var i=0;i<node_count;i++) {
@@ -34,19 +45,21 @@ for(var i=0;i<node_count;i++) {
 	}
 	
 	var Name = shop.item_node[index, node_name]       
-	var Node = item_create(node,0,0,0,Name,s_portrait_node,0)                                    
+	var Node = item_create(node,0,0,0,Name,s_portrait_node,0)
+	shop.item_node[index, node_object_index] = Node
 	with Node {
-		if Ports > -1 {
+		jobruns = shop.item_node[item_index, node_jobruns]
+		jobruns_previous = jobruns
+		if is_array(Ports) {
 			Node.ports = Ports
 			Node.ports_count = array_height_2d(Ports)
 		} else {
 				
 		}
-		
 		item_move(xx,yy)
-		
-		
-		
+		ports_xyupdate_movement()
+		item_check_sockets()
 		item_place()
+		with System system_dataflow_check()
 	}
 }
