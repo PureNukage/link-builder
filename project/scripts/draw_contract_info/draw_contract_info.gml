@@ -26,8 +26,11 @@ var default_window_height = 240
 
 var line_width = default_window_width
 //	Calculate width
-if string_width(_name) > 51 { 
-	line_width = default_window_width + (string_width(_name)-51)
+if string_width(_name) < 51 {
+	//line_width = default_window_width + (string_width(_name)) + 64
+}
+if string_width(_name) > 51  and string_width(_name) < 120 { 
+	line_width = default_window_width + (string_width(_name)) + 32
 } else var line_width = default_window_width
 if string_width(_name) > 120 {
 	line_width += string_width(_name)	

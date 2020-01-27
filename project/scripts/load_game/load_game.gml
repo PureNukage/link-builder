@@ -15,6 +15,13 @@ var node_count = ini_read_real(section,"Node Count",0)
 var data_count = ini_read_real(section,"Data Count",0)
 var contract_count = ini_read_real(section,"Contracts Count",0)
 
+//	resources
+var section = "Resources"
+player.value = ini_read_real(section,"Value",0)
+player.money = ini_read_real(section,"Money",0)
+player.link = ini_read_real(section,"Link",0)
+player.eth = ini_read_real(section,"Eth",0)
+
 //	copy the item databases
 var section = "Item Databases"
 var database_encoded = ini_read_string(section,"Nodes DB",0)

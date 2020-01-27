@@ -273,8 +273,9 @@ switch(states)
 															//	Event leveled up
 															var Node_name = name
 															var Node_level = shop.item_node[item_index, node_level]
+															var Portrait = s_event_node_levelup
 															if !textbox_in_queue(Node_level,event_types.levelup,id) {
-																create_textbox(Node_name+" is now Level "+string(Node_level+1),-1,event_duration,Node_level,event_types.levelup,id)	
+																create_textbox(Node_name+" is now Level "+string(Node_level+1),Portrait,event_duration,Node_level,event_types.levelup,id)	
 															}
 														}
 														if ds_list_find_index(nodes,id) == -1 {

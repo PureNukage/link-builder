@@ -25,7 +25,7 @@ if button_open == true {
 		menu_mouseover = true
 		if input.scroll_up or input.scroll_down {
 			contract_index -= input.scroll_up - input.scroll_down	
-			contract_index = clamp(contract_index,0,amount_of_contracts-2)
+			contract_index = clamp(contract_index,0,amount_of_contracts)
 			handleY = barY + (contract_index*round(bar_height/(amount_of_contracts-1)))
 		}	
 	} else {
@@ -44,9 +44,12 @@ if button_open == true {
 	var _yy = menuY + 6
 	
 	#region	Draw Contracts
-	for(var c=0;c<array_height_2d(contract);c++) {
-		if c > contract_index-1 and c < contract_index + contract_clamp {
+	var items = 0
+	for(var c=contract_index;c<array_height_2d(contract);c++) {
+		if items < contract_clamp {
+		//if c > contract_index-1 and c < contract_index + contract_clamp {
 			if contract[c, contract_kiosk] > -1 {
+				items++
 		
 				var _name = contract[c, contract_name]
 				var _price = contract[c, contract_price]
@@ -81,11 +84,11 @@ if button_open == true {
 						//contract_refresh()
 					}
 				
-					if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+line_width,_yy+line_height) {
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+line_width,_yy+64) {
+						//if input.mouse_left_press {
+						//	contract_index = c	
+						//}
 						if input.mouse_left_press {
-							contract_index = c	
-						}
-						if input.doubleclick {
 							contract_open = -1
 							line_height = 64
 							contract_refresh()

@@ -108,8 +108,9 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 					//	Event leveled up
 					var Node_name = name
 					var Node_level = shop.item_node[item_index, node_level]
+					var Portrait = s_event_node_levelup
 					if !textbox_in_queue(Node_level,event_types.levelup,id) {
-						create_textbox(Node_name+" is now Level "+string(Node_level+1),Node_level,event_duration,-1,event_types.levelup,id)	
+						create_textbox(Node_name+" is now Level "+string(Node_level+1),Portrait,event_duration,Node_level,event_types.levelup,id)	
 					}	
 				}
 			}
@@ -132,11 +133,11 @@ _kiosk.used = true
 
 //	This smart contract misfired
 if contract_misfire > 0 {
-	contracts.contract[smartcontract, contract_misfires]++
-	ds_list_add(contracts.contract[smartcontract, contract_uses],false)
+	contracts.contract[Smartcontract, contract_misfires]++
+	ds_list_add(contracts.contract[Smartcontract, contract_uses],false)
 	
 	//	Calculate new reliability percentage
-	var _misfires = contracts.contract[smartcontract, contract_misfires]
+	var _misfires = contracts.contract[Smartcontract, contract_misfires]
 	//var _successes = contracts.contract[smartcontract, contract_uses] - _misfires
 	//contracts.contract[smartcontract, contract_reliability] = (_successes / contracts.contract[smartcontract, contract_uses]) * 100
 } else {

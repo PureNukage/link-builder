@@ -13,6 +13,12 @@ ini_write_real(section,"Node Count",node_count)
 ini_write_real(section,"Data Count",data_count)
 ini_write_real(section,"Contracts Count",contract_count)
 
+var section = "Resources"
+ini_write_real(section,"Value",player.value)
+ini_write_real(section,"Money",player.money)
+ini_write_real(section,"Link",player.link)
+ini_write_real(section,"Eth",player.eth)
+
 var section = "Item Databases"
 //	save the node item database
 var n_database_copy = shop.item_node
@@ -29,7 +35,8 @@ for(var d=0;d<array_height_2d(d_database_copy);d++) {
 //	save the contract database
 var c_database_copy = contracts.contract
 for(var c=0;c<array_height_2d(c_database_copy);c++) {
-	c_database_copy[c, contract_kiosk] = -1	 
+	c_database_copy[c, contract_kiosk] = -1	
+	c_database_copy[c, contract_traffic_live] = 0
 }
 
 var list = ds_list_create()
@@ -186,6 +193,8 @@ if instance_exists(kiosk) {
 else {
 	
 }
+
+//	People
 
 
 ini_close()

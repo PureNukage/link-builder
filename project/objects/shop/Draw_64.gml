@@ -117,7 +117,6 @@ if menu_open == true {
 		for(var i=item_index;i<array_height_2d(array);i++) {
 			if i < array_height_2d(array) {
 				if array[i, item_available] and items < item_clamp {			
-					items++
 			
 					//	Draw the contract info
 					if menu_index_string == "Contracts" and item_mouseover == i {
@@ -130,6 +129,7 @@ if menu_open == true {
 						good = false
 					}
 					if good {
+						items++
 						var _item_name = array[i, item_name]
 						var _item_price = array[i, item_price]
 	

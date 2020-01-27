@@ -74,15 +74,15 @@ if instance_exists(mainmenu) exit
 		
 		item_mouseover = -1
 		var items = 0
-		for(var i=item_index;i<item_index+array_height_2d(array);i++) {
+		for(var i=item_index;i<array_height_2d(array);i++) {
 			if i < array_height_2d(array) {
 				if array[i, item_available] and items < item_clamp {
-					items++
 					var good = true
 					if menu_index_string == "Contracts" and array[i, contract_kiosk] > -1 {
 						good = false
 					}
 					if good {
+						items++
 						if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+list_width,_yy+list_height) {
 							item_mouseover = i
 						

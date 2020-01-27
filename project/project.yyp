@@ -1383,6 +1383,14 @@
             }
         },
         {
+            "Key": "b83bc639-e58f-4332-a180-018c4a9bc5ef",
+            "Value": {
+                "id": "ebc55da7-7911-461b-b187-1e7152461721",
+                "resourcePath": "sprites\\s_event_node_levelup\\s_event_node_levelup.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "b932791a-ae69-4cef-891d-b5c816e7618a",
             "Value": {
                 "id": "fcf835fb-5425-4774-a892-00413aa4d0c1",

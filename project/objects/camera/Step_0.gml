@@ -116,14 +116,14 @@ switch(camera_mode)
 		//	input.selection_y1 = -1
 		//} else pan = 0
 
-		//	Check if we're moused over any gui elements before applying pan
-		if instance_exists(shop) and instance_exists(contracts) {
-			if shop.menu_open == 0 and contracts.button_open == 0 and pan == 0 {
-				y += panY * panspeed 
-				x += panX * panspeed
-				if pan = -1 pan = 1
-			}
-		}
+		////	Check if we're moused over any gui elements before applying pan
+		//if instance_exists(shop) and instance_exists(contracts) {
+		//	if shop.menu_open == 0 and contracts.button_open == 0 and pan == 0 {
+		//		y += panY * panspeed 
+		//		x += panX * panspeed
+		//		if pan = -1 pan = 1
+		//	}
+		//}
 		
 	break	
 	case camera_mode.moved_to:
