@@ -248,6 +248,7 @@ switch(tutorial)
 				//	Wait for the OK button to be hit and send them back to the main menu
 				case 17:
 					if textbox_in_history(6969) {
+						ga_addProgressionEvent(GA_PROGRESSIONSTATUS_COMPLETE, "Main Menu")
 						back_to_mainmenu()	
 					}
 				break
@@ -335,6 +336,7 @@ switch(tutorial)
 				//	Return to main menu
 				case 6:
 					if textbox_in_history(1234) {
+						ga_addProgressionEvent(GA_PROGRESSIONSTATUS_COMPLETE, "Main Menu")
 						back_to_mainmenu()	
 					}
 				break
@@ -514,6 +516,7 @@ switch(tutorial)
 				//	Wait to return to main menu
 				case 12:
 					if textbox_in_history(123456) {
+						ga_addProgressionEvent(GA_PROGRESSIONSTATUS_COMPLETE, "Main Menu")
 						back_to_mainmenu()	
 					}
 					

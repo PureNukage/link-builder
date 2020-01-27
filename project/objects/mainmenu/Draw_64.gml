@@ -207,6 +207,7 @@ switch(menu)
 				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-string_width(_string)/2,_y,_x+string_width(_string)/2+string_width(_string),_y+string_height(_string)) {
 					draw_set_color(c_white)
 					if mouse_check_button_pressed(mb_left) {
+						if app.tutorial > -1 ga_addProgressionEvent(GA_PROGRESSIONSTATUS_FAIL, "Main Menu")
 						back_to_mainmenu()	
 					}
 				} else {
@@ -245,8 +246,11 @@ switch(menu)
 							camera.camera_mode = camera_mode.free
 							app.tutorial = i
 							app.world_width = 1920
-							app.world_height = 1088			
+							app.world_height = 1088		
+							var String = string(i)
+							ga_addProgressionEvent(GA_PROGRESSIONSTATUS_START, String)
 							room_goto_next()
+
 						}
 					
 					} else {
@@ -292,9 +296,9 @@ switch(menu)
 }
 
 //	Version and credential
-var version = app.version
+//var version = app.version
 var credit = app.me
-var total_string = "v"+string(version) + " by " + credit
+var total_string = "v"+ version + " by " + credit
 var _string_width = string_width(total_string)
 var _string_height = string_height(total_string)
 var _xx = display_get_gui_width() - _string_width - 16

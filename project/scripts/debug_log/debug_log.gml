@@ -2,7 +2,8 @@
 
 var _string = argument[0]
 
-var time_stream = "["+string(time.stream)+"] "
+if instance_exists(time) var time_stream = "["+string(time.stream)+"] "
+else var time_stream = "[0] "
 
 var _object_name = object_get_name(object_index)
 
