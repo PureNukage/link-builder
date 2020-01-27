@@ -28,7 +28,13 @@ with node {
 		
 		//	convert ports array into a ds_list and then encode it into a string
 		var list = ds_list_create()
-		list[| 0] = ports
+		var Ports = ports
+		var Sockets = sockets
+		for(var p=0;p<ports_count;p++) {
+			Ports[p,port_object] = -1
+		}
+		list[| 0] = Ports
+		list[| 1] = Sockets
 		var string_encoded = ds_list_write(list)
 		ini_write_string(section,key_base+"ports",string_encoded)
 		ds_list_destroy(list)

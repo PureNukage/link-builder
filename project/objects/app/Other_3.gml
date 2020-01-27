@@ -1,1 +1,1 @@
-ga_onQuit()
+//ga_onQuit()

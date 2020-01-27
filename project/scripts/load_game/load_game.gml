@@ -16,11 +16,11 @@ var node_count = ini_read_real("General","Node Count",0)
 var section = "Item Databases"
 var database_encoded = ini_read_string(section,"Nodes DB",0)
 if is_string(database_encoded) {
-	var list = ds_list_create()
-	ds_list_read(list,database_encoded)
-	var database_copy = list[| 0]
+	var db_list = ds_list_create()
+	ds_list_read(db_list,database_encoded)
+	var database_copy = db_list[| 0]
 	shop.item_node = database_copy
-	ds_list_destroy(list)
+	ds_list_destroy(db_list)
 }
 
 //	load the nodes that are in the level
@@ -33,15 +33,13 @@ for(var i=0;i<node_count;i++) {
 	var ports_string = ini_read_string(section,key_base+"ports",0)
 	if is_string(ports_string) {
 		var list = ds_list_create()
-		list = ds_list_read(list,ports_string)
+		ds_list_read(list,ports_string)
 		var Ports = list[| 0]
-		//	clear the ids in the port array
-		for(var p=0;p<array_height_2d(Ports);p++) {
-			Ports[p, port_object] = -1	
-		}
+		var Sockets = list[| 1]
 		ds_list_destroy(list)
 	} else {
 		Ports = -1
+		Sockets = -1
 	}
 	
 	var Name = shop.item_node[index, node_name]       
@@ -52,6 +50,7 @@ for(var i=0;i<node_count;i++) {
 		jobruns_previous = jobruns
 		if is_array(Ports) {
 			Node.ports = Ports
+			Node.sockets = Sockets
 			Node.ports_count = array_height_2d(Ports)
 		} else {
 				
@@ -60,6 +59,5 @@ for(var i=0;i<node_count;i++) {
 		ports_xyupdate_movement()
 		item_check_sockets()
 		item_place()
-		with System system_dataflow_check()
 	}
 }
