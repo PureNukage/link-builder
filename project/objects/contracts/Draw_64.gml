@@ -20,6 +20,14 @@ if button_active {
 
 #region	Drawing available contracts
 if button_open == true {
+	
+	if point_in_rectangle(mouse_gui_x,mouse_gui_y,menuX,menuY,menuX+menu_width,menuY+menu_height) {
+		if input.scroll_up or input.scroll_down {
+			contract_index -= input.scroll_up - input.scroll_down	
+			contract_index = clamp(contract_index,0,amount_of_contracts-2)
+			handleY = barY + (contract_index*round(bar_height/(amount_of_contracts-1)))
+		}	
+	}
 
 	//	Draw Menu outline
 	draw_set_color(c_black)
@@ -71,11 +79,17 @@ if button_open == true {
 					}
 				
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+line_width,_yy+line_height) {
+						menu_mouseover = true
+						if input.mouse_left_press {
+							contract_index = c	
+						}
 						if input.doubleclick {
 							contract_open = -1
 							line_height = 64
 							contract_refresh()
 						}
+					} else {
+						menu_mouseover = false	
 					}
 				
 				

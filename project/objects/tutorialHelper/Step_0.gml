@@ -360,18 +360,25 @@ switch(tutorial)
 					
 					with Contract { 
 						item_move(24, 10)
+						ports_xyupdate_movement()
+						item_check_sockets()
 						item_place()
 					}
 					with Node1 {
 						item_move(29, 10)
+						ports_xyupdate_movement()
+						item_check_sockets()
 						item_place()
 					}
 					with Node2 {
 						item_move(19 ,10)
+						ports_xyupdate_movement()
+						item_check_sockets()
 						item_place()
 					}
 					with Paypal {
 						item_move(33, 10)
+						ports_xyupdate_movement()
 						ports_xyupdate_rotation(1)
 						item_check_sockets()
 						ports_xyupdate_rotation(1)
@@ -380,6 +387,8 @@ switch(tutorial)
 					}
 					with ethusd {
 						item_move(15, 10)
+						ports_xyupdate_movement()
+						item_check_sockets()
 						item_place()
 					}	
 					stage++
