@@ -22,11 +22,14 @@ if button_active {
 if button_open == true {
 	
 	if point_in_rectangle(mouse_gui_x,mouse_gui_y,menuX,menuY,menuX+menu_width,menuY+menu_height) {
+		menu_mouseover = true
 		if input.scroll_up or input.scroll_down {
 			contract_index -= input.scroll_up - input.scroll_down	
 			contract_index = clamp(contract_index,0,amount_of_contracts-2)
 			handleY = barY + (contract_index*round(bar_height/(amount_of_contracts-1)))
 		}	
+	} else {
+		menu_mouseover = false	
 	}
 
 	//	Draw Menu outline
@@ -79,7 +82,6 @@ if button_open == true {
 					}
 				
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+line_width,_yy+line_height) {
-						menu_mouseover = true
 						if input.mouse_left_press {
 							contract_index = c	
 						}
@@ -88,8 +90,6 @@ if button_open == true {
 							line_height = 64
 							contract_refresh()
 						}
-					} else {
-						menu_mouseover = false	
 					}
 				
 				

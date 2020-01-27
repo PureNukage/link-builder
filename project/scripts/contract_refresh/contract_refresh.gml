@@ -1,7 +1,7 @@
 amount_of_contracts = 0
 buttonX = display_get_gui_width()-button_width-32
 for(var i=0;i<array_height_2d(contract);i++) {
-	if contract[i, contract_purchased] amount_of_contracts++
+	if contract[i, contract_kiosk] > -1 amount_of_contracts++
 }	
 
 if amount_of_contracts > contract_clamp - 2 {
@@ -40,14 +40,14 @@ if biggest_width > 0 {
 	menuX = display_get_gui_width() - menu_width - side_spacer
 					
 	bar_width = 55
-	bar_height =  amount_of_contracts*line_height-20
+	bar_height =  amount_of_contracts*(line_height+16)-20
 	barX = menuX + 6
 	barY = menuY + 6
 	
 	handle_width = 42
-	handle_height = round(bar_height/(amount_of_contracts-1))
+	handle_height = round(bar_height/(amount_of_contracts))
 	handleX = menuX + 12
-	handleY = barY + (contract_index*round(bar_height/(amount_of_contracts-1)))
+	handleY = barY + (contract_index*round(bar_height/(amount_of_contracts)))
 	handle_mouseover = false
 			
 	line_width = 100 + biggest_name_width + icon_width + (name_spacer*2) + (icon_spacer*2)	
