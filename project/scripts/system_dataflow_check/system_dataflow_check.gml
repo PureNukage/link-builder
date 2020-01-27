@@ -382,7 +382,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 						
 						//	Push an event
 						var Contract_name = contracts.contract[_kiosk.smartcontract, contract_name]
-						if !textbox_in_queue(time.seconds,event_types.online,_kiosk) and !textbox_active(time.seconds,event_types.online,_kiosk) {
+						if !textbox_in_queue(time.seconds,event_types.online,_kiosk) and !textbox_active(time.seconds,event_types.online,_kiosk) and !textbox_in_history(time.seconds,event_types.online,_kiosk) {
 							create_textbox(Contract_name+" is now online!",-1,event_duration,time.seconds,event_types.online,_kiosk)	
 						}
 					}
@@ -440,13 +440,13 @@ for(var i=0;i<ds_list_size(parts);i++) {
 						//	Check if out of LINK
 						var Contract_name = contracts.contract[_kiosk.smartcontract, contract_name]
 						if player.link < contracts.contract[_kiosk.smartcontract, contract_linkfee] {
-							if !textbox_in_queue(time.seconds,event_types.out_of_link,_kiosk) and !textbox_active(time.seconds,event_types.out_of_link,_kiosk) {
+							if !textbox_in_queue(time.seconds,event_types.out_of_link,_kiosk) and !textbox_active(time.seconds,event_types.out_of_link,_kiosk) and !textbox_in_history(time.seconds,event_types.out_of_link,_kiosk) {
 								create_textbox(Contract_name+" does not have enough LINK",s_event_out_of_link,event_duration,time.seconds,event_types.out_of_link,_kiosk)
 							}
 						}
 						//	Check if out of ETH
 						if player.eth < contracts.contract[_kiosk.smartcontract, contract_gasfee_total] {
-							if !textbox_in_queue(time.seconds,event_types.out_of_eth,_kiosk) and !textbox_active(time.seconds,event_types.out_of_eth,_kiosk) {
+							if !textbox_in_queue(time.seconds,event_types.out_of_eth,_kiosk) and !textbox_active(time.seconds,event_types.out_of_eth,_kiosk) and !textbox_in_history(time.seconds,event_types.out_of_eth,_kiosk) {
 								create_textbox(Contract_name+" does not have enough ETH",s_event_out_of_eth,event_duration,time.seconds,event_types.out_of_eth,_kiosk)
 							}
 						}

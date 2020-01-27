@@ -106,7 +106,7 @@ for(var d=0;d<data_count;d++) {
 		data_generated = shop.item_data[index, item_data_generated]
 		if is_array(Ports) {
 			ports = Ports
-			//sockets = Sockets
+			sockets = Sockets
 			ports_count = array_height_2d(Ports)
 		} else {
 				
@@ -147,7 +147,7 @@ for(var c=0;c<contract_count;c++) {
 		data_needed = contracts.contract[Smartcontract, contract_data]
 		if is_array(Ports) {
 			Contract.ports = Ports
-			//Contract.sockets = Sockets
+			Contract.sockets = Sockets
 			Contract.ports_count = array_height_2d(Ports)
 		} else {
 				

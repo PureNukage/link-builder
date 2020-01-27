@@ -17,9 +17,6 @@ switch(object_index)
 		shop.item_data[item_index, item_purchased] = true
 	break
 	case kiosk:
-		if !replace {
-			with shop shop_refresh()	
-		}
 		contracts.contract[smartcontract, contract_purchased] = true
 		contracts.contract[smartcontract, contract_kiosk] = id
 		with contracts contract_refresh()
@@ -32,6 +29,8 @@ states = states.placed
 			
 ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
 item_placeid()
+
+if !replace with shop shop_refresh()
 			
 var _x1 = gridController.grid_positions_x[topleft_cell_x]+(cell_width/2)
 var _y1 = gridController.grid_positions_y[topleft_cell_y]+(cell_height/2)
