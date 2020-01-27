@@ -11,7 +11,7 @@ if instance_exists(mainmenu) exit
 			
 			#region Calculate menu variables
 			if menu_open {
-			
+				shop_refresh()
 				
 			}
 			#endregion

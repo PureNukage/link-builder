@@ -86,7 +86,7 @@ if button_open == true {
 					draw_set_color(c_black)
 					draw_roundrect(_xx-2,_yy-2,_xx+line_width+2,_yy+line_height+2,false)
 				
-					//	Draw contract window background
+					// Draw contract window background
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+line_width,_yy+line_height) {
 						draw_set_color(c_gray)	
 					

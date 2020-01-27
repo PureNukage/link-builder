@@ -17,7 +17,7 @@ if point_in_rectangle(mouse_gui_x,mouse_gui_y,buttonX,buttonY,buttonX+button_wid
 if button_open {
 	
 	//	If mousing over rectangle
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,menuX,menuY,menuX+menu_width,menuY+menu_height) {
+	if point_in_rectangle(mouse_gui_x,mouse_gui_y,menuX,menuY,menuX+menu_width,menuY+menu_height) {
 		menu_mouseover = true
 		
 		
@@ -32,7 +32,7 @@ if button_open {
 		var segment = round(bar_height/(amount_of_contracts-1)) 
 		handle_mouseover = false
 		for(var s=0;s<segment;s++) {
-			if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x,_y,_x+handle_width,_y+handle_height) {
+			if point_in_rectangle(mouse_gui_x,mouse_gui_y,_x,_y,_x+handle_width,_y+handle_height) {
 				if contract_index == s {
 					handle_mouseover = true	
 				}

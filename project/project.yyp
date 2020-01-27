@@ -479,6 +479,14 @@
             }
         },
         {
+            "Key": "4e1f5e89-cc3b-4769-9dcd-8cb9e4f48356",
+            "Value": {
+                "id": "c1a37b7c-0d48-4e3b-902a-823f6abcf7d5",
+                "resourcePath": "datafiles_yy\\savedgame.ini.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "4f71946f-8e0c-43b2-b86a-a4c5779c5484",
             "Value": {
                 "id": "4198293e-565a-42b5-a812-1da32065702c",
@@ -684,6 +692,14 @@
                 "id": "d394e732-1ca8-4c04-8e7b-87be2405b396",
                 "resourcePath": "options\\html5\\options_html5.yy",
                 "resourceType": "GMHtml5Options"
+            }
+        },
+        {
+            "Key": "77d42b13-bc63-4d23-aa3d-c053747e4c55",
+            "Value": {
+                "id": "e7b93b3d-fe1b-48fa-938b-8f1cf0ae8434",
+                "resourcePath": "scripts\\load_game\\load_game.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -980,6 +996,14 @@
                 "id": "40e8633e-3a1f-4634-950d-0de16fb464b8",
                 "resourcePath": "sprites\\s_madface\\s_madface.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "a389ec66-2c61-403b-bad6-27be6a8a93a1",
+            "Value": {
+                "id": "d727518f-3c4c-46d7-a68c-98245baf724d",
+                "resourcePath": "views\\a389ec66-2c61-403b-bad6-27be6a8a93a1.yy",
+                "resourceType": "GMFolder"
             }
         },
         {
@@ -1292,6 +1316,14 @@
                 "id": "4e645361-3ad4-4830-9c77-9383fd089408",
                 "resourcePath": "sprites\\s_kiosk_chains\\s_kiosk_chains.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "cc216535-5aed-4b80-b92d-9ee51fb3a8bf",
+            "Value": {
+                "id": "1c109822-a75f-4800-afc0-f206c9a2eaef",
+                "resourcePath": "scripts\\save_game\\save_game.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -1746,7 +1778,9 @@
         "9607a234-c356-4012-b7ef-13f6b252091f",
         "9428baf0-9a29-4db7-b03e-cdb0b26bfb79",
         "d0893538-96ed-4e13-b3f9-a6aa56438e48",
-        "41d6c08d-51d3-4b36-87ef-fcbdd35cef43"
+        "41d6c08d-51d3-4b36-87ef-fcbdd35cef43",
+        "cc216535-5aed-4b80-b92d-9ee51fb3a8bf",
+        "77d42b13-bc63-4d23-aa3d-c053747e4c55"
     ],
     "tutorial": ""
 }
