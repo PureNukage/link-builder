@@ -11,8 +11,8 @@ with camera {
 	var _center = false
 	if app.resolution_width != _width _center = true else _center = false
 	scale_canvas(base_width,base_height,_width,_height,_center)
+	camera_refresh(_width,_height)
 	display_set_gui_size(_width,_height)
 	if instance_exists(plaque) with plaque plaque_refresh()
 	if instance_exists(contracts) with contracts contract_refresh()
-	camera_refresh()
 }

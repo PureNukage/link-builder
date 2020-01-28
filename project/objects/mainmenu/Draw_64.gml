@@ -52,8 +52,8 @@ switch(menu)
 							case 0:	//	Play
 								camera.camera_mode = camera_mode.free
 								app.tutorials = -1
-								app.world_width = 3840
-								app.world_height = 3840
+								app.world_width = 2560
+								app.world_height = 2048
 								app.data_corruption = mode.on
 								room_goto_next()
 							break

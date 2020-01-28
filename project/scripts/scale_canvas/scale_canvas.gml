@@ -25,6 +25,6 @@ if (_center)
     window_center()
     }
 
-var extra_quality = 2
+//var extra_quality = 2
 
-surface_resize(application_surface,min(window_get_width(),_base_width)*extra_quality,min(window_get_height(),_base_height)*extra_quality)
+surface_resize(application_surface,min(window_get_width(),_base_width),min(window_get_height(),_base_height))
