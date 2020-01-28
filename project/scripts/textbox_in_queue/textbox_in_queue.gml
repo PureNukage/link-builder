@@ -23,11 +23,9 @@ for(var i=0;i<ds_list_size(textboxController.message_queue);i++) {
 			found_it = true
 		}
 	} else {
-		if Event_type > -1 and Object_id > -1 {
-			if Event_type == _Event_type and Object_id == _Object_id and _uniqueID == UniqueID {
-				found_it = true	
-			}
-		} 
+		if Event_type == _Event_type and Object_id == _Object_id and _uniqueID == UniqueID {
+			found_it = true	
+		}
 	}
 }
 if found_it return true else return false
