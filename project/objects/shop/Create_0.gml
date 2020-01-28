@@ -21,7 +21,7 @@
 
 	var _string = "This endpoint gives access to Github"
 	var Corruption = create_data_corruption(0,-1,0)
-	create_data("Github",1000,data,_string,s_portrait_github,data_types.github,Corruption,true)
+	create_data("Github",750,data,_string,s_portrait_github,data_types.github,Corruption,true)
 	
 	var _string = ""
 	var Corruption = create_data_corruption(0,-1,0)
@@ -34,9 +34,9 @@
 	var levels = create_levels(0,2, 125,4, 300,6)
 	create_node("YorkyRoad",_string,100,0,0,levels,true)
 	
-	create_node("gonsinator",_string,100,0,0,levels,true)
+	create_node("gonsinator",_string,350,0,0,levels,false)
 
-	create_node("DataBlaster",_string,100,0,0,levels,true)
+	create_node("DataBlaster",_string,750,0,0,levels,false)
 
 	item = []
 	item[0,item_name] = "Node"				//	Item name in a string

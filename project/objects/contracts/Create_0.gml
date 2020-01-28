@@ -27,7 +27,7 @@ var _data = create_data_needed(data_types.binance_ETHUSD,data_types.paypal)
 var levels = create_level_ports(2,3,4,5)
 var _string = "DeFi users can now trade their ETH with\neach other for USD by querying a PayPal invoice"
 var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_payment_eth,200,conditions.cnd_reliability_high,100)
-create_contract("LinkPal",_string,18,500,s_portrait_linkpal,2,10,5,contract_types.people,levels,_data,true,Conditions)
+create_contract("LinkPal",_string,20,500,s_portrait_linkpal,2,10,5,contract_types.people,levels,_data,true,Conditions)
 
 var _data = create_data_needed(data_types.binance_ETHUSD,data_types.github)
 var levels = create_level_ports(2,3,4,5)
@@ -44,14 +44,14 @@ create_contract("Price Feed",_string,0,500,s_portrait_ethereum,2,0,0,contract_ty
 var _data = create_data_needed(data_types.emailAPI)
 var _string = ""
 var levels = create_level_ports(1,1,1,1)
-var Conditions = create_conditions(conditions.cnd_active,250)
-create_contract("Cerberus Wallet 2FA",_string,10,0,s_portrait_blank,2,10,5,contract_types.people,levels,_data,true,Conditions)
+var Conditions = create_conditions(conditions.cnd_active,125,conditions.cnd_reliability_high,125)
+create_contract("Cerberus Wallet 2FA",_string,8,0,s_portrait_blank,2,10,5,contract_types.people,levels,_data,true,Conditions)
 
 var _data = create_data_needed(data_types.binance_ETHUSD)
 var _string = ""
 var levels = create_level_ports(1,1,1,1)
-var Conditions = create_conditions(conditions.cnd_active,250)
-create_contract("Backerr",_string,10,0,s_portrait_blank,2,10,5,contract_types.people,levels,_data,false,Conditions)
+var Conditions = create_conditions(conditions.cnd_active,125,conditions.cnd_reliability_high,125)
+create_contract("Backerr",_string,12,0,s_portrait_blank,2,10,5,contract_types.people,levels,_data,true,Conditions)
 
 //	GUI stuff
 menu_width = 340

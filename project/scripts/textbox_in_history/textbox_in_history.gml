@@ -20,11 +20,9 @@ if instance_exists(textboxController) {
 				found_it = true
 			}
 		} else {
-			if Event_type > -1 and Object_id > -1 {
-				if Event_type == message_event_type and Object_id == message_object_id and _uniqueID != message_uniqueID {
-					found_it = true	
-				}
-			} 
+			if Event_type == message_event_type and Object_id == message_object_id and _uniqueID == message_uniqueID {
+				found_it = true	
+			}
 		}
 	}
 }

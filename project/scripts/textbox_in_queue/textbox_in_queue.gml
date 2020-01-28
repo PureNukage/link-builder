@@ -24,7 +24,7 @@ for(var i=0;i<ds_list_size(textboxController.message_queue);i++) {
 		}
 	} else {
 		if Event_type > -1 and Object_id > -1 {
-			if Event_type == _Event_type and Object_id == _Object_id and _uniqueID != UniqueID {
+			if Event_type == _Event_type and Object_id == _Object_id and _uniqueID == UniqueID {
 				found_it = true	
 			}
 		} 

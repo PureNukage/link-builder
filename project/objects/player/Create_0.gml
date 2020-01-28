@@ -6,4 +6,4 @@ eth = 15
 
 value = 0
 
-money = 1500
+money = 800

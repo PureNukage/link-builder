@@ -18,7 +18,7 @@ if textboxController.current_message > -1 {
 			return true
 		}
 	} else {
-		if Event_type == message_event_type and Object_id == message_object_id and _uniqueID != message_uniqueID {
+		if Event_type == message_event_type and Object_id == message_object_id and _uniqueID == message_uniqueID {
 			return true
 		}
 	}

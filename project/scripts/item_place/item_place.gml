@@ -10,6 +10,12 @@ switch(object_index)
 		if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
 		shop.item_node[item_index, node_placed] = true
 		shop.item_node[item_index, node_purchased] = true
+		//	Unlock the next node
+		if !replace and item_index > 0 and item_index < array_height_2d(shop.item_node)-1 {
+			shop.item_node[item_index+1, node_available] = true
+		} else if !replace and item_index == 0 and array_height_2d(shop.item_node) > 1 {
+			shop.item_node[item_index+1, node_available] = true	
+		}
 	break
 	case data:
 		if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
