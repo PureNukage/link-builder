@@ -105,9 +105,9 @@ for(var d=0;d<data_count;d++) {
 		rotation = Rotation
 		data_generated = shop.item_data[index, item_data_generated]
 		if is_array(Ports) {
-			ports = Ports
-			sockets = Sockets
-			ports_count = array_height_2d(Ports)
+			//ports = Ports
+			//sockets = Sockets
+			//ports_count = array_height_2d(Ports)
 		} else {
 				
 		}
@@ -160,4 +160,8 @@ for(var c=0;c<contract_count;c++) {
 	
 	
 }
+
+app.game_loading = false
+
+ini_close()
 

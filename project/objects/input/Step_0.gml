@@ -23,9 +23,11 @@ if f5 {
 	save_game()	
 }
 
-if f9 {
-	load_game()	
-}
+//if f9 and !app.game_loading {	
+//	app.game_loading = true
+//	load_game()	
+//	exit
+//}
 
 escape = keyboard_check_pressed(vk_escape)
 

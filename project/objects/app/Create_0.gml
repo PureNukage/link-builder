@@ -19,6 +19,8 @@ world_height  = 1088
 resolution_width = 1920	
 resolution_height = 1080
 
+game_loading = false
+
 data_corruption = -1
 
 #region App Time

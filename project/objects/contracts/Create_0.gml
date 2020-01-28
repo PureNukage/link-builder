@@ -51,7 +51,7 @@ var _data = create_data_needed(data_types.binance_ETHUSD)
 var _string = ""
 var levels = create_level_ports(1,1,1,1)
 var Conditions = create_conditions(conditions.cnd_active,250)
-create_contract("Backerr",_string,10,0,s_portrait_blank,2,10,5,contract_types.people,levels,_data,true,Conditions)
+create_contract("Backerr",_string,10,0,s_portrait_blank,2,10,5,contract_types.people,levels,_data,false,Conditions)
 
 //	GUI stuff
 menu_width = 340

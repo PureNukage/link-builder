@@ -17,3 +17,7 @@ if seconds >= 60 {
 } else {
 	minutes_switch = 0	
 }
+
+if instance_exists(input) and input.f9 {
+	load_game()	
+}
