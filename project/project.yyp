@@ -127,6 +127,14 @@
             }
         },
         {
+            "Key": "13dfd1bc-5426-4122-80c7-c92263eb0e89",
+            "Value": {
+                "id": "30efeb7b-c109-4900-bfd3-6d8cba59bd26",
+                "resourcePath": "sprites\\s_icon_web\\s_icon_web.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "14e52a5d-8cc7-4062-a49e-fbed381610f7",
             "Value": {
                 "id": "4ccea9eb-62f7-4db3-8106-f144af63e6f1",
@@ -220,6 +228,14 @@
                 "id": "27ca3973-eb17-44a3-a881-079a368ae5e9",
                 "resourcePath": "views\\246e1d3b-17ee-4916-93cb-b26ec60bb694.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "246f9ccf-7503-4068-ad15-4ba715fb4786",
+            "Value": {
+                "id": "6b6842f4-65e6-40b2-83f7-d32c735540b2",
+                "resourcePath": "sprites\\s_icon_data\\s_icon_data.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -732,6 +748,14 @@
                 "id": "d63d3623-8e94-4ada-a25e-36c417feb876",
                 "resourcePath": "scripts\\item_placeid\\item_placeid.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "65046fc6-0bef-4af7-8bac-98b1edb8f801",
+            "Value": {
+                "id": "7a73f1c4-1457-45fe-ae06-7baa385fb6a7",
+                "resourcePath": "sprites\\s_icon_money\\s_icon_money.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
