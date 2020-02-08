@@ -68,6 +68,9 @@ item_placing = 0
 
 #region GUI
 
+	//	Plaque info
+	Plaque = -1
+
 	//	Resources
 	link_trade = 1
 	eth_trade = 1

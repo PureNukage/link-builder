@@ -7,3 +7,6 @@ window_two_mouseover = false
 
 
 button_delete_mouseover = false
+
+mode = mode.off
+index = -1

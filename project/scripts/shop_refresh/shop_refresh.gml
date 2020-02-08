@@ -71,3 +71,8 @@ handle_width = const_handle_width
 handle_height = round(bar_height/(amount_of_items))
 handleX = menuX+menu_width - handle_width - 12
 handleY = barY + (item_index*round(bar_height/(amount_of_items)))
+
+if shop_plaqueCheck() {
+	instance_destroy(Plaque)
+	Plaque = -1
+}

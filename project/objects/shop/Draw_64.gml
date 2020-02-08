@@ -119,9 +119,9 @@ if menu_open == true {
 				if array[i, item_available] and items < item_clamp {			
 			
 					//	Draw the contract info
-					if menu_index_string == "Contracts" and item_mouseover == i {
-						draw_contract_info(menuX+menu_width+8,menuY+menu_header_height-header_buffer,item_mouseover,true)
-					}
+					//if menu_index_string == "Contracts" and item_mouseover == i {
+					//	draw_contract_info(menuX+menu_width+8,menuY+menu_header_height-header_buffer,item_mouseover,true)
+					//}
 				
 					var good = true
 					//	Only show unpurchased contracts

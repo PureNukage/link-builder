@@ -85,8 +85,29 @@ if instance_exists(mainmenu) exit
 						items++
 						if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+list_width,_yy+list_height) {
 							item_mouseover = i
+							if menu_index_string == "Contracts" {
+								if !shop_plaqueCheck() {
+									Plaque = instance_create_layer(0,0,"Instances",plaque)
+									Plaque.windowX = menuX+menu_width+8
+									Plaque.windowY = menuY+menu_header_height-header_buffer
+									Plaque.mode = mode.on
+									Plaque.index = i
+								} else if Plaque.index != i {
+									instance_destroy(Plaque)
+									Plaque = instance_create_layer(0,0,"Instances",plaque)
+									Plaque.windowX = menuX+menu_width+8
+									Plaque.windowY = menuY+menu_header_height-header_buffer
+									Plaque.mode = mode.on
+									Plaque.index = i
+								}
+							}
 						
 							if input.mouse_left_press {
+								
+								if shop_plaqueCheck() {
+									instance_destroy(Plaque)
+									Plaque = -1
+								}
 						
 								switch(menu_index_string)
 								{
@@ -234,6 +255,11 @@ if instance_exists(mainmenu) exit
 		item_mouseover = -1
 		menu_button_left_mouseover = false
 		menu_button_right_mouseover = false
+		
+		if shop_plaqueCheck() {
+			instance_destroy(Plaque)	
+			Plaque = -1
+		}
 	}
 
 

@@ -1743,6 +1743,14 @@
             }
         },
         {
+            "Key": "e030e958-7658-4953-be18-57cff79b4bd3",
+            "Value": {
+                "id": "ded885f4-fa12-465c-be4a-851f4693ff5d",
+                "resourcePath": "scripts\\shop_plaqueCheck\\shop_plaqueCheck.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "e2d015af-4cec-4b61-b2b7-f888142f6b05",
             "Value": {
                 "id": "1c7308e8-c565-40df-a9bc-a15bfc1ce1d3",
@@ -2092,6 +2100,7 @@
         "fab8c6f0-cd41-49b2-8726-de6bcbb7a3a7",
         "ec03827d-517c-4482-9b30-c899676a7300",
         "5bfa71df-b728-4ed4-aed8-14e379dae0f7",
+        "e030e958-7658-4953-be18-57cff79b4bd3",
         "f9c6403e-3ea9-4950-837b-688c8c9585ce",
         "8c0fa4d8-8cf5-412e-86f1-808e597c5512",
         "004a7cc1-f07a-4d4d-877e-faef3e3724cf",
