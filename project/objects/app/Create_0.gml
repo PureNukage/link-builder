@@ -16,8 +16,8 @@ me = "@PureNukage"
 world_width = 1920
 world_height  = 1088
 
-resolution_width = 1920	
-resolution_height = 1080
+resolution_width = 1280	
+resolution_height = 720
 
 game_loading = false
 
