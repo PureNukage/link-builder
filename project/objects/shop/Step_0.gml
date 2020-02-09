@@ -1,24 +1,24 @@
 if instance_exists(mainmenu) exit
 
 #region Shop Button Interaction
-	if point_in_rectangle(mouse_gui_x,mouse_gui_y,buttonX,buttonY,buttonX+button_width,buttonY+button_height) and button_active {
-		button_mouseover = true
-		if input.mouse_left_press {
-			menu_open = !menu_open
-			menu_pressed = true
-			nodes_open = false
-			data_open = false
+	//if point_in_rectangle(mouse_gui_x,mouse_gui_y,buttonX,buttonY,buttonX+button_width,buttonY+button_height) and button_active {
+	//	button_mouseover = true
+	//	if input.mouse_left_press {
+	//		menu_open = !menu_open
+	//		menu_pressed = true
+	//		nodes_open = false
+	//		data_open = false
 			
-			#region Calculate menu variables
-			if menu_open {
-				shop_refresh()
+	//		#region Calculate menu variables
+	//		if menu_open {
+	//			shop_refresh()
 				
-			}
-			#endregion
-		}
-	} else {
-		button_mouseover = false
-	}	
+	//		}
+	//		#endregion
+	//	}
+	//} else {
+	//	button_mouseover = false
+	//}	
 #endregion
 
 #region Shop Menu

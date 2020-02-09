@@ -261,9 +261,11 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 							draw_text(stringX,yy,Condition_string)
 							
 							var activeX = xx + largest_string + p_offset + 12
-							if Conditions[c, condition_met] var active = "*" else var active = "x"
+							if Conditions[c, condition_met] var active = "P" else var active = "O"
 							if Conditions[c, condition_met] draw_set_color(c_green) else draw_set_color(c_red)
+							draw_set_font(fnt_wingdings) 
 							draw_text(activeX,yy,active)
+							draw_set_font(fnt_shop_menu_name)
 							
 							draw_set_color(c_white)
 							var ValueX = activeX + 12 + p_offset + (largest_value/2)
