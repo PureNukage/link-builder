@@ -42,7 +42,7 @@ if item_index > -1 and !replace {
 	}
 }
 
-if shop.menu_mouseover or plaque.window_two_mouseover or contracts.menu_mouseover { 
+if shop.menu_mouseover or plaque.window_mouseover or contracts.menu_mouseover { 
 	_placeable++
 }
 

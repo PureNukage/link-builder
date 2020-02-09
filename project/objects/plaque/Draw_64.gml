@@ -175,6 +175,41 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 					var profitX = nameX
 					var profitY = nameY+name_height+p_offset
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,profitX,profitY,profitX+name_width,profitY+48) {
+						var String_width = string_width("+ "+string(base_reward)+" $$ base reward")
+						var width = String_width + (p_offset*2)
+						var lines = 6
+						var height = (52*lines)
+						var X = windowX
+						var Y = windowY - height - p_offset
+						
+						draw_set_color(c_dkgray)
+						draw_roundrect(X,Y,X+width,Y+height,false) 
+						
+						draw_set_color(c_white)
+						draw_set_halign(fa_center)
+						
+						var yy = Y + 48
+						
+						var String = "+ "+string(base_reward)+" $$ base reward"
+						draw_text(X+width/2,yy,String)
+						yy += 48
+						
+						var String = "- " + string(gas_fee) + " ETH"
+						draw_text(X+width/2,yy,String)
+						yy += 48
+						
+						var String = "- " + string(link_fee) + " LINK"
+						draw_text(X+width/2,yy,String)
+						yy += 48
+						
+						var String = "- " + string(link_fee_usd + gas_fee_usd) + " $$ spent total"
+						draw_text(X+width/2,yy,String)
+						yy += 48
+						yy += 48
+						
+						var String = "+ " + string(profit) + " $$ profit"
+						draw_text(X+width/2,yy,String)
+						yy += 48
 						
 						
 						draw_set_color(c_ltgray)
@@ -492,6 +527,15 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 	if window_width_adjusted != window_width window_width = window_width_adjusted
 	
 	if name_width_adjusted != name_width name_width = name_width_adjusted
+	
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,windowX,windowY,windowX+window_width,windowY+window_height) {
+		window_mouseover = true	
+		if input.selection > -1 and input.selection.states == states.placement {
+			with input.selection placeable = is_placeable()	
+		}
+	} else {
+		window_mouseover = false	
+	}
 	
 	
 }

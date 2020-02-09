@@ -251,14 +251,14 @@ if resources_active {
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_middle)
 
-	var _xx = display_get_gui_width()/2
+	var _xx = display_get_gui_width()/2 + 128
 	var _yy = buttonY
 
 	var spacer = 1.2
 	var _width_base = 128
 	var _height = 64
 
-	var linkX = display_get_gui_width()/2
+	var linkX = display_get_gui_width()/2 + 128
 	var linkY = buttonY
 	var link_width = 128
 	//var link_height = 64

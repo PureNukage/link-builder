@@ -5,6 +5,8 @@ data_width = 192
 
 window_two_mouseover = false
 
+window_mouseover = false
+
 
 button_delete_mouseover = false
 
