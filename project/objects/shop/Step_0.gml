@@ -130,12 +130,12 @@ if instance_exists(mainmenu) exit
 								
 										input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",node)
 										input.selection.selected = true
-										input.selection.item_index = i
-										input.selection.name = item_node[i, node_name]
-										if !item_node[i, node_purchased] input.selection.price = item_node[i, node_price]
+										input.selection.item_index = item_mouseover
+										input.selection.name = item_node[item_mouseover, node_name]
+										if !item_node[item_mouseover, node_purchased] input.selection.price = item_node[item_mouseover, node_price]
 										else input.selection.price = 0
-										input.selection.jobruns = item_node[i, node_jobruns]
-										input.selection.jobruns_previous = item_node[i, node_jobruns]
+										input.selection.jobruns = item_node[item_mouseover, node_jobruns]
+										input.selection.jobruns_previous = item_node[item_mouseover, node_jobruns]
 										if ds_list_find_index(input.selections,input.selection) == -1 {
 											ds_list_add(input.selections,input.selection)	
 										}
@@ -161,12 +161,12 @@ if instance_exists(mainmenu) exit
 								
 										input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",data)
 										input.selection.selected = true
-										input.selection.item_index = i
-										input.selection.name = item_data[i, item_name]
-										input.selection.portrait = item_data[i, item_portrait]
-										if !item_data[i, item_purchased] input.selection.price = item_data[i, item_price]
+										input.selection.item_index = item_mouseover
+										input.selection.name = item_data[item_mouseover, item_name]
+										input.selection.portrait = item_data[item_mouseover, item_portrait]
+										if !item_data[item_mouseover, item_purchased] input.selection.price = item_data[item_mouseover, item_price]
 										else input.selection.price = 0
-										input.selection.data_generated = item_data[i, item_data_generated]
+										input.selection.data_generated = item_data[item_mouseover, item_data_generated]
 										if ds_list_find_index(input.selections,input.selection) == -1 {
 											ds_list_add(input.selections,input.selection)	
 										}
@@ -193,13 +193,13 @@ if instance_exists(mainmenu) exit
 										input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",kiosk)
 										input.selection.selected = true
 										input.selection.item_index = 3
-										input.selection.name = contracts.contract[i, contract_name]
-										input.selection.price = contracts.contract[i, contract_price]
-										input.selection.smartcontract = i
-										input.selection.data_needed = contracts.contract[i, contract_data]	
-										input.selection.portrait = contracts.contract[i, contract_portrait]
-										var level = contracts.contract[i, contract_level]
-										var ports_level = contracts.contract[i, contract_level_ports]
+										input.selection.name = contracts.contract[item_mouseover, contract_name]
+										input.selection.price = contracts.contract[item_mouseover, contract_price]
+										input.selection.smartcontract = item_mouseover
+										input.selection.data_needed = contracts.contract[item_mouseover, contract_data]	
+										input.selection.portrait = contracts.contract[item_mouseover, contract_portrait]
+										var level = contracts.contract[item_mouseover, contract_level]
+										var ports_level = contracts.contract[item_mouseover, contract_level_ports]
 										input.selection.ports_count = ports_level[level]
 										if ds_list_find_index(input.selections,input.selection) == -1 {
 											ds_list_add(input.selections,input.selection)	

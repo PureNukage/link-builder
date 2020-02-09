@@ -21,4 +21,7 @@ with camera {
 	
 	camera_set_view_size(Camera,Width,Height)
 	camera_set_view_border(Camera,Width,Height)
+	
+	default_zoom_width = camera_get_view_width(Camera)
+	default_zoom_height = camera_get_view_height(Camera)
 }

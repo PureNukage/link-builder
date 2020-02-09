@@ -10,6 +10,8 @@ for(var c=0;c<(argument_count/2);c++) {
 	array[c,condition_type] = argument[arg0]
 	array[c,condition_value] = argument[arg1]
 	
+	array[c,condition_met] = false
+	
 	switch(array[c,condition_type])
 	{
 		case conditions.cnd_active:

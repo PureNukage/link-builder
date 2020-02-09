@@ -1,7 +1,7 @@
 //var window_width = 612
 //var window_height = 264
 
-if input.selection > -1 and instance_exists(input.selection) or mode == mode.on {
+if (input.selection > -1 and instance_exists(input.selection) and input.selection.object_index != wire) or mode == mode.on {
 	
 	var window_width_adjusted = 0
 	//var window_height_adjusted = 0
@@ -112,7 +112,6 @@ if input.selection > -1 and instance_exists(input.selection) or mode == mode.on 
 						if String_width + data_buffer > data_width_adjusted {
 							data_width_adjusted = String_width + data_buffer
 						}
-						debug_log(string(String_width))
 					}
 					if ds_list_empty(input.selection.data_held) {
 						if data_width_adjusted != default_data_width data_width = default_data_width
@@ -124,7 +123,7 @@ if input.selection > -1 and instance_exists(input.selection) or mode == mode.on 
 					draw_set_color(c_ltgray)
 					var dataX = nameX+name_width+p_offset+(data_width/2)
 					var dataY = nameY+name_height/2
-					draw_text(dataX,dataY,"Data Held")
+					draw_text(dataX,dataY,"Data")
 				
 					if !ds_list_empty(input.selection.data_held) {
 						var xx = nameX+name_width+p_offset
@@ -158,12 +157,6 @@ if input.selection > -1 and instance_exists(input.selection) or mode == mode.on 
 					draw_set_font(fnt_shop_menu_name)
 					var level = contracts.contract[input.selection.smartcontract, contract_level]
 					draw_text(nameX+name_width-p_offset,nameY+name_height/2,string(level+1))
-
-					//	profit
-					draw_set_color(c_white)
-					var profitX = nameX
-					var profitY = nameY+name_height+p_offset
-					draw_roundrect_ext(profitX,profitY,profitX+name_width,profitY+48,25,25,false)
 				
 					var Smartcontract = input.selection.smartcontract
 					var link_fee = contracts.contract[Smartcontract, contract_linkfee]
@@ -178,6 +171,19 @@ if input.selection > -1 and instance_exists(input.selection) or mode == mode.on 
 				
 					var reliability = contracts.contract[Smartcontract, contract_reliability] / 100
 
+					//	Profit
+					var profitX = nameX
+					var profitY = nameY+name_height+p_offset
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,profitX,profitY,profitX+name_width,profitY+48) {
+						
+						
+						draw_set_color(c_ltgray)
+					} else {
+						draw_set_color(c_white)	
+					}
+					
+					draw_roundrect_ext(profitX,profitY,profitX+name_width,profitY+48,25,25,false)
+				
 					draw_set_color(c_black)
 					draw_set_halign(fa_center)
 					var String = string(profit)
@@ -190,7 +196,53 @@ if input.selection > -1 and instance_exists(input.selection) or mode == mode.on 
 					//	value
 					var valueX = profitX
 					var valueY = profitY+48+p_offset
-					draw_set_color(c_white)
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,valueX,valueY,valueX+name_width,valueY+48) {		
+						draw_set_color(c_white)
+						var largest_string = 0
+						var largest_value = 0
+						for(var c=0;c<array_height_2d(Conditions);c++) {
+							var Condition_string = Conditions[c, condition_string]
+							if string_width(Condition_string) > largest_string largest_string = string_width(Condition_string)
+							var Condition_amount = Conditions[c, condition_value]
+							if string_width(string(Condition_amount)) > largest_value largest_value = string_width(Condition_amount)
+						}
+						var Sprite_width = sprite_get_width(s_resource_value_shop)
+						var width = p_offset + largest_string + p_offset + 24 + p_offset + largest_value + p_offset + Sprite_width + p_offset
+						var height = (48+p_offset) * array_height_2d(Conditions)
+						var X = windowX
+						var Y = windowY - height - p_offset
+						draw_set_color(c_dkgray)
+						draw_roundrect(X,Y,X+width,Y+height,false)
+						
+						var xx = X + p_offset 
+						var yy = Y + (p_offset*3)
+						draw_set_halign(fa_center)
+						for(var c=0;c<array_height_2d(Conditions);c++) {
+							var Condition_string = Conditions[c, condition_string]
+							var Condition_amount = Conditions[c, condition_value]
+							
+							draw_set_color(c_white)
+							var stringX = xx + (largest_string/2)
+							draw_text(stringX,yy,Condition_string)
+							
+							var activeX = xx + largest_string + p_offset + 12
+							if Conditions[c, condition_met] var active = "*" else var active = "x"
+							if Conditions[c, condition_met] draw_set_color(c_green) else draw_set_color(c_red)
+							draw_text(activeX,yy,active)
+							
+							draw_set_color(c_white)
+							var ValueX = activeX + 12 + p_offset + (largest_value/2)
+							draw_text(ValueX,yy,string(Condition_amount))
+							
+							var spriteX = ValueX + (largest_value/2) + p_offset + (Sprite_width/2)
+							draw_sprite(s_resource_value_shop,0,spriteX,yy)
+							
+							yy += 64
+						}
+						draw_set_color(c_ltgray)
+					} else {
+						draw_set_color(c_white)	
+					}
 					draw_roundrect_ext(valueX,valueY,valueX+name_width,valueY+48,25,25,false)
 					draw_set_color(c_black)
 					var String = string(value)

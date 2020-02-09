@@ -82,6 +82,7 @@ enum event_types {
 #macro condition_type 0 
 #macro condition_value 1
 #macro condition_string 2
+#macro condition_met 3
 
 enum conditions {
 	cnd_active,
