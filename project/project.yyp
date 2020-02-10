@@ -551,6 +551,14 @@
             }
         },
         {
+            "Key": "47d6b165-a5f4-4415-9fcc-d782938a45ae",
+            "Value": {
+                "id": "7be40d08-61b1-4283-a3fe-22659d10c5f2",
+                "resourcePath": "scripts\\camera_goto\\camera_goto.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "485764c1-7722-4e9f-b317-c31a02a36fa1",
             "Value": {
                 "id": "a52890a2-4843-4065-b775-94c9c88b1aa5",
@@ -2263,7 +2271,8 @@
         "a4c8da84-3859-40e3-b8b4-83e575d9afc1",
         "5e8336a8-8ae6-482f-80d5-882dc432cd09",
         "ef3a9a0d-45e2-4182-b910-1c2d053afb2f",
-        "f4726778-8d12-4cbf-92ca-e874761c28b9"
+        "f4726778-8d12-4cbf-92ca-e874761c28b9",
+        "47d6b165-a5f4-4415-9fcc-d782938a45ae"
     ],
     "tutorial": ""
 }

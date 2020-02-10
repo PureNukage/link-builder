@@ -78,6 +78,14 @@ if data_open {
 			draw_roundrect(windowX-2,windowY-2,windowX+window_width+2,windowY+window_height+2,false)
 			draw_set_color(c_dkgray)
 			draw_roundrect(windowX,windowY,windowX+window_width,windowY+window_height,false)
+			
+			//	data name
+			draw_set_color(c_black)
+			draw_set_font(fnt_shop_menu_name)
+			draw_set_halign(fa_left)
+			draw_text(windowX+buffer,windowY+26,"Data")
+			draw_set_font(fnt_shop)
+			draw_set_halign(fa_center)
 	
 			if point_in_rectangle(gui_mouse_x,gui_mouse_y,windowX-2,windowY-2,windowX+window_width+2,windowY+window_height+2) {
 				data_mouseover = true	
@@ -88,12 +96,14 @@ if data_open {
 			//	web button
 			var web_width = sprite_get_width(s_icon_web) + (buffer*2)
 			var webX = windowX+window_width/2 - (web_width/2)
-			var webY = windowY + (buffer*2)
+			var webY = windowY + (buffer*3)
 	
 			draw_set_color(c_black)
 			draw_roundrect(webX-2,webY-2,webX+web_width+2,webY+64+2,false)
 			if web_button draw_set_color(c_gray) else draw_set_color(c_gray5)
 			if point_in_rectangle(gui_mouse_x,gui_mouse_y,webX,webY,webX+web_width,webY+64) {
+				draw_set_color(c_black)
+				draw_text(webX+web_width/2,webY-16,"Web APIs")
 				draw_set_color(c_gray)
 				if input.mouse_left_press {
 					draw_set_color(c_ltgray)
@@ -116,6 +126,8 @@ if data_open {
 			draw_roundrect(priceX-2,priceY-2,priceX+price_width+2,priceY+64+2,false)
 			if price_button draw_set_color(c_gray) else draw_set_color(c_gray5)
 			if point_in_rectangle(gui_mouse_x,gui_mouse_y,priceX,priceY,priceX+price_width,priceY+64) {
+				draw_set_color(c_black)
+				draw_text(priceX+price_width/2,priceY-16,"Price Data")
 				draw_set_color(c_gray)
 				if input.mouse_left_press {
 					draw_set_color(c_ltgray)
@@ -238,7 +250,10 @@ if data_open {
 											ds_list_add(input.selections,input.selection)	
 										}
 									} else {
-										
+										var ID = shop.item_data[d, item_object_index]
+										camera_goto(ID.x,ID.y,ID)
+										data_mouseover = false
+										data_open = false
 										
 										
 									}
@@ -362,6 +377,71 @@ draw_set_color(c_black)
 draw_text(nodesX+nodes_width/2,nodesY+24,nodes_string)
 
 //	window
+//if nodes_open {
+
+	//var window_width = 400
+	//var window_height = 400
+	//var windowX = 64
+	//var windowY = menuY + 64 + 48
+
+	//draw_set_color(c_dkgray)
+	//draw_roundrect(windowX,windowY,windowX+window_width,windowY+window_height,false)
+	
+	////	nodes name
+	//draw_set_color(c_black)
+	//draw_set_font(fnt_shop_menu_name)
+	//draw_text(windowX+window_width/2,windowY+28,"Nodes")
+	//draw_set_font(fnt_shop)
+	
+	////	new
+	//var new_string = "New"
+	//var new_width = string_width(new_string) + (buffer*2)
+	//var new_height = string_height(new_string) + (buffer*2)
+	//var newX = windowX+window_width/2 - new_width - buffer
+	//var newY = windowY + buffer*3
+	
+	//draw_set_color(c_black)
+	//draw_roundrect(newX-2,newY-2,newX+new_width+2,newY+new_height+2,false)
+	//draw_set_color(c_gray)
+	//draw_roundrect(newX,newY,newX+new_width,newY+new_height,false)
+	//draw_set_color(c_black)
+	//draw_text(newX+new_width/2,newY+new_height/2,new_string)
+	
+	////	owned
+	//var owned_string = "Owned"
+	//var owned_width = string_width(owned_string) + (buffer*2)
+	//var owned_height = string_height(owned_string) + (buffer*2)
+	//var ownedX = newX+new_width+buffer
+	//var ownedY = newY
+	
+	//draw_set_color(c_black)
+	//draw_roundrect(ownedX-2,ownedY-2,ownedX+owned_width+2,ownedY+owned_height+2,false)
+	//draw_set_color(c_gray)
+	//draw_roundrect(ownedX,ownedY,ownedX+owned_width,ownedY+owned_height,false)
+	//draw_set_color(c_black)
+	//draw_text(ownedX+owned_width/2,ownedY+owned_height/2,owned_string)
+	
+	
+	////	scrollbar
+	//var bar_width = 48
+	//var bar_height = abs((newY+new_height+buffer) - (windowY+window_height-buffer))
+	//var barX = windowX+window_width-bar_width-buffer
+	//var barY = newY+new_height+buffer
+	
+	//var handle_width = 40
+	//var handle_height = 48
+	//var handleX = barX + ((bar_width-handle_width)/2)
+	//var handleY = barY
+	
+	//draw_set_color(c_gray5)
+	//draw_roundrect(barX,barY,barX+bar_width,barY+bar_height,false)
+
+	//draw_set_color(c_gray)
+	//draw_roundrect(handleX,handleY,handleX+handle_width,handleY+handle_height,false)
+
+
+
+//}
 
 #endregion
 
