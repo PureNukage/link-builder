@@ -5,27 +5,27 @@
 
 	var _string = "This endpoint to Binance gives\nthe current USD price of Ether"
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
-	create_data("Binance ETH/USD",500,data,_string,s_portrait_binance,data_types.binance_ETHUSD,Corruption,true)
+	create_data("Binance ETH/USD",500,data,_string,s_portrait_binance,data_types.binance_ETHUSD,Corruption,true,data_filters.pricedata)
 
 	var _string = ""
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
-	create_data("CryptoCompare ETH/USD",500,data,_string,s_portrait_blank,data_types.cryptocompare_ETHUSD,Corruption,true)
+	create_data("CryptoCompare ETH/USD",500,data,_string,s_portrait_blank,data_types.cryptocompare_ETHUSD,Corruption,true,data_filters.pricedata)
 
 	var _string = ""
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
-	create_data("BraveNewCoin ETH/USD",500,data,_string,s_portrait_blank,data_types.bravenewcoin_ETHUSD,Corruption,true)
+	create_data("BraveNewCoin ETH/USD",500,data,_string,s_portrait_blank,data_types.bravenewcoin_ETHUSD,Corruption,true,data_filters.pricedata)
 
 	var _string = "This endpoint gives access to PayPal"
 	var Corruption = create_data_corruption(0,-1,0)
-	create_data("PayPal",750,data,_string,s_portrait_paypal,data_types.paypal,Corruption,true)
+	create_data("PayPal",750,data,_string,s_portrait_paypal,data_types.paypal,Corruption,true,data_filters.webdata)
 
 	var _string = "This endpoint gives access to Github"
 	var Corruption = create_data_corruption(0,-1,0)
-	create_data("Github",750,data,_string,s_portrait_github,data_types.github,Corruption,true)
+	create_data("Github",750,data,_string,s_portrait_github,data_types.github,Corruption,true,data_filters.webdata)
 	
 	var _string = ""
 	var Corruption = create_data_corruption(0,-1,0)
-	create_data("Email API",500,data,_string,s_portrait_blank,data_types.emailAPI,Corruption,true)
+	create_data("Email API",500,data,_string,s_portrait_blank,data_types.emailAPI,Corruption,true,data_filters.webdata)
 
 	//	CREATE NODES
 	item_node = 0

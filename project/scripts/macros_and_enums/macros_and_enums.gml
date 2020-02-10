@@ -53,6 +53,11 @@ enum data_types {
 	
 }
 
+enum data_filters {
+	pricedata,
+	webdata,
+}
+
 enum goal_type {
 	walking_to_kiosk,	
 	idlewalk,
@@ -154,6 +159,7 @@ enum contract_types {
 #macro item_calls 7
 #macro item_corruption 8
 #macro item_corruption_levels 9 
+#macro item_filter 10
 #macro item_purchased 30
 #macro item_available 22
 
