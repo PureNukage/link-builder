@@ -377,71 +377,245 @@ draw_set_color(c_black)
 draw_text(nodesX+nodes_width/2,nodesY+24,nodes_string)
 
 //	window
-//if nodes_open {
+if nodes_open {
 
-	//var window_width = 400
-	//var window_height = 400
-	//var windowX = 64
-	//var windowY = menuY + 64 + 48
+	var window_width = 400
+	var window_height = 440
+	var windowX = 64
+	var windowY = menuY + 64 + 48
+	
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,windowX,windowY,windowX+window_width,windowY+window_height) {
+		node_mouseover = true	
+	} else {
+		node_mouseover = false	
+	}
+	
+	draw_set_color(c_black)
+	draw_roundrect(windowX-2,windowY-2,windowX+window_width+2,windowY+window_height+2,false)
+	draw_set_color(c_dkgray)
+	draw_roundrect(windowX,windowY,windowX+window_width,windowY+window_height,false)
+	
+	//	nodes name
+	draw_set_color(c_black)
+	draw_set_font(fnt_shop_menu_name)
+	draw_text(windowX+window_width/2,windowY+28,"Nodes")
+	draw_set_font(fnt_shop)
+	
+	//	new
+	var new_string = "New"
+	var new_width = string_width(new_string) + (buffer*2)
+	var new_height = string_height(new_string) + (buffer*2)
+	var newX = windowX+window_width/2 - new_width - buffer
+	var newY = windowY + buffer*3
+	
+	draw_set_color(c_black)
+	draw_roundrect(newX-2,newY-2,newX+new_width+2,newY+new_height+2,false)
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,newX-2,newY-2,newX+new_width+2,newY+new_height+2) or node_new_button {
+		draw_set_color(c_ltgray)	
+		if input.mouse_left_press {
+			node_owned_button = false
+			node_new_button = true
+		}
+	} else {
+		draw_set_color(c_gray)
+	}
+	draw_roundrect(newX,newY,newX+new_width,newY+new_height,false)
+	draw_set_color(c_black)
+	draw_text(newX+new_width/2,newY+new_height/2,new_string)
+	
+	//	owned
+	var owned_string = "Owned"
+	var owned_width = string_width(owned_string) + (buffer*2)
+	var owned_height = string_height(owned_string) + (buffer*2)
+	var ownedX = newX+new_width+buffer
+	var ownedY = newY
+	
+	draw_set_color(c_black)
+	draw_roundrect(ownedX-2,ownedY-2,ownedX+owned_width+2,ownedY+owned_height+2,false)
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,ownedX-2,ownedY-2,ownedX+owned_width+2,ownedY+owned_height+2) or node_owned_button {
+		draw_set_color(c_ltgray)	
+		if input.mouse_left_press {
+			node_owned_button = true
+			node_new_button = false
+		}
+	}
+	else {	
+		draw_set_color(c_gray)
+	}
+	draw_roundrect(ownedX,ownedY,ownedX+owned_width,ownedY+owned_height,false)
+	draw_set_color(c_black)
+	draw_text(ownedX+owned_width/2,ownedY+owned_height/2,owned_string)
+	
+	//	prelim loop through nodes
+	shop.item_node[1, node_available] = true
+	shop.item_node[2, node_available] = true
+	var amount = 0
+	var longest_width = 0
+	draw_set_font(fnt_plaque_name)
+	for(var n=0;n<array_height_2d(shop.item_node);n++) {
+		if shop.item_node[n, node_available] {
+			var name = shop.item_node[n, node_name]
+			var Purchased = shop.item_node[n, node_purchased]
+			var level = shop.item_node[n, node_level]
+			if (node_new_button and !Purchased) or (node_owned_button and Purchased) {
+				amount++
+				var Width = string_width(name) + (buffer*2)
+				if Purchased {
+					Width += string_width(" "+string(level+1))	
+				}
+				if Width > longest_width longest_width = Width
+			}
+		}
+	}
+	
+	//	draw nodes for real
+	var list_width = longest_width
+	var list_height = 48
+	var listX = windowX+(window_width/2) - (list_width/2)
+	var listY = newY+new_height+buffer
+	
+	var node_amount = 0
+	var node_clamp = 5
+	for(var n=node_index;n<array_height_2d(shop.item_node);n++) {
+		if node_amount < node_clamp and shop.item_node[n, node_available] {
+			var name = shop.item_node[n, node_name]
+			var Purchased = shop.item_node[n, node_purchased]
+			var level = shop.item_node[n, node_level]
+			if (node_new_button and !Purchased) or (node_owned_button and Purchased) {
+				node_amount++
+				
+				draw_set_color(c_black)
+				draw_roundrect(listX-2,listY-2,listX+list_width+2,listY+list_height+2,false)
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,listX-2,listY-2,listX+list_width+2,listY+list_height+2) {
+					draw_set_color(c_ltgray)
+					if input.mouse_left_press {
+						if !Purchased {
+							//	Delete the item we're currently placing if there is one 
+							if ds_list_size(input.selections) > 0 {
+								for(var i=0;i<ds_list_size(input.selections);i++) {
+									input.selections[| i].selected = false	
+								}
+							}
+							ds_list_clear(input.selections)
+							if instance_exists(c_item) {
+								with c_item {
+									if states == states.placement {
+										instance_destroy()	
+									}
+								}
+							}
+							node_mouseover = false
+							nodes_open = false	
+							input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",node)
+							input.selection.selected = true
+							input.selection.item_index = n
+							input.selection.name = shop.item_node[n, node_name]
+							if !shop.item_node[n, node_purchased] input.selection.price = shop.item_node[n, node_price]
+							else input.selection.price = 0
+							input.selection.jobruns = shop.item_node[n, node_jobruns]
+							input.selection.jobruns_previous = shop.item_node[n, node_jobruns]
+							if ds_list_find_index(input.selections,input.selection) == -1 {
+								ds_list_add(input.selections,input.selection)	
+							}							
+							
+						} else {
+							camera_goto(shop.item_node[n, node_object_index].x,shop.item_node[n,node_object_index].y,shop.item_node[n, node_object_index])
+							node_mouseover = false
+							nodes_open = false
+						}	
+					}
+				} else {
+					draw_set_color(c_gray)	
+				}
+				draw_roundrect(listX,listY,listX+list_width,listY+list_height,false)
+				
+				draw_set_color(c_black)
+				if Purchased {
+					draw_set_halign(fa_left)
+					draw_text(listX+8,listY+list_height/2+2,name)
+				} else {
+					draw_set_halign(fa_center)	
+					draw_text(listX+list_width/2,listY+list_height/2+2,name)
+				}
+				
+				if Purchased {
+					draw_set_font(fnt_shop_menu_name)
+					draw_text_outlined(listX+list_width-24,listY+list_height/2+2,string(level+1),c_sergey_blue,c_black)	
+					draw_set_font(fnt_plaque_name)
+				}
+				
+				listY += list_height + buffer
+			}
+		}
+	}
+	draw_set_font(fnt_shop)
+	
+	
+	//	scrollbar
+	var bar_width = 48
+	var bar_height = abs((newY+new_height+buffer) - (windowY+window_height-buffer))
+	var barX = windowX+window_width-bar_width-buffer
+	var barY = newY+new_height+buffer
+	
+	var handle_width = 40
+	var handle_height = 48
+	var segments = amount - node_amount
+	var ratio = node_amount / amount
+	var handle_height = bar_height * ratio
+	var segment_height = (bar_height - handle_height) / segments
+	
+	if segments > 0 {
+		var handleX = barX + ((bar_width-handle_width)/2)
+		var handleY = barY + (node_index * segment_height)
+	
+		draw_set_color(c_gray5)
+		draw_roundrect(barX,barY,barX+bar_width,barY+bar_height,false)
 
-	//draw_set_color(c_dkgray)
-	//draw_roundrect(windowX,windowY,windowX+window_width,windowY+window_height,false)
-	
-	////	nodes name
-	//draw_set_color(c_black)
-	//draw_set_font(fnt_shop_menu_name)
-	//draw_text(windowX+window_width/2,windowY+28,"Nodes")
-	//draw_set_font(fnt_shop)
-	
-	////	new
-	//var new_string = "New"
-	//var new_width = string_width(new_string) + (buffer*2)
-	//var new_height = string_height(new_string) + (buffer*2)
-	//var newX = windowX+window_width/2 - new_width - buffer
-	//var newY = windowY + buffer*3
-	
-	//draw_set_color(c_black)
-	//draw_roundrect(newX-2,newY-2,newX+new_width+2,newY+new_height+2,false)
-	//draw_set_color(c_gray)
-	//draw_roundrect(newX,newY,newX+new_width,newY+new_height,false)
-	//draw_set_color(c_black)
-	//draw_text(newX+new_width/2,newY+new_height/2,new_string)
-	
-	////	owned
-	//var owned_string = "Owned"
-	//var owned_width = string_width(owned_string) + (buffer*2)
-	//var owned_height = string_height(owned_string) + (buffer*2)
-	//var ownedX = newX+new_width+buffer
-	//var ownedY = newY
-	
-	//draw_set_color(c_black)
-	//draw_roundrect(ownedX-2,ownedY-2,ownedX+owned_width+2,ownedY+owned_height+2,false)
-	//draw_set_color(c_gray)
-	//draw_roundrect(ownedX,ownedY,ownedX+owned_width,ownedY+owned_height,false)
-	//draw_set_color(c_black)
-	//draw_text(ownedX+owned_width/2,ownedY+owned_height/2,owned_string)
-	
-	
-	////	scrollbar
-	//var bar_width = 48
-	//var bar_height = abs((newY+new_height+buffer) - (windowY+window_height-buffer))
-	//var barX = windowX+window_width-bar_width-buffer
-	//var barY = newY+new_height+buffer
-	
-	//var handle_width = 40
-	//var handle_height = 48
-	//var handleX = barX + ((bar_width-handle_width)/2)
-	//var handleY = barY
-	
-	//draw_set_color(c_gray5)
-	//draw_roundrect(barX,barY,barX+bar_width,barY+bar_height,false)
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) {
+			draw_set_color(c_ltgray)
+			if input.mouse_left_press {
+				node_barclickY1 = gui_mouse_y	
+			}
+			if input.mouse_left { 
+				node_barclickY2 = gui_mouse_y
+				if abs(node_barclickY2 - node_barclickY1) > segment_height {
+					if node_barclickY2 - node_barclickY1 > 0 {
+						node_index++
+						if node_index > segments node_index = segments
+					} else {
+						node_index--
+						if node_index < 0 node_index = 0
+					}
+					node_barclickY1 = gui_mouse_y
+				}
+			}
+			if input.mouse_left_release {
+				node_barclickY1 = -1
+				node_barclickY2 = -1
+			}
+		}
+		 else {	
+			node_barclickY1 = -1
+			node_barclickY2 = -1
+			draw_set_color(c_gray)
+		 }
+		draw_roundrect(handleX,handleY,handleX+handle_width,handleY+handle_height,false)
+	}
 
-	//draw_set_color(c_gray)
-	//draw_roundrect(handleX,handleY,handleX+handle_width,handleY+handle_height,false)
+	//	Scroll wheel
+	if node_mouseover and (input.scroll_down or input.scroll_up) {
+		if input.scroll_up {
+			node_index--
+			if node_index < 0 node_index = 0	
+		}
+		if input.scroll_down {
+			node_index++
+			if node_index > segments node_index = segments
+		}
+	}
+	
 
-
-
-//}
+}
 
 #endregion
 

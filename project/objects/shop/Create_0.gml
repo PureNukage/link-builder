@@ -37,6 +37,12 @@
 	create_node("gonsinator",_string,350,0,0,levels,false)
 
 	create_node("DataBlaster",_string,750,0,0,levels,false)
+	
+	create_node("test1",_string,100,0,0,levels,true)
+	
+	create_node("test2",_string,100,0,0,levels,true)
+	
+	create_node("test3",_string,100,0,0,levels,true)
 
 	item = []
 	item[0,item_name] = "Node"				//	Item name in a string
