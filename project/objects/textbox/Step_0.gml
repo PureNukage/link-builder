@@ -26,8 +26,10 @@ if fade == 0 {
 	done = true
 }
 
-if timer > 0 timer--
-if timer == 0 {
-	fade = 1
-	timer = -1
+if !done {
+	if timer > 0 timer--
+	if timer == 0 {
+		fade = 1
+		timer = -1
+	}
 }

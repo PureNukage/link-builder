@@ -25,20 +25,20 @@ if instance_exists(textboxController) {
 			}
 		}
 	}
-	if instance_exists(textbox) with textbox {
-		var message_uniqueID = uniqueID
-		var message_event_type = event_types
-		var message_object_id = object_id
-		if argument_count == 1 {
-			if message_uniqueID == _uniqueID {
-				found_it = true
-			}
-		} else {
-			if Event_type == message_event_type and Object_id == message_object_id and _uniqueID == message_uniqueID {
-				found_it = true	
-			}
-		} 
-	}
+	//if instance_exists(textbox) with textbox {
+	//	var message_uniqueID = uniqueID
+	//	var message_event_type = event_types
+	//	var message_object_id = object_id
+	//	if argument_count == 1 {
+	//		if message_uniqueID == _uniqueID {
+	//			found_it = true
+	//		}
+	//	} else {
+	//		if Event_type == message_event_type and Object_id == message_object_id and _uniqueID == message_uniqueID {
+	//			found_it = true	
+	//		}
+	//	} 
+	//}
 }
 
 if found_it return true else return false
