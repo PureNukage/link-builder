@@ -12,3 +12,4 @@ button_delete_mouseover = false
 
 mode = mode.off
 index = -1
+object_type = -1

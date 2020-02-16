@@ -1,8 +1,8 @@
 {
-    "id": "e030e958-7658-4953-be18-57cff79b4bd3",
+    "id": "6ba0dac6-1516-4a47-be10-3420d09ba39c",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "shop_plaqueCheck",
+    "name": "plaqueCreate",
     "IsCompatibility": false,
     "IsDnD": false
 }

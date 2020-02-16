@@ -27,7 +27,7 @@ for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 	}
 }
 
-if item_index > -1 and !replace {
+if item_index > -1 and !replace and object_index != node {
 	var resource_amount
 	switch(object_index) 
 	{

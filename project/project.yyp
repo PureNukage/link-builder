@@ -839,6 +839,14 @@
             }
         },
         {
+            "Key": "6ba0dac6-1516-4a47-be10-3420d09ba39c",
+            "Value": {
+                "id": "248b9afb-dcbd-4705-aa19-bd9dfc95fc70",
+                "resourcePath": "scripts\\plaqueCreate\\plaqueCreate.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "6e4b06ea-de1d-451e-bb76-a135b71a8647",
             "Value": {
                 "id": "4096c0ea-b1a1-4502-b45a-44ea57df0664",
@@ -1818,7 +1826,7 @@
             "Key": "e030e958-7658-4953-be18-57cff79b4bd3",
             "Value": {
                 "id": "ded885f4-fa12-465c-be4a-851f4693ff5d",
-                "resourcePath": "scripts\\shop_plaqueCheck\\shop_plaqueCheck.yy",
+                "resourcePath": "scripts\\plaqueCheck\\plaqueCheck.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -2204,7 +2212,6 @@
         "fab8c6f0-cd41-49b2-8726-de6bcbb7a3a7",
         "ec03827d-517c-4482-9b30-c899676a7300",
         "5bfa71df-b728-4ed4-aed8-14e379dae0f7",
-        "e030e958-7658-4953-be18-57cff79b4bd3",
         "f9c6403e-3ea9-4950-837b-688c8c9585ce",
         "8c0fa4d8-8cf5-412e-86f1-808e597c5512",
         "004a7cc1-f07a-4d4d-877e-faef3e3724cf",
@@ -2235,7 +2242,9 @@
         "9607a234-c356-4012-b7ef-13f6b252091f",
         "9428baf0-9a29-4db7-b03e-cdb0b26bfb79",
         "d0893538-96ed-4e13-b3f9-a6aa56438e48",
+        "e030e958-7658-4953-be18-57cff79b4bd3",
         "41d6c08d-51d3-4b36-87ef-fcbdd35cef43",
+        "6ba0dac6-1516-4a47-be10-3420d09ba39c",
         "cc216535-5aed-4b80-b92d-9ee51fb3a8bf",
         "77d42b13-bc63-4d23-aa3d-c053747e4c55",
         "be42ac43-5ec0-4f15-9b65-a0b928f6695d",
