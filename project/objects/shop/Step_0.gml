@@ -1,24 +1,24 @@
 if instance_exists(mainmenu) exit
 
 #region Shop Button Interaction
-	if point_in_rectangle(mouse_gui_x,mouse_gui_y,buttonX,buttonY,buttonX+button_width,buttonY+button_height) and button_active {
-		button_mouseover = true
-		if input.mouse_left_press {
-			menu_open = !menu_open
-			menu_pressed = true
-			nodes_open = false
-			data_open = false
+	//if point_in_rectangle(mouse_gui_x,mouse_gui_y,buttonX,buttonY,buttonX+button_width,buttonY+button_height) and button_active {
+	//	button_mouseover = true
+	//	if input.mouse_left_press {
+	//		menu_open = !menu_open
+	//		menu_pressed = true
+	//		nodes_open = false
+	//		data_open = false
 			
-			#region Calculate menu variables
-			if menu_open {
-				shop_refresh()
+	//		#region Calculate menu variables
+	//		if menu_open {
+	//			shop_refresh()
 				
-			}
-			#endregion
-		}
-	} else {
-		button_mouseover = false
-	}	
+	//		}
+	//		#endregion
+	//	}
+	//} else {
+	//	button_mouseover = false
+	//}	
 #endregion
 
 #region Shop Menu
@@ -69,134 +69,155 @@ if instance_exists(mainmenu) exit
 		
 		#region List
 		
-		var _xx = 40
-		var _yy = menuY+menu_header_height-header_buffer+6 //210
+		//var _xx = 40
+		//var _yy = menuY+menu_header_height-header_buffer+6 //210
 		
-		item_mouseover = -1
-		var items = 0
-		for(var i=item_index;i<array_height_2d(array);i++) {
-			if i < array_height_2d(array) {
-				if array[i, item_available] and items < item_clamp {
-					var good = true
-					if menu_index_string == "Contracts" and array[i, contract_kiosk] > -1 {
-						good = false
-					}
-					if good {
-						items++
-						if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+list_width,_yy+list_height) {
-							item_mouseover = i
+		//item_mouseover = -1
+		//var items = 0
+		//for(var i=item_index;i<array_height_2d(array);i++) {
+		//	if i < array_height_2d(array) {
+		//		if array[i, item_available] and items < item_clamp {
+		//			var good = true
+		//			if menu_index_string == "Contracts" and array[i, contract_kiosk] > -1 {
+		//				good = false
+		//			}
+		//			if good {
+		//				items++
+		//				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+list_width,_yy+list_height) {
+		//					item_mouseover = i
+		//					if menu_index_string == "Contracts" {
+		//						if !shop_plaqueCheck() {
+		//							Plaque = instance_create_layer(0,0,"Instances",plaque)
+		//							Plaque.windowX = menuX+menu_width+8
+		//							Plaque.windowY = menuY+menu_header_height-header_buffer
+		//							Plaque.mode = mode.on
+		//							Plaque.index = i
+		//						} else if Plaque.index != i {
+		//							instance_destroy(Plaque)
+		//							Plaque = instance_create_layer(0,0,"Instances",plaque)
+		//							Plaque.windowX = menuX+menu_width+8
+		//							Plaque.windowY = menuY+menu_header_height-header_buffer
+		//							Plaque.mode = mode.on
+		//							Plaque.index = i
+		//						}
+		//					}
 						
-							if input.mouse_left_press {
+		//					if input.mouse_left_press {
+								
+		//						if shop_plaqueCheck() {
+		//							instance_destroy(Plaque)
+		//							Plaque = -1
+		//						}
 						
-								switch(menu_index_string)
-								{
-									case "Nodes":
+		//						switch(menu_index_string)
+		//						{
+		//							case "Nodes":
 								
-										//	Delete the item we're currently placing if there is one 
-										if ds_list_size(input.selections) > 0 {
-											for(var i=0;i<ds_list_size(input.selections);i++) {
-												input.selections[| i].selected = false	
-											}
-										}
-										ds_list_clear(input.selections)
-										if instance_exists(c_item) {
-											with c_item {
-												if states == states.placement {
-													instance_destroy()	
-												}
-											}
-										}
+		//								//	Delete the item we're currently placing if there is one 
+		//								if ds_list_size(input.selections) > 0 {
+		//									for(var i=0;i<ds_list_size(input.selections);i++) {
+		//										input.selections[| i].selected = false	
+		//									}
+		//								}
+		//								ds_list_clear(input.selections)
+		//								if instance_exists(c_item) {
+		//									with c_item {
+		//										if states == states.placement {
+		//											instance_destroy()	
+		//										}
+		//									}
+		//								}
 								
-										input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",node)
-										input.selection.selected = true
-										input.selection.item_index = i
-										input.selection.name = item_node[i, node_name]
-										if !item_node[i, node_purchased] input.selection.price = item_node[i, node_price]
-										else input.selection.price = 0
-										input.selection.jobruns = item_node[i, node_jobruns]
-										input.selection.jobruns_previous = item_node[i, node_jobruns]
-										if ds_list_find_index(input.selections,input.selection) == -1 {
-											ds_list_add(input.selections,input.selection)	
-										}
+		//								input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",node)
+		//								input.selection.selected = true
+		//								input.selection.item_index = item_mouseover
+		//								input.selection.name = item_node[item_mouseover, node_name]
+		//								if !item_node[item_mouseover, node_purchased] input.selection.price = item_node[item_mouseover, node_price]
+		//								else input.selection.price = 0
+		//								input.selection.jobruns = item_node[item_mouseover, node_jobruns]
+		//								input.selection.jobruns_previous = item_node[item_mouseover, node_jobruns]
+		//								if ds_list_find_index(input.selections,input.selection) == -1 {
+		//									ds_list_add(input.selections,input.selection)	
+		//								}
 								
 								
-									break
-									case "Data":
+		//							break
+		//							case "Data":
 								
-										//	Delete the item we're currently placing if there is one 
-										if ds_list_size(input.selections) > 0 {
-											for(var i=0;i<ds_list_size(input.selections);i++) {
-												input.selections[| i].selected = false	
-											}
-										}
-										ds_list_clear(input.selections)
-										if instance_exists(c_item) {
-											with c_item {
-												if states == states.placement {
-													instance_destroy()	
-												}
-											}
-										}
+		//								//	Delete the item we're currently placing if there is one 
+		//								if ds_list_size(input.selections) > 0 {
+		//									for(var i=0;i<ds_list_size(input.selections);i++) {
+		//										input.selections[| i].selected = false	
+		//									}
+		//								}
+		//								ds_list_clear(input.selections)
+		//								if instance_exists(c_item) {
+		//									with c_item {
+		//										if states == states.placement {
+		//											instance_destroy()	
+		//										}
+		//									}
+		//								}
 								
-										input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",data)
-										input.selection.selected = true
-										input.selection.item_index = i
-										input.selection.name = item_data[i, item_name]
-										input.selection.portrait = item_data[i, item_portrait]
-										if !item_data[i, item_purchased] input.selection.price = item_data[i, item_price]
-										else input.selection.price = 0
-										input.selection.data_generated = item_data[i, item_data_generated]
-										if ds_list_find_index(input.selections,input.selection) == -1 {
-											ds_list_add(input.selections,input.selection)	
-										}
+		//								input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",data)
+		//								input.selection.selected = true
+		//								input.selection.item_index = item_mouseover
+		//								input.selection.name = item_data[item_mouseover, item_name]
+		//								input.selection.portrait = item_data[item_mouseover, item_portrait]
+		//								if !item_data[item_mouseover, item_purchased] input.selection.price = item_data[item_mouseover, item_price]
+		//								else input.selection.price = 0
+		//								input.selection.data_generated = item_data[item_mouseover, item_data_generated]
+		//								if ds_list_find_index(input.selections,input.selection) == -1 {
+		//									ds_list_add(input.selections,input.selection)	
+		//								}
 								
-									break
-									case "Contracts":
+		//							break
+		//							case "Contracts":
 								
-										//	Delete the item we're currently placing if there is one 
-										if ds_list_size(input.selections) > 0 {
-											for(var i=0;i<ds_list_size(input.selections);i++) {
-												if instance_exists(input.selections[| i]) {
-													input.selections[| i].selected = false	
-												}
-											}
-										}
-										ds_list_clear(input.selections)
-										if instance_exists(c_item) {
-											with c_item {
-												if states == states.placement {
-													instance_destroy()	
-												}
-											}
-										}
-										input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",kiosk)
-										input.selection.selected = true
-										input.selection.item_index = 3
-										input.selection.name = contracts.contract[i, contract_name]
-										input.selection.price = contracts.contract[i, contract_price]
-										input.selection.smartcontract = i
-										input.selection.data_needed = contracts.contract[i, contract_data]	
-										input.selection.portrait = contracts.contract[i, contract_portrait]
-										var level = contracts.contract[i, contract_level]
-										var ports_level = contracts.contract[i, contract_level_ports]
-										input.selection.ports_count = ports_level[level]
-										if ds_list_find_index(input.selections,input.selection) == -1 {
-											ds_list_add(input.selections,input.selection)	
-										}	
+		//								//	Delete the item we're currently placing if there is one 
+		//								if ds_list_size(input.selections) > 0 {
+		//									for(var i=0;i<ds_list_size(input.selections);i++) {
+		//										if instance_exists(input.selections[| i]) {
+		//											input.selections[| i].selected = false	
+		//										}
+		//									}
+		//								}
+		//								ds_list_clear(input.selections)
+		//								if instance_exists(c_item) {
+		//									with c_item {
+		//										if states == states.placement {
+		//											instance_destroy()	
+		//										}
+		//									}
+		//								}
+		//								input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",kiosk)
+		//								input.selection.selected = true
+		//								input.selection.item_index = 3
+		//								input.selection.name = contracts.contract[item_mouseover, contract_name]
+		//								input.selection.price = contracts.contract[item_mouseover, contract_price]
+		//								input.selection.smartcontract = item_mouseover
+		//								input.selection.data_needed = contracts.contract[item_mouseover, contract_data]	
+		//								input.selection.portrait = contracts.contract[item_mouseover, contract_portrait]
+		//								var level = contracts.contract[item_mouseover, contract_level]
+		//								var ports_level = contracts.contract[item_mouseover, contract_level_ports]
+		//								input.selection.ports_count = ports_level[level]
+		//								if ds_list_find_index(input.selections,input.selection) == -1 {
+		//									ds_list_add(input.selections,input.selection)	
+		//								}	
 								
-									break
+		//							break
 								
-								}
+		//						}
 						
 						
 						
-							}
-						}
-						_yy += 60
-					}
-				}
-			}
-		}
+		//					}
+		//				}
+		//				_yy += 60
+		//			}
+		//		}
+		//	}
+		//}
 		
 		
 		#endregion
@@ -234,6 +255,11 @@ if instance_exists(mainmenu) exit
 		item_mouseover = -1
 		menu_button_left_mouseover = false
 		menu_button_right_mouseover = false
+		
+		//if shop_plaqueCheck() {
+		//	instance_destroy(Plaque)	
+		//	Plaque = -1
+		//}
 	}
 
 

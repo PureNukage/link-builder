@@ -6,6 +6,7 @@
 ///@param [data_type]
 ///@param [corruption_levels]
 ///@param [available]
+///@param [data_filter]
 
 var _name = argument[0]
 var _price = argument[1]
@@ -15,6 +16,7 @@ var _portrait = argument[4]
 if argument_count >= 6 var _data_generated = argument[5]
 if argument_count >= 7 var _data_corruption = argument[6]
 if argument_count >= 8 var _data_available = argument[7]
+if argument_count >= 9 var _data_filter = argument[8]
 
 var item_index = array_height_2d(item_data)
 
@@ -27,6 +29,7 @@ if argument_count >= 7 item_data[item_index, item_corruption_levels] = _data_cor
 	item_data[item_index, item_corruption_levels] = create_data_corruption(0,-1,0) 	
 }
 if argument_count >= 8 item_data[item_index, item_available] = _data_available else item_data[item_index, item_available] = false
+if argument_count >= 9 item_data[item_index, item_filter] = _data_filter else item_data[item_index, item_filter] = data_filters.webdata
 item_data[item_index, item_placed] = false
 item_data[item_index, item_object_index] = _object_index
 item_data[item_index, item_text] = _text

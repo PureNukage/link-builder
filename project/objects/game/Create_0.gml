@@ -15,6 +15,7 @@ instance_create_layer(0,0,"Instances",debug)
 instance_create_layer(0,0,"Instances",personController)
 instance_create_layer(0,0,"Instances",player)
 instance_create_layer(0,0,"Instances",textboxController)	
+instance_create_layer(0,0,"Instances",topmenu)
 
 
 if app.tutorial > -1 {

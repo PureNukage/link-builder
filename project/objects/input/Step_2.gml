@@ -47,8 +47,8 @@ switch(selection_mode)
 			debug_log("Clearing selections")
 		}
 
-		if grid_x > -1 and grid_y > -1 and !plaque.window_two_mouseover and !plaque.button_delete_mouseover and !contracts.menu_mouseover 
-		and !debug.window_variable_pressed and !debug.window_grid_pressed and !shop.menu_mouseover and !shop.button_wire_mouseover {
+		if grid_x > -1 and grid_y > -1 and !plaque.window_mouseover and !plaque.button_delete_mouseover and !topmenu.contract_mouseover and !topmenu.node_mouseover 
+		and !debug.window_variable_pressed and !debug.window_grid_pressed and !topmenu.data_mouseover and !shop.button_wire_mouseover {
 			//	Creating selection rectangle x1 and y1
 			if mouse_left_press and selection_timer == -1 and selection == -1 {
 				selection_x1 = mouse_x
@@ -70,8 +70,8 @@ switch(selection_mode)
 
 
 			//	Single click selection
-			if (mouse_left_release and selection_timer > 0 and !shop.menu_mouseover) or
-			(mouse_left_release and selection_timer == 0 and selection_x2 == -1 and selection_y2 == -1 and !shop.menu_mouseover) {
+			if (mouse_left_release and selection_timer > 0 and !topmenu.menu_mouseover) or
+			(mouse_left_release and selection_timer == 0 and selection_x2 == -1 and selection_y2 == -1 and !topmenu.menu_mouseover) {
 				selection_timer = -1
 				var object = gridController.grid_objects[# grid_x, grid_y]
 		
@@ -137,8 +137,8 @@ switch(selection_mode)
 				}	
 			} 
 			//	Clicking on the menu/selecting anoth
-			else if (mouse_left_release and selection_timer > 0 and shop.menu_mouseover) or
-			(mouse_left_release and selection_timer == 0 and selection_x2 == -1 and selection_y2 == -1 and shop.menu_mouseover) {
+			else if (mouse_left_release and selection_timer > 0 and topmenu.menu_mouseover) or
+			(mouse_left_release and selection_timer == 0 and selection_x2 == -1 and selection_y2 == -1 and topmenu.menu_mouseover) {
 				selection_x1 = -1
 				selection_y1 = -1	
 				selection_timer = -1

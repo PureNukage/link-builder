@@ -21,7 +21,7 @@ item_node[new_node, node_text] = _node_text
 item_node[new_node, node_price] = _node_price
 
 item_node[new_node, node_placed] = 0
-item_node[new_node, node_object_index] = node
+item_node[new_node, node_object_index] = -1
 if argument_count >= 4 item_node[new_node, node_jobruns] = _node_jobruns else item_node[new_node, node_jobruns] = 0
 if argument_count >= 5 item_node[new_node, node_level] = _node_level else item_node[new_node, node_level] = 0
 if argument_count >= 6 item_node[new_node, node_levels] = _node_levels 

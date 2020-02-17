@@ -1,4 +1,4 @@
-var xx = contracts.buttonX - (contracts.button_width + 16)
+var xx = display_get_gui_width() - sprite_get_width(s_alarm) - 16
 var yy = contracts.buttonY
 
 if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-4,yy-4,xx+sprite_get_width(s_alarm)+4,yy+sprite_get_height(s_alarm)+4) and !instance_exists(mainmenu) {
@@ -36,7 +36,7 @@ if messages_open {
 	
 	var width = 400
 	var height = 64
-	var _xx = xx+sprite_get_width(s_alarm) - width
+	var _xx = xx+sprite_get_width(s_alarm) - width - 32
 	var _yy = yy+sprite_get_height(s_alarm)+8
 	
 	//	Draw window background

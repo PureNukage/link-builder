@@ -7,9 +7,10 @@ if replace and instance_exists(replace_id) {
 switch(object_index)
 {
 	case node:
-		if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
+		//if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
 		shop.item_node[item_index, node_placed] = true
 		shop.item_node[item_index, node_purchased] = true
+		shop.item_node[item_index, node_object_index] = id
 		//	Unlock the next node
 		if !replace and item_index > 0 and item_index < array_height_2d(shop.item_node)-1 {
 			shop.item_node[item_index+1, node_available] = true
@@ -21,6 +22,7 @@ switch(object_index)
 		if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
 		shop.item_data[item_index, item_placed] = true
 		shop.item_data[item_index, item_purchased] = true
+		shop.item_data[item_index, item_object_index] = id
 	break
 	case kiosk:
 		contracts.contract[smartcontract, contract_purchased] = true

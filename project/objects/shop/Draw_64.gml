@@ -1,24 +1,24 @@
 #region Shop Button
-if button_active {
-	//	Drawing the Shop button background
-	draw_set_color(c_dkgray)
-	draw_roundrect(buttonX,buttonY,buttonX+button_width,buttonY+button_height,false)
+//if button_active {
+//	//	Drawing the Shop button background
+//	draw_set_color(c_dkgray)
+//	draw_roundrect(buttonX,buttonY,buttonX+button_width,buttonY+button_height,false)
 
-	//	Drawing the Shop button outline
-	draw_set_color(c_black)
-	draw_roundrect(buttonX+1,buttonY+1,buttonX+button_width-1,buttonY+button_height-1,true)
-	draw_roundrect(buttonX,buttonY,buttonX+button_width,buttonY+button_height,true)
+//	//	Drawing the Shop button outline
+//	draw_set_color(c_black)
+//	draw_roundrect(buttonX+1,buttonY+1,buttonX+button_width-1,buttonY+button_height-1,true)
+//	draw_roundrect(buttonX,buttonY,buttonX+button_width,buttonY+button_height,true)
 
-	//	Drawing the Shop button text
-	draw_set_halign(fa_center)
-	draw_set_valign(fa_middle)
-	draw_set_color(c_white)
-	draw_set_font(fnt_shop)
-	draw_text(buttonX+button_width/2,buttonY+button_height/2,button_text)
-	draw_set_font(-1)
-	draw_set_halign(fa_left)
-	draw_set_valign(fa_top)
-}
+//	//	Drawing the Shop button text
+//	draw_set_halign(fa_center)
+//	draw_set_valign(fa_middle)
+//	draw_set_color(c_white)
+//	draw_set_font(fnt_shop)
+//	draw_text(buttonX+button_width/2,buttonY+button_height/2,button_text)
+//	draw_set_font(-1)
+//	draw_set_halign(fa_left)
+//	draw_set_valign(fa_top)
+//}
 #endregion 
 
 #region Shop Menu
@@ -119,9 +119,9 @@ if menu_open == true {
 				if array[i, item_available] and items < item_clamp {			
 			
 					//	Draw the contract info
-					if menu_index_string == "Contracts" and item_mouseover == i {
-						draw_contract_info(menuX+menu_width+8,menuY+menu_header_height-header_buffer,item_mouseover,true)
-					}
+					//if menu_index_string == "Contracts" and item_mouseover == i {
+					//	draw_contract_info(menuX+menu_width+8,menuY+menu_header_height-header_buffer,item_mouseover,true)
+					//}
 				
 					var good = true
 					//	Only show unpurchased contracts
@@ -217,8 +217,8 @@ if menu_open == true {
 
 if wire_active {
 
-	var _xx = buttonX+button_width+64
-	var _yy = buttonY
+	var _xx = topmenu.contractsX+topmenu.contracts_width+16
+	var _yy = 0
 
 	//	Draw background
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+64,_yy+32) and !instance_exists(mainmenu) {
@@ -251,14 +251,14 @@ if resources_active {
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_middle)
 
-	var _xx = display_get_gui_width()/2
+	var _xx = display_get_gui_width()/2 + 128
 	var _yy = buttonY
 
 	var spacer = 1.2
 	var _width_base = 128
 	var _height = 64
 
-	var linkX = display_get_gui_width()/2
+	var linkX = display_get_gui_width()/2 + 128
 	var linkY = buttonY
 	var link_width = 128
 	//var link_height = 64
@@ -414,32 +414,6 @@ if resources_active {
 
 
 #endregion
-
-#region Points
-
-//var _xx = buttonX+button_width+32
-//var _yy = buttonY
-
-////	Draw background
-//draw_set_color(c_dkgray)
-//draw_roundrect(_xx,_yy,_xx+128,_yy+64,false)
-
-////	Draw outline
-//draw_set_color(c_black)
-//draw_roundrect(_xx,_yy,_xx+128,_yy+64,true)
-//draw_roundrect(_xx+1,_yy+1,_xx+128-1,_yy+64-1,true)
-
-////	Draw points
-//draw_set_halign(fa_center)
-//draw_set_valign(fa_middle)
-//draw_set_color(c_white)
-//draw_text(_xx+128/2,_yy+32,string(player.points))
-
-#endregion
-
-//	Help text
-var _xx = buttonX+button_width+32+128+16
-var _yy = buttonY
 
 draw_set_font(-1)
 draw_set_halign(fa_left)
