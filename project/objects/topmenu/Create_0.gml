@@ -19,6 +19,13 @@ node_barclickY2 = -1
 node_new_button = true
 node_owned_button = false
 
+contract_window_width_default = 600
+contract_window_height_default = 400
+contract_window_width = contract_window_width_default
+contract_window_height = contract_window_height_default
+contract_window_width_offset = -1
+contract_window_width_previous = -1
+contract_window_height_offset = -1
 contract_mouseover = false
 contract_surface = -1
 surface_offsetX = 0

@@ -682,8 +682,8 @@ draw_text(contractsX+contracts_width/2,contractsY+24,contracts_string)
 
 if contracts_open and !instance_exists(mainmenu) {
 	
-	var window_width = 600
-	var window_height = 400
+	var window_width = contract_window_width
+	var window_height = contract_window_height
 	var windowX = 64
 	var windowY = menuY+64+buffer*3
 	
@@ -692,13 +692,28 @@ if contracts_open and !instance_exists(mainmenu) {
 	draw_set_color(c_dkgray)
 	draw_roundrect(windowX,windowY,windowX+window_width,windowY+window_height,false)
 	
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,windowX,windowY,windowX+window_width,windowY+window_height) {
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,windowX,windowY,windowX+window_width+16,windowY+window_height+16) {
 		contract_mouseover = true	
 		menu_mouseover = true
 	} else {
 		contract_mouseover = false	
 		menu_mouseover = false
 	}
+	
+	//if point_in_rectangle(gui_mouse_x,gui_mouse_y,windowX+window_width-16,windowY,windowX+window_width+16,windowY+window_height+16) {
+	//	if input.mouse_left_press {
+	//		contract_window_width_offset = gui_mouse_x
+	//		contract_window_width_previous = contract_window_width
+	//	}
+	//	if input.mouse_left and contract_window_width_offset > -1 {
+	//		contract_window_width = contract_window_width_previous + (gui_mouse_x - contract_window_width_offset)
+	//		contract_window_width = clamp(contract_window_width,contract_window_width_default)
+	//	}
+	//	if input.mouse_left_release {
+	//		contract_window_width_offset = -1
+	//		contract_window_width_previous = -1
+	//	}
+	//}
 	
 	var borderY = windowY + 50
 	draw_set_color(c_black)
@@ -796,7 +811,8 @@ if contracts_open and !instance_exists(mainmenu) {
 					draw_set_color(c_black)
 					draw_roundrect(xx-2,yy-2,xx+name_width+2,yy+name_height+2,false)
 
-					if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-surface_offsetX,yy-surface_offsetY,xx+name_width-surface_offsetX,yy+name_height-surface_offsetY) and player.value >= price {
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-surface_offsetX,yy-surface_offsetY,xx+name_width-surface_offsetX,yy+name_height-surface_offsetY) and player.value >= price 
+					and point_in_rectangle(gui_mouse_x,gui_mouse_y,pageX,pageY,pageX+page_width,pageY+page_height) {
 						//	Plaque check
 						if !plaqueCheck() {
 								var X = xx+name_width-surface_offsetX+buffer*2
@@ -895,6 +911,34 @@ if contracts_open and !instance_exists(mainmenu) {
 	
 	surface_free(contract_surface)
 	
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,windowX+window_width-16,windowY,windowX+window_width+16,windowY+window_height+16) {
+		window_set_cursor(cr_size_we)
+		if input.mouse_left_press {
+			contract_window_width_offset = gui_mouse_x
+			contract_window_width_previous = contract_window_width
+		}
+		if input.mouse_left and contract_window_width_offset > -1 {
+			contract_window_width = contract_window_width_previous + (gui_mouse_x - contract_window_width_offset)
+			contract_window_width = clamp(contract_window_width,contract_window_width_default,surface_width)
+		}
+		if input.mouse_left_release {
+			contract_window_width_offset = -1
+			contract_window_width_previous = -1
+			window_set_cursor(cr_default)	
+		}
+	} else {
+		if !input.mouse_left {
+			contract_window_width_offset = -1
+			contract_window_width_previous = -1
+			window_set_cursor(cr_default)	
+		}
+	}
+	if input.mouse_left and contract_window_width_offset > -1 {
+		window_set_cursor(cr_size_we)
+		contract_window_width = contract_window_width_previous + (gui_mouse_x - contract_window_width_offset)
+		contract_window_width = clamp(contract_window_width,contract_window_width_default,surface_width)
+	}
+	
 	//	vertical scrollbar
 	draw_set_color(c_black)
 	var line1X = windowX+window_width-73
@@ -918,7 +962,7 @@ if contracts_open and !instance_exists(mainmenu) {
 	var segment = bar_height/max_offsetY
 	var scroll_speed = 16
 	
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) {
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) and contract_window_width_offset == -1 {
 		if point_in_rectangle(gui_mouse_x,gui_mouse_y,handleX,handleY,handleX+handle_width,handleY+handle_height) {
 			draw_set_color(c_ltgray)
 			if input.mouse_left_press {
@@ -955,58 +999,63 @@ if contracts_open and !instance_exists(mainmenu) {
 		surface_offsetY = clamp(surface_offsetY,0,max_offsetY)
 	}
 	
-	//	horizontal scrollbar
-	draw_set_color(c_black)
-	var line2X = windowX
-	var line2Y = windowY+window_height-65
-	draw_rectangle(windowX,windowY+window_height-64,windowX+window_width-73,windowY+window_height-65,false)
+	if contract_window_width < surface_width - 100 {
+		//	horizontal scrollbar
+		draw_set_color(c_black)
+		var line2X = windowX
+		var line2Y = windowY+window_height-65
+		draw_rectangle(windowX,windowY+window_height-64,windowX+window_width-73,windowY+window_height-65,false)
 	
-	var bar_width = abs((windowX+window_width-73) - (windowX+buffer))
-	var bar_height = 48
-	var barX = windowX+buffer
-	var barY = windowY+window_height-36-buffer*2+10
+		var bar_width = abs((windowX+window_width-73) - (windowX+buffer))
+		var bar_height = 48
+		var barX = windowX+buffer
+		var barY = windowY+window_height-36-buffer*2+10
 	
-	draw_set_color(c_gray5)
-	draw_roundrect_ext(barX,barY,barX+bar_width,barY+bar_height,15,15,false)
+		draw_set_color(c_gray5)
+		draw_roundrect_ext(barX,barY,barX+bar_width,barY+bar_height,15,15,false)
 	
-	var handle_width = abs(surface_width-bar_width)
-	var handle_height = 40
-	var handleX = barX + surface_offsetX
-	var handleY = windowY+window_height - 38 - buffer
+		var handle_width = abs(surface_width-bar_width)
+		var handle_height = 40
+		var handleX = barX + surface_offsetX
+		var handleY = windowY+window_height - 38 - buffer
 	
-	var max_offsetX = bar_width-handle_width
-	var segment = bar_width/max_offsetX
-	var scroll_speed = 16
+		var max_offsetX = bar_width-handle_width
+		var segment = bar_width/max_offsetX
+		var scroll_speed = 16
 	
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) {
-		if point_in_rectangle(gui_mouse_x,gui_mouse_y,handleX,handleY,handleX+handle_width,handleY+handle_height) {
-			draw_set_color(c_ltgray)
-			if input.mouse_left_press {
-				hor_bar_x1 = gui_mouse_x
-			}
-			if input.mouse_left and hor_bar_x1 > -1 {
-				hor_bar_x2 = gui_mouse_x
-				if abs(hor_bar_x2 - hor_bar_x1) > segment {
-					surface_offsetX += hor_bar_x2 - hor_bar_x1
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) {
+			if point_in_rectangle(gui_mouse_x,gui_mouse_y,handleX,handleY,handleX+handle_width,handleY+handle_height) {
+				draw_set_color(c_ltgray)
+				if input.mouse_left_press {
 					hor_bar_x1 = gui_mouse_x
-					surface_offsetX = clamp(surface_offsetX,0,max_offsetX)
+				}
+				if input.mouse_left and hor_bar_x1 > -1 {
+					hor_bar_x2 = gui_mouse_x
+					if abs(hor_bar_x2 - hor_bar_x1) > segment {
+						surface_offsetX += hor_bar_x2 - hor_bar_x1
+						hor_bar_x1 = gui_mouse_x
+						surface_offsetX = clamp(surface_offsetX,0,max_offsetX)
+					}
+				}
+			} else {
+				draw_set_color(c_gray)
+				if input.mouse_left_press {
+					for(var s=0;s<max_offsetX;s++) {
+						var X = barX + (s*segment)
+						if gui_mouse_x > X and gui_mouse_x < X+segment {
+							surface_offsetX = s	
+						}
+					}	
 				}
 			}
 		} else {
 			draw_set_color(c_gray)
-			if input.mouse_left_press {
-				for(var s=0;s<max_offsetX;s++) {
-					var X = barX + (s*segment)
-					if gui_mouse_x > X and gui_mouse_x < X+segment {
-						surface_offsetX = s	
-					}
-				}	
-			}
 		}
+		draw_roundrect_ext(handleX,handleY,handleX+handle_width,handleY+handle_height,15,30,false)
 	} else {
-		draw_set_color(c_gray)
+		if surface_offsetX > 0 surface_offsetX = 0
+		
 	}
-	draw_roundrect_ext(handleX,handleY,handleX+handle_width,handleY+handle_height,15,30,false)
 	
 	
 
