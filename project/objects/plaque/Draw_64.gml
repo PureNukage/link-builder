@@ -93,7 +93,11 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 					//	jobruns progress
 					draw_set_color(c_sergey_blue)
 					var needed_runs_db = shop.item_node[input.selection.item_index, node_levels]
-					var needed_runs = needed_runs_db[level,0]
+					if level+1 >= array_height_2d(needed_runs_db) {
+						var needed_runs = needed_runs_db[level,0]	
+					} else {
+						var needed_runs = needed_runs_db[level+1,0]
+					}
 					var runs = shop.item_node[input.selection.item_index, node_jobruns]
 					var percentage = runs / needed_runs
 					var percent_of_bar = floor(bar_width * percentage)
@@ -598,7 +602,11 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 				//	jobruns progress
 				draw_set_color(c_sergey_blue)
 				var needed_runs_db = shop.item_node[index, node_levels]
-				var needed_runs = needed_runs_db[level,0]
+				if level+1 >= array_height_2d(needed_runs_db) {
+					var needed_runs = needed_runs_db[level,0]	
+				} else {
+					var needed_runs = needed_runs_db[level+1,0]
+				}
 				var runs = shop.item_node[index, node_jobruns]
 				var percentage = runs / needed_runs
 				var percent_of_bar = floor(bar_width * percentage)
