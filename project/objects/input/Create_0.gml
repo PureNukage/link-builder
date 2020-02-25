@@ -21,6 +21,8 @@ f9 = keyboard_check_pressed(vk_f9)
 
 escape = keyboard_check_pressed(vk_escape)
 
+alt = keyboard_check_pressed(vk_alt)
+
 //	Calculate mouse speed
 X = gui_mouse_x
 Y = gui_mouse_y

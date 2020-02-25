@@ -1,0 +1,1 @@
+if input.alt vision = !vision

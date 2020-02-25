@@ -19,6 +19,8 @@ middle_mouse_release = mouse_check_button_released(mb_middle)
 f5 = keyboard_check_pressed(vk_f5)
 f9 = keyboard_check_pressed(vk_f9)
 
+alt = keyboard_check_pressed(vk_alt)
+
 if f5 {
 	save_game()	
 }
