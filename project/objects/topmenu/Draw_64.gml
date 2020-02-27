@@ -887,11 +887,12 @@ if contracts_open and !instance_exists(mainmenu) {
 					
 					draw_set_color(c_black)
 					if player.value < price {
-						var new_name = ""
-						for(var l=0;l<string_length(name);l++) {
-							new_name += "~"	
-						}
-						name = new_name
+						//var new_name = ""
+						//for(var l=0;l<string_length(name);l++) {
+						//	new_name += "~"	
+						//}
+						//name = new_name
+						name = "LOCKED"
 					}
 					draw_text(xx+name_width/2,yy+name_height/2,name)
 					
