@@ -6,17 +6,25 @@ switch(states)
 		
 		draw_sockets_item()
 		
-		//	Draw stand
-		sprite_set_offset(sprite,sprite_get_width(sprite)/2-1,sprite_get_height(sprite)/2-1)
-		draw_sprite(sprite,-1,x,y)
+		if !game.vision and !game.temp_vision {
 		
-		//	Draw chains
-		sprite_set_offset(s_kiosk_chains,sprite_get_width(s_kiosk_chains)/2-1,sprite_get_height(s_kiosk_chains)/2-1)
-		draw_sprite(s_kiosk_chains,-1,x,y)
+			//	Draw stand
+			sprite_set_offset(sprite,sprite_get_width(sprite)/2-1,sprite_get_height(sprite)/2-1)
+			draw_sprite(sprite,-1,x,y)
 		
-		//	Draw blocks idle
-		sprite_set_offset(s_kiosk_blocks_idle,sprite_get_width(s_kiosk_blocks_idle)/2-1,sprite_get_height(s_kiosk_blocks_idle)/2-1)
-		draw_sprite(s_kiosk_blocks_idle,-1,x,y)
+			//	Draw chains
+			sprite_set_offset(s_kiosk_chains,sprite_get_width(s_kiosk_chains)/2-1,sprite_get_height(s_kiosk_chains)/2-1)
+			draw_sprite(s_kiosk_chains,-1,x,y)
+		
+			//	Draw blocks idle
+			sprite_set_offset(s_kiosk_blocks_idle,sprite_get_width(s_kiosk_blocks_idle)/2-1,sprite_get_height(s_kiosk_blocks_idle)/2-1)
+			draw_sprite(s_kiosk_blocks_idle,-1,x,y)
+		
+		}
+		//	Alt vision
+		else {
+			draw_altmode(object_index)	
+		}
 
 	break
 	case states.placed:
@@ -126,6 +134,11 @@ switch(states)
 				
 				}
 			}
+		} 
+		//	Alt vision mode
+		else {
+			draw_altmode(object_index)
+			
 		}
 		
 	break

@@ -3,11 +3,19 @@ event_inherited()
 switch(states) 
 {
 	case states.placement:
-		//	Draw the item
-		sprite_set_offset(s_data_stand,sprite_get_width(s_data_stand)/2-1,sprite_get_height(s_data_stand)/2-1)
-		draw_sprite(s_data_stand,-1,x,y)
-		sprite_set_offset(sprite,sprite_get_width(sprite)/2-1,sprite_get_height(sprite)/2+12)
-		draw_sprite(sprite,-1,x,y)	
+	
+		if !game.vision and !game.temp_vision {
+		
+			//	Draw the item
+			sprite_set_offset(s_data_stand,sprite_get_width(s_data_stand)/2-1,sprite_get_height(s_data_stand)/2-1)
+			draw_sprite(s_data_stand,-1,x,y)
+			sprite_set_offset(sprite,sprite_get_width(sprite)/2-1,sprite_get_height(sprite)/2+12)
+			draw_sprite(sprite,-1,x,y)	
+		}
+		//	Alt vision
+		else {
+			draw_altmode(object_index)	
+		}
 	break
 	case states.placed:
 	
@@ -49,6 +57,10 @@ switch(states)
 				draw_sprite_ext(s_chainlink,0,x,iconY+5,.33,.33,0,c_white,1)
 				draw_sprite(s_notconnected,0,x,iconY)
 			}
+		}
+		//	Alt vision mode
+		else {
+			draw_altmode(object_index)
 		}
 		
 		

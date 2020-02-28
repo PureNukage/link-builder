@@ -234,7 +234,7 @@ if data_open {
 								
 								draw_set_color(c_ltgray)
 								if input.mouse_left_press {
-									if shop.item_data[d, item_object_index] > -1 {
+									if shop.item_data[d, item_object_index] == -1 {
 										//	Delete the item we're currently placing if there is one 
 										if ds_list_size(input.selections) > 0 {
 											for(var i=0;i<ds_list_size(input.selections);i++) {
@@ -268,8 +268,6 @@ if data_open {
 										camera_goto(ID.x,ID.y,ID)
 										data_mouseover = false
 										data_open = false
-										
-										
 									}
 							
 								}

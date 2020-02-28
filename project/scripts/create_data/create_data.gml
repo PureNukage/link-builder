@@ -31,7 +31,7 @@ if argument_count >= 7 item_data[item_index, item_corruption_levels] = _data_cor
 if argument_count >= 8 item_data[item_index, item_available] = _data_available else item_data[item_index, item_available] = false
 if argument_count >= 9 item_data[item_index, item_filter] = _data_filter else item_data[item_index, item_filter] = data_filters.webdata
 item_data[item_index, item_placed] = false
-item_data[item_index, item_object_index] = _object_index
+item_data[item_index, item_object_index] = -1 //_object_index
 item_data[item_index, item_text] = _text
 item_data[item_index, item_portrait] = _portrait
 item_data[item_index, item_calls] = 0

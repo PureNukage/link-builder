@@ -7,16 +7,24 @@ switch(states)
 		
 			draw_sockets_item()
 			
-			//	Draw the stand
-			sprite_set_offset(s_chainlink_stand,sprite_get_width(s_chainlink_stand)/2-1,sprite_get_height(s_chainlink_stand)/2-1)
-			draw_sprite(s_chainlink_stand,-1,x,y)
+			if !game.vision and !game.temp_vision {
+			
+				//	Draw the stand
+				sprite_set_offset(s_chainlink_stand,sprite_get_width(s_chainlink_stand)/2-1,sprite_get_height(s_chainlink_stand)/2-1)
+				draw_sprite(s_chainlink_stand,-1,x,y)
 		
-			//	Draw the node
-			sprite_set_offset(sprite,sprite_get_width(sprite)/2-1,sprite_get_height(sprite)/2-1)
-			draw_sprite(sprite,-1,x,y)
+				//	Draw the node
+				sprite_set_offset(sprite,sprite_get_width(sprite)/2-1,sprite_get_height(sprite)/2-1)
+				draw_sprite(sprite,-1,x,y)
 		
-			//	Draw the node used
-			draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,used_alpha)
+				//	Draw the node used
+				draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,used_alpha)
+			
+			}
+			//	Alt vision
+			else {
+				draw_altmode(object_index)
+			}
 		
 		
 		break
@@ -106,16 +114,7 @@ switch(states)
 		} 
 		//	Alt Vision mode
 		else {
-			draw_set_color(c_sergey_blue)
-			var xx = gridController.grid_positions_x[topleft_cell_x]
-			var yy = gridController.grid_positions_y[topleft_cell_y]
-			var spacer = 16
-			var width = size_width*cell_width
-			var height = size_height*cell_height
-			draw_roundrect(xx+spacer,yy+spacer,xx+width-spacer,yy+height-spacer,false)
-			
-			draw_set_color(c_black)
-			draw_text(xx+width/2,yy+height/2,name)
+			draw_altmode(object_index)
 		}
 		
 	break
