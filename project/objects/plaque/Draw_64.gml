@@ -383,19 +383,19 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 					draw_roundrect_ext(corruptionX,corruptionY,corruptionX+name_width,corruptionY+64,30,30,false)
 					//	corruption level
 					var corruption = shop.item_data[input.selection.data_generated, item_corruption]
-					var corruption_pixel = floor(name_width * corruption)
+					var corruption_pixel = floor(name_width * corruption/100)
 					draw_set_color(c_maroon)
 					draw_set_alpha(.80)
 					draw_roundrect_ext(corruptionX,corruptionY,corruptionX+corruption_pixel,corruptionY+64,30,30,false)
 					draw_set_alpha(1)
 					draw_set_color(c_black)
 					draw_set_halign(fa_center)
-					draw_text(corruptionX+name_width/2,corruptionY+32,string(corruption*100)+"% Corruption")
+					draw_text(corruptionX+name_width/2,corruptionY+32,string(corruption)+"% Corruption")
 				
 					//	edge case for small name_widths; check if the corruption width is larger than name_width
 					//var corruption_buffer = 23
-					if (string_width(string(corruption*100)+"% Corruption") + name_buffer) > name_width_adjusted {
-						name_width_adjusted = string_width(string(corruption*100)+"% Corruption") + name_buffer
+					if (string_width(string(corruption)+"% Corruption") + name_buffer) > name_width_adjusted {
+						name_width_adjusted = string_width(string(corruption)+"% Corruption") + name_buffer
 					}				
 
 					//	calls
@@ -550,19 +550,19 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 				draw_roundrect_ext(corruptionX,corruptionY,corruptionX+name_width,corruptionY+64,30,30,false)
 				//	corruption level
 				var corruption = shop.item_data[index, item_corruption]
-				var corruption_pixel = floor(name_width * corruption)
+				var corruption_pixel = floor(name_width * corruption/100)
 				draw_set_color(c_maroon)
 				draw_set_alpha(.80)
 				draw_roundrect_ext(corruptionX,corruptionY,corruptionX+corruption_pixel,corruptionY+64,30,30,false)
 				draw_set_alpha(1)
 				draw_set_color(c_black)
 				draw_set_halign(fa_center)
-				draw_text(corruptionX+name_width/2,corruptionY+32,string(corruption*100)+"% Corruption")
+				draw_text(corruptionX+name_width/2,corruptionY+32,string(corruption)+"% Corruption")
 				
 				//	edge case for small name_widths; check if the corruption width is larger than name_width
 				//var corruption_buffer = 23
-				if (string_width(string(corruption*100)+"% Corruption") + name_buffer) > name_width_adjusted {
-					name_width_adjusted = string_width(string(corruption*100)+"% Corruption") + name_buffer
+				if (string_width(string(corruption)+"% Corruption") + name_buffer) > name_width_adjusted {
+					name_width_adjusted = string_width(string(corruption)+"% Corruption") + name_buffer
 				}				
 
 				//	calls

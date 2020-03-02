@@ -1,4 +1,4 @@
-draw_self()
+if !game.vision and !game.temp_vision draw_self()
 
 if pissed {
 	sprite_set_offset(s_madface,sprite_get_width(s_madface)/2-1,sprite_get_height(s_madface)/2-1)

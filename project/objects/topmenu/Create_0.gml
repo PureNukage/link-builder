@@ -1,3 +1,7 @@
+data_active = true
+nodes_active = true
+contracts_active = true
+
 data_open = false
 nodes_open = false
 contracts_open = false

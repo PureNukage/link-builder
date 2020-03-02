@@ -49,21 +49,23 @@ draw_text(menuX+menu_width/2,menuY+24,menu_string)
 
 #region	data
 
-//	button
-if point_in_rectangle(gui_mouse_x,gui_mouse_y,dataX,dataY,dataX+data_width,dataY+48) {
-	draw_set_color(c_ltgray)
-	if input.mouse_left_press {
-		data_open = !data_open	
-		nodes_open = false
-		contracts_open = false
+if data_active {
+	//	button
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,dataX,dataY,dataX+data_width,dataY+48) {
+		draw_set_color(c_ltgray)
+		if input.mouse_left_press {
+			data_open = !data_open	
+			nodes_open = false
+			contracts_open = false
+		}
+	} else {
+		draw_set_color(c_dkgray)	
 	}
-} else {
-	draw_set_color(c_dkgray)	
+	if data_open draw_set_color(c_ltgray)
+	draw_rectangle(dataX,dataY,dataX+data_width,dataY+48,false)
+	draw_set_color(c_black)
+	draw_text(dataX+data_width/2,dataY+24,data_string)
 }
-if data_open draw_set_color(c_ltgray)
-draw_rectangle(dataX,dataY,dataX+data_width,dataY+48,false)
-draw_set_color(c_black)
-draw_text(dataX+data_width/2,dataY+24,data_string)
 
 //	window
 if data_open {
@@ -378,21 +380,23 @@ if data_open {
 #endregion
 
 #region	nodes
-//	button
-if point_in_rectangle(gui_mouse_x,gui_mouse_y,nodesX,nodesY,nodesX+nodes_width,nodesY+48) {
-	draw_set_color(c_ltgray)	
-	if input.mouse_left_press {
-		nodes_open = !nodes_open
-		data_open = false
-		contracts_open = false
+if nodes_active {
+	//	button
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,nodesX,nodesY,nodesX+nodes_width,nodesY+48) {
+		draw_set_color(c_ltgray)	
+		if input.mouse_left_press {
+			nodes_open = !nodes_open
+			data_open = false
+			contracts_open = false
+		}
+	} else {
+		draw_set_color(c_dkgray)	
 	}
-} else {
-	draw_set_color(c_dkgray)	
+	if nodes_open draw_set_color(c_ltgray)
+	draw_rectangle(nodesX,nodesY,nodesX+nodes_width,nodesY+48,false)
+	draw_set_color(c_black)
+	draw_text(nodesX+nodes_width/2,nodesY+24,nodes_string)
 }
-if nodes_open draw_set_color(c_ltgray)
-draw_rectangle(nodesX,nodesY,nodesX+nodes_width,nodesY+48,false)
-draw_set_color(c_black)
-draw_text(nodesX+nodes_width/2,nodesY+24,nodes_string)
 
 //	window
 if nodes_open {
@@ -660,21 +664,23 @@ if nodes_open {
 #endregion
 
 #region	contracts
-//	button
-if point_in_rectangle(gui_mouse_x,gui_mouse_y,contractsX,contractsY,contractsX+contracts_width,contractsY+48) {
-	draw_set_color(c_ltgray)
-	if input.mouse_left_press {
-		contracts_open = !contracts_open
-		data_open = false
-		nodes_open = false
-	}
-} else {
-	draw_set_color(c_dkgray)
-}	
-if contracts_open draw_set_color(c_ltgray)
-draw_rectangle(contractsX,contractsY,contractsX+contracts_width,contractsY+48,false)
-draw_set_color(c_black)
-draw_text(contractsX+contracts_width/2,contractsY+24,contracts_string)
+if contracts_active { 
+	//	button
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,contractsX,contractsY,contractsX+contracts_width,contractsY+48) {
+		draw_set_color(c_ltgray)
+		if input.mouse_left_press {
+			contracts_open = !contracts_open
+			data_open = false
+			nodes_open = false
+		}
+	} else {
+		draw_set_color(c_dkgray)
+	}	
+	if contracts_open draw_set_color(c_ltgray)
+	draw_rectangle(contractsX,contractsY,contractsX+contracts_width,contractsY+48,false)
+	draw_set_color(c_black)
+	draw_text(contractsX+contracts_width/2,contractsY+24,contracts_string)
+}
 
 //	window
 
@@ -800,7 +806,7 @@ if contracts_open and !instance_exists(mainmenu) {
 		draw_set_valign(fa_middle)
 		for(var v=array_height_2d(value_array)-1;v>-1;v--) {
 			for(var c=0;c<array_height_2d(contracts.contract);c++) {
-				if contracts.contract[c, contract_price] == value_array[v,0] {
+				if contracts.contract[c, contract_price] == value_array[v,0] and contracts.contract[c, contract_available] {
 					var name = contracts.contract[c, contract_name]
 					var price = contracts.contract[c, contract_price]
 					var name_width = string_width(name) + buffer*2

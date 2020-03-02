@@ -22,8 +22,9 @@ switch(tutorial)
 				case 0:
 					shop.resources_active = false
 					shop.wire_active = false
-					shop.button_active = false
-					contracts.button_active = false
+					topmenu.data_active = false
+					topmenu.nodes_active = false
+					topmenu.contracts_active = false
 					
 					create_textbox("Welcome to the Smart Contract Builder basics")
 		
@@ -37,35 +38,33 @@ switch(tutorial)
 				//	Wait for the previous menu to close
 				case 1:
 					if textbox_in_history(24) {
-						var xx = contracts.buttonX - (contracts.button_width + 16)
+						var xx = display_get_gui_width() - 100
 						var yy = contracts.buttonY
-						create_pointer(xx-128,yy+32,contracts.buttonX,contracts.buttonY+32,true,32)
+						create_pointer(xx-128,yy+32,display_get_gui_width()-100,contracts.buttonY+32,true,49)
 						stage++	
 					}
 				break
 				//	Wait for player to open the alarm menu
 				case 2:
 					if textboxController.messages_open {
-						destroy_pointer(32)
-						create_textbox("Good job!")
-						create_textbox("Open the Shop menu to advance",-1,-1,101)
+						destroy_pointer(49)
+						create_textbox("Good job!",-1,-1,101)
+						//create_textbox("",-1,-1,101)
 						stage++
 					}
 				break
 				//	Wait for player to press the previous message
 				case 3:
 					if textbox_in_history(101) {
-						shop.button_active = true
-						create_pointer(shop.buttonX+shop.button_width+128,shop.buttonY+32,shop.buttonX,shop.buttonY+32,true,66)
+						create_textbox("To build Decentralized Applications, 3 things will be needed: Data, Nodes and Contracts")
+						create_textbox("Select the Binance ETH/USD data source from the Data menu",-1,-1,6767)
 						stage++
 					}
 				break
 				//	Wait for the player to open the Shop
 				case 4:
-					if shop.menu_open {
-						destroy_pointer(66)
-						create_textbox("The Shop sells Nodes, Data and Contracts. All the things needed to build decentralized apps")
-						create_textbox("Select the Binance ETH/USD data source from the Shop menu")
+					if textbox_in_history(6767) {
+						topmenu.data_active = true
 						shop.item_data[0, item_available] = true
 						stage++
 					}
@@ -158,9 +157,8 @@ switch(tutorial)
 						if items_i_need == 2 {
 							create_textbox("Good job!")
 							create_textbox("A Price Feed Contract has been placed into the level")
-							create_textbox("After Contracts are purchased, they will appear in the Contracts menu")
-							create_textbox("To build it we will need to know the Data sources it needs connected")
-							create_textbox("Open the Contracts Menu and then open the Price Feed Contract to view this",-1,-1,22)
+							create_textbox("To build the Contract we will need to know the Data sources it needs connected")
+							create_textbox("Select the Contract and then view the Data Required",-1,-1,22)
 							
 							var distance_between_items = 5
 							var max_distance_between_items = 7
@@ -183,35 +181,31 @@ switch(tutorial)
 				//	Unlock the Contracts menu and point to it
 				case 12:
 					if textbox_in_history(22) {
-						contracts.button_active = true
-						create_pointer(contracts.buttonX+contracts.button_width/2,contracts.buttonY+192,contracts.buttonX+contracts.button_width/2,contracts.buttonY,true,42)
+						//contracts.button_active = true
+						create_pointer(kiosk.x-192,kiosk.y,kiosk.x,kiosk.y,false,42)
 						stage++
 					}
 				break
 				//	Wait for player to open the Price Feed Contract
 				case 13:
-					if contracts.button_open {
+					if kiosk.selected {//and input.selection == kiosk {
 						destroy_pointer(42)
-						//	Pointer aiming at the Contract
-						if instance_number(finger) == 0 create_pointer(contracts.menuX - 128,contracts.menuY+92,contracts.menuX,contracts.menuY,true,99)
-						
-					}
-					if contracts.button_open and contracts.contract_open == 3 {
-						destroy_pointer(99)
-						create_pointer(contracts.menuX-128,430,contracts.menuX,430,true,38)
 						stage++
+						//	Pointer aiming at the Contract
+						//if instance_number(finger) == 0 create_pointer(contracts.menuX - 128,contracts.menuY+92,contracts.menuX,contracts.menuY,true,99)
+						
 					}
 				
 				break
 				//	Wait for them to open the required data
 				case 14:
-					if contracts.button_open and contracts.contract_open == 3 and contracts.data_open {
-						destroy_pointer(38)
+					//if contracts.button_open and contracts.contract_open == 3 and contracts.data_open {
+					//	destroy_pointer(38)
 						create_textbox("Good job! We can see that this Contract requires an ETH/USD Price Feed")
 						create_textbox("Luckily for us we have a Node connected to Binance's ETH/USD API")
 						create_textbox("Lets go ahead and connect the Node to the Price Feed Contract now")
 						stage++
-					}
+					//}
 				break
 				//	Wait for the Node to be connected and then start a timer
 				case 15:
@@ -263,6 +257,8 @@ switch(tutorial)
 				//	Tutorial start
 				case 0:
 					shop.resources_active = false
+					topmenu.nodes_active = false
+					topmenu.contracts_active = false
 				
 					create_textbox("Welcome to The Oracle Problem, or Your First dApp")
 
@@ -302,6 +298,7 @@ switch(tutorial)
 				case 3:
 					if time.stream >= timer {
 						create_textbox("To get the LinkPal Contract online you will have to use 2 Nodes")
+						topmenu.nodes_active = true
 				
 						create_textbox("Reminder, white Wires represent Off-Chain Data while...",s_tutorial_offchain)
 						create_textbox("...blue Wires represent On-Chain Data",s_tutorial_onchain)	
