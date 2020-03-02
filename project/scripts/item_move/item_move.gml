@@ -20,8 +20,13 @@ _yy += cell_height/2
 x = _xx
 y = _yy
 
-ports_xyupdate_movement()
-			
-item_check_sockets()
+if object_index != wire {
+	ports_xyupdate_movement()		
+	item_check_sockets()
+}
+else {
+	//wire_update_ports_xy(rotation)
+	item_check_sockets()
+}
 
 placeable = is_placeable()

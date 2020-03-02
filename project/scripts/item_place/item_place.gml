@@ -12,11 +12,11 @@ switch(object_index)
 		shop.item_node[item_index, node_purchased] = true
 		shop.item_node[item_index, node_object_index] = id
 		//	Unlock the next node
-		if !replace and item_index > 0 and item_index < array_height_2d(shop.item_node)-1 {
-			shop.item_node[item_index+1, node_available] = true
-		} else if !replace and item_index == 0 and array_height_2d(shop.item_node) > 1 {
-			shop.item_node[item_index+1, node_available] = true	
-		}
+		//if !replace and item_index > 0 and item_index < array_height_2d(shop.item_node)-1 {
+		//	shop.item_node[item_index+1, node_available] = true
+		//} else if !replace and item_index == 0 and array_height_2d(shop.item_node) > 1 {
+		//	shop.item_node[item_index+1, node_available] = true	
+		//}
 	break
 	case data:
 		if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
@@ -27,7 +27,7 @@ switch(object_index)
 	case kiosk:
 		contracts.contract[smartcontract, contract_purchased] = true
 		contracts.contract[smartcontract, contract_kiosk] = id
-		with contracts contract_refresh()
+		//with contracts contract_refresh()
 	break
 }
 
@@ -38,7 +38,7 @@ states = states.placed
 ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
 item_placeid()
 
-if !replace with shop shop_refresh()
+//if !replace with shop shop_refresh()
 			
 var _x1 = gridController.grid_positions_x[topleft_cell_x]+(cell_width/2)
 var _y1 = gridController.grid_positions_y[topleft_cell_y]+(cell_height/2)

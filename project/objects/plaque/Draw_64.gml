@@ -13,7 +13,8 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 
 	var p_offset = 8
 	draw_roundrect(windowX,windowY,windowX+window_width,windowY+window_height,false)
-
+	draw_set_valign(fa_middle)
+	
 	//	Draw portrait
 	if mode != mode.on {
 		var Portrait = input.selection.portrait

@@ -2,12 +2,16 @@ population = ds_list_size(people)
 
 var _needed_population = 0
 //	calculate needed population
-for(var i=0;i<ds_list_size(contracts.contracts_online);i++) {
-	if contracts.contract[contracts.contracts_online[| i], contract_reliability] > 50 {
-		_needed_population += contracts.contract[contracts.contracts_online[| i], contract_traffic]
+if instance_exists(contracts) and !ds_list_empty(contracts.contracts_online) {
+	var list_size = ds_list_size(contracts.contracts_online)
+	for(var i=0;i<ds_list_size(contracts.contracts_online);i++) {
+		var Contract = contracts.contracts_online[| i]
+		if contracts.contract[contracts.contracts_online[| i], contract_reliability] > 50 {
+			_needed_population += contracts.contract[contracts.contracts_online[| i], contract_traffic]
+		}
 	}
+	needed_population = _needed_population
 }
-needed_population = _needed_population
 
 //	spawn a person if we need more
 if needed_population > population { 

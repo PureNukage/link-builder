@@ -7,11 +7,14 @@ if instance_exists(data) var data_count = instance_number(data)
 else var data_count = 0
 if instance_exists(kiosk) var contract_count = instance_number(kiosk)
 else var contract_count = 0
+if instance_exists(wire) var wire_count = instance_number(wire)
+else var wire_count = 0
 
 var section = "General"
 ini_write_real(section,"Node Count",node_count)
 ini_write_real(section,"Data Count",data_count)
 ini_write_real(section,"Contracts Count",contract_count)
+ini_write_real(section,"Wire Count",wire_count)
 
 var section = "Resources"
 ini_write_real(section,"Value",player.value)
@@ -192,6 +195,43 @@ if instance_exists(kiosk) {
 //	No Contracts in the level
 else {
 	
+}
+
+//	Wires
+var ID = 0 
+var section = "Wires"
+if instance_exists(wire) {
+	with wire {
+		if states == states.placed {
+			var key_base = string(ID)+"'s: "
+			ini_write_real(section,key_base+"x",center_cell_x)
+			ini_write_real(section,key_base+"y",center_cell_y)
+			ini_write_real(section,key_base+"rotation",rotation)
+			ini_write_real(section,key_base+"straight",straight)
+			ini_write_real(section,key_base+"color",color)
+			
+			//	converts port array into a ds_list and then encode it into a string
+			var list = ds_list_create()
+			var Ports = ports
+			var Sockets = sockets
+			for(var p=0;p<ports_count;p++) {
+				//Ports[p,port_object] = -1
+				//Sockets[p] = -1
+			}
+			list[| 0] = Ports
+			list[| 1] = Sockets
+			var string_encoded = ds_list_write(list)
+			ini_write_string(section,key_base+"ports",string_encoded)
+			ds_list_destroy(list)	
+			
+			
+			ID++
+		}
+	}
+}
+//	No wires in the level
+else {
+		
 }
 
 //	People

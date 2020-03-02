@@ -52,6 +52,7 @@ give_money = keyboard_check_pressed(vk_home)
 
 selection = -1
 selections = ds_list_create()
+ds_list_clear(selections)
 selection_x1 = -1
 selection_y1 = -1
 selection_x2 = -1

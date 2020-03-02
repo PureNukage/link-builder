@@ -3,7 +3,8 @@ var _systems = ds_list_create()
 
 //	lets count stuff
 for(var p=0;p<ports_count;p++) {
-	if ports[p,port_object] > -1 and instance_exists(ports[p,port_object]) and ports[p,port_object].System > -1 and instance_exists(ports[p,port_object].System) {
+	var object = ports[p,port_object]
+	if object > -1 and instance_exists(object) and object.System > -1 and instance_exists(object.System) {
 		//	we have an object!
 		connections++
 		
@@ -18,9 +19,9 @@ for(var p=0;p<ports_count;p++) {
 if connections == 0 {
 	System = instance_create_layer(x,y,"Instances",system)
 	ds_list_add(System.parts,id)
-	//with System { 
-	//	system_dataflow_check()	
-	//}
+	with System { 
+		system_dataflow_check()	
+	}
 } 
 //	we have connections
 else if connections > 0 {

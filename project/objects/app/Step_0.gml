@@ -18,6 +18,6 @@ if seconds >= 60 {
 	minutes_switch = 0	
 }
 
-if instance_exists(input) and input.f9 {
+if ((instance_exists(input) and input.f9) or (game_loading)) {
 	load_game()	
 }
