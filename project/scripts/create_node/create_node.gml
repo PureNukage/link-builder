@@ -32,3 +32,4 @@ if argument_count >= 7 item_node[new_node, node_available] = _node_available els
 item_node[new_node, node_level_ports] = create_level_ports(2,4,6,8)
 item_node[new_node, node_uptime] = 0
 item_node[new_node, node_purchased] = false
+item_node[new_node, node_skills] = create_skills()

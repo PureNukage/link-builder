@@ -3,7 +3,8 @@ window_height = 264
 name_width = 208
 data_width = 192
 
-window_two_mouseover = false
+node_level_open = false
+node_level_mouseover = false
 
 window_mouseover = false
 

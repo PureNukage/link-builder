@@ -439,6 +439,14 @@
             }
         },
         {
+            "Key": "3b29bc45-8e7d-4ead-bd1c-752357f0fe61",
+            "Value": {
+                "id": "90b348ca-894c-45a6-b96e-06c371c3803e",
+                "resourcePath": "scripts\\create_skills\\create_skills.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "3c6652a0-1e3e-46aa-8448-8b76bebd8ed5",
             "Value": {
                 "id": "12ca5dc4-5677-4e89-9881-6a804561ac1a",
@@ -820,6 +828,14 @@
                 "id": "53ed30ab-040d-44b7-bd35-67234fdd0e1b",
                 "resourcePath": "datafiles_yy\\GMLive\\gmlive.html.yy",
                 "resourceType": "GMIncludedFile"
+            }
+        },
+        {
+            "Key": "637a7068-9c7b-4ecf-87ad-f6fc826aa72b",
+            "Value": {
+                "id": "d21d6db1-7a55-44d4-af62-3f33cbcd5d3d",
+                "resourcePath": "sprites\\s_linkcube\\s_linkcube.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -2138,7 +2154,7 @@
             "Key": "fb6c1052-0b90-40eb-afa8-401055604a98",
             "Value": {
                 "id": "d0d513c5-ff04-4e38-8779-4471ee2bbf36",
-                "resourcePath": "scripts\\macros_and_enums\\macros_and_enums.yy",
+                "resourcePath": "scripts\\definitions\\definitions.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -2254,6 +2270,7 @@
         "fab8c6f0-cd41-49b2-8726-de6bcbb7a3a7",
         "ec03827d-517c-4482-9b30-c899676a7300",
         "5bfa71df-b728-4ed4-aed8-14e379dae0f7",
+        "3b29bc45-8e7d-4ead-bd1c-752357f0fe61",
         "f9c6403e-3ea9-4950-837b-688c8c9585ce",
         "8c0fa4d8-8cf5-412e-86f1-808e597c5512",
         "004a7cc1-f07a-4d4d-877e-faef3e3724cf",

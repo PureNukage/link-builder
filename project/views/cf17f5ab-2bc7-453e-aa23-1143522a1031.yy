@@ -8,7 +8,8 @@
         "579eba77-fc30-4969-b757-4dd30d757ef8",
         "fab8c6f0-cd41-49b2-8726-de6bcbb7a3a7",
         "ec03827d-517c-4482-9b30-c899676a7300",
-        "5bfa71df-b728-4ed4-aed8-14e379dae0f7"
+        "5bfa71df-b728-4ed4-aed8-14e379dae0f7",
+        "3b29bc45-8e7d-4ead-bd1c-752357f0fe61"
     ],
     "filterType": "GMScript",
     "folderName": "shop",

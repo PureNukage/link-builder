@@ -1,3 +1,5 @@
+if live_call() return live_result
+
 if (input.selection > -1 and instance_exists(input.selection) and input.selection.object_index != wire) or mode == mode.on {
 	
 	var window_width_adjusted = 0
@@ -110,9 +112,63 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 					draw_set_color(c_black)
 					var String = string(runs) + " / " + string(needed_runs)
 					draw_text(jobrunX+(bar_width-offset)/2,jobrunY+(bar_height)/2,String)
+					
+					//	levels button
+					var String = "Skills"
+					var level_width = bar_width
+					var level_height = bar_height
+					var levelX = jobrunX
+					var levelY = jobrunY+bar_height+8
+					
+					draw_set_color(c_black)
+					draw_roundrect(levelX-2,levelY-2,levelX+level_width+2,levelY+level_height+2,false)
+					
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,levelX-2,levelY-2,levelX+level_width+2,levelY+level_height+2) {
+						draw_set_color(c_ltgray)
+						if input.mouse_left_press {
+							node_level_open = !node_level_open
+						}
+					} else {
+						if node_level_open {
+							draw_set_color(c_ltgray)	
+						} else {
+							draw_set_color(c_gray)
+						}
+					}
+					draw_roundrect(levelX,levelY,levelX+level_width,levelY+level_height,false)
+					
+					draw_set_color(c_black)
+					draw_text(levelX+level_width/2,levelY+level_height/2,String)
+					
+					#region Node Level
+						if node_level_open {
+							
+							var level_window_width = 400
+							var level_window_height = 300
+							var level_windowX = windowX
+							var level_windowY = windowY - level_window_height - 8
+							
+							draw_set_color(c_dkgray)
+							draw_roundrect(level_windowX,level_windowY,level_windowX+level_window_width,level_windowY+level_window_height,false)
+							
+							var scale = .66
+							draw_sprite_ext(s_linkcube,0,level_windowX+level_window_width/2,level_windowY+level_window_height/2,scale,scale,0,c_white,1)
+							
+							draw_set_color(c_black)
+							draw_set_halign(fa_left)
+							draw_set_valign(fa_top)
+							draw_text(level_windowX+10,level_windowY+10,input.selection.name)
+							
+							draw_text(level_windowX+10,level_windowY+45,"Level: "+string(level+1))
+							
+							
+						}	
+					#endregion
 				
 					//	data held
 					//	get data held width
+					draw_set_halign(fa_center)
+					draw_set_valign(fa_middle)
 					var default_data_width = 192
 					var data_buffer = 12
 					var data_width_adjusted = 0
