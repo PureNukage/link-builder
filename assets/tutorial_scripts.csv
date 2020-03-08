@@ -1,0 +1,23 @@
+Welcome to the Smart Contract Builder basics,"Welcome to The Oracle Problem, or Your First dApp",Welcome to The Need to Decentralize
+This tutorial is going to introduce you to the basics controls of the game,This tutorial is going to take you through building the LinkPal contract,This tutorial will explain Data misfires and what happens if a Contract uses bad data
+Messages such as this are stored in the Message menu,dApps or Decentralized Applications consist of one or more Smart Contracts,Jane has $100 in PayPal and wants to buy $100 worth of ETH. Meanwhile Bob has ETH and is willing to trade with her
+Open the Message menu,A Smart Contract is code that lives and executes on a blockchain,Money in PayPal is not a cryptocurrency and on a blockchain therefore it cannot natively be traded for ETH
+Good job!,The apps of today utilize data in systems. dApps are no different however there exists a problem,"To solve this, LinkPal requires that Bob opens an invoice on PayPal for $100 while also having $100 of ETH"
+"To build Decentralized Applications, 3 things will be needed: Data, Nodes and Contracts",Smart Contracts cannot access the systems that regular apps can. This is known as The Oracle Problem,"When Jane sees that Bob has $100 of ETH, Jane will pay $100 to the Invoice, the Node will see and release the $100 ETH to Jane"
+Select the Binance ETH/USD data source from the Data menu,To solve this problem we must utilize blockchain middleware,This means it is very important that the LinkPal Contract is able to know the price of ETH. If the wrong price of ETH was used Jane could end up receiving more or less than $100. That's not good!
+Good job! Items in placement can be rotated by pressing Q or E,In Smart Contract Builder this is known as a Node,The ETH/USD Data source is going to get a 100% corruption level meaning when it is called by a Contract it has a 100% chance of giving bad data
+Rotate the data now,To get the LinkPal Contract online you will have to use 2 Nodes,"People don't like it when technology doesn't work, especially when it comes to their money"
+Good job! Place the data source somewhere into the level,"Reminder, white Wires represent Off-Chain Data...",To make sure the Contract gets a reliable price of ETH we can use Decentralization
+Good job! Items can be re-placed by selecting it and pressing R,...while blue Wires represent On-Chain Data,This means placing down multiple sources of ETH/USD data to call and average them out
+Go ahead and re-place the Data into a different cell,Remember! Data has to pass through a Node first,You've been given 3 sources of ETH/USD to place
+Wires are used to connect items to form systems,Congratulations! You have built your first dApp,You need at least 2/3 of the data to not Misfire for a successful Contract use
+Press the Wire button to place down a wire and then connect the Data to the Node that was just placed,Press OK to return to the Main Menu,Press OK to return to the Main Menu
+A Price Feed Contract has been placed into the level,,
+To build the Contract we will need to know the Data sources it needs connected,,
+Select the Contract and then view the Data Required,,
+Good job! We can see that this Contract requires an ETH/USD Price Feed,,
+Luckily for us we have a Node connected to Binance's ETH/USD API,,
+Lets go ahead and connect the Node to the Price Feed Contract now,,
+Good job! This Contract is now online,,
+This completes the Smart Contract Builder basics tutorial,,
+Press OK to return to the Main Menu,,

@@ -9,9 +9,10 @@ if timer == -1 and stage == -1 {
 	app.data_corruption = mode.off
 	
 	stage = 0
+	
+	script_index = 0
 			
 }	
-
 switch(tutorial)
 {
 	#region #1 Smart Contract Builder intro
@@ -26,13 +27,17 @@ switch(tutorial)
 					topmenu.nodes_active = false
 					topmenu.contracts_active = false
 					
-					create_textbox("Welcome to the Smart Contract Builder basics")
+					var text = script[# tutorial, script_index] script_index++	//	0 -> 1
+					create_textbox(text)
 		
-					create_textbox("This tutorial is going to introduce you to the basics of the game")
+					var text = script[# tutorial, script_index] script_index++	//	1 -> 2
+					create_textbox(text)
 					
-					create_textbox("Messages such as this are stored in the Message menu")
+					var text = script[# tutorial, script_index] script_index++	//	2 -> 3
+					create_textbox(text)
 					
-					create_textbox("Open the Message menu",-1,-1,24)
+					var text = script[# tutorial, script_index] script_index++	//	3 -> 4
+					create_textbox(text,-1,-1,24)
 					stage++
 				break
 				//	Wait for the previous menu to close
@@ -48,7 +53,8 @@ switch(tutorial)
 				case 2:
 					if textboxController.messages_open {
 						destroy_pointer(49)
-						create_textbox("Good job!",-1,-1,101)
+						var text = script[# tutorial, script_index] script_index++	//	4 -> 5
+						create_textbox(text,-1,-1,101)
 						//create_textbox("",-1,-1,101)
 						stage++
 					}
@@ -56,8 +62,10 @@ switch(tutorial)
 				//	Wait for player to press the previous message
 				case 3:
 					if textbox_in_history(101) {
-						create_textbox("To build Decentralized Applications, 3 things will be needed: Data, Nodes and Contracts")
-						create_textbox("Select the Binance ETH/USD data source from the Data menu",-1,-1,6767)
+						var text = script[# tutorial, script_index] script_index++	//	5 -> 6
+						create_textbox(text)
+						var text = script[# tutorial, script_index] script_index++	//	6 -> 7
+						create_textbox(text,-1,-1,6767)
 						stage++
 					}
 				break
@@ -73,8 +81,10 @@ switch(tutorial)
 				//	Wait for the player to select the data
 				case 5:
 					if instance_exists(data) and data.data_generated == data_types.binance_ETHUSD {
-						create_textbox("Good job! Items in placement can be rotated by pressing Q or E")
-						create_textbox("Rotate the data now")
+						var text = script[# tutorial, script_index] script_index++	//	7 -> 8
+						create_textbox(text)
+						var text = script[# tutorial, script_index] script_index++	//	8 -> 9
+						create_textbox(text)
 						conditions[0] = false
 						conditions[1] = false
 						stage++
@@ -89,15 +99,18 @@ switch(tutorial)
 						conditions[1] = true	
 					}
 					if conditions[0] and conditions[1] {
-						create_textbox("Good job! Place the data source somewhere into the level")
+						var text = script[# tutorial, script_index] script_index++	//	9 -> 10
+						create_textbox(text)
 						stage++	
 					}
 				break
 				//	Wait for the player to place the data
 				case 7:
 					if data.states == states.placed {
-						create_textbox("Good job! Items can be re-placed by selecting it and pressing R")
-						create_textbox("Go ahead and re-place the Data into a different cell")
+						var text = script[# tutorial, script_index] script_index++	//	10 -> 11
+						create_textbox(text)
+						var text = script[# tutorial, script_index] script_index++	//	11 -> 12
+						create_textbox(text)
 						//conditions[0] = false
 						conditions[0] = data.center_cell_x
 						conditions[1] = data.center_cell_y
@@ -126,9 +139,13 @@ switch(tutorial)
 						if _node.placeable and distance >= distance_between_items and distance <= max_distance_between_items {
 							with _node item_place()
 							loop = false
-							create_textbox("Good job!")
-							create_textbox("Wires are used to connect items to form systems")
-							create_textbox("Press the Wire button to place down a wire and then connect the Data to the Node that was just placed",-1,-1,123)
+							var text = script[# tutorial, 4] //	good job	
+							create_textbox(text)
+							var text = script[# tutorial, script_index] script_index++	//	12 -> 13
+							create_textbox(text)
+							var text = script[# tutorial, script_index] script_index++	//	13 -> 14
+							create_textbox(text,-1,-1,123)
+							var text = script[# tutorial, script_index] script_index++	//	14 -> 15
 							stage++
 						}	
 					}
@@ -156,9 +173,13 @@ switch(tutorial)
 						}
 						if items_i_need == 2 {
 							create_textbox("Good job!")
-							create_textbox("A Price Feed Contract has been placed into the level")
-							create_textbox("To build the Contract we will need to know the Data sources it needs connected")
-							create_textbox("Select the Contract and then view the Data Required",-1,-1,22)
+							//var text = script[# tutorial, script_index] script_index++
+							//create_textbox(text)
+							var text = script[# tutorial, script_index] script_index++	//	15 -> 16
+							create_textbox(text)
+							var text = script[# tutorial, script_index] script_index++	//	16 -> 17
+							create_textbox(text,-1,-1,22)
+							var text = script[# tutorial, script_index] //script_index++	//	17 -> 18
 							
 							var distance_between_items = 5
 							var max_distance_between_items = 7
@@ -201,9 +222,12 @@ switch(tutorial)
 				case 14:
 					//if contracts.button_open and contracts.contract_open == 3 and contracts.data_open {
 					//	destroy_pointer(38)
-						create_textbox("Good job! We can see that this Contract requires an ETH/USD Price Feed")
-						create_textbox("Luckily for us we have a Node connected to Binance's ETH/USD API")
-						create_textbox("Lets go ahead and connect the Node to the Price Feed Contract now")
+						var text = script[# tutorial, script_index] script_index++	//	19 -> 20
+						create_textbox(text)
+						var text = script[# tutorial, script_index] script_index++	//	20 -> 21
+						create_textbox(text)
+						var text = script[# tutorial, script_index] script_index++	//	21 -> 22
+						create_textbox(text)
 						stage++
 					//}
 				break
@@ -233,9 +257,12 @@ switch(tutorial)
 				//	Wait four seconds
 				case 16:
 					if time.stream >= timer {
-						create_textbox("Good job! This Contract is now online")
-						create_textbox("This completes the Smart Contract Builder basics tutorial")
-						create_textbox("Press OK to return to the Tutorial menu",-1,-1,6969)
+						var text = script[# tutorial, script_index] script_index++	//	22 -> 23
+						create_textbox(text)
+						var text = script[# tutorial, script_index] script_index++	//	23 -> 24
+						create_textbox(text)
+						var text = script[# tutorial, script_index] script_index++	//  24 -> 25
+						create_textbox(text,-1,-1,6969)
 						stage++
 					}
 				break
@@ -260,9 +287,9 @@ switch(tutorial)
 					topmenu.nodes_active = false
 					topmenu.contracts_active = false
 				
-					create_textbox("Welcome to The Oracle Problem, or Your First dApp")
+					create_textbox(script[# tutorial, script_index]) script_index++
 
-					create_textbox("This tutorial is going to take you through building the LinkPal contract")
+					create_textbox(script[# tutorial, script_index]) script_index++
 					
 					var _kiosk = item_create(kiosk,0,0,3,"LinkPal",s_portrait_linkpal,0,1)
 					with _kiosk {
@@ -273,12 +300,12 @@ switch(tutorial)
 				break	
 				//	Information regarding Wires
 				case 1:
-					create_textbox("dApps or Decentralized Applications consist of one or more Smart Contracts")
-					create_textbox("A Smart Contract is code that lives and executes on a blockchain")
-					create_textbox("The apps that we know utilize data in systems. dApps are no different however there exists a problem")
-					create_textbox("Smart Contracts cannot access the systems that code for regular apps can. This is known as The Oracle Problem")
-					create_textbox("To solve this problem and create Smart Contracts that provide tremendous value we must utilize blockchain middleware")
-					create_textbox("In Smart Contract Builder this is known as a Node",-1,-1,11)
+					create_textbox(script[# tutorial, script_index]) script_index++
+					create_textbox(script[# tutorial, script_index]) script_index++
+					create_textbox(script[# tutorial, script_index]) script_index++
+					create_textbox(script[# tutorial, script_index]) script_index++
+					create_textbox(script[# tutorial, script_index]) script_index++
+					create_textbox(script[# tutorial, script_index],-1,-1,11) script_index++
 					stage++
 					
 				break
@@ -297,11 +324,11 @@ switch(tutorial)
 				//	Wait for timer then give them more information
 				case 3:
 					if time.stream >= timer {
-						create_textbox("To get the LinkPal Contract online you will have to use 2 Nodes")
+						create_textbox(script[# tutorial, script_index]) script_index++
 						topmenu.nodes_active = true
 				
-						create_textbox("Reminder, white Wires represent Off-Chain Data while...",s_tutorial_offchain)
-						create_textbox("...blue Wires represent On-Chain Data",s_tutorial_onchain)	
+						create_textbox(script[# tutorial, script_index],s_tutorial_offchain) script_index++
+						create_textbox(script[# tutorial, script_index],s_tutorial_onchain)	script_index++
 						stage++
 						timer = time.stream + 120
 					}
@@ -311,13 +338,13 @@ switch(tutorial)
 					if time.stream >= timer {
 						if instance_exists(data) with data {
 							if connected == connected.incorrect_connected {
-								create_textbox("Remember! Data has to pass through a Node first",-1,-1,420)
+								create_textbox(script[# tutorial, 11],-1,-1,420)
 								other.timer = time.stream + 300
 							}
 						}
 						
 						if kiosk.active {
-							create_textbox("Good job! You have built your first dApp")
+							create_textbox(script[# tutorial, 12]) script_index = 13
 							timer = time.stream + 480
 							stage++
 						}
@@ -326,7 +353,7 @@ switch(tutorial)
 				//	Wait 3 seconds then allow them to return to menu
 				case 5:
 					if time.stream >= timer {
-						create_textbox("Press OK to return to the Main Menu",-1,-1,1234)
+						create_textbox(script[# tutorial, script_index],-1,-1,1234) script_index++
 						stage++
 					}
 				break
@@ -397,9 +424,9 @@ switch(tutorial)
 				//	Wait 4 seconds then give the player information
 				case 1:
 					if time.stream >= timer {
-						create_textbox("Welcome to The Need to Decentralize")
+						create_textbox(script[# tutorial, script_index]) script_index++
 						
-						create_textbox("This tutorial will explain Data misfires and what happens if a Contract uses bad data",-1,-1,55)
+						create_textbox(script[# tutorial, script_index],-1,-1,55) script_index++
 						
 						stage++
 					}
@@ -414,11 +441,11 @@ switch(tutorial)
 				//	Wait for the timer then give the player more information
 				case 3:
 					if time.stream >= timer {
-						create_textbox("Jane has $100 in PayPal and wants to buy $100 worth of ETH. Meanwhile Bob has ETH and is willing to trade with her")
-						create_textbox("Money in PayPal is not a cryptocurrency and on a blockchain therefore it cannot natively be traded for ETH")
-						create_textbox("To solve this, LinkPal requires that Bob opens an invoice on PayPal for $100 while also having $100 of ETH")
-						create_textbox("When Jane sees that Bob has $100 of ETH, Jane will pay $100 to the Invoice, the Node will see and release the $100 ETH to Jane")
-						create_textbox("This means it is very important that the LinkPal Contract is able to know the price of ETH. If the wrong price of ETH was used Jane could end up receiving more or less than $100. That's not good!",-1,-1,1234)
+						create_textbox(script[# tutorial, script_index]) script_index++
+						create_textbox(script[# tutorial, script_index]) script_index++
+						create_textbox(script[# tutorial, script_index]) script_index++
+						create_textbox(script[# tutorial, script_index]) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,1234) script_index++
 						stage++
 					}
 				break
@@ -432,7 +459,7 @@ switch(tutorial)
 				//	Wait for the timer to go then tell the player more information
 				case 5:
 					if time.stream >= timer {
-						create_textbox("The ETH/USD Data source is going to get a 100% corruption level meaning when it is called by a Contract it has a 100% chance of giving bad data",-1,-1,6969)
+						create_textbox(script[# tutorial, script_index],-1,-1,6969) script_index++
 						stage++
 					}
 				break
@@ -459,11 +486,11 @@ switch(tutorial)
 				//	Wait a few seconds and let the contract run
 				case 8:
 					if time.stream >= timer {
-						create_textbox("People don't like it when technology doesn't work, especially when it comes to their money")
-						create_textbox("To make sure the Contract gets a reliable price of ETH we can use Decentralization")
-						create_textbox("This means placing down multiple sources of ETH/USD data to call and average them out")
-						create_textbox("You've been given 3 sources of ETH/USD to place")
-						create_textbox("You need at least 2/3 of the data to not Misfire for a successful Contract use",-1,-1,777)
+						create_textbox(script[# tutorial, script_index]) script_index++
+						create_textbox(script[# tutorial, script_index]) script_index++
+						create_textbox(script[# tutorial, script_index]) script_index++
+						create_textbox(script[# tutorial, script_index]) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,777) script_index++ 
 						stage++
 						shop.item_data[0,item_available] = true
 						shop.item_data[1,item_available] = true
@@ -498,6 +525,10 @@ switch(tutorial)
 						create_textbox("Good job!")
 						contracts.contract[1, contract_reliability] = 100
 						contracts.contract[1, contract_misfires] = 0
+						var new_use_list = ds_list_create()
+						new_use_list[| 0] = true
+						ds_list_destroy(contracts.contract[1,contract_uses])
+						contracts.contract[1,contract_uses] = new_use_list
 						stage++
 						timer = time.stream + 240
 					}
@@ -506,7 +537,7 @@ switch(tutorial)
 				//	Wait for 4 seconds then allow them to return to the main menu
 				case 11:
 					if time.stream >= timer {
-						create_textbox("Press OK to return to the Main Menu",-1,-1,123456)
+						create_textbox(script[# tutorial, script_index],-1,-1,123456)
 						stage++
 					}
 				break

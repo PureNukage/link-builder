@@ -44,11 +44,11 @@ switch(states)
 				draw_sprite_ext(sprite,0,x,y,1,1,rotation,c_white,1)	
 			}
 	
-			if cell_x1 > -1 and cell_y1 > -1 {
-				var _x = gridController.grid_positions_x[cell_x1]+(cell_width/2)
-				var _y = gridController.grid_positions_y[cell_y1]+(cell_height/2)
-				draw_path(path,_x,_y,true)	
-			}
+			//if cell_x1 > -1 and cell_y1 > -1 {
+			//	var _x = gridController.grid_positions_x[cell_x1]+(cell_width/2)
+			//	var _y = gridController.grid_positions_y[cell_y1]+(cell_height/2)
+			//	draw_path(path,_x,_y,true)	
+			//}
 	
 		break
 	#endregion

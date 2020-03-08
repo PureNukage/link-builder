@@ -863,6 +863,14 @@
             }
         },
         {
+            "Key": "6d95bf13-40c7-48d6-b3f2-7f6fad269924",
+            "Value": {
+                "id": "6db67d6f-07fd-4576-a30c-40d393d5eb89",
+                "resourcePath": "datafiles_yy\\tutorial_scripts.csv.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "6e4b06ea-de1d-451e-bb76-a135b71a8647",
             "Value": {
                 "id": "4096c0ea-b1a1-4502-b45a-44ea57df0664",
@@ -1019,6 +1027,14 @@
             "Value": {
                 "id": "29d6d669-91bc-43df-82a7-f80d98d6279d",
                 "resourcePath": "scripts\\wire_connect\\wire_connect.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "880f7162-4b30-431e-b699-8c7af49b5311",
+            "Value": {
+                "id": "081d1e48-8aad-43b2-97eb-3410fa1347e7",
+                "resourcePath": "scripts\\csv_to_grid\\csv_to_grid.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -2196,6 +2212,7 @@
         "54d2b4c4-a98e-42c7-8ce8-03c2b58262ff",
         "6e4b06ea-de1d-451e-bb76-a135b71a8647",
         "a21ffa94-ed81-447f-a78d-860b7292425d",
+        "880f7162-4b30-431e-b699-8c7af49b5311",
         "fb6c1052-0b90-40eb-afa8-401055604a98",
         "dc7ad462-4722-456b-a05e-ebb684bbe344",
         "046ccc19-867e-4bdc-981d-611f151de6a8",

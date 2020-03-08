@@ -301,7 +301,6 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 					var relyY = valueY+48+p_offset
 					draw_set_color(c_white)
 					draw_roundrect_ext(relyX,relyY,relyX+name_width,relyY+48,25,25,false)
-					//var reliability = .80
 					var rely_pixels = floor(name_width * reliability)
 					if reliability > .79 {
 						draw_set_color(c_green)	
