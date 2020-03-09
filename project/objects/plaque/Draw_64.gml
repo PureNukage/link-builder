@@ -151,8 +151,85 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 							draw_set_color(c_dkgray)
 							draw_roundrect(level_windowX,level_windowY,level_windowX+level_window_width,level_windowY+level_window_height,false)
 							
+							if point_in_rectangle(gui_mouse_x,gui_mouse_y,level_windowX,level_windowY,level_windowX+level_window_width,level_windowY+level_window_height) {
+								node_level_mouseover = true	
+							} else {
+								node_level_mouseover = false	
+							}
+						
 							var scale = .66
-							draw_sprite_ext(s_linkcube,0,level_windowX+level_window_width/2,level_windowY+level_window_height/2,scale,scale,0,c_white,1)
+							var center_x = level_windowX+level_window_width/2
+							var center_y = level_windowY+level_window_height/2
+							var XX = -1
+							var YY = -1
+							var Width = -1
+							var Height = -1
+							var skill_index = -1
+							for(var i=0;i<6;i++) {
+								switch(i) {
+									case 0:	
+										var xx = center_x
+										var yy = center_y - (sprite_get_height(s_linkcube)*scale)/2 + 38
+									break
+									case 1:
+										var xx = center_x + (sprite_get_width(s_linkcube)*scale)/2 - 48
+										var yy = center_y - 38
+									break
+									case 2:
+										var xx = center_x + (sprite_get_width(s_linkcube)*scale)/2 - 48
+										var yy = center_y + 38
+									break
+									case 3:
+										var xx = center_x
+										var yy = center_y + (sprite_get_height(s_linkcube)*scale)/2 - 38
+									break
+									case 4:
+										var xx = center_x - (sprite_get_width(s_linkcube)*scale)/2 + 48
+										var yy = center_y + 38
+									break
+									case 5:
+										var xx = center_x - (sprite_get_width(s_linkcube)*scale)/2 + 48
+										var yy = center_y - 38
+									break
+								}
+								
+								var node_array = shop.item_node[input.selection.item_index, node_skills]
+								var radius = skill_array[i,0]
+								var acquired = node_array[i,skill_acquired]
+								if acquired {
+									draw_set_color(c_orange)	
+								} else {
+									draw_set_color(c_white)
+								}
+								draw_circle(xx,yy,radius,false)
+								
+								var lerp_amt = 0.09
+								if point_in_circle(gui_mouse_x,gui_mouse_y,xx,yy,radius) {
+									skill_array[i,0] = lerp(skill_array[i,0],36,lerp_amt)
+									
+									Width = string_width(node_array[i,skill_text])
+									Height = string_height(node_array[i,skill_text])
+									XX = gui_mouse_x
+									YY = gui_mouse_y - Height - 8
+									
+									var skill_index = i
+									
+								} else {
+									skill_array[i,0] = lerp(skill_array[i,0],24,lerp_amt)
+								}
+				
+							}							
+							
+							draw_sprite_ext(s_linkcube,0,center_x,center_y,scale,scale,0,c_white,1)
+							
+							//	Draw the skill text
+							if skill_index > -1 {
+								draw_set_color(c_gray)
+								draw_rectangle(XX,YY,XX+Width,YY+Height,false) 
+									
+								draw_set_color(c_black)
+								draw_text(XX+Width/2,YY+Height/2,node_array[skill_index,skill_text])	
+							}
 							
 							draw_set_color(c_black)
 							draw_set_halign(fa_left)
