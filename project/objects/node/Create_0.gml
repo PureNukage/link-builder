@@ -13,6 +13,9 @@ event_inherited()
 
 #region Ports
 
+ports_count_max = 2
+skillpoints = 0
+
 ports[0,port_x] = bottomright_cell_x+1
 ports[0,port_y] = center_cell_y
 ports[0,port_x_diff] = ports[0,port_x] - center_cell_x

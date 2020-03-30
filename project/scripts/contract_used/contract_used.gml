@@ -109,6 +109,7 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 					var Node_name = name
 					var Node_level = shop.item_node[item_index, node_level]
 					var Portrait = s_event_node_levelup
+					skillpoints++
 					if !textbox_in_queue(Node_level,event_types.levelup,id) {
 						create_textbox(Node_name+" is now Level "+string(Node_level+1),Portrait,event_duration,Node_level,event_types.levelup,id)	
 					}	

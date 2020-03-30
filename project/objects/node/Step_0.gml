@@ -73,6 +73,15 @@ switch(states)
 					new_item.jobruns = jobruns
 					new_item.jobruns_previous = jobruns
 					
+					new_item.ports_count_max = ports_count_max
+					new_item.ports_count = ports_count
+					new_item.ports = ports
+					new_item.sockets = sockets
+					
+					with new_item {
+						ports_xyupdate_movement()
+					}
+					
 					//	deselect this item
 					selected = false
 					if ds_list_find_index(input.selections,id) > -1 {
@@ -106,6 +115,7 @@ switch(states)
 						var Node_name = name
 						var Node_level = shop.item_node[item_index, node_level]
 						var Portrait = s_event_node_levelup
+						skillpoints++
 						if !textbox_in_queue(Node_level,event_types.levelup,id) {
 							create_textbox(Node_name+" is now Level "+string(Node_level+1),Portrait,event_duration,Node_level,event_types.levelup,id)	
 						}	

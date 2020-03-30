@@ -116,7 +116,7 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 					//	levels button
 					var String = "Skills"
 					var level_width = bar_width
-					var level_height = bar_height
+					var level_height = bar_height/2
 					var levelX = jobrunX
 					var levelY = jobrunY+bar_height+8
 					
@@ -127,6 +127,7 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 						draw_set_color(c_ltgray)
 						if input.mouse_left_press {
 							node_level_open = !node_level_open
+							if input.selection_mode == selection_mode.port_placement input.selection_mode = selection_mode.free
 						}
 					} else {
 						if node_level_open {
@@ -138,7 +139,8 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 					draw_roundrect(levelX,levelY,levelX+level_width,levelY+level_height,false)
 					
 					draw_set_color(c_black)
-					draw_text(levelX+level_width/2,levelY+level_height/2,String)
+					draw_set_valign(fa_middle)
+					draw_text(levelX+level_width/2,levelY+level_height/2+1,String)
 					
 					#region Node Level
 						if node_level_open {
@@ -165,6 +167,7 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 							var Width = -1
 							var Height = -1
 							var skill_index = -1
+							var skill_purchased = -1
 							for(var i=0;i<6;i++) {
 								switch(i) {
 									case 0:	
@@ -214,11 +217,38 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 									
 									var skill_index = i
 									
+									if input.mouse_left_press and input.selection.skillpoints > 0 {
+										if skill_index == 0 {
+											if !node_array[i,skill_acquired] {
+												node_array[i,skill_acquired] = true
+												shop.item_node[input.selection.item_index,node_skills] = node_array
+												input.selection.skillpoints--
+												skill_purchased = node_array[i,skill_type]
+											}
+										} else {
+											if node_array[skill_index-1,skill_acquired] and !node_array[skill_index,skill_acquired] {
+												node_array[skill_index,skill_acquired] = true
+												shop.item_node[input.selection.item_index,node_skills] = node_array
+												input.selection.skillpoints--	
+												skill_purchased = node_array[i,skill_type]
+											}
+										}
+									}
+									
 								} else {
 									skill_array[i,0] = lerp(skill_array[i,0],24,lerp_amt)
 								}
 				
-							}							
+							}
+							
+							if skill_purchased > -1 {
+								switch(skill_purchased)
+								{
+									case skills.two_more_ports:
+										input.selection.ports_count_max += 2
+									break
+								}
+							}
 							
 							draw_sprite_ext(s_linkcube,0,center_x,center_y,scale,scale,0,c_white,1)
 							
@@ -238,9 +268,66 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 							
 							draw_text(level_windowX+10,level_windowY+45,"Level: "+string(level+1))
 							
+							draw_set_color(c_white)
+							var String = "Points: "+string(input.selection.skillpoints)
+							draw_text(level_windowX+level_window_width-8-string_width(String),level_windowY+8,String)
+							
 							
 						}	
 					#endregion
+					
+					//	Ports button
+					var String = "Ports"
+					var ports_width = bar_width
+					var ports_height = bar_height/2
+					var portsX = levelX
+					var portsY = levelY + (bar_height/2) + 8
+					
+					draw_set_color(c_black)
+					draw_roundrect(portsX-2,portsY-2,portsX+ports_width+2,portsY+ports_height+2,false)
+					
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,portsX-2,portsY-2,portsX+ports_width+2,portsY+ports_height+2) {
+						draw_set_color(c_ltgray)
+						if input.mouse_left_press {
+							if input.selection_mode == selection_mode.port_placement {
+								input.selection_mode = selection_mode.free	
+							} else {
+								input.selection_mode = selection_mode.port_placement
+							}
+							if node_level_open node_level_open = false
+						}
+					} else {
+						draw_set_color(c_gray)	
+					}
+					if input.selection_mode == selection_mode.port_placement draw_set_color(c_ltgray)
+					draw_roundrect(portsX,portsY,portsX+ports_width,portsY+ports_height,false)
+					
+					draw_set_color(c_black)
+					draw_set_halign(fa_center)
+					draw_set_valign(fa_middle)
+					draw_text(portsX+ports_width/2,portsY+ports_height/2+1,String)
+					
+					//	Draw Ports
+					if input.selection_mode == selection_mode.port_placement {
+						var p_width = 260
+						var p_height = 60
+						var pX = windowX
+						var pY = windowY - p_height - 8
+					
+						draw_set_color(c_dkgray)
+						draw_roundrect(pX,pY,pX+p_width,pY+p_height,false)
+					
+						var max_ports = input.selection.ports_count_max
+						var used_ports = input.selection.ports_count
+						var available_ports = max_ports - used_ports
+						var ports_string = "Ports: "+string(used_ports)+"/"+string(max_ports)
+						draw_set_color(c_white)						
+						draw_set_halign(fa_left)
+						draw_text(pX+12,pY+p_height/2,ports_string)
+						
+						draw_text(pX+36+string_width(ports_string),pY+p_height/2,"Free: "+string(available_ports))
+						
+					}
 				
 					//	data held
 					//	get data held width

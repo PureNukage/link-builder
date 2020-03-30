@@ -39,7 +39,7 @@ switch(selection_mode)
 
 			if selection == -1 and !ds_list_empty(selections) and grid_x > -1 and grid_y > -1 {
 				var list_size = ds_list_size(selections)
-				for(var i=0;i<ds_list_size(selections);i++) {
+				for(var i=0;i<list_size;i++) {
 					var ID = selections[| i]
 					if !instance_exists(ID) {
 						
@@ -260,34 +260,7 @@ switch(selection_mode)
 	#endregion
 	
 	#region Port Placement
-		case selection_mode.port_placement:
-			
-			//	I want to place a port in this cell
-			if input.mouse_left_press {
-				//	Loop through cells, only draw the possible port cells
-				for(var w=selection.topleft_cell_x-1;w<selection.topleft_cell_x+selection.size_width+1;w++) {
-					for(var h=selection.topleft_cell_y-1;h<selection.topleft_cell_y+selection.size_height+1;h++) {
-						if w > -1 and w < grid_width and h > -1 and h < grid_height {
-							if w == selection.topleft_cell_x-1 and (h != selection.topleft_cell_y-1 and h != selection.bottomright_cell_y+1) 
-							or w == selection.bottomright_cell_x+1 and (h != selection.bottomright_cell_y+1 and h != selection.topleft_cell_y-1) 
-							or h == selection.topleft_cell_y-1 and w != selection.topleft_cell_x-1 and w != selection.bottomright_cell_x+1 
-							or h == selection.bottomright_cell_y+1 and w != selection.bottomright_cell_x+1 and w != selection.topleft_cell_x-1 { 
-								if w == grid_x and h == grid_y {
-									if gridController.grid_items[# w, h] == -1 {
-										port_add(w,h,selection)
-										gridController.grid_items[# w, h] = -2
-										selection_mode = selection_mode.free
-										
-									}
-								}
-							}	
-						}
-					}
-				}	
-				
-				
-			}
-			
+		case selection_mode.port_placement:		
 			
 			//	Exit port placement
 			if input.mouse_right_press {

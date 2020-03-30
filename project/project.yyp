@@ -1559,6 +1559,14 @@
             }
         },
         {
+            "Key": "bc90f999-ee46-454c-b7bb-dc5c092cb1d5",
+            "Value": {
+                "id": "b9b0261e-2948-45b7-bc5a-0494cc055c70",
+                "resourcePath": "scripts\\cell_direction_modified\\cell_direction_modified.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "be42ac43-5ec0-4f15-9b65-a0b928f6695d",
             "Value": {
                 "id": "20183411-e5cb-49db-ab3a-80ba5162fecc",
@@ -2234,6 +2242,7 @@
         "046ccc19-867e-4bdc-981d-611f151de6a8",
         "ffd5c36c-2a74-454d-970f-f57a52544f82",
         "aedf22a7-16e3-4f2f-84a5-cefa16102642",
+        "bc90f999-ee46-454c-b7bb-dc5c092cb1d5",
         "3d025c52-9a31-4e4d-88b5-33fe49a95bdd",
         "3ade3a16-3ab5-4848-99e0-d75c8b0902d7",
         "87b73aae-eecb-4463-9a80-442f2d84b831",

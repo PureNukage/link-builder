@@ -84,6 +84,10 @@ enum event_types {
 	
 }
 
+enum skills {
+	two_more_ports,	
+}
+
 #macro condition_type 0 
 #macro condition_value 1
 #macro condition_string 2
@@ -152,6 +156,7 @@ enum contract_types {
 
 #macro skill_acquired 0
 #macro skill_text 1
+#macro skill_type 2
 
 #macro item_name 0
 #macro item_object_index 3
