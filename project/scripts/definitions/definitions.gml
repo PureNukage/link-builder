@@ -151,6 +151,7 @@ enum contract_types {
 #macro node_uptime 7
 #macro node_levels 9
 #macro node_skills 10
+#macro node_skillpoints 11
 #macro node_purchased 30
 #macro node_available 22
 

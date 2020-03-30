@@ -1,16 +1,20 @@
 var current_level = shop.item_node[item_index, node_level]
 var levels = shop.item_node[item_index, node_levels]
 var leveled_up = false
-for(var l=0;l<array_height_2d(shop.item_node[item_index, node_levels]);l++) {
-	if jobruns >= levels[l, 0] and !levels[l,2] and l > current_level {
-		shop.item_node[item_index, node_level]++
-		levels[current_level, 2] = false
-		levels[l, 2] = true
-		leveled_up = true
-		debug_log("Node "+shop.item_node[item_index, node_name]+" is now level "+string(shop.item_node[item_index,node_level]))
-	}
+
+var previous_runs = levels[current_level]
+if current_level == array_length_1d(levels)-1 {
+	var needed_runs = 100000	
+} else {
+	var needed_runs = levels[current_level+1]
 }
-shop.item_node[item_index, node_levels] = levels
+
+if jobruns >= needed_runs {
+	shop.item_node[item_index, node_level]++
+	leveled_up = true
+	debug_log("Node "+shop.item_node[item_index, node_name]+" is now level "+string(shop.item_node[item_index,node_level]))
+}
+
 if leveled_up {
 	return true
 } else {

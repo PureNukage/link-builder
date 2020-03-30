@@ -96,13 +96,16 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 					//	jobruns progress
 					draw_set_color(c_sergey_blue)
 					var needed_runs_db = shop.item_node[input.selection.item_index, node_levels]
-					if level+1 >= array_height_2d(needed_runs_db) {
-						var needed_runs = needed_runs_db[level,0]	
+					if level+1 >= array_length_1d(needed_runs_db) {
+						var needed_runs = needed_runs_db[level]	
 					} else {
-						var needed_runs = needed_runs_db[level+1,0]
+						var needed_runs = needed_runs_db[level+1]
 					}
+					var previous_runs = needed_runs_db[level]
 					var runs = shop.item_node[input.selection.item_index, node_jobruns]
-					var percentage = runs / needed_runs
+					var real_runs = runs - previous_runs
+					var real_needed_runs = needed_runs - previous_runs
+					var percentage = real_runs / real_needed_runs
 					var percent_of_bar = floor(bar_width * percentage)
 					if runs > 0 {
 						draw_rectangle(jobrunX+offset,jobrunY+offset,jobrunX+percent_of_bar,jobrunY+bar_height-offset,false)
@@ -223,6 +226,7 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 												node_array[i,skill_acquired] = true
 												shop.item_node[input.selection.item_index,node_skills] = node_array
 												input.selection.skillpoints--
+												shop.item_node[input.selection.item_index, node_skillpoints] = input.selection.skillpoints
 												skill_purchased = node_array[i,skill_type]
 											}
 										} else {
@@ -230,6 +234,7 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 												node_array[skill_index,skill_acquired] = true
 												shop.item_node[input.selection.item_index,node_skills] = node_array
 												input.selection.skillpoints--	
+												shop.item_node[input.selection.item_index, node_skillpoints] = input.selection.skillpoints
 												skill_purchased = node_array[i,skill_type]
 											}
 										}
@@ -469,7 +474,7 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 							var Condition_string = Conditions[c, condition_string]
 							if string_width(Condition_string) > largest_string largest_string = string_width(Condition_string)
 							var Condition_amount = Conditions[c, condition_value]
-							if string_width(string(Condition_amount)) > largest_value largest_value = string_width(Condition_amount)
+							if string_width(string(Condition_amount)) > largest_value largest_value = string_width(string(Condition_amount))
 						}
 						var Sprite_width = sprite_get_width(s_resource_value_shop)
 						var width = p_offset + largest_string + p_offset + 24 + p_offset + largest_value + p_offset + Sprite_width + p_offset
@@ -822,13 +827,16 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 				//	jobruns progress
 				draw_set_color(c_sergey_blue)
 				var needed_runs_db = shop.item_node[index, node_levels]
-				if level+1 >= array_height_2d(needed_runs_db) {
-					var needed_runs = needed_runs_db[level,0]	
+				if level+1 >= array_length_1d(needed_runs_db) {
+					var needed_runs = needed_runs_db[level]	
 				} else {
-					var needed_runs = needed_runs_db[level+1,0]
+					var needed_runs = needed_runs_db[level+1]
 				}
+				var previous_runs = needed_runs_db[level]
 				var runs = shop.item_node[index, node_jobruns]
-				var percentage = runs / needed_runs
+				var real_runs = runs - previous_runs
+				var real_needed_runs = needed_runs - previous_runs
+				var percentage = real_runs / real_needed_runs
 				var percent_of_bar = floor(bar_width * percentage)
 				if runs > 0 {
 					draw_rectangle(jobrunX+offset,jobrunY+offset,jobrunX+percent_of_bar,jobrunY+bar_height-offset,false)

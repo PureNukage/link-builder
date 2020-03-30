@@ -70,6 +70,8 @@ switch(states)
 					new_item.item_index = item_index
 					new_item.portrait = shop.item_data[item_index ,item_portrait]
 					
+					new_item.name = name
+					
 					//	deselect this item
 					selected = false
 					if ds_list_find_index(input.selections,id) > -1 {

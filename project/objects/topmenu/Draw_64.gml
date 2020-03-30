@@ -545,6 +545,7 @@ if nodes_open {
 								nodes_open = false	
 								input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",node)
 								input.selection.selected = true
+								input.selection.skillpoints = shop.item_node[n, node_skillpoints]
 								input.selection.item_index = n
 								input.selection.name = shop.item_node[n, node_name]
 								if !shop.item_node[n, node_purchased] input.selection.price = shop.item_node[n, node_price]
@@ -553,7 +554,19 @@ if nodes_open {
 								input.selection.jobruns_previous = shop.item_node[n, node_jobruns]
 								if ds_list_find_index(input.selections,input.selection) == -1 {
 									ds_list_add(input.selections,input.selection)	
-								}							
+								}
+								//	Loop through skills and give node its max_ports
+								var Skills = shop.item_node[n, node_skills]
+								for(var s=0;s<array_height_2d(Skills);s++) {
+									if Skills[s,skill_acquired] {
+										switch(Skills[s,skill_type])
+										{
+											case skills.two_more_ports:
+												input.selection.ports_count_max += 2
+											break
+										}
+									}
+								}
 							
 							} else {
 								camera_goto(shop.item_node[n, node_object_index].x,shop.item_node[n,node_object_index].y,shop.item_node[n, node_object_index])

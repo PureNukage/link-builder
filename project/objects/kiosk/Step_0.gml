@@ -80,6 +80,7 @@ switch(states)
 					new_item.data_needed = data_needed
 					new_item.ports_count = ports_count
 					new_item.rotation = rotation
+					new_item.name = name
 					ds_list_copy(new_item.contracts_supporting,contracts_supporting)
 					
 					//	Turn off decentralized data
@@ -275,6 +276,7 @@ switch(states)
 															var Node_level = shop.item_node[item_index, node_level]
 															var Portrait = s_event_node_levelup
 															skillpoints++
+															shop.item_node[item_index, node_skillpoints] = skillpoints
 															if !textbox_in_queue(Node_level,event_types.levelup,id) {
 																create_textbox(Node_name+" is now Level "+string(Node_level+1),Portrait,event_duration,Node_level,event_types.levelup,id)	
 															}

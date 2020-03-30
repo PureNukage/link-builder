@@ -97,11 +97,11 @@ else {
 		var Rotation = ini_read_real(section,key_base+"rotation",0)
 		var ports_string = ini_read_string(section,key_base+"ports",0)
 		if is_string(ports_string) {
-			//var list = ds_list_create()
-			//ds_list_read(list,ports_string)
-			//var Ports = list[| 0]
-			//var Sockets = list[| 1]
-			//ds_list_destroy(list)
+			var list = ds_list_create()
+			ds_list_read(list,ports_string)
+			var Ports = list[| 0]
+			var Sockets = list[| 1]
+			ds_list_destroy(list)
 		} else {
 			Ports = -1
 			Sockets = -1
@@ -115,9 +115,9 @@ else {
 			rotation = Rotation
 			item_index = index
 			if is_array(Ports) {
-				//Data.ports = Ports
-				//Data.sockets = Sockets
-				//Data.ports_count = array_height_2d(Ports)
+				Data.ports = Ports
+				Data.sockets = Sockets
+				Data.ports_count = array_height_2d(Ports)
 			} else {
 				
 			}
@@ -138,11 +138,11 @@ else {
 		var Rotation = ini_read_real(section,key_base+"rotation",0)
 		var ports_string = ini_read_string(section,key_base+"ports",0)
 		if is_string(ports_string) {
-			//var list = ds_list_create()
-			//ds_list_read(list,ports_string)
-			//var Ports = list[| 0]
-			//var Sockets = list[| 1]
-			//ds_list_destroy(list)
+			var list = ds_list_create()
+			ds_list_read(list,ports_string)
+			var Ports = list[| 0]
+			var Sockets = list[| 1]
+			ds_list_destroy(list)
 		} else {
 			Ports = -1
 			Sockets = -1
@@ -155,13 +155,11 @@ else {
 		with Contract {
 			rotation = Rotation
 			data_needed = contracts.contract[Smartcontract, contract_data]
-			//if is_array(Ports) {
-			//	//Contract.ports = Ports
-			//	//Contract.sockets = Sockets
-			//	//Contract.ports_count = array_height_2d(Ports)
-			//} else {
-				
-			//}
+			if is_array(Ports) {
+				Contract.ports = Ports
+				Contract.sockets = Sockets
+				Contract.ports_count = array_height_2d(Ports)
+			}
 			item_move(xx,yy)
 			ports_xyupdate_movement()
 			item_check_sockets()
