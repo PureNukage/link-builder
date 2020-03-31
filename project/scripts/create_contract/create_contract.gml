@@ -11,6 +11,7 @@
 ///@param [data]
 ///@param [available]
 ///@param [conditions]
+///@param [type2]
 ///@param [radius]
 
 var _name = argument[0]
@@ -26,7 +27,8 @@ if argument_count >= 10 var _port_levels = argument[9]
 if argument_count >= 11 var _data = argument[10]
 if argument_count >= 12 var _available = argument[11]
 if argument_count >= 13 var _conditions = argument[12]
-if argument_count >= 14 var _radius = argument[13]
+if argument_count >= 14 var _type2 = argument[13]
+if argument_count >= 15 var _radius = argument[14]
 
 var contract_index = array_height_2d(contract)
 
@@ -55,7 +57,7 @@ if argument_count >= 5 contract[contract_index, contract_portrait] = _portrait e
 if argument_count >= 6 contract[contract_index, contract_channel] = _channel_time else contract[contract_index, contract_channel] = default_channel_time
 if argument_count >= 7 contract[contract_index, contract_traffic] = _max_traffic else contract[contract_index, contract_traffic] = default_max_traffic
 if argument_count >= 8 contract[contract_index, contract_linesize] = _line_size else contract[contract_index, contract_linesize] = default_linesize
-if argument_count >= 9 contract[contract_index, contract_type] = _contract_type else contract[contract_index, contract_linesize] = default_contract_type
+if argument_count >= 9 contract[contract_index, contract_type] = _contract_type else contract[contract_index, contract_type] = default_contract_type
 if argument_count >= 10 contract[contract_index, contract_level_ports] = _port_levels else contract[contract_index, contract_level_ports] = default_port_levels
 if argument_count >= 11 contract[contract_index, contract_data] = _data
 else {
@@ -67,7 +69,8 @@ if argument_count >= 13 contract[contract_index, contract_conditions] = _conditi
 	var new_conditions = create_conditions(conditions.cnd_active,200)
 	contract[contract_index, contract_conditions] = new_conditions
 }	
-if argument_count >= 14 contract[contract_index, contract_radius] = _radius else contract[contract_index, contract_radius] = 0
+if argument_count >= 14 contract[contract_index, contract_type2] = _type2 else contract[contract_index, contract_type2] = contract_types.hackathon
+if argument_count >= 15 contract[contract_index, contract_radius] = _radius else contract[contract_index, contract_radius] = 0
 
 contract[contract_index, contract_online] = false
 contract[contract_index, contract_kiosk] = -1

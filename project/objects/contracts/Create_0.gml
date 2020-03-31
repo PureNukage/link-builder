@@ -21,37 +21,38 @@ contract = 0
 //	CREATE CONTRACTS
 var _data = create_data_needed(data_types.binance_ETHUSD)
 var levels = create_level_ports(1,1,1,1)
-create_contract("Eth Transfer","",5,150,s_portrait_ethereum,2,10,5,contract_types.people,levels,_data,false)
+var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_payment_eth,200,conditions.cnd_reliability_high,100)
+create_contract("Eth Transfer","",5,150,s_portrait_ethereum,2,10,5,contract_types.people,levels,_data,false,Conditions,contract_types.hackathon)
 
 var _data = create_data_needed(data_types.binance_ETHUSD,data_types.paypal)
 var levels = create_level_ports(2,3,4,5)
 var _string = "DeFi users can now trade their ETH with\neach other for USD by querying a PayPal invoice"
 var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_payment_eth,200,conditions.cnd_reliability_high,100)
-create_contract("LinkPal",_string,20,500,s_portrait_linkpal,2,10,5,contract_types.people,levels,_data,true,Conditions)
+create_contract("LinkPal",_string,20,500,s_portrait_linkpal,2,10,5,contract_types.people,levels,_data,true,Conditions,contract_types.hackathon)
 
 var _data = create_data_needed(data_types.binance_ETHUSD,data_types.github)
 var levels = create_level_ports(2,3,4,5)
 var _string = "An open-source software contributor is paid\nwhen their code gets merged into a project"
 var Conditions = create_conditions(conditions.cnd_active,400,conditions.cnd_payment_eth,200,conditions.cnd_reliability_high,250)
-create_contract("BountiBot",_string,20,500,s_portrait_bountibot,2,10,5,contract_types.people,levels,_data,true,Conditions)
+create_contract("BountiBot",_string,20,500,s_portrait_bountibot,2,10,5,contract_types.people,levels,_data,true,Conditions,contract_types.hackathon)
 
 var _data = create_data_needed(data_types.binance_ETHUSD)
 var _string = "Price Feeds can generate\na Decentralized price that nearby Contracts may use"
 var levels = create_level_ports(1,2,3,4)
 var Conditions = create_conditions(conditions.cnd_active,0)
-create_contract("Price Feed",_string,0,500,s_portrait_ethereum,2,0,0,contract_types.utility,levels,_data,true,Conditions,384)
+create_contract("Price Feed",_string,0,500,s_portrait_ethereum,2,0,0,contract_types.utility,levels,_data,true,Conditions,contract_types.defi,384)
 
 var _data = create_data_needed(data_types.emailAPI)
 var _string = ""
 var levels = create_level_ports(1,1,1,1)
 var Conditions = create_conditions(conditions.cnd_active,125,conditions.cnd_reliability_high,125)
-create_contract("Cerberus Wallet 2FA",_string,8,0,s_portrait_blank,2,10,5,contract_types.people,levels,_data,true,Conditions)
+create_contract("Cerberus Wallet 2FA",_string,8,0,s_portrait_blank,2,10,5,contract_types.people,levels,_data,true,Conditions,contract_types.hackathon)
 
 var _data = create_data_needed(data_types.binance_ETHUSD)
 var _string = ""
 var levels = create_level_ports(1,1,1,1)
 var Conditions = create_conditions(conditions.cnd_active,125,conditions.cnd_reliability_high,125)
-create_contract("Backerr",_string,12,0,s_portrait_blank,2,10,5,contract_types.people,levels,_data,true,Conditions)
+create_contract("Backerr",_string,12,0,s_portrait_blank,2,10,5,contract_types.people,levels,_data,true,Conditions,contract_types.hackathon)
 
 //	GUI stuff
 menu_width = 340

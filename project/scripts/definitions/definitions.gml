@@ -134,10 +134,15 @@ enum conditions {
 #macro contract_linkfee 25
 #macro contract_radius 26
 #macro contract_conditions 27
+#macro contract_type2 28
 
 enum contract_types {
 	people,
-	utility
+	utility,
+	
+	hackathon,
+	defi,
+	enterprise
 }
 
 #macro node_name 0

@@ -740,32 +740,133 @@ if contracts_open and !instance_exists(mainmenu) {
 	draw_set_halign(fa_left)
 	draw_text(windowX+16,windowY+28,"Contracts")
 	
+	#region	Contract type submenus
+
+		draw_set_font(fnt_shop)
+		draw_set_halign(fa_center)
+		
+		//	Hackathon
+		var type_width = 100
+		var type_height = 40
+		var typeX = windowX+window_width-((type_width*3)+(6*3))
+		var typeY = windowY+5
+
+
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y,typeX,typeY,typeX+type_width,typeY+type_height) {
+			if contract_types == contract_types.hackathon draw_set_color(c_ltgray)
+			else draw_set_color(c_gray)
+			if input.mouse_left_press {
+				contract_types = contract_types.hackathon
+			}
+		} else {
+			if contract_types == contract_types.hackathon draw_set_color(c_gray) 
+			else draw_set_color(c_gray4)	
+		}
+		draw_roundrect(typeX,typeY,typeX+type_width,typeY+type_height,false)
+	
+		draw_set_color(c_black)
+		draw_text(typeX+type_width/2,typeY+type_height/2,"Hackathon")
+		
+		//	DeFi
+		var typeX = windowX+window_width-((type_width*2)+(6*2))
+		
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y,typeX,typeY,typeX+type_width,typeY+type_height) {
+			if contract_types == contract_types.defi draw_set_color(c_ltgray)
+			else draw_set_color(c_gray)
+			if input.mouse_left_press {
+				contract_types = contract_types.defi
+			}
+		} else {
+			if contract_types == contract_types.defi draw_set_color(c_gray) 
+			else draw_set_color(c_gray4)	
+		}
+		draw_roundrect(typeX,typeY,typeX+type_width,typeY+type_height,false)
+	
+		draw_set_color(c_black)
+		draw_text(typeX+type_width/2,typeY+type_height/2,"DeFi")
+		
+		
+		//	Enterprise
+		var typeX = windowX+window_width-((type_width*1)+(6*1))
+		
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y,typeX,typeY,typeX+type_width,typeY+type_height) {
+			if contract_types == contract_types.enterprise draw_set_color(c_ltgray)
+			else draw_set_color(c_gray)
+			if input.mouse_left_press {
+				contract_types = contract_types.enterprise
+			}
+		} else {
+			if contract_types == contract_types.enterprise draw_set_color(c_gray) 
+			else draw_set_color(c_gray4)	
+		}
+		draw_roundrect(typeX,typeY,typeX+type_width,typeY+type_height,false)
+	
+		draw_set_color(c_black)
+		draw_text(typeX+type_width/2,typeY+type_height/2,"Enterprise")
+	
+	
+	
+	
+	
+	#endregion
+	
+	draw_set_color(c_black)
+	draw_set_halign(fa_left)
 	draw_set_font(fnt_plaque_name)
 	var spacer = 64
 	
 	var value_array = []
-	value_array[0,0] = 0
-	value_array[0,1] = 0
-	value_array[0,2] = 0 
+	value_array[0,0] = 0		//	Price of the Contract in VALUE
+	value_array[0,1] = 0		//	string width of the amount
+	value_array[0,2] = 0		//	string height of the amount
+	value_array[0,3] = false	//	is this price being used for this contract_type2?
 	value_array[1,0] = 500
 	value_array[1,1] = 0
 	value_array[1,2] = 0
+	value_array[1,3] = false
+	//value_array[2,0] = 1000
+	//value_array[2,1] = 0
+	//value_array[2,2] = 0
+	//value_array[2,3] = false
+	//value_array[3,0] = 2000
+	//value_array[3,1] = 0
+	//value_array[3,2] = 0
+	//value_array[3,3] = false
 	var value_width = 0
 	
+	//	Preliminary loop through contracts
+	for(var c=0;c<array_height_2d(contracts.contract);c++) {
+		var name = contracts.contract[c, contract_name]
+		var price = contracts.contract[c, contract_price]
+		var name_width = string_width(name) + buffer*2
+		var name_height = string_height(name) + buffer*2	
+		
+		//	Check this contracts price againts prices in value_array
+		for(var v=0;v<array_height_2d(value_array);v++) {
+			if price == value_array[v,0] {
+				if contracts.contract[c, contract_available] and contracts.contract[c, contract_type2] == contract_types value_array[v,3] = true
+				value_array[v,1] += name_width + buffer
+				var name_height_ext = name_height + spacer
+				if name_height_ext > value_array[v,2] value_array[v,2] = name_height_ext
+			}
+		}
+	}
+	
+	//	Draw the value prices
 	var yy = borderY+2+buffer*4 - surface_offsetY
 	for(var v=array_height_2d(value_array)-1;v>-1;v--) {
-		var String_width = string_width(string(value_array[v,0]))
-		String_width += buffer*2 + sprite_get_width(s_resource_value_shop)+buffer
-		if String_width > value_width value_width = String_width
+		if value_array[v,3] {
+			var String_width = string_width(string(value_array[v,0]))
+			String_width += buffer*2 + sprite_get_width(s_resource_value_shop)+buffer
+			if String_width > value_width value_width = String_width
 		
 		
-		if yy > borderY+2 and yy < windowY+window_height-120 {
-			draw_text(windowX+buffer,yy,string(value_array[v,0]))
-			draw_sprite(s_resource_value_shop,0,windowX+buffer*6,yy)
+			if yy > borderY+2 and yy < windowY+window_height-120 {
+				draw_text(windowX+buffer,yy,string(value_array[v,0]))
+				draw_sprite(s_resource_value_shop,0,windowX+buffer*6,yy)
+			}
 		}
-		
 		yy += 64 + spacer
-
 	}
 	
 	var pageX = windowX+value_width+1
@@ -783,27 +884,21 @@ if contracts_open and !instance_exists(mainmenu) {
 	var surfaceX = pageX+surface_offsetX
 	var surfaceY = pageY+surface_offsetY
 	
-	//	Preliminary loop through contracts
-	for(var c=0;c<array_height_2d(contracts.contract);c++) {
-		var name = contracts.contract[c, contract_name]
-		var price = contracts.contract[c, contract_price]
-		var name_width = string_width(name) + buffer*2
-		var name_height = string_height(name) + buffer*2	
-		
-		//	Check this contracts price againts prices in value_array
-		for(var v=0;v<array_height_2d(value_array);v++) {
-			if price == value_array[v,0] {
-				value_array[v,1] += name_width + buffer
-				var name_height_ext = name_height + spacer
-				if name_height_ext > value_array[v,2] value_array[v,2] = name_height_ext
-			}
-		}
-	}
-	
 	//	Get surface width and height from value_array
 	for(var v=0;v<array_height_2d(value_array);v++) {
 		if value_array[v,1] > 0 surface_width += value_array[v,1]
 		if value_array[v,2] > 0 surface_height += value_array[v,2] + spacer + buffer*2
+	}
+	
+	if time.seconds_switch {	
+		debug_log("value_width: "+string(value_width))
+		debug_log("pageX: "+string(pageX))	
+		debug_log("pageY: "+string(pageY))
+		debug_log("page_width: "+string(page_width))
+		debug_log("page_height: "+string(page_height))
+		
+		debug_log("surface_width: "+string(surface_width))
+		debug_log("surface_height: "+string(surface_height))
 	}
 	
 	//	Create surface
@@ -819,7 +914,7 @@ if contracts_open and !instance_exists(mainmenu) {
 		draw_set_valign(fa_middle)
 		for(var v=array_height_2d(value_array)-1;v>-1;v--) {
 			for(var c=0;c<array_height_2d(contracts.contract);c++) {
-				if contracts.contract[c, contract_price] == value_array[v,0] and contracts.contract[c, contract_available] {
+				if contracts.contract[c, contract_price] == value_array[v,0] and contracts.contract[c, contract_available] and contracts.contract[c, contract_type2] == contract_types {
 					var name = contracts.contract[c, contract_name]
 					var price = contracts.contract[c, contract_price]
 					var name_width = string_width(name) + buffer*2
@@ -959,8 +1054,8 @@ if contracts_open and !instance_exists(mainmenu) {
 	
 	//	vertical scrollbar
 	draw_set_color(c_black)
-	var line1X = windowX+window_width-73
-	var line1Y = borderY+1
+	//var line1X = windowX+window_width-73
+	//var line1Y = borderY+1
 	draw_rectangle(windowX+window_width-72,borderY+1,windowX+window_width-73,windowY+window_height-64,false)
 	
 	var bar_width = 40
@@ -1020,8 +1115,8 @@ if contracts_open and !instance_exists(mainmenu) {
 	if contract_window_width < surface_width - 100 {
 		//	horizontal scrollbar
 		draw_set_color(c_black)
-		var line2X = windowX
-		var line2Y = windowY+window_height-65
+		//var line2X = windowX
+		//var line2Y = windowY+window_height-65
 		draw_rectangle(windowX,windowY+window_height-64,windowX+window_width-73,windowY+window_height-65,false)
 	
 		var bar_width = abs((windowX+window_width-73) - (windowX+buffer))
