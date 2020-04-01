@@ -879,14 +879,6 @@
             }
         },
         {
-            "Key": "6d95bf13-40c7-48d6-b3f2-7f6fad269924",
-            "Value": {
-                "id": "6db67d6f-07fd-4576-a30c-40d393d5eb89",
-                "resourcePath": "datafiles_yy\\tutorial_scripts.csv.yy",
-                "resourceType": "GMIncludedFile"
-            }
-        },
-        {
             "Key": "6e4b06ea-de1d-451e-bb76-a135b71a8647",
             "Value": {
                 "id": "4096c0ea-b1a1-4502-b45a-44ea57df0664",
@@ -1196,6 +1188,14 @@
                 "id": "61204339-d772-4139-b6d0-79cb70762679",
                 "resourcePath": "scripts\\price_feed_push\\price_feed_push.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "96b66dba-eac2-4951-9358-be270ef068ee",
+            "Value": {
+                "id": "fd62310f-4043-4130-95db-edae16291089",
+                "resourcePath": "datafiles_yy\\tutorial_scripts.csv.yy",
+                "resourceType": "GMIncludedFile"
             }
         },
         {
