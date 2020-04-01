@@ -757,6 +757,8 @@ if contracts_open and !instance_exists(mainmenu) {
 			else draw_set_color(c_gray)
 			if input.mouse_left_press {
 				contract_types = contract_types.hackathon
+				surface_offsetX = 0
+				surface_offsetY = 0
 			}
 		} else {
 			if contract_types == contract_types.hackathon draw_set_color(c_gray) 
@@ -775,6 +777,8 @@ if contracts_open and !instance_exists(mainmenu) {
 			else draw_set_color(c_gray)
 			if input.mouse_left_press {
 				contract_types = contract_types.defi
+				surface_offsetX = 0
+				surface_offsetY = 0
 			}
 		} else {
 			if contract_types == contract_types.defi draw_set_color(c_gray) 
@@ -794,6 +798,8 @@ if contracts_open and !instance_exists(mainmenu) {
 			else draw_set_color(c_gray)
 			if input.mouse_left_press {
 				contract_types = contract_types.enterprise
+				surface_offsetX = 0
+				surface_offsetY = 0
 			}
 		} else {
 			if contract_types == contract_types.enterprise draw_set_color(c_gray) 
@@ -824,49 +830,64 @@ if contracts_open and !instance_exists(mainmenu) {
 	value_array[1,1] = 0
 	value_array[1,2] = 0
 	value_array[1,3] = false
-	//value_array[2,0] = 1000
-	//value_array[2,1] = 0
-	//value_array[2,2] = 0
-	//value_array[2,3] = false
-	//value_array[3,0] = 2000
-	//value_array[3,1] = 0
-	//value_array[3,2] = 0
-	//value_array[3,3] = false
+	value_array[2,0] = 1000
+	value_array[2,1] = 0
+	value_array[2,2] = 0
+	value_array[2,3] = false
+	value_array[3,0] = 1500
+	value_array[3,1] = 0
+	value_array[3,2] = 0
+	value_array[3,3] = false
+	value_array[4,0] = 2000
+	value_array[4,1] = 0
+	value_array[4,2] = 0
+	value_array[4,3] = false
+	value_array[5,0] = 2500
+	value_array[5,1] = 0
+	value_array[5,2] = 0
+	value_array[5,3] = false
+	value_array[6,0] = 3000
+	value_array[6,1] = 0
+	value_array[6,2] = 0
+	value_array[6,3] = false
 	var value_width = 0
 	
 	//	Preliminary loop through contracts
 	for(var c=0;c<array_height_2d(contracts.contract);c++) {
 		var name = contracts.contract[c, contract_name]
 		var price = contracts.contract[c, contract_price]
-		var name_width = string_width(name) + buffer*2
+		var name_width = string_width(name) + buffer*10
 		var name_height = string_height(name) + buffer*2	
 		
 		//	Check this contracts price againts prices in value_array
 		for(var v=0;v<array_height_2d(value_array);v++) {
-			if price == value_array[v,0] {
+			if price == value_array[v,0] and contracts.contract[c, contract_type2] == contract_types {
 				if contracts.contract[c, contract_available] and contracts.contract[c, contract_type2] == contract_types value_array[v,3] = true
 				value_array[v,1] += name_width + buffer
-				var name_height_ext = name_height + spacer
+				var name_height_ext = name_height + 64 + spacer
 				if name_height_ext > value_array[v,2] value_array[v,2] = name_height_ext
 			}
 		}
 	}
 	
 	//	Draw the value prices
+	var how_many_values = 0
 	var yy = borderY+2+buffer*4 - surface_offsetY
 	for(var v=array_height_2d(value_array)-1;v>-1;v--) {
 		if value_array[v,3] {
+			how_many_values++
 			var String_width = string_width(string(value_array[v,0]))
 			String_width += buffer*2 + sprite_get_width(s_resource_value_shop)+buffer
 			if String_width > value_width value_width = String_width
 		
 		
-			if yy > borderY+2 and yy < windowY+window_height-120 {
+			if yy > borderY+20 and yy < windowY+window_height-80 {
 				draw_text(windowX+buffer,yy,string(value_array[v,0]))
 				draw_sprite(s_resource_value_shop,0,windowX+buffer*6,yy)
 			}
+			yy += 64 + spacer
 		}
-		yy += 64 + spacer
+		//yy += 64 + spacer
 	}
 	
 	var pageX = windowX+value_width+1
@@ -886,8 +907,10 @@ if contracts_open and !instance_exists(mainmenu) {
 	
 	//	Get surface width and height from value_array
 	for(var v=0;v<array_height_2d(value_array);v++) {
-		if value_array[v,1] > 0 surface_width += value_array[v,1]
-		if value_array[v,2] > 0 surface_height += value_array[v,2] + spacer + buffer*2
+		//if value_array[v,1] > 0 surface_width += value_array[v,1]
+		//if value_array[v,2] > 0 surface_height += value_array[v,2] + spacer + buffer*2
+		if value_array[v,1] > surface_width surface_width = value_array[v,1]
+		if value_array[v,2] > surface_height surface_height = (value_array[v,2]*how_many_values) + spacer
 	}
 	
 	if time.seconds_switch {	
@@ -914,7 +937,7 @@ if contracts_open and !instance_exists(mainmenu) {
 		draw_set_valign(fa_middle)
 		for(var v=array_height_2d(value_array)-1;v>-1;v--) {
 			for(var c=0;c<array_height_2d(contracts.contract);c++) {
-				if contracts.contract[c, contract_price] == value_array[v,0] and contracts.contract[c, contract_available] and contracts.contract[c, contract_type2] == contract_types {
+				if contracts.contract[c, contract_price] == value_array[v,0] and contracts.contract[c, contract_available] and contracts.contract[c, contract_type2] == contract_types and value_array[v,3] {
 					var name = contracts.contract[c, contract_name]
 					var price = contracts.contract[c, contract_price]
 					var name_width = string_width(name) + buffer*2
@@ -1012,7 +1035,7 @@ if contracts_open and !instance_exists(mainmenu) {
 				}
 			}
 			xx = pageX + 32
-			yy += name_height + spacer
+			if value_array[v,3] yy += name_height + spacer
 		}
 		
 		surface_reset_target()
@@ -1024,6 +1047,8 @@ if contracts_open and !instance_exists(mainmenu) {
 	
 	surface_free(contract_surface)
 	
+	contract_window_width = clamp(contract_window_width,contract_window_width_default,pageX+surface_width+buffer)
+	
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,windowX+window_width-16,windowY,windowX+window_width+16,windowY+window_height+16) {
 		window_set_cursor(cr_size_we)
 		if input.mouse_left_press {
@@ -1032,7 +1057,7 @@ if contracts_open and !instance_exists(mainmenu) {
 		}
 		if input.mouse_left and contract_window_width_offset > -1 {
 			contract_window_width = contract_window_width_previous + (gui_mouse_x - contract_window_width_offset)
-			contract_window_width = clamp(contract_window_width,contract_window_width_default,surface_width)
+			contract_window_width = clamp(contract_window_width,contract_window_width_default,pageX+surface_width+buffer)
 		}
 		if input.mouse_left_release {
 			contract_window_width_offset = -1
@@ -1049,68 +1074,80 @@ if contracts_open and !instance_exists(mainmenu) {
 	if input.mouse_left and contract_window_width_offset > -1 {
 		window_set_cursor(cr_size_we)
 		contract_window_width = contract_window_width_previous + (gui_mouse_x - contract_window_width_offset)
-		contract_window_width = clamp(contract_window_width,contract_window_width_default,surface_width)
+		contract_window_width = clamp(contract_window_width,contract_window_width_default,pageX+surface_width+buffer)
 	}
 	
-	//	vertical scrollbar
-	draw_set_color(c_black)
-	//var line1X = windowX+window_width-73
-	//var line1Y = borderY+1
-	draw_rectangle(windowX+window_width-72,borderY+1,windowX+window_width-73,windowY+window_height-64,false)
+	if contract_window_height < surface_height - 100 {
+		//	vertical scrollbar
+		draw_set_color(c_black)
+		//var line1X = windowX+window_width-73
+		//var line1Y = borderY+1
+		draw_rectangle(windowX+window_width-72,borderY+1,windowX+window_width-73,windowY+window_height-64,false)
 	
-	var bar_width = 40
-	var bar_height = abs((windowY+window_height-65)-(borderY+buffer))
-	var barX = windowX+window_width-buffer-bar_width
-	var barY = borderY+buffer
+		var bar_width = 40
+		var bar_height = abs((windowY+window_height-65)-(borderY+buffer))
+		var barX = windowX+window_width-buffer-bar_width
+		var barY = borderY+buffer
 	
-	draw_set_color(c_gray5)
-	draw_roundrect_ext(barX,barY,barX+bar_width,barY+bar_height,15,15,false)
+		draw_set_color(c_gray5)
+		draw_roundrect_ext(barX,barY,barX+bar_width,barY+bar_height,15,15,false)
 	
-	var handle_width = 40
-	var handle_height = abs(surface_height - bar_height)
-	var handleX = windowX+window_width-buffer-bar_width
-	var handleY = barY + surface_offsetY
+		var handle_width = 40
+		var handle_height = (abs(surface_height - page_height)/surface_height) * bar_height
+		var handleX = windowX+window_width-buffer-bar_width
+		var handleY = barY + surface_offsetY
 	
-	var max_offsetY = bar_height-handle_height
-	var segment = bar_height/max_offsetY
-	var scroll_speed = 16
+		var max_offsetY = bar_height-handle_height
+		var segment = bar_height/max_offsetY
+		var scroll_speed = 16
 	
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) and contract_window_width_offset == -1 {
-		if point_in_rectangle(gui_mouse_x,gui_mouse_y,handleX,handleY,handleX+handle_width,handleY+handle_height) {
-			draw_set_color(c_ltgray)
-			if input.mouse_left_press {
-				vert_bar_y1 = gui_mouse_y
-			}
-			if input.mouse_left and vert_bar_y1 > -1 {
-				vert_bar_y2 = gui_mouse_y
-				if abs(vert_bar_y2 - vert_bar_y1) >= segment {
-					surface_offsetY += vert_bar_y2 - vert_bar_y1
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) and contract_window_width_offset == -1 {
+			if point_in_rectangle(gui_mouse_x,gui_mouse_y,handleX,handleY,handleX+handle_width,handleY+handle_height) {
+				draw_set_color(c_ltgray)
+				if input.mouse_left_press {
 					vert_bar_y1 = gui_mouse_y
-					surface_offsetY = clamp(surface_offsetY,0,max_offsetY)
 				}
-			}
-		} else {
-			draw_set_color(c_gray)
-			if input.mouse_left_press {
-				for(var s=0;s<max_offsetY;s++) {
-					var Y = barY + (s*segment)
-					if gui_mouse_y > Y and gui_mouse_y < Y+segment {
-						surface_offsetY = s	
+				if input.mouse_left and vert_bar_y1 > -1 {
+					vert_bar_y2 = gui_mouse_y
+					if abs(vert_bar_y2 - vert_bar_y1) >= segment {
+						surface_offsetY += vert_bar_y2 - vert_bar_y1
+						vert_bar_y1 = gui_mouse_y
+						surface_offsetY = clamp(surface_offsetY,0,max_offsetY)
+					}
+				}
+			} else {
+				draw_set_color(c_gray)
+				if input.mouse_left_press {
+					for(var s=0;s<max_offsetY;s++) {
+						var Y = barY + (s*segment)
+						if gui_mouse_y > Y and gui_mouse_y < Y+segment {
+							surface_offsetY = s	
+						}
 					}
 				}
 			}
+		} else {
+			draw_set_color(c_gray)	
 		}
-	} else {
-		draw_set_color(c_gray)	
-	}
-	draw_roundrect_ext(handleX,handleY,handleX+handle_width,handleY+handle_height,15,30,false)
+		draw_roundrect_ext(handleX,handleY,handleX+handle_width,handleY+handle_height,15,30,false)
 	
-	//	Vertical mouse scroll
-	if contract_mouseover and (input.scroll_up or input.scroll_down) {
-		if input.scroll_up surface_offsetY -= scroll_speed
-		if input.scroll_down surface_offsetY += scroll_speed
-		surface_offsetY = clamp(surface_offsetY,0,max_offsetY)
+		//	Vertical mouse scroll
+		if contract_mouseover and (input.scroll_up or input.scroll_down) {
+			if input.scroll_up surface_offsetY -= scroll_speed
+			if input.scroll_down surface_offsetY += scroll_speed
+			surface_offsetY = clamp(surface_offsetY,0,max_offsetY)
+		}
 	}
+	
+	//	DEBUGGING THE SURFACE AND SURFACE PAGE
+	
+	//draw_set_color(c_yellow)
+	//draw_set_alpha(.33)
+	//draw_roundrect(pageX-surface_offsetX,pageY-surface_offsetY,pageX-surface_offsetX+surface_width,pageY-surface_offsetY+surface_height,false)
+	
+	//draw_set_color(c_red)
+	//draw_roundrect(pageX,pageY,pageX+page_width,pageY+page_height,false)
+	//draw_set_alpha(1)
 	
 	if contract_window_width < surface_width - 100 {
 		//	horizontal scrollbar
@@ -1127,7 +1164,8 @@ if contracts_open and !instance_exists(mainmenu) {
 		draw_set_color(c_gray5)
 		draw_roundrect_ext(barX,barY,barX+bar_width,barY+bar_height,15,15,false)
 	
-		var handle_width = abs(surface_width-bar_width)
+		var handle_width = (abs(surface_width-page_width)/surface_width) * bar_width
+		var handle_width = (page_width/surface_width) * bar_width
 		var handle_height = 40
 		var handleX = barX + surface_offsetX
 		var handleY = windowY+window_height - 38 - buffer
@@ -1152,7 +1190,7 @@ if contracts_open and !instance_exists(mainmenu) {
 				}
 			} else {
 				draw_set_color(c_gray)
-				if input.mouse_left_press {
+				if input.mouse_left_press or input.mouse_left {
 					for(var s=0;s<max_offsetX;s++) {
 						var X = barX + (s*segment)
 						if gui_mouse_x > X and gui_mouse_x < X+segment {

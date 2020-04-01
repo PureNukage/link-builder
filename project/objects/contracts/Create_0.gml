@@ -54,6 +54,198 @@ var levels = create_level_ports(1,1,1,1)
 var Conditions = create_conditions(conditions.cnd_active,125,conditions.cnd_reliability_high,125)
 create_contract("Backerr",_string,12,0,s_portrait_blank,2,10,5,contract_types.people,levels,_data,true,Conditions,contract_types.hackathon)
 
+var name = "TradingSet"
+var _string = ""
+var reward = 15
+var price = 500
+var portrait = s_portrait_blank
+var channel_time = 2
+var max_traffic = 10
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,125,conditions.cnd_reliability_high,125)
+var Contract_type2 = contract_types.hackathon
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "Smart Marketing Campaign"
+var _string = ""
+var reward = 15
+var price = 500
+var portrait = s_portrait_blank
+var channel_time = 2
+var max_traffic = 10
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,125,conditions.cnd_reliability_high,125)
+var Contract_type2 = contract_types.hackathon
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "Synthetix"
+var _string = ""
+var reward = 25
+var price = 1000
+var portrait = s_portrait_blank
+var channel_time = 2
+var max_traffic = 10
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
+var Contract_type2 = contract_types.defi
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "Loopring"
+var _string = ""
+var reward = 25
+var price = 1500
+var portrait = s_portrait_blank
+var channel_time = 2
+var max_traffic = 10
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
+var Contract_type2 = contract_types.defi
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "Etherisc"
+var _string = ""
+var reward = 25
+var price = 1500
+var portrait = s_portrait_blank
+var channel_time = 2
+var max_traffic = 10
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
+var Contract_type2 = contract_types.defi
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "Compound"
+var _string = ""
+var reward = 25
+var price = 1500
+var portrait = s_portrait_blank
+var channel_time = 2
+var max_traffic = 10
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
+var Contract_type2 = contract_types.defi
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "Bank Bond"
+var _string = ""
+var reward = 25
+var price = 2000
+var portrait = s_portrait_blank
+var channel_time = 2
+var max_traffic = 10
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
+var Contract_type2 = contract_types.enterprise
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "eSports Tournament"
+var _string = ""
+var reward = 25
+var price = 1000
+var portrait = s_portrait_blank
+var channel_time = 2
+var max_traffic = 10
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
+var Contract_type2 = contract_types.defi
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "Crop Insurance"
+var _string = ""
+var reward = 25
+var price = 3000
+var portrait = s_portrait_blank
+var channel_time = 2
+var max_traffic = 10
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
+var Contract_type2 = contract_types.enterprise
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "Cyber Security Insurance"
+var _string = ""
+var reward = 25
+var price = 3000
+var portrait = s_portrait_blank
+var channel_time = 2
+var max_traffic = 10
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
+var Contract_type2 = contract_types.enterprise
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "Car Insurance"
+var _string = ""
+var reward = 25
+var price = 3000
+var portrait = s_portrait_blank
+var channel_time = 2
+var max_traffic = 10
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
+var Contract_type2 = contract_types.enterprise
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "Supply-Chain Agriculture Workflow"
+var _string = ""
+var reward = 25
+var price = 3000
+var portrait = s_portrait_blank
+var channel_time = 2
+var max_traffic = 10
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
+var Contract_type2 = contract_types.enterprise
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
 //	GUI stuff
 menu_width = 340
 menu_height = 256
