@@ -915,5 +915,10 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 		window_mouseover = false	
 	}
 	
+	////	Adjust if a UI plaque and not fully on screen
+	//if windowX+window_width > display_get_gui_width() {
+	//	windowX -= display_get_gui_width() - windowX+window_width	
+	//}
+	
 	
 }

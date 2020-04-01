@@ -717,21 +717,6 @@ if contracts_open and !instance_exists(mainmenu) {
 		menu_mouseover = false
 	}
 	
-	//if point_in_rectangle(gui_mouse_x,gui_mouse_y,windowX+window_width-16,windowY,windowX+window_width+16,windowY+window_height+16) {
-	//	if input.mouse_left_press {
-	//		contract_window_width_offset = gui_mouse_x
-	//		contract_window_width_previous = contract_window_width
-	//	}
-	//	if input.mouse_left and contract_window_width_offset > -1 {
-	//		contract_window_width = contract_window_width_previous + (gui_mouse_x - contract_window_width_offset)
-	//		contract_window_width = clamp(contract_window_width,contract_window_width_default)
-	//	}
-	//	if input.mouse_left_release {
-	//		contract_window_width_offset = -1
-	//		contract_window_width_previous = -1
-	//	}
-	//}
-	
 	var borderY = windowY + 50
 	draw_set_color(c_black)
 	draw_rectangle(windowX,borderY,windowX+window_width,borderY+1,false)
@@ -953,11 +938,21 @@ if contracts_open and !instance_exists(mainmenu) {
 								var X = xx+name_width-surface_offsetX+buffer*2
 								var Y = yy-surface_offsetY
 								plaqueCreate(X,Y,kiosk,c)
+								if X + Plaque.window_width > display_get_gui_width() {
+									Plaque.windowX = xx-name_width-surface_offsetX-buffer*2
+								}
 						} else if Plaque.index != c {
 							instance_destroy(Plaque)
 							var X = xx+name_width-surface_offsetX+buffer*2
 							var Y = yy-surface_offsetY
 							plaqueCreate(X,Y,kiosk,c)
+							if X + Plaque.window_width > display_get_gui_width() {
+								Plaque.windowX = xx-name_width-surface_offsetX-buffer*2
+							}
+						}
+						
+						if Plaque > -1 and xx+name_width-surface_offsetX+buffer*2 + Plaque.window_width > display_get_gui_width() {
+							Plaque.windowX = xx-name_width-surface_offsetX-buffer*2	
 						}
 						
 						draw_set_color(c_ltgray)	

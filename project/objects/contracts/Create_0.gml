@@ -153,7 +153,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 var name = "Bank Bond"
 var _string = ""
 var reward = 25
-var price = 2000
+var price = 2500
 var portrait = s_portrait_blank
 var channel_time = 2
 var max_traffic = 10
@@ -233,7 +233,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 var name = "Supply-Chain Agriculture Workflow"
 var _string = ""
 var reward = 25
-var price = 3000
+var price = 2500
 var portrait = s_portrait_blank
 var channel_time = 2
 var max_traffic = 10

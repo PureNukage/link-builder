@@ -14,3 +14,5 @@ Plaque.windowY = Y
 Plaque.object_type = type
 Plaque.index = Index
 Plaque.mode = mode.on
+
+return Plaque
