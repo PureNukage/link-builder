@@ -179,6 +179,7 @@ if data_open {
 			//	prelim loop through list
 			var amount = 0
 			var longest_line = 0
+			var array = []
 			draw_set_font(fnt_plaque_name)
 			for(var d=0;d<array_height_2d(shop.item_data);d++) {
 				if shop.item_data[d, item_available] {
@@ -188,6 +189,7 @@ if data_open {
 					var Price = shop.item_data[d, item_price]
 					if (Filter == data_filters.pricedata and price_button) or (Filter == data_filters.webdata and web_button) {
 						if (owned_button == 0) or (owned_button == 1 and Purchased) or (owned_button == 2 and !Purchased) {
+							array[amount] = d
 							amount++
 							var name_width = string_width(name)
 							var price_width = string_width(string(Price))
@@ -209,8 +211,82 @@ if data_open {
 			var data_clamp = 5
 			//var data_index = 0
 			var data_amount = 0
+			
+			//for(var d=data_index;d<array_height_2d(array);d++) {
+			//	var index = array[d]
+			//	var Purchased = shop.item_data[index, item_purchased]
+			//	var name = shop.item_data[index, item_name]
+			//	var Price = shop.item_data[index, item_price]
+				
+			//	draw_set_color(c_black)
+			//	draw_roundrect(lineX-2,lineY-2,lineX+line_width+2,lineY+line_height+2,false)
+			//	if point_in_rectangle(gui_mouse_x,gui_mouse_y,lineX,lineY,lineX+line_width,lineY+line_height) {
+								
+			//		if !plaqueCheck() {
+			//			var X = lineX+line_width+buffer
+			//			var Y = lineY
+			//			plaqueCreate(X,Y,data,d)
+			//		} else if Plaque.index != d {
+			//			instance_destroy(Plaque)	
+			//			var X = lineX+line_width+buffer
+			//			var Y = lineY
+			//			plaqueCreate(X,Y,data,d)
+			//		}
+								
+			//		draw_set_color(c_ltgray)
+			//		if input.mouse_left_press {
+			//			if shop.item_data[d, item_object_index] == -1 {
+			//				//	Delete the item we're currently placing if there is one 
+			//				if ds_list_size(input.selections) > 0 {
+			//					for(var i=0;i<ds_list_size(input.selections);i++) {
+			//						input.selections[| i].selected = false	
+			//					}
+			//				}
+			//				ds_list_clear(input.selections)
+			//				if instance_exists(c_item) {
+			//					with c_item {
+			//						if states == states.placement {
+			//							instance_destroy()	
+			//						}
+			//					}
+			//				}	
+			//				data_mouseover = false
+			//				data_open = false
+			//				input.grid_moved = true
+			//				input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",data)
+			//				input.selection.selected = true
+			//				input.selection.item_index = d
+			//				input.selection.name = shop.item_data[d, item_name]
+			//				input.selection.portrait = shop.item_data[d, item_portrait]
+			//				if !shop.item_data[d, item_purchased] input.selection.price = shop.item_data[d, item_price]
+			//				else input.selection.price = 0
+			//				input.selection.data_generated = shop.item_data[d, item_data_generated]
+			//				if ds_list_find_index(input.selections,input.selection) == -1 {
+			//					ds_list_add(input.selections,input.selection)	
+			//				}
+			//			} else {
+			//				var ID = shop.item_data[d, item_object_index]
+			//				camera_goto(ID.x,ID.y,ID)
+			//				data_mouseover = false
+			//				data_open = false
+			//			}
+							
+			//		}
+			//	} else {
+								
+			//		if plaqueCheck() and Plaque.index == d {
+			//			instance_destroy(Plaque)
+			//			Plaque = -1
+			//		}
+								
+			//		draw_set_color(c_gray)
+			//	}
+			//	draw_roundrect(lineX,lineY,lineX+line_width,lineY+line_height,false)
+				
+			//}
 	
 			for(var d=data_index;d<array_height_2d(shop.item_data);d++) {
+			//for(var d=data_index;d<array_height_2d(array);d++) {
 				if data_amount < data_clamp and d < array_height_2d(shop.item_data) and shop.item_data[d, item_available] {
 					var Filter = shop.item_data[d, item_filter]
 					var Purchased = shop.item_data[d, item_purchased]
@@ -330,32 +406,44 @@ if data_open {
 				draw_roundrect(barX,barY,barX+bar_width,barY+bar_height,false)
 	
 				//	draw handle
-				if point_in_rectangle(gui_mouse_x,gui_mouse_y,handleX,handleY,handleX+handle_width,handleY+handle_height) {
-					draw_set_color(c_ltgray)
-					if input.mouse_left_press {
-						data_barclickY1 = gui_mouse_y	
-					}
-					if input.mouse_left and data_barclickY1 > -1 { 
-						data_barclickY2 = gui_mouse_y
-						if abs(data_barclickY2 - data_barclickY1) > segment_height {
-							if data_barclickY2 - data_barclickY1 > 0 {
-								data_index++
-								if data_index > segments data_index = segments
-							} else {
-								data_index--	
-								if data_index < 0 data_index = 0
-							}
-							data_barclickY1 = gui_mouse_y
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) {
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,handleX,handleY,handleX+handle_width,handleY+handle_height) {
+						draw_set_color(c_ltgray)
+						if input.mouse_left_press {
+							data_barclickY1 = gui_mouse_y	
 						}
-					}
-					if input.mouse_left_release {
-						data_barclickY1 = -1
-						data_barclickY2 = -1
+						if input.mouse_left and data_barclickY1 > -1 { 
+							data_barclickY2 = gui_mouse_y
+							if abs(data_barclickY2 - data_barclickY1) > segment_height {
+								if data_barclickY2 - data_barclickY1 > 0 {
+									data_index++
+									if data_index > segments data_index = segments
+								} else {
+									data_index--	
+									if data_index < 0 data_index = 0
+								}
+								data_barclickY1 = gui_mouse_y
+							}
+						}
+						if input.mouse_left_release {
+							data_barclickY1 = -1
+							data_barclickY2 = -1
+						}
+					} else {
+						draw_set_color(c_gray)
+						if input.mouse_left_press or input.mouse_left {
+							for(var s=0;s<segments;s++) {
+								var Y = barY + (s*segment_height)
+								if gui_mouse_y > Y and gui_mouse_y < Y+segment_height {
+									data_index = s	
+								}
+							}
+						}
 					}
 				} else {
 					data_barclickY1 = -1
 					data_barclickY2 = -1
-					draw_set_color(c_gray)
+					draw_set_color(c_gray)	
 				}
 				draw_roundrect(handleX,handleY,handleX+handle_width,handleY+handle_height,false)
 		
@@ -899,14 +987,14 @@ if contracts_open and !instance_exists(mainmenu) {
 	}
 	
 	if time.seconds_switch {	
-		debug_log("value_width: "+string(value_width))
-		debug_log("pageX: "+string(pageX))	
-		debug_log("pageY: "+string(pageY))
-		debug_log("page_width: "+string(page_width))
-		debug_log("page_height: "+string(page_height))
+		//debug_log("value_width: "+string(value_width))
+		//debug_log("pageX: "+string(pageX))	
+		//debug_log("pageY: "+string(pageY))
+		//debug_log("page_width: "+string(page_width))
+		//debug_log("page_height: "+string(page_height))
 		
-		debug_log("surface_width: "+string(surface_width))
-		debug_log("surface_height: "+string(surface_height))
+		//debug_log("surface_width: "+string(surface_width))
+		//debug_log("surface_height: "+string(surface_height))
 	}
 	
 	//	Create surface

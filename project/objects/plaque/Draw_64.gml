@@ -560,7 +560,7 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 						}
 					
 					}
-					if data_width_adjusted != default_data_width data_width = default_data_width
+					if data_width_adjusted > default_data_width data_width = data_width_adjusted
 				
 				
 					var dataX = nameX+name_width+p_offset+(data_width/2)
@@ -726,10 +726,8 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 					if String_width + data_buffer > data_width_adjusted {
 						data_width_adjusted = String_width+data_buffer	
 					}
-					
 				}
-				if data_width_adjusted != default_data_width data_width = default_data_width
-				
+				if data_width_adjusted > default_data_width data_width = data_width_adjusted
 				
 				var dataX = nameX+name_width+p_offset+(data_width/2)
 				var dataY = nameY+name_height/2

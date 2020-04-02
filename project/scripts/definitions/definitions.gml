@@ -46,10 +46,35 @@ enum camera_mode {
 enum data_types {
 	binance_ETHUSD,	
 	cryptocompare_ETHUSD,
+	coinbase_ETHUSD,
 	bravenewcoin_ETHUSD,
+	alphacurrency_ETHUSD,
+	kaiko_ETHUSD,
+	
+	binance_LINKUSD,
+	cryptocompare_LINKUSD,
+	coinbase_LINKUSD,
+	bravenewcoin_LINKUSD,
+	alphacurrency_LINKUSD,
+	kaiko_LINKUSD,
+	
+	//binance_XRPUSD,
+	//cryptocompare_XRPUSD,
+	//bravenewcoin_XRPUSD,
+	//alphacurrency_XRPUSD,
+	//kaiko_XRPUSD,
+	
 	paypal,
 	github,
 	emailAPI,
+	twitter,
+	flightAPI,
+	videogameAPI,
+	firewallAPI,
+	gpsAPI,
+	weatherAPI,
+	vehicleAPI,
+	vehicle_freezerAPI,
 	
 }
 
