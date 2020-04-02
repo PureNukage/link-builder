@@ -22,6 +22,10 @@ while instance_position(new_x,new_y,node) or instance_position(new_x,new_y,data)
 	_random += 32
 }
 
+if goal_current > -1 and instance_exists(goal_current) and goal_current.object_index == goal {
+	instance_destroy(goal_current)
+}
+
 goal_current = instance_create_layer(new_x,new_y,"Instances",goal)
 goal_current.goal_type = goal_type.idlewalk
 

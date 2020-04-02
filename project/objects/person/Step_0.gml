@@ -124,12 +124,13 @@ switch(states)
 				var distance_away_from_goal = -1
 				if goal_current.goal_type = goal_type.walking_to_kiosk {
 					distance_away_from_goal = 256	
-				} else distance_away_from_goal = 2
+				} else distance_away_from_goal = 8
 			
 				if point_distance(x,y,goal_current.x,goal_current.y) > distance_away_from_goal {
 					
 					//	Make sure kiosk exists
 					if smartcontract > -1 and !contracts.contract[smartcontract, contract_online] {
+						debug_log("This contract is not online. Going into idle")
 						if goal_current.object_index == goal {
 							instance_destroy(goal_current)
 						}
@@ -153,6 +154,8 @@ switch(states)
 				} 
 				//	arrived at destination!
 				else {
+					
+					debug_log("I have arrived at my goal")
 					
 					//	switch of the status of the line
 					switch(goal_current.goal_type)
@@ -259,6 +262,7 @@ switch(states)
 			}
 			//	I have no goal
 			else {
+				debug_log("I have no goal. Going into idle")
 				states = states.idle
 			}
 			

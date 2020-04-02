@@ -7,6 +7,8 @@ else var time_stream = "[0] "
 
 var _object_name = object_get_name(object_index)
 
-var finished_string = time_stream + string_upper(_object_name) + " " + _string
+var ID = string(id)
+
+var finished_string = time_stream + string_upper(_object_name) + " " + ID + " " + _string
 
 show_debug_message(finished_string)
