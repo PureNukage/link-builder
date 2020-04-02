@@ -229,9 +229,13 @@ switch(states)
 						}
 					
 						//	Time to use the utility contract!
+						var gasfee = contracts.contract[smartcontract, contract_gasfee_total]
+						var linkfee = contracts.contract[smartcontract, contract_linkfee]
 						if time.stream_seconds >= timer {
-							if player.points >= contracts.contract[smartcontract, contract_price] {
+							if player.link >= linkfee and player.eth >= gasfee {
 								debug_log("Using reference price feed!")
+								
+								resource_changed("ETH",contracts.contract[smartcontract, contract_gasfee_base],x,y-128,false)
 								
 								used = true
 							
@@ -310,14 +314,15 @@ switch(states)
 							}
 							//	Not enough money 
 							else {
-								if decentralized {
-									debug_log("Reference price feed is no longer accurate enough")
-									decentralized = false	
+								//if decentralized {
+									debug_log("Not enough ETH or LINK to use this contract!")
+									decentralized = false
+									active = false
 									price_feed_refresh()
-								}
+								//}
 							}
 							
-						}
+						} 
 					
 					}
 					

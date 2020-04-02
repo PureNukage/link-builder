@@ -298,6 +298,9 @@ if resources_active {
 			resource_changed("$$",amount_of_money,gui_mouse_x,gui_mouse_y+128,true)
 			resource_changed("LINK",-link_trade,gui_mouse_x,gui_mouse_y+256,true)
 		}
+		if input.mouse_right_press {
+			resource_changed("LINK",-100,gui_mouse_x,gui_mouse_y+128,true)	
+		}
 		if input.scroll_up or input.scroll_down {
 			link_trade += input.scroll_up - input.scroll_down
 			link_trade = clamp(link_trade,0,50)
@@ -329,7 +332,11 @@ if resources_active {
 
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,moneyX,_yy,moneyX+money_width,_yy+_height) {
 		gui_popup(moneyX,_yy,moneyX+money_width,_yy+_height,1,"Used to purchase LINK and ETH")
-		draw_set_color(c_gray)		
+		draw_set_color(c_gray)
+		
+		if input.mouse_right_press {
+			resource_changed("$$",-100,gui_mouse_x,gui_mouse_y+128,true)	
+		}
 	} else {
 		draw_set_color(c_dkgray)	
 	}
@@ -358,6 +365,9 @@ if resources_active {
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,valueX,_yy,valueX+value_width,_yy+_height) {
 		gui_popup(valueX,_yy,valueX+value_width,_yy+_height,1,"Total value of the space")
 		draw_set_color(c_gray)		
+		if input.mouse_right_press {
+			resource_changed("VALUE",-100,gui_mouse_x,gui_mouse_y+128,true)	
+		}
 	} else {
 		draw_set_color(c_dkgray)	
 	}
@@ -391,6 +401,9 @@ if resources_active {
 		if input.mouse_left_press and player.money >= amount_of_money and amount_of_money > 0 {
 			resource_changed("$$",amount_of_money,gui_mouse_x,gui_mouse_y+128,true)
 			resource_changed("ETH",-eth_trade,gui_mouse_x,gui_mouse_y+256,true)
+		}
+		if input.mouse_right_press {
+			resource_changed("ETH",-100,gui_mouse_x,gui_mouse_y+128,true)	
 		}
 		if input.scroll_up or input.scroll_down {
 			eth_trade += input.scroll_up - input.scroll_down
