@@ -316,7 +316,7 @@ switch(tutorial)
 						shop.item_node[0,node_available] = true
 						shop.item_node[1,node_available] = true
 						shop.item_data[0,item_available] = true
-						shop.item_data[3,item_available] = true
+						shop.item_data[12,item_available] = true
 						stage++
 					}
 					
@@ -380,7 +380,7 @@ switch(tutorial)
 				
 					var Node1 = item_create(node,0,0,0,"BryceMathsters",s_portrait_node,0)
 					var Node2 = item_create(node,0,0,1,"Feetsy",s_portrait_node,0)
-					var Paypal = item_create(data,0,0,3,"PayPal",s_portrait_paypal,0)
+					var Paypal = item_create(data,0,0,12,"PayPal",s_portrait_paypal,0)
 					var ethusd = item_create(data,0,0,2,"BraveNewCoin ETH/USD",s_portrait_ethereum,0)
 					var Contract = item_create(kiosk,0,0,1,"LinkPal",s_portrait_linkpal,0,1)
 					
@@ -475,7 +475,7 @@ switch(tutorial)
 					var corruption_level = 100
 					if time.stream >= timer {
 						with data {
-							if data_generated == data_types.bravenewcoin_ETHUSD {
+							if data_generated == data_types.coinbase_ETHUSD {
 								shop.item_data[item_index, item_corruption] = corruption_level	
 								other.stage++
 								other.timer = time.stream + 360

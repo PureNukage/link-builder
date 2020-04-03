@@ -556,7 +556,6 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 						var data_name = shop.item_data[data_needed[d,0], item_name]
 						var String_width = string_width(data_name)
 						if String_width + data_buffer > default_data_width {
-							debug_log("poop")
 							data_width_adjusted = String_width+data_buffer	
 						}
 					}
