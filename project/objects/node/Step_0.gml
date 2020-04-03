@@ -77,12 +77,20 @@ switch(states)
 					
 					new_item.ports_count_max = ports_count_max
 					new_item.ports_count = ports_count
-					new_item.ports = ports
-					new_item.sockets = sockets
+					var new_ports = ports
+					var new_sockets = sockets
+					for(var p=0;p<ports_count;p++) {
+						new_ports[p,port_object] = -1
+						new_ports[p,port_direction] = -1
+						new_sockets[p] = -1
+					}
+					new_item.ports = new_ports
+					new_item.sockets = new_sockets
 					new_item.skillpoints = skillpoints
 					
 					with new_item {
 						ports_xyupdate_movement()
+						item_check_sockets()
 					}
 					
 					//	deselect this item

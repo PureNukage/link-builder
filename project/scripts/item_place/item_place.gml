@@ -1,8 +1,3 @@
-//	If this item was already placed
-if replace and instance_exists(replace_id) {
-	with replace_id item_delete()			
-}
-
 //	object_index specific stuff
 switch(object_index)
 {
@@ -71,11 +66,18 @@ for(var _p=0;_p<ports_count;_p++) {
 		}
 	}
 }
+
+//	If this item was already placed
+if replace and instance_exists(replace_id) {
+	with replace_id item_delete()	
+	ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)			
+	ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
+	item_placeid()
+	mp_grid_add_rectangle(gridController.mp_grid,_x1,_y1,_x2,_y2)
+	
+}
 			
 system_set()
 			
 x = gridController.grid_positions_x[center_cell_x]+(cell_width/2)
 y = gridController.grid_positions_y[center_cell_y]+(cell_height/2)
-				
-			
-			
