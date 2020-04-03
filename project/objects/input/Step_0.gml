@@ -22,7 +22,8 @@ f9 = keyboard_check_pressed(vk_f9)
 alt = keyboard_check_pressed(vk_alt)
 
 if f5 and app.tutorial == -1 {
-	save_game()	
+	save_game()
+	create_textbox("Game has been saved...",-1,60)
 }
 
 //if f9 and !app.game_loading {	

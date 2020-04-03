@@ -19,5 +19,6 @@ if seconds >= 60 {
 }
 
 if (((instance_exists(input) and input.f9) or (game_loading))) and tutorial == -1 {
-	load_game()	
+	load_game()
+	if !game_loading create_textbox("Game has been loaded...",-1,60)
 }

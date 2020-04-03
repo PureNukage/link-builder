@@ -1471,14 +1471,6 @@
             }
         },
         {
-            "Key": "b10c3fa6-3291-4a27-a5db-e5ef0fc4529f",
-            "Value": {
-                "id": "704b62da-0fff-4bfe-aa4d-189ae75deb8b",
-                "resourcePath": "scripts\\disable_corruption\\disable_corruption.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "b3f951d7-7bc6-48eb-889a-756e153ca377",
             "Value": {
                 "id": "b23a2c19-bacf-470f-992f-354bb5ae196f",
@@ -2302,7 +2294,6 @@
         "79a04a52-5cb0-4a66-91ec-2a6dda22325c",
         "0fedb7dd-b4af-47b6-91c8-42caa22628df",
         "ae11147b-b2a4-4331-81d3-38b09ebade77",
-        "b10c3fa6-3291-4a27-a5db-e5ef0fc4529f",
         "177ed56c-b15d-4055-bfcc-b9ffe4f22e36",
         "fb8b0d44-0929-4755-b1c4-610e3566ccfe",
         "434cb936-da63-413c-ad0c-54d48fdbe513",

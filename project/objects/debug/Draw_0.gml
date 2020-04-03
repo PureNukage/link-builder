@@ -50,6 +50,17 @@ switch(mode)
 			if draw_mp_grid {
 				mp_grid_draw(gridController.mp_grid)
 			}
+			
+			if instance_exists(person) with person {
+				draw_set_color(c_yellow)
+				draw_text(x,y-100,string(id))
+				var enum_array = []
+				enum_array[states.idle] = "idle"
+				enum_array[states.move] = "move"
+				enum_array[states.wait_in_line] = "waiting in line"
+				enum_array[states.using_smartcontract] = "using smartcontract"
+				draw_text(x,y-80,enum_array[states])	
+			}
 		
 			if instance_exists(c_item) {
 				with c_item {

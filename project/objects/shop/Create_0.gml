@@ -237,7 +237,7 @@
 	item_node = 0
 
 	var _string = "A ChainLink node.\n\nSome say its the 4th industrial revolution\nOthers say its made of cheese"
-	var levels = create_levels(0, 125, 300, 600, 1800, 4200, 9000)
+	var levels = create_levels(0, 100, 300, 1200, 3500, 10000)
 	create_node("YorkyRoad",_string,100,0,0,levels,true)
 	
 	create_node("gonsinator",_string,350,0,0,levels,false)

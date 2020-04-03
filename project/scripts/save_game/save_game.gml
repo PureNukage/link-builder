@@ -21,6 +21,8 @@ ini_write_real(section,"Value",player.value)
 ini_write_real(section,"Money",player.money)
 ini_write_real(section,"Link",player.link)
 ini_write_real(section,"Eth",player.eth)
+ini_write_real(section,"Link Trade",shop.link_trade)
+ini_write_real(section,"Eth Trade",shop.eth_trade)
 
 var section = "Item Databases"
 //	save the node item database

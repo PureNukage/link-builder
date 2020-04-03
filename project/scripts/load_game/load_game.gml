@@ -30,6 +30,8 @@ else {
 	player.money = ini_read_real(section,"Money",0)
 	player.link = ini_read_real(section,"Link",0)
 	player.eth = ini_read_real(section,"Eth",0)
+	shop.link_trade = ini_read_real(section,"Link Trade",1)
+	shop.eth_trade = ini_read_real(section,"Eth Trade",1)
 
 	//	copy the item databases
 	var section = "Item Databases"
@@ -68,12 +70,22 @@ else {
 	
 		var Name = shop.item_node[index, node_name]       
 		var Node = item_create(node,0,0,index,Name,s_portrait_node,0)
+		var Skillpoints = shop.item_node[index, node_skillpoints]
+		var Skills = shop.item_node[index, node_skills]
+		var max_ports = 2
+		for(var s=0;s<array_height_2d(Skills);s++) {
+			if Skills[s,skill_type] == skills.two_more_ports and Skills[s,skill_acquired] {
+				max_ports += 2	
+			}
+		}
 		shop.item_node[index, node_object_index] = Node
 		with Node {
 			item_index = index
 			rotation = Rotation
 			jobruns = shop.item_node[item_index, node_jobruns]
 			jobruns_previous = jobruns
+			skillpoints = Skillpoints
+			ports_count_max = max_ports
 			if is_array(Ports) {
 				Node.ports = Ports
 				Node.sockets = Sockets
@@ -282,4 +294,3 @@ else {
 
 	ini_close()
 }
-
