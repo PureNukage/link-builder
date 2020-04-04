@@ -10,7 +10,9 @@ switch(states)
 			sprite_set_offset(s_data_stand,sprite_get_width(s_data_stand)/2-1,sprite_get_height(s_data_stand)/2-1)
 			draw_sprite(s_data_stand,-1,x,y)
 			sprite_set_offset(sprite,sprite_get_width(sprite)/2-1,sprite_get_height(sprite)/2+12)
-			draw_sprite(sprite,-1,x,y)	
+			var color = c_white
+			if placeable color = c_white else color = c_red
+			draw_sprite_ext(sprite,-1,x,y,1,1,0,color,1)
 		}
 		//	Alt vision
 		else {
