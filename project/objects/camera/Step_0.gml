@@ -56,7 +56,8 @@ switch(camera_mode)
 		#region Zooming Up and Down
 		
 			if instance_exists(shop) and instance_exists(contracts) and instance_exists(textboxController) {
-				if !topmenu.data_mouseover and !topmenu.node_mouseover and !topmenu.contract_mouseover and !shop.link_mouseover and !shop.eth_mouseover and !textboxController.messages_mouseover {
+				if !topmenu.data_mouseover and !topmenu.node_mouseover and !topmenu.contract_mouseover and !shop.link_mouseover and !shop.eth_mouseover and !textboxController.messages_mouseover 
+				and !shop.exchange_mouseover {
 					zoom_level = clamp((zoom_level + (mouse_wheel_down()-mouse_wheel_up())*0.1),0.25,1.0)
 				}
 			}

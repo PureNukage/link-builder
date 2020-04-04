@@ -32,7 +32,7 @@ if point_in_rectangle(gui_mouse_x,gui_mouse_y,menuX,menuY,menuX+menu_width,menuY
 		if instance_exists(mainmenu) instance_destroy(mainmenu)
 		else {
 			var _menu = instance_create_layer(0,0,"Instances",mainmenu)
-			_menu.menu = menu.options
+			_menu.menu = menu.in_game
 			_menu.in_game = true
 		}	
 	}

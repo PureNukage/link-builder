@@ -298,9 +298,13 @@ item_placing = 0
 	button_active = true
 	wire_active = true
 	resources_active = true
+	
+	exchange_open = false
+	exchange_mouseover = false
+	exchange_currency = "LINK"
 
 	buttonX = 32
-	buttonY = 32
+	buttonY = 48
 	button_width = 128
 	button_height = 64
 	button_text = "Shop"
