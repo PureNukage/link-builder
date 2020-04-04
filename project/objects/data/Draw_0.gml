@@ -46,7 +46,7 @@ switch(states)
 				draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,.5)
 				used_color = c_black
 				used_alpha = .5
-			}
+			} else if used_alpha = .5 and used_color = c_black used_alpha = 0
 		
 			//	Draw an icon if we're not connected
 			if !connected {
