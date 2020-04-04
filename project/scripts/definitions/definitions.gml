@@ -27,7 +27,8 @@ enum connected {
 enum menu {
 	main,
 	options,
-	tutorials
+	tutorials,
+	in_game
 }
 
 enum selection_mode {

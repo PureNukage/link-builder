@@ -1,3 +1,5 @@
+//if live_call() return live_result
+
 //	Darken the screen if we're in_game
 if in_game {
 	draw_set_alpha(.5)
@@ -91,13 +93,15 @@ switch(menu)
 			var _x = display_get_gui_width()/2
 			var _y = display_get_gui_height()/2 - ((array_height_2d(options) + array_height_2d(resolutions)) * 32) - (display_get_gui_height()/5)
 			
+			_y += 32
+			
 			for(var o=0;o<array_height_2d(options);o++) {
 				var option_name = options[o, menu_name]
 				var option_submenu = options[o, menu_submenu]
 				
 				var option_height = string_height(option_name)
 				
-				var buffer = 64
+				var buffer = 32
 				
 				draw_set_color(c_black)
 				draw_set_halign(fa_center)
@@ -140,7 +144,7 @@ switch(menu)
 				
 			}
 			
-			_y += 128
+			_y += 96
 			
 			//	Volume Options
 			//	Draw bar rectangle
@@ -153,14 +157,14 @@ switch(menu)
 			
 			//	Draw volume amount
 			draw_set_color(c_black)
-			draw_text(_x,_y-64,"Volume: "+string(soundSystem.current_volume*100)+"%")
+			draw_text(_x,_y-64,"Music: "+string(soundSystem.current_volume*100)+"%")
 			
 			//	Draw volume handle
 			var segment = round(bar_width / 10)
 			var handleX = barX + ((soundSystem.current_volume*10) * segment)
 			var handleY = barY
 			var handle_width = segment
-			var handle_height = 48
+			//var handle_height = 48
 			draw_set_color(c_gray)
 			draw_circle(handleX+(handle_width/2),handleY+(handle_width/2),handle_width,false)
 			
@@ -176,9 +180,10 @@ switch(menu)
 			_y += 128
 			
 			//	Back button
-			if in_game {
-				var _string = "Back to Game"	
-			} else var _string = "Back to Main Menu"
+			//if in_game {
+			//	var _string = "Back to Game"	
+			//} else var _string = "Back to Main Menu"
+			var _string = "Back"
 			var _string_width = string_width(_string)
 			var _string_height = string_height(_string)
 			
@@ -187,7 +192,8 @@ switch(menu)
 				
 				if mouse_check_button_pressed(mb_left) {
 					if in_game {
-						instance_destroy()
+						//instance_destroy()
+						menu = menu.in_game
 					} else menu = menu.main
 				}	
 			} else {
@@ -198,26 +204,6 @@ switch(menu)
 			draw_text(_x,_y+_string_height/2,_string)
 			
 			_y += 64
-			
-			//	Back to Main Menu
-			if in_game {
-				var _string = "EXIT to Main Menu (WARNING: will lose current game session)"
-				var xx = _x - string_width(_string)/2
-				
-				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-string_width(_string)/2,_y,_x+string_width(_string)/2+string_width(_string),_y+string_height(_string)) {
-					draw_set_color(c_white)
-					if mouse_check_button_pressed(mb_left) {
-						if app.tutorial > -1 ga_addProgressionEvent(GA_PROGRESSIONSTATUS_FAIL, "Main Menu")
-						back_to_mainmenu()	
-					}
-				} else {
-					draw_set_color(c_black)	
-				}
-				
-				draw_set_halign(fa_center)
-				draw_set_valign(fa_middle)
-				draw_text(_x,_y+string_height(_string)/2,_string)
-			}
 			
 		break
 	#endregion
@@ -293,10 +279,94 @@ switch(menu)
 			
 		break
 	#endregion
+	
+	#region In Game
+		case menu.in_game:
+			
+			var _x = display_get_gui_width()/2
+			var _y = display_get_gui_height()/2 - ((array_height_2d(options) + array_height_2d(resolutions)) * 32) - (display_get_gui_height()/5)
+			
+			_y += 64
+			
+			draw_set_font(fnt_shop)
+			draw_set_valign(fa_top)
+			
+			if app.tutorial == -1 {
+				var String = "Save Game"
+				var String_width = string_width(String)
+				var String_height = string_height(String)
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-String_width/2,_y,_x+String_width/2+String_width,_y+String_height) {
+					draw_set_color(c_white)	
+					if input.mouse_left_press {
+						save_game()	
+						create_textbox("Game has been saved...",-1,60)
+					}
+				} else draw_set_color(c_black)
+				draw_text(_x,_y,String)
+			
+				_y += 96
+			
+				var String = "Load Game"
+				var String_width = string_width(String)
+				var String_height = string_height(String)
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-String_width/2,_y,_x+String_width/2+String_width,_y+String_height) {
+					draw_set_color(c_white)	
+					if input.mouse_left_press {
+						load_game()	
+					}
+				} else draw_set_color(c_black)
+				draw_text(_x,_y,String)
+			
+				_y += 96
+			} else {
+				_y += 192
+			}
+			
+			var String = "Options"
+			var String_width = string_width(String)
+			var String_height = string_height(String)
+			if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-String_width/2,_y,_x+String_width/2+String_width,_y+String_height) {
+				draw_set_color(c_white)	
+				if input.mouse_left_press {
+					menu = menu.options
+				}
+			} else draw_set_color(c_black)
+			draw_text(_x,_y,String)
+			
+			_y += 96
+			
+			//	Back to Main Menu
+			if in_game {
+				var _string = "EXIT to Main Menu (WARNING: will lose current game session)"
+				var xx = _x - string_width(_string)/2
+				
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-string_width(_string)/2,_y,_x+string_width(_string)/2+string_width(_string),_y+string_height(_string)) {
+					draw_set_color(c_white)
+					if mouse_check_button_pressed(mb_left) {
+						if app.tutorial > -1 ga_addProgressionEvent(GA_PROGRESSIONSTATUS_FAIL, "Main Menu")
+						back_to_mainmenu()	
+					}
+				} else {
+					draw_set_color(c_black)	
+				}
+				
+				draw_set_halign(fa_center)
+				draw_set_valign(fa_middle)
+				draw_text(_x,_y+string_height(_string)/2,_string)
+			}
+			
+			
+			
+			
+			
+			
+		break
+	#endregion
 }
 
 //	Version and credential
 //var version = app.version
+draw_set_font(fnt_shop)
 var credit = app.me
 var total_string = "v"+ version + " by " + credit
 var _string_width = string_width(total_string)
