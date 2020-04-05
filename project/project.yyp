@@ -551,6 +551,14 @@
             }
         },
         {
+            "Key": "45f5b59a-677f-466b-8925-001ae4f0c633",
+            "Value": {
+                "id": "cd021eae-e644-4155-bcc6-fd805b16e2a6",
+                "resourcePath": "datafiles_yy\\tutorial_scripts.csv.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "46c9a0dd-fcd5-432f-9171-8f5c9a5e09ea",
             "Value": {
                 "id": "52e89583-1f06-4654-8fe3-fb4f3a958694",
@@ -788,14 +796,6 @@
                 "id": "0c0d07f1-6459-46a7-95ec-8367ea2c9fd8",
                 "resourcePath": "scripts\\ga_isRemoteConfigsReady\\ga_isRemoteConfigsReady.yy",
                 "resourceType": "GMScript"
-            }
-        },
-        {
-            "Key": "5ea6017a-311d-4d81-979f-0d8b5eb0d5f7",
-            "Value": {
-                "id": "9fa06ca4-5a22-4b3d-a2e4-728ae26b15e8",
-                "resourcePath": "datafiles_yy\\tutorial_scripts.csv.yy",
-                "resourceType": "GMIncludedFile"
             }
         },
         {

@@ -8,7 +8,7 @@ app.resolution_width = _width
 app.resolution_height = _height
 
 with camera {
-	var _center = false
+	var _center = true
 	if app.resolution_width != _width _center = true else _center = false
 	camera_refresh(_width,_height)
 	scale_canvas(base_width,base_height,_width,_height,_center)
