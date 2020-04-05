@@ -6,7 +6,8 @@
     "children": [
         "8cffbe9a-24a4-4969-8403-b579475a1167",
         "7583907e-7cdc-4b0b-b0ad-74199e52b414",
-        "b83bc639-e58f-4332-a180-018c4a9bc5ef"
+        "b83bc639-e58f-4332-a180-018c4a9bc5ef",
+        "96fb1e9b-a662-498a-b9a1-c01fee30dfb4"
     ],
     "filterType": "GMSprite",
     "folderName": "events",

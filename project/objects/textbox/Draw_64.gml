@@ -1,3 +1,5 @@
+if live_call() return live_result
+
 //	Draw window outline
 if fade != -1 {
 	draw_set_alpha(fade)	
@@ -66,5 +68,21 @@ draw_set_color(c_white)
 draw_set_halign(fa_center)
 draw_set_valign(fa_middle)
 draw_text(buttonX+button_width/2,buttonY+button_height/2,button_string)
+
+if event_types == event_types.sn_start or event_types == event_types.sn_debt1 or event_types == event_types.sn_debt2 or event_types == event_types.sn_debt3 or event_types == event_types.sn_lose {
+	var String = "S. N"
+	var width_spacer = 24
+	var spacer = 4
+	var sw = string_width(String) + spacer + width_spacer
+	var sh = string_height(String) + spacer
+	var x1 = iconX + 128 - sw/2
+	var y1 = iconY+230
+	draw_set_color(c_gray)
+	draw_roundrect(x1,y1,x1+sw,y1+sh,false)
+	
+	draw_set_color(c_black)
+	draw_text(x1+sw/2,y1+sh/2,String)
+	
+}
 
 draw_set_alpha(1)

@@ -106,7 +106,12 @@ enum event_types {
 	out_of_eth,
 	reliability_change,
 	levelup,
-	online
+	online,
+	sn_start,
+	sn_debt1,
+	sn_debt2,
+	sn_debt3,
+	sn_lose
 	
 }
 

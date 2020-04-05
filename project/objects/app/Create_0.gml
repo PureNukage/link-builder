@@ -21,6 +21,8 @@ resolution_height = 1080
 
 game_loading = false
 
+new_game = false
+
 data_corruption = -1
 
 #region App Time

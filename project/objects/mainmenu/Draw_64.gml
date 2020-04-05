@@ -57,6 +57,7 @@ switch(menu)
 								app.world_width = 2560
 								app.world_height = 2048
 								app.data_corruption = mode.on
+								app.new_game = true
 								room_goto_next()
 							break
 							case 1:	//	Tutorials
