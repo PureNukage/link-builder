@@ -30,7 +30,7 @@ ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)
 
 states = states.placed
 			
-ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
+item_placeindex()
 item_placeid()
 
 //if !replace with shop shop_refresh()
@@ -71,36 +71,36 @@ for(var _p=0;_p<ports_count;_p++) {
 if replace and instance_exists(replace_id) {
 	with replace_id item_delete()	
 	ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)			
-	ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
+	item_placeindex()
 	item_placeid()
 	mp_grid_add_rectangle(gridController.mp_grid,_x1,_y1,_x2,_y2)
 	//	object_index specific stuff
-	switch(object_index)
-	{
-		case node:
-			//if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
-			shop.item_node[item_index, node_placed] = true
-			shop.item_node[item_index, node_purchased] = true
-			shop.item_node[item_index, node_object_index] = id
-			//	Unlock the next node
-			//if !replace and item_index > 0 and item_index < array_height_2d(shop.item_node)-1 {
-			//	shop.item_node[item_index+1, node_available] = true
-			//} else if !replace and item_index == 0 and array_height_2d(shop.item_node) > 1 {
-			//	shop.item_node[item_index+1, node_available] = true	
-			//}
-		break
-		case data:
-			if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
-			shop.item_data[item_index, item_placed] = true
-			shop.item_data[item_index, item_purchased] = true
-			shop.item_data[item_index, item_object_index] = id
-		break
-		case kiosk:
-			contracts.contract[smartcontract, contract_purchased] = true
-			contracts.contract[smartcontract, contract_kiosk] = id
-			//with contracts contract_refresh()
-		break
-	}
+	//switch(object_index)
+	//{
+	//	case node:
+	//		//if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
+	//		shop.item_node[item_index, node_placed] = true
+	//		shop.item_node[item_index, node_purchased] = true
+	//		shop.item_node[item_index, node_object_index] = id
+	//		//	Unlock the next node
+	//		//if !replace and item_index > 0 and item_index < array_height_2d(shop.item_node)-1 {
+	//		//	shop.item_node[item_index+1, node_available] = true
+	//		//} else if !replace and item_index == 0 and array_height_2d(shop.item_node) > 1 {
+	//		//	shop.item_node[item_index+1, node_available] = true	
+	//		//}
+	//	break
+	//	case data:
+	//		if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
+	//		shop.item_data[item_index, item_placed] = true
+	//		shop.item_data[item_index, item_purchased] = true
+	//		shop.item_data[item_index, item_object_index] = id
+	//	break
+	//	case kiosk:
+	//		contracts.contract[smartcontract, contract_purchased] = true
+	//		contracts.contract[smartcontract, contract_kiosk] = id
+	//		//with contracts contract_refresh()
+	//	break
+	//}
 	
 }
 			

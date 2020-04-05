@@ -27,6 +27,7 @@ for(var w=0;w<grid_width;w++) {
 							with Kiosk.System system_dataflow_check()
 						}	
 					}
+					debug_log("Providing data to a new Contract")
 					ds_list_add(kiosks,Kiosk)
 				}
 			}
