@@ -123,7 +123,20 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 		
 		
 	} else {
-		debug_log("ERROR No node id set for this data being given!")
+		if _kiosk.data_needed[i,3] {
+			//	First find which Price Feed is supporting is and then verify it is decentralized enough. if not, we misfire
+			var ID = -1
+			with kiosk {
+				if ds_list_find_index(contracts_supporting,_kiosk) != -1 {
+					ID = id	
+				}
+			}
+			if ID > -1 and !ID.decentralized {
+				contract_misfire++				
+			}
+		
+			//debug_log("ERROR No node id set for this data being given!")
+		}
 	}	
 }
 

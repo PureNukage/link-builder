@@ -306,7 +306,7 @@ switch(states)
 									if decentralized {
 										debug_log("Reference price feed is no longer accurate enough")
 										decentralized = false	
-										price_feed_refresh()
+										//price_feed_refresh()
 									}
 								}
 							
