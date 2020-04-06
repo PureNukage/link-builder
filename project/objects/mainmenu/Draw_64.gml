@@ -313,7 +313,7 @@ switch(menu)
 				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-String_width/2,_y,_x+String_width/2+String_width,_y+String_height) {
 					draw_set_color(c_white)	
 					if input.mouse_left_press {
-						load_game()	
+						input.f9 = true
 					}
 				} else draw_set_color(c_black)
 				draw_text(_x,_y,String)

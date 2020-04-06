@@ -155,6 +155,23 @@ if instance_exists(data) {
 			var string_encoded = ds_list_write(list)
 			ini_write_string(section,key_base+"ports",string_encoded)
 			ds_list_destroy(list)
+			
+			//	new ports
+			ini_write_real(section,key_base+"ports_count",ports_count)
+			for(var p=0;p<ports_count;p++) {
+				var add = "port ["+string(p)+"]'s "
+				ini_write_real(section,key_base+add+"port_x",ports[p,port_x])
+				ini_write_real(section,key_base+add+"port_y",ports[p,port_y])
+				ini_write_real(section,key_base+add+"port_x_diff",ports[p,port_x_diff])
+				ini_write_real(section,key_base+add+"port_y_diff",ports[p,port_y_diff])
+				ini_write_real(section,key_base+add+"port_object",ports[p,port_object])
+				ini_write_real(section,key_base+add+"port_direction",ports[p,port_direction])
+				
+				
+			}
+			
+			
+			
 			ID++
 		}
 	}

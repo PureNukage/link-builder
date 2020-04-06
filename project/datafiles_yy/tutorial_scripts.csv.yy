@@ -3,7 +3,7 @@
     "modelName": "GMIncludedFile",
     "mvc": "1.0",
     "name": "tutorial_scripts.csv",
-    "CopyToMask": -1,
+    "CopyToMask": 153720560310812910,
     "exists": false,
     "exportAction": 0,
     "exportDir": "",
