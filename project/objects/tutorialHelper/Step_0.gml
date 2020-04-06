@@ -27,16 +27,20 @@ switch(tutorial)
 					topmenu.nodes_active = false
 					topmenu.contracts_active = false
 					
-					var text = script[# tutorial, script_index] script_index++	//	0 -> 1
+					var text = script[# tutorial, 0] script_index++	//	0 -> 1
+					//var text = "Welcome to the Smart Contract Builder basics"
 					create_textbox(text)
 		
-					var text = script[# tutorial, script_index] script_index++	//	1 -> 2
+					var text = script[# tutorial, 1] script_index++	//	1 -> 2
+					//var text = "This tutorial is going to introduce you to the controls of the game"
 					create_textbox(text)
 					
-					var text = script[# tutorial, script_index] script_index++	//	2 -> 3
+					var text = script[# tutorial, 2] script_index++	//	2 -> 3
+					//var text = "Messages like this are stored in the Message menu"
 					create_textbox(text)
 					
-					var text = script[# tutorial, script_index] script_index++	//	3 -> 4
+					var text = script[# tutorial, 3] script_index++	//	3 -> 4
+					//var text = "Open the Message menu"
 					create_textbox(text,-1,-1,24)
 					stage++
 				break

@@ -1,4 +1,4 @@
-#macro version "0.2.3"
+#macro version "0.2.4"
 me = "@PureNukage"
 
 #region Platform
@@ -16,8 +16,13 @@ me = "@PureNukage"
 world_width = 1920
 world_height  = 1088
 
-resolution_width = 1920	
-resolution_height = 1080
+if os_browser == browser_not_a_browser {
+	resolution_width = 1920	
+	resolution_height = 1080
+} else {
+	resolution_width = 1280	
+	resolution_height = 720	
+}
 
 game_loading = false
 

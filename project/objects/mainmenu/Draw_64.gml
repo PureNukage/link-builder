@@ -108,41 +108,44 @@ switch(menu)
 				draw_set_halign(fa_center)
 				draw_set_valign(fa_middle)
 				draw_set_font(fnt_shop)
-				draw_text(_x,_y+option_height/2,option_name)
 				
-				_y += option_height + buffer
+				if os_browser == browser_not_a_browser {
+					draw_text(_x,_y+option_height/2,option_name)
 				
-				for(var s=0;s<array_height_2d(option_submenu);s++) {
-					var submenu_name = option_submenu[s, menu_name]
+					_y += option_height + buffer
+				
+					for(var s=0;s<array_height_2d(option_submenu);s++) {
+						var submenu_name = option_submenu[s, menu_name]
 					
-					var submenu_width = string_width(submenu_name)
-					var submenu_height = string_height(submenu_name)
+						var submenu_width = string_width(submenu_name)
+						var submenu_height = string_height(submenu_name)
 					
-					if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-submenu_width/2,_y,_x-submenu_width/2+submenu_width,_y+submenu_height) {
-						draw_set_color(c_white)
-						if option_name == "Resolution" {
-							if mouse_check_button_pressed(mb_left) {
-								for(var ss=0;ss<array_height_2d(option_submenu);ss++) {
-									resolutions[ss, menu_active] = false	
+						if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-submenu_width/2,_y,_x-submenu_width/2+submenu_width,_y+submenu_height) {
+							draw_set_color(c_white)
+							if option_name == "Resolution" {
+								if mouse_check_button_pressed(mb_left) {
+									for(var ss=0;ss<array_height_2d(option_submenu);ss++) {
+										resolutions[ss, menu_active] = false	
+									}
+									resolutions[s, menu_active] = true
+									resolution_resize(resolutions[s, menu_data0], resolutions[s, menu_data1])
 								}
-								resolutions[s, menu_active] = true
-								resolution_resize(resolutions[s, menu_data0], resolutions[s, menu_data1])
 							}
+						} else {
+							draw_set_color(c_dkgray)	
 						}
-					} else {
-						draw_set_color(c_dkgray)	
-					}
-					if option_submenu[s ,menu_active] {
-						draw_set_color(c_white)	
-					}
-					draw_set_halign(fa_center)
-					draw_set_valign(fa_middle)
-					draw_text(_x,_y+submenu_height/2,submenu_name)
+						if option_submenu[s ,menu_active] {
+							draw_set_color(c_white)	
+						}
+						draw_set_halign(fa_center)
+						draw_set_valign(fa_middle)
+						draw_text(_x,_y+submenu_height/2,submenu_name)
 					
-					_y += submenu_height + buffer
+						_y += submenu_height + buffer
 					
-				}
+					}
 				
+				}
 			}
 			
 			_y += 96
