@@ -185,118 +185,118 @@ else {
 		}
 	}
 
-	////	Wires
-	//var section = "Wires"
-	//for(var W=0;W<wire_count;W++) {
-	//	var key_base = string(W) + "'s: "
-	//	var xx = ini_read_real(section,key_base+"x",0)
-	//	var yy = ini_read_real(section,key_base+"y",0)
-	//	var Rotation = ini_read_real(section,key_base+"rotation",0)
-	//	var Straight = ini_read_real(section,key_base+"straight",0)
-	//	var Color = ini_read_real(section,key_base+"color",c_sergey_blue)
-	//	var ports_string = ini_read_string(section,key_base+"ports",0)
-	//	if xx == 25 and yy == 11 {
-	//		var DE = true	
-	//	}
-	//	if is_string(ports_string) {
-	//		var list = ds_list_create()
-	//		ds_list_read(list,ports_string)
-	//		var Ports = list[| 0]
-	//		var Sockets = list[| 1]
-	//		ds_list_destroy(list)
-	//	} else {
-	//		Ports = -1
-	//		Sockets = -1
-	//	}
+	//	Wires
+	var section = "Wires"
+	for(var W=0;W<wire_count;W++) {
+		var key_base = string(W) + "'s: "
+		var xx = ini_read_real(section,key_base+"x",0)
+		var yy = ini_read_real(section,key_base+"y",0)
+		var Rotation = ini_read_real(section,key_base+"rotation",0)
+		var Straight = ini_read_real(section,key_base+"straight",0)
+		var Color = ini_read_real(section,key_base+"color",c_sergey_blue)
+		var ports_string = ini_read_string(section,key_base+"ports",0)
+		if xx == 25 and yy == 11 {
+			var DE = true	
+		}
+		if is_string(ports_string) {
+			var list = ds_list_create()
+			ds_list_read(list,ports_string)
+			var Ports = list[| 0]
+			var Sockets = list[| 1]
+			ds_list_destroy(list)
+		} else {
+			Ports = -1
+			Sockets = -1
+		}
 	
-	//	var Wire = item_create(wire,800,800,-1,"Wire",s_portrait_wire,0)
-	//	with Wire {
-	//		rotation = Rotation
-	//		straight = Straight
-	//		color = Color
-	//		var Sprites = []
-	//		Sprites[1] = s_wire
-	//		Sprites[0] = s_wire_corner
-	//		sprite = Sprites[straight]
-	//		if is_array(Ports) {
-	//			ports = Ports
-	//			sockets = Sockets
-	//			ports_count = array_height_2d(Ports)
-	//		} else {
+		var Wire = item_create(wire,800,800,-1,"Wire",s_portrait_wire,0)
+		with Wire {
+			rotation = Rotation
+			straight = Straight
+			color = Color
+			var Sprites = []
+			Sprites[1] = s_wire
+			Sprites[0] = s_wire_corner
+			sprite = Sprites[straight]
+			if is_array(Ports) {
+				ports = Ports
+				sockets = Sockets
+				ports_count = array_height_2d(Ports)
+			} else {
 			
-	//		}
-	//		item_move(xx,yy)
-	//		cell_x1 = xx
-	//		cell_y1 = yy
-	//		//if port1 > -1 ds_list_clear(port1)
-	//		port1 = ports_check(cell_x1,cell_y1)
-	//		#region Wire Placement
-	//			var _wire = id
-	//			states = states.placed
-	//			var _x = gridController.grid_positions_x[xx]+(cell_width/2)
-	//			var _y = gridController.grid_positions_y[yy]+(cell_height/2)
-	//			mp_grid_add_instances(gridController.mp_grid,id,false)
-	//			//	Add ports
-	//			for(var _p=0;_p<_wire.ports_count;_p++) {
-	//				var _grid = gridController.grid_port_objects
-	//				var _grid_x = gridController.grid_port_x
-	//				var _grid_y = gridController.grid_port_y
-	//				ds_list_add(_grid,_wire)
-	//				ds_list_add(_grid_x,_wire.ports[_p,port_x])
-	//				ds_list_add(_grid_y,_wire.ports[_p,port_y])
-	//				gridController.grid_items[# ports[_p,port_x], ports[_p,port_y]] = -2
-	//			}
-	//			ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
-	//			item_placeid()
+			}
+			item_move(xx,yy)
+			cell_x1 = xx
+			cell_y1 = yy
+			//if port1 > -1 ds_list_clear(port1)
+			port1 = ports_check(cell_x1,cell_y1)
+			#region Wire Placement
+				var _wire = id
+				states = states.placed
+				var _x = gridController.grid_positions_x[xx]+(cell_width/2)
+				var _y = gridController.grid_positions_y[yy]+(cell_height/2)
+				mp_grid_add_instances(gridController.mp_grid,id,false)
+				//	Add ports
+				for(var _p=0;_p<_wire.ports_count;_p++) {
+					var _grid = gridController.grid_port_objects
+					var _grid_x = gridController.grid_port_x
+					var _grid_y = gridController.grid_port_y
+					ds_list_add(_grid,_wire)
+					ds_list_add(_grid_x,_wire.ports[_p,port_x])
+					ds_list_add(_grid_y,_wire.ports[_p,port_y])
+					gridController.grid_items[# ports[_p,port_x], ports[_p,port_y]] = -2
+				}
+				ds_grid_set_grid_region(gridController.grid_items,my_cells_items,0,0,size_width,size_height,topleft_cell_x,topleft_cell_y)
+				item_placeid()
 			
-	//			for(var p=0;p<ports_count;p++) {
-	//				//	This port is connected to something already
-	//				if ports[p,port_object] > -1 {
-	//					//	Find the object at this ports x,y
-	//					var X = ports[p,port_x]
-	//					var Y = ports[p,port_y]
-	//					var connecting_object = gridController.grid_objects[# X, Y]
-	//					if connecting_object > -1 {
-	//						ports[p,port_object] = connecting_object
-	//						//	Connect us to this objects port
-	//						for(var pp=0;pp<connecting_object.ports_count;pp++) {
-	//							if connecting_object.ports[pp,port_x] == center_cell_x and connecting_object.ports[pp,port_y] == center_cell_y { 
-	//								connecting_object.ports[pp,port_object] = id
-	//								connecting_object.sockets[pp] = id
-	//							}
-	//						}
-	//					} 
-	//					//	no object in this cell
-	//					else {
-	//						ports[p,port_object] = -1
-	//						sockets[p] = -1
-	//					}
-	//				}
-	//			}
+				for(var p=0;p<ports_count;p++) {
+					//	This port is connected to something already
+					if ports[p,port_object] > -1 {
+						//	Find the object at this ports x,y
+						var X = ports[p,port_x]
+						var Y = ports[p,port_y]
+						var connecting_object = gridController.grid_objects[# X, Y]
+						if connecting_object > -1 {
+							ports[p,port_object] = connecting_object
+							//	Connect us to this objects port
+							for(var pp=0;pp<connecting_object.ports_count;pp++) {
+								if connecting_object.ports[pp,port_x] == center_cell_x and connecting_object.ports[pp,port_y] == center_cell_y { 
+									connecting_object.ports[pp,port_object] = id
+									connecting_object.sockets[pp] = id
+								}
+							}
+						} 
+						//	no object in this cell
+						else {
+							ports[p,port_object] = -1
+							sockets[p] = -1
+						}
+					}
+				}
 						
-	//			//	add sockets
-	//			for(var _p=0;_p<_wire.ports_count;_p++) {
-	//				if _wire.ports[_p,port_object] == -1 {
-	//					_wire.sockets[_p] = -1
-	//				} else {
-	//					_wire.sockets[_p] = _wire.ports[_p,port_object]	
-	//					//	set this items sockets too
-	//					var _item = _wire.sockets[_p]
-	//					for(var pp=0;pp<_item.ports_count;pp++) {
-	//						//	this socket is connected to now
-	//						if _item.sockets[pp] == -1 and _item.ports[pp,port_object] > -1 {
-	//							_item.sockets[pp] = _item.ports[pp,port_object]	
-	//						}
-	//					}
-	//				}
-	//			}
+				//	add sockets
+				for(var _p=0;_p<_wire.ports_count;_p++) {
+					if _wire.ports[_p,port_object] == -1 {
+						_wire.sockets[_p] = -1
+					} else {
+						_wire.sockets[_p] = _wire.ports[_p,port_object]	
+						//	set this items sockets too
+						var _item = _wire.sockets[_p]
+						for(var pp=0;pp<_item.ports_count;pp++) {
+							//	this socket is connected to now
+							if _item.sockets[pp] == -1 and _item.ports[pp,port_object] > -1 {
+								_item.sockets[pp] = _item.ports[pp,port_object]	
+							}
+						}
+					}
+				}
 							
-	//			with _wire {
-	//				system_set()	
-	//			}
-	//		#endregion
-	//	}
-	//}
+				with _wire {
+					system_set()	
+				}
+			#endregion
+		}
+	}
 
 	ini_close()
 }
