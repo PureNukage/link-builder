@@ -905,26 +905,30 @@ if contracts_open and !instance_exists(mainmenu) {
 	value_array[1,1] = 0
 	value_array[1,2] = 0
 	value_array[1,3] = false
-	value_array[2,0] = 1000
+	value_array[2,0] = 1500
 	value_array[2,1] = 0
 	value_array[2,2] = 0
 	value_array[2,3] = false
-	value_array[3,0] = 1500
+	value_array[3,0] = 2000
 	value_array[3,1] = 0
 	value_array[3,2] = 0
 	value_array[3,3] = false
-	value_array[4,0] = 2000
+	value_array[4,0] = 2500
 	value_array[4,1] = 0
 	value_array[4,2] = 0
 	value_array[4,3] = false
-	value_array[5,0] = 2500
+	value_array[5,0] = 3000
 	value_array[5,1] = 0
 	value_array[5,2] = 0
 	value_array[5,3] = false
-	value_array[6,0] = 3000
+	value_array[6,0] = 4000
 	value_array[6,1] = 0
 	value_array[6,2] = 0
 	value_array[6,3] = false
+	value_array[7,0] = 5500
+	value_array[7,1] = 0
+	value_array[7,2] = 0
+	value_array[7,3] = false
 	var value_width = 0
 	
 	//	Preliminary loop through contracts

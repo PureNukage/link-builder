@@ -270,9 +270,25 @@
 	var levels = create_levels(0, 100, 400, 1200, 3500, 10000)
 	create_node("YorkyRoad",_string,100,0,0,levels,true)
 	
-	create_node("gonsinator",_string,350,0,0,levels,false)
+	create_node("gonsinator",_string,350,0,0,levels,true)
 
-	create_node("HashBlaster",_string,750,0,0,levels,false)
+	create_node("HashBlaster",_string,750,0,0,levels,true)
+	
+	var name = "LinkPool"
+	var _string = ""
+	var price = 0
+	var jobruns = 0 
+	var level = 0
+	var available = true
+	create_node(name,_string,price,jobruns,level,levels,available)
+	
+	var name = "Plaidbox"
+	var _string = ""
+	var price = 0
+	var jobruns = 0 
+	var level = 0
+	var available = true
+	create_node(name,_string,price,jobruns,level,levels,available)
 	
 	//create_node("test1",_string,100,0,0,levels,true)
 	
