@@ -154,7 +154,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
 	var name = "Twitter"
-	var price = 500
+	var price = 750
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_blank
@@ -164,7 +164,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
 	var name = "Flight API"
-	var price = 500
+	var price = 1000
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_blank
@@ -174,7 +174,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
 	var name = "Videogame API"
-	var price = 500
+	var price = 1000
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_blank
@@ -184,7 +184,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
 	var name = "Firewall API"
-	var price = 500
+	var price = 1000
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_blank
@@ -194,7 +194,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
 	var name = "gps API"
-	var price = 500
+	var price = 1000
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_blank
@@ -204,7 +204,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
 	var name = "Weather API"
-	var price = 500
+	var price = 1000
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_blank
@@ -214,7 +214,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
 	var name = "Vehicle API"
-	var price = 2000
+	var price = 1000
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_blank
@@ -224,11 +224,41 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
 	var name = "Shipment Temperature API"
-	var price = 2000
+	var price = 1000
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_blank
 	var Data_types = data_types.vehicle_freezerAPI
+	var Corruption = create_data_corruption(0,-1,0)
+	var Data_filters = data_filters.webdata
+	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
+	
+	var name = "Swift gpi Payment"
+	var price = 5000
+	var Object_index = data
+	var _string = ""
+	var portrait = s_portrait_blank
+	var Data_types = data_types.swiftPayment
+	var Corruption = create_data_corruption(0,-1,0)
+	var Data_filters = data_filters.webdata
+	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
+	
+	//var name = "Bitcoin Payment"
+	//var price = 3000
+	//var Object_index = data
+	//var _string = ""
+	//var portrait = s_portrait_blank
+	//var Data_types = data_types.bitcoinPayment
+	//var Corruption = create_data_corruption(0,-1,0)
+	//var Data_filters = data_filters.webdata
+	//create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
+	
+	var name = "VISA Payment"
+	var price = 3000
+	var Object_index = data
+	var _string = ""
+	var portrait = s_portrait_blank
+	var Data_types = data_types.visaPayment
 	var Corruption = create_data_corruption(0,-1,0)
 	var Data_filters = data_filters.webdata
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)

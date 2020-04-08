@@ -76,6 +76,9 @@ enum data_types {
 	weatherAPI,
 	vehicleAPI,
 	vehicle_freezerAPI,
+	swiftPayment,
+	bitcoinPayment,
+	visaPayment,
 	
 }
 
