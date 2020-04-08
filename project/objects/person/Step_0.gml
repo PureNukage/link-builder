@@ -215,6 +215,8 @@ switch(states)
 						#region Waiting in Line
 							case goal_type.waiting_in_line:
 							
+								if image_xscale != 1 image_xscale = 1
+							
 								//	Check if I still have a smart contract 
 								
 								if smartcontract > -1 {
@@ -349,5 +351,9 @@ switch(states)
 
 //	Constants
 if cooldown > 0 cooldown--
+
+//	Direction
+if x > xprevious and image_xscale != 1 image_xscale = 1
+if x < xprevious and image_xscale != -1 image_xscale = -1
 
 depth = -y

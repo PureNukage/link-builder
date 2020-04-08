@@ -243,16 +243,6 @@
 	var Data_filters = data_filters.webdata
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
-	//var name = "Bitcoin Payment"
-	//var price = 3000
-	//var Object_index = data
-	//var _string = ""
-	//var portrait = s_portrait_blank
-	//var Data_types = data_types.bitcoinPayment
-	//var Corruption = create_data_corruption(0,-1,0)
-	//var Data_filters = data_filters.webdata
-	//create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
-	
 	var name = "VISA Payment"
 	var price = 3000
 	var Object_index = data
@@ -262,6 +252,16 @@
 	var Corruption = create_data_corruption(0,-1,0)
 	var Data_filters = data_filters.webdata
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
+	
+	//var name = "Bitcoin Payment"
+	//var price = 3000
+	//var Object_index = data
+	//var _string = ""
+	//var portrait = s_portrait_blank
+	//var Data_types = data_types.bitcoinPayment
+	//var Corruption = create_data_corruption(0,-1,0)
+	//var Data_filters = data_filters.webdata
+	//create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 
 	//	CREATE NODES
 	item_node = 0

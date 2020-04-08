@@ -294,6 +294,7 @@ if data_open {
 					var Price = shop.item_data[d, item_price]
 					if (Filter == data_filters.pricedata and price_button) or (Filter == data_filters.webdata and web_button) {
 						if (owned_button == 0) or (owned_button == 1 and Purchased) or (owned_button == 2 and !Purchased) {
+							//if Filter == data_filters.webdata data_index = clamp(data_index,11,array_height_2d(shop.item_data)-1)
 							data_amount++
 							draw_set_color(c_black)
 							draw_roundrect(lineX-2,lineY-2,lineX+line_width+2,lineY+line_height+2,false)
@@ -400,6 +401,7 @@ if data_open {
 	
 				var handleX = barX + ((bar_width-handle_width)/2)
 				var handleY = barY + (data_index * segment_height)
+				//if Filter == data_filters.webdata var handleY = barY + ((data_index-11)*segment_height)
 	
 				//	draw bar
 				draw_set_color(c_gray4)

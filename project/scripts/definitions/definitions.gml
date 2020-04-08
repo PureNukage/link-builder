@@ -77,7 +77,7 @@ enum data_types {
 	vehicleAPI,
 	vehicle_freezerAPI,
 	swiftPayment,
-	bitcoinPayment,
+	//bitcoinPayment,
 	visaPayment,
 	
 }
