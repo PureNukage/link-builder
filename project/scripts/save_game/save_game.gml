@@ -24,6 +24,17 @@ ini_write_real(section,"Eth",player.eth)
 ini_write_real(section,"Link Trade",shop.link_trade)
 ini_write_real(section,"Eth Trade",shop.eth_trade)
 
+var section = "Time"
+ini_write_real(section,"Stream",time.stream)
+ini_write_real(section,"Stream Seconds",time.stream_seconds)
+ini_write_real(section,"Seconds",time.seconds)
+ini_write_real(section,"Minutes",time.minutes)
+
+var section = "Chaos"
+ini_write_real(section,"Timer",chaosEvents.timer)
+var String = ds_list_write(chaosEvents.affected_data)
+ini_write_string(section,"Affected Data",String)
+
 var section = "Item Databases"
 //	save the node item database
 var n_database_copy = shop.item_node

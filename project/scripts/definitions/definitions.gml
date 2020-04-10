@@ -18,6 +18,10 @@ enum mode {
 	
 }
 
+enum chaos_events {
+	corruption,	
+}
+
 enum connected {
 	not_connected,
 	is_connected,

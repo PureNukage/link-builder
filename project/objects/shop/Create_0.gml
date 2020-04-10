@@ -253,6 +253,10 @@
 	var Data_filters = data_filters.webdata
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
+	
+	//	Comment this out to have the corruption slowly increase for price data
+	disable_corruption()
+	
 	//var name = "Bitcoin Payment"
 	//var price = 3000
 	//var Object_index = data

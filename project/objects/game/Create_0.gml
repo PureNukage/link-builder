@@ -16,6 +16,7 @@ instance_create_layer(0,0,"Instances",debug)				debug_log("Spawning debug object
 instance_create_layer(0,0,"Instances",personController)		debug_log("Spawning personController object")
 instance_create_layer(0,0,"Instances",player)				debug_log("Spawning player object")
 instance_create_layer(0,0,"Instances",textboxController)	debug_log("Spawning textboxController object")
+instance_create_layer(0,0,"Instances",chaosEvents)			debug_log("Spawning chaosEvents object")
 
 vision = false
 temp_vision = false

@@ -32,6 +32,25 @@ else {
 	player.eth = ini_read_real(section,"Eth",0)
 	shop.link_trade = ini_read_real(section,"Link Trade",1)
 	shop.eth_trade = ini_read_real(section,"Eth Trade",1)
+	
+	//	time
+	var section = "Time"
+	time.stream = ini_read_real(section,"Stream",0)
+	time.stream_seconds = ini_read_real(section,"Stream Seconds",0)
+	time.seconds = ini_read_real(section,"Seconds",0)
+	time.minutes = ini_read_real(section,"Minutes",0)
+	
+	//	chaos
+	var section = "Chaos"
+	chaosEvents.timer = ini_read_real(section,"Timer",time.minutes+1)
+	var String = ini_read_string(section,"Affected Data",0)
+	if is_string(String) {
+		var new_list = ds_list_create()
+		ds_list_read(new_list,String)
+		ds_list_clear(chaosEvents.affected_data)
+		ds_list_copy(chaosEvents.affected_data,new_list)
+		ds_list_destroy(new_list)
+	}
 
 	//	copy the item databases
 	var section = "Item Databases"

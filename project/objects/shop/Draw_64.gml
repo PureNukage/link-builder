@@ -227,6 +227,16 @@ if wire_active {
 		button_wire_mouseover = true
 		draw_set_color(c_gray)	
 		if input.mouse_left_press {
+			
+			if input.selection_mode != selection_mode.free input.selection_mode = selection_mode.free
+			
+			if input.selection > -1 {
+				for(var i=0;i<ds_list_size(input.selections);i++) {
+					input.selections[| i].selected = false	
+				}
+				input.selection = -1
+			}
+			
 			input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",wire)
 			input.selection.selected = true
 			if ds_list_find_index(input.selections,input.selection) == -1 {

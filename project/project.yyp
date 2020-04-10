@@ -927,6 +927,14 @@
             }
         },
         {
+            "Key": "6878bfa4-9e06-4ba3-b756-1ef72b4fc4f6",
+            "Value": {
+                "id": "42da85ac-0e52-41e3-af32-01dc55a010c2",
+                "resourcePath": "objects\\chaosEvents\\chaosEvents.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "6a8a2012-ad5e-49ef-bf06-a5c018a8b3a2",
             "Value": {
                 "id": "62c78ede-0934-4da2-bb5b-96c711590059",
@@ -1012,6 +1020,14 @@
                 "id": "a3447c41-fb13-4897-8b88-b4262fd167df",
                 "resourcePath": "sprites\\s_resource_value\\s_resource_value.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "7d4877af-3850-4976-b099-9bb847b448d5",
+            "Value": {
+                "id": "5e20a71c-c614-4420-9dde-045ff1179441",
+                "resourcePath": "scripts\\corruption_check\\corruption_check.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -1431,6 +1447,14 @@
             }
         },
         {
+            "Key": "a8957e23-f708-41c9-93a7-e6d0cfb67f29",
+            "Value": {
+                "id": "cc373dab-08af-4e93-8c62-ee31022909ba",
+                "resourcePath": "sprites\\s_event_outage\\s_event_outage.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "a89fd004-8f62-419e-9dcf-50068245b980",
             "Value": {
                 "id": "700984ac-75b5-40df-a30a-f7ada591505a",
@@ -1631,6 +1655,14 @@
             }
         },
         {
+            "Key": "bdbc8c8e-b195-4056-a061-a84d63cab500",
+            "Value": {
+                "id": "510ad21b-a07f-4905-8eb3-1ffd84d655ed",
+                "resourcePath": "scripts\\disable_corruption\\disable_corruption.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "bdc6e21c-11ec-475c-81d9-b0fd62339f73",
             "Value": {
                 "id": "13eac733-11c7-4594-86ca-4d1f6ea1a995",
@@ -1788,6 +1820,14 @@
                 "id": "4e645361-3ad4-4830-9c77-9383fd089408",
                 "resourcePath": "sprites\\s_kiosk_chains\\s_kiosk_chains.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "cb615a09-d07d-43c6-afa2-1fa1f5483e6f",
+            "Value": {
+                "id": "bb14d461-87a6-45d0-b52a-01b33f8289a8",
+                "resourcePath": "views\\cb615a09-d07d-43c6-afa2-1fa1f5483e6f.yy",
+                "resourceType": "GMFolder"
             }
         },
         {
@@ -2445,7 +2485,9 @@
         "5e8336a8-8ae6-482f-80d5-882dc432cd09",
         "ef3a9a0d-45e2-4182-b910-1c2d053afb2f",
         "f4726778-8d12-4cbf-92ca-e874761c28b9",
-        "47d6b165-a5f4-4415-9fcc-d782938a45ae"
+        "47d6b165-a5f4-4415-9fcc-d782938a45ae",
+        "bdbc8c8e-b195-4056-a061-a84d63cab500",
+        "7d4877af-3850-4976-b099-9bb847b448d5"
     ],
     "tutorial": ""
 }
