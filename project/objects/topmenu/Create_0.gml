@@ -13,6 +13,9 @@ owned_button = 0
 data_mouseover = false
 data_barclickY1 = -1
 data_barclickY2 = -1
+data_surface = -1
+data_surface_offsetX = 0
+data_surface_offsetY = 0
 
 data_index = 0
 

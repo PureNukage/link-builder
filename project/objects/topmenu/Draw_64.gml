@@ -1,5 +1,6 @@
 if live_call() return live_result
 
+draw_set_halign(fa_center)
 draw_set_font(fnt_shop)
 draw_set_halign(fa_center)
 draw_set_valign(fa_middle)
@@ -84,8 +85,8 @@ if data_open {
 			//	data name
 			draw_set_color(c_black)
 			draw_set_font(fnt_shop_menu_name)
-			draw_set_halign(fa_left)
-			draw_text(windowX+buffer,windowY+26,"Data")
+			draw_set_halign(fa_center)
+			draw_text(windowX+window_width/2,windowY+26,"Data Sources")
 			draw_set_font(fnt_shop)
 			draw_set_halign(fa_center)
 	
@@ -96,371 +97,323 @@ if data_open {
 				data_mouseover = false	
 				menu_mouseover = false
 			}
+			
+			#region Buttons
+				//	web button
+				var web_width = sprite_get_width(s_icon_web) + (buffer*2)
+				var webX = windowX+window_width/2 - (web_width/2)
+				var webY = windowY + (buffer*5)
 	
-			//	web button
-			var web_width = sprite_get_width(s_icon_web) + (buffer*2)
-			var webX = windowX+window_width/2 - (web_width/2)
-			var webY = windowY + (buffer*3)
-	
-			draw_set_color(c_black)
-			draw_roundrect(webX-2,webY-2,webX+web_width+2,webY+64+2,false)
-			draw_text(webX+web_width/2,webY-16,"Web APIs")
-			if point_in_rectangle(gui_mouse_x,gui_mouse_y,webX,webY,webX+web_width,webY+64) {
 				draw_set_color(c_black)
-				draw_set_color(c_ltgray)
-				if input.mouse_left_press {
-					web_button = !web_button	
+				draw_roundrect(webX-2,webY-2,webX+web_width+2,webY+64+2,false)
+				draw_text(webX+web_width/2,webY-16,"Web APIs")
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,webX,webY,webX+web_width,webY+64) {
+					draw_set_color(c_black)
+					draw_set_color(c_ltgray)
+					if input.mouse_left_press {
+						web_button = !web_button
+						if surface_exists(data_surface) surface_free(data_surface)
+					}
+					if input.doubleclick {
+						web_button = true
+						price_button = false
+					}
+				} else {
+					if web_button draw_set_color(c_gray) else draw_set_color(c_gray5)
 				}
-				if input.doubleclick {
-					web_button = true
-					price_button = false
-				}
-			} else {
-				if web_button draw_set_color(c_gray) else draw_set_color(c_gray5)
-			}
-			draw_roundrect(webX,webY,webX+web_width,webY+64,false)
-			draw_sprite(s_icon_web,0,webX+web_width/2,webY+33)
+				draw_roundrect(webX,webY,webX+web_width,webY+64,false)
+				draw_sprite(s_icon_web,0,webX+web_width/2,webY+33)
 	
-			//	price data button
-			var price_width = sprite_get_width(s_icon_data) + (buffer*2)
-			var priceX = webX - buffer - price_width
-			var priceY = webY
+				//	price data button
+				var price_width = sprite_get_width(s_icon_data) + (buffer*2)
+				var priceX = webX - buffer - price_width
+				var priceY = webY
 	
-			draw_set_color(c_black)
-			draw_roundrect(priceX-2,priceY-2,priceX+price_width+2,priceY+64+2,false)
-			draw_text(priceX+price_width/2,priceY-16,"Price Data")
-			if point_in_rectangle(gui_mouse_x,gui_mouse_y,priceX,priceY,priceX+price_width,priceY+64) {
 				draw_set_color(c_black)
-				draw_set_color(c_ltgray)
-				if input.mouse_left_press {
-					price_button = !price_button	
+				draw_roundrect(priceX-2,priceY-2,priceX+price_width+2,priceY+64+2,false)
+				draw_text(priceX+price_width/2,priceY-16,"Price Data")
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,priceX,priceY,priceX+price_width,priceY+64) {
+					draw_set_color(c_black)
+					draw_set_color(c_ltgray)
+					if input.mouse_left_press {
+						price_button = !price_button
+						if surface_exists(data_surface) surface_free(data_surface)
+					}
+					if input.doubleclick {
+						price_button = true
+						web_button = false
+					}
+				} else {
+					if price_button draw_set_color(c_gray) else draw_set_color(c_gray5)	
 				}
-				if input.doubleclick {
-					price_button = true
-					web_button = false
+				draw_roundrect(priceX,priceY,priceX+price_width,priceY+64,false)
+				draw_sprite(s_icon_data,0,priceX+price_width/2,priceY+33)
+				draw_set_color(c_black)
+				draw_set_font(fnt_shop_menu_name)
+				draw_text(priceX+price_width/2,priceY+42,"$")
+				draw_set_font(fnt_shop)
+	
+				////	payments button TODO
+				
+	
+				//	owned/unowned/both
+				switch(owned_button) {
+					case 0:	var String = "All" break
+					case 1: var String = "Owned" break
+					case 2: var String = "Unowned" break
 				}
-			} else {
-				if price_button draw_set_color(c_gray) else draw_set_color(c_gray5)	
-			}
-			draw_roundrect(priceX,priceY,priceX+price_width,priceY+64,false)
-			draw_sprite(s_icon_data,0,priceX+price_width/2,priceY+33)
-			draw_set_color(c_black)
-			draw_set_font(fnt_shop_menu_name)
-			draw_text(priceX+price_width/2,priceY+42,"$")
-			draw_set_font(fnt_shop)
-	
-			//	payments button TODO
-	
-			//	owned/unowned/both
-			switch(owned_button) {
-				case 0:	var String = "All" break
-				case 1: var String = "Owned" break
-				case 2: var String = "Unowned" break
-			}
-			var owned_width = string_width(String) + (buffer*2)
-			var ownedX = webX + web_width + (buffer*2) + 64
-			var ownedY = webY + (64 - string_height(String) - (buffer*2))
-			draw_set_color(c_black)
-			draw_roundrect(ownedX-2,ownedY-2,ownedX+owned_width+2,ownedY+string_height(String)+(buffer*2)+2,false)
-			if point_in_rectangle(gui_mouse_x,gui_mouse_y,ownedX,ownedY,ownedX+owned_width,ownedY+string_height(String)+(buffer*2)) {
-				draw_set_color(c_ltgray)
-				if input.mouse_left_press {
-					owned_button++
-					if owned_button > 2 owned_button = 0
+				var owned_width = string_width(String) + (buffer*2)
+				var ownedX = webX + web_width + (buffer*2) + 64
+				var ownedY = webY + (64 - string_height(String) - (buffer*2))
+				draw_set_color(c_black)
+				draw_roundrect(ownedX-2,ownedY-2,ownedX+owned_width+2,ownedY+string_height(String)+(buffer*2)+2,false)
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,ownedX,ownedY,ownedX+owned_width,ownedY+string_height(String)+(buffer*2)) {
+					draw_set_color(c_ltgray)
+					if input.mouse_left_press {
+						owned_button++
+						if owned_button > 2 owned_button = 0
+					}
+				} else {
+					draw_set_color(c_gray)
 				}
-			} else {
-				draw_set_color(c_gray)
-			}
-			draw_roundrect(ownedX,ownedY,ownedX+owned_width,ownedY+string_height(String)+(buffer*2),false)
-			draw_set_color(c_black)
-			draw_text(ownedX+owned_width/2,ownedY+(string_height(String)+buffer*2)/2,String)
-	
-			//	Draw list 
-			//	prelim loop through list
+				draw_roundrect(ownedX,ownedY,ownedX+owned_width,ownedY+string_height(String)+(buffer*2),false)
+				draw_set_color(c_black)
+				draw_text(ownedX+owned_width/2,ownedY+(string_height(String)+buffer*2)/2,String)
+		#endregion
+			
+			var filtered_list = []
 			var amount = 0
 			var longest_line = 0
-			var array = []
+			
+			var surface_width = window_width
+			var surface_height = 0
+			
 			draw_set_font(fnt_plaque_name)
+			//	Prelim loop through the list
 			for(var d=0;d<array_height_2d(shop.item_data);d++) {
-				if shop.item_data[d, item_available] {
+				if shop.item_data[d,item_available] {
 					var Filter = shop.item_data[d, item_filter]
 					var Purchased = shop.item_data[d, item_purchased]
 					var name = shop.item_data[d, item_name]
 					var Price = shop.item_data[d, item_price]
 					if (Filter == data_filters.pricedata and price_button) or (Filter == data_filters.webdata and web_button) {
 						if (owned_button == 0) or (owned_button == 1 and Purchased) or (owned_button == 2 and !Purchased) {
-							array[amount] = d
+							filtered_list[amount] = d
 							amount++
 							var name_width = string_width(name)
 							var price_width = string_width(string(Price))
 							var price_width2 = string_width("$$")
-							var total_width = name_width + price_width + price_width2 + buffer + (buffer*2) + buffer + buffer
+							var total_width = name_width + price_width + price_width2 + buffer + buffer*2 + buffer + buffer
 							if total_width > longest_line longest_line = total_width
-				
+							surface_height += 64
+							
 						}
-					}	
+					}
 				}
 			}
-	
-			//	ok time to actually draw it
+			
 			var line_width = longest_line
 			var line_height = 48
 			var lineX = (windowX+window_width-buffer-48) - buffer - line_width
-			var lineY = webY + 64 + buffer
-	
-			var data_clamp = 5
-			//var data_index = 0
-			var data_amount = 0
+			var lineY = webY + 64 + buffer + 2
 			
-			//for(var d=data_index;d<array_height_2d(array);d++) {
-			//	var index = array[d]
-			//	var Purchased = shop.item_data[index, item_purchased]
-			//	var name = shop.item_data[index, item_name]
-			//	var Price = shop.item_data[index, item_price]
+			var lineX = 64
+			var lineY = 4
+			
+			var XX = 64
+			var YY = webY + 64 + buffer + 2-data_surface_offsetY
+			
+			var pageX = windowX+1
+			var pageY = webY + 64 + buffer
+			var page_width = surface_width
+			var page_height = abs((windowY+window_height)-(webY + 64 + buffer))
+			
+			if !surface_exists(data_surface) and surface_height > 0 {
 				
-			//	draw_set_color(c_black)
-			//	draw_roundrect(lineX-2,lineY-2,lineX+line_width+2,lineY+line_height+2,false)
-			//	if point_in_rectangle(gui_mouse_x,gui_mouse_y,lineX,lineY,lineX+line_width,lineY+line_height) {
-								
-			//		if !plaqueCheck() {
-			//			var X = lineX+line_width+buffer
-			//			var Y = lineY
-			//			plaqueCreate(X,Y,data,d)
-			//		} else if Plaque.index != d {
-			//			instance_destroy(Plaque)	
-			//			var X = lineX+line_width+buffer
-			//			var Y = lineY
-			//			plaqueCreate(X,Y,data,d)
-			//		}
-								
-			//		draw_set_color(c_ltgray)
-			//		if input.mouse_left_press {
-			//			if shop.item_data[d, item_object_index] == -1 {
-			//				//	Delete the item we're currently placing if there is one 
-			//				if ds_list_size(input.selections) > 0 {
-			//					for(var i=0;i<ds_list_size(input.selections);i++) {
-			//						input.selections[| i].selected = false	
-			//					}
-			//				}
-			//				ds_list_clear(input.selections)
-			//				if instance_exists(c_item) {
-			//					with c_item {
-			//						if states == states.placement {
-			//							instance_destroy()	
-			//						}
-			//					}
-			//				}	
-			//				data_mouseover = false
-			//				data_open = false
-			//				input.grid_moved = true
-			//				input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",data)
-			//				input.selection.selected = true
-			//				input.selection.item_index = d
-			//				input.selection.name = shop.item_data[d, item_name]
-			//				input.selection.portrait = shop.item_data[d, item_portrait]
-			//				if !shop.item_data[d, item_purchased] input.selection.price = shop.item_data[d, item_price]
-			//				else input.selection.price = 0
-			//				input.selection.data_generated = shop.item_data[d, item_data_generated]
-			//				if ds_list_find_index(input.selections,input.selection) == -1 {
-			//					ds_list_add(input.selections,input.selection)	
-			//				}
-			//			} else {
-			//				var ID = shop.item_data[d, item_object_index]
-			//				camera_goto(ID.x,ID.y,ID)
-			//				data_mouseover = false
-			//				data_open = false
-			//			}
-							
-			//		}
-			//	} else {
-								
-			//		if plaqueCheck() and Plaque.index == d {
-			//			instance_destroy(Plaque)
-			//			Plaque = -1
-			//		}
-								
-			//		draw_set_color(c_gray)
-			//	}
-			//	draw_roundrect(lineX,lineY,lineX+line_width,lineY+line_height,false)
+				data_surface = surface_create(surface_width,surface_height)
+				surface_set_target(data_surface)	
+				draw_clear_alpha(c_white,0)
 				
-			//}
-	
-			for(var d=data_index;d<array_height_2d(shop.item_data);d++) {
-			//for(var d=data_index;d<array_height_2d(array);d++) {
-				if data_amount < data_clamp and d < array_height_2d(shop.item_data) and shop.item_data[d, item_available] {
-					var Filter = shop.item_data[d, item_filter]
-					var Purchased = shop.item_data[d, item_purchased]
-					var name = shop.item_data[d, item_name]
-					var Price = shop.item_data[d, item_price]
-					if (Filter == data_filters.pricedata and price_button) or (Filter == data_filters.webdata and web_button) {
-						if (owned_button == 0) or (owned_button == 1 and Purchased) or (owned_button == 2 and !Purchased) {
-							//if Filter == data_filters.webdata data_index = clamp(data_index,11,array_height_2d(shop.item_data)-1)
-							data_amount++
-							draw_set_color(c_black)
-							draw_roundrect(lineX-2,lineY-2,lineX+line_width+2,lineY+line_height+2,false)
-							if point_in_rectangle(gui_mouse_x,gui_mouse_y,lineX,lineY,lineX+line_width,lineY+line_height) {
-								
-								if !plaqueCheck() {
-									var X = lineX+line_width+buffer
-									var Y = lineY
-									plaqueCreate(X,Y,data,d)
-								} else if Plaque.index != d {
-									instance_destroy(Plaque)	
-									var X = lineX+line_width+buffer
-									var Y = lineY
-									plaqueCreate(X,Y,data,d)
-								}
-								
-								draw_set_color(c_ltgray)
-								if input.mouse_left_press {
-									if shop.item_data[d, item_object_index] == -1 {
-										//	Delete the item we're currently placing if there is one 
-										if ds_list_size(input.selections) > 0 {
-											for(var i=0;i<ds_list_size(input.selections);i++) {
-												input.selections[| i].selected = false	
-											}
+				
+				for(var d=0;d<array_length_1d(filtered_list);d++) {
+					var index = filtered_list[d]
+					var name = shop.item_data[index, item_name]
+					var price = shop.item_data[index, item_price]
+					var Filter = shop.item_data[index, item_filter]
+					var purchased = shop.item_data[index, item_purchased]
+				
+					//	Draw line
+					draw_set_color(c_black)
+					draw_roundrect(lineX-2,lineY-2,lineX+line_width+2,lineY+line_height+2,false)
+					
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,pageX,pageY,pageX+page_width,pageY+page_height) {
+						if point_in_rectangle(gui_mouse_x,gui_mouse_y,XX-2,YY-2,XX+line_width+2,YY+line_height+2) {
+							draw_set_color(c_gray)
+						
+							if input.mouse_left_press {
+								if shop.item_data[index, item_object_index] == -1 {
+									//	Delete the item we're currently placing if there is one 
+									if ds_list_size(input.selections) > 0 {
+										for(var i=0;i<ds_list_size(input.selections);i++) {
+											input.selections[| i].selected = false	
 										}
-										ds_list_clear(input.selections)
-										if instance_exists(c_item) {
-											with c_item {
-												if states == states.placement {
-													instance_destroy()	
-												}
-											}
-										}	
-										data_mouseover = false
-										data_open = false
-										input.grid_moved = true
-										input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",data)
-										input.selection.selected = true
-										input.selection.item_index = d
-										input.selection.name = shop.item_data[d, item_name]
-										input.selection.portrait = shop.item_data[d, item_portrait]
-										if !shop.item_data[d, item_purchased] input.selection.price = shop.item_data[d, item_price]
-										else input.selection.price = 0
-										input.selection.data_generated = shop.item_data[d, item_data_generated]
-										if ds_list_find_index(input.selections,input.selection) == -1 {
-											ds_list_add(input.selections,input.selection)	
-										}
-									} else {
-										var ID = shop.item_data[d, item_object_index]
-										camera_goto(ID.x,ID.y,ID)
-										data_mouseover = false
-										data_open = false
 									}
-							
-								}
-							} else {
-								
-								if plaqueCheck() and Plaque.index == d {
-									instance_destroy(Plaque)
-									Plaque = -1
-								}
-								
-								draw_set_color(c_gray)
-							}
-							draw_roundrect(lineX,lineY,lineX+line_width,lineY+line_height,false)
-				
-							//	draw name
-							draw_set_color(c_black)
-							draw_set_halign(fa_left)
-							draw_text(lineX+buffer,lineY+line_height/2,name)
-				
-							if !shop.item_data[d, item_purchased] {
-								//	draw price
-								var PriceX = lineX+line_width-buffer-string_width(string(Price))
-								draw_text(PriceX,lineY+line_height/2,string(Price))
-				
-								//	draw $$
-								draw_text_outlined(PriceX-string_width("$$")-buffer,lineY+line_height/2,"$$",c_green,c_black)
-							}
-				
-							lineY += 64
-						}
-					}	
-				}
-			}
-			draw_set_font(fnt_shop)
-			draw_set_halign(fa_center)
-	
-			//	Scrollbar
-			var bar_width = 48
-			var bar_height = abs((webY+64+buffer) - (windowY+window_height-buffer))
-			//debug_log(string(bar_height))
-			var barX = windowX+window_width-buffer-bar_width
-			var barY = webY + 64 + buffer
-	
-			var handle_width = 40
-			var handle_height = 48 
-			var segments = amount - data_amount 
-			var ratio = data_amount / amount
-			var handle_height = bar_height * ratio
-			var segment_height = (bar_height - handle_height) / segments
-			//debug_log(string(segment_height))
-			if segments > 0 {
-	
-				var handleX = barX + ((bar_width-handle_width)/2)
-				var handleY = barY + (data_index * segment_height)
-				//if Filter == data_filters.webdata var handleY = barY + ((data_index-11)*segment_height)
-	
-				//	draw bar
-				draw_set_color(c_gray4)
-				draw_roundrect(barX,barY,barX+bar_width,barY+bar_height,false)
-	
-				//	draw handle
-				if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) {
-					if point_in_rectangle(gui_mouse_x,gui_mouse_y,handleX,handleY,handleX+handle_width,handleY+handle_height) {
-						draw_set_color(c_ltgray)
-						if input.mouse_left_press {
-							data_barclickY1 = gui_mouse_y	
-						}
-						if input.mouse_left and data_barclickY1 > -1 { 
-							data_barclickY2 = gui_mouse_y
-							if abs(data_barclickY2 - data_barclickY1) > segment_height {
-								if data_barclickY2 - data_barclickY1 > 0 {
-									data_index++
-									if data_index > segments data_index = segments
+									ds_list_clear(input.selections)
+									if instance_exists(c_item) {
+										with c_item {
+											if states == states.placement {
+												instance_destroy()	
+											}
+										}
+									}	
+									data_mouseover = false
+									data_open = false
+									input.grid_moved = true
+									input.selection = instance_create_layer(mouse_x,mouse_y,"Instances",data)
+									input.selection.selected = true
+									input.selection.item_index = index
+									input.selection.name = shop.item_data[index, item_name]
+									input.selection.portrait = shop.item_data[index, item_portrait]
+									if !shop.item_data[index, item_purchased] input.selection.price = shop.item_data[d, item_price]
+									else input.selection.price = 0
+									input.selection.data_generated = shop.item_data[index, item_data_generated]
+									if ds_list_find_index(input.selections,input.selection) == -1 {
+										ds_list_add(input.selections,input.selection)	
+									}
 								} else {
-									data_index--	
-									if data_index < 0 data_index = 0
+									var ID = shop.item_data[index, item_object_index]
+									camera_goto(ID.x,ID.y,ID)
+									data_mouseover = false
+									data_open = false
 								}
-								data_barclickY1 = gui_mouse_y
 							}
-						}
-						if input.mouse_left_release {
-							data_barclickY1 = -1
-							data_barclickY2 = -1
+						} else {
+							draw_set_color(c_gray4)
 						}
 					} else {
-						draw_set_color(c_gray)
-						if input.mouse_left_press or input.mouse_left {
-							for(var s=0;s<segments;s++) {
-								var Y = barY + (s*segment_height)
-								if gui_mouse_y > Y and gui_mouse_y < Y+segment_height {
-									data_index = s	
-								}
-							}
-						}
+						draw_set_color(c_gray4)	
 					}
-				} else {
-					data_barclickY1 = -1
-					data_barclickY2 = -1
-					draw_set_color(c_gray)	
+					YY += 64
+					draw_roundrect(lineX,lineY,lineX+line_width,lineY+line_height,false)
+					
+				
+					//	Draw Data Name and Price
+					draw_set_color(c_black)
+					draw_set_halign(fa_left)
+					draw_text(lineX+buffer,lineY+line_height/2,name)
+					
+					if !purchased {
+						//  Price
+						draw_text(lineX+line_width-buffer*4,lineY+line_height/2,price)
+						draw_set_color(c_green)
+						draw_text_outlined(lineX+line_width-buffer*4-string_width(string(price)),lineY+line_height/2,"$$",c_green,c_black)
+					}
+				
+					//	Draw type of data
+					if Filter == data_filters.pricedata var image = s_icon_data else var image = s_icon_web
+					draw_sprite_ext(image,0,lineX-buffer*2,lineY+line_height/2+2,.66,.66,0,c_white,1)
+					if Filter == data_filters.pricedata {
+						draw_set_color(c_black)
+						draw_set_halign(fa_center)
+						draw_text(lineX-buffer*2,lineY+line_height/2+8,"$")
+					
+					}
+				
+					lineY += 64
 				}
-				draw_roundrect(handleX,handleY,handleX+handle_width,handleY+handle_height,false)
-		
-				//	Scroll wheel
-				if data_mouseover and (input.scroll_down or input.scroll_up) {
-					if input.scroll_up {
-						data_index--
-						if data_index < 0 data_index = 0	
-					}
-					if input.scroll_down {
-						data_index++
-						if data_index > segments data_index = segments
-					}
+				surface_reset_target()
+			}
+			
+			var pageX = windowX+1
+			var pageY = webY + 64 + buffer
+			var page_width = surface_width
+			var page_height = abs((windowY+window_height)-(webY + 64 + buffer))
+			
+			//draw_set_alpha(.33)
+			//draw_rectangle(pageX,pageY,pageX+page_width,pageY+page_height,false)
+			
+			//draw_set_color(c_green)
+			//var YY = webY+64+buffer
+			//draw_rectangle(64,YY-data_surface_offsetY,64+surface_width,YY-data_surface_offsetY+surface_height,false)
+			//draw_set_alpha(1)
+			
+			if surface_exists(data_surface) {
+				draw_surface_part(data_surface,0,0+data_surface_offsetY,page_width+60,page_height,pageX,pageY)
+			}
+			if surface_exists(data_surface) surface_free(data_surface)
+			
+			if data_mouseover {
+				if input.scroll_up or input.scroll_down {
+					if input.scroll_up data_surface_offsetY -= 100
+					if input.scroll_down data_surface_offsetY += 100
 				}
 			}
+			
+			//if (surface_height - page_height) < page_height {
+			//	var number = surface_height	
+			//} else {
+			//	var number = surface_height-page_height	
+			//}
+			data_surface_offsetY = clamp(data_surface_offsetY,0,surface_height-page_height)
+			
+			//	Scrollbar
+			var bar_width = 48
+			var bar_height = (windowY+window_height)-(webY + 64 + buffer)
+			var barX = windowX+window_width-62
+			var barY = webY+64+buffer
+			
+			var handle_width = 48
+			var handle_height = 48
+			var handle_height = (page_height/(surface_height-page_height)) * bar_height
+			var handleX = barX+2
+			var handleY = barY + (data_surface_offsetY/(surface_height-page_height) * (bar_height-handle_height))
+			
+			if (surface_height - page_height) < page_height {
+				handle_height = page_height/surface_height * bar_height	
+			}
+			
+			var segment = (data_surface_offsetY/(surface_height-page_height) * (bar_height-handle_height))
+			var segments = round(bar_height/segment)
+			
+			draw_set_color(c_black)
+			draw_set_halign(fa_left)
+			
+			//	Scrollbar click
+			if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) {
+				if input.mouse_left_press or input.mouse_left {
+					var Y = gui_mouse_y
+					Y = ((Y - 272) / bar_height)*(surface_height-page_height)
+					data_surface_offsetY = Y
+				}
+			}
+			
+			if surface_height > page_height and handle_height < bar_height {
+			
+				draw_set_color(c_gray4)
+				draw_roundrect(barX,barY,barX+bar_width,barY+bar_height,false)
+			
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,handleX,handleY,handleX+handle_width,handleY+handle_height) 
+				or (point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) and 
+				input.mouse_left_press or input.mouse_left) {
+					draw_set_color(c_ltgray)	
+				} else {
+					draw_set_color(c_gray)
+				}
+				draw_roundrect(handleX,handleY,handleX+handle_width,handleY+handle_height,false)
+			}
+			
+			//	Debug
+			draw_set_color(c_black)
+			draw_set_halign(fa_left)
+			var yy = windowY + 120
+			draw_text(windowX+window_width+20,yy,"surface_height: "+string(surface_height)) yy += 24
+			draw_text(windowX+window_width+20,yy,"page_height: "+string(page_height)) yy += 24
+			draw_text(windowX+window_width+20,yy,"bar_height: "+string(bar_height)) yy += 24
+			draw_text(windowX+window_width+20,yy,"handleY: "+string(handleY)) yy += 24
+			draw_text(windowX+window_width+20,yy,"data_surface_offsetY: "+string(data_surface_offsetY)) yy += 24
+			draw_text(windowX+window_width+20,yy,"segment: "+string(segment)) yy += 24
+			draw_text(windowX+window_width+20,yy,"segments: "+string(segments)) yy += 24
+	
 		}
 	}
 	
@@ -485,6 +438,8 @@ if nodes_active {
 	if nodes_open draw_set_color(c_ltgray)
 	draw_rectangle(nodesX,nodesY,nodesX+nodes_width,nodesY+48,false)
 	draw_set_color(c_black)
+	draw_set_halign(fa_center)
+	draw_set_font(fnt_shop)
 	draw_text(nodesX+nodes_width/2,nodesY+24,nodes_string)
 }
 
