@@ -1,9 +1,9 @@
 {
-    "id": "45f5b59a-677f-466b-8925-001ae4f0c633",
+    "id": "e576c25c-abdd-47a1-9b59-5476b912a10d",
     "modelName": "GMIncludedFile",
     "mvc": "1.0",
     "name": "tutorial_scripts.csv",
-    "CopyToMask": 153720560310812910,
+    "CopyToMask": -1,
     "exists": false,
     "exportAction": 0,
     "exportDir": "",

@@ -17,7 +17,7 @@ var data_width = string_width(data_string) + (buffer*2)
 
 var nodesX = dataX + data_width
 var nodesY = menuY
-var nodes_string = "Nodes"
+var nodes_string = "Oracles"
 var nodes_width = string_width(nodes_string) + (buffer*2)
 
 contractsX = nodesX+ nodes_width
@@ -513,7 +513,7 @@ if nodes_open {
 		//	nodes name
 		draw_set_color(c_black)
 		draw_set_font(fnt_shop_menu_name)
-		draw_text(windowX+window_width/2,windowY+28,"Nodes")
+		draw_text(windowX+window_width/2,windowY+28,"Oracles")
 		draw_set_font(fnt_shop)
 	
 		//	new
