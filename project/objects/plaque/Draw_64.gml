@@ -1,6 +1,6 @@
 if live_call() return live_result
 
-if (input.selection > -1 and instance_exists(input.selection) and input.selection.object_index != wire) or mode == mode.on {
+if ((input.selection > -1 and instance_exists(input.selection) and input.selection.object_index != wire) or mode == mode.on) and !instance_exists(mainmenu) {
 	
 	var window_width_adjusted = 0
 	//var window_height_adjusted = 0
@@ -541,6 +541,53 @@ if (input.selection > -1 and instance_exists(input.selection) and input.selectio
 					var String = string(reliability*100)
 					draw_text(relyX+name_width/2,relyY+24,String)
 					draw_text(relyX+name_width/2+48,relyY+24,"%")
+					
+					//	rebrand
+					var rebrandX = valueX
+					var rebrandY = relyY+48+p_offset
+					//if (reliability*100) < 100 {
+						if point_in_rectangle(gui_mouse_x,gui_mouse_y,rebrandX,rebrandY,rebrandX+rely_pixels,rebrandY+30) {
+							draw_set_color(c_ltgray)
+							#region Rebrand Sub Menu
+								draw_set_color(c_dkgray)
+								var rebrand_width = 400
+								var rebrand_height = 35
+								var rb_spacer = 12
+								draw_roundrect(windowX,windowY-rebrand_height-4,windowX+rebrand_width,windowY-4,false)
+							
+								var rebrand_price = 2000
+								var String = "Spend         " + string(rebrand_price) + " to reset Reliability to 100%"
+							
+								draw_set_color(c_white)
+								draw_set_halign(fa_left)
+								draw_set_font(fnt_shop)
+								draw_text(windowX+rb_spacer,windowY-rebrand_height+rb_spacer,String)
+							
+								draw_text_outlined(windowX+rb_spacer+string_width("Spend   "),windowY-rebrand_height+rb_spacer,"$$",c_green,c_black)
+							
+								draw_set_color(c_ltgray)
+							
+							#endregion
+							if input.mouse_left_press {
+								resource_changed("$$",2000,gui_mouse_x,gui_mouse_y,true)
+								
+								var list = contracts.contract[Smartcontract, contract_uses]
+								
+								ds_list_clear(list)
+								
+								contracts.contract[Smartcontract, contract_reliability] = 100
+								
+							}
+						} else {
+							draw_set_color(c_gray)	
+						}
+						draw_roundrect_ext(rebrandX,rebrandY,rebrandX+name_width,rebrandY+30,25,25,false)
+						draw_set_color(c_black)
+						draw_set_halign(fa_center)
+						draw_set_font(fnt_shop)
+						draw_text(rebrandX+name_width/2,rebrandY+30/2,"Rebrand")
+					//}
+					
 
 					//	data
 					draw_set_font(fnt_plaque_name)

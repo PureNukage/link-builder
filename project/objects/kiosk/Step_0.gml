@@ -85,7 +85,9 @@ switch(states)
 					
 					//	Turn off decentralized data
 					for(var d=0;d<array_height_2d(new_item.data_needed);d++) {
-						new_item.data_needed[d,3] = false	
+						new_item.data_needed[d,3] = false
+						//	get rid of connected nodes
+						new_item.data_needed[d,2] = -1
 					}
 					
 					//	Pass along ports xy but not objects

@@ -152,7 +152,7 @@ if contract_misfire > 0 {
 	ds_list_add(contracts.contract[Smartcontract, contract_uses],false)
 	
 	//	Calculate new reliability percentage
-	var _misfires = contracts.contract[Smartcontract, contract_misfires]
+	//var _misfires = contracts.contract[Smartcontract, contract_misfires]
 	//var _successes = contracts.contract[smartcontract, contract_uses] - _misfires
 	//contracts.contract[smartcontract, contract_reliability] = (_successes / contracts.contract[smartcontract, contract_uses]) * 100
 } else {

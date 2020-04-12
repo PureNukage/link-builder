@@ -32,7 +32,7 @@ if app.tutorial == -1 {
 if app.new_game {
 	app.new_game = false
 	//	SN Introduction
-	var String = "The mysterious man known only by his initials has given you the objective of building out the 4th Industrial Revolution. He has entrusted you with a starting sum of capital and hopes to see swift progress"
+	var String = "A mysterious man known only by his initials has given you the objective of building out the 4th Industrial Revolution. He has entrusted you with a starting sum of capital and hopes to see swift progress"
 	create_textbox(String,s_event_sn,-1,-1,event_types.sn_start,-1)
 }
 
