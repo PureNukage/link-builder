@@ -340,7 +340,10 @@ if data_open {
 			if surface_exists(data_surface) {
 				draw_surface_part(data_surface,0,0+data_surface_offsetY,page_width+60,page_height,pageX,pageY)
 			}
-			if surface_exists(data_surface) surface_free(data_surface)
+			//if surface_exists(data_surface) surface_free(data_surface)
+			if point_in_rectangle(gui_mouse_x,gui_mouse_y,pageX,pageY,pageX+page_width,pageY+page_height) {
+				if surface_exists(data_surface) surface_free(data_surface)	
+			}
 			
 			if data_mouseover {
 				if input.scroll_up or input.scroll_down {
@@ -349,11 +352,6 @@ if data_open {
 				}
 			}
 			
-			//if (surface_height - page_height) < page_height {
-			//	var number = surface_height	
-			//} else {
-			//	var number = surface_height-page_height	
-			//}
 			data_surface_offsetY = clamp(data_surface_offsetY,0,surface_height-page_height)
 			
 			//	Scrollbar
@@ -370,6 +368,7 @@ if data_open {
 			
 			if (surface_height - page_height) < page_height {
 				handle_height = page_height/surface_height * bar_height	
+				var handleY = barY + (data_surface_offsetY/(surface_height-page_height) * (bar_height-handle_height))
 			}
 			
 			var segment = (data_surface_offsetY/(surface_height-page_height) * (bar_height-handle_height))
@@ -403,16 +402,16 @@ if data_open {
 			}
 			
 			//	Debug
-			draw_set_color(c_black)
-			draw_set_halign(fa_left)
-			var yy = windowY + 120
-			draw_text(windowX+window_width+20,yy,"surface_height: "+string(surface_height)) yy += 24
-			draw_text(windowX+window_width+20,yy,"page_height: "+string(page_height)) yy += 24
-			draw_text(windowX+window_width+20,yy,"bar_height: "+string(bar_height)) yy += 24
-			draw_text(windowX+window_width+20,yy,"handleY: "+string(handleY)) yy += 24
-			draw_text(windowX+window_width+20,yy,"data_surface_offsetY: "+string(data_surface_offsetY)) yy += 24
-			draw_text(windowX+window_width+20,yy,"segment: "+string(segment)) yy += 24
-			draw_text(windowX+window_width+20,yy,"segments: "+string(segments)) yy += 24
+			//draw_set_color(c_black)
+			//draw_set_halign(fa_left)
+			//var yy = windowY + 120
+			//draw_text(windowX+window_width+20,yy,"surface_height: "+string(surface_height)) yy += 24
+			//draw_text(windowX+window_width+20,yy,"page_height: "+string(page_height)) yy += 24
+			//draw_text(windowX+window_width+20,yy,"bar_height: "+string(bar_height)) yy += 24
+			//draw_text(windowX+window_width+20,yy,"handleY: "+string(handleY)) yy += 24
+			//draw_text(windowX+window_width+20,yy,"data_surface_offsetY: "+string(data_surface_offsetY)) yy += 24
+			//draw_text(windowX+window_width+20,yy,"segment: "+string(segment)) yy += 24
+			//draw_text(windowX+window_width+20,yy,"segments: "+string(segments)) yy += 24
 	
 		}
 	}
