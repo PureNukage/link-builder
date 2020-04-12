@@ -170,6 +170,7 @@ if data_open {
 				if point_in_rectangle(gui_mouse_x,gui_mouse_y,ownedX,ownedY,ownedX+owned_width,ownedY+string_height(String)+(buffer*2)) {
 					draw_set_color(c_ltgray)
 					if input.mouse_left_press {
+						if surface_exists(data_surface) surface_free(data_surface)	
 						owned_button++
 						if owned_button > 2 owned_button = 0
 					}
@@ -352,7 +353,11 @@ if data_open {
 				}
 			}
 			
-			data_surface_offsetY = clamp(data_surface_offsetY,0,surface_height-page_height)
+			if (surface_height - page_height) < page_height {
+				data_surface_offsetY = clamp(data_surface_offsetY,0,0)
+			} else {
+				data_surface_offsetY = clamp(data_surface_offsetY,0,surface_height-page_height)
+			}
 			
 			//	Scrollbar
 			var bar_width = 48
@@ -393,7 +398,7 @@ if data_open {
 			
 				if point_in_rectangle(gui_mouse_x,gui_mouse_y,handleX,handleY,handleX+handle_width,handleY+handle_height) 
 				or (point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) and 
-				input.mouse_left_press or input.mouse_left) {
+				(input.mouse_left_press or input.mouse_left)) {
 					draw_set_color(c_ltgray)	
 				} else {
 					draw_set_color(c_gray)
