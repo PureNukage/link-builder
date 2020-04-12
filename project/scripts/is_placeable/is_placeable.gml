@@ -27,20 +27,20 @@ for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 	}
 }
 
-if item_index > -1 and !replace and object_index != node {
-	var resource_amount
-	switch(object_index) 
-	{
-		case node:	resource_amount = player.money break
-		case data: resource_amount = player.money break
-		case kiosk: resource_amount = player.value break
-	}
-	if resource_amount < price {
-		if app.tutorial == -1 {
-			_placeable++
-		}
-	}
-}
+//if item_index > -1 and !replace and object_index != node {
+//	var resource_amount
+//	switch(object_index) 
+//	{
+//		case node:	resource_amount = player.money break
+//		case data: resource_amount = player.money break
+//		case kiosk: resource_amount = player.value break
+//	}
+//	if resource_amount < price {
+//		if app.tutorial == -1 {
+//			_placeable++
+//		}
+//	}
+//}
 
 if topmenu.data_mouseover or plaque.window_mouseover or contracts.menu_mouseover { 
 	_placeable++

@@ -308,7 +308,7 @@ if resources_active {
 		var _string = "Used to call Data sources"
 		gui_popup(linkX,_yy,linkX+link_width,_yy+64,1,_string)
 		draw_set_color(c_gray)		
-		if input.mouse_left_press and player.money >= amount_of_money and amount_of_money > 0 and exchange_open and exchange_currency == "LINK" {
+		if input.mouse_left_press and exchange_open and exchange_currency == "LINK" {
 			resource_changed("$$",amount_of_money,gui_mouse_x,gui_mouse_y+128,true)
 			resource_changed("LINK",-link_trade,gui_mouse_x,gui_mouse_y+256,true)
 		} else if input.mouse_left_press and (!exchange_open or exchange_currency != "LINK") {
@@ -364,12 +364,17 @@ if resources_active {
 	draw_set_halign(fa_left)
 	draw_set_font(fnt_shop)
 	draw_text(moneyX+money_width/2,_yy+_height/2,string(player.money))
+	
+	if player.money > 0 var color = c_green else var color = c_red
+	draw_set_font(fnt_shop_menu_name)
+	draw_text_outlined(moneyX+20,_yy+32,"$$",color,c_black)
 
-	sprite_set_offset(s_resource_money,sprite_get_width(s_resource_money)/2,sprite_get_height(s_resource_money)/2)
-	draw_sprite_ext(s_resource_money,0,moneyX+28,_yy+32,1,1,0,c_white,1)
+	//sprite_set_offset(s_resource_money,sprite_get_width(s_resource_money)/2,sprite_get_height(s_resource_money)/2)
+	//draw_sprite_ext(s_resource_money,0,moneyX+28,_yy+32,1,1,0,c_white,1)
 
 	//	VALUE
 
+	draw_set_font(fnt_shop)
 	if string_width(string(player.value)) > 36 {
 		var value_width = _width_base + (string_width(string(player.value))- 36)
 	} else value_width = _width_base
@@ -416,7 +421,7 @@ if resources_active {
 		var _string = "Used when calling Data sources and Contracts"
 		gui_popup(ethX,_yy,ethX+eth_width,_yy+_height,1,_string)
 		draw_set_color(c_gray)		
-		if input.mouse_left_press and player.money >= amount_of_money and amount_of_money > 0  and exchange_open and exchange_currency == "ETH" {
+		if input.mouse_left_press and exchange_open and exchange_currency == "ETH" {
 			resource_changed("$$",amount_of_money,gui_mouse_x,gui_mouse_y+128,true)
 			resource_changed("ETH",-eth_trade,gui_mouse_x,gui_mouse_y+256,true)
 		} else if input.mouse_left_press and (!exchange_open or exchange_currency != "ETH") {
@@ -643,7 +648,7 @@ if resources_active {
 			draw_set_color(c_green)
 			if currency_amount * currency_price > player.money draw_set_color(c_red)
 			var amount_of_money = currency_amount * currency_price
-			if input.mouse_left_press and player.money >= amount_of_money and amount_of_money > 0 {
+			if input.mouse_left_press {
 				resource_changed("$$",amount_of_money,gui_mouse_x,gui_mouse_y+128,true)
 				resource_changed(exchange_currency,-currency_amount,gui_mouse_x,gui_mouse_y+256,true)
 			}

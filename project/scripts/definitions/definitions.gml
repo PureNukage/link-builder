@@ -96,7 +96,8 @@ enum goal_type {
 	idlewalk,
 	waiting_in_line,
 	using_smartcontract,
-	leaving
+	leaving,
+	leaving_game_over,
 	
 }
 

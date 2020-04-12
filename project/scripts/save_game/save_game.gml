@@ -35,6 +35,12 @@ ini_write_real(section,"Timer",chaosEvents.timer)
 var String = ds_list_write(chaosEvents.affected_data)
 ini_write_string(section,"Affected Data",String)
 
+var section = "Bailouts"
+ini_write_real(section,"Bailout1 Net",game.bailout1_amount_net)
+ini_write_real(section,"Bailout2 Net",game.bailout2_amount_net)
+ini_write_real(section,"Bailout2 Trigger",game.bailout2_amount_trigger)
+ini_write_real(section,"Game Over Trigger",game.lose_game_trigger)
+
 var section = "Item Databases"
 //	save the node item database
 var n_database_copy = shop.item_node

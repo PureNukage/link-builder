@@ -51,6 +51,13 @@ else {
 		ds_list_copy(chaosEvents.affected_data,new_list)
 		ds_list_destroy(new_list)
 	}
+	
+	//	bailout
+	var section = "Bailouts"
+	game.bailout1_amount_net = ini_read_real(section,"Bailout1 Net",-1)
+	game.bailout2_amount_net = ini_read_real(section,"Bailout2 Net",-1)
+	game.bailout2_amount_trigger = ini_read_real(section,"Bailout2 Trigger",0)
+	game.lose_game_trigger = ini_read_real(section,"Game Over Trigger",-1)
 
 	//	copy the item databases
 	var section = "Item Databases"

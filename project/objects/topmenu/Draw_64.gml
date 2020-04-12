@@ -275,7 +275,7 @@ if data_open {
 									input.selection.item_index = index
 									input.selection.name = shop.item_data[index, item_name]
 									input.selection.portrait = shop.item_data[index, item_portrait]
-									if !shop.item_data[index, item_purchased] input.selection.price = shop.item_data[d, item_price]
+									if !shop.item_data[index, item_purchased] input.selection.price = shop.item_data[index, item_price]
 									else input.selection.price = 0
 									input.selection.data_generated = shop.item_data[index, item_data_generated]
 									if ds_list_find_index(input.selections,input.selection) == -1 {

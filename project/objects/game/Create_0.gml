@@ -21,6 +21,20 @@ instance_create_layer(0,0,"Instances",chaosEvents)			debug_log("Spawning chaosEv
 vision = false
 temp_vision = false
 
+in_debt = false
+in_debt_timer = irandom_range(120,180)
+
+bailout1_amount_trigger = 0
+bailout1_amount_net = -1
+bailout1_amount = 1000
+
+bailout2_amount_trigger = 0
+bailout2_amount_net = -1
+bailout2_amount = 2000
+
+lose_game_trigger = 0
+game_over = false
+game_over_timer = 180
 
 if app.tutorial > -1 {
 	var _tutorial = instance_create_layer(0,0,"Instances",tutorialHelper)
