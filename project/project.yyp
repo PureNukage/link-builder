@@ -359,6 +359,14 @@
             }
         },
         {
+            "Key": "2cb889ee-c8ba-4aeb-a982-42f40b7c75eb",
+            "Value": {
+                "id": "4459e851-8abb-4cc9-b98b-1f6818002760",
+                "resourcePath": "sprites\\s_kiosk_light\\s_kiosk_light.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "2e51c480-a2a8-4455-adc4-ec24e26ea470",
             "Value": {
                 "id": "1bd09233-1976-4735-b5f6-1e767786279b",

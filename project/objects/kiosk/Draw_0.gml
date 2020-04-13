@@ -81,6 +81,17 @@ switch(states)
 						}
 					}		
 				}
+				
+				//	Draw the lights on the front of the kiosk
+				if array_height_2d(data_needed) == 1 var xx = x-3
+				else if array_height_2d(data_needed) == 2 var xx = x-20
+				var yy = y+36
+				for(var l=0;l<array_height_2d(data_needed);l++) {
+					var acquired = data_needed[l,1]
+					if acquired var color = c_green else var color = c_red
+					draw_sprite_ext(s_kiosk_light,0,xx,yy,.5,.5,0,color,1)
+					xx += 36
+				}
 			
 
 				logoX = gridController.grid_positions_x[center_cell_x]+(cell_width/2)			
@@ -91,8 +102,6 @@ switch(states)
 					draw_set_color(c_black)
 					draw_circle(logoX+1,logoY+32,28,false)
 					draw_sprite_ext(portrait,0,logoX-22,logoY,scale,scale,0,c_white,1)
-					//sprite_set_offset(s_eth,sprite_get_width(s_eth)/2-1,sprite_get_height(s_eth)/2-1)
-					//draw_sprite_ext(s_eth,image_index,logoX,logoY,1,1,0,c_white,1)
 				} else if contracts.contract[smartcontract, contract_type] == contract_types.utility {
 					//	Draw the reference feed background
 					sprite_set_offset(s_reference_feed_background,sprite_get_width(s_reference_feed_background)/2-1,sprite_get_height(s_reference_feed_background)/2-1)
