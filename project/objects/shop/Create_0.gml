@@ -7,7 +7,7 @@
 	var price = 500
 	var Object_index = data
 	var _string = "This endpoint to Binance gives\nthe current USD price of Ether"
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_binance
 	var Data_types = data_types.binance_ETHUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
@@ -17,7 +17,7 @@
 	var price = 500
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_cryptocompare
 	var Data_types = data_types.cryptocompare_ETHUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
@@ -27,7 +27,7 @@
 	var price = 500
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_coinbase
 	var Data_types = data_types.coinbase_ETHUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
@@ -37,17 +37,17 @@
 	var price = 500
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_bravenewcoin
 	var Data_types = data_types.bravenewcoin_ETHUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
-	var name = "AlphaCurrency ETH/USD"
+	var name = "Alpha Vantage ETH/USD"
 	var price = 500
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_alphavantage
 	var Data_types = data_types.alphacurrency_ETHUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
@@ -57,7 +57,7 @@
 	var price = 500
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_kaiko
 	var Data_types = data_types.kaiko_ETHUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
@@ -67,7 +67,7 @@
 	var price = 500
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_binance
 	var Data_types = data_types.binance_LINKUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
@@ -77,7 +77,7 @@
 	var price = 500
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_cryptocompare
 	var Data_types = data_types.cryptocompare_LINKUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
@@ -87,7 +87,7 @@
 	var price = 500
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_coinbase
 	var Data_types = data_types.coinbase_LINKUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
@@ -97,17 +97,17 @@
 	var price = 500
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_bravenewcoin
 	var Data_types = data_types.bravenewcoin_LINKUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
-	var name = "AlphaCurrency LINK/USD"
+	var name = "Alpha Vantage LINK/USD"
 	var price = 500
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_alphavantage
 	var Data_types = data_types.alphacurrency_LINKUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
@@ -117,7 +117,7 @@
 	var price = 500
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_kaiko
 	var Data_types = data_types.kaiko_LINKUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
@@ -147,7 +147,7 @@
 	var price = 500
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_email
 	var Data_types = data_types.emailAPI
 	var Corruption = create_data_corruption(0,-1,0)
 	var Data_filters = data_filters.webdata
@@ -157,7 +157,7 @@
 	var price = 750
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_twitter
 	var Data_types = data_types.twitter
 	var Corruption = create_data_corruption(0,-1,0)
 	var Data_filters = data_filters.webdata
@@ -167,7 +167,7 @@
 	var price = 1000
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_flight
 	var Data_types = data_types.flightAPI
 	var Corruption = create_data_corruption(0,-1,0)
 	var Data_filters = data_filters.webdata
@@ -177,7 +177,7 @@
 	var price = 1000
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_videogame
 	var Data_types = data_types.videogameAPI
 	var Corruption = create_data_corruption(0,-1,0)
 	var Data_filters = data_filters.webdata
@@ -187,17 +187,17 @@
 	var price = 1000
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_firewall
 	var Data_types = data_types.firewallAPI
 	var Corruption = create_data_corruption(0,-1,0)
 	var Data_filters = data_filters.webdata
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
-	var name = "gps API"
+	var name = "GPS API"
 	var price = 1000
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_gps
 	var Data_types = data_types.gpsAPI
 	var Corruption = create_data_corruption(0,-1,0)
 	var Data_filters = data_filters.webdata
@@ -207,17 +207,17 @@
 	var price = 1000
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_weather
 	var Data_types = data_types.weatherAPI
 	var Corruption = create_data_corruption(0,-1,0)
 	var Data_filters = data_filters.webdata
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
-	var name = "Vehicle API"
+	var name = "Tesla API"
 	var price = 1000
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_tesla
 	var Data_types = data_types.vehicleAPI
 	var Corruption = create_data_corruption(0,-1,0)
 	var Data_filters = data_filters.webdata
@@ -227,7 +227,7 @@
 	var price = 1000
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_supplychain
 	var Data_types = data_types.vehicle_freezerAPI
 	var Corruption = create_data_corruption(0,-1,0)
 	var Data_filters = data_filters.webdata
@@ -237,7 +237,7 @@
 	var price = 5000
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_swift
 	var Data_types = data_types.swiftPayment
 	var Corruption = create_data_corruption(0,-1,0)
 	var Data_filters = data_filters.webdata
@@ -247,7 +247,7 @@
 	var price = 3000
 	var Object_index = data
 	var _string = ""
-	var portrait = s_portrait_blank
+	var portrait = s_portrait_visa
 	var Data_types = data_types.visaPayment
 	var Corruption = create_data_corruption(0,-1,0)
 	var Data_filters = data_filters.webdata

@@ -40,31 +40,31 @@ var _data = create_data_needed(data_types.binance_ETHUSD)
 var _string = "Price Feeds can generate\na Decentralized price that nearby Contracts may use"
 var levels = create_level_ports(1,2,3,4)
 var Conditions = create_conditions(conditions.cnd_active,0)
-create_contract("ETH/USD Price Feed",_string,0,500,s_portrait_ethereum,2,0,0,contract_types.utility,levels,_data,true,Conditions,contract_types.defi,384)
+create_contract("ETH/USD Price Feed",_string,0,500,s_portrait_pricefeed,2,0,0,contract_types.utility,levels,_data,true,Conditions,contract_types.defi,384)
 
 var _data = create_data_needed(data_types.binance_LINKUSD)
 var _string = "Price Feeds can generate\na Decentralized price that nearby Contracts may use"
 var levels = create_level_ports(1,2,3,4)
 var Conditions = create_conditions(conditions.cnd_active,0)
-create_contract("LINK/USD Price Feed",_string,0,500,s_portrait_ethereum,2,0,0,contract_types.utility,levels,_data,true,Conditions,contract_types.defi,384)
+create_contract("LINK/USD Price Feed",_string,0,500,s_portrait_pricefeed,2,0,0,contract_types.utility,levels,_data,true,Conditions,contract_types.defi,384)
 
 var _data = create_data_needed(data_types.emailAPI)
 var _string = ""
 var levels = create_level_ports(1,1,1,1)
 var Conditions = create_conditions(conditions.cnd_active,125,conditions.cnd_reliability_high,125)
-create_contract("Cerberus Wallet 2FA",_string,8,0,s_portrait_blank,2,10,5,contract_types.people,levels,_data,true,Conditions,contract_types.hackathon)
+create_contract("Cerberus Wallet 2FA",_string,8,0,s_portrait_cerberus,2,10,5,contract_types.people,levels,_data,true,Conditions,contract_types.hackathon)
 
 var _data = create_data_needed(data_types.binance_ETHUSD)
 var _string = ""
 var levels = create_level_ports(1,1,1,1)
 var Conditions = create_conditions(conditions.cnd_active,125,conditions.cnd_reliability_high,125)
-create_contract("Backerr",_string,12,0,s_portrait_blank,2,10,5,contract_types.people,levels,_data,true,Conditions,contract_types.hackathon)
+create_contract("Backerr",_string,12,0,s_portrait_backerr,2,10,5,contract_types.people,levels,_data,true,Conditions,contract_types.hackathon)
 
-var name = "TradingSet"
+var name = "TokenSet"
 var _string = ""
 var reward = 15
 var price = 500
-var portrait = s_portrait_blank
+var portrait = s_portrait_tokenset
 var channel_time = 2
 var max_traffic = 10
 var line_size = 5
@@ -80,7 +80,7 @@ var name = "Smart Marketing Campaign"
 var _string = ""
 var reward = 15
 var price = 500
-var portrait = s_portrait_blank
+var portrait = s_portrait_smartmarketing
 var channel_time = 2
 var max_traffic = 10
 var line_size = 5
@@ -96,7 +96,7 @@ var name = "Synthetix"
 var _string = ""
 var reward = 25
 var price = 2000
-var portrait = s_portrait_blank
+var portrait = s_portrait_synthetix
 var channel_time = 2
 var max_traffic = 10
 var line_size = 5
@@ -112,7 +112,7 @@ var name = "Loopring"
 var _string = ""
 var reward = 25
 var price = 3000
-var portrait = s_portrait_blank
+var portrait = s_portrait_loopring
 var channel_time = 2
 var max_traffic = 10
 var line_size = 5
@@ -128,7 +128,7 @@ var name = "Etherisc"
 var _string = ""
 var reward = 25
 var price = 3000
-var portrait = s_portrait_blank
+var portrait = s_portrait_etherisc
 var channel_time = 2
 var max_traffic = 10
 var line_size = 5
@@ -144,7 +144,7 @@ var name = "Compound"
 var _string = ""
 var reward = 25
 var price = 3000
-var portrait = s_portrait_blank
+var portrait = s_portrait_compound
 var channel_time = 2
 var max_traffic = 10
 var line_size = 5
@@ -160,7 +160,7 @@ var name = "Bank Bond"
 var _string = ""
 var reward = 25
 var price = 4000
-var portrait = s_portrait_blank
+var portrait = s_portrait_bankbond
 var channel_time = 2
 var max_traffic = 10
 var line_size = 5
@@ -176,7 +176,7 @@ var name = "eSports Tournament"
 var _string = ""
 var reward = 25
 var price = 2000
-var portrait = s_portrait_blank
+var portrait = s_portrait_esports
 var channel_time = 2
 var max_traffic = 10
 var line_size = 5
@@ -192,7 +192,7 @@ var name = "Crop Insurance"
 var _string = ""
 var reward = 25
 var price = 5500
-var portrait = s_portrait_blank
+var portrait = s_portrait_cropinsurance
 var channel_time = 2
 var max_traffic = 10
 var line_size = 5
@@ -208,7 +208,7 @@ var name = "Cyber Security Insurance"
 var _string = ""
 var reward = 25
 var price = 5500
-var portrait = s_portrait_blank
+var portrait = s_portrait_cybersecurity
 var channel_time = 2
 var max_traffic = 10
 var line_size = 5
@@ -220,11 +220,11 @@ var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reli
 var Contract_type2 = contract_types.enterprise
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
-var name = "Car Insurance"
+var name = "Tesla Car Insurance"
 var _string = ""
 var reward = 25
 var price = 5500
-var portrait = s_portrait_blank
+var portrait = s_portrait_teslainsurance
 var channel_time = 2
 var max_traffic = 10
 var line_size = 5
@@ -240,7 +240,7 @@ var name = "Supply-Chain Agriculture Workflow"
 var _string = ""
 var reward = 25
 var price = 4000
-var portrait = s_portrait_blank
+var portrait = s_portrait_supplychain
 var channel_time = 2
 var max_traffic = 10
 var line_size = 5

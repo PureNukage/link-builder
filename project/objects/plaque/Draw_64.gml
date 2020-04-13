@@ -27,6 +27,8 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 			case node: var Portrait = shop.node_portrait break
 		}
 	}
+	//	Draw portrait base
+	draw_sprite(s_portrait_base,0,windowX+p_offset,windowY+p_offset)
 	draw_sprite(Portrait,0,windowX+p_offset,windowY+p_offset)
 	
 	window_width_adjusted = p_offset + 192 + p_offset
