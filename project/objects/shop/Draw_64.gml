@@ -234,6 +234,7 @@ if wire_active {
 				for(var i=0;i<ds_list_size(input.selections);i++) {
 					input.selections[| i].selected = false	
 				}
+				ds_list_clear(input.selections)
 				input.selection.selected = false
 				input.selection = -1
 			}

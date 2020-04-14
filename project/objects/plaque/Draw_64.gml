@@ -547,8 +547,8 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 					//	rebrand
 					var rebrandX = valueX
 					var rebrandY = relyY+48+p_offset
-					//if (reliability*100) < 100 {
-						if point_in_rectangle(gui_mouse_x,gui_mouse_y,rebrandX,rebrandY,rebrandX+rely_pixels,rebrandY+30) {
+					if (reliability*100) < 100 {
+						if point_in_rectangle(gui_mouse_x,gui_mouse_y,rebrandX,rebrandY,rebrandX+name_width,rebrandY+30) {
 							draw_set_color(c_ltgray)
 							#region Rebrand Sub Menu
 								draw_set_color(c_dkgray)
@@ -588,7 +588,7 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 						draw_set_halign(fa_center)
 						draw_set_font(fnt_shop)
 						draw_text(rebrandX+name_width/2,rebrandY+30/2,"Rebrand")
-					//}
+					}
 					
 
 					//	data

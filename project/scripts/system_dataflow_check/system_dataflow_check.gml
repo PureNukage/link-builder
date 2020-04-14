@@ -24,6 +24,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 		//	lets clear out its decentralization real quick
 		for(var dd=0;dd<array_height_2d(_kiosk.data_needed);dd++) {
 			_kiosk.data_needed[dd,1] = false
+			_kiosk.data_needed[dd,2] = -1
 			//_kiosk.data_needed[dd,3] = false
 		}
 		
