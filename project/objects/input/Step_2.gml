@@ -53,7 +53,7 @@ switch(selection_mode)
 
 			if grid_x > -1 and grid_y > -1 and !plaque.window_mouseover and !plaque.button_delete_mouseover and !topmenu.contract_mouseover and !topmenu.node_mouseover 
 			and !debug.window_variable_pressed and !debug.window_grid_pressed and !topmenu.data_mouseover and !shop.button_wire_mouseover and !plaque.node_level_mouseover 
-			and !shop.exchange_mouseover {
+			and !shop.exchange_mouseover and !personController.hero_mouseover {
 				if (selection == -1) or (selection > -1 and selection.states != states.placement) {
 					//	Creating selection rectangle x1 and y1
 					if mouse_left_press and selection_timer == -1 and selection == -1 {

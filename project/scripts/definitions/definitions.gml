@@ -224,6 +224,34 @@ enum contract_types {
 #macro menu_data0 4
 #macro menu_data1 5
 
+#macro hero_name 0
+#macro hero_acquired 1
+#macro hero_available 2
+#macro hero_condition_string 3
+#macro hero_hidden 4
+#macro hero_conditions 5
+#macro hero_id 6
+#macro hero_sprite 7
+#macro hero_head 8
+#macro hero_new 9
+#macro hero_virgin 10
+
+enum hero {
+	rory,
+	adelyn,
+	thomas,
+	chicocrypto,
+	cz,
+	duck,
+	pepe,
+	//krown,
+	//pomp,
+	//sergey,
+	//vitalik
+	
+}
+
+
 #macro in 0
 #macro out 1
 #macro port_object 0

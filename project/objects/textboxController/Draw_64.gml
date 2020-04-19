@@ -16,6 +16,7 @@ if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-4,yy-4,xx+sprite_get_width(s_al
 			if contracts.button_open {
 				contracts.button_open = false	
 			}
+			if personController.hero_menu_open personController.hero_menu_open = false
 		}
 	}
 } else {

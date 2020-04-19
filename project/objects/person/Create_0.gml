@@ -10,6 +10,8 @@ movespeed = 4
 timer = 0
 pissed = false
 
+hero = -1
+
 states = states.idle
 
 //sprite = choose(s_man0,s_man1)

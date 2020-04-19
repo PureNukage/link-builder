@@ -181,6 +181,8 @@ for(var u=0;u<list_size;u++) {
 	}	
 }
 contracts.contract[Smartcontract, contract_reliability] = (succeses / (misfires+succeses)) * 100
+
+with _kiosk contract_conditionCheck()
 		
 //	give the player the reward
 if !contract_misfire {

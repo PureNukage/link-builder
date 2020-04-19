@@ -26,6 +26,88 @@ if needed_population > population {
 	
 }
 
+//	Heros
+if time.stream >= hero_check_timer {
+	hero_check_time = time.stream + hero_check_timer
+	for(var h=0;h<array_height_2d(heros);h++) {
+		var hidden = heros[h, hero_hidden]
+		var acquired = heros[h, hero_acquired]
+		var ID = heros[h, hero_id]
+		if !hidden {
+			var amount = 0
+			var required = -1
+			switch(h) {
+				case hero.rory:
+					var required = 2
+					if instance_exists(kiosk) with kiosk {
+						if contracts.contract[smartcontract, contract_online] {
+							if contracts.contract[smartcontract, contract_name] == "Cerberus Wallet 2FA" {
+								amount++
+							}
+							if contracts.contract[smartcontract, contract_name] == "Backerr" {
+								amount++
+							}
+						}
+					}
+				break
+				case hero.adelyn:
+					var required = 4
+					if instance_exists(kiosk) with kiosk {
+						if contracts.contract[smartcontract, contract_online] {
+							if contracts.contract[smartcontract, contract_name] == "LinkPal" amount++
+							if contracts.contract[smartcontract, contract_name] == "BountiBot" amount++
+							if contracts.contract[smartcontract, contract_name] == "Smart Marketing Campaign" amount++
+							if contracts.contract[smartcontract, contract_name] == "TokenSet" amount++
+						}
+					}
+				break
+				case hero.thomas:
+					var required = 1
+					if instance_exists(kiosk) with kiosk {
+						if contracts.contract[smartcontract, contract_name] == "ETH/USD Price Feed" 
+						and decentralized {
+							amount++	
+						}
+					}
+				break
+				case hero.chicocrypto:
+					var required = 1
+					if instance_exists(kiosk) with kiosk {
+						if contracts.contract[smartcontract, contract_name] == "eSports Tournament" 
+						and contracts.contract[smartcontract, contract_online] {
+							amount++
+						}
+					}
+				break
+				case hero.cz:
+					var required = 2
+					if instance_exists(data) with data {
+						if states == states.placed {
+							var name = shop.item_data[data_generated, item_name]
+							if string_pos("Binance",name) != 0 {
+								amount++
+							}
+						}
+					}
+				break
+			}	
+		
+			//	This hero is (or should be) active!
+			if required > -1 and amount >= required {
+				hero_activate(h)
+			}
+			//	Thes hero should not be active
+			if amount < required and ID > -1 {
+				hero_deactivate(h)
+			}
+		}
+	
+	}
+}
+
+hero_newCheck()
+
+
 //	make sure personSpawners are in the right spot 
 for(var i=0;i<4;i++) {
 	switch(i)
