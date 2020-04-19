@@ -90,7 +90,7 @@ create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
 
 var Enum = hero.adelyn
 var name = "Adelyn"
-var String = "Get LinkPal, BountiBot, TokenSet and Smart Marketing Campaign Online"
+var String = "Get all the Hackathon projects up"
 var available = true
 var acquired = false
 var hidden = true
@@ -100,7 +100,7 @@ create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
 
 var Enum = hero.thomas
 var name = "Thomas"
-var String = "Build the ETH/USD Price Feed"
+var String = "Have an ETH/USD Price Feed with 3 APIs"
 var available = true
 var acquired = false
 var hidden = true

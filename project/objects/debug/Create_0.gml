@@ -26,6 +26,15 @@ window_variable_pressed = false
 
 #endregion
 
+#region Kiosk Window
+
+//kw_window_width = 400
+//kw_window_height = 400
+//kw_windowX = 800
+//kw_windowY = 600
+
+#endregion
+
 #region Button mpgrid
 
 button_mpgrid_width = 128

@@ -40,13 +40,13 @@ var _data = create_data_needed(data_types.binance_ETHUSD)
 var _string = "Price Feeds can generate\na Decentralized price that nearby Contracts may use"
 var levels = create_level_ports(1,2,3,4)
 var Conditions = create_conditions(conditions.cnd_active,0)
-create_contract("ETH/USD Price Feed",_string,0,500,s_portrait_pricefeed,2,0,0,contract_types.utility,levels,_data,true,Conditions,contract_types.defi,384)
+create_contract("ETH/USD Price Feed",_string,0,500,s_portrait_pricefeed,2,0,0,contract_types.utility,levels,_data,true,Conditions,contract_types.utility,384)
 
 var _data = create_data_needed(data_types.binance_LINKUSD)
 var _string = "Price Feeds can generate\na Decentralized price that nearby Contracts may use"
 var levels = create_level_ports(1,2,3,4)
 var Conditions = create_conditions(conditions.cnd_active,0)
-create_contract("LINK/USD Price Feed",_string,0,500,s_portrait_pricefeed,2,0,0,contract_types.utility,levels,_data,true,Conditions,contract_types.defi,384)
+create_contract("LINK/USD Price Feed",_string,0,500,s_portrait_pricefeed,2,0,0,contract_types.utility,levels,_data,true,Conditions,contract_types.utility,384)
 
 var _data = create_data_needed(data_types.emailAPI)
 var _string = ""

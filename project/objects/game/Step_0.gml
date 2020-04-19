@@ -16,7 +16,7 @@ if in_debt {
 			bailout1_amount_net = abs(player.money)
 			bailout2_amount_trigger = bailout1_amount_net
 			resource_changed("$$",-bailout1_amount,app.resolution_width/2,app.resolution_height/2,true)
-			create_textbox("Mr. SN has given you a "+string(bailout1_amount)+" bailout and makes it known one more bailout is possible",s_event_sn)
+			create_textbox("Mr. SN has given you a $"+string(bailout1_amount)+" bailout. You only have one more of these.",s_event_sn)
 		}
 		
 		//	Trigger the Second bailout
@@ -24,13 +24,13 @@ if in_debt {
 			bailout2_amount_net = abs(player.money)
 			lose_game_trigger = bailout2_amount_net
 			resource_changed("$$",-bailout2_amount,app.resolution_width/2,app.resolution_height/2,true)
-			create_textbox("Mr. SN tosses you "+string(bailout2_amount)+" and makes it known this is the last bailout",s_event_sn)
+			create_textbox("Mr. SN tosses you $"+string(bailout2_amount)+". You're on your own from here",s_event_sn)
 		}
 		
 		//	Check for losing the game
 		if player.money < (lose_game_trigger*-1) and bailout2_amount_net > -1 and !game_over {
 			game_over = true
-			create_textbox("Mr. SN has left as an investor. This truly is the darkest timeline. Perhaps someone else will pickup the light",s_event_gameover)
+			create_textbox("Mr. SN has left as an investor. This truly is the darkest timeline.",s_event_gameover)
 		}
 		
 		if game_over {

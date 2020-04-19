@@ -3,7 +3,7 @@ if live_call() return live_result
 var xx = display_get_gui_width() - sprite_get_width(s_alarm) - 16 - 80
 var yy = contracts.buttonY
 
-if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy-4,xx+64,yy+64) {
+if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy-4,xx+64,yy+64) and !instance_exists(mainmenu) {
 	draw_set_color(c_gray)
 	if input.mouse_left_press {
 		hero_menu_open = !hero_menu_open
@@ -38,7 +38,7 @@ if new_hero > 0 {
 } else button_color = c_white	
 draw_sprite_ext(s_hero_head_icon,0,xx-8,yy,scale,scale,0,button_color,1)
 
-if hero_menu_open {
+if hero_menu_open and !instance_exists(mainmenu) {
 	
 	draw_set_halign(fa_left)
 	draw_set_font(fnt_shop_menu_name)

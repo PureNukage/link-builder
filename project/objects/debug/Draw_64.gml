@@ -1,3 +1,6 @@
+if live_call() return live_result
+
+draw_set_font(fnt_shop)
 switch(mode)
 {
 	case mode.off:
@@ -16,7 +19,7 @@ switch(mode)
 			
 			ui_draw_button(button_systems_width,button_systems_height,button_systemsX,button_systemsY,button_systems_color,button_systems_string,button_systems_mouseover)
 			
-				#region Object Variables
+			#region Object Variables
 
 					//	Draw Variable window
 					draw_set_color(c_ltgray)
@@ -78,6 +81,32 @@ switch(mode)
 	
 
 	#endregion
+				
+			#region Kiosk Variables
+			
+				if input.selection.object_index == kiosk {
+					
+					var kw_windowX = window_variableX+window_variable_width
+					var kw_windowY = window_variableY
+					var kw_window_width = 200
+					var kw_window_height = 300
+					
+					draw_set_color(c_ltgray)
+					draw_roundrect(kw_windowX,kw_windowY,kw_windowX+kw_window_width,kw_windowY+kw_window_height,false)
+					
+					draw_set_color(c_black)
+					var XX = kw_windowX+40
+					var YY = kw_windowY+20
+					draw_text(XX,YY,"Data Held") YY += 48
+					for(var d=0;d<ds_list_size(input.selection.data_held);d++) {
+						var data_index = input.selection.data_held[| d]
+						var data_name = shop.item_data[data_index, item_name]
+						draw_text(XX,YY,data_name) YY += 36
+					}
+					
+				}
+			
+			#endregion
 			
 		break
 	#endregion

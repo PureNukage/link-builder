@@ -779,6 +779,29 @@ if contracts_open and !instance_exists(mainmenu) {
 		draw_set_font(fnt_shop)
 		draw_set_halign(fa_center)
 		
+		//	Utiltiy
+		var type_width = 100
+		var type_height = 40
+		var typeX = windowX+160
+		var typeY = windowY+5
+		
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y,typeX,typeY,typeX+type_width,typeY+type_height) {
+			if contract_types == contract_types.utility draw_set_color(c_ltgray)
+			else draw_set_color(c_gray)
+			if input.mouse_left_press {
+				contract_types = contract_types.utility
+				surface_offsetX = 0
+				surface_offsetY = 0
+			}
+		} else {
+			if contract_types == contract_types.utility draw_set_color(c_gray) 
+			else draw_set_color(c_gray4)	
+		}
+		draw_roundrect(typeX,typeY,typeX+type_width,typeY+type_height,false)
+		
+		draw_set_color(c_black)
+		draw_text(typeX+type_width/2,typeY+type_height/2,"Utility")
+		
 		//	Hackathon
 		var type_width = 100
 		var type_height = 40
@@ -864,30 +887,34 @@ if contracts_open and !instance_exists(mainmenu) {
 	value_array[1,1] = 0
 	value_array[1,2] = 0
 	value_array[1,3] = false
-	value_array[2,0] = 1500
+	value_array[2,0] = 1000
 	value_array[2,1] = 0
 	value_array[2,2] = 0
 	value_array[2,3] = false
-	value_array[3,0] = 2000
+	value_array[3,0] = 1500
 	value_array[3,1] = 0
 	value_array[3,2] = 0
 	value_array[3,3] = false
-	value_array[4,0] = 2500
+	value_array[4,0] = 2000
 	value_array[4,1] = 0
 	value_array[4,2] = 0
 	value_array[4,3] = false
-	value_array[5,0] = 3000
+	value_array[5,0] = 2500
 	value_array[5,1] = 0
 	value_array[5,2] = 0
 	value_array[5,3] = false
-	value_array[6,0] = 4000
+	value_array[6,0] = 3000
 	value_array[6,1] = 0
 	value_array[6,2] = 0
 	value_array[6,3] = false
-	value_array[7,0] = 5500
+	value_array[7,0] = 4000
 	value_array[7,1] = 0
 	value_array[7,2] = 0
 	value_array[7,3] = false
+	value_array[8,0] = 5500
+	value_array[8,1] = 0
+	value_array[8,2] = 0
+	value_array[8,3] = false
 	var value_width = 0
 	
 	//	Preliminary loop through contracts
@@ -961,6 +988,9 @@ if contracts_open and !instance_exists(mainmenu) {
 		//debug_log("surface_width: "+string(surface_width))
 		//debug_log("surface_height: "+string(surface_height))
 	}
+	
+	//if surface_width < page_width surface_width = page_width
+	if surface_height < page_height surface_height = page_height
 	
 	//	Create surface
 	if !surface_exists(contract_surface) {

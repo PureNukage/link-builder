@@ -51,7 +51,7 @@ if time.stream >= hero_check_timer {
 					}
 				break
 				case hero.adelyn:
-					var required = 4
+					var required = 5
 					if instance_exists(kiosk) with kiosk {
 						if contracts.contract[smartcontract, contract_online] {
 							if contracts.contract[smartcontract, contract_name] == "LinkPal" amount++
@@ -60,13 +60,19 @@ if time.stream >= hero_check_timer {
 							if contracts.contract[smartcontract, contract_name] == "TokenSet" amount++
 						}
 					}
+					if heros[hero.rory, hero_acquired] amount++
 				break
 				case hero.thomas:
-					var required = 1
+					var required = 3
 					if instance_exists(kiosk) with kiosk {
-						if contracts.contract[smartcontract, contract_name] == "ETH/USD Price Feed" 
-						and decentralized {
-							amount++	
+						if contracts.contract[smartcontract, contract_name] == "ETH/USD Price Feed" {
+							for(var d=0;d<ds_list_size(data_held);d++) {
+								var data_index = data_held[| d]
+								var data_name = shop.item_data[data_index, item_name]
+								if is_price(data_name) and is_price(data_name,true) == "ETH/USD" {
+									amount++	
+								}
+							}
 						}
 					}
 				break
@@ -96,8 +102,8 @@ if time.stream >= hero_check_timer {
 			if required > -1 and amount >= required {
 				hero_activate(h)
 			}
-			//	Thes hero should not be active
-			if amount < required and ID > -1 {
+			//	This hero should not be active
+			if amount < required {
 				hero_deactivate(h)
 			}
 		}
