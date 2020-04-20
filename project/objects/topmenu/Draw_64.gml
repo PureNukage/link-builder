@@ -430,16 +430,16 @@ if data_open {
 			}
 			
 			//	Debug
-			draw_set_color(c_black)
-			draw_set_halign(fa_left)
-			var yy = windowY + 120
-			draw_text(windowX+window_width+20,yy,"surface_height: "+string(surface_height)) yy += 24
-			draw_text(windowX+window_width+20,yy,"page_height: "+string(page_height)) yy += 24
-			draw_text(windowX+window_width+20,yy,"bar_height: "+string(bar_height)) yy += 24
-			draw_text(windowX+window_width+20,yy,"handleY: "+string(handleY)) yy += 24
-			draw_text(windowX+window_width+20,yy,"data_surface_offsetY: "+string(data_surface_offsetY)) yy += 24
-			draw_text(windowX+window_width+20,yy,"segment: "+string(segment)) yy += 24
-			draw_text(windowX+window_width+20,yy,"segments: "+string(segments)) yy += 24
+			//draw_set_color(c_black)
+			//draw_set_halign(fa_left)
+			//var yy = windowY + 120
+			//draw_text(windowX+window_width+20,yy,"surface_height: "+string(surface_height)) yy += 24
+			//draw_text(windowX+window_width+20,yy,"page_height: "+string(page_height)) yy += 24
+			//draw_text(windowX+window_width+20,yy,"bar_height: "+string(bar_height)) yy += 24
+			//draw_text(windowX+window_width+20,yy,"handleY: "+string(handleY)) yy += 24
+			//draw_text(windowX+window_width+20,yy,"data_surface_offsetY: "+string(data_surface_offsetY)) yy += 24
+			//draw_text(windowX+window_width+20,yy,"segment: "+string(segment)) yy += 24
+			//draw_text(windowX+window_width+20,yy,"segments: "+string(segments)) yy += 24
 	
 		}
 	}
