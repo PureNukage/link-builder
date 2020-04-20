@@ -1,4 +1,4 @@
-#macro version "0.2.6"
+#macro version "0.2.6a"
 me = "@PureNukage"
 
 #region Platform
