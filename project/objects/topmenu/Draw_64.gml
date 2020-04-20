@@ -360,15 +360,6 @@ if data_open {
 				if surface_exists(data_surface) surface_free(data_surface)	
 			//}
 			
-			if surface_height > page_height {
-				if data_mouseover {
-					if input.scroll_up or input.scroll_down {
-						if input.scroll_up data_surface_offsetY -= 100
-						if input.scroll_down data_surface_offsetY += 100
-					}
-				}
-			}
-			
 			//	Scrollbar
 			var bar_width = 48
 			var bar_height = (windowY+window_height)-(webY + 64 + buffer)
@@ -394,6 +385,15 @@ if data_open {
 				data_surface_offsetY = clamp(data_surface_offsetY,0,0)
 			} else {
 				data_surface_offsetY = clamp(data_surface_offsetY,0,abs(surface_height-page_height))
+			}
+		
+			if surface_height > page_height {
+				if data_mouseover {
+					if input.scroll_up or input.scroll_down {
+						if input.scroll_up data_surface_offsetY -= 100
+						if input.scroll_down data_surface_offsetY += 100
+					}
+				}
 			}
 			
 			draw_set_color(c_black)

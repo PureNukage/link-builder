@@ -124,6 +124,8 @@ if heromenu_active {
 				//	Hero name
 				if hidden name = "LOCKED"
 				draw_set_color(c_white)
+				draw_set_halign(fa_left)
+				draw_set_valign(fa_middle)
 				draw_text_outlined(XX+longest_width-string_width(name)-16,YY+32,name,c_white,c_black)
 		
 				//	Hero head sprite
