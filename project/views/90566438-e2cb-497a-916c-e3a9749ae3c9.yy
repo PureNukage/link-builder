@@ -11,7 +11,8 @@
         "68678cd3-84e5-4115-a39e-950b9402fec7",
         "2be330d8-bed5-4b5e-9d66-ecf9a49281b4",
         "4f71946f-8e0c-43b2-b86a-a4c5779c5484",
-        "c39e9774-ce0e-46e3-a6bd-998d2cd01846"
+        "c39e9774-ce0e-46e3-a6bd-998d2cd01846",
+        "f5508786-1b10-47cc-9b1d-adc5f2a4a968"
     ],
     "filterType": "GMScript",
     "folderName": "contracts",

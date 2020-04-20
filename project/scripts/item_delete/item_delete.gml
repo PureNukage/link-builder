@@ -293,9 +293,6 @@ else {
 	}
 	ds_list_destroy(final_systems)
 	
-	//	delete me 
-	instance_destroy()
-	
 	//	grid priorities
 	for(var i=0;i<ds_list_size(systemController.systems);i++) {
 		var _system = systemController.systems[| i]
@@ -368,7 +365,8 @@ if object_index == node {
 }
 
 if object_index == data {
-	shop.item_data[data_generated, item_object_index] = -1	
+	shop.item_data[data_generated, item_object_index] = -1
+	//if surface_exists(topmenu.data_surface) surface_free(topmenu.data_surface)
 }
 
 if object_index == wire {
@@ -393,3 +391,6 @@ if object_index == wire {
 		}	
 	}
 }
+
+//	delete me 
+instance_destroy()

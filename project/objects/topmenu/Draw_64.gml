@@ -60,7 +60,9 @@ if data_active {
 			contracts_open = false
 		}
 	} else {
-		draw_set_color(c_dkgray)	
+		if data_new > 0 {
+			draw_set_color(new_flash.color)
+		} else draw_set_color(c_dkgray)	
 	}
 	if data_open draw_set_color(c_ltgray)
 	draw_rectangle(dataX,dataY,dataX+data_width,dataY+48,false)
@@ -249,7 +251,11 @@ if data_open {
 					
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,pageX,pageY,pageX+page_width,pageY+page_height) {
 						if point_in_rectangle(gui_mouse_x,gui_mouse_y,XX-2,YY-2,XX+line_width+2,YY+line_height+2) {
-							draw_set_color(c_gray)
+							draw_set_color(c_ltgray)
+							
+							if shop.item_data[index, item_new] {
+								shop.item_data[index, item_new] = false
+							}
 						
 							if input.mouse_left_press {
 								if shop.item_data[index, item_object_index] == -1 {
@@ -289,10 +295,18 @@ if data_open {
 								}
 							}
 						} else {
-							draw_set_color(c_gray4)
+							if shop.item_data[index, item_object_index] > -1 draw_set_color(c_gray)
+							else {
+								if shop.item_data[index, item_new] draw_set_color(new_flash.color)
+								else draw_set_color(c_gray4)	
+							}
 						}
 					} else {
-						draw_set_color(c_gray4)	
+						if shop.item_data[index, item_object_index] > -1 draw_set_color(c_gray)
+						else {
+							if shop.item_data[index, item_new] draw_set_color(new_flash.color)
+							else draw_set_color(c_gray4)
+						}
 					}
 					YY += 64
 					draw_roundrect(lineX,lineY,lineX+line_width,lineY+line_height,false)
@@ -342,21 +356,17 @@ if data_open {
 				draw_surface_part(data_surface,0,0+data_surface_offsetY,page_width+60,page_height,pageX,pageY)
 			}
 			//if surface_exists(data_surface) surface_free(data_surface)
-			if point_in_rectangle(gui_mouse_x,gui_mouse_y,pageX,pageY,pageX+page_width,pageY+page_height) {
+			//if point_in_rectangle(gui_mouse_x,gui_mouse_y,pageX,pageY,pageX+page_width,pageY+page_height) {
 				if surface_exists(data_surface) surface_free(data_surface)	
-			}
+			//}
 			
-			if data_mouseover {
-				if input.scroll_up or input.scroll_down {
-					if input.scroll_up data_surface_offsetY -= 100
-					if input.scroll_down data_surface_offsetY += 100
+			if surface_height > page_height {
+				if data_mouseover {
+					if input.scroll_up or input.scroll_down {
+						if input.scroll_up data_surface_offsetY -= 100
+						if input.scroll_down data_surface_offsetY += 100
+					}
 				}
-			}
-			
-			if (surface_height - page_height) < page_height {
-				data_surface_offsetY = clamp(data_surface_offsetY,0,0)
-			} else {
-				data_surface_offsetY = clamp(data_surface_offsetY,0,surface_height-page_height)
 			}
 			
 			//	Scrollbar
@@ -378,6 +388,13 @@ if data_open {
 			
 			var segment = (data_surface_offsetY/(surface_height-page_height) * (bar_height-handle_height))
 			var segments = round(bar_height/segment)
+			
+			if (surface_height - page_height) < page_height {
+			//if surface_height > page_height and handle_height < bar_height {
+				data_surface_offsetY = clamp(data_surface_offsetY,0,0)
+			} else {
+				data_surface_offsetY = clamp(data_surface_offsetY,0,abs(surface_height-page_height))
+			}
 			
 			draw_set_color(c_black)
 			draw_set_halign(fa_left)
@@ -437,7 +454,9 @@ if nodes_active {
 			contracts_open = false
 		}
 	} else {
-		draw_set_color(c_dkgray)	
+		if node_new_count > 0 {
+			draw_set_color(new_flash.color)
+		} else draw_set_color(c_dkgray)	
 	}
 	if nodes_open draw_set_color(c_ltgray)
 	draw_rectangle(nodesX,nodesY,nodesX+nodes_width,nodesY+48,false)
@@ -561,6 +580,8 @@ if nodes_open {
 					draw_set_color(c_black)
 					draw_roundrect(listX-2,listY-2,listX+list_width+2,listY+list_height+2,false)
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,listX-2,listY-2,listX+list_width+2,listY+list_height+2) {
+						
+						if shop.item_node[n, node_new] shop.item_node[n, node_new] = false
 					
 						if !plaqueCheck() {
 							var X = listX+list_width+buffer
@@ -629,8 +650,9 @@ if nodes_open {
 							instance_destroy(Plaque)
 							Plaque = -1
 						}
-					
-						draw_set_color(c_gray)	
+						
+						if shop.item_node[n, node_new] draw_set_color(new_flash.color)
+						else draw_set_color(c_gray)	
 					}
 					draw_roundrect(listX,listY,listX+list_width,listY+list_height,false)
 				
@@ -727,6 +749,7 @@ if nodes_open {
 
 #region	contracts
 if contracts_active { 
+	var menu_change = false
 	//	button
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,contractsX,contractsY,contractsX+contracts_width,contractsY+48) {
 		draw_set_color(c_ltgray)
@@ -734,9 +757,12 @@ if contracts_active {
 			contracts_open = !contracts_open
 			data_open = false
 			nodes_open = false
+			menu_change = true
 		}
 	} else {
-		draw_set_color(c_dkgray)
+		if contract_new_count > 0 {
+			draw_set_color(new_flash.color)
+		} else draw_set_color(c_dkgray)	
 	}	
 	if contracts_open draw_set_color(c_ltgray)
 	draw_rectangle(contractsX,contractsY,contractsX+contracts_width,contractsY+48,false)
@@ -779,7 +805,7 @@ if contracts_open and !instance_exists(mainmenu) {
 		draw_set_font(fnt_shop)
 		draw_set_halign(fa_center)
 		
-		//	Utiltiy
+		//	Utility
 		var type_width = 100
 		var type_height = 40
 		var typeX = windowX+160
@@ -792,6 +818,7 @@ if contracts_open and !instance_exists(mainmenu) {
 				contract_types = contract_types.utility
 				surface_offsetX = 0
 				surface_offsetY = 0
+				menu_change = true
 			}
 		} else {
 			if contract_types == contract_types.utility draw_set_color(c_gray) 
@@ -816,6 +843,7 @@ if contracts_open and !instance_exists(mainmenu) {
 				contract_types = contract_types.hackathon
 				surface_offsetX = 0
 				surface_offsetY = 0
+				menu_change = true
 			}
 		} else {
 			if contract_types == contract_types.hackathon draw_set_color(c_gray) 
@@ -836,6 +864,7 @@ if contracts_open and !instance_exists(mainmenu) {
 				contract_types = contract_types.defi
 				surface_offsetX = 0
 				surface_offsetY = 0
+				menu_change = true
 			}
 		} else {
 			if contract_types == contract_types.defi draw_set_color(c_gray) 
@@ -857,6 +886,7 @@ if contracts_open and !instance_exists(mainmenu) {
 				contract_types = contract_types.enterprise
 				surface_offsetX = 0
 				surface_offsetY = 0
+				menu_change = true
 			}
 		} else {
 			if contract_types == contract_types.enterprise draw_set_color(c_gray) 
@@ -927,10 +957,12 @@ if contracts_open and !instance_exists(mainmenu) {
 		//	Check this contracts price againts prices in value_array
 		for(var v=0;v<array_height_2d(value_array);v++) {
 			if price == value_array[v,0] and contracts.contract[c, contract_type2] == contract_types {
-				if contracts.contract[c, contract_available] and contracts.contract[c, contract_type2] == contract_types value_array[v,3] = true
-				value_array[v,1] += name_width + buffer
-				var name_height_ext = name_height + 64 + spacer
-				if name_height_ext > value_array[v,2] value_array[v,2] = name_height_ext
+				if contracts.contract[c, contract_available] and contracts.contract[c, contract_type2] == contract_types {
+					value_array[v,3] = true
+					value_array[v,1] += name_width + buffer
+					var name_height_ext = name_height + 64 + spacer
+					if name_height_ext > value_array[v,2] value_array[v,2] = name_height_ext
+				}
 			}
 		}
 	}
@@ -1016,6 +1048,9 @@ if contracts_open and !instance_exists(mainmenu) {
 
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-surface_offsetX,yy-surface_offsetY,xx+name_width-surface_offsetX,yy+name_height-surface_offsetY) and player.value >= price 
 					and point_in_rectangle(gui_mouse_x,gui_mouse_y,pageX,pageY,pageX+page_width,pageY+page_height) {
+						
+						if contracts.contract[c, contract_new] and player.value >= price contracts.contract[c, contract_new] = false
+						
 						//	Plaque check
 						if !plaqueCheck() {
 								var X = xx+name_width-surface_offsetX+buffer*2
@@ -1093,8 +1128,11 @@ if contracts_open and !instance_exists(mainmenu) {
 							Plaque = -1
 						}
 						
-						draw_set_color(c_dkgray)
-						if contracts.contract[c, contract_kiosk] > -1 draw_set_color(c_gray)
+						if contracts.contract[c, contract_new] and player.value >= price draw_set_color(new_flash.color)
+						else {	
+							draw_set_color(c_dkgray)
+							if contracts.contract[c, contract_kiosk] > -1 draw_set_color(c_gray)
+						}
 					}
 					draw_roundrect(xx,yy,xx+name_width,yy+name_height,false)
 					
@@ -1123,9 +1161,14 @@ if contracts_open and !instance_exists(mainmenu) {
 		draw_surface_part(contract_surface,surfaceX,surfaceY,page_width+1,page_height,pageX,pageY)	
 	}
 	
-	surface_free(contract_surface)
+	if surface_exists(contract_surface) surface_free(contract_surface)
 	
 	contract_window_width = clamp(contract_window_width,contract_window_width_default,pageX+surface_width+buffer)
+	
+	if menu_change {
+		contract_window_width = surface_width
+		if contract_types == contract_types.hackathon contract_window_width -= 250
+	}
 	
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,windowX+window_width-16,windowY,windowX+window_width+16,windowY+window_height+16) {
 		window_set_cursor(cr_size_we)

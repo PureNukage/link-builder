@@ -6,6 +6,8 @@ needed_population = 0
 
 spawners = ds_list_create()
 
+heromenu_active = true
+
 for(var i=0;i<4;i++) {
 	switch(i)
 	{
@@ -73,9 +75,9 @@ new_hero = 0
 button_color = c_white
 button_glow = false
 button_timer = 0
-button_timer_flip = 60
+button_timer_flip = 45
 button_color_0 = c_white
-button_color_1 = c_orange
+button_color_1 = c_yellow
 
 heros = 0
 var Enum = hero.rory
@@ -110,7 +112,7 @@ create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
 
 var Enum = hero.chicocrypto
 var name = "Chico Crypto"
-var String = "Get eSports Tournament Online"
+var String = "Get the Revenue Share Contract Online"
 var available = true
 var acquired = false
 var hidden = true

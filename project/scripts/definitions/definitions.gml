@@ -52,6 +52,9 @@ enum data_types {
 	binance_ETHUSD,	
 	cryptocompare_ETHUSD,
 	coinbase_ETHUSD,
+	coingecko_ETHUSD,
+	coinpaprika_ETHUSD,
+	coinmarket_ETHUSD,
 	bravenewcoin_ETHUSD,
 	alphacurrency_ETHUSD,
 	kaiko_ETHUSD,
@@ -59,6 +62,9 @@ enum data_types {
 	binance_LINKUSD,
 	cryptocompare_LINKUSD,
 	coinbase_LINKUSD,
+	coingecko_LINKUSD,
+	coinpaprika_LINKUSD,
+	coinmarket_LINKUSD,
 	bravenewcoin_LINKUSD,
 	alphacurrency_LINKUSD,
 	kaiko_LINKUSD,
@@ -69,10 +75,11 @@ enum data_types {
 	//alphacurrency_XRPUSD,
 	//kaiko_XRPUSD,
 	
+	emailAPI,
 	paypal,
 	github,
-	emailAPI,
 	twitter,
+	youtube,
 	flightAPI,
 	videogameAPI,
 	firewallAPI,
@@ -80,9 +87,9 @@ enum data_types {
 	weatherAPI,
 	vehicleAPI,
 	vehicle_freezerAPI,
-	swiftPayment,
 	//bitcoinPayment,
 	visaPayment,
+	swiftPayment,
 	
 }
 
@@ -174,6 +181,7 @@ enum conditions {
 #macro contract_radius 26
 #macro contract_conditions 27
 #macro contract_type2 28
+#macro contract_new 29
 
 enum contract_types {
 	people,
@@ -196,6 +204,7 @@ enum contract_types {
 #macro node_levels 9
 #macro node_skills 10
 #macro node_skillpoints 11
+#macro node_new 12
 #macro node_purchased 30
 #macro node_available 22
 
@@ -214,6 +223,7 @@ enum contract_types {
 #macro item_corruption 8
 #macro item_corruption_levels 9 
 #macro item_filter 10
+#macro item_new 11
 #macro item_purchased 30
 #macro item_available 22
 
@@ -240,8 +250,8 @@ enum hero {
 	rory,
 	adelyn,
 	thomas,
-	chicocrypto,
 	cz,
+	chicocrypto,
 	duck,
 	pepe,
 	//krown,

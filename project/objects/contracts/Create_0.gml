@@ -22,51 +22,113 @@ contract = 0
 var _data = create_data_needed(data_types.binance_ETHUSD)
 var levels = create_level_ports(1,1,1,1)
 var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_payment_eth,200,conditions.cnd_reliability_high,100)
-create_contract("Eth Transfer","",5,150,s_portrait_ethereum,2,10,5,contract_types.people,levels,_data,false,Conditions,contract_types.hackathon)
+create_contract("Eth Transfer","",5,150,s_portrait_ethereum,2,5,5,contract_types.people,levels,_data,false,Conditions,contract_types.hackathon)
 
-var _data = create_data_needed(data_types.binance_ETHUSD,data_types.paypal)
-var levels = create_level_ports(2,3,4,5)
+var name = "LinkPal"
 var _string = "DeFi users can now trade their ETH with\neach other for USD by querying a PayPal invoice"
+var reward = 10
+var price = 500
+var portrait = s_portrait_linkpal
+var channel_time = 2
+var max_traffic = 5
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD,data_types.paypal)
+var available = true
 var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
-create_contract("LinkPal",_string,20,500,s_portrait_linkpal,2,10,5,contract_types.people,levels,_data,true,Conditions,contract_types.hackathon)
+var Contract_type2 = contract_types.hackathon
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
-var _data = create_data_needed(data_types.binance_ETHUSD,data_types.github)
-var levels = create_level_ports(2,3,4,5)
+var name = "BountiBot"
 var _string = "An open-source software contributor is paid\nwhen their code gets merged into a project"
+var reward = 10
+var price = 500
+var portrait = s_portrait_bountibot
+var channel_time = 2
+var max_traffic = 5
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD,data_types.github)
+var available = true
 var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
-create_contract("BountiBot",_string,20,500,s_portrait_bountibot,2,10,5,contract_types.people,levels,_data,true,Conditions,contract_types.hackathon)
+var Contract_type2 = contract_types.hackathon
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
-var _data = create_data_needed(data_types.binance_ETHUSD)
+var name = "ETH/USD Price Feed"
 var _string = "Price Feeds can generate\na Decentralized price that nearby Contracts may use"
-var levels = create_level_ports(1,2,3,4)
+var reward = 15
+var price = 500
+var portrait = s_portrait_pricefeed
+var channel_time = 2
+var max_traffic = 5
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD)
+var available = true
 var Conditions = create_conditions(conditions.cnd_active,0)
-create_contract("ETH/USD Price Feed",_string,0,500,s_portrait_pricefeed,2,0,0,contract_types.utility,levels,_data,true,Conditions,contract_types.utility,384)
+var Contract_type2 = contract_types.utility
+var radius = 384 
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2,radius)
 
+var name = "LINK/USD Price Feed"
+var _string = "Price Feeds can generate\na Decentralized price that nearby Contracts may use"
+var reward = 15
+var price = 500
+var portrait = s_portrait_pricefeed
+var channel_time = 2
+var max_traffic = 5
+var line_size = 5
+var Contract_type = contract_types.utility
+var levels = create_level_ports(1,1,1,1)
 var _data = create_data_needed(data_types.binance_LINKUSD)
-var _string = "Price Feeds can generate\na Decentralized price that nearby Contracts may use"
-var levels = create_level_ports(1,2,3,4)
+var available = true
 var Conditions = create_conditions(conditions.cnd_active,0)
-create_contract("LINK/USD Price Feed",_string,0,500,s_portrait_pricefeed,2,0,0,contract_types.utility,levels,_data,true,Conditions,contract_types.utility,384)
+var Contract_type2 = contract_types.utility
+var radius = 384 
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2,radius)
 
+var name = "Cerberus Wallet 2FA"
+var _string = ""
+var reward = 7
+var price = 0
+var portrait = s_portrait_cerberus
+var channel_time = 2
+var max_traffic = 5
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
 var _data = create_data_needed(data_types.emailAPI)
-var _string = ""
-var levels = create_level_ports(1,1,1,1)
+var available = true
 var Conditions = create_conditions(conditions.cnd_active,125,conditions.cnd_reliability_high,125)
-create_contract("Cerberus Wallet 2FA",_string,8,0,s_portrait_cerberus,2,10,5,contract_types.people,levels,_data,true,Conditions,contract_types.hackathon)
+var Contract_type2 = contract_types.hackathon
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
-var _data = create_data_needed(data_types.binance_ETHUSD)
+var name = "Backerr"
 var _string = ""
+var reward = 7
+var price = 0
+var portrait = s_portrait_backerr
+var channel_time = 2
+var max_traffic = 5
+var line_size = 5
+var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD)
+var available = true
 var Conditions = create_conditions(conditions.cnd_active,125,conditions.cnd_reliability_high,125)
-create_contract("Backerr",_string,12,0,s_portrait_backerr,2,10,5,contract_types.people,levels,_data,true,Conditions,contract_types.hackathon)
+var Contract_type2 = contract_types.hackathon
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "TokenSet"
 var _string = ""
-var reward = 15
+var reward = 10
 var price = 500
 var portrait = s_portrait_tokenset
 var channel_time = 2
-var max_traffic = 10
+var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
@@ -78,11 +140,11 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Smart Marketing Campaign"
 var _string = ""
-var reward = 15
+var reward = 10
 var price = 500
 var portrait = s_portrait_smartmarketing
 var channel_time = 2
-var max_traffic = 10
+var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
@@ -94,11 +156,11 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Synthetix"
 var _string = ""
-var reward = 25
+var reward = 12
 var price = 2000
 var portrait = s_portrait_synthetix
 var channel_time = 2
-var max_traffic = 10
+var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
@@ -108,13 +170,45 @@ var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reli
 var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
+var name = "eSports Tournament"
+var _string = ""
+var reward = 15
+var price = 2000
+var portrait = s_portrait_esports
+var channel_time = 2
+var max_traffic = 5
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.videogameAPI,data_types.visaPayment)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
+var Contract_type2 = contract_types.defi
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "Revenue Share"
+var _string = ""
+var reward = 15
+var price = 2000
+var portrait = s_portrait_revenueshare
+var channel_time = 2
+var max_traffic = 5
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.youtube,data_types.visaPayment)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
+var Contract_type2 = contract_types.defi
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
 var name = "Loopring"
 var _string = ""
-var reward = 25
+var reward = 17
 var price = 3000
 var portrait = s_portrait_loopring
 var channel_time = 2
-var max_traffic = 10
+var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
@@ -126,11 +220,11 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Etherisc"
 var _string = ""
-var reward = 25
+var reward = 17
 var price = 3000
 var portrait = s_portrait_etherisc
 var channel_time = 2
-var max_traffic = 10
+var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
@@ -142,11 +236,11 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Compound"
 var _string = ""
-var reward = 25
+var reward = 19
 var price = 3000
 var portrait = s_portrait_compound
 var channel_time = 2
-var max_traffic = 10
+var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
@@ -158,11 +252,11 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Bank Bond"
 var _string = ""
-var reward = 25
+var reward = 22
 var price = 4000
 var portrait = s_portrait_bankbond
 var channel_time = 2
-var max_traffic = 10
+var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
@@ -172,29 +266,13 @@ var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reli
 var Contract_type2 = contract_types.enterprise
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
-var name = "eSports Tournament"
-var _string = ""
-var reward = 25
-var price = 2000
-var portrait = s_portrait_esports
-var channel_time = 2
-var max_traffic = 10
-var line_size = 5
-var Contract_type = contract_types.people
-var levels = create_level_ports(1,1,1,1)
-var _data = create_data_needed(data_types.videogameAPI,data_types.visaPayment)
-var available = true
-var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
-var Contract_type2 = contract_types.defi
-create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
-
 var name = "Crop Insurance"
 var _string = ""
-var reward = 25
+var reward = 21
 var price = 5500
 var portrait = s_portrait_cropinsurance
 var channel_time = 2
-var max_traffic = 10
+var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
@@ -206,11 +284,11 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Cyber Security Insurance"
 var _string = ""
-var reward = 25
+var reward = 23
 var price = 5500
 var portrait = s_portrait_cybersecurity
 var channel_time = 2
-var max_traffic = 10
+var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
@@ -226,7 +304,7 @@ var reward = 25
 var price = 5500
 var portrait = s_portrait_teslainsurance
 var channel_time = 2
-var max_traffic = 10
+var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
@@ -238,11 +316,11 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Supply-Chain Agriculture Workflow"
 var _string = ""
-var reward = 25
+var reward = 30
 var price = 4000
 var portrait = s_portrait_supplychain
 var channel_time = 2
-var max_traffic = 10
+var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)

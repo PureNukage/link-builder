@@ -89,6 +89,8 @@ contract[contract_index, contract_linkfee] = 0
 
 contract[contract_index, contract_value] = 0
 
+contract[contract_index, contract_new] = true
+
 contracts_purchased[| contract_index] = true
 
 

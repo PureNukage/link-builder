@@ -7,3 +7,7 @@ if !contracts_open and !nodes_open and !data_open and menu_mouseover {
 		Plaque = -1
 	}
 }
+
+data_checkNew()
+node_checkNew()
+contract_checkNew()
