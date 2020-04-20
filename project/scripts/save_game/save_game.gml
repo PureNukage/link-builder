@@ -41,6 +41,31 @@ ini_write_real(section,"Bailout2 Net",game.bailout2_amount_net)
 ini_write_real(section,"Bailout2 Trigger",game.bailout2_amount_trigger)
 ini_write_real(section,"Game Over Trigger",game.lose_game_trigger)
 
+var section = "Heros"
+var new_array = []
+var hidden_array = []
+var list = ds_list_create()
+for(var h=0;h<array_height_2d(personController.heros);h++) {
+	new_array[h] = personController.heros[h, hero_new]	
+	hidden_array[h] = personController.heros[h, hero_hidden]
+}
+list[| 0] = new_array
+list[| 1] = hidden_array
+var list_packed = ds_list_write(list)
+ini_write_string(section,"Array",list_packed)
+ds_list_destroy(list)
+
+var section = "New Contracts"
+var array = []
+var list = ds_list_create()
+for(var c=0;c<array_height_2d(contracts.contract);c++) {
+	array[c] = contracts.contract[c, contract_new]	
+}
+list[| 0] = array
+var list_packed = ds_list_write(list)
+ini_write_string(section,"Array",list_packed)
+ds_list_destroy(list)
+
 var section = "Item Databases"
 //	save the node item database
 var n_database_copy = shop.item_node

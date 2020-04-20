@@ -58,6 +58,43 @@ else {
 	game.bailout2_amount_net = ini_read_real(section,"Bailout2 Net",-1)
 	game.bailout2_amount_trigger = ini_read_real(section,"Bailout2 Trigger",0)
 	game.lose_game_trigger = ini_read_real(section,"Game Over Trigger",-1)
+	
+	//	heros
+	var section = "Heros"
+	var raw_string = ini_read_string(section,"Array",0)
+	
+	var list_unpacked = ds_list_create()
+	ds_list_read(list_unpacked,raw_string)
+	
+	var new_array = list_unpacked[| 0]
+	var hidden_array = list_unpacked[| 1]
+	
+	if is_array(new_array) {
+		for(var h=0;h<array_length_1d(new_array);h++) {
+			personController.heros[h, hero_new] = new_array[h]
+		}
+	}
+	if is_array(hidden_array) {
+		for(var h=0;h<array_length_1d(hidden_array);h++) {
+			personController.heros[h, hero_hidden] = hidden_array[h]
+		}
+	}
+	ds_list_destroy(list_unpacked)
+	
+	//	contracts new
+	var section = "New Contracts"
+	var raw_string = ini_read_string(section,"Array",0)
+	
+	var list_unpacked = ds_list_create()
+	ds_list_read(list_unpacked,raw_string)
+	var array = list_unpacked[| 0]
+	
+	if is_array(array) {
+		for(var c=0;c<array_length_1d(array);c++) {
+			contracts.contract[c, contract_new] = array[c]
+		}
+	}
+	ds_list_destroy(list_unpacked)
 
 	//	copy the item databases
 	var section = "Item Databases"
