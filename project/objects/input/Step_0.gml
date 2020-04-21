@@ -37,8 +37,10 @@ escape = keyboard_check_pressed(vk_escape)
 
 if escape {
 	
-	if instance_exists(mainmenu) instance_destroy(mainmenu)
-	else {
+	if instance_exists(mainmenu) {
+		if mainmenu.menu == menu.options mainmenu.menu = menu.in_game
+		else instance_destroy(mainmenu)
+	} else {
 		var _menu = instance_create_layer(0,0,"Instances",mainmenu)
 		_menu.menu = menu.in_game
 		_menu.in_game = true
