@@ -297,19 +297,21 @@ switch(menu)
 			draw_set_halign(fa_center)
 			
 			if app.tutorial == -1 {
-				var String = "Save Game"
-				var String_width = string_width(String)
-				var String_height = string_height(String)
-				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-String_width/2,_y,_x+String_width/2+String_width,_y+String_height) {
-					draw_set_color(c_white)	
-					if input.mouse_left_press {
-						save_game()	
-						create_textbox("Game has been saved...",-1,60)
-					}
-				} else draw_set_color(c_black)
-				draw_text(_x,_y,String)
+				if !game.game_over {
+					var String = "Save Game"
+					var String_width = string_width(String)
+					var String_height = string_height(String)
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-String_width/2,_y,_x+String_width/2+String_width,_y+String_height) {
+						draw_set_color(c_white)	
+						if input.mouse_left_press {
+							save_game()	
+							create_textbox("Game has been saved...",-1,60)
+						}
+					} else draw_set_color(c_black)
+					draw_text(_x,_y,String)
 			
-				_y += 96
+					_y += 96
+				}
 			
 				var String = "Load Game"
 				var String_width = string_width(String)
