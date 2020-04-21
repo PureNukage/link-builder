@@ -4,45 +4,46 @@ var kiosks_other = ds_list_create()
 var kiosks_utility = ds_list_create()
 
 for(var i=0;i<ds_list_size(parts);i++) {
-	if parts[| i].object_index == data { 
-		ds_list_add(databases,parts[| i])
-		parts[| i].connected = false
-	} else if parts[| i].object_index == node {
-		ds_list_clear(parts[| i].data_held)
-		parts[| i].connected = false
+	if instance_exists(parts[| i]) {
+		if parts[| i].object_index == data { 
+			ds_list_add(databases,parts[| i])
+			parts[| i].connected = false
+		} else if parts[| i].object_index == node {
+			ds_list_clear(parts[| i].data_held)
+			parts[| i].connected = false
 		
-		//	Clear out ports_directions real quick
-		for(var pp=0;pp<parts[| i].ports_count;pp++) {
-			parts[| i].ports[pp,port_direction] = -1
-		}
+			//	Clear out ports_directions real quick
+			for(var pp=0;pp<parts[| i].ports_count;pp++) {
+				parts[| i].ports[pp,port_direction] = -1
+			}
 		
-	} else if parts[| i].object_index == kiosk {
-		var _kiosk = parts[| i]
-		ds_list_clear(parts[| i].data_held)
-		ds_list_clear(parts[| i].data_held_ids)
+		} else if parts[| i].object_index == kiosk {
+			var _kiosk = parts[| i]
+			ds_list_clear(parts[| i].data_held)
+			ds_list_clear(parts[| i].data_held_ids)
 		
-		//	lets clear out its decentralization real quick
-		for(var dd=0;dd<array_height_2d(_kiosk.data_needed);dd++) {
-			_kiosk.data_needed[dd,1] = false
-			_kiosk.data_needed[dd,2] = -1
-			//_kiosk.data_needed[dd,3] = false
-		}
+			//	lets clear out its decentralization real quick
+			for(var dd=0;dd<array_height_2d(_kiosk.data_needed);dd++) {
+				_kiosk.data_needed[dd,1] = false
+				_kiosk.data_needed[dd,2] = -1
+				//_kiosk.data_needed[dd,3] = false
+			}
 		
-		//	Reset this contracts gasfee and linkfee
-		if _kiosk.smartcontract > -1 {
-			contracts.contract[_kiosk.smartcontract, contract_gasfee_base] = 1
-			contracts.contract[_kiosk.smartcontract, contract_gasfee_total] = 1
-			contracts.contract[_kiosk.smartcontract, contract_linkfee] = 0
-		}
+			//	Reset this contracts gasfee and linkfee
+			if _kiosk.smartcontract > -1 {
+				contracts.contract[_kiosk.smartcontract, contract_gasfee_base] = 1
+				contracts.contract[_kiosk.smartcontract, contract_gasfee_total] = 1
+				contracts.contract[_kiosk.smartcontract, contract_linkfee] = 0
+			}
 		
-		//	This is a utility contract
-		if _kiosk.smartcontract > -1 and contracts.contract[_kiosk.smartcontract, contract_type] == contract_types.utility {
-			ds_list_add(kiosks_utility,parts[| i])
-		} else if (_kiosk.smartcontract == -1 or contracts.contract[_kiosk.smartcontract, contract_type] == contract_types.people) {
-			ds_list_add(kiosks_other,parts[| i])	
-		}
-	}	
-	
+			//	This is a utility contract
+			if _kiosk.smartcontract > -1 and contracts.contract[_kiosk.smartcontract, contract_type] == contract_types.utility {
+				ds_list_add(kiosks_utility,parts[| i])
+			} else if (_kiosk.smartcontract == -1 or contracts.contract[_kiosk.smartcontract, contract_type] == contract_types.people) {
+				ds_list_add(kiosks_other,parts[| i])	
+			}
+		}	
+	}
 }
 
 #region Database loops

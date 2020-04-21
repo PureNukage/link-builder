@@ -27,7 +27,7 @@ var contracts_string = "Contracts"
 contracts_width = string_width(contracts_string) + (buffer*2)
 
 #region	menu
-if point_in_rectangle(gui_mouse_x,gui_mouse_y,menuX,menuY,menuX+menu_width,menuY+48) {
+if point_in_rectangle(gui_mouse_x,gui_mouse_y,menuX,menuY,menuX+menu_width-1,menuY+48) {
 	draw_set_color(c_ltgray)
 	if input.mouse_left_press {
 		if instance_exists(mainmenu) instance_destroy(mainmenu)
@@ -52,7 +52,7 @@ draw_text(menuX+menu_width/2,menuY+24,menu_string)
 
 if data_active {
 	//	button
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,dataX,dataY,dataX+data_width,dataY+48) {
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,dataX+1,dataY,dataX+data_width-1,dataY+48) {
 		draw_set_color(c_ltgray)
 		if input.mouse_left_press {
 			data_open = !data_open	
@@ -452,7 +452,7 @@ if data_open {
 #region	nodes
 if nodes_active {
 	//	button
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,nodesX,nodesY,nodesX+nodes_width,nodesY+48) {
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,nodesX+1,nodesY,nodesX+nodes_width-1,nodesY+48) {
 		draw_set_color(c_ltgray)	
 		if input.mouse_left_press {
 			nodes_open = !nodes_open
@@ -757,7 +757,7 @@ if nodes_open {
 if contracts_active { 
 	var menu_change = false
 	//	button
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,contractsX,contractsY,contractsX+contracts_width,contractsY+48) {
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,contractsX+1,contractsY,contractsX+contracts_width-1,contractsY+48) {
 		draw_set_color(c_ltgray)
 		if input.mouse_left_press {
 			contracts_open = !contracts_open
