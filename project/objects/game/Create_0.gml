@@ -36,6 +36,16 @@ lose_game_trigger = 0
 game_over = false
 game_over_timer = 180
 
+if app.new_game {
+	shop.wire_active = false
+	shop.resources_active = false
+	topmenu.data_active = false
+	topmenu.nodes_active = false
+	topmenu.contracts_active = false
+	personController.heromenu_active = false
+	textboxController.draw_active = false
+}
+
 if app.tutorial > -1 {
 	var _tutorial = instance_create_layer(0,0,"Instances",tutorialHelper)
 	_tutorial.tutorial = app.tutorial

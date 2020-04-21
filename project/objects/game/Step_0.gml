@@ -1,5 +1,23 @@
 if input.alt vision = !vision
 
+//	Activate all elements once player clicks the first SN Event
+if app.tutorial == -1 and textbox_in_history(77) {
+	shop.wire_active = true
+	shop.resources_active = true
+	topmenu.data_active = true
+	topmenu.nodes_active = true
+	topmenu.contracts_active = true
+	personController.heromenu_active = true
+	textboxController.draw_active = true
+	
+	//shop.resources_active = false
+	//shop.wire_active = false
+	//topmenu.data_active = false
+	//topmenu.nodes_active = false
+	//topmenu.contracts_active = false
+	
+}
+
 if player.money < 0 and !in_debt {
 	in_debt = true
 }

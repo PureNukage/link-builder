@@ -15,6 +15,8 @@ barY = -1
 bar_width = 64
 bar_height = -1
 
+draw_active = true
+
 handleX = -1
 handleY = -1
 handle_width = 32
@@ -30,10 +32,10 @@ if app.tutorial == -1 {
 }
 
 if app.new_game {
-	app.new_game = false
+	//app.new_game = false
 	//	SN Introduction
 	var String = "A mysterious man known only by his initials has given you the objective of building out the 4th Industrial Revolution. He has entrusted you with a starting sum of capital and hopes to see swift progress"
-	create_textbox(String,s_event_sn,-1,-1,event_types.sn_start,-1)
+	if !textbox_in_queue(77) create_textbox(String,s_event_sn,-1,77,event_types.sn_start,-1)
 }
 
 //create_textbox("This game is in ALPHA and will contain bugs",s_rory)

@@ -28,6 +28,7 @@ switch(tutorial)
 					topmenu.data_active = false
 					topmenu.nodes_active = false
 					topmenu.contracts_active = false
+					textboxController.draw_active = false
 					
 					var text = script[# tutorial, 0] script_index++	//	0 -> 1
 					//var text = "Welcome to the Smart Contract Builder basics"
@@ -52,6 +53,7 @@ switch(tutorial)
 						var xx = display_get_gui_width() - 100
 						var yy = contracts.buttonY
 						create_pointer(xx-128,yy+32,display_get_gui_width()-100,contracts.buttonY+32,true,49)
+						textboxController.draw_active = true
 						stage++	
 					}
 				break

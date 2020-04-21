@@ -11,6 +11,9 @@ if !app.game_loading {
 }
 
 else {
+	
+	app.new_game = false
+	
 	//	Spawn new gameplay structures
 	instance_create_layer(0,0,"Instances",game)
 	app.game_loading = false
