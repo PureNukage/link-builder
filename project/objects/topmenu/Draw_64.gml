@@ -546,8 +546,8 @@ if nodes_open {
 		draw_text(ownedX+owned_width/2,ownedY+owned_height/2,owned_string)
 	
 		//	prelim loop through nodes
-		shop.item_node[1, node_available] = true
-		shop.item_node[2, node_available] = true
+		//shop.item_node[1, node_available] = true
+		//shop.item_node[2, node_available] = true
 		var amount = 0
 		var longest_width = 0
 		draw_set_font(fnt_plaque_name)

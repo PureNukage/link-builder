@@ -291,9 +291,11 @@ switch(tutorial)
 			{
 				//	Tutorial start
 				case 0:
+					topmenu.data_active = false
 					shop.resources_active = false
 					topmenu.nodes_active = false
 					topmenu.contracts_active = false
+					shop.wire_active = false
 				
 					create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_1_0) script_index++
 
@@ -321,8 +323,11 @@ switch(tutorial)
 				case 2:
 					if textbox_in_history(11) {
 						timer = time.stream + 80
+						topmenu.data_active = true
+						shop.wire_active = true
 						shop.item_node[0,node_available] = true
 						shop.item_node[1,node_available] = true
+						//shop.item_node[2,node_available] = false
 						shop.item_data[0,item_available] = true
 						shop.item_data[19,item_available] = true
 						stage++
@@ -385,6 +390,11 @@ switch(tutorial)
 				//	spawn all the parts needed for a working linkpal contract
 				case 0:
 					shop.resources_active = false
+					//topmenu.data_active = false
+					topmenu.nodes_active = false
+					topmenu.contracts_active = false
+					shop.wire_active = false
+					
 				
 					var Node1 = item_create(node,0,0,0,"BryceMathsters",s_portrait_node,0)
 					var Node2 = item_create(node,0,0,1,"Feetsy",s_portrait_node,0)
@@ -502,7 +512,10 @@ switch(tutorial)
 						stage++
 						shop.item_data[0,item_available] = true
 						shop.item_data[1,item_available] = true
-						shop.item_data[2,item_available] = true
+						shop.item_data[6,item_available] = true
+						shop.item_data[6, item_new] = false
+						topmenu.data_active = true
+						shop.wire_active = true
 						with node {
 							if name == "Feetsy" {
 								port_add(center_cell_x-1,topleft_cell_y-1,id)

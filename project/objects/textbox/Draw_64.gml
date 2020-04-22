@@ -47,6 +47,7 @@ if !instance_exists(mainmenu) {
 				textboxController.current_message = -1	
 				if (uniqueID == -1 and event_types == -1 and object_id == -1) or (uniqueID > -1 and !textbox_in_history(uniqueID)) or (uniqueID > -1 and !textbox_in_history(uniqueID,event_types,object_id)) {//(uniqueID == -1 and !textbox_in_history(-1,event_types,object_id)) {
 					ds_list_add(textboxController.previous_messages,id)
+					if dialogue > -1 and audio_is_playing(dialogue) audio_stop_sound(dialogue)
 				} 
 				if ds_list_size(textboxController.previous_messages) > 25 {
 					if instance_exists(textboxController.previous_messages[| 0]) instance_destroy(textboxController.previous_messages[| 0])
