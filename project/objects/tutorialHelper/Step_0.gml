@@ -483,7 +483,7 @@ switch(tutorial)
 					var corruption_level = 100
 					if time.stream >= timer {
 						with data {
-							if data_generated == data_types.coinbase_ETHUSD {
+							if data_generated == data_types.bravenewcoin_ETHUSD {
 								shop.item_data[item_index, item_corruption] = corruption_level	
 								other.stage++
 								other.timer = time.stream + 360

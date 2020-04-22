@@ -10,19 +10,13 @@ if app.tutorial == -1 and textbox_in_history(77) {
 	personController.heromenu_active = true
 	textboxController.draw_active = true
 	
-	//shop.resources_active = false
-	//shop.wire_active = false
-	//topmenu.data_active = false
-	//topmenu.nodes_active = false
-	//topmenu.contracts_active = false
-	
 }
 
-if player.money < 0 and !in_debt and tutorial == -1 {
+if player.money < 0 and !in_debt and app.tutorial == -1 {
 	in_debt = true
 }
 
-if in_debt and tutorial == -1 {
+if in_debt and app.tutorial == -1 {
 	if player.money > 0 {
 		in_debt = false
 		in_debt_timer = irandom_range(120,180)	
