@@ -18,11 +18,11 @@ if app.tutorial == -1 and textbox_in_history(77) {
 	
 }
 
-if player.money < 0 and !in_debt {
+if player.money < 0 and !in_debt and tutorial == -1 {
 	in_debt = true
 }
 
-if in_debt {
+if in_debt and tutorial == -1 {
 	if player.money > 0 {
 		in_debt = false
 		in_debt_timer = irandom_range(120,180)	

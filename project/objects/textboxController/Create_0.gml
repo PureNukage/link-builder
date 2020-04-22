@@ -31,7 +31,7 @@ if app.tutorial == -1 {
 	create_textbox("Welcome to Smart Contract Builder\nThis game is in ALPHA and may contain bugs")
 }
 
-if app.new_game {
+if app.new_game and app.tutorial == -1 {
 	//app.new_game = false
 	//	SN Introduction
 	var String = "A mysterious man known only by his initials has given you the objective of building out the 4th Industrial Revolution. He has entrusted you with a starting sum of capital and hopes to see swift progress"

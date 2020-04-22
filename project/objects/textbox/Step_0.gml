@@ -31,5 +31,8 @@ if !done {
 	if timer == 0 {
 		fade = 1
 		timer = -1
+		if dialogue > -1 and audio_is_playing(dialogue) {
+			audio_stop_sound(dialogue)
+		}
 	}
 }

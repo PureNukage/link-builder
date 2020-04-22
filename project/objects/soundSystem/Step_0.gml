@@ -23,3 +23,15 @@ if current_volume != new_volume and current_track > -1 {
 	current_volume = new_volume
 	audio_sound_gain(current_track,new_volume,0)
 }
+
+////	Event Dialogue
+if current_dialogue != new_dialogue {
+	audio_stop_sound(current_dialogue)
+	audio_play_sound(new_dialogue,0,false)
+	audio_sound_gain(new_dialogue,current_dialogue_volume,0)
+	current_dialogue = new_dialogue
+} else {
+	if !audio_is_playing(current_dialogue) {
+		new_dialogue = -1	
+	}
+}

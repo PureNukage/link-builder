@@ -17,6 +17,7 @@ done = false
 uniqueID = -1
 event_types = -1
 object_id = -1
+dialogue = -1
 
 button_width = 64
 button_height = 48

@@ -32,19 +32,19 @@ switch(tutorial)
 					
 					var text = script[# tutorial, 0] script_index++	//	0 -> 1
 					//var text = "Welcome to the Smart Contract Builder basics"
-					create_textbox(text)
+					create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_0)
 		
 					var text = script[# tutorial, 1] script_index++	//	1 -> 2
 					//var text = "This tutorial is going to introduce you to the controls of the game"
-					create_textbox(text)
+					create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_1)
 					
 					var text = script[# tutorial, 2] script_index++	//	2 -> 3
 					//var text = "Messages like this are stored in the Message menu"
-					create_textbox(text)
+					create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_2)
 					
 					var text = script[# tutorial, 3] script_index++	//	3 -> 4
 					//var text = "Open the Message menu"
-					create_textbox(text,-1,-1,24)
+					create_textbox(text,-1,-1,24,-1,-1,snd_dialogue_0_3)
 					stage++
 				break
 				//	Wait for the previous menu to close
@@ -62,7 +62,7 @@ switch(tutorial)
 					if textboxController.messages_open {
 						destroy_pointer(49)
 						var text = script[# tutorial, script_index] script_index++	//	4 -> 5
-						create_textbox(text,-1,-1,101)
+						create_textbox(text,-1,-1,101,-1,-1,snd_dialogue_0_4)
 						//create_textbox("",-1,-1,101)
 						stage++
 					}
@@ -71,9 +71,9 @@ switch(tutorial)
 				case 3:
 					if textbox_in_history(101) {
 						var text = script[# tutorial, script_index] script_index++	//	5 -> 6
-						create_textbox(text)
+						create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_5)
 						var text = script[# tutorial, script_index] script_index++	//	6 -> 7
-						create_textbox(text,-1,-1,6767)
+						create_textbox(text,-1,-1,6767,-1,-1,snd_dialogue_0_6)
 						stage++
 					}
 				break
@@ -90,9 +90,9 @@ switch(tutorial)
 				case 5:
 					if instance_exists(data) and data.data_generated == data_types.binance_ETHUSD {
 						var text = script[# tutorial, script_index] script_index++	//	7 -> 8
-						create_textbox(text)
+						create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_7)
 						var text = script[# tutorial, script_index] script_index++	//	8 -> 9
-						create_textbox(text)
+						create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_8)
 						conditions[0] = false
 						conditions[1] = false
 						stage++
@@ -108,7 +108,7 @@ switch(tutorial)
 					}
 					if conditions[0] and conditions[1] {
 						var text = script[# tutorial, script_index] script_index++	//	9 -> 10
-						create_textbox(text)
+						create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_9)
 						stage++	
 					}
 				break
@@ -116,9 +116,9 @@ switch(tutorial)
 				case 7:
 					if data.states == states.placed {
 						var text = script[# tutorial, script_index] script_index++	//	10 -> 11
-						create_textbox(text)
+						create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_10)
 						var text = script[# tutorial, script_index] script_index++	//	11 -> 12
-						create_textbox(text)
+						create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_11)
 						//conditions[0] = false
 						conditions[0] = data.center_cell_x
 						conditions[1] = data.center_cell_y
@@ -148,11 +148,11 @@ switch(tutorial)
 							with _node item_place()
 							loop = false
 							var text = script[# tutorial, 4] //	good job	
-							create_textbox(text)
+							create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_4)
 							var text = script[# tutorial, script_index] script_index++	//	12 -> 13
-							create_textbox(text)
+							create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_12)
 							var text = script[# tutorial, script_index] script_index++	//	13 -> 14
-							create_textbox(text,-1,-1,123)
+							create_textbox(text,-1,-1,123,-1,-1,snd_dialogue_0_13)
 							var text = script[# tutorial, script_index] script_index++	//	14 -> 15
 							stage++
 						}	
@@ -180,19 +180,19 @@ switch(tutorial)
 							}
 						}
 						if items_i_need == 2 {
-							create_textbox("Good job!")
+							create_textbox("Good job!",-1,-1,-1,-1,-1,snd_dialogue_0_4)
 							//var text = script[# tutorial, script_index] script_index++
 							//create_textbox(text)
 							var text = script[# tutorial, script_index] script_index++	//	15 -> 16
-							create_textbox(text)
+							create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_15)
 							var text = script[# tutorial, script_index] script_index++	//	16 -> 17
-							create_textbox(text,-1,-1,22)
+							create_textbox(text,-1,-1,22,-1,-1,snd_dialogue_0_16)
 							var text = script[# tutorial, script_index] //script_index++	//	17 -> 18
 							
 							var distance_between_items = 5
 							var max_distance_between_items = 7
 							var loop = true
-							var Contract = item_create(kiosk,0,0,3,"Price Feed",s_portrait_ethereum,0,3)
+							var Contract = item_create(kiosk,0,0,3,"ETH/USD Price Feed",s_portrait_pricefeed,0,3)
 							while loop {
 								var xx = irandom_range(4,grid_width-5)
 								var yy = irandom_range(4,grid_height-5)	
@@ -231,11 +231,11 @@ switch(tutorial)
 					//if contracts.button_open and contracts.contract_open == 3 and contracts.data_open {
 					//	destroy_pointer(38)
 						var text = script[# tutorial, script_index] script_index++	//	19 -> 20
-						create_textbox(text)
+						create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_17)
 						var text = script[# tutorial, script_index] script_index++	//	20 -> 21
-						create_textbox(text)
+						create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_18)
 						var text = script[# tutorial, script_index] script_index++	//	21 -> 22
-						create_textbox(text)
+						create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_19)
 						stage++
 					//}
 				break
@@ -266,11 +266,11 @@ switch(tutorial)
 				case 16:
 					if time.stream >= timer {
 						var text = script[# tutorial, script_index] script_index++	//	22 -> 23
-						create_textbox(text)
+						create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_20)
 						var text = script[# tutorial, script_index] script_index++	//	23 -> 24
-						create_textbox(text)
+						create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_21)
 						var text = script[# tutorial, script_index] script_index++	//  24 -> 25
-						create_textbox(text,-1,-1,6969)
+						create_textbox(text,-1,-1,6969,-1,-1,snd_dialogue_0_22)
 						stage++
 					}
 				break
@@ -295,11 +295,11 @@ switch(tutorial)
 					topmenu.nodes_active = false
 					topmenu.contracts_active = false
 				
-					create_textbox(script[# tutorial, script_index]) script_index++
+					create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_1_0) script_index++
 
-					create_textbox(script[# tutorial, script_index]) script_index++
+					create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_1_1) script_index++
 					
-					var _kiosk = item_create(kiosk,0,0,3,"LinkPal",s_portrait_linkpal,0,1)
+					var _kiosk = item_create(kiosk,0,0,1,"LinkPal",s_portrait_linkpal,0,1)
 					with _kiosk {
 						item_move(22,12)
 						item_place()
@@ -308,12 +308,12 @@ switch(tutorial)
 				break	
 				//	Information regarding Wires
 				case 1:
-					create_textbox(script[# tutorial, script_index]) script_index++
-					create_textbox(script[# tutorial, script_index]) script_index++
-					create_textbox(script[# tutorial, script_index]) script_index++
-					create_textbox(script[# tutorial, script_index]) script_index++
-					create_textbox(script[# tutorial, script_index]) script_index++
-					create_textbox(script[# tutorial, script_index],-1,-1,11) script_index++
+					create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_1_2) script_index++
+					create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_1_3) script_index++
+					create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_1_4) script_index++
+					create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_1_5) script_index++
+					create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_1_6) script_index++
+					create_textbox(script[# tutorial, script_index],-1,-1,11,-1,-1,snd_dialogue_1_7) script_index++
 					stage++
 					
 				break
@@ -324,7 +324,7 @@ switch(tutorial)
 						shop.item_node[0,node_available] = true
 						shop.item_node[1,node_available] = true
 						shop.item_data[0,item_available] = true
-						shop.item_data[13,item_available] = true
+						shop.item_data[19,item_available] = true
 						stage++
 					}
 					
@@ -332,11 +332,11 @@ switch(tutorial)
 				//	Wait for timer then give them more information
 				case 3:
 					if time.stream >= timer {
-						create_textbox(script[# tutorial, script_index]) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_1_8) script_index++
 						topmenu.nodes_active = true
 				
-						create_textbox(script[# tutorial, script_index],s_tutorial_offchain) script_index++
-						create_textbox(script[# tutorial, script_index],s_tutorial_onchain)	script_index++
+						create_textbox(script[# tutorial, script_index],s_tutorial_offchain,-1,-1,-1,-1,snd_dialogue_1_9) script_index++
+						create_textbox(script[# tutorial, script_index],s_tutorial_onchain,-1,-1,-1,-1,snd_dialogue_1_10)	script_index++
 						stage++
 						timer = time.stream + 120
 					}
@@ -346,13 +346,13 @@ switch(tutorial)
 					if time.stream >= timer {
 						if instance_exists(data) with data {
 							if connected == connected.incorrect_connected {
-								create_textbox(script[# tutorial, 11],-1,-1,420)
+								create_textbox(script[# tutorial, 11],-1,-1,420,-1,-1,snd_dialogue_1_11)
 								other.timer = time.stream + 300
 							}
 						}
 						
 						if kiosk.active {
-							create_textbox(script[# tutorial, 12]) script_index = 13
+							create_textbox(script[# tutorial, 12],-1,-1,-1,-1,-1,snd_dialogue_1_12) script_index = 13
 							timer = time.stream + 480
 							stage++
 						}
@@ -361,7 +361,7 @@ switch(tutorial)
 				//	Wait 3 seconds then allow them to return to menu
 				case 5:
 					if time.stream >= timer {
-						create_textbox(script[# tutorial, script_index],-1,-1,1234) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,1234,-1,-1,snd_dialogue_1_13) script_index++
 						stage++
 					}
 				break
@@ -388,8 +388,8 @@ switch(tutorial)
 				
 					var Node1 = item_create(node,0,0,0,"BryceMathsters",s_portrait_node,0)
 					var Node2 = item_create(node,0,0,1,"Feetsy",s_portrait_node,0)
-					var Paypal = item_create(data,0,0,13,"PayPal",s_portrait_paypal,0)
-					var ethusd = item_create(data,0,0,2,"BraveNewCoin ETH/USD",s_portrait_ethereum,0)
+					var Paypal = item_create(data,0,0,19,"PayPal",s_portrait_paypal,0)
+					var ethusd = item_create(data,0,0,6,"BraveNewCoin ETH/USD",s_portrait_ethereum,0)
 					var Contract = item_create(kiosk,0,0,1,"LinkPal",s_portrait_linkpal,0,1)
 					
 					with Contract { 
@@ -432,9 +432,9 @@ switch(tutorial)
 				//	Wait 4 seconds then give the player information
 				case 1:
 					if time.stream >= timer {
-						create_textbox(script[# tutorial, script_index]) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_2_0) script_index++
 						
-						create_textbox(script[# tutorial, script_index],-1,-1,55) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,55,-1,-1,snd_dialogue_2_1) script_index++
 						
 						stage++
 					}
@@ -449,11 +449,11 @@ switch(tutorial)
 				//	Wait for the timer then give the player more information
 				case 3:
 					if time.stream >= timer {
-						create_textbox(script[# tutorial, script_index]) script_index++
-						create_textbox(script[# tutorial, script_index]) script_index++
-						create_textbox(script[# tutorial, script_index]) script_index++
-						create_textbox(script[# tutorial, script_index]) script_index++
-						create_textbox(script[# tutorial, script_index],-1,-1,1234) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_2_2) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_2_3) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_2_4) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_2_5) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,1234,-1,-1,snd_dialogue_2_6) script_index++
 						stage++
 					}
 				break
@@ -467,7 +467,7 @@ switch(tutorial)
 				//	Wait for the timer to go then tell the player more information
 				case 5:
 					if time.stream >= timer {
-						create_textbox(script[# tutorial, script_index],-1,-1,6969) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,6969,-1,-1,snd_dialogue_2_7) script_index++
 						stage++
 					}
 				break
@@ -494,11 +494,11 @@ switch(tutorial)
 				//	Wait a few seconds and let the contract run
 				case 8:
 					if time.stream >= timer {
-						create_textbox(script[# tutorial, script_index]) script_index++
-						create_textbox(script[# tutorial, script_index]) script_index++
-						create_textbox(script[# tutorial, script_index]) script_index++
-						create_textbox(script[# tutorial, script_index]) script_index++
-						create_textbox(script[# tutorial, script_index],-1,-1,777) script_index++ 
+						create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_2_8) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_2_9) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_2_10) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_2_11) script_index++
+						create_textbox(script[# tutorial, script_index],-1,-1,777,-1,-1,snd_dialogue_2_12) script_index++ 
 						stage++
 						shop.item_data[0,item_available] = true
 						shop.item_data[1,item_available] = true
@@ -530,7 +530,7 @@ switch(tutorial)
 						}
 					}
 					if sources == 3 {
-						create_textbox("Good job!")
+						create_textbox("Good job!",-1,-1,-1,-1,-1,snd_dialogue_0_4)
 						contracts.contract[1, contract_reliability] = 100
 						contracts.contract[1, contract_misfires] = 0
 						var new_use_list = ds_list_create()
@@ -545,7 +545,7 @@ switch(tutorial)
 				//	Wait for 4 seconds then allow them to return to the main menu
 				case 11:
 					if time.stream >= timer {
-						create_textbox(script[# tutorial, script_index],-1,-1,123456)
+						create_textbox(script[# tutorial, script_index],-1,-1,123456,-1,-1,snd_dialogue_1_13)
 						stage++
 					}
 				break

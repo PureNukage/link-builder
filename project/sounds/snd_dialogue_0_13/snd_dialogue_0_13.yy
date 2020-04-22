@@ -1,0 +1,14 @@
+{
+    "id": "d53c6fa6-4de6-4693-a286-143ca8329483",
+    "modelName": "GMSound",
+    "mvc": "1.0",
+    "name": "snd_dialogue_0_13",
+    "audioGroupGuid": "7b2c4976-1e09-44e5-8256-c527145e03bb",
+    "bitDepth": 1,
+    "bitRate": 128,
+    "kind": 0,
+    "preload": false,
+    "sampleRate": 44100,
+    "type": 0,
+    "volume": 1
+}
