@@ -4,6 +4,8 @@ timer = -1
 
 stage = -1
 
+lazy_fix_tut0_first_load = false
+
 conditions = []
 
 //script = ds_grid_create(4,1)

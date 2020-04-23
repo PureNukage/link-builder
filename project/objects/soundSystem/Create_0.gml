@@ -17,3 +17,4 @@ audio_pause_sound(music_options)
 current_dialogue = -1
 new_dialogue = -1
 current_dialogue_volume = 100
+new_dialogue_volume = 0

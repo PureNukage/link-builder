@@ -35,3 +35,8 @@ if current_dialogue != new_dialogue {
 		new_dialogue = -1	
 	}
 }
+//	Event Volume changed
+if current_dialogue_volume != new_dialogue_volume {
+	current_dialogue_volume = new_dialogue_volume
+	audio_sound_gain(current_dialogue,current_dialogue_volume,0)
+}

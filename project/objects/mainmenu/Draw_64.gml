@@ -155,13 +155,13 @@ switch(menu)
 			var bar_width = 256
 			var bar_height = 32
 			var barX = _x - bar_width/2
-			var barY = _y
+			var barY = _y - 24
 			draw_set_color(c_dkgray)
 			draw_roundrect(barX,barY,barX+bar_width,barY+bar_height,false)
 			
 			//	Draw volume amount
 			draw_set_color(c_black)
-			draw_text(_x,_y-64,"Music: "+string(soundSystem.current_volume*100)+"%")
+			draw_text(_x,_y-48,"Music: "+string(soundSystem.current_volume*100)+"%")
 			
 			//	Draw volume handle
 			var segment = round(bar_width / 10)
@@ -180,6 +180,52 @@ switch(menu)
 				}
 				xx += segment
 			}
+			
+			_y += 128
+			
+			////	Dialogue Volume Options
+			//	Draw bar rectangle
+			var bar_width = 256
+			var bar_height = 32
+			var barX = _x - bar_width/2
+			var barY = _y - 24
+			draw_set_color(c_dkgray)
+			draw_roundrect(barX,barY,barX+bar_width,barY+bar_height,false)
+			
+			//	Draw volume amount
+			draw_set_color(c_black)
+			draw_text(_x,_y-48,"Tutorial Audio: "+string(soundSystem.current_dialogue_volume*100)+"%")
+			
+			//	Draw volume handle
+			var segment = round(bar_width / 10)
+			var handleX = barX + ((soundSystem.current_dialogue_volume*10) * segment)
+			var handleY = barY
+			var handle_width = segment
+			//var handle_height = 48
+			draw_set_color(c_gray)
+			draw_circle(handleX+(handle_width/2),handleY+(handle_width/2),handle_width,false)
+			
+			var xx = barX-segment
+			var yy = barY
+			for(var i=0;i<=10;i++) {
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy,barX+bar_width,yy+bar_height) and mouse_check_button(mb_left) {
+					soundSystem.new_dialogue_volume = i/10
+					if !in_game and audio_is_playing(snd_dialogue_1_3) audio_sound_gain(snd_dialogue_1_3,soundSystem.new_dialogue_volume,0)
+				}
+				xx += segment
+			}
+			
+			//	allow the player to play a dialogue sound to test the audio
+			if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX+bar_width+92,barY-4,barX+bar_width+92+28,barY+32) {
+				draw_sprite_ext(s_audio,0,barX+bar_width+92,barY-4,.66,.66,0,c_white,1)
+				if mouse_check_button_pressed(mb_left) {
+					if audio_is_playing(snd_dialogue_1_3) audio_stop_sound(snd_dialogue_1_3)
+					audio_play_sound(snd_dialogue_1_3,0,false)
+					audio_sound_gain(snd_dialogue_1_3,soundSystem.current_dialogue_volume,0)
+				}	
+			} else {
+				draw_sprite_ext(s_audio_off,0,barX+bar_width+92,barY-4,.66,.66,0,c_white,1)
+			}	
 			
 			_y += 128
 			

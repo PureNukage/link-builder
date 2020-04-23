@@ -30,22 +30,30 @@ switch(tutorial)
 					topmenu.contracts_active = false
 					textboxController.draw_active = false
 					
-					var text = script[# tutorial, 0] script_index++	//	0 -> 1
-					//var text = "Welcome to the Smart Contract Builder basics"
-					create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_0)
+					if timer > 0 timer--
+					if !lazy_fix_tut0_first_load {
+						lazy_fix_tut0_first_load = true
+						timer = 120	
+					}
+					
+					if timer == 0 {
+						var text = script[# tutorial, 0] script_index++	//	0 -> 1
+						//var text = "Welcome to the Smart Contract Builder basics"
+						create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_0)
 		
-					var text = script[# tutorial, 1] script_index++	//	1 -> 2
-					//var text = "This tutorial is going to introduce you to the controls of the game"
-					create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_1)
+						var text = script[# tutorial, 1] script_index++	//	1 -> 2
+						//var text = "This tutorial is going to introduce you to the controls of the game"
+						create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_1)
 					
-					var text = script[# tutorial, 2] script_index++	//	2 -> 3
-					//var text = "Messages like this are stored in the Message menu"
-					create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_2)
+						var text = script[# tutorial, 2] script_index++	//	2 -> 3
+						//var text = "Messages like this are stored in the Message menu"
+						create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_2)
 					
-					var text = script[# tutorial, 3] script_index++	//	3 -> 4
-					//var text = "Open the Message menu"
-					create_textbox(text,-1,-1,24,-1,-1,snd_dialogue_0_3)
-					stage++
+						var text = script[# tutorial, 3] script_index++	//	3 -> 4
+						//var text = "Open the Message menu"
+						create_textbox(text,-1,-1,24,-1,-1,snd_dialogue_0_3)
+						stage++
+					}
 				break
 				//	Wait for the previous menu to close
 				case 1:
@@ -296,17 +304,26 @@ switch(tutorial)
 					topmenu.nodes_active = false
 					topmenu.contracts_active = false
 					shop.wire_active = false
-				
-					create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_1_0) script_index++
-
-					create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_1_1) script_index++
 					
-					var _kiosk = item_create(kiosk,0,0,1,"LinkPal",s_portrait_linkpal,0,1)
-					with _kiosk {
-						item_move(22,12)
-						item_place()
+					if timer > 0 timer--
+					if !lazy_fix_tut0_first_load {
+						lazy_fix_tut0_first_load = true
+						timer = 120
 					}
-					stage++
+					
+					if timer == 0 {
+						create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_1_0) script_index++
+
+						create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_1_1) script_index++
+					
+						var _kiosk = item_create(kiosk,0,0,1,"LinkPal",s_portrait_linkpal,0,1)
+						with _kiosk {
+							item_move(22,12)
+							item_place()
+						}
+						stage++
+					}					
+					
 				break	
 				//	Information regarding Wires
 				case 1:
@@ -317,6 +334,7 @@ switch(tutorial)
 					create_textbox(script[# tutorial, script_index],-1,-1,-1,-1,-1,snd_dialogue_1_6) script_index++
 					create_textbox(script[# tutorial, script_index],-1,-1,11,-1,-1,snd_dialogue_1_7) script_index++
 					stage++
+
 					
 				break
 				//	Wait for them to open the last of the previous messages and then  

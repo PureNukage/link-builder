@@ -271,6 +271,14 @@
             }
         },
         {
+            "Key": "15668725-9a5c-4f33-9dea-ed9702f39ad6",
+            "Value": {
+                "id": "2ac7beaa-d371-450a-acd6-8f964c47b1f0",
+                "resourcePath": "sprites\\s_audio_off\\s_audio_off.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "16417730-f00b-420f-bab7-0e2c459c5280",
             "Value": {
                 "id": "c9ffa166-064b-480d-91a2-076eb8a0c801",
@@ -3243,6 +3251,14 @@
             "Value": {
                 "id": "1dc669fc-6c3e-4b66-8af7-367202ad8cfe",
                 "resourcePath": "sprites\\s_portrait_flight\\s_portrait_flight.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "f6d1beed-4c6b-4399-bc5b-0eddc839da20",
+            "Value": {
+                "id": "802592f9-2ec3-44ce-9246-ef2b7f2e5615",
+                "resourcePath": "sprites\\s_audio\\s_audio.yy",
                 "resourceType": "GMSprite"
             }
         },
