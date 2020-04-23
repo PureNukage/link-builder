@@ -155,8 +155,8 @@ switch(tutorial)
 						if _node.placeable and distance >= distance_between_items and distance <= max_distance_between_items {
 							with _node item_place()
 							loop = false
-							var text = script[# tutorial, 4] //	good job	
-							create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_4)
+							//var text = script[# tutorial, 4] //	good job	
+							//create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_4)
 							var text = script[# tutorial, script_index] script_index++	//	12 -> 13
 							create_textbox(text,-1,-1,-1,-1,-1,snd_dialogue_0_12)
 							var text = script[# tutorial, script_index] script_index++	//	13 -> 14

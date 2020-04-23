@@ -159,6 +159,14 @@
             }
         },
         {
+            "Key": "0c2d1e8b-648a-4ee6-836f-63e2ec0995a2",
+            "Value": {
+                "id": "4c51eb70-1031-4ef3-80e9-93c2e0cea552",
+                "resourcePath": "datafiles_yy\\tutorial_scripts.csv.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "0c3266d9-f3d8-4aa7-852d-b95097e1275d",
             "Value": {
                 "id": "a591cda7-0833-4646-8bb8-8f53731911f9",
@@ -1452,14 +1460,6 @@
                 "id": "9ad2237f-8b2b-4e4c-a8d6-006eeaed1ae4",
                 "resourcePath": "sprites\\s_hero_krown_head\\s_hero_krown_head.yy",
                 "resourceType": "GMSprite"
-            }
-        },
-        {
-            "Key": "7b0c63f8-7afb-4f57-bca9-9a74c0c9ef85",
-            "Value": {
-                "id": "19791953-6c11-46fb-937c-9bb1b8408c08",
-                "resourcePath": "datafiles_yy\\tutorial_scripts.csv.yy",
-                "resourceType": "GMIncludedFile"
             }
         },
         {
