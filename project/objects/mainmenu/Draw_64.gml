@@ -26,6 +26,8 @@ switch(menu)
 			
 			clickDelay = 5
 			
+			if audio_is_playing(snd_dialogue_1_3) audio_stop_sound(snd_dialogue_1_3)
+			
 			//	Draw logo
 			var _yy = _y
 			_yy -= 200
@@ -176,10 +178,10 @@ switch(menu)
 			draw_set_color(c_gray)
 			draw_circle(handleX+(handle_width/2),handleY+(handle_width/2),handle_width,false)
 			
-			var xx = barX
+			var xx = barX-segment
 			var yy = barY
 			for(var i=0;i<=10;i++) {
-				if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy,barX+bar_width+segment,yy+bar_height) and mouse_check_button(mb_left) {
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy,barX+bar_width,yy+bar_height) and mouse_check_button(mb_left) {
 					soundSystem.new_volume = i/10
 				}
 				xx += segment
