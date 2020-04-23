@@ -369,11 +369,12 @@ switch(tutorial)
 					if time.stream >= timer {
 						if instance_exists(data) with data {
 							if connected == connected.incorrect_connected {
-								create_textbox(script[# tutorial, 11],-1,-1,420,-1,-1,snd_dialogue_1_11)
-								other.timer = time.stream + 300
+								if !textbox_in_queue(420) and !textbox_active(420) {
+									create_textbox(other.script[# other.tutorial, 11],-1,-1,420,-1,-1,snd_dialogue_1_11)
+									other.timer = time.stream + 240
+								} else other.timer = time.stream + 480
 							}
 						}
-						
 						if kiosk.active {
 							create_textbox(script[# tutorial, 12],-1,-1,-1,-1,-1,snd_dialogue_1_12) script_index = 13
 							timer = time.stream + 480
