@@ -1069,13 +1069,13 @@ if contracts_open and !instance_exists(mainmenu) {
 							instance_destroy(Plaque)
 							var X = xx+name_width-surface_offsetX+buffer*2
 							var Y = yy-surface_offsetY
-							plaqueCreate(X,Y,kiosk,c)
+							Plaque = plaqueCreate(X,Y,kiosk,c)
 							if X + Plaque.window_width > display_get_gui_width() {
 								Plaque.windowX = xx-name_width-surface_offsetX-buffer*2
 							}
 						}
 						
-						if Plaque > -1 and xx+name_width-surface_offsetX+buffer*2 + Plaque.window_width > display_get_gui_width() {
+						if Plaque > -1 and instance_exists(Plaque) and xx+name_width-surface_offsetX+buffer*2 + Plaque.window_width > display_get_gui_width() {
 							Plaque.windowX = xx-name_width-surface_offsetX-buffer*2	
 						}
 						

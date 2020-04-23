@@ -46,6 +46,8 @@ switch(states)
 				//	Port 2
 				if port2 > -1 ds_list_clear(port2)
 				port2 = ports_check(cell_x2,cell_y2)
+				
+				var mpGrid = gridController.mp_grid
 			
 				var _x1 = gridController.grid_positions_x[cell_x1]+(cell_width/2)
 				var _y1 = gridController.grid_positions_y[cell_y1]+(cell_height/2)
@@ -57,363 +59,230 @@ switch(states)
 					instance_destroy(path_objects[| i])	
 				}
 				ds_list_clear(path_objects)
-			
-				//	The path can make it
-				if mp_grid_define_path(_x1,_y1,_x2,_y2,path,gridController.mp_grid,false) {
-					var top_left_x = min(cell_x1,cell_x2)
-					var top_left_y = min(cell_y1,cell_y2)
-					var bottom_right_x = max(cell_x1,cell_x2)
-					var bottom_right_y = max(cell_y1,cell_y2)
 				
-					ds_list_clear(path_points_x)
-					ds_list_clear(path_points_y)
+				if mp_grid_get_cell(mpGrid,cell_x2,cell_y2) == 0 {
+					//	The path can make it
+					if mp_grid_define_path(_x1,_y1,_x2,_y2,path,mpGrid,false) {
+						var top_left_x = min(cell_x1,cell_x2)
+						var top_left_y = min(cell_y1,cell_y2)
+						var bottom_right_x = max(cell_x1,cell_x2)
+						var bottom_right_y = max(cell_y1,cell_y2)
 				
-					var _placeable = 0
-					var buffer = 0
-					#region While Loop for creating the path
-					while _placeable == 0 {
-						
-						//	Make sure to clear my previous path if any 
-						for(var i=0;i<ds_list_size(path_objects);i++) {
-							instance_destroy(path_objects[| i])	
-						}
-						ds_list_clear(path_objects)
 						ds_list_clear(path_points_x)
 						ds_list_clear(path_points_y)
-					
-						//	Start the loop through the grid containing my path + buffer
-						for(var w=top_left_x-buffer;w<=bottom_right_x+buffer;w++) {
-							for(var h=top_left_y-buffer;h<=bottom_right_y+buffer;h++) {
-								
-								//	Is his cell within game boundaries?
-								if (w > -1 and w < grid_width)
-								and (h > -1 and h < grid_height) {
-						
-									var _xx = gridController.grid_positions_x[w]
-									var _yy = gridController.grid_positions_y[h]
-						
-									for(var i=0;i<path_get_number(path);i++) {
-										var _x = path_get_point_x(path,i)
-										var _y = path_get_point_y(path,i)
-										if point_in_rectangle(_x,_y,_xx,_yy,_xx+cell_width,_yy+cell_height) {
-											ds_list_add(path_points_x,w)
-											ds_list_add(path_points_y,h)
-										
-											//	Spawn a wire in the path
-											var _wire = instance_create_layer(_x,_y,"Instances",wire)
-											_wire.states = states.limbo
-											_wire.center_cell_x = w
-											_wire.center_cell_y = h
-											_wire.topleft_cell_x = w
-											_wire.topleft_cell_y = h
-											_wire.bottomright_cell_x = w
-											_wire.bottomright_cell_y = h
-											
-											//	add id
-											_wire.ID = id
-											_wire.pos = i
-										
-											ds_list_add(path_objects,_wire)
-								
-											if gridController.grid_items[# w,h] < 0 {
-												_placeable++	
-											}
-								
-										}
-							
-									}
-								}
-						
-							}
-						}
 				
-						if _placeable == path_get_number(path) {
-							placeable = true	
-						} else {
-							_placeable = 0	
-							buffer++
-						}
-					}
-					#endregion
-					
-					debug_log("Points in path: "+string(path_get_number(path)))
-					debug_log("Size of path_objects: "+string(ds_list_size(path_objects)))
-					
-					#region	Sort out path cells in order as to the path
-					
-					var path_points_x2 = ds_list_create()
-					var path_points_y2 = ds_list_create()
-					var path_objects2 = ds_list_create()
-					
-					//	Loop through every point in the path
-					for(var i=0;i<path_get_number(path);i++) {
+						var _placeable = 0
+						var buffer = 0
+						#region While Loop for creating the path
+						while _placeable == 0 {
 						
-						var point_x = path_get_point_x(path,i)
-						var point_y = path_get_point_y(path,i)
-						
-						for(var w=0;w<ds_list_size(path_points_x);w++) {
-							var _w = path_points_x[| w]
-							var _h = path_points_y[| w]
-							var _xx = gridController.grid_positions_x[_w]
-							var _yy = gridController.grid_positions_y[_h]
-								
-							if point_in_rectangle(point_x,point_y,_xx,_yy,_xx+cell_width,_yy+cell_height) {
-								ds_list_add(path_points_x2,_w)
-								ds_list_add(path_points_y2,_h)
-								ds_list_add(path_objects2,path_objects[| w])	
-							}
-						}
-					}
-					
-					ds_list_clear(path_points_x)
-					ds_list_clear(path_points_y)
-					ds_list_clear(path_objects)
-					ds_list_copy(path_points_x,path_points_x2)
-					ds_list_copy(path_points_y,path_points_y2)
-					ds_list_copy(path_objects,path_objects2)
-					
-					ds_list_destroy(path_points_x2)
-					ds_list_destroy(path_points_y2)
-					ds_list_destroy(path_objects2)
-				
-					#endregion
-					
-					#region Trim path_objects of any duplicates
-					
-						#region We dragged and have more than one cell in our path
-						if (cell_x1 != cell_x2 or cell_y1 != cell_y2) {
-							var trimmed_path_objects = ds_list_create()
-							var trimmed_path_points_x = ds_list_create()
-							var trimmed_path_points_y = ds_list_create()
-							var _x = -1
-							var _x_previous = -1
-							var _y = -1
-							var _y_previous = -1
-							//var duplicates = 0
-							for(var i=0;i<ds_list_size(path_points_x);i++) {
-						
-								var _x = path_points_x[| i]
-								var _y = path_points_y[| i]
-								var duplicates = 0
-								for(var a=0;a<ds_list_size(trimmed_path_points_x);a++) {
-									var _xx = trimmed_path_points_x[| a]
-									var _yy = trimmed_path_points_y[| a]
-									if _x == _xx and _y == _yy {
-										duplicates++
-									}	
-								}
-								if duplicates == 0 {
-									ds_list_add(trimmed_path_objects,path_objects[| i])
-									ds_list_add(trimmed_path_points_x,path_points_x[| i])
-									ds_list_add(trimmed_path_points_y,path_points_y[| i])
-							
-								} else {
-									instance_destroy(path_objects[| i])	
-								}
-								_x_previous = _x
-								_y_previous = _y
-						
-							}
-							ds_list_clear(path_objects)
-							ds_list_clear(path_points_x)
-							ds_list_clear(path_points_y)
-							ds_list_copy(path_objects,trimmed_path_objects)
-							ds_list_copy(path_points_x,trimmed_path_points_x)
-							ds_list_copy(path_points_y,trimmed_path_points_y)
-					
-						}
-						#endregion
-						
-						#region We have one cell in our path
-						else {
-							
-							for(var i=0;i<ds_list_size(path_points_x);i++) {
+							//	Make sure to clear my previous path if any 
+							for(var i=0;i<ds_list_size(path_objects);i++) {
 								instance_destroy(path_objects[| i])	
 							}
-							
 							ds_list_clear(path_objects)
 							ds_list_clear(path_points_x)
 							ds_list_clear(path_points_y)
-							
-							var _x = gridController.grid_positions_x[input.grid_x]+(cell_width/2)
-							var _y = gridController.grid_positions_y[input.grid_y]+(cell_height/2)
-							//	Spawn a wire in the path
-							var _wire = instance_create_layer(_x,_y,"Instances",wire)
-							_wire.states = states.limbo
-							_wire.center_cell_x = input.grid_x
-							_wire.center_cell_y = input.grid_y
-							_wire.topleft_cell_x = input.grid_x
-							_wire.topleft_cell_y = input.grid_y
-							_wire.bottomright_cell_x = input.grid_x
-							_wire.bottomright_cell_y = input.grid_y
-										
-							ds_list_add(path_objects,_wire)
-							ds_list_add(path_points_x,input.grid_x)
-							ds_list_add(path_points_y,input.grid_y)
-							
-						}
-						#endregion
 					
-					debug_log("Trimmed path_objects down to: "+string(ds_list_size(path_objects)))
-					
-					#endregion
-					
-					#region Assign wires their ports
-					var wire_color = -1
-					for(var i=0;i<ds_list_size(path_objects);i++) {
-						
-						var __wire = path_objects[| i]
-						
-						#region	The first wire
-						if i == 0 {
-							// There are no more wires
-							if i >= ds_list_size(path_objects)-1 {
-								debug_log("This is a solo wire!")
+							//	Start the loop through the grid containing my path + buffer
+							for(var w=top_left_x-buffer;w<=bottom_right_x+buffer;w++) {
+								for(var h=top_left_y-buffer;h<=bottom_right_y+buffer;h++) {
 								
-								if port1 > -1 {
-									var connecting_item = port1[| 0]
-									
-									__wire.ports[0,port_object] = connecting_item
-									
-									//	set wire sockets and connecting_items sockets
-									__wire.sockets[0] = connecting_item
-									var target_x = __wire.center_cell_x
-									var target_y = __wire.center_cell_y
-									if __wire.sockets[0] != wire {
-										for(var p=0;p<connecting_item.ports_count;p++) {
-											if connecting_item.ports[p,port_x] == target_x and connecting_item.ports[p,port_y] == target_y {
-												connecting_item.sockets[p] = __wire	
-											}
+									//	Is his cell within game boundaries?
+									if (w > -1 and w < grid_width)
+									and (h > -1 and h < grid_height) {
+						
+										var _xx = gridController.grid_positions_x[w]
+										var _yy = gridController.grid_positions_y[h]
+						
+										for(var i=0;i<path_get_number(path);i++) {
+											var _x = path_get_point_x(path,i)
+											var _y = path_get_point_y(path,i)
+											if point_in_rectangle(_x,_y,_xx,_yy,_xx+cell_width,_yy+cell_height) {
+												ds_list_add(path_points_x,w)
+												ds_list_add(path_points_y,h)
 										
+												//	Spawn a wire in the path
+												var _wire = instance_create_layer(_x,_y,"Instances",wire)
+												_wire.states = states.limbo
+												_wire.center_cell_x = w
+												_wire.center_cell_y = h
+												_wire.topleft_cell_x = w
+												_wire.topleft_cell_y = h
+												_wire.bottomright_cell_x = w
+												_wire.bottomright_cell_y = h
+											
+												//	add id
+												_wire.ID = id
+												_wire.pos = i
+										
+												ds_list_add(path_objects,_wire)
+								
+												if gridController.grid_items[# w,h] < 0 {
+													_placeable++	
+												}
+								
+											}
+							
 										}
 									}
-									
-									//	Figure out directions
-									var _directions = port_get_direction(__wire,connecting_item)
-									__wire.ports[0,port_x] = __wire.center_cell_x+_directions[0]
-									__wire.ports[0,port_y] = __wire.center_cell_y+_directions[1]
-									
-									__wire.ports[1,port_x] = __wire.center_cell_x+(_directions[0]*-1)
-									__wire.ports[1,port_y] = __wire.center_cell_y+(_directions[1]*-1)
+						
 								}
-								
-								for(var a=0;a<ds_list_size(gridController.grid_port_x);a++) {
-									if __wire.ports[1,port_x] == gridController.grid_port_x[| a] and __wire.ports[1,port_y] == gridController.grid_port_y[| a] {
-										var connecting_item = gridController.grid_port_objects[| a]	
-										
-										__wire.ports[1,port_object] = connecting_item
-									}
-								}
-							} 
-							//	There is another wire ahead of us
-							else {
-								__wire.ports[0,port_object] = path_objects[| i+1]
-								__wire.sockets[0] = __wire.ports[0,port_object]
-								
-								//	We are connecting items!
-								if port1 > -1 {
-									//for(c=0;c<ds_list_size(port1);c++) {
-										var connecting_item = port1[| 0]
-										
-										if connecting_item.object_index == data wire_color = c_white 
-										else {
-											if connecting_item.object_index == wire wire_color = connecting_item.color
-											else wire_color = c_sergey_blue
-										}
-										
-										__wire.ports[1,port_object] = connecting_item
-										//	set wire sockets and connecting_items sockets
-										__wire.sockets[1] = connecting_item
-										var target_x = __wire.center_cell_x
-										var target_y = __wire.center_cell_y
-										for(var p=0;p<connecting_item.ports_count;p++) {
-											if connecting_item.ports[p,port_x] == target_x and connecting_item.ports[p,port_y] == target_y {
-												connecting_item.sockets[p] = __wire	
-											}
-										
-										}
-										
-										var _directions = port_get_direction(__wire,connecting_item)
-										__wire.ports[1,port_x] = __wire.center_cell_x-_directions[0]
-										__wire.ports[1,port_y] = __wire.center_cell_y-_directions[1]							
-										
-										//	Figure out directions
-										var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
-										var _1 = port_get_direction(__wire,__wire.ports[1,port_object])
-							
-										//	Straight
-										if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {
-											__wire.straight = true
-										} else {
-											__wire.straight = false	
-										}
-							
-										__wire.sprite = __wire.sprites[__wire.straight]
-							
-										//	Set ports xy's
-										__wire.ports[0,port_x] = __wire.center_cell_x - _0[0]
-										__wire.ports[0,port_y] = __wire.center_cell_y - _0[1]
-										__wire.ports[1,port_x] = __wire.center_cell_x - _1[0]
-										__wire.ports[1,port_y] = __wire.center_cell_y - _1[1]
-								//	}
-								}	
 							}
-						} 
-						#endregion
-						
-						#region Middle wire
-						if i > 0 and i < ds_list_size(path_objects)-1 {
-							__wire.ports[1,port_object] = path_objects[| i-1]
-							__wire.ports[0,port_object] = path_objects[| i+1]
-							
-							__wire.sockets[0] = path_objects[| i+1]
-							__wire.sockets[1] = path_objects[| i-1]
-							
-							//	Figure out directions
-							var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
-							var _1 = port_get_direction(__wire,__wire.ports[1,port_object])
-							
-							//	Straight
-							if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {
-								__wire.straight = true
+				
+							if _placeable == path_get_number(path) {
+								placeable = true	
 							} else {
-								__wire.straight = false	
+								_placeable = 0	
+								buffer++
 							}
-							
-							__wire.sprite = __wire.sprites[__wire.straight]
-							
-							//	Set ports xy's
-							__wire.ports[0,port_x] = __wire.center_cell_x - _0[0]
-							__wire.ports[0,port_y] = __wire.center_cell_y - _0[1]
-							__wire.ports[1,port_x] = __wire.center_cell_x - _1[0]
-							__wire.ports[1,port_y] = __wire.center_cell_y - _1[1]
-							
-							debug_log("Just set Wire["+string(i)+"] port 0 xy to "+string(__wire.ports[0,port_x])+","+string(__wire.ports[0,port_y]))
-							debug_log("Just set Wire["+string(i)+"] port 1 xy to "+string(__wire.ports[1,port_x])+","+string(__wire.ports[1,port_y]))
 						}
 						#endregion
+					
+						debug_log("Points in path: "+string(path_get_number(path)))
+						debug_log("Size of path_objects: "+string(ds_list_size(path_objects)))
+					
+						#region	Sort out path cells in order as to the path
+					
+						var path_points_x2 = ds_list_create()
+						var path_points_y2 = ds_list_create()
+						var path_objects2 = ds_list_create()
+					
+						//	Loop through every point in the path
+						for(var i=0;i<path_get_number(path);i++) {
 						
-						#region Last Wire
-						if i == ds_list_size(path_points_x)-1 and i != 0 {
-							__wire.ports[1,port_object] = path_objects[| i-1]
-							__wire.sockets[1] = __wire.ports[1,port_object]							
-								//	We are connecting items!
-								if port2 > -1 {
-									//for(c=0;c<ds_list_size(port2);c++) {
-										var connecting_item = port2[| 0]
+							var point_x = path_get_point_x(path,i)
+							var point_y = path_get_point_y(path,i)
+						
+							for(var w=0;w<ds_list_size(path_points_x);w++) {
+								var _w = path_points_x[| w]
+								var _h = path_points_y[| w]
+								var _xx = gridController.grid_positions_x[_w]
+								var _yy = gridController.grid_positions_y[_h]
+								
+								if point_in_rectangle(point_x,point_y,_xx,_yy,_xx+cell_width,_yy+cell_height) {
+									ds_list_add(path_points_x2,_w)
+									ds_list_add(path_points_y2,_h)
+									ds_list_add(path_objects2,path_objects[| w])	
+								}
+							}
+						}
+					
+						ds_list_clear(path_points_x)
+						ds_list_clear(path_points_y)
+						ds_list_clear(path_objects)
+						ds_list_copy(path_points_x,path_points_x2)
+						ds_list_copy(path_points_y,path_points_y2)
+						ds_list_copy(path_objects,path_objects2)
+					
+						ds_list_destroy(path_points_x2)
+						ds_list_destroy(path_points_y2)
+						ds_list_destroy(path_objects2)
+				
+						#endregion
+					
+						#region Trim path_objects of any duplicates
+					
+							#region We dragged and have more than one cell in our path
+							if (cell_x1 != cell_x2 or cell_y1 != cell_y2) {
+								var trimmed_path_objects = ds_list_create()
+								var trimmed_path_points_x = ds_list_create()
+								var trimmed_path_points_y = ds_list_create()
+								var _x = -1
+								var _x_previous = -1
+								var _y = -1
+								var _y_previous = -1
+								//var duplicates = 0
+								for(var i=0;i<ds_list_size(path_points_x);i++) {
+						
+									var _x = path_points_x[| i]
+									var _y = path_points_y[| i]
+									var duplicates = 0
+									for(var a=0;a<ds_list_size(trimmed_path_points_x);a++) {
+										var _xx = trimmed_path_points_x[| a]
+										var _yy = trimmed_path_points_y[| a]
+										if _x == _xx and _y == _yy {
+											duplicates++
+										}	
+									}
+									if duplicates == 0 {
+										ds_list_add(trimmed_path_objects,path_objects[| i])
+										ds_list_add(trimmed_path_points_x,path_points_x[| i])
+										ds_list_add(trimmed_path_points_y,path_points_y[| i])
+							
+									} else {
+										instance_destroy(path_objects[| i])	
+									}
+									_x_previous = _x
+									_y_previous = _y
+						
+								}
+								ds_list_clear(path_objects)
+								ds_list_clear(path_points_x)
+								ds_list_clear(path_points_y)
+								ds_list_copy(path_objects,trimmed_path_objects)
+								ds_list_copy(path_points_x,trimmed_path_points_x)
+								ds_list_copy(path_points_y,trimmed_path_points_y)
+					
+							}
+							#endregion
+						
+							#region We have one cell in our path
+							else {
+							
+								for(var i=0;i<ds_list_size(path_points_x);i++) {
+									instance_destroy(path_objects[| i])	
+								}
+							
+								ds_list_clear(path_objects)
+								ds_list_clear(path_points_x)
+								ds_list_clear(path_points_y)
+							
+								var _x = gridController.grid_positions_x[input.grid_x]+(cell_width/2)
+								var _y = gridController.grid_positions_y[input.grid_y]+(cell_height/2)
+								//	Spawn a wire in the path
+								var _wire = instance_create_layer(_x,_y,"Instances",wire)
+								_wire.states = states.limbo
+								_wire.center_cell_x = input.grid_x
+								_wire.center_cell_y = input.grid_y
+								_wire.topleft_cell_x = input.grid_x
+								_wire.topleft_cell_y = input.grid_y
+								_wire.bottomright_cell_x = input.grid_x
+								_wire.bottomright_cell_y = input.grid_y
 										
-										if connecting_item.object_index == data wire_color = c_white 
-										else {
-											if connecting_item.object_index == wire wire_color = connecting_item.color
-											else if wire_color == -1 wire_color = c_sergey_blue
-										}
-										
+								ds_list_add(path_objects,_wire)
+								ds_list_add(path_points_x,input.grid_x)
+								ds_list_add(path_points_y,input.grid_y)
+							
+							}
+							#endregion
+					
+						debug_log("Trimmed path_objects down to: "+string(ds_list_size(path_objects)))
+					
+						#endregion
+					
+						#region Assign wires their ports
+						var wire_color = -1
+						for(var i=0;i<ds_list_size(path_objects);i++) {
+						
+							var __wire = path_objects[| i]
+						
+							#region	The first wire
+							if i == 0 {
+								// There are no more wires
+								if i >= ds_list_size(path_objects)-1 {
+									debug_log("This is a solo wire!")
+								
+									if port1 > -1 {
+										var connecting_item = port1[| 0]
+									
 										__wire.ports[0,port_object] = connecting_item
+									
 										//	set wire sockets and connecting_items sockets
 										__wire.sockets[0] = connecting_item
 										var target_x = __wire.center_cell_x
 										var target_y = __wire.center_cell_y
-										if __wire.sockets[1] != wire {
+										if __wire.sockets[0] != wire {
 											for(var p=0;p<connecting_item.ports_count;p++) {
 												if connecting_item.ports[p,port_x] == target_x and connecting_item.ports[p,port_y] == target_y {
 													connecting_item.sockets[p] = __wire	
@@ -421,126 +290,259 @@ switch(states)
 										
 											}
 										}
+									
+										//	Figure out directions
 										var _directions = port_get_direction(__wire,connecting_item)
 										__wire.ports[0,port_x] = __wire.center_cell_x+_directions[0]
 										__wire.ports[0,port_y] = __wire.center_cell_y+_directions[1]
-										
-										//	Figure out directions
-										var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
-										var _1 = port_get_direction(__wire,__wire.ports[1,port_object])
-							
-										//	Straight
-										if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {
-											__wire.straight = true
-										} else {
-											__wire.straight = false	
-										}
-							
-										__wire.sprite = __wire.sprites[__wire.straight]
-							
-										//	Set ports xy's
-										__wire.ports[0,port_x] = __wire.center_cell_x - _0[0]
-										__wire.ports[0,port_y] = __wire.center_cell_y - _0[1]
-										__wire.ports[1,port_x] = __wire.center_cell_x - _1[0]
-										__wire.ports[1,port_y] = __wire.center_cell_y - _1[1]
-									//}
-								}	
-						}
-						#endregion			
-						
-						debug_log("Just set Wire: ["+string(i)+"] "+string(__wire)+" port["+string(1)+"] "+" to "+string(__wire.ports[1,port_object]))
-						debug_log("Just set Wire: ["+string(i)+"] "+string(__wire)+" port["+string(0)+"] "+" to "+string(__wire.ports[0,port_object]))
+									
+										__wire.ports[1,port_x] = __wire.center_cell_x+(_directions[0]*-1)
+										__wire.ports[1,port_y] = __wire.center_cell_y+(_directions[1]*-1)
+									}
 								
-					}
-					#endregion
-			
-					#region Assign wires their direction 
-					
-					for(var i=0;i<ds_list_size(path_objects);i++) {
+									for(var a=0;a<ds_list_size(gridController.grid_port_x);a++) {
+										if __wire.ports[1,port_x] == gridController.grid_port_x[| a] and __wire.ports[1,port_y] == gridController.grid_port_y[| a] {
+											var connecting_item = gridController.grid_port_objects[| a]	
+										
+											__wire.ports[1,port_object] = connecting_item
+										}
+									}
+								} 
+								//	There is another wire ahead of us
+								else {
+									__wire.ports[0,port_object] = path_objects[| i+1]
+									__wire.sockets[0] = __wire.ports[0,port_object]
+								
+									//	We are connecting items!
+									if port1 > -1 {
+										//for(c=0;c<ds_list_size(port1);c++) {
+											var connecting_item = port1[| 0]
+										
+											if connecting_item.object_index == data wire_color = c_white 
+											else {
+												if connecting_item.object_index == wire wire_color = connecting_item.color
+												else wire_color = c_sergey_blue
+											}
+										
+											__wire.ports[1,port_object] = connecting_item
+											//	set wire sockets and connecting_items sockets
+											__wire.sockets[1] = connecting_item
+											var target_x = __wire.center_cell_x
+											var target_y = __wire.center_cell_y
+											for(var p=0;p<connecting_item.ports_count;p++) {
+												if connecting_item.ports[p,port_x] == target_x and connecting_item.ports[p,port_y] == target_y {
+													connecting_item.sockets[p] = __wire	
+												}
+										
+											}
+										
+											var _directions = port_get_direction(__wire,connecting_item)
+											__wire.ports[1,port_x] = __wire.center_cell_x-_directions[0]
+											__wire.ports[1,port_y] = __wire.center_cell_y-_directions[1]							
+										
+											//	Figure out directions
+											var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
+											var _1 = port_get_direction(__wire,__wire.ports[1,port_object])
+							
+											//	Straight
+											if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {
+												__wire.straight = true
+											} else {
+												__wire.straight = false	
+											}
+							
+											__wire.sprite = __wire.sprites[__wire.straight]
+							
+											//	Set ports xy's
+											__wire.ports[0,port_x] = __wire.center_cell_x - _0[0]
+											__wire.ports[0,port_y] = __wire.center_cell_y - _0[1]
+											__wire.ports[1,port_x] = __wire.center_cell_x - _1[0]
+											__wire.ports[1,port_y] = __wire.center_cell_y - _1[1]
+									//	}
+									}	
+								}
+							} 
+							#endregion
 						
-						var _wire = path_objects[| i]
-						
-						//	In but no Out
-						if _wire.ports[1,port_object] > -1 and _wire.ports[0,port_object] == -1 {
-							var w2 = _wire.center_cell_x
-							var h2 = _wire.center_cell_y
-							var w1 = _wire.ports[1,port_object].center_cell_x
-							var h1 = _wire.ports[1,port_object].center_cell_y
-							_wire.rotation = cell_direction(w1,h1,w2,h2)
-							with _wire {
-								wire_update_ports_xy(rotation)	
-							}
-						}
-						
-						//	Out and In
-						if (_wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] > -1) {
-							with _wire {
-								if straight {
-									var w1 = _wire.center_cell_x
-									var h1 = _wire.center_cell_y
-									var w2 = _wire.ports[0,port_object].center_cell_x
-									var h2 = _wire.ports[0,port_object].center_cell_y
-									_wire.rotation = cell_direction(w1,h1,w2,h2)
+							#region Middle wire
+							if i > 0 and i < ds_list_size(path_objects)-1 {
+								__wire.ports[1,port_object] = path_objects[| i-1]
+								__wire.ports[0,port_object] = path_objects[| i+1]
+							
+								__wire.sockets[0] = path_objects[| i+1]
+								__wire.sockets[1] = path_objects[| i-1]
+							
+								//	Figure out directions
+								var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
+								var _1 = port_get_direction(__wire,__wire.ports[1,port_object])
+							
+								//	Straight
+								if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {
+									__wire.straight = true
 								} else {
-									rotation = corner_rotation(id,ports)
+									__wire.straight = false	
+								}
+							
+								__wire.sprite = __wire.sprites[__wire.straight]
+							
+								//	Set ports xy's
+								__wire.ports[0,port_x] = __wire.center_cell_x - _0[0]
+								__wire.ports[0,port_y] = __wire.center_cell_y - _0[1]
+								__wire.ports[1,port_x] = __wire.center_cell_x - _1[0]
+								__wire.ports[1,port_y] = __wire.center_cell_y - _1[1]
+							
+								debug_log("Just set Wire["+string(i)+"] port 0 xy to "+string(__wire.ports[0,port_x])+","+string(__wire.ports[0,port_y]))
+								debug_log("Just set Wire["+string(i)+"] port 1 xy to "+string(__wire.ports[1,port_x])+","+string(__wire.ports[1,port_y]))
+							}
+							#endregion
+						
+							#region Last Wire
+							if i == ds_list_size(path_points_x)-1 and i != 0 {
+								__wire.ports[1,port_object] = path_objects[| i-1]
+								__wire.sockets[1] = __wire.ports[1,port_object]							
+									//	We are connecting items!
+									if port2 > -1 {
+										//for(c=0;c<ds_list_size(port2);c++) {
+											var connecting_item = port2[| 0]
+										
+											if connecting_item.object_index == data wire_color = c_white 
+											else {
+												if connecting_item.object_index == wire wire_color = connecting_item.color
+												else if wire_color == -1 wire_color = c_sergey_blue
+											}
+										
+											__wire.ports[0,port_object] = connecting_item
+											//	set wire sockets and connecting_items sockets
+											__wire.sockets[0] = connecting_item
+											var target_x = __wire.center_cell_x
+											var target_y = __wire.center_cell_y
+											if __wire.sockets[1] != wire {
+												for(var p=0;p<connecting_item.ports_count;p++) {
+													if connecting_item.ports[p,port_x] == target_x and connecting_item.ports[p,port_y] == target_y {
+														connecting_item.sockets[p] = __wire	
+													}
+										
+												}
+											}
+											var _directions = port_get_direction(__wire,connecting_item)
+											__wire.ports[0,port_x] = __wire.center_cell_x+_directions[0]
+											__wire.ports[0,port_y] = __wire.center_cell_y+_directions[1]
+										
+											//	Figure out directions
+											var _0 = port_get_direction(__wire,__wire.ports[0,port_object])
+											var _1 = port_get_direction(__wire,__wire.ports[1,port_object])
+							
+											//	Straight
+											if (abs(_0[0]) == abs(_1[0])) or (abs(_0[1]) == abs(_1[1])) {
+												__wire.straight = true
+											} else {
+												__wire.straight = false	
+											}
+							
+											__wire.sprite = __wire.sprites[__wire.straight]
+							
+											//	Set ports xy's
+											__wire.ports[0,port_x] = __wire.center_cell_x - _0[0]
+											__wire.ports[0,port_y] = __wire.center_cell_y - _0[1]
+											__wire.ports[1,port_x] = __wire.center_cell_x - _1[0]
+											__wire.ports[1,port_y] = __wire.center_cell_y - _1[1]
+										//}
+									}	
+							}
+							#endregion			
+						
+							debug_log("Just set Wire: ["+string(i)+"] "+string(__wire)+" port["+string(1)+"] "+" to "+string(__wire.ports[1,port_object]))
+							debug_log("Just set Wire: ["+string(i)+"] "+string(__wire)+" port["+string(0)+"] "+" to "+string(__wire.ports[0,port_object]))
+								
+						}
+						#endregion
+			
+						#region Assign wires their direction 
+					
+						for(var i=0;i<ds_list_size(path_objects);i++) {
+						
+							var _wire = path_objects[| i]
+						
+							//	In but no Out
+							if _wire.ports[1,port_object] > -1 and _wire.ports[0,port_object] == -1 {
+								var w2 = _wire.center_cell_x
+								var h2 = _wire.center_cell_y
+								var w1 = _wire.ports[1,port_object].center_cell_x
+								var h1 = _wire.ports[1,port_object].center_cell_y
+								_wire.rotation = cell_direction(w1,h1,w2,h2)
+								with _wire {
+									wire_update_ports_xy(rotation)	
 								}
 							}
-						}
 						
-						//	Out but no In
-						if (_wire.ports[1,port_object] == -1 and _wire.ports[0,port_object] > -1) {
-							var w1 = _wire.center_cell_x
-							var h1 = _wire.center_cell_y
-							var w2 = _wire.ports[0,port_object].center_cell_x
-							var h2 = _wire.ports[0,port_object].center_cell_y
-							_wire.rotation = cell_direction(w1,h1,w2,h2)
-							with _wire {
-								wire_update_ports_xy(rotation)	
+							//	Out and In
+							if (_wire.ports[0,port_object] > -1 and _wire.ports[1,port_object] > -1) {
+								with _wire {
+									if straight {
+										var w1 = _wire.center_cell_x
+										var h1 = _wire.center_cell_y
+										var w2 = _wire.ports[0,port_object].center_cell_x
+										var h2 = _wire.ports[0,port_object].center_cell_y
+										_wire.rotation = cell_direction(w1,h1,w2,h2)
+									} else {
+										rotation = corner_rotation(id,ports)
+									}
+								}
 							}
-						}
 						
-						//	Rotate my_cells_items grid and update ports
-						if _wire.rotation > 0 {
-							var _rotates = abs(_wire.rotation/90)
-							//debug_log("Wire: "+"["+string(i)+"] has: "+string(_rotates)+" rotations to make")
-							for(var a=0;a<_rotates;a++) {
-								_wire.size_width = _wire.size_width + _wire.size_height
-								_wire.size_height = _wire.size_width - _wire.size_height
-								_wire.size_width = _wire.size_width - _wire.size_height
-								//Cells
-								_wire.topleft_cell_x = _wire.center_cell_x-floor(_wire.size_width/2)
-								_wire.topleft_cell_y = _wire.center_cell_y-floor(_wire.size_height/2)
+							//	Out but no In
+							if (_wire.ports[1,port_object] == -1 and _wire.ports[0,port_object] > -1) {
+								var w1 = _wire.center_cell_x
+								var h1 = _wire.center_cell_y
+								var w2 = _wire.ports[0,port_object].center_cell_x
+								var h2 = _wire.ports[0,port_object].center_cell_y
+								_wire.rotation = cell_direction(w1,h1,w2,h2)
+								with _wire {
+									wire_update_ports_xy(rotation)	
+								}
+							}
+						
+							//	Rotate my_cells_items grid and update ports
+							if _wire.rotation > 0 {
+								var _rotates = abs(_wire.rotation/90)
+								//debug_log("Wire: "+"["+string(i)+"] has: "+string(_rotates)+" rotations to make")
+								for(var a=0;a<_rotates;a++) {
+									_wire.size_width = _wire.size_width + _wire.size_height
+									_wire.size_height = _wire.size_width - _wire.size_height
+									_wire.size_width = _wire.size_width - _wire.size_height
+									//Cells
+									_wire.topleft_cell_x = _wire.center_cell_x-floor(_wire.size_width/2)
+									_wire.topleft_cell_y = _wire.center_cell_y-floor(_wire.size_height/2)
 
-								_wire.bottomright_cell_x = _wire.topleft_cell_x + (_wire.size_width-1)
-								_wire.bottomright_cell_y = _wire.topleft_cell_y + (_wire.size_height-1)
+									_wire.bottomright_cell_x = _wire.topleft_cell_x + (_wire.size_width-1)
+									_wire.bottomright_cell_y = _wire.topleft_cell_y + (_wire.size_height-1)
+								}
 							}
+						
+							//	Check for sockets
+							//with _wire {
+							//	item_check_sockets()	
+							//}
+						
+						//	debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
+						
 						}
+					
+					
+					
+						#endregion
+					
+						#region Set Wire Color
+						for(var i=0;i<ds_list_size(path_objects);i++) {
+							var _wire = path_objects[| i]
 						
-						//	Check for sockets
-						//with _wire {
-						//	item_check_sockets()	
-						//}
+							_wire.color = wire_color
 						
-					//	debug_log("Wire: "+"["+string(i)+"] "+string(_wire)+" set to a rotation of : "+string(_wire.rotation))
 						
+						}
+						#endregion
 					}
-					
-					
-					
-					#endregion
-					
-					#region Set Wire Color
-					for(var i=0;i<ds_list_size(path_objects);i++) {
-						var _wire = path_objects[| i]
-						
-						_wire.color = wire_color
-						
-						
-					}
-					#endregion
 				}
-			
-			
 			}	
 					
 					#endregion
