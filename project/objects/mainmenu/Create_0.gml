@@ -1,6 +1,7 @@
 if !instance_exists(camera) instance_create_layer(0,0,"Instances",camera)
 
 in_game = false
+clickDelay = 5
 
 mainMenu = []
 

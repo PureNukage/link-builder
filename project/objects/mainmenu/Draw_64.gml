@@ -24,6 +24,8 @@ switch(menu)
 			var _x = display_get_gui_width()/2
 			var _y = display_get_gui_height()/2 - (array_height_2d(mainMenu) * 32)
 			
+			clickDelay = 5
+			
 			//	Draw logo
 			var _yy = _y
 			_yy -= 200
@@ -90,6 +92,8 @@ switch(menu)
 	
 	#region Options
 		case menu.options:
+		
+		if clickDelay <= 0 {
 			
 			var _x = display_get_gui_width()/2
 			var _y = display_get_gui_height()/2 - ((array_height_2d(options) + array_height_2d(resolutions)) * 32) - (display_get_gui_height()/5)
@@ -165,7 +169,7 @@ switch(menu)
 			
 			//	Draw volume handle
 			var segment = round(bar_width / 10)
-			var handleX = barX + ((soundSystem.current_volume*10) * segment)
+			var handleX = barX-segment + ((soundSystem.current_volume*10) * segment)
 			var handleY = barY
 			var handle_width = segment
 			//var handle_height = 48
@@ -175,7 +179,7 @@ switch(menu)
 			var xx = barX
 			var yy = barY
 			for(var i=0;i<=10;i++) {
-				if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy,xx+bar_width,yy+bar_height) and mouse_check_button(mb_left) {
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy,barX+bar_width+segment,yy+bar_height) and mouse_check_button(mb_left) {
 					soundSystem.new_volume = i/10
 				}
 				xx += segment
@@ -198,7 +202,7 @@ switch(menu)
 			
 			//	Draw volume handle
 			var segment = round(bar_width / 10)
-			var handleX = barX + ((soundSystem.current_dialogue_volume*10) * segment)
+			var handleX = barX-segment + ((soundSystem.current_dialogue_volume*10) * segment)
 			var handleY = barY
 			var handle_width = segment
 			//var handle_height = 48
@@ -254,6 +258,8 @@ switch(menu)
 			draw_text(_x,_y+_string_height/2,_string)
 			
 			_y += 64
+		} 
+		else clickDelay--
 			
 		break
 	#endregion
