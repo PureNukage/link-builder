@@ -17,6 +17,7 @@ for(var w=0;w<grid_width;w++) {
 			if gridController.grid_items[# w, h] == kiosk and ds_list_find_index(kiosks,gridController.grid_objects[# w, h]) == -1 {
 				var Kiosk = gridController.grid_objects[# w, h]
 				if Kiosk != id {
+					var name = contracts.contract[Kiosk.smartcontract, contract_name]
 					for(var d=0;d<array_height_2d(Kiosk.data_needed);d++) {
 						var Data = Kiosk.data_needed[d,0]
 						var needed_data_string = shop.item_data[Data, item_name]
@@ -27,7 +28,7 @@ for(var w=0;w<grid_width;w++) {
 							with Kiosk.System system_dataflow_check()
 						}	
 					}
-					debug_log("Providing data to a new Contract")
+					debug_log("Price Feed: "+data_string+" providing data to a new Contract: "+string(name))
 					ds_list_add(kiosks,Kiosk)
 				}
 			}

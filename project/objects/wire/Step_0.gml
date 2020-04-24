@@ -391,8 +391,8 @@ switch(states)
 								__wire.ports[1,port_x] = __wire.center_cell_x - _1[0]
 								__wire.ports[1,port_y] = __wire.center_cell_y - _1[1]
 							
-								debug_log("Just set Wire["+string(i)+"] port 0 xy to "+string(__wire.ports[0,port_x])+","+string(__wire.ports[0,port_y]))
-								debug_log("Just set Wire["+string(i)+"] port 1 xy to "+string(__wire.ports[1,port_x])+","+string(__wire.ports[1,port_y]))
+								//debug_log("Just set Wire["+string(i)+"] port 0 xy to "+string(__wire.ports[0,port_x])+","+string(__wire.ports[0,port_y]))
+								//debug_log("Just set Wire["+string(i)+"] port 1 xy to "+string(__wire.ports[1,port_x])+","+string(__wire.ports[1,port_y]))
 							}
 							#endregion
 						
@@ -410,13 +410,15 @@ switch(states)
 												if connecting_item.object_index == wire wire_color = connecting_item.color
 												else if wire_color == -1 wire_color = c_sergey_blue
 											}
+											
+											if __wire.center_cell_x = 23 and __wire.center_cell_y = 8 var poop3 = 0
 										
 											__wire.ports[0,port_object] = connecting_item
 											//	set wire sockets and connecting_items sockets
 											__wire.sockets[0] = connecting_item
 											var target_x = __wire.center_cell_x
 											var target_y = __wire.center_cell_y
-											if __wire.sockets[1] != wire {
+											if __wire.sockets[0] != wire {
 												for(var p=0;p<connecting_item.ports_count;p++) {
 													if connecting_item.ports[p,port_x] == target_x and connecting_item.ports[p,port_y] == target_y {
 														connecting_item.sockets[p] = __wire	
@@ -446,6 +448,7 @@ switch(states)
 											__wire.ports[0,port_y] = __wire.center_cell_y - _0[1]
 											__wire.ports[1,port_x] = __wire.center_cell_x - _1[0]
 											__wire.ports[1,port_y] = __wire.center_cell_y - _1[1]
+											var poop4 = 0
 										//}
 									}	
 							}
@@ -481,9 +484,13 @@ switch(states)
 									if straight {
 										var w1 = _wire.center_cell_x
 										var h1 = _wire.center_cell_y
-										var w2 = _wire.ports[0,port_object].center_cell_x
-										var h2 = _wire.ports[0,port_object].center_cell_y
+										if w1 == 23 and h1 == 8 var poop2 = 0
+										//var w2 = _wire.ports[0,port_object].center_cell_x
+										//var h2 = _wire.ports[0,port_object].center_cell_y
+										var w2 = _wire.ports[0,port_x]
+										var h2 = _wire.ports[0,port_y]
 										_wire.rotation = cell_direction(w1,h1,w2,h2)
+										var poop = 0;
 									} else {
 										rotation = corner_rotation(id,ports)
 									}
@@ -503,21 +510,21 @@ switch(states)
 							}
 						
 							//	Rotate my_cells_items grid and update ports
-							if _wire.rotation > 0 {
-								var _rotates = abs(_wire.rotation/90)
-								//debug_log("Wire: "+"["+string(i)+"] has: "+string(_rotates)+" rotations to make")
-								for(var a=0;a<_rotates;a++) {
-									_wire.size_width = _wire.size_width + _wire.size_height
-									_wire.size_height = _wire.size_width - _wire.size_height
-									_wire.size_width = _wire.size_width - _wire.size_height
-									//Cells
-									_wire.topleft_cell_x = _wire.center_cell_x-floor(_wire.size_width/2)
-									_wire.topleft_cell_y = _wire.center_cell_y-floor(_wire.size_height/2)
+							//if _wire.rotation > 0 {
+							//	var _rotates = abs(_wire.rotation/90)
+							//	//debug_log("Wire: "+"["+string(i)+"] has: "+string(_rotates)+" rotations to make")
+							//	for(var a=0;a<_rotates;a++) {
+							//		_wire.size_width = _wire.size_width + _wire.size_height
+							//		_wire.size_height = _wire.size_width - _wire.size_height
+							//		_wire.size_width = _wire.size_width - _wire.size_height
+							//		//Cells
+							//		_wire.topleft_cell_x = _wire.center_cell_x-floor(_wire.size_width/2)
+							//		_wire.topleft_cell_y = _wire.center_cell_y-floor(_wire.size_height/2)
 
-									_wire.bottomright_cell_x = _wire.topleft_cell_x + (_wire.size_width-1)
-									_wire.bottomright_cell_y = _wire.topleft_cell_y + (_wire.size_height-1)
-								}
-							}
+							//		_wire.bottomright_cell_x = _wire.topleft_cell_x + (_wire.size_width-1)
+							//		_wire.bottomright_cell_y = _wire.topleft_cell_y + (_wire.size_height-1)
+							//	}
+							//}
 						
 							//	Check for sockets
 							//with _wire {

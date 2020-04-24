@@ -66,6 +66,8 @@ switch(states)
 	#region State Placed
 		case states.placed:		
 			
+			item_index_priority()
+			
 			if selected and input.delete_press and app.tutorial == -1 {				
 				item_delete()				
 			}

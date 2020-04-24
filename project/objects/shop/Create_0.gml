@@ -228,7 +228,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,available,Data_filters)
 	
 	var name = "YouTube"
-	var price = 1000
+	var price = 1500
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_youtube
@@ -250,7 +250,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,available,Data_filters)
 	
 	var name = "Videogame API"
-	var price = 1000
+	var price = 1500
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_videogame
@@ -360,14 +360,14 @@
 	
 	create_node("gonsinator",_string,350,0,0,levels,true)
 
-	create_node("HashBlaster",_string,750,0,0,levels,true)
+	create_node("HashBlaster",_string,750,0,0,levels,false)
 	
 	var name = "LinkPool"
 	var _string = ""
 	var price = 0
 	var jobruns = 0 
 	var level = 0
-	var available = true
+	var available = false
 	create_node(name,_string,price,jobruns,level,levels,available)
 	
 	var name = "Plaidbox"
@@ -375,7 +375,7 @@
 	var price = 0
 	var jobruns = 0 
 	var level = 0
-	var available = true
+	var available = false
 	create_node(name,_string,price,jobruns,level,levels,available)
 	
 	//create_node("test1",_string,100,0,0,levels,true)

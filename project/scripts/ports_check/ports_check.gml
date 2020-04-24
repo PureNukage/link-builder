@@ -10,7 +10,7 @@ for(var _object=0;_object<ds_list_size(gridController.grid_port_objects);_object
 	var _x = gridController.grid_port_x[| _object]
 	var _y = gridController.grid_port_y[| _object]
 	//	This cell is a port!
-	if _x == _x1 and _y == _y1 {
+	if _x == _x1 and _y == _y1 and gridController.grid_items[# _x, _y] == -2 {
 		var connected_object = gridController.grid_port_objects[| _object]
 		ds_list_add(found,connected_object)
 	}

@@ -26,7 +26,7 @@ create_contract("Eth Transfer","",5,150,s_portrait_ethereum,2,5,5,contract_types
 
 var name = "LinkPal"
 var _string = "DeFi users can now trade their ETH with\neach other for USD by querying a PayPal invoice"
-var reward = 10
+var reward = 12
 var price = 500
 var portrait = s_portrait_linkpal
 var channel_time = 2
@@ -42,7 +42,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "BountiBot"
 var _string = "An open-source software contributor is paid\nwhen their code gets merged into a project"
-var reward = 10
+var reward = 12
 var price = 500
 var portrait = s_portrait_bountibot
 var channel_time = 2
@@ -58,7 +58,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "ETH/USD Price Feed"
 var _string = "Price Feeds can generate\na Decentralized price that nearby Contracts may use"
-var reward = 15
+var reward = 0
 var price = 500
 var portrait = s_portrait_pricefeed
 var channel_time = 2
@@ -75,7 +75,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "LINK/USD Price Feed"
 var _string = "Price Feeds can generate\na Decentralized price that nearby Contracts may use"
-var reward = 15
+var reward = 0
 var price = 500
 var portrait = s_portrait_pricefeed
 var channel_time = 2
@@ -92,7 +92,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Cerberus Wallet 2FA"
 var _string = ""
-var reward = 7
+var reward = 10
 var price = 0
 var portrait = s_portrait_cerberus
 var channel_time = 2
@@ -108,7 +108,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Backerr"
 var _string = ""
-var reward = 7
+var reward = 10
 var price = 0
 var portrait = s_portrait_backerr
 var channel_time = 2
@@ -124,7 +124,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "TokenSet"
 var _string = ""
-var reward = 10
+var reward = 12
 var price = 500
 var portrait = s_portrait_tokenset
 var channel_time = 2
@@ -140,7 +140,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Smart Marketing Campaign"
 var _string = ""
-var reward = 10
+var reward = 12
 var price = 500
 var portrait = s_portrait_smartmarketing
 var channel_time = 2
@@ -156,7 +156,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Synthetix"
 var _string = ""
-var reward = 12
+var reward = 14
 var price = 2000
 var portrait = s_portrait_synthetix
 var channel_time = 2
@@ -172,7 +172,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "eSports Tournament"
 var _string = ""
-var reward = 15
+var reward = 16
 var price = 2000
 var portrait = s_portrait_esports
 var channel_time = 2
@@ -188,7 +188,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Revenue Share"
 var _string = ""
-var reward = 15
+var reward = 16
 var price = 2000
 var portrait = s_portrait_revenueshare
 var channel_time = 2

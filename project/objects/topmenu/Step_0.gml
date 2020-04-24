@@ -11,3 +11,4 @@ if !contracts_open and !nodes_open and !data_open and menu_mouseover {
 data_checkNew()
 node_checkNew()
 contract_checkNew()
+check_availableNodes()

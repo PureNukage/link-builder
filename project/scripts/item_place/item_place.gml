@@ -108,6 +108,8 @@ system_set()
 
 check_availableData()
 pricedata_priceCheck()
+
+item_index_priority()
 			
 x = gridController.grid_positions_x[center_cell_x]+(cell_width/2)
 y = gridController.grid_positions_y[center_cell_y]+(cell_height/2)
