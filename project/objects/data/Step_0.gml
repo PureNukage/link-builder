@@ -72,6 +72,9 @@ if !game.game_over {
 						new_item.item_index = item_index
 						new_item.portrait = shop.item_data[item_index ,item_portrait]
 						new_item.ports = ports
+						for(var p=0;p<ports_count;p++) {
+							if new_item.ports[p,port_object] > -1 new_item.ports[p,port_object] = -1	
+						}
 					
 						new_item.name = name
 					

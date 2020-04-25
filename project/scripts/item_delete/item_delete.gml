@@ -266,7 +266,7 @@ else {
 	}
 	
 	//	if I'm a price feed, stop supporting my contracts
-	if is_price(name) and (is_price(name,true) == "LINK/USD" or is_price(name,true) == "ETH/USD") {
+	if object_index == kiosk and is_price(name) and (is_price(name,true) == "LINK/USD" or is_price(name,true) == "ETH/USD") {
 		price_feed_refresh()	
 	}
 	

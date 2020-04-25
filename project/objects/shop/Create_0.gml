@@ -94,7 +94,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
 	
 	var name = "Binance LINK/USD"
-	var price = 500
+	var price = 1500
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_binance
@@ -104,7 +104,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "Cryptocompare LINK/USD"
-	var price = 500
+	var price = 1500
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_cryptocompare
@@ -114,7 +114,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "Coinbase LINK/USD"
-	var price = 500
+	var price = 1500
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_coinbase
@@ -124,7 +124,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "CoinGecko LINK/USD"
-	var price = 500
+	var price = 1500
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_coingecko
@@ -134,7 +134,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "CoinPaprika  LINK/USD"
-	var price = 500
+	var price = 1500
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_coinpaprika
@@ -144,7 +144,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "CoinMarketCap  LINK/USD"
-	var price = 500
+	var price = 1500
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_coinmarket
@@ -154,7 +154,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "BraveNewCoin LINK/USD"
-	var price = 500
+	var price = 1500
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_bravenewcoin
@@ -164,7 +164,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "Alpha Vantage LINK/USD"
-	var price = 500
+	var price = 1500
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_alphavantage
@@ -174,7 +174,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "Kaiko LINK/USD"
-	var price = 500
+	var price = 1500
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_kaiko
@@ -355,7 +355,7 @@
 	item_node = 0
 
 	var _string = "A ChainLink node.\n\nSome say its the 4th industrial revolution\nOthers say its made of cheese"
-	var levels = create_levels(0, 100, 400, 1200, 3500, 10000)
+	var levels = create_levels(0, 75, 400, 1200, 3500, 10000)
 	create_node("YorkyRoad",_string,100,0,0,levels,true)
 	
 	create_node("gonsinator",_string,350,0,0,levels,true)
