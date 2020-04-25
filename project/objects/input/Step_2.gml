@@ -294,7 +294,6 @@ if multireplace and multireplace_placeable and mouse_left_press {
 	}
 	for(var i=0;i<ds_list_size(selections);i++) {
 		with selections[| i] item_place()
-		//with multireplaceIDs[| i] item_delete()
 	}
 	multireplace = false
 	multireplace_placeable = -1

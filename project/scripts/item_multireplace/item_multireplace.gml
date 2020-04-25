@@ -55,6 +55,7 @@ for(var l=0;l<ds_list_size(selected_list);l++) {
 	newID.multireplace_offsetX = offsetX
 	newID.multireplace_offsetY = offsetY
 	
+	newID.rotation = oldID.rotation
 	newID.sockets = oldID.sockets
 	newID.ports = oldID.ports
 	newID.ports_count = oldID.ports_count
@@ -83,11 +84,12 @@ for(var l=0;l<ds_list_size(selected_list);l++) {
 		case node:
 		break
 		case kiosk:
+			newID.data_needed = oldID.data_needed
+			ds_list_copy(newID.contracts_supporting,oldID.contracts_supporting)
 		break
 		case wire:
 			newID.sprite = oldID.sprite
 			newID.straight = oldID.straight
-			newID.rotation = oldID.rotation
 			newID.color = oldID.color
 		break
 	}
