@@ -17,6 +17,13 @@ rotation = 0
 replace = false	
 replace_id = -1
 
+multireplaced = false
+multireplacedID = -1
+multireplace = false
+multireplaceID = -1
+multireplace_offsetX = -1
+multireplace_offsetY = -1
+
 points = -1
 
 item_index = -1									//	Active; helps find where this object is in the shop item array

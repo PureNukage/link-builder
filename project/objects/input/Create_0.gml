@@ -23,6 +23,12 @@ escape = keyboard_check_pressed(vk_escape)
 
 alt = keyboard_check_pressed(vk_alt)
 
+multireplace = false
+multireplaceIDs = ds_list_create()
+multireplace_placeable = false
+centerX = -1
+centerY = -1
+
 //	Calculate mouse speed
 X = gui_mouse_x
 Y = gui_mouse_y

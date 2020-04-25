@@ -27,7 +27,7 @@ for(var p=0;p<ports_count;p++) {
 			var target_y = _y + array[1]
 			
 			//	Don't soft-connect if its myself
-			if replace and replace_id == _item {
+			if (replace and replace_id == _item) or (multireplace and ds_list_find_index(input.multireplaceIDs,_item) > -1) {
 				continue	
 			}
 					

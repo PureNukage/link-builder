@@ -13,31 +13,17 @@ switch(states)
 			if input.grid_x != -1 and input.grid_y != -1 {
 		
 				if input.grid_moved {
-					
-					var _xx = gridController.grid_positions_x[input.grid_x]
-					var _yy = gridController.grid_positions_y[input.grid_y]
-					_xx += cell_width/2
-					_yy += cell_height/2
-		
-					x = _xx
-					y = _yy
-			
-					center_cell_x = input.grid_x
-					center_cell_y = input.grid_y
-				
-					topleft_cell_x = center_cell_x-floor(size_width/2)
-					topleft_cell_y = center_cell_y-floor(size_height/2)
-				
-					bottomright_cell_x = topleft_cell_x + (size_width-1)
-					bottomright_cell_y = topleft_cell_y + (size_height-1)
-					
-					//	Placeable check
-					placeable = is_placeable()
-					
+					if !multireplace item_move(input.grid_x,input.grid_y)
+					else {
+						var XX = input.grid_x + multireplace_offsetX
+						var YY = input.grid_y + multireplace_offsetY
+						if XX > -1 and XX < grid_width and YY > -1 and YY < grid_height item_move(XX,YY)
+						else placeable = false
+					}
 				}
 				
 				//	Rotation
-				if (input.rotate_right or input.rotate_left) {
+				if (input.rotate_right or input.rotate_left) and !multireplace {
 					var _direction = input.rotate_right - input.rotate_left
 					if _direction == 1 {
 						rotation -= 90

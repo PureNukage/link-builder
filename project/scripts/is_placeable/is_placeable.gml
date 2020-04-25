@@ -12,7 +12,7 @@ for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 			//	This cell is NOT empty
 			else {
 				//	This cell contains myself
-				if replace and replace_id == gridController.grid_objects[# w, h] {
+				if (replace and replace_id == gridController.grid_objects[# w, h]) or (multireplace and ds_list_find_index(input.multireplaceIDs,gridController.grid_objects[# w, h]) > -1) {
 						
 				}
 				//	This cell contains another object
@@ -46,11 +46,11 @@ if topmenu.data_mouseover or plaque.window_mouseover or contracts.menu_mouseover
 	_placeable++
 }
 
-if item_index > -1 and object_index == data and !replace and shop.item_data[item_index,item_placed] {
+if item_index > -1 and object_index == data and !replace and !multireplace and shop.item_data[item_index,item_placed] {
 	_placeable++	
 }
 
-if item_index > -1 and object_index == node and !replace and shop.item_node[item_index, node_placed] {
+if item_index > -1 and object_index == node and !replace and !multireplace and shop.item_node[item_index, node_placed] {
 	_placeable++	
 }
 

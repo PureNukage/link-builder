@@ -16,7 +16,7 @@ switch(states)
 			}
 		
 			//	Rotation
-			if input.rotate_right or input.rotate_left {
+			if (input.rotate_right or input.rotate_left) and !multireplace {
 				wire_update_ports_xy(rotation)
 				placeable = is_placeable()
 				item_check_sockets()
@@ -31,7 +31,7 @@ switch(states)
 			}
 	
 			//	Left click to start placing a wire
-			if input.mouse_left_press and time.stream > time_spawn and placeable {
+			if input.mouse_left_press and time.stream > time_spawn and placeable and !multireplace {
 				cell_x1 = input.grid_x
 				cell_y1 = input.grid_y
 				if port1 > -1 ds_list_clear(port1)
@@ -472,6 +472,8 @@ switch(states)
 								var h2 = _wire.center_cell_y
 								var w1 = _wire.ports[1,port_object].center_cell_x
 								var h1 = _wire.ports[1,port_object].center_cell_y
+								//var w1 = _wire.ports[1,port_x]
+								//var h1 = _wire.ports[1,port_y]
 								_wire.rotation = cell_direction(w1,h1,w2,h2)
 								with _wire {
 									wire_update_ports_xy(rotation)	
@@ -503,6 +505,8 @@ switch(states)
 								var h1 = _wire.center_cell_y
 								var w2 = _wire.ports[0,port_object].center_cell_x
 								var h2 = _wire.ports[0,port_object].center_cell_y
+								//var w2 = _wire.ports[0,port_x]
+								//var h2 = _wire.ports[0,port_y]
 								_wire.rotation = cell_direction(w1,h1,w2,h2)
 								with _wire {
 									wire_update_ports_xy(rotation)	
@@ -555,7 +559,7 @@ switch(states)
 					#endregion
 		
 			//	Left release to finalize placement of the wire
-			if input.mouse_left_release and time.stream > time_spawn + 15 {	
+			if input.mouse_left_release and time.stream > time_spawn + 15 and !multireplace {	
 				
 				//	Placeable
 				if placeable {
@@ -721,7 +725,7 @@ switch(states)
 					}
 				} 
 				//	Not placeable
-				else {
+				else if !multireplace {
 					for(var i=0;i<ds_list_size(path_objects);i++) {
 						//	check for sockets 
 						var _item = path_objects[| i]

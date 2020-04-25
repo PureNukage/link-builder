@@ -2,16 +2,9 @@
 switch(object_index)
 {
 	case node:
-		//if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
 		shop.item_node[item_index, node_placed] = true
 		shop.item_node[item_index, node_purchased] = true
 		shop.item_node[item_index, node_object_index] = id
-		//	Unlock the next node
-		//if !replace and item_index > 0 and item_index < array_height_2d(shop.item_node)-1 {
-		//	shop.item_node[item_index+1, node_available] = true
-		//} else if !replace and item_index == 0 and array_height_2d(shop.item_node) > 1 {
-		//	shop.item_node[item_index+1, node_available] = true	
-		//}
 	break
 	case data:
 		if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
@@ -22,7 +15,6 @@ switch(object_index)
 	case kiosk:
 		contracts.contract[smartcontract, contract_purchased] = true
 		contracts.contract[smartcontract, contract_kiosk] = id
-		//with contracts contract_refresh()
 	break
 }
 
@@ -68,26 +60,26 @@ for(var _p=0;_p<ports_count;_p++) {
 }
 
 //	If this item was already placed
-if replace and instance_exists(replace_id) {
-	with replace_id item_delete()	
+if (replace and instance_exists(replace_id)) or multireplace {
+	//if multireplace with multireplaceID item_delete()
+	if !multireplace with replace_id item_delete()	
 	ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)			
 	item_placeindex()
 	item_placeid()
 	mp_grid_add_rectangle(gridController.mp_grid,_x1,_y1,_x2,_y2)
+	if multireplace {
+		multireplace = false
+		multireplaceID = -1
+		multireplace_offsetX = -1
+		multireplace_offsetY = -1
+	}
 	//	object_index specific stuff
 	switch(object_index)
 	{
 		case node:
-			//if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
 			shop.item_node[item_index, node_placed] = true
 			shop.item_node[item_index, node_purchased] = true
 			shop.item_node[item_index, node_object_index] = id
-			//	Unlock the next node
-			//if !replace and item_index > 0 and item_index < array_height_2d(shop.item_node)-1 {
-			//	shop.item_node[item_index+1, node_available] = true
-			//} else if !replace and item_index == 0 and array_height_2d(shop.item_node) > 1 {
-			//	shop.item_node[item_index+1, node_available] = true	
-			//}
 		break
 		case data:
 			if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
@@ -98,7 +90,6 @@ if replace and instance_exists(replace_id) {
 		case kiosk:
 			contracts.contract[smartcontract, contract_purchased] = true
 			contracts.contract[smartcontract, contract_kiosk] = id
-			//with contracts contract_refresh()
 		break
 	}
 	

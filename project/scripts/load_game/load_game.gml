@@ -292,10 +292,10 @@ else {
 			
 			}
 			item_move(xx,yy)
-			cell_x1 = xx
-			cell_y1 = yy
+			//cell_x1 = xx
+			//cell_y1 = yy
 			//if port1 > -1 ds_list_clear(port1)
-			port1 = ports_check(cell_x1,cell_y1)
+			//port1 = ports_check(cell_x1,cell_y1)
 			#region Wire Placement
 				var _wire = id
 				states = states.placed

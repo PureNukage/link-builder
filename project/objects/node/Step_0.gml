@@ -13,12 +13,12 @@ if !game.game_over {
 				}
 	
 				// Placement
-				if input.mouse_left_press and placeable {				
+				if input.mouse_left_press and placeable and !multireplace {				
 					item_place()
 				}
 		
 				//	Rotation
-				if input.rotate_right or input.rotate_left {
+				if (input.rotate_right or input.rotate_left) and !multireplace  {
 					ports_xyupdate_rotation(input.rotate_right - input.rotate_left)
 				
 					item_check_sockets()
@@ -44,12 +44,13 @@ if !game.game_over {
 						}
 					}
 				
-					if replace {
+					if replace or multireplace {
 						replace_id.selected = true
 						if ds_list_find_index(input.selections,replace_id) == -1 {
 							ds_list_add(input.selections,replace_id)
 						}
 						input.selection = replace_id
+						input.multireplace = false
 					}
 				
 					instance_destroy()
@@ -64,7 +65,7 @@ if !game.game_over {
 				if selected {
 				
 					//	I want to move this item somewhere else
-					if input.keypress_r and input.selection == id and app.tutorial != tutorial.decentralizing {
+					if input.keypress_r and ds_list_size(input.selections) == 1 and input.selection == id and app.tutorial != tutorial.decentralizing {
 					
 						var _xx = gridController.grid_positions_x[input.grid_x]+(cell_width/2)
 						var _yy = gridController.grid_positions_y[input.grid_y]+(cell_height/2)

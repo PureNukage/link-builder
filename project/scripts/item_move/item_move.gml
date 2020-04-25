@@ -25,7 +25,7 @@ if object_index != wire {
 	item_check_sockets()
 }
 else {
-	//wire_update_ports_xy(rotation)
+	wire_update_ports_xy(rotation)
 	item_check_sockets()
 }
 

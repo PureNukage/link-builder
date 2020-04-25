@@ -26,9 +26,8 @@ switch(states)
 		if debug.mode != mode.grid {
 		for(var w=topleft_cell_x;w<topleft_cell_x+size_width;w++) {
 			for(var h=topleft_cell_y;h<topleft_cell_y+size_height;h++) {
-				
-				if (w > -1 and w < grid_width) and (h > -1 and h < grid_height) {
-					if gridController.grid_items[# w, h] < 0 or (replace and replace_id == gridController.grid_objects[# w, h]) {
+				if (w > -1 and w < grid_width-1) and (h > -1 and h < grid_height-1) {
+					if gridController.grid_items[# w, h] < 0 or (replace and replace_id == gridController.grid_objects[# w, h]) or (multireplace and ds_list_find_index(input.multireplaceIDs,gridController.grid_objects[# w,h]) > -1) {
 						draw_set_color(c_green)	
 					} else {
 						draw_set_color(c_red)	

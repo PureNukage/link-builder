@@ -1,1 +1,2 @@
 ds_list_destroy(selections)
+ds_list_destroy(multireplaceIDs)

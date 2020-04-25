@@ -82,17 +82,17 @@ switch(mode)
 
 	#endregion
 				
-			#region Kiosk Variables
+			#region Selected Object Variables
+			
+				var kw_windowX = window_variableX+window_variable_width
+				var kw_windowY = window_variableY
+				var kw_window_width = 200
+				var kw_window_height = 300
+				
+				draw_set_color(c_ltgray)
+				draw_roundrect(kw_windowX,kw_windowY,kw_windowX+kw_window_width,kw_windowY+kw_window_height,false)
 			
 				if input.selection.object_index == kiosk {
-					
-					var kw_windowX = window_variableX+window_variable_width
-					var kw_windowY = window_variableY
-					var kw_window_width = 200
-					var kw_window_height = 300
-					
-					draw_set_color(c_ltgray)
-					draw_roundrect(kw_windowX,kw_windowY,kw_windowX+kw_window_width,kw_windowY+kw_window_height,false)
 					
 					draw_set_color(c_black)
 					var XX = kw_windowX+40
@@ -104,6 +104,15 @@ switch(mode)
 						draw_text(XX,YY,data_name) YY += 36
 					}
 					
+				}
+				
+				if input.selection.object_index == wire {
+					
+					draw_set_color(c_black)
+					var XX = kw_windowX+40
+					var YY = kw_windowY+20
+					
+					draw_text(XX,YY,"rotation: "+string(input.selection.rotation))
 				}
 			
 			#endregion
