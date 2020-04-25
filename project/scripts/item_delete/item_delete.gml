@@ -265,6 +265,11 @@ else {
 		}
 	}
 	
+	//	if I'm a price feed, stop supporting my contracts
+	if is_price(name) and (is_price(name,true) == "LINK/USD" or is_price(name,true) == "ETH/USD") {
+		price_feed_refresh()	
+	}
+	
 	//	delete my ports from the game
 	for(var p=0;p<ports_count;p++) {
 		if ds_list_find_index(gridController.grid_port_objects,id) > -1 {
