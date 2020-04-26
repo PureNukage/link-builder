@@ -41,7 +41,7 @@ switch(states)
 		
 			//	Draw database overlay
 			//draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,used_alpha2)
-			if input.selection > -1 and input.selection.object_index == data and input.selection.replace_id == id {
+			if (input.selection > -1 and input.selection.object_index == data and input.selection.replace_id == id) or (multireplaced) {
 				draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,.5)
 				draw_sprite_ext(sprite,-1,x,y,1,1,0,c_black,.5)
 				used_color = c_black

@@ -16,7 +16,8 @@
         "550f1bc8-a504-43e5-8831-e6bcb5cd0639",
         "48e959ce-879e-405f-89d1-521405796e1f",
         "251e6712-74a4-40e1-8ad9-77c722754917",
-        "0c4c33c1-04ac-4203-ba0b-0828edd36037"
+        "0c4c33c1-04ac-4203-ba0b-0828edd36037",
+        "c80529f4-9a1f-40c0-b02f-4d13cff48c4a"
     ],
     "filterType": "GMSprite",
     "folderName": "heads",

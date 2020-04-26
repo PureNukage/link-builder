@@ -599,7 +599,7 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 					var default_data_width = 192
 					var data_buffer = 12
 					var data_width_adjusted = 0
-					var data_height = 40
+					var data_height = 28
 					var data_needed = input.selection.data_needed
 					for(var d=0;d<array_height_2d(data_needed);d++) {
 						var data_name = shop.item_data[data_needed[d,0], item_name]
@@ -619,6 +619,8 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 					//	data required
 					var xx = nameX+name_width+p_offset
 					var yy = nameY+name_height
+					draw_set_font(fnt_shop)
+					draw_set_valign(fa_middle)
 					//var data_needed = contracts.contract[Smartcontract,contract_data]
 					for(var d=0;d<array_height_2d(data_needed);d++) {
 						draw_set_color(c_white)
@@ -637,8 +639,15 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 							var new_string = is_price(String,true)
 							String = new_string
 						}
-						draw_text(xx+data_width/2,yy+name_height/2,String)	
-						yy += 48
+						draw_text(xx+data_width/2,yy+data_height/2,String)	
+						yy += data_height+4
+						
+						//	Start the next column of contracts
+						if (yy+data_height+4 > windowY+window_height) and d < array_height_2d(data_needed)-1 {
+							xx = nameX+name_width+p_offset+data_width+p_offset
+							yy = nameY+name_height
+							window_width_adjusted += data_width + p_offset
+						}
 	
 					}
 					window_width_adjusted += data_width
@@ -758,11 +767,12 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 				draw_set_font(fnt_plaque_name)
 				draw_set_color(c_ltgray)
 				draw_set_halign(fa_center)
+				draw_set_font(fnt_shop)
 				//	get data held width
 				var default_data_width = 192
 				var data_buffer = 12
 				var data_width_adjusted = 0
-				var data_height = 40
+				var data_height = 28
 				if contracts.contract[index, contract_kiosk] > -1 {
 					var data_needed = contracts.contract[index, contract_kiosk].data_needed	
 				} else {
@@ -803,8 +813,15 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 						var new_string = is_price(String,true)
 						String = new_string
 					}
-					draw_text(xx+data_width/2,yy+name_height/2,String)	
-					yy += 48
+					draw_text(xx+data_width/2,yy+data_height/2,String)	
+					yy += data_height+4
+					
+					//	Start the next column of contracts
+					if (yy+data_height+4 > windowY+window_height) and d < array_height_2d(data_needed)-1 {
+						xx = nameX+name_width+p_offset+data_width+p_offset
+						yy = nameY+name_height
+						window_width_adjusted += data_width + p_offset
+					}
 	
 				}
 				window_width_adjusted += data_width

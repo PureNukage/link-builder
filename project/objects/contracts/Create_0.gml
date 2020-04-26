@@ -164,7 +164,23 @@ var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
-var _data = create_data_needed(data_types.binance_ETHUSD,data_types.binance_LINKUSD)
+var _data = create_data_needed(data_types.binance_ETHUSD,data_types.bravenewcoin_ETHUSD,data_types.coinbase_ETHUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
+var Contract_type2 = contract_types.defi
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "OpenLaw"
+var _string = ""
+var reward = 16
+var price = 2000
+var portrait = s_portrait_openlaw
+var channel_time = 2
+var max_traffic = 5
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.docusignAPI,data_types.visaPayment)
 var available = true
 var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
 var Contract_type2 = contract_types.defi
@@ -173,7 +189,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 var name = "eSports Tournament"
 var _string = ""
 var reward = 16
-var price = 2000
+var price = 3000
 var portrait = s_portrait_esports
 var channel_time = 2
 var max_traffic = 5
@@ -212,7 +228,7 @@ var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
-var _data = create_data_needed(data_types.binance_ETHUSD,data_types.binance_LINKUSD)
+var _data = create_data_needed(data_types.binance_ETHUSD,data_types.bravenewcoin_ETHUSD,data_types.coinbase_ETHUSD,data_types.coinmarket_ETHUSD,data_types.alphacurrency_ETHUSD,data_types.coingecko_ETHUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD)
 var available = true
 var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
 var Contract_type2 = contract_types.defi
@@ -234,21 +250,21 @@ var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reli
 var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
-var name = "Compound"
-var _string = ""
-var reward = 19
-var price = 3000
-var portrait = s_portrait_compound
-var channel_time = 2
-var max_traffic = 5
-var line_size = 5
-var Contract_type = contract_types.people
-var levels = create_level_ports(1,1,1,1)
-var _data = create_data_needed(data_types.binance_ETHUSD,data_types.visaPayment)
-var available = true
-var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
-var Contract_type2 = contract_types.defi
-create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+//var name = "Compound"
+//var _string = ""
+//var reward = 19
+//var price = 2000
+//var portrait = s_portrait_compound
+//var channel_time = 2
+//var max_traffic = 5
+//var line_size = 5
+//var Contract_type = contract_types.people
+//var levels = create_level_ports(1,1,1,1)
+//var _data = create_data_needed(data_types.binance_ETHUSD,data_types.visaPayment)
+//var available = true
+//var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
+//var Contract_type2 = contract_types.defi
+//create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "Bank Bond"
 var _string = ""

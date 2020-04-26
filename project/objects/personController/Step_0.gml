@@ -79,7 +79,7 @@ if time.stream >= hero_check_timer {
 				case hero.chicocrypto:
 					var required = 1
 					if instance_exists(kiosk) with kiosk {
-						if contracts.contract[smartcontract, contract_name] == "eSports Tournament" 
+						if contracts.contract[smartcontract, contract_name] == "Revenue Share" 
 						and contracts.contract[smartcontract, contract_online] {
 							amount++
 						}

@@ -50,7 +50,6 @@ if !game.game_over {
 							ds_list_add(input.selections,replace_id)
 						}
 						input.selection = replace_id
-						input.multireplace = false
 					}
 				
 					instance_destroy()
@@ -63,7 +62,7 @@ if !game.game_over {
 			case states.placed:
 		
 				//	I am being replaced, darken myself
-				if input.selection > -1 and input.selection.object_index == object_index and input.selection.replace_id == id {
+				if (input.selection > -1 and input.selection.object_index == object_index and input.selection.replace_id == id) or (multireplaced) {
 					used_alpha = .6
 				} else if used_alpha != used_alpha_max used_alpha = used_alpha_max
 			

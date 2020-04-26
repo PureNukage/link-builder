@@ -288,6 +288,18 @@ if multireplace and grid_moved {
 	} else multireplace_placeable = true
 }
 
+if multireplace and mouse_right_press {
+	for(var i=0;i<ds_list_size(multireplaceIDs);i++) {
+		with multireplaceIDs[| i] {
+			multireplaced = false
+			multireplacedID = -1
+			selected = true
+		}
+	}
+	ds_list_copy(selections,multireplaceIDs)
+	ds_list_clear(multireplaceIDs)
+}
+
 if multireplace and multireplace_placeable and mouse_left_press {
 	for(var d=0;d<ds_list_size(multireplaceIDs);d++) {
 		with multireplaceIDs[| d] item_delete()	

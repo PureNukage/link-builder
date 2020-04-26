@@ -86,11 +86,13 @@ switch(states)
 				if array_height_2d(data_needed) == 1 var xx = x-3
 				else if array_height_2d(data_needed) == 2 var xx = x-20
 				var yy = y+36
-				for(var l=0;l<array_height_2d(data_needed);l++) {
-					var acquired = data_needed[l,1]
-					if acquired var color = c_green else var color = c_red
-					draw_sprite_ext(s_kiosk_light,0,xx,yy,.5,.5,0,color,1)
-					xx += 36
+				if array_height_2d(data_needed) < 3 {
+					for(var l=0;l<array_height_2d(data_needed);l++) {
+						var acquired = data_needed[l,1]
+						if acquired var color = c_green else var color = c_red
+						draw_sprite_ext(s_kiosk_light,0,xx,yy,.5,.5,0,color,1)
+						xx += 36
+					}
 				}
 			
 

@@ -52,27 +52,31 @@ if time.minutes >= timer {
 				var data_amount = 0
 				
 				//	the Player is squatting with 1 ETH/USD source
-				if (total_wealth > 1750) and ethusd_sources == 1 {
+				var trigger = 1750
+				if (total_wealth > trigger) and ethusd_sources == 1 {
 					debug_log("The Player is squatting with 1 ETH/USD source")
 					data_amount = 1
 				}
 				
 				//	the Player is squatting with 2 or 3 ETH/USD sources
-				if (total_wealth > 2500) and ethusd_sources > 1 and ethusd_sources < 4 {
+				var trigger = 2500
+				if (total_wealth > trigger) and ethusd_sources > 1 and ethusd_sources < 4 {
 					debug_log("The Player is squatting with 2 or 3 ETH/USD sources")
 					if ethusd_sources == 2 data_amount = 1
 					if ethusd_sources == 3 data_amount = 2
 				}
 				
 				//	the Player is squatting with 4 or 5 ETH/USD sources
-				if (total_wealth > 3500) and ethusd_sources > 3 and ethusd_sources < 6 {
+				var trigger = 3500
+				if (total_wealth > trigger) and ethusd_sources > 3 and ethusd_sources < 6 {
 					debug_log("The Player is squatting with 4 or 5 ETH/USD sources")
 					if (player.money > 5000 or eth_wealth > 2500 or link_wealth > 2500) data_amount = 3
 					else data_amount = 2
 				}
 				
 				//	the Player is squatting with more than 5 ETH/USD sources
-				if (total_wealth > 4000) and ethusd_sources > 5 {
+				var trigger = 4000
+				if (total_wealth > trigger) and ethusd_sources > 5 {
 					debug_log("The Player is squatting with more than 5 ETH/USD sources")
 					data_amount = 3	
 				}

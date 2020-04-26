@@ -1623,6 +1623,14 @@
             }
         },
         {
+            "Key": "857a9106-45b9-4523-905b-2af30dfbc471",
+            "Value": {
+                "id": "f762e288-dbf4-4768-9a7f-2a531371a462",
+                "resourcePath": "sprites\\s_portrait_docusign\\s_portrait_docusign.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "85e9b582-d08c-4bba-9565-57158ccd7956",
             "Value": {
                 "id": "d0264a2c-1224-45ab-bac3-d5281bbea835",
@@ -2263,6 +2271,14 @@
             }
         },
         {
+            "Key": "b35ebec6-2479-4d6b-bd18-902f477f79d1",
+            "Value": {
+                "id": "9c4c6c37-254e-4d6e-bebc-fd515970d1af",
+                "resourcePath": "sprites\\s_portrait_openlaw\\s_portrait_openlaw.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "b3f951d7-7bc6-48eb-889a-756e153ca377",
             "Value": {
                 "id": "b23a2c19-bacf-470f-992f-354bb5ae196f",
@@ -2363,6 +2379,14 @@
             "Value": {
                 "id": "f42d66a1-4946-46cf-9648-f46fa0d8b630",
                 "resourcePath": "sprites\\s_portrait_esports\\s_portrait_esports.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "bb700494-eaf7-4a8b-841c-f4119282ed8d",
+            "Value": {
+                "id": "97ff40e9-f357-4b52-b4dd-42990b560f2c",
+                "resourcePath": "sprites\\s_hero_gaben\\s_hero_gaben.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -2611,6 +2635,14 @@
             "Value": {
                 "id": "054bb20f-ef0c-43de-a054-6af983630117",
                 "resourcePath": "sprites\\s_hero_chicocrypto\\s_hero_chicocrypto.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "c80529f4-9a1f-40c0-b02f-4d13cff48c4a",
+            "Value": {
+                "id": "64b142f1-8710-4786-a421-dc4c3a9d4436",
+                "resourcePath": "sprites\\s_hero_gaben_head\\s_hero_gaben_head.yy",
                 "resourceType": "GMSprite"
             }
         },

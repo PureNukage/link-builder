@@ -13,24 +13,25 @@ if app.tutorial == -1 {
 			break
 			//	YouTube and Videogame API
 			case "YouTube":
-			case "Videogame API":
+			case "DocuSign":
 			case "VISA Payment":
 				if player.value >= 2000 {
 					if !shop.item_data[d, item_available] shop.item_data[d, item_available] = true	
 				}
-			break		
+			break
 			case "Flight API":
+			case "Videogame API":
 				if player.value >= 3000 {
 					if !shop.item_data[d, item_available] shop.item_data[d, item_available] = true		
 				}
 		
 			break
-			case "Swift GPI Payment":
-			case "Shipment Temperature API":
-				if player.value >= 4000 {
-					if !shop.item_data[d, item_available] shop.item_data[d, item_available] = true		
-				}
-			break
+//			case "Swift GPI Payment":
+//			case "Shipment Temperature API":
+			//	if player.value >= 4000 {
+			//		if !shop.item_data[d, item_available] shop.item_data[d, item_available] = true		
+			//	}
+			//break
 		}
 	
 		//	LINK/USD

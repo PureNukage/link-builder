@@ -89,7 +89,7 @@ switch(states)
 			}
 		
 			//	Darken ourselves if we're being replaced
-			if input.selection > -1 and input.selection.object_index == node and input.selection.replace_id == id {
+			if (input.selection > -1 and input.selection.object_index == node and input.selection.replace_id == id) or (multireplaced) {
 				draw_sprite_ext(sprite,0,x,y,1,1,0,c_black,.5)	
 			}
 		

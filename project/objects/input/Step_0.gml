@@ -30,20 +30,6 @@ if keypress_r and ds_list_size(selections) > 1 and !multireplace {
 	item_multireplace()
 }
 
-//if mouse_left_press and multireplace {
-//	multireplace = false
-//	for(var i=0;i<ds_list_size(multireplaceIDs);i++) {
-//		with multireplaceIDs[| i] item_delete()	
-//	}
-//	ds_list_clear(multireplaceIDs)
-//}
-
-//if f9 and !app.game_loading {	
-//	app.game_loading = true
-//	load_game()	
-//	exit
-//}
-
 escape = keyboard_check_pressed(vk_escape)
 
 

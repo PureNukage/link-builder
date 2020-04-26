@@ -126,9 +126,11 @@ for(var i=0;i<array_height_2d(_kiosk.data_needed);i++) {
 		if _kiosk.data_needed[i,3] {
 			//	First find which Price Feed is supporting is and then verify it is decentralized enough. if not, we misfire
 			var ID = -1
+			var supported_price_string = is_price(shop.item_data[_kiosk.data_needed[i,0], item_name], true)
 			with kiosk {
-				if ds_list_find_index(contracts_supporting,_kiosk) != -1 {
-					ID = id	
+				if (ds_list_find_index(contracts_supporting,_kiosk) != -1) {
+					var pricefeed_price_string = is_price(shop.item_data[data_needed[0,0], item_name],true)
+					if supported_price_string == pricefeed_price_string ID = id	
 				}
 			}
 			if ID > -1 and !ID.decentralized {

@@ -46,7 +46,6 @@ if !game.game_over {
 							ds_list_add(input.selections,replace_id)
 						}
 						input.selection = replace_id
-						input.multireplace = false
 					}
 				
 					instance_destroy()	

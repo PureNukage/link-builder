@@ -130,9 +130,39 @@ var sprite = s_hero_cz
 var sprite_head = s_hero_cz_head
 create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
 
+var Enum = hero.krown
+var name = "Krown"
+var String = "Build both of the Trading Contracts"
+var available = true
+var acquired = false
+var hidden = true
+var sprite = s_hero_krown
+var sprite_head = s_hero_krown_head
+create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
+
+var Enum = hero.aaronwright
+var name = "Aaron Wright"
+var String = "Build the Openlaw Contract"
+var available = true
+var acquired = false
+var hidden = true
+var sprite = s_hero_aaronwright
+var sprite_head = s_hero_aaronwright_head
+create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
+
+var Enum = hero.gaben
+var name = "Gabe Newell"
+var String = "Build the eSports Tournament Contract"
+var available = true
+var acquired = false
+var hidden = true
+var sprite = s_hero_gaben
+var sprite_head = s_hero_gaben_head
+create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
+
 var Enum = hero.duck
 var name = "Duck"
-var String = "Use the DocuSign API"
+var String = "Get a Duck for each Contract using DocuSign"
 var available = true
 var acquired = false
 var hidden = true
