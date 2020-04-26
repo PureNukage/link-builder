@@ -103,15 +103,16 @@ if time.stream >= hero_check_timer {
 				hero_activate(h)
 			}
 			//	This hero should not be active
-			if amount < required {
-				hero_deactivate(h)
-			}
+			//if amount < required {
+			//	hero_deactivate(h)
+			//}
 		}
 	
 	}
 }
 
 hero_newCheck()
+hero_hiddenCheck()
 
 
 //	make sure personSpawners are in the right spot 

@@ -382,10 +382,13 @@ for(var i=0;i<ds_list_size(parts);i++) {
 						with _kiosk contract_conditionCheck()
 						debug_log("Kiosk "+string(_kiosk)+" is now active with smartcontract ["+contracts.contract[_kiosk.smartcontract, contract_name]+"]")
 						
-						//	Push an event
-						var Contract_name = contracts.contract[_kiosk.smartcontract, contract_name]
-						if !textbox_in_queue(time.seconds,event_types.online,_kiosk) and !textbox_active(time.seconds,event_types.online,_kiosk) and !textbox_in_history(time.seconds,event_types.online,_kiosk) {
-							create_textbox(Contract_name+" is now online!",-1,event_duration,time.seconds,event_types.online,_kiosk)	
+						if contracts.contract[_kiosk.smartcontract, contract_virgin] {
+							//	Push an event
+							var Contract_name = contracts.contract[_kiosk.smartcontract, contract_name]
+							if !textbox_in_queue(time.seconds,event_types.online,_kiosk) and !textbox_active(time.seconds,event_types.online,_kiosk) and !textbox_in_history(time.seconds,event_types.online,_kiosk) {
+								create_textbox(Contract_name+" is now online!",-1,event_duration,time.seconds,event_types.online,_kiosk)	
+							}
+							contracts.contract[_kiosk.smartcontract, contract_virgin] = false	
 						}
 					}
 				} 
@@ -443,13 +446,13 @@ for(var i=0;i<ds_list_size(parts);i++) {
 						var Contract_name = contracts.contract[_kiosk.smartcontract, contract_name]
 						if player.link < contracts.contract[_kiosk.smartcontract, contract_linkfee] {
 							if !textbox_in_queue(time.seconds,event_types.out_of_link,_kiosk) and !textbox_active(time.seconds,event_types.out_of_link,_kiosk) and !textbox_in_history(time.seconds,event_types.out_of_link,_kiosk) {
-								create_textbox(Contract_name+" does not have enough LINK",s_event_out_of_link,event_duration,time.seconds,event_types.out_of_link,_kiosk)
+								create_textbox("Out of LINK!",s_event_out_of_link,event_duration,time.seconds,event_types.out_of_link,_kiosk)
 							}
 						}
 						//	Check if out of ETH
 						if player.eth < contracts.contract[_kiosk.smartcontract, contract_gasfee_total] {
 							if !textbox_in_queue(time.seconds,event_types.out_of_eth,_kiosk) and !textbox_active(time.seconds,event_types.out_of_eth,_kiosk) and !textbox_in_history(time.seconds,event_types.out_of_eth,_kiosk) {
-								create_textbox(Contract_name+" does not have enough ETH",s_event_out_of_eth,event_duration,time.seconds,event_types.out_of_eth,_kiosk)
+								create_textbox("Out of ETH!",s_event_out_of_eth,event_duration,time.seconds,event_types.out_of_eth,_kiosk)
 							}
 						}
 						

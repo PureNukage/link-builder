@@ -249,8 +249,19 @@
 	var Data_filters = data_filters.webdata
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,available,Data_filters)
 	
+	var name = "VISA Payment"
+	var price = 3000
+	var Object_index = data
+	var _string = ""
+	var portrait = s_portrait_visa
+	var Data_types = data_types.visaPayment
+	var Corruption = create_data_corruption(0,-1,0)
+	var available = false
+	var Data_filters = data_filters.webdata
+	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,available,Data_filters)
+	
 	var name = "Flight API"
-	var price = 2500
+	var price = 5000
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_flight
@@ -261,7 +272,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,available,Data_filters)
 	
 	var name = "Videogame API"
-	var price = 2500
+	var price = 5000
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_videogame
@@ -326,17 +337,6 @@
 	var Data_filters = data_filters.webdata
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,available,Data_filters)
 	
-	var name = "VISA Payment"
-	var price = 3000
-	var Object_index = data
-	var _string = ""
-	var portrait = s_portrait_visa
-	var Data_types = data_types.visaPayment
-	var Corruption = create_data_corruption(0,-1,0)
-	var available = false
-	var Data_filters = data_filters.webdata
-	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,available,Data_filters)
-	
 	var name = "Swift GPI Payment"
 	var price = 5000
 	var Object_index = data
@@ -367,9 +367,9 @@
 
 	var _string = "A ChainLink node.\n\nSome say its the 4th industrial revolution\nOthers say its made of cheese"
 	var levels = create_levels(0, 75, 400, 1200, 3500, 10000)
-	create_node("YorkyRoad",_string,100,0,0,levels,true)
+	create_node("YorkyRoad",_string,100,0,0,levels,false)
 	
-	create_node("gonsinator",_string,350,0,0,levels,true)
+	create_node("Gonsinator",_string,350,0,0,levels,false)
 
 	create_node("HashBlaster",_string,750,0,0,levels,false)
 	
@@ -381,7 +381,31 @@
 	var available = false
 	create_node(name,_string,price,jobruns,level,levels,available)
 	
-	var name = "Plaidbox"
+	var name = "Wagyu"
+	var _string = ""
+	var price = 0
+	var jobruns = 0 
+	var level = 0
+	var available = false
+	create_node(name,_string,price,jobruns,level,levels,available)
+	
+	var name = "Huxtable"
+	var _string = ""
+	var price = 0
+	var jobruns = 0 
+	var level = 0
+	var available = false
+	create_node(name,_string,price,jobruns,level,levels,available)
+	
+	var name = "Finrekt"
+	var _string = ""
+	var price = 0
+	var jobruns = 0
+	var level = 0
+	var available = false
+	create_node(name,_string,price,jobruns,level,levels,available)
+	
+	var name = "Sugoi"
 	var _string = ""
 	var price = 0
 	var jobruns = 0 

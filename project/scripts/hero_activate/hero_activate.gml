@@ -15,11 +15,9 @@ if heros[index, hero_id] == -1 {
 				other.heros[index, hero_virgin]	= false
 				other.new_hero = true
 			}
-			with personController { hero_hiddenCheck(index) hero_newCheck() }
 		}
 	}} else {
 		debug_log("ERROR No People exist. Acquiring hero anyways")
-		with personController { hero_hiddenCheck(index) hero_newCheck() }
 	}
 }
 

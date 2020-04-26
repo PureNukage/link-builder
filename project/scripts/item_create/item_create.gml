@@ -23,6 +23,11 @@ Item.item_index = index
 Item.portrait = Portrait
 Item.price = Price
 
+if Item.object_index == node {
+	Item.jobruns = shop.item_node[index, node_jobruns]
+	Item.jobruns_previous = Item.jobruns - 1
+}
+
 if argument_count >= 8 {
 	Item.smartcontract = Smartcontract
 	Item.data_needed = contracts.contract[Smartcontract, contract_data]

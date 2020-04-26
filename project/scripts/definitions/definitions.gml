@@ -183,6 +183,7 @@ enum conditions {
 #macro contract_conditions 27
 #macro contract_type2 28
 #macro contract_new 29
+#macro contract_virgin 31
 
 enum contract_types {
 	people,

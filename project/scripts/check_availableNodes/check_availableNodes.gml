@@ -6,10 +6,16 @@ for(var n=0;n<array_height_2d(shop.item_node);n++) {
 }
 
 var new_nodes = 0
+if player.value >= 0 and current_nodes < 2 {
+	new_nodes = 2	
+}
 if player.value >= 1000 and current_nodes < 3 {
 	new_nodes = 1
 }
 if player.value >= 2000 and current_nodes < 4 {
+	new_nodes = 1	
+}
+if player.value >= 3000 and current_nodes < 5 {
 	new_nodes = 1	
 }
 

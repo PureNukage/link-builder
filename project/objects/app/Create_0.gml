@@ -30,6 +30,7 @@ new_game = false
 
 data_corruption = -1
 
+randomize()
 #region App Time
 frames = 0
 stream = 0

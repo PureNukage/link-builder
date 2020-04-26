@@ -91,6 +91,8 @@ contract[contract_index, contract_value] = 0
 
 contract[contract_index, contract_new] = true
 
+contract[contract_index, contract_virgin] = true
+
 contracts_purchased[| contract_index] = true
 
 
