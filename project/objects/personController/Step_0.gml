@@ -124,10 +124,24 @@ if time.stream >= hero_check_timer {
 						}
 					}
 				break
+				case hero.duck:
+					var required = 1
+					if instance_exists(kiosk) with kiosk {
+						if contracts.contract[smartcontract, contract_online]
+						and contracts.contract[smartcontract, contract_name] == "OpenLaw" {
+							amount++	
+						}
+					}	
+					
+				break
+				case hero.pepe:
+					var required = 1
+					if player.link >= 1000 amount++
+				break
 			}	
 		
 			//	This hero is (or should be) active!
-			if required > -1 and amount >= required {
+			if required > -1 and amount > 0 and amount >= required {
 				hero_activate(h)
 			}
 			//	This hero should not be active

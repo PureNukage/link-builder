@@ -296,8 +296,13 @@ if multireplace and mouse_right_press {
 			selected = true
 		}
 	}
+	multireplace = false
 	ds_list_copy(selections,multireplaceIDs)
-	ds_list_clear(multireplaceIDs)
+	selection = selections[| 0]
+	//ds_list_clear(multireplaceIDs)
+	//with c_item if selected {
+	//	ds_list_add(other.selections,id)
+	//}
 }
 
 if multireplace and multireplace_placeable and mouse_left_press {

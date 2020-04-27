@@ -81,6 +81,7 @@ enum data_types {
 	twitter,
 	youtube,
 	docusignAPI,
+	visaPayment,
 	flightAPI,
 	videogameAPI,
 	firewallAPI,
@@ -89,7 +90,6 @@ enum data_types {
 	vehicleAPI,
 	vehicle_freezerAPI,
 	//bitcoinPayment,
-	visaPayment,
 	swiftPayment,
 	
 }

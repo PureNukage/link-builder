@@ -25,7 +25,7 @@ Item.price = Price
 
 if Item.object_index == node {
 	Item.jobruns = shop.item_node[index, node_jobruns]
-	Item.jobruns_previous = Item.jobruns - 1
+	Item.jobruns_previous = Item.jobruns
 }
 
 if argument_count >= 8 {

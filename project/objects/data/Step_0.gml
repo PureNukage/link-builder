@@ -45,9 +45,11 @@ if !game.game_over {
 						if ds_list_find_index(input.selections,replace_id) == -1 {
 							ds_list_add(input.selections,replace_id)
 						}
+						if ds_list_find_index(input.selections,id) > -1 {
+							ds_list_delete(input.selections,ds_list_find_index(input.selections,id))	
+						}
 						input.selection = replace_id
 					}
-				
 					instance_destroy()	
 				}
 	
