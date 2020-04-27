@@ -33,7 +33,7 @@ if time.stream >= hero_check_timer {
 		var hidden = heros[h, hero_hidden]
 		var acquired = heros[h, hero_acquired]
 		var ID = heros[h, hero_id]
-		if !hidden {
+		//if !hidden {
 			var amount = 0
 			var required = -1
 			switch(h) {
@@ -96,6 +96,34 @@ if time.stream >= hero_check_timer {
 						}
 					}
 				break
+				case hero.aaronwright:
+					var required = 1
+					if instance_exists(kiosk) with kiosk {
+						if contracts.contract[smartcontract, contract_name] == "OpenLaw" 
+						and contracts.contract[smartcontract, contract_online] {
+							amount++
+						}
+					}
+				break
+				case hero.krown:
+					var required = 2
+					if instance_exists(kiosk) with kiosk {
+						if contracts.contract[smartcontract, contract_online] and 
+						(contracts.contract[smartcontract, contract_name] == "Loopring"
+						or contracts.contract[smartcontract, contract_name] == "Synthetix") {
+							amount++	
+						}
+					}
+				break
+				case hero.gaben:
+					var required = 1
+					if instance_exists(kiosk) with kiosk {
+						if contracts.contract[smartcontract, contract_online]
+						and contracts.contract[smartcontract, contract_name] == "eSports Tournament" {
+							amount++	
+						}
+					}
+				break
 			}	
 		
 			//	This hero is (or should be) active!
@@ -106,7 +134,7 @@ if time.stream >= hero_check_timer {
 			//if amount < required {
 			//	hero_deactivate(h)
 			//}
-		}
+		//}
 	
 	}
 }

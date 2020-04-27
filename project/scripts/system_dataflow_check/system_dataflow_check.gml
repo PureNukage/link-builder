@@ -309,6 +309,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 	
 			var _kiosk = kiosks_other[| i]
 			var _nodes = ds_list_create()
+			var prices_used = ds_list_create()
 			if _kiosk.smartcontract > -1 {
 			
 				var amount_of_data_req = array_height_2d(_kiosk.data_needed)
@@ -319,8 +320,23 @@ for(var i=0;i<ds_list_size(parts);i++) {
 					var _data_needed_string = shop.item_data[_data_needed, item_name]
 			
 					if _kiosk.data_needed[d,3] {
-						_kiosk.data_needed[d,1] = true
-						amount_of_data_had++	
+						//	Find our Price Feed for this currency
+						var needed_price = is_price(_data_needed_string,true)
+						with kiosk {
+							var Name = contracts.contract[smartcontract, contract_name]
+							if (ds_list_find_index(contracts_supporting,_kiosk) > -1) and (is_price(Name) and is_price(Name,true) == needed_price) {
+								//	Find our needed price and add it into prices used list
+								for(var dd=0;dd<ds_list_size(data_held);dd++) {
+									var data_name = shop.item_data[data_held[| dd],item_name]
+									if is_price(data_name) and is_price(data_name,true) == needed_price and ds_list_find_index(prices_used,data_name) == -1 {
+										ds_list_add(prices_used,data_name)
+										_kiosk.data_needed[d,1] = true
+										amount_of_data_had++	
+										dd = 100
+									}
+								}
+							}
+						}
 					} else {
 						//	This needed data is a price
 						if is_price(_data_needed_string) {
@@ -332,7 +348,8 @@ for(var i=0;i<ds_list_size(parts);i++) {
 							if is_price(_data_needed_string) {
 								var this_data_string = shop.item_data[_data_held, item_name]
 								//	This is a price we need!
-								if string_pos(needed_price_string,this_data_string) != 0 {
+								if (string_pos(needed_price_string,this_data_string) != 0) and ds_list_find_index(prices_used,this_data_string) == -1 {
+									ds_list_add(prices_used,this_data_string)
 									_kiosk.data_needed[d,1] = true
 									_kiosk.data_needed[d,2] = _kiosk.data_held_ids[| a]
 									amount_of_data_had++
@@ -341,6 +358,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 										ds_list_add(_nodes,_kiosk.data_needed[d,2])
 										contracts.contract[_kiosk.smartcontract, contract_gasfee_total]++
 									}
+									a = 100
 								} 
 								//	This is not a price we need
 								else {
@@ -462,6 +480,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 
 			}
 			ds_list_destroy(_nodes)
+			ds_list_destroy(prices_used)
 		}
 	#endregion
 
