@@ -316,7 +316,7 @@ ds_list_destroy(items)
 
 //	Delete fog
 if object_index != wire {
-	ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,-1)
+	ds_grid_set_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,-1)
 }
 
 if object_index == kiosk and smartcontract > -1 {

@@ -18,7 +18,7 @@ switch(object_index)
 	break
 }
 
-ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)
+if object_index != wire ds_grid_set_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)
 
 states = states.placed
 			
@@ -63,7 +63,7 @@ for(var _p=0;_p<ports_count;_p++) {
 if (replace and instance_exists(replace_id)) or multireplace {
 	//if multireplace with multireplaceID item_delete()
 	if !multireplace with replace_id item_delete()	
-	ds_grid_add_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)			
+	if object_index != wire ds_grid_set_disk(gridController.grid_fog,center_cell_x,center_cell_y,16,1)			
 	item_placeindex()
 	item_placeid()
 	mp_grid_add_rectangle(gridController.mp_grid,_x1,_y1,_x2,_y2)
@@ -96,6 +96,8 @@ if (replace and instance_exists(replace_id)) or multireplace {
 }
 			
 system_set()
+
+fogCheck()
 
 check_availableData()
 pricedata_priceCheck()

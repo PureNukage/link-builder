@@ -2599,6 +2599,14 @@
             }
         },
         {
+            "Key": "c608b763-3107-4a3f-83e3-0967e6af11bf",
+            "Value": {
+                "id": "68eb942c-3126-4bef-a7b0-90ba753674c3",
+                "resourcePath": "scripts\\fogCheck\\fogCheck.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "c62e684a-8678-433b-b2ea-8e4c3ecd350a",
             "Value": {
                 "id": "c054944c-4964-44b8-9a81-c448cf64017b",
@@ -3628,7 +3636,8 @@
         "c1acea89-3063-4dc6-9fe1-fa888b85c496",
         "2f015bc6-4a02-4c4b-a026-9a25a8b0553f",
         "c349ce52-2026-456f-b3d9-33005fce2e4a",
-        "f26c81e0-0bae-43d8-b461-d26d092924c4"
+        "f26c81e0-0bae-43d8-b461-d26d092924c4",
+        "c608b763-3107-4a3f-83e3-0967e6af11bf"
     ],
     "tutorial": ""
 }
