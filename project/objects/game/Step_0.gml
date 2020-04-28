@@ -3,7 +3,8 @@ if input.alt vision = !vision
 //	Activate all elements once player clicks the first SN Event
 if app.tutorial == -1 and textbox_in_history(77) {
 	shop.wire_active = true
-	shop.resources_active = true
+	shop.exchange_active = true
+	player.resources_active = true
 	topmenu.data_active = true
 	topmenu.nodes_active = true
 	topmenu.contracts_active = true

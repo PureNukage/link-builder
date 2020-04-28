@@ -260,199 +260,16 @@ if wire_active {
 
 #region Resources
 
-if resources_active {
+if exchange_active {
 
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_middle)
-
-	var _xx = display_get_gui_width()/2 + 128
-	var _yy = buttonY
-
-	var spacer = 1.2
-	var _width_base = 128
-	var _height = 64
-
-	var linkX = display_get_gui_width()/2 + 128
-	var linkY = buttonY
-	var link_width = 128
-	//var link_height = 64
-
-	var moneyX = linkX - (link_width * spacer)
-	var moneyY = buttonY
-	var money_width = 128
-	//var value_height = 64
-
-	var valueX = moneyX
-	var valueY = -1
-	var value_width = 128
-
-	var ethX = 90
-	var ethY = buttonY
-	var eth_width = 128
-	//var eth_height = 64
-
-	//	LINK
-	if string_width(string(player.link)) > 36 {
-		link_width = _width_base + (string_width(string(player.link)) - 36)
-	} else link_width = _width_base
-
-	linkX = _xx - link_width/2
-
-	draw_set_color(c_black)
-	draw_roundrect(linkX-2,_yy-2,linkX+link_width+2,_yy+66,false)
-
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,linkX,_yy,linkX+link_width,_yy+64) {
-		link_mouseover = true
-		draw_set_font(fnt_shop)
-		var amount_of_money = link_trade * link_price
-		//var _string = string(amount_of_money) + " $$ / " + string(link_trade) + " LINK"
-		var _string = "Used to call Data sources"
-		gui_popup(linkX,_yy,linkX+link_width,_yy+64,1,_string)
-		draw_set_color(c_gray)		
-		if input.mouse_left_press and exchange_open and exchange_currency == "LINK" {
-			resource_changed("$$",amount_of_money,gui_mouse_x,gui_mouse_y+128,true)
-			resource_changed("LINK",-link_trade,gui_mouse_x,gui_mouse_y+256,true)
-		} else if input.mouse_left_press and (!exchange_open or exchange_currency != "LINK") {
-			exchange_open = true
-			exchange_currency = "LINK"
-		}
-		if input.mouse_right_press {
-			resource_changed("LINK",-100,gui_mouse_x,gui_mouse_y+128,true)	
-		}
-		if input.scroll_up or input.scroll_down {
-			link_trade += input.scroll_up - input.scroll_down
-			link_trade = clamp(link_trade,0,50)
-		}
-	} else {
-		link_mouseover = false
-		draw_set_color(c_dkgray)
-	}
-	draw_roundrect(linkX,_yy,linkX+link_width,_yy+64,false)
-
-	draw_set_halign(fa_left)
-	draw_set_color(c_white)
-	draw_set_font(fnt_shop)
-	draw_text(_xx,_yy+_height/2,string(player.link))
-
-	sprite_set_offset(s_resource_link_shop,sprite_get_width(s_resource_link_shop)/2,sprite_get_height(s_resource_link_shop)/2)
-	draw_sprite(s_resource_link_shop,0,_xx-32,_yy+32)
-
-	//	MONEY
-
-	if string_width(string(player.money)) > 36 {
-		var money_width = _width_base + (string_width(string(player.money)) - 36)
-	} else money_width = _width_base
-
-	moneyX = linkX - (link_width * spacer)
-
-	draw_set_color(c_black)
-	draw_roundrect(moneyX-2,_yy-2,moneyX+money_width+2,_yy+_height+2,false)
-
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,moneyX,_yy,moneyX+money_width,_yy+_height) {
-		gui_popup(moneyX,_yy,moneyX+money_width,_yy+_height,1,"Used to purchase LINK and ETH")
-		draw_set_color(c_gray)
-		
-		if input.mouse_right_press {
-			resource_changed("$$",-100,gui_mouse_x,gui_mouse_y+128,true)	
-		}
-	} else {
-		draw_set_color(c_dkgray)	
-	}
-
-	draw_roundrect(moneyX,_yy,moneyX+money_width,_yy+_height,false)
-
-	draw_set_color(c_white)
-	draw_set_halign(fa_left)
-	draw_set_font(fnt_shop)
-	draw_text(moneyX+money_width/2,_yy+_height/2,string(player.money))
-	
-	if player.money > 0 var color = c_green else var color = c_red
-	draw_set_font(fnt_shop_menu_name)
-	draw_text_outlined(moneyX+20,_yy+32,"$$",color,c_black)
-
-	//sprite_set_offset(s_resource_money,sprite_get_width(s_resource_money)/2,sprite_get_height(s_resource_money)/2)
-	//draw_sprite_ext(s_resource_money,0,moneyX+28,_yy+32,1,1,0,c_white,1)
-
-	//	VALUE
-
-	draw_set_font(fnt_shop)
-	if string_width(string(player.value)) > 36 {
-		var value_width = _width_base + (string_width(string(player.value))- 36)
-	} else value_width = _width_base
-
-	valueX = moneyX - (money_width * spacer)
-
-	draw_set_color(c_black)
-	draw_roundrect(valueX-2,_yy-2,valueX+value_width+2,_yy+_height+2,false)
-
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,valueX,_yy,valueX+value_width,_yy+_height) {
-		gui_popup(valueX,_yy,valueX+value_width,_yy+_height,1,"Total value of the space")
-		draw_set_color(c_gray)		
-		if input.mouse_right_press {
-			resource_changed("VALUE",-100,gui_mouse_x,gui_mouse_y+128,true)	
-		}
-	} else {
-		draw_set_color(c_dkgray)	
-	}
-	draw_roundrect(valueX,_yy,valueX+value_width,_yy+_height,false)
-
-	draw_set_color(c_white)
-	draw_set_halign(fa_left)
-	draw_set_font(fnt_shop)
-	draw_text(valueX+value_width/2,_yy+_height/2,string(player.value))
-
-	sprite_set_offset(s_resource_value_shop,sprite_get_width(s_resource_value_shop)/2,sprite_get_height(s_resource_value_shop)/2)
-	draw_sprite_ext(s_resource_value_shop,0,valueX+28,_yy+32,1,1,0,c_white,1)
-
-	//	ETH
-
-	if string_width(string(player.eth)) > 36 {
-		var eth_width = _width_base + (string_width(string(player.eth)) - 36)
-	} else eth_width = _width_base
-
-	ethX = linkX + (link_width*spacer)
-
-	draw_set_color(c_black)
-	draw_roundrect(ethX-2,_yy-2,ethX+eth_width+2,_yy+_height+2,false)
-
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,ethX,_yy,ethX+eth_width,_yy+_height) {
-		eth_mouseover = true
-		var amount_of_money = eth_trade * eth_price
-		//var _string = string(amount_of_money) + " $$ / " + string(eth_trade) + " ETH"
-		var _string = "Used when calling Data sources and Contracts"
-		gui_popup(ethX,_yy,ethX+eth_width,_yy+_height,1,_string)
-		draw_set_color(c_gray)		
-		if input.mouse_left_press and exchange_open and exchange_currency == "ETH" {
-			resource_changed("$$",amount_of_money,gui_mouse_x,gui_mouse_y+128,true)
-			resource_changed("ETH",-eth_trade,gui_mouse_x,gui_mouse_y+256,true)
-		} else if input.mouse_left_press and (!exchange_open or exchange_currency != "ETH") {
-			exchange_open = true
-			exchange_currency = "ETH"
-		}
-		if input.mouse_right_press {
-			resource_changed("ETH",-100,gui_mouse_x,gui_mouse_y+128,true)	
-		}
-		if input.scroll_up or input.scroll_down {
-			eth_trade += input.scroll_up - input.scroll_down
-			eth_trade = clamp(eth_trade,0,50)
-		}
-	} else {
-		eth_mouseover = false
-		draw_set_color(c_dkgray)
-	}
-	draw_roundrect(ethX,_yy,ethX+eth_width,_yy+_height,false)
-
-	draw_set_color(c_white)
-	draw_set_halign(fa_left)
-	draw_set_font(fnt_shop)
-	draw_text(ethX+eth_width/2,_yy+_height/2,string(player.eth))
-
-	sprite_set_offset(s_resource_eth_shop,sprite_get_width(s_resource_eth_shop)/2,sprite_get_height(s_resource_eth_shop)/2)
-	draw_sprite_ext(s_resource_eth_shop,0,ethX+32,_yy+32,1,1,0,c_white,1)
 	
 	//	Exchange Button
-	var exchangeX = ethX + (eth_width*spacer)
-	var exchangeY = ethY
+	draw_set_valign(fa_top)
+	draw_set_font(fnt_shop)
+	var exchangeX = player.ethX + player.eth_width+8
+	var exchangeY = player.ethY
 	
 	var String = "Exchange"
 	var sw = string_width(String) + 16
@@ -461,7 +278,11 @@ if resources_active {
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,exchangeX,exchangeY,exchangeX+sw,exchangeY+sh) {
 		draw_set_color(c_ltgray)
 		if input.mouse_left_press {
-			exchange_open = !exchange_open	
+			exchange_open = !exchange_open
+			if exchange_open {
+				if personController.hero_menu_open personController.hero_menu_open = false
+				if textboxController.messages_open textboxController.messages_open = false	
+			}
 		}
 	} else if exchange_open draw_set_color(c_gray) else draw_set_color(c_dkgray)
 	draw_roundrect(exchangeX,exchangeY,exchangeX+sw,exchangeY+sh,false)
@@ -565,7 +386,7 @@ if resources_active {
 		} else {
 			sprite = s_resource_eth_shop	
 		}
-		draw_sprite(sprite,0,buytextX+string_width("Buy "+exchange_currency)+30,buytextY)
+		draw_sprite(sprite,0,buytextX+string_width("Buy "+exchange_currency)+5,buytextY-20)
 		
 		draw_set_font(fnt_shop)
 		var amountX = buytextX
@@ -594,9 +415,9 @@ if resources_active {
 		var link_width = sprite_get_width(sprite)
 		var logo_spacer = -1
 		if exchange_currency == "LINK" {
-			logo_spacer = 12	
-		} else logo_spacer = 18
-		draw_sprite_ext(sprite,0,amountX+amount_width+spacer+spacer2-(link_width*.66)+logo_spacer,amountY,.66,.66,0,c_white,1)
+			logo_spacer = 0
+		} else logo_spacer = 4
+		draw_sprite_ext(sprite,0,amountX+amount_width+spacer+spacer2-(link_width*.66)+logo_spacer,amountY-14,.66,.66,0,c_white,1)
 			
 			
 		

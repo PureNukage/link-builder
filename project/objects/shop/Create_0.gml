@@ -466,7 +466,7 @@ item_placing = 0
 	
 	button_active = true
 	wire_active = true
-	resources_active = true
+	exchange_active = true
 	
 	exchange_open = false
 	exchange_mouseover = false

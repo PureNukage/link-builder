@@ -8,6 +8,10 @@ if draw_active {
 		if input.mouse_left_press {
 			if !clickfix {
 				messages_open = !messages_open	
+				if messages_open {
+					shop.exchange_open = false
+					personController.hero_menu_open = false
+				}
 			}
 		
 			if messages_open {

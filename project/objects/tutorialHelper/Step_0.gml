@@ -9,6 +9,8 @@ if timer == -1 and stage == -1 {
 	app.data_corruption = mode.off
 	
 	personController.heromenu_active = false
+	player.resources_active = false
+	shop.exchange_active = false
 	
 	stage = 0
 	
@@ -23,7 +25,6 @@ switch(tutorial)
 			{
 				//	Tutorial Start
 				case 0:
-					shop.resources_active = false
 					shop.wire_active = false
 					topmenu.data_active = false
 					topmenu.nodes_active = false
