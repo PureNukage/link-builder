@@ -489,6 +489,42 @@ switch(menu)
 				draw_set_color(c_gray)	
 			}
 			if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height) { 
+				if savedgame and app.platform == "windows" {
+					if loadgamescreenshot = -1 loadgamescreenshot = sprite_add("Saved Game Screenshot",0,false,0,0,0)
+					
+					if app.resolution_width = 1280 {
+						var scale = .20
+						var width = sprite_get_width(loadgamescreenshot) * scale
+						var xx = display_get_gui_width()/2 - width/2
+						var yy = 20
+					} else {
+						var scale = .3
+						var width = sprite_get_width(loadgamescreenshot) * scale
+						var xx = display_get_gui_width()/2 - width/2
+						var yy = 50
+					}
+					draw_sprite_ext(loadgamescreenshot,0,xx,yy,scale,scale,0,c_white,1)
+					
+					ini_open("savedgame.ini")
+					var Time = ini_read_string("General","Saved Game Time",0)
+					if is_string(Time) {
+						var XX = display_get_gui_width()/2
+						if app.resolution_width == 1920 var YY = display_get_gui_height()/2 - 150
+						else var YY = display_get_gui_height()/2-110
+						draw_text(XX,YY,Time)	
+					}
+					ini_close()
+					
+					//ini_open("savedgame.ini")
+					//var bufferString = ini_read_string("General","Saved Game Screenshot",0)
+					//if is_string(bufferString) {
+					//	var buffer = buffer_base64_decode(bufferString)
+					//	var surface = surface_create(1,1)
+					//	buffer_set_surface(buffer,surface,0,0,0)
+					//	draw_surface(surface,0,0)
+					//}
+					//ini_close()
+				}
 				draw_set_alpha(.3)
 				if mouse_check_button_pressed(mb_left) and savedgame {
 					app.new_game = false
@@ -502,6 +538,10 @@ switch(menu)
 				}
 			} else {
 				draw_set_alpha(.5)	
+				if loadgamescreenshot > -1 {
+					sprite_delete(loadgamescreenshot)
+					loadgamescreenshot = -1
+				}	
 			}
 			draw_roundrect(_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height,false)
 			draw_set_color(c_black)

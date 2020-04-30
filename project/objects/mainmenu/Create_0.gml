@@ -28,6 +28,8 @@ resolutions[1, menu_active] = false
 resolutions[1, menu_data0] = 1280
 resolutions[1, menu_data1] = 720
 
+loadgamescreenshot = -1
+
 //	Set resolution
 if app.resolution_width == 1920 {
 	resolutions[0, menu_active] = true

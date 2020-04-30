@@ -16,6 +16,16 @@ ini_write_real(section,"Data Count",data_count)
 ini_write_real(section,"Contracts Count",contract_count)
 ini_write_real(section,"Wire Count",wire_count)
 ini_write_real(section,"Saved Game",true)
+ini_write_string(section,"Saved Game Time",date_datetime_string(date_current_datetime()))
+ini_write_string(section,"Version",app.version)
+
+//	level screenshot
+if app.platform == "windows" { 
+	var width = surface_get_width(application_surface)
+	var height = surface_get_height(application_surface)
+	
+	surface_save(application_surface,"Saved Game Screenshot")
+}
 
 var section = "Resources"
 ini_write_real(section,"Value",player.value)
