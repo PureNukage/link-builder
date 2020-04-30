@@ -17,7 +17,7 @@ ini_write_real(section,"Contracts Count",contract_count)
 ini_write_real(section,"Wire Count",wire_count)
 ini_write_real(section,"Saved Game",true)
 ini_write_string(section,"Saved Game Time",date_datetime_string(date_current_datetime()))
-ini_write_string(section,"Version",app.version)
+ini_write_string(section,"Version",version)
 
 //	level screenshot
 if app.platform == "windows" { 

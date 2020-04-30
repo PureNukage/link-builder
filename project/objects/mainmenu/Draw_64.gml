@@ -57,13 +57,10 @@ switch(menu)
 						{
 							case 0:	//	Play
 								menu = menu.play
-								//app.new_game = true	
-								//camera.camera_mode = camera_mode.free
-								//app.tutorials = -1
-								//app.world_width = 2560
-								//app.world_height = 2048
-								//app.data_corruption = mode.on			
-								//room_goto_next()
+								ini_open(working_directory + "savedgame.ini")
+								savedgame = ini_read_real("General","Saved Game",0)
+								Time = ini_read_string("General","Saved Game Time",0)
+								ini_close()
 							break
 							case 1:	//	Tutorials
 								menu = menu.tutorials
@@ -472,10 +469,6 @@ switch(menu)
 			var _width = string_width(menu_string)
 			var _height = string_height(menu_string)
 			
-			ini_open("savedgame.ini")
-			var savedgame = ini_read_real("General","Saved Game",0)
-			ini_close()
-			
 			draw_set_halign(fa_center)
 			draw_set_valign(fa_middle)
 			
@@ -505,25 +498,12 @@ switch(menu)
 					}
 					draw_sprite_ext(loadgamescreenshot,0,xx,yy,scale,scale,0,c_white,1)
 					
-					ini_open("savedgame.ini")
-					var Time = ini_read_string("General","Saved Game Time",0)
 					if is_string(Time) {
 						var XX = display_get_gui_width()/2
 						if app.resolution_width == 1920 var YY = display_get_gui_height()/2 - 150
 						else var YY = display_get_gui_height()/2-110
 						draw_text(XX,YY,Time)	
 					}
-					ini_close()
-					
-					//ini_open("savedgame.ini")
-					//var bufferString = ini_read_string("General","Saved Game Screenshot",0)
-					//if is_string(bufferString) {
-					//	var buffer = buffer_base64_decode(bufferString)
-					//	var surface = surface_create(1,1)
-					//	buffer_set_surface(buffer,surface,0,0,0)
-					//	draw_surface(surface,0,0)
-					//}
-					//ini_close()
 				}
 				draw_set_alpha(.3)
 				if mouse_check_button_pressed(mb_left) and savedgame {

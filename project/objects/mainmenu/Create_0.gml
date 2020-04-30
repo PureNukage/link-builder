@@ -29,6 +29,8 @@ resolutions[1, menu_data0] = 1280
 resolutions[1, menu_data1] = 720
 
 loadgamescreenshot = -1
+savedgame = false
+Time = -1
 
 //	Set resolution
 if app.resolution_width == 1920 {
