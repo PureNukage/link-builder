@@ -15,6 +15,7 @@ ini_write_real(section,"Node Count",node_count)
 ini_write_real(section,"Data Count",data_count)
 ini_write_real(section,"Contracts Count",contract_count)
 ini_write_real(section,"Wire Count",wire_count)
+ini_write_real(section,"Saved Game",true)
 
 var section = "Resources"
 ini_write_real(section,"Value",player.value)

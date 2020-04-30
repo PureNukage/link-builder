@@ -32,7 +32,8 @@ enum menu {
 	main,
 	options,
 	tutorials,
-	in_game
+	in_game,
+	play,
 }
 
 enum selection_mode {

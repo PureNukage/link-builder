@@ -56,13 +56,14 @@ switch(menu)
 						switch(i)
 						{
 							case 0:	//	Play
-								app.new_game = true	
-								camera.camera_mode = camera_mode.free
-								app.tutorials = -1
-								app.world_width = 2560
-								app.world_height = 2048
-								app.data_corruption = mode.on			
-								room_goto_next()
+								menu = menu.play
+								//app.new_game = true	
+								//camera.camera_mode = camera_mode.free
+								//app.tutorials = -1
+								//app.world_width = 2560
+								//app.world_height = 2048
+								//app.data_corruption = mode.on			
+								//room_goto_next()
 							break
 							case 1:	//	Tutorials
 								menu = menu.tutorials
@@ -420,6 +421,113 @@ switch(menu)
 			
 			
 			
+			
+		break
+	#endregion
+	
+	#region Play
+		case menu.play:
+			
+			var _x = display_get_gui_width()/2
+			var _y = display_get_gui_height()/2 - (array_height_2d(mainMenu) * 32)
+			
+			var menu_string = "New Game"
+			var _width = string_width(menu_string)
+			var _height = string_height(menu_string)
+			
+			draw_set_halign(fa_center)
+			draw_set_valign(fa_middle)
+			
+			var buffer = 64
+			var box_width = _width + buffer
+			var box_height = _height + buffer
+			
+			draw_set_color(c_black)
+			if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height) { 
+				draw_set_alpha(.3)
+				if mouse_check_button_pressed(mb_left) {
+					app.new_game = true	
+					camera.camera_mode = camera_mode.free
+					app.tutorials = -1
+					app.world_width = 2560
+					app.world_height = 2048
+					app.data_corruption = mode.on			
+					room_goto_next()
+				}
+			} else {
+				draw_set_alpha(.5)	
+			}
+			draw_roundrect(_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height,false)
+			draw_set_color(c_black)
+			draw_roundrect(_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height,true)
+			draw_roundrect(_x-box_width/2+1,_y+1,_x-box_width/2+box_width-1,_y+box_height-1,true)
+			draw_set_alpha(1)
+			
+			draw_set_color(c_white)
+			draw_text(_x,_y+box_height/2,menu_string)
+			
+			_y += box_height + buffer
+			
+			var menu_string = "Load Game"
+			var _width = string_width(menu_string)
+			var _height = string_height(menu_string)
+			
+			ini_open("savedgame.ini")
+			var savedgame = ini_read_real("General","Saved Game",0)
+			ini_close()
+			
+			draw_set_halign(fa_center)
+			draw_set_valign(fa_middle)
+			
+			var buffer = 64
+			var box_width = _width + buffer
+			var box_height = _height + buffer
+			
+			if savedgame {
+				draw_set_color(c_black)
+			} else {
+				draw_set_color(c_gray)	
+			}
+			if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height) { 
+				draw_set_alpha(.3)
+				if mouse_check_button_pressed(mb_left) and savedgame {
+					app.new_game = false
+					camera.camera_mode = camera_mode.free
+					app.tutorials = -1
+					app.world_width = 2560
+					app.world_height = 2048
+					app.data_corruption = mode.on		
+					app.load_game_please = true
+					room_goto_next()
+				}
+			} else {
+				draw_set_alpha(.5)	
+			}
+			draw_roundrect(_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height,false)
+			draw_set_color(c_black)
+			draw_roundrect(_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height,true)
+			draw_roundrect(_x-box_width/2+1,_y+1,_x-box_width/2+box_width-1,_y+box_height-1,true)
+			draw_set_alpha(1)
+			
+			draw_set_color(c_white)
+			draw_text(_x,_y+box_height/2,menu_string)
+			
+			_y += box_height + buffer
+			
+			if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-14,_y-14,_x+14,_y+14) {
+				draw_set_color(c_white)
+				if mouse_check_button_pressed(mb_left) {
+					menu = menu.main	
+				}
+			} else {
+				draw_set_color(c_black)	
+			}
+			draw_text(_x,_y,"Back")
+			
+			//	Escape
+			if keyboard_check_pressed(vk_escape) {
+				menu = menu.main	
+			}	
 			
 		break
 	#endregion

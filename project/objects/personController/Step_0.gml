@@ -1,5 +1,16 @@
 population = ds_list_size(people)
 
+//	DEBUG Spawn a person
+if input.keypress_p {
+	//	Choose a random personSpawner
+	var index = irandom_range(0,3)
+	var _spawner = spawners[| index]
+	var _x = _spawner.x
+	var _y = _spawner.y
+	
+	var _person = instance_create_layer(_x,_y,"Instances",person)
+}
+
 var _needed_population = 0
 //	calculate needed population
 if instance_exists(contracts) and !ds_list_empty(contracts.contracts_online) {

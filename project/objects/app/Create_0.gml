@@ -28,6 +28,8 @@ game_loading = false
 
 new_game = false
 
+load_game_please = false
+
 data_corruption = -1
 
 randomize()
