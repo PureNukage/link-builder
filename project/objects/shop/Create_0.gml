@@ -448,6 +448,8 @@ item_height = 64
 item_buffer = 16
 item_placing = 0
 
+altmode_mouseover = false
+
 
 #region GUI
 

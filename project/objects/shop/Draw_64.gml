@@ -8,7 +8,7 @@ if wire_active {
 	var _yy = 0
 
 	//	Draw background
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+64,_yy+32) and !instance_exists(mainmenu) {
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+64,_yy+40) and !instance_exists(mainmenu) {
 		button_wire_mouseover = true
 		draw_set_color(c_gray)	
 		if input.mouse_left_press {
@@ -34,16 +34,41 @@ if wire_active {
 		draw_set_color(c_dkgray)
 		button_wire_mouseover = false	
 	}
-	draw_roundrect(_xx,_yy,_xx+64,_yy+32,false)
+	draw_rectangle(_xx,_yy,_xx+64,_yy+48,false)
 
 	sprite_set_offset(s_wire_socket,sprite_get_width(s_wire_socket)/2,sprite_get_height(s_wire_socket)/2)
-	draw_sprite_ext(s_wire_socket,0,_xx+sprite_get_width(s_wire_socket)/2,_yy+sprite_get_height(s_wire_socket)/2,1,1,0,c_sergey_blue,1)
+	draw_sprite_ext(s_wire_socket,0,_xx+sprite_get_width(s_wire_socket)/2,_yy+sprite_get_height(s_wire_socket)/2+10,1,1,0,c_sergey_blue,1)
 
 }
 
 #endregion
 
-#region Resources
+#region Alt Mode
+draw_set_font(fnt_shop)
+_xx += sprite_get_width(s_wire_socket) + 40
+
+if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+64,_yy+30) {
+	altmode_mouseover = true
+	draw_set_color(c_ltgray)
+	if input.mouse_left_press {
+		game.vision = !game.vision
+	}	
+} else {
+	altmode_mouseover = false
+	if game.vision or game.temp_vision draw_set_color(c_gray)
+	else draw_set_color(c_dkgray)
+}
+draw_rectangle(_xx,_yy,_xx+64,_yy+30,false)
+
+draw_set_color(c_white)
+draw_set_halign(fa_center)
+draw_text(_xx+64/2,_yy+30/2,"ALT")
+
+
+
+#endregion
+
+#region Exchange
 
 if exchange_active {
 

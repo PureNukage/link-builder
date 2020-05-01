@@ -5,7 +5,7 @@ if resources_active {
 	draw_set_font(fnt_shop)
 	var value_width = string_width(string(value)) + 80
 	var value_height = 48
-	var valueX = display_get_gui_width()/2-150
+	var valueX = display_get_gui_width()/2-125
 	var valueY = 0
 
 	draw_set_color(c_dkgray)
