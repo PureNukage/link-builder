@@ -87,47 +87,53 @@ else {
 		ds_list_add(new_system,_item)
 		ds_list_insert(systems_list,i,new_system)
 		
-		for(var p=0;p<_item.ports_count;p++) {
-			//	if theres something connected to this port
-			if _item.ports[p,port_object] > -1 {
+		if instance_exists(_item) {
+			for(var p=0;p<_item.ports_count;p++) {
+				//	if theres something connected to this port
+				if _item.ports[p,port_object] > -1 {
 				
-				var previous_loop = _item
-				var current_loop = _item.ports[p,port_object]
+					var previous_loop = _item
+					var current_loop = _item.ports[p,port_object]
 				
-				var loops = ds_list_create()
-				ds_list_add(loops,current_loop)
-				while !ds_list_empty(loops) {
+					var loops = ds_list_create()
+					ds_list_add(loops,current_loop)
+					while !ds_list_empty(loops) {
 					
-					//	Check this wires ports
-					for(var loop_port=0;loop_port<current_loop.ports_count;loop_port++) {
-						var other_port = loop_port
-						other_port = !other_port
-						//	empty port
-						if current_loop.ports[loop_port,port_object] == -1 {
+						//	Check this wires ports
+						for(var loop_port=0;loop_port<current_loop.ports_count;loop_port++) {
+							var other_port = loop_port
+							other_port = !other_port
+							//	empty port
+							if current_loop.ports[loop_port,port_object] == -1 {
 
-						} 
-						//	another object is attached!
-						else if current_loop.ports[loop_port,port_object] > -1 {
-							//	this object isn't in our loop queue, lets add it!
-							if ds_list_find_index(loops,current_loop.ports[loop_port,port_object]) == -1  and ds_list_find_index(new_system,current_loop.ports[loop_port,port_object]) == -1 {
-								ds_list_add(loops,current_loop.ports[loop_port,port_object])
+							} 
+							//	another object is attached!
+							else if current_loop.ports[loop_port,port_object] > -1 {
+								//	this object isn't in our loop queue, lets add it!
+								if ds_list_find_index(loops,current_loop.ports[loop_port,port_object]) == -1  and ds_list_find_index(new_system,current_loop.ports[loop_port,port_object]) == -1 {
+									ds_list_add(loops,current_loop.ports[loop_port,port_object])
+								}
 							}
 						}
-					}
 					
-					ds_list_add(new_system,current_loop)
-					ds_list_delete(loops,0)
-					if !ds_list_empty(loops) {
-						previous_loop = current_loop
-						current_loop = loops[| 0]
-					}
+						ds_list_add(new_system,current_loop)
+						ds_list_delete(loops,0)
+						if !ds_list_empty(loops) {
+							previous_loop = current_loop
+							current_loop = loops[| 0]
+						}
 					
-				}
-				ds_list_destroy(loops)
+					}
+					ds_list_destroy(loops)
 				
-			}
+				}
 			
-		}
+			}
+		} 
+		//	Item doesn't exist
+		else {
+			debug_log("ERROR Trying to delete ports of an instance that doesn't exist, hopefully preventing a crash")
+		}	
 		
 	}
 	
@@ -396,6 +402,8 @@ if object_index == wire {
 		}	
 	}
 }
+
+fogCheck()
 
 //	delete me 
 instance_destroy()

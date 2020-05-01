@@ -36,7 +36,47 @@ if resources_active {
 	if money > 0 var color = c_green else var color = c_red
 	draw_text_outlined(moneyX+16,moneyY+money_height/2,string("$$"),color,c_black)
 	draw_set_font(fnt_shop)
-
+	
+	#region Money list
+		var list_clamp = 5
+		var time_clamp = 120
+		draw_set_font(fnt_plaque_name)
+		if !ds_list_empty(money_list) {
+			var amount = ds_list_size(money_list)
+			var xx = moneyX+money_width/2-money_width/4
+			var yy = moneyY+money_height+24
+			for(var i=0;i<ds_list_size(money_list);i++) {
+				var money_amount = (money_list[| i])*-1
+				var money_time = money_list_time[| i]
+				var alpha = 0
+				var time_diff = time.stream - money_time
+				if time_diff > 0 and time_diff < 10				alpha = 1
+				else if time_diff >= 10 and time_diff < 20		alpha = .9
+				else if time_diff >= 20 and time_diff < 30		alpha = .85
+				else if time_diff >= 30 and time_diff < 40		alpha = .75
+				else if time_diff >= 40 and time_diff < 50		alpha = .65
+				else if time_diff >= 50 and time_diff < 60		alpha = .50
+				else if time_diff >= 60 and time_diff < 80		alpha = .40
+				else if time_diff >= 80 and time_diff < 100		alpha = .30
+				else if time_diff >= 100 and time_diff < 120	alpha = .20
+				draw_set_alpha(alpha)
+				if money_amount > 0 var color = c_green else var color = c_red
+				draw_text_outlined(xx,yy,string(money_amount),color,c_black)
+				if (time.stream - money_time) >= time_clamp {
+					ds_list_delete(money_list,i)
+					ds_list_delete(money_list_time,i)
+					i = 100
+				}
+				yy += 48
+			}
+		}
+		
+		
+	#endregion
+	
+	draw_set_alpha(1)
+	draw_set_font(fnt_shop)
+	
 	/////	LINK
 	var link_width = string_width(string(link)) + 80
 	var link_height = money_height

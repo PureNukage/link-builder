@@ -44,27 +44,29 @@ if wire_active {
 #endregion
 
 #region Alt Mode
-draw_set_font(fnt_shop)
-_xx += sprite_get_width(s_wire_socket) + 40
 
-if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+64,_yy+30) {
-	altmode_mouseover = true
-	draw_set_color(c_ltgray)
-	if input.mouse_left_press {
-		game.vision = !game.vision
-	}	
-} else {
-	altmode_mouseover = false
-	if game.vision or game.temp_vision draw_set_color(c_gray)
-	else draw_set_color(c_dkgray)
+if instance_exists(c_item) {
+	draw_set_font(fnt_shop)
+	var _xx = topmenu.contractsX+topmenu.contracts_width+16 + sprite_get_width(s_wire_socket) + 40
+	var _yy = 0
+
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+64,_yy+30) {
+		altmode_mouseover = true
+		draw_set_color(c_ltgray)
+		if input.mouse_left_press {
+			game.vision = !game.vision
+		}	
+	} else {
+		altmode_mouseover = false
+		if game.vision or game.temp_vision draw_set_color(c_gray)
+		else draw_set_color(c_dkgray)
+	}
+	draw_rectangle(_xx,_yy,_xx+64,_yy+30,false)
+
+	draw_set_color(c_white)
+	draw_set_halign(fa_center)
+	draw_text(_xx+64/2,_yy+30/2,"ALT")
 }
-draw_rectangle(_xx,_yy,_xx+64,_yy+30,false)
-
-draw_set_color(c_white)
-draw_set_halign(fa_center)
-draw_text(_xx+64/2,_yy+30/2,"ALT")
-
-
 
 #endregion
 

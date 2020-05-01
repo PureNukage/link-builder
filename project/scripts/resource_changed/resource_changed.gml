@@ -29,6 +29,13 @@ switch(resource)
 	case "$$":
 		player.money -= amount
 		_icon = s_resource_money
+		
+		//	Person UI list
+		if amount != 0 {
+			ds_list_insert(player.money_list,0,amount)
+			ds_list_insert(player.money_list_time,0,time.stream)
+		}
+		
 	break
 }
 
