@@ -8,6 +8,52 @@ if resources_active {
 	var valueX = display_get_gui_width()/2-125
 	var valueY = 0
 
+	////	MONEY
+	var money_width = string_width(string(money)) + 80
+	var money_height = value_height
+	var moneyX = valueX + value_width + 24
+	var moneyY = valueY
+	
+	////	LINK 
+	var link_width = string_width(string(link)) + 80
+	var link_height = money_height
+	var linkX = moneyX + money_width + 24
+	var linkY = moneyY
+	
+	
+	////	ETH
+	eth_width = string_width(string(eth)) + 80
+	eth_height = link_height
+	ethX = linkX + link_width + 24
+	ethY = linkY
+	
+	//	Safe Meter
+	var thick = 15
+	var safe_width = (ethX+eth_width+thick)-(valueX-thick)
+	var safe_height = eth_height + thick
+	var safeX = valueX - thick
+	var safeY = -4
+	
+	draw_set_color(c_white)
+	draw_roundrect_ext(safeX,safeY,safeX+safe_width,safeY+safe_height,10,10,false)
+	
+	var alpha = .5
+	draw_set_alpha(alpha)
+	var total_wealth = money + (eth * shop.eth_price) + (link * shop.link_price)
+	if chaosEvents.total_wealth_trigger > -1 {
+		var percent = total_wealth/chaosEvents.total_wealth_trigger
+		
+		if total_wealth >= chaosEvents.total_wealth_trigger draw_set_color(c_red)
+		else {
+			if percent < .75 draw_set_color(c_green)
+			else if percent >= .75 and percent < .9 draw_set_color(c_orange)
+			else if percent >= 0.9 draw_set_color(c_red)
+		}
+	} else draw_set_color(c_green)
+	draw_roundrect_ext(safeX,safeY,safeX+safe_width,safeY+safe_height,10,10,false)
+	draw_set_alpha(1)
+	
+	////	VALUE
 	draw_set_color(c_dkgray)
 	draw_rectangle(valueX,valueY,valueX+value_width,valueY+value_height,false)
 
@@ -19,12 +65,7 @@ if resources_active {
 	draw_sprite_ext(s_resource_value_shop,0,valueX+24,valueY+value_height/2,1,1,0,c_white,1)
 
 
-	////	Money
-	var money_width = string_width(string(money)) + 80
-	var money_height = value_height
-	var moneyX = valueX + value_width + 24
-	var moneyY = valueY
-
+	////	MONEY
 	draw_set_color(c_dkgray)
 	draw_rectangle(moneyX,moneyY,moneyX+money_width,moneyY+money_height,false)
 
@@ -78,11 +119,6 @@ if resources_active {
 	draw_set_font(fnt_shop)
 	
 	/////	LINK
-	var link_width = string_width(string(link)) + 80
-	var link_height = money_height
-	var linkX = moneyX + money_width + 24
-	var linkY = moneyY
-
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,linkX,linkY,linkX+link_width,linkY+link_height) {
 		draw_set_color(c_ltgray)
 		if !shop.exchange_open or shop.exchange_currency != "LINK" {
@@ -115,13 +151,8 @@ if resources_active {
 	draw_text(linkX+60,linkY+link_height/2,string(link))
 
 	draw_sprite(s_resource_link_shop,0,linkX+8,linkY+4)
-
+	
 	////	ETH
-	eth_width = string_width(string(eth)) + 80
-	eth_height = link_height
-	ethX = linkX + link_width + 24
-	ethY = linkY
-
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,ethX,ethY,ethX+eth_width,ethY+eth_height) {
 		draw_set_color(c_ltgray)
 		if !shop.exchange_open or shop.exchange_currency != "ETH" {

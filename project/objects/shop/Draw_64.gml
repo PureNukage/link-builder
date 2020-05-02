@@ -80,7 +80,7 @@ if exchange_active {
 	//	Exchange Button
 	draw_set_valign(fa_top)
 	draw_set_font(fnt_shop)
-	var exchangeX = player.ethX + player.eth_width+8
+	var exchangeX = player.ethX + player.eth_width+20
 	var exchangeY = player.ethY
 	
 	var String = "Exchange"
