@@ -62,6 +62,12 @@ else {
 	game.bailout2_amount_trigger = ini_read_real(section,"Bailout2 Trigger",0)
 	game.lose_game_trigger = ini_read_real(section,"Game Over Trigger",-1)
 	
+	//	Camera
+	var section = "Camera"
+	camera.x = ini_read_real(section,"x",0)
+	camera.y = ini_read_real(section,"y",0)
+	camera.zoom_level = ini_read_real(section,"zoom_level",1)
+	
 	//	heros
 	var section = "Heros"
 	var raw_string = ini_read_string(section,"Array",0)

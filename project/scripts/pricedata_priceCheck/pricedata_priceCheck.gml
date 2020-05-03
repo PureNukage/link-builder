@@ -16,8 +16,8 @@ switch(eth_count)
 	case 1: eth_price = 750  break
 	case 2: eth_price = 1000 break
 	case 3: eth_price = 3500 break
-	case 4: eth_price = 5000 break
-	case 5: eth_price = 6500 break
+	case 4: eth_price = 4250 break
+	case 5: eth_price = 5000 break
 	case 6: eth_price = 8000 break
 	case 7: eth_price = 12000 break
 	case 8: eth_price = 16000 break	
@@ -26,12 +26,12 @@ switch(eth_count)
 var link_price = 0
 switch(link_count)
 {
-	case 0:	link_price = 500  break
-	case 1: link_price = 750  break
-	case 2: link_price = 1000 break
-	case 3: link_price = 1500 break
-	case 4: link_price = 2000 break
-	case 5: link_price = 2500 break
+	case 0:	link_price = 750  break
+	case 1: link_price = 1250  break
+	case 2: link_price = 1500 break
+	case 3: link_price = 3500 break
+	case 4: link_price = 4500 break
+	case 5: link_price = 5500 break
 	case 6: link_price = 2500 break
 	case 7: link_price = 2500 break
 	case 8: link_price = 2500 break 	

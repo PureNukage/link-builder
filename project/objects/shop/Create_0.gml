@@ -261,7 +261,7 @@
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,available,Data_filters)
 	
 	var name = "Flight API"
-	var price = 5000
+	var price = 3500
 	var Object_index = data
 	var _string = ""
 	var portrait = s_portrait_flight

@@ -20,6 +20,10 @@ if app.tutorial == -1 {
 				}
 			break
 			case "Flight API":
+				if player.value >= 4500 {
+					if !shop.item_data[d, item_available] shop.item_data[d, item_available] = true		
+				}
+			break
 			case "Videogame API":
 				if player.value >= 5500 {
 					if !shop.item_data[d, item_available] shop.item_data[d, item_available] = true		

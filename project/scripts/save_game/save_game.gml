@@ -52,6 +52,11 @@ ini_write_real(section,"Bailout2 Net",game.bailout2_amount_net)
 ini_write_real(section,"Bailout2 Trigger",game.bailout2_amount_trigger)
 ini_write_real(section,"Game Over Trigger",game.lose_game_trigger)
 
+var section = "Camera"
+ini_write_real(section,"x",camera.x)
+ini_write_real(section,"y",camera.y)
+ini_write_real(section,"zoom_level",camera.zoom_level)
+
 var section = "Heros"
 var new_array = []
 var hidden_array = []
