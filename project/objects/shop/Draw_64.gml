@@ -188,7 +188,7 @@ if exchange_active {
 		var priceX = buytextX
 		var priceY = buytextY + string_height("Buy") + spacer*3
 		draw_text(priceX,priceY,"Price")
-		var price_width = string_width("Price")
+		//var price_width = string_width("Price")
 		//draw_set_font(fnt_shop_menu_name)
 		
 		//	Draw LINK or ETH logo

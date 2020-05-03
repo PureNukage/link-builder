@@ -943,7 +943,7 @@ if contracts_open and !instance_exists(mainmenu) {
 	value_array[6,1] = 0
 	value_array[6,2] = 0
 	value_array[6,3] = false
-	value_array[7,0] = 4000
+	value_array[7,0] = 4500
 	value_array[7,1] = 0
 	value_array[7,2] = 0
 	value_array[7,3] = false
@@ -951,6 +951,10 @@ if contracts_open and !instance_exists(mainmenu) {
 	value_array[8,1] = 0
 	value_array[8,2] = 0
 	value_array[8,3] = false
+	value_array[9,0] = 10000
+	value_array[9,1] = 0
+	value_array[9,2] = 0
+	value_array[9,3] = false
 	var value_width = 0
 	
 	//	Preliminary loop through contracts
@@ -1032,6 +1036,7 @@ if contracts_open and !instance_exists(mainmenu) {
 	
 	//	Create surface
 	if !surface_exists(contract_surface) {
+		if contract_types == contract_types.utility surface_width += buffer*8
 		contract_surface = surface_create(surface_width,surface_height)	
 		surface_set_target(contract_surface)
 		draw_clear_alpha(c_white,0)
@@ -1227,6 +1232,10 @@ if contracts_open and !instance_exists(mainmenu) {
 		var max_offsetY = bar_height-handle_height
 		var segment = bar_height/max_offsetY
 		var scroll_speed = 16
+		
+		if menu_change {
+			surface_offsetY = max_offsetY
+		}
 	
 		if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) and contract_window_width_offset == -1 {
 			if point_in_rectangle(gui_mouse_x,gui_mouse_y,handleX,handleY,handleX+handle_width,handleY+handle_height) {

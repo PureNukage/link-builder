@@ -40,7 +40,7 @@ if resources_active {
 	var alpha = .5
 	draw_set_alpha(alpha)
 	var total_wealth = money + (eth * shop.eth_price) + (link * shop.link_price)
-	if chaosEvents.total_wealth_trigger > -1 {
+	if chaosEvents.total_wealth_trigger > -1 and time.minutes >= 4 {
 		var percent = total_wealth/chaosEvents.total_wealth_trigger
 		
 		if total_wealth >= chaosEvents.total_wealth_trigger draw_set_color(c_red)

@@ -17,7 +17,7 @@ if ds_list_empty(affected_data) {
 	var ethusd_data_price = shop.item_data[0, item_price] + (shop.item_data[0, item_price]/2)
 	var linkusd_data_price = shop.item_data[10, item_price] + (shop.item_data[10, item_price]/2)
 	
-	total_wealth_trigger = min(ethusd_data_price,linkusd_data_price)
+	total_wealth_trigger = min(ethusd_data_price)
 			
 	var eth_wealth = player.eth * shop.eth_price
 	var link_wealth = player.link * shop.link_price
@@ -29,7 +29,7 @@ if ds_list_empty(affected_data) {
 		var data_eth_amount = 0
 		var data_link_amount = 0
 		
-		if time.minutes >= 3 {
+		if time.minutes >= 4 {
 			
 			if total_wealth >= ethusd_data_price {
 				//	the Player is squatting with 1 ETH/USD source
@@ -61,7 +61,7 @@ if ds_list_empty(affected_data) {
 			}
 			
 			
-			if total_wealth >= linkusd_data_price {
+			if total_wealth >= linkusd_data_price and player.value >= 4500 and linkusd_sources > 0 {
 				if linkusd_sources == 1 {
 					debug_log("The Player is squatting with 1 LINK/USD source")
 					data_link_amount = 1	
@@ -79,7 +79,7 @@ if ds_list_empty(affected_data) {
 					data_link_amount = 3
 				}
 				
-				
+				total_wealth_trigger = min(ethusd_data_price,linkusd_data_price)
 			}
 			
 		}

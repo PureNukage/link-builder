@@ -21,7 +21,7 @@ if app.tutorial == -1 {
 			break
 			case "Flight API":
 			case "Videogame API":
-				if player.value >= 3000 {
+				if player.value >= 5500 {
 					if !shop.item_data[d, item_available] shop.item_data[d, item_available] = true		
 				}
 		
@@ -36,7 +36,7 @@ if app.tutorial == -1 {
 	
 		//	LINK/USD
 		if is_price(data_name) and is_price(data_name,true) == "LINK/USD" {
-			if player.value >= 2000 {
+			if player.value >= 4500 {
 				if !shop.item_data[d, item_available] shop.item_data[d, item_available] = true	
 			}
 		}

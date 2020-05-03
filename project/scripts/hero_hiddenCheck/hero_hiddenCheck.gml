@@ -8,7 +8,7 @@ for(var h=0;h<array_height_2d(personController.heros);h++) {
 		case hero.aaronwright:
 		case hero.chicocrypto:
 		case hero.cz:
-			if player.value >= 2000 heros[h, hero_hidden] = false
+			if player.value >= 4500 heros[h, hero_hidden] = false
 		break
 		case hero.krown:
 		case hero.gaben:
