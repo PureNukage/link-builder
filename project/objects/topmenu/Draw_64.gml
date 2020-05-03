@@ -956,7 +956,7 @@ if contracts_open and !instance_exists(mainmenu) {
 	for(var c=0;c<array_height_2d(contracts.contract);c++) {
 		var name = contracts.contract[c, contract_name]
 		var price = contracts.contract[c, contract_price]
-		var name_width = string_width(name) + buffer*10
+		var name_width = string_width(name) + buffer*4
 		var name_height = string_height(name) + buffer*2	
 		
 		//	Check this contracts price againts prices in value_array
@@ -965,7 +965,7 @@ if contracts_open and !instance_exists(mainmenu) {
 				if contracts.contract[c, contract_available] and contracts.contract[c, contract_type2] == contract_types {
 					value_array[v,3] = true
 					value_array[v,1] += name_width + buffer
-					var name_height_ext = name_height + 64 + spacer
+					var name_height_ext = name_height + 64 //+ spacer
 					if name_height_ext > value_array[v,2] value_array[v,2] = name_height_ext
 				}
 			}
@@ -1006,6 +1006,8 @@ if contracts_open and !instance_exists(mainmenu) {
 	var surface_height = 0
 	var surfaceX = pageX+surface_offsetX
 	var surfaceY = pageY+surface_offsetY
+	//var surfaceX = 0
+	//var surfaceY = 0
 	
 	//	Get surface width and height from value_array
 	for(var v=0;v<array_height_2d(value_array);v++) {
@@ -1015,16 +1017,6 @@ if contracts_open and !instance_exists(mainmenu) {
 		if value_array[v,2] > surface_height surface_height = (value_array[v,2]*how_many_values) + spacer
 	}
 	
-	if time.seconds_switch {	
-		//debug_log("value_width: "+string(value_width))
-		//debug_log("pageX: "+string(pageX))	
-		//debug_log("pageY: "+string(pageY))
-		//debug_log("page_width: "+string(page_width))
-		//debug_log("page_height: "+string(page_height))
-		
-		//debug_log("surface_width: "+string(surface_width))
-		//debug_log("surface_height: "+string(surface_height))
-	}
 	
 	//if surface_width < page_width surface_width = page_width
 	if surface_height < page_height surface_height = page_height
@@ -1035,6 +1027,9 @@ if contracts_open and !instance_exists(mainmenu) {
 		contract_surface = surface_create(surface_width,surface_height)	
 		surface_set_target(contract_surface)
 		draw_clear_alpha(c_white,0)
+		
+		var lineX = 32
+		var lineY = 32
 		
 		var xx = pageX + 32
 		var yy = pageY + 32 
@@ -1050,7 +1045,7 @@ if contracts_open and !instance_exists(mainmenu) {
 					var name_height = string_height(name) + buffer*2
 					
 					draw_set_color(c_black)
-					draw_roundrect(xx-2,yy-2,xx+name_width+2,yy+name_height+2,false)
+					draw_roundrect(lineX-2,lineY-2,lineX+name_width+2,lineY+name_height+2,false)
 
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-surface_offsetX,yy-surface_offsetY,xx+name_width-surface_offsetX,yy+name_height-surface_offsetY) and player.value >= price 
 					and point_in_rectangle(gui_mouse_x,gui_mouse_y,pageX,pageY,pageX+page_width,pageY+page_height) {
@@ -1140,7 +1135,7 @@ if contracts_open and !instance_exists(mainmenu) {
 							if contracts.contract[c, contract_kiosk] > -1 draw_set_color(c_gray)
 						}
 					}
-					draw_roundrect(xx,yy,xx+name_width,yy+name_height,false)
+					draw_roundrect(lineX,lineY,lineX+name_width,lineY+name_height,false)
 					
 					draw_set_color(c_black)
 					if player.value < price {
@@ -1151,20 +1146,25 @@ if contracts_open and !instance_exists(mainmenu) {
 						//name = new_name
 						name = "LOCKED"
 					}
-					draw_text(xx+name_width/2,yy+name_height/2,name)
+					draw_text(lineX+name_width/2,lineY+name_height/2,name)
 					
 					xx += name_width+buffer
+					lineX += name_width+buffer
 				}
 			}
 			xx = pageX + 32
-			if value_array[v,3] yy += name_height + spacer
+			lineX = 32
+			if value_array[v,3] {
+				yy += name_height + spacer
+				lineY += name_height + spacer	
+			}
 		}
 		
 		surface_reset_target()
 	}
 	
 	if surface_exists(contract_surface) {
-		draw_surface_part(contract_surface,surfaceX,surfaceY,page_width+1,page_height,pageX,pageY)	
+		draw_surface_part(contract_surface,0,0+surface_offsetY,page_width+1,page_height,pageX,pageY)	
 	}
 	
 	if surface_exists(contract_surface) surface_free(contract_surface)
@@ -1172,8 +1172,8 @@ if contracts_open and !instance_exists(mainmenu) {
 	contract_window_width = clamp(contract_window_width,contract_window_width_default,pageX+surface_width+buffer)
 	
 	if menu_change {
-		contract_window_width = surface_width
-		if contract_types == contract_types.hackathon contract_window_width -= 250
+		contract_window_width = surface_width + 140
+		//if contract_types == contract_types.hackathon contract_window_width -= 250
 	}
 	
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,windowX+window_width-16,windowY,windowX+window_width+16,windowY+window_height+16) {
@@ -1221,10 +1221,13 @@ if contracts_open and !instance_exists(mainmenu) {
 	
 		var handle_width = 40
 		var handle_height = (abs(surface_height - page_height)/surface_height) * bar_height
+		//var handle_height = (page_height/(surface_height-page_height)) * bar_height
+			
 		var handleX = windowX+window_width-buffer-bar_width
 		var handleY = barY + surface_offsetY
+		var handleY = barY + (surface_offsetY/(surface_height-page_height) * (bar_height-handle_height))
 	
-		var max_offsetY = bar_height-handle_height
+		var max_offsetY = page_height //bar_height//-handle_height
 		var segment = bar_height/max_offsetY
 		var scroll_speed = 16
 		
@@ -1235,15 +1238,12 @@ if contracts_open and !instance_exists(mainmenu) {
 		if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) and contract_window_width_offset == -1 {
 			if point_in_rectangle(gui_mouse_x,gui_mouse_y,handleX,handleY,handleX+handle_width,handleY+handle_height) {
 				draw_set_color(c_ltgray)
-				if input.mouse_left_press {
-					vert_bar_y1 = gui_mouse_y
-				}
-				if input.mouse_left and vert_bar_y1 > -1 {
-					vert_bar_y2 = gui_mouse_y
-					if abs(vert_bar_y2 - vert_bar_y1) >= segment {
-						surface_offsetY += vert_bar_y2 - vert_bar_y1
-						vert_bar_y1 = gui_mouse_y
-						surface_offsetY = clamp(surface_offsetY,0,max_offsetY)
+				if input.mouse_left_press or input.mouse_left {
+					for(var s=0;s<max_offsetY;s++) {
+						var Y = barY + (s*segment)
+						if gui_mouse_y > Y and gui_mouse_y < Y+segment {
+							surface_offsetY = s	
+						}
 					}
 				}
 			} else {
@@ -1272,13 +1272,26 @@ if contracts_open and !instance_exists(mainmenu) {
 	
 	//	DEBUGGING THE SURFACE AND SURFACE PAGE
 	
-	draw_set_color(c_yellow)
-	draw_set_alpha(.33)
-	draw_roundrect(pageX-surface_offsetX,pageY-surface_offsetY,pageX-surface_offsetX+surface_width,pageY-surface_offsetY+surface_height,false)
+	//draw_set_color(c_yellow)
+	//draw_set_alpha(.33)
+	//draw_roundrect(pageX-surface_offsetX,pageY-surface_offsetY,pageX-surface_offsetX+surface_width,pageY-surface_offsetY+surface_height,false)
 	
-	draw_set_color(c_red)
-	draw_roundrect(pageX,pageY,pageX+page_width,pageY+page_height,false)
-	draw_set_alpha(1)
+	//draw_set_color(c_red)
+	//draw_roundrect(pageX,pageY,pageX+page_width,pageY+page_height,false)
+	//draw_set_alpha(1)
+	
+	//draw_set_halign(fa_left)
+	//draw_set_valign(fa_middle)
+	//var xx = windowX+window_width+20
+	//var yy = windowY
+	//draw_text(xx,yy,"value_width: "+string(value_width))		yy += 30
+	//draw_text(xx,yy,"pageX: "+string(pageX))					yy += 30
+	//draw_text(xx,yy,"pageY: "+string(pageY))					yy += 30
+	//draw_text(xx,yy,"page_width: "+string(page_width))			yy += 30
+	//draw_text(xx,yy,"page_height: "+string(page_height))		yy += 30
+	//draw_text(xx,yy,"surface_width: "+string(surface_width))	yy += 30
+	//draw_text(xx,yy,"surface_height: "+string(surface_height))	yy += 30
+	//draw_text(xx,yy,"surface_offsetY: "+string(surface_offsetY))yy += 30
 	
 	if contract_window_width < surface_width - 100 {
 		//	horizontal scrollbar

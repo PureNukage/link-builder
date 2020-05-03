@@ -41,7 +41,7 @@ switch(link_count)
 var btc_price = 0
 switch(btc_count)
 {
-	case 0:	btc_price = 200  break
+	case 0:	btc_price = 2000  break
 	case 1: btc_price = 2750  break
 	case 2: btc_price = 3500 break
 	case 3: btc_price = 5000 break

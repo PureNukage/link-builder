@@ -183,7 +183,7 @@
 	var Data_filters = data_filters.pricedata
 	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
-var name = "Binance BTC/USD"
+	var name = "Binance BTC/USD"
 	var price = 500
 	var Object_index = data
 	var _string = "This endpoint to Binance gives\nthe current USD price of Ether"
@@ -191,7 +191,7 @@ var name = "Binance BTC/USD"
 	var Data_types = data_types.binance_BTCUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
-	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
+	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 
 	var name = "CryptoCompare BTC/USD"
 	var price = 500
@@ -201,7 +201,7 @@ var name = "Binance BTC/USD"
 	var Data_types = data_types.cryptocompare_BTCUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
-	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
+	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "Coinbase BTC/USD"
 	var price = 500
@@ -211,7 +211,7 @@ var name = "Binance BTC/USD"
 	var Data_types = data_types.coinbase_BTCUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
-	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
+	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "CoinGecko BTC/USD"
 	var price = 500
@@ -221,7 +221,7 @@ var name = "Binance BTC/USD"
 	var Data_types = data_types.coingecko_BTCUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
-	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
+	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "CoinPaprika BTC/USD"
 	var price = 500
@@ -231,7 +231,7 @@ var name = "Binance BTC/USD"
 	var Data_types = data_types.coinpaprika_BTCUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
-	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
+	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "CoinMarketCap BTC/USD"
 	var price = 500
@@ -241,7 +241,7 @@ var name = "Binance BTC/USD"
 	var Data_types = data_types.coinmarket_BTCUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
-	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
+	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 
 	var name = "BraveNewCoin BTC/USD"
 	var price = 500
@@ -251,7 +251,7 @@ var name = "Binance BTC/USD"
 	var Data_types = data_types.bravenewcoin_BTCUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
-	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
+	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "Alpha Vantage BTC/USD"
 	var price = 500
@@ -261,7 +261,7 @@ var name = "Binance BTC/USD"
 	var Data_types = data_types.alphacurrency_BTCUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
-	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
+	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "Kaiko BTC/USD"
 	var price = 500
@@ -271,7 +271,7 @@ var name = "Binance BTC/USD"
 	var Data_types = data_types.kaiko_BTCUSD
 	var Corruption = create_data_corruption(0,99,0,100,249,10,250,499,20,500,999,30,1000,-1,40)
 	var Data_filters = data_filters.pricedata
-	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,true,Data_filters)
+	create_data(name,price,Object_index,_string,portrait,Data_types,Corruption,false,Data_filters)
 	
 	var name = "Email API"
 	var price = 500

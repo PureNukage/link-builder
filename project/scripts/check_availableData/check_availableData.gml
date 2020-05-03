@@ -15,7 +15,7 @@ if app.tutorial == -1 {
 			case "YouTube":
 			case "DocuSign":
 			case "VISA Payment":
-				if player.value >= 2000 {
+				if player.value >= 2500 {
 					if !shop.item_data[d, item_available] shop.item_data[d, item_available] = true	
 				}
 			break

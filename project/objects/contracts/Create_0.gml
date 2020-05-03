@@ -237,7 +237,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Revenue Share"
 var _string = ""
-var reward = 20
+var reward = 17
 var price = 2500
 var portrait = s_portrait_revenueshare
 var channel_time = 2
