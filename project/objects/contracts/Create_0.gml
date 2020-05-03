@@ -25,7 +25,7 @@ var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_paym
 create_contract("Eth Transfer","",5,150,s_portrait_ethereum,2,5,5,contract_types.people,levels,_data,false,Conditions,contract_types.hackathon)
 
 var name = "LinkPal"
-var _string = "DeFi users can now trade their ETH with\neach other for USD by querying a PayPal invoice"
+var _string = "DeFi users can now trade their ETH with each other for USD by querying a PayPal invoice"
 var reward = 12
 var price = 500
 var portrait = s_portrait_linkpal
@@ -41,7 +41,7 @@ var Contract_type2 = contract_types.hackathon
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "BountiBot"
-var _string = "An open-source software contributor is paid\nwhen their code gets merged into a project"
+var _string = "An open-source software contributor is paid when their code gets merged into a project"
 var reward = 12
 var price = 500
 var portrait = s_portrait_bountibot

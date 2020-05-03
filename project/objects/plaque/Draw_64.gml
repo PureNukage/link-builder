@@ -58,6 +58,7 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 		//name_width += 48	
 		name_width_adjusted += 48
 	}
+	
 	draw_roundrect_ext(nameX,nameY,nameX+name_width,nameY+name_height,30,30,false)
 
 	//	name
@@ -388,13 +389,34 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 			#region Contracts
 				case kiosk:
 					//	Draw Contract Info
+					#region Mousover Name Contract window
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,nameX,nameY,nameX+name_width,nameY+name_height) {
+						var String = contracts.contract[input.selection.smartcontract, contract_text]
+						var width = 400
+						var sw = string_width_ext(String,string_height(String),width)
+						var sh = string_height_ext(String,string_height(String),width)
+						var height = sh + 16
+						var XX = windowX
+						var YY = windowY-height-8
+						
+						draw_set_color(c_dkgray)
+						draw_rectangle(XX,YY,XX+width+40,YY+height,false)
+						
+						draw_set_color(c_white)
+						draw_set_halign(fa_center)
+						draw_set_valign(fa_middle)
+						draw_text_ext_transformed(XX+width/2+20,YY+height/2,String,string_height(String),width,1,1,0)
+					}
+					#endregion
+					
 					//	level
-					draw_set_color(c_black)
-					draw_set_halign(fa_right)
+					//draw_set_color(c_black)
+					//draw_set_halign(fa_right)
+					//draw_set_font(fnt_shop_menu_name)
+					//var level = contracts.contract[input.selection.smartcontract, contract_level]
+					//draw_text(nameX+name_width-p_offset,nameY+name_height/2,string(level+1))
+					
 					draw_set_font(fnt_shop_menu_name)
-					var level = contracts.contract[input.selection.smartcontract, contract_level]
-					draw_text(nameX+name_width-p_offset,nameY+name_height/2,string(level+1))
-				
 					var Smartcontract = input.selection.smartcontract
 					var link_fee = contracts.contract[Smartcontract, contract_linkfee]
 					var gas_fee = contracts.contract[Smartcontract, contract_gasfee_total]
@@ -700,16 +722,36 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 
 	else {
 		switch(object_type) {
-			case kiosk:
 			#region Draw Contract
+				case kiosk:
+				#region Mousover Name Contract window
+					//if point_in_rectangle(gui_mouse_x,gui_mouse_y,nameX,nameY,nameX+name_width,nameY+name_height) {
+						var String = contracts.contract[index, contract_text]
+						var width = 400
+						var sw = string_width_ext(String,string_height(String),width)
+						var sh = string_height_ext(String,string_height(String),width)
+						var height = sh + 16
+						var XX = windowX
+						var YY = windowY-height-8
+						
+						draw_set_color(c_dkgray)
+						draw_rectangle(XX,YY,XX+width+40,YY+height,false)
+						
+						draw_set_color(c_white)
+						draw_set_halign(fa_center)
+						draw_set_valign(fa_middle)
+						draw_text_ext_transformed(XX+width/2+20,YY+height/2,String,string_height(String),width,1,1,0)
+					//}
+					#endregion
 				//	Draw Contract Info
 				//	level
-				draw_set_color(c_black)
-				draw_set_halign(fa_right)
+				//draw_set_color(c_black)
+				//draw_set_halign(fa_right)
+				//draw_set_font(fnt_shop_menu_name)
+				//var level = contracts.contract[index, contract_level]
+				//draw_text(nameX+name_width-p_offset,nameY+name_height/2,string(level+1))
+				
 				draw_set_font(fnt_shop_menu_name)
-				var level = contracts.contract[index, contract_level]
-				draw_text(nameX+name_width-p_offset,nameY+name_height/2,string(level+1))
-
 				//	profit
 				draw_set_color(c_white)
 				var profitX = nameX
@@ -840,10 +882,10 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 				}
 				window_width_adjusted += data_width
 				window_width_adjusted += p_offset	
-			#endregion
 			break
-			case data:
+		#endregion
 			#region Draw Data
+			case data:
 				//	corruption
 				var corruptionX = nameX
 				var corruptionY = nameY + name_height + p_offset
@@ -873,10 +915,10 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 				draw_roundrect_ext(corruptionX,callsY,corruptionX+name_width,callsY+48,30,30,false)
 				draw_set_color(c_black)
 				draw_text(corruptionX+name_width/2,callsY+24,string(calls)+" Calls")
+				break
 			#endregion
-			break
-			case node:
 			#region Draw Node
+			case node:
 				//	level
 				draw_set_color(c_sergey_blue)
 				draw_set_halign(fa_right)
@@ -971,9 +1013,8 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 					window_width_adjusted += data_width
 					window_width_adjusted += p_offset	
 				}
-					
+			break	
 			#endregion
-			break
 		}
 	}
 
