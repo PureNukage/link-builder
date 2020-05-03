@@ -214,7 +214,7 @@ switch(menu)
 			for(var i=0;i<=10;i++) {
 				if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy,barX+bar_width,yy+bar_height) and mouse_check_button(mb_left) {
 					soundSystem.new_dialogue_volume = i/10
-					if !in_game and audio_is_playing(snd_dialogue_1_3) audio_sound_gain(snd_dialogue_1_3,soundSystem.new_dialogue_volume,0)
+					if audio_is_playing(snd_dialogue_1_3) audio_sound_gain(snd_dialogue_1_3,soundSystem.new_dialogue_volume,0)
 				}
 				xx += segment
 			}
@@ -364,19 +364,25 @@ switch(menu)
 			
 					_y += 96
 				}
+				
+				ini_open(working_directory + "savedgame.ini")
+				var Savedgame = ini_read_real("General","Saved Game",0)
+				ini_close()
 			
-				var String = "Load Game"
-				var String_width = string_width(String)
-				var String_height = string_height(String)
-				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-String_width/2,_y,_x+String_width/2+String_width,_y+String_height) {
-					draw_set_color(c_white)	
-					if input.mouse_left_press {
-						input.f9 = true
-					}
-				} else draw_set_color(c_black)
-				draw_text(_x,_y,String)
+				if Savedgame {
+					var String = "Load Game"
+					var String_width = string_width(String)
+					var String_height = string_height(String)
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-String_width/2,_y,_x+String_width/2+String_width,_y+String_height) {
+						draw_set_color(c_white)	
+						if input.mouse_left_press {
+							input.f9 = true
+						}
+					} else draw_set_color(c_black)
+					draw_text(_x,_y,String)
 			
-				_y += 96
+					_y += 96
+				}
 			} else {
 				_y += 192
 			}
