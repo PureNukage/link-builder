@@ -150,6 +150,16 @@ var sprite = s_hero_aaronwright
 var sprite_head = s_hero_aaronwright_head
 create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
 
+var Enum = hero.pomp
+var name = "Pomp"
+var String = "Have a BTC/USD Price Feed with 9 APIs"
+var available = true
+var acquired = false
+var hidden = true
+var sprite = s_hero_pomp
+var sprite_head = s_hero_pomp_head
+create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
+
 var Enum = hero.gaben
 var name = "Gabe Newell"
 var String = "Build the eSports Tournament Contract"

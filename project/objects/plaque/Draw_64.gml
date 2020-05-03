@@ -619,6 +619,7 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 					//	data required
 					var xx = nameX+name_width+p_offset
 					var yy = nameY+name_height
+					var column = 0
 					draw_set_font(fnt_shop)
 					draw_set_valign(fa_middle)
 					//var data_needed = contracts.contract[Smartcontract,contract_data]
@@ -644,7 +645,13 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 						
 						//	Start the next column of contracts
 						if (yy+data_height+4 > windowY+window_height) and d < array_height_2d(data_needed)-1 {
-							xx = nameX+name_width+p_offset+data_width+p_offset
+							if column == 0 {
+								xx = nameX+name_width+p_offset+data_width+p_offset
+								column = 1
+							} else if column == 1 {
+								xx += data_width + p_offset
+								column = 2
+							}
 							yy = nameY+name_height
 							window_width_adjusted += data_width + p_offset
 						}
@@ -795,6 +802,7 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 				//	data required
 				var xx = nameX+name_width+p_offset
 				var yy = nameY+name_height
+				var column = 0
 				//var data_needed = contracts.contract[Smartcontract,contract_data]
 				for(var d=0;d<array_height_2d(data_needed);d++) {
 					draw_set_color(c_white)
@@ -818,7 +826,13 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 					
 					//	Start the next column of contracts
 					if (yy+data_height+4 > windowY+window_height) and d < array_height_2d(data_needed)-1 {
-						xx = nameX+name_width+p_offset+data_width+p_offset
+						if column == 0 {
+							xx = nameX+name_width+p_offset+data_width+p_offset
+							column = 1
+						} else if column == 1 {
+							xx += data_width + p_offset
+							column = 1
+						}
 						yy = nameY+name_height
 						window_width_adjusted += data_width + p_offset
 					}

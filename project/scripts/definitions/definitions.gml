@@ -70,11 +70,15 @@ enum data_types {
 	alphacurrency_LINKUSD,
 	kaiko_LINKUSD,
 	
-	//binance_XRPUSD,
-	//cryptocompare_XRPUSD,
-	//bravenewcoin_XRPUSD,
-	//alphacurrency_XRPUSD,
-	//kaiko_XRPUSD,
+	binance_BTCUSD,
+	cryptocompare_BTCUSD,
+	coinbase_BTCUSD,
+	coingecko_BTCUSD,
+	coinpaprika_BTCUSD,
+	coinmarket_BTCUSD,
+	bravenewcoin_BTCUSD,
+	alphacurrency_BTCUSD,
+	kaiko_BTCUSD,
 	
 	emailAPI,
 	paypal,
@@ -257,10 +261,10 @@ enum hero {
 	chicocrypto,
 	aaronwright,
 	krown,
+	pomp,
 	gaben,
 	duck,
 	pepe,
-	//pomp,
 	//sergey,
 	//vitalik
 	

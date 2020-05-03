@@ -172,24 +172,41 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Compound"
 var _string = ""
-var reward = 15
-var price = 2000
+var reward = 24
+var price = 4500
 var portrait = s_portrait_compound
 var channel_time = 2
 var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
-var _data = create_data_needed(data_types.binance_ETHUSD,data_types.alphacurrency_ETHUSD,data_types.bravenewcoin_ETHUSD)
+var _data = create_data_needed(data_types.binance_ETHUSD,data_types.binance_ETHUSD,data_types.bravenewcoin_ETHUSD,
+data_types.binance_BTCUSD,data_types.bravenewcoin_BTCUSD,data_types.coingecko_BTCUSD)
 var available = true
 var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,250)
+var Contract_type2 = contract_types.defi
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "Maker"
+var _string = ""
+var reward = 15
+var price = 2500
+var portrait = s_portrait_maker
+var channel_time = 2
+var max_traffic = 5
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(2,2,2,2)
+var _data = create_data_needed(data_types.binance_ETHUSD,data_types.alphacurrency_ETHUSD,data_types.bravenewcoin_ETHUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
 var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "OpenLaw"
 var _string = ""
 var reward = 16
-var price = 2000
+var price = 2500
 var portrait = s_portrait_openlaw
 var channel_time = 2
 var max_traffic = 5
@@ -204,7 +221,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "eSports Tournament"
 var _string = ""
-var reward = 24
+var reward = 30
 var price = 5500
 var portrait = s_portrait_esports
 var channel_time = 2
@@ -221,7 +238,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 var name = "Revenue Share"
 var _string = ""
 var reward = 20
-var price = 2000
+var price = 2500
 var portrait = s_portrait_revenueshare
 var channel_time = 2
 var max_traffic = 5
@@ -236,7 +253,7 @@ create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line
 
 var name = "Loopring"
 var _string = ""
-var reward = 17
+var reward = 30
 var price = 5500
 var portrait = s_portrait_loopring
 var channel_time = 2
@@ -244,7 +261,26 @@ var max_traffic = 5
 var line_size = 5
 var Contract_type = contract_types.people
 var levels = create_level_ports(1,1,1,1)
-var _data = create_data_needed(data_types.binance_ETHUSD,data_types.bravenewcoin_ETHUSD,data_types.coinbase_ETHUSD,data_types.coinmarket_ETHUSD,data_types.alphacurrency_ETHUSD,data_types.coingecko_ETHUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD)
+var _data = create_data_needed(data_types.binance_ETHUSD,data_types.bravenewcoin_ETHUSD,data_types.coinbase_ETHUSD,data_types.coinmarket_ETHUSD,data_types.alphacurrency_ETHUSD,data_types.coingecko_ETHUSD,
+data_types.binance_BTCUSD,data_types.alphacurrency_BTCUSD,data_types.bravenewcoin_BTCUSD,data_types.coinbase_BTCUSD,data_types.coingecko_BTCUSD,data_types.coinmarket_BTCUSD,
+data_types.binance_LINKUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD,data_types.binance_LINKUSD)
+var available = true
+var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
+var Contract_type2 = contract_types.defi
+create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+
+var name = "Wrapped Bitcoin"
+var _string = ""
+var reward = 30
+var price = 7000
+var portrait = s_portrait_bitcoin
+var channel_time = 2
+var max_traffic = 5
+var line_size = 5
+var Contract_type = contract_types.people
+var levels = create_level_ports(1,1,1,1)
+var _data = create_data_needed(data_types.binance_ETHUSD,
+data_types.binance_BTCUSD,data_types.alphacurrency_BTCUSD,data_types.bravenewcoin_BTCUSD,data_types.coinbase_BTCUSD,data_types.coingecko_BTCUSD,data_types.coinmarket_BTCUSD,data_types.binance_BTCUSD,data_types.alphacurrency_BTCUSD,data_types.bravenewcoin_BTCUSD)
 var available = true
 var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
 var Contract_type2 = contract_types.defi

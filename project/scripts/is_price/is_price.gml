@@ -7,6 +7,7 @@ if argument_count == 2 var _return_string = argument[1] else var _return_string 
 var _array = []
 _array[0] = "ETH/USD"
 _array[1] = "LINK/USD"
+_array[2] = "BTC/USD"
 
 var _is_price = false
 var _returned_string = -1

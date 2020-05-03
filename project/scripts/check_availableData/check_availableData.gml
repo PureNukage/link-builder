@@ -45,5 +45,12 @@ if app.tutorial == -1 {
 			}
 		}
 		
+		//	BTC/USD
+		if is_price(data_name) and is_price(data_name,true) == "BTC/USD" {
+			if player.value >= 4500 {
+				if !shop.item_data[d, item_available] shop.item_data[d, item_available] = true		
+			}
+		}
+		
 	}
 }

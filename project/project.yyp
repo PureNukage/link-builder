@@ -1863,6 +1863,14 @@
             }
         },
         {
+            "Key": "965b7103-80c7-49a8-8d4f-2e7728e0627a",
+            "Value": {
+                "id": "fc964b6e-d9ef-4134-bc32-688ec8ade3ce",
+                "resourcePath": "sprites\\s_portrait_maker\\s_portrait_maker.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "96caf011-47d0-4132-8523-f6b0b628bd5e",
             "Value": {
                 "id": "e0bd2476-867f-480f-a0f1-4d64f3b60b35",
@@ -2267,6 +2275,14 @@
             "Value": {
                 "id": "65891a59-132c-437d-b057-0f9056cca3b4",
                 "resourcePath": "sprites\\s_wire_corner\\s_wire_corner.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "b2746be4-abca-41c5-ab7c-312e255a75f0",
+            "Value": {
+                "id": "ad6ee9ea-b57e-46c4-bd6f-0b9a369e9a61",
+                "resourcePath": "sprites\\s_portrait_bitcoin\\s_portrait_bitcoin.yy",
                 "resourceType": "GMSprite"
             }
         },

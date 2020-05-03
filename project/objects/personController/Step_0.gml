@@ -97,7 +97,7 @@ if time.stream >= hero_check_timer {
 					}
 				break
 				case hero.cz:
-					var required = 2
+					var required = 3
 					if instance_exists(data) with data {
 						if states == states.placed {
 							var name = shop.item_data[data_generated, item_name]
