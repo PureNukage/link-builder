@@ -38,7 +38,8 @@ game_over_timer = 180
 
 if app.new_game {
 	shop.wire_active = false
-	shop.resources_active = false
+	player.resources_active = false
+	shop.exchange_active = false
 	topmenu.data_active = false
 	topmenu.nodes_active = false
 	topmenu.contracts_active = false
