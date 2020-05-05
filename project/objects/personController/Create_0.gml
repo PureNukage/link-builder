@@ -55,11 +55,15 @@ body_colors[0] = make_color_rgb(53,164,91)
 body_colors[1] = make_color_rgb(53,121,164)
 body_colors[2] = make_color_rgb(159,49,6)
 body_colors[3] = make_color_rgb(90,4,163)
+body_colors[4] = make_color_rgb(67,193,167)
+body_colors[5] = make_color_rgb(130,62,67)
 
 legs_colors[0] = make_color_rgb(98,98,98)
 legs_colors[1] = make_color_rgb(63,15,0)
 legs_colors[2] = make_color_rgb(10,1,65)
 legs_colors[3] = make_color_rgb(32,20,37)
+legs_colors[4] = make_color_rgb(145,116,95)
+
 
 //	Heros
 hero_check_timer = 15

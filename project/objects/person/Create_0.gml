@@ -17,11 +17,31 @@ states = states.idle
 //sprite = choose(s_man0,s_man1)
 //sprite_index = sprite
 
-hair = s_hair_0
-head = s_head_0
-body = s_body_0
-hand = s_hand_0
-legs = s_legs_0
+male = choose(0,1,1)
+
+if male {
+	var one = s_hair_0
+	var two = s_hair_1
+	hair = choose(one,one,two,two,s_hair_2)
+	head = s_head_0
+	body = choose(s_body_0,s_body_1,s_body_2)
+	hand = s_hand_0
+	legs = s_legs_0
+}
+//	Female
+else {
+	hair = choose(s_female_hair0,s_female_hair1)
+	head = choose(s_female_head0)
+	body = choose(s_female_body0,s_female_body1,s_female_body2)
+	legs = choose(s_female_legs0,s_female_legs1)
+	hand = choose(s_female_hand0,s_female_hand1)
+	
+	if legs == s_female_legs1 or hand == s_female_hand1 {
+		hand = s_female_hand1
+		legs = s_female_legs0
+	}
+	
+}
 
 var Random = irandom_range(0,array_length_1d(personController.hair_colors)-1)
 hair_color = personController.hair_colors[Random]
