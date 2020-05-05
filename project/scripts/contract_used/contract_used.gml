@@ -188,7 +188,9 @@ with _kiosk contract_conditionCheck()
 		
 //	give the player the reward
 if !contract_misfire {
-	resource_changed("$$",-contracts.contract[Smartcontract, contract_reward],_kiosk.x,_kiosk.y-64,false)
+	var reward = contracts.contract[Smartcontract, contract_reward]
+	if hero > -1 reward = reward * 2
+	resource_changed("$$",-reward,_kiosk.x,_kiosk.y-64,false)
 	resource_changed("ETH",contracts.contract[Smartcontract, contract_gasfee_base],_kiosk.x,_kiosk.y-128,false)
 	//player.money += contracts.contract[smartcontract, contract_reward]
 	var _points = contracts.contract[Smartcontract, contract_reward]
