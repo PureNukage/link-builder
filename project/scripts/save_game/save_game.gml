@@ -57,6 +57,10 @@ ini_write_real(section,"x",camera.x)
 ini_write_real(section,"y",camera.y)
 ini_write_real(section,"zoom_level",camera.zoom_level)
 
+var section = "Sound"
+ini_write_real(section,"Music",soundSystem.current_volume)
+ini_write_real(section,"Dialogue",soundSystem.current_dialogue_volume)
+
 var section = "Heros"
 var new_array = []
 var hidden_array = []
