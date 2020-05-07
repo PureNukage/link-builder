@@ -85,8 +85,40 @@ switch(menu)
 				draw_set_valign(fa_middle)
 				draw_text(_x,_y+box_height/2,menu_string)
 			
-				_y += box_height + buffer
-			}	
+				_y += box_height + buffer			
+			}
+			
+			if os_browser == browser_not_a_browser {		
+				var menu_string = "Quit Game"
+				var _width = string_width(menu_string)
+				var _height = string_height(menu_string)
+			
+				var buffer = 64
+				var box_width = _width + buffer
+				var box_height = _height + buffer
+				draw_set_color(c_black)
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height) {
+					draw_set_alpha(.3)
+					if mouse_check_button_pressed(mb_left) {
+						game_end()	
+					}
+				} else {
+					draw_set_alpha(.5)
+				}
+				
+				draw_roundrect(_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height,false)
+				draw_set_color(c_black)
+				draw_roundrect(_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height,true)
+				draw_roundrect(_x-box_width/2+1,_y+1,_x-box_width/2+box_width-1,_y+box_height-1,true)
+			
+				draw_set_alpha(1)
+				draw_set_color(c_white)
+				draw_set_halign(fa_center)
+				draw_set_valign(fa_middle)
+				draw_text(_x,_y+box_height/2,menu_string)
+			}
+			
+			
 		break
 	#endregion
 	
@@ -96,7 +128,7 @@ switch(menu)
 		if clickDelay <= 0 {
 			
 			var _x = display_get_gui_width()/2
-			var _y = display_get_gui_height()/2 - ((array_height_2d(options) + array_height_2d(resolutions)) * 32) - (display_get_gui_height()/5)
+			var _y = display_get_gui_height()/2 - ((array_height_2d(options) + array_height_2d(resolutions)) * 32) - (display_get_gui_height()/5) - 64
 			
 			_y += 32
 			
@@ -113,7 +145,7 @@ switch(menu)
 				draw_set_valign(fa_middle)
 				draw_set_font(fnt_shop)
 				
-				if os_browser == browser_not_a_browser {
+				//if os_browser == browser_not_a_browser {
 					draw_text(_x,_y+option_height/2,option_name)
 				
 					_y += option_height + buffer
@@ -149,12 +181,38 @@ switch(menu)
 					
 					}
 				
-				}
+				//}
 			}
 			
-			_y += 96
+			////	Fullscreen
+			if os_browser == browser_not_a_browser {
+				var fullscreen = window_get_fullscreen()
+				var e = []
+				e[0] = "False"
+				e[1] = "True"
+				var String = "Fullscreen: " + e[fullscreen]
+				var String_width = string_width(String)
+				var barX = _x - String_width/2
+				var barY = _y
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+String_width,barY+64) {
+					draw_set_color(c_white)	
+					if mouse_check_button_pressed(mb_left) {
+						window_set_fullscreen(!fullscreen)
+
+					}
+				} else {
+					draw_set_color(c_black)	
+				}
+				draw_text(_x,_y+32,String)
 			
-			//	Volume Options
+				_y += 192
+			} else {
+				_y += 96	
+			}
+			
+			
+			
+			////	Volume Options
 			//	Draw bar rectangle
 			var bar_width = 256
 			var bar_height = 32
@@ -559,16 +617,26 @@ switch(menu)
 	#endregion
 }
 
+draw_set_color(c_white)
+draw_set_halign(fa_left)
+draw_set_valign(fa_top)
+draw_set_font(fnt_shop)
+//	Playing on html5? Try fullscreening
+if os_browser != browser_not_a_browser and !in_game {
+	var String = "Try fullscreen!"
+	var String_width = string_width(String)
+	var String_height = string_height(String)
+	var _xx = display_get_gui_width() - String_width - 48
+	var _yy = display_get_gui_height() - String_height - 48
+	draw_text(_xx,_yy,String)
+}
+
 //	Version and credential
 //var version = app.version
-draw_set_font(fnt_shop)
 var credit = app.me
 var total_string = "v"+ version + " by " + credit
 var _string_width = string_width(total_string)
 var _string_height = string_height(total_string)
-var _xx = display_get_gui_width() - _string_width - 16
+var _xx = display_get_gui_width() - _string_width - 48
 var _yy = display_get_gui_height() - _string_height - 16
-draw_set_color(c_white)
-draw_set_halign(fa_left)
-draw_set_valign(fa_top)
 draw_text(_xx,_yy,total_string)

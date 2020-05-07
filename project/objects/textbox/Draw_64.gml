@@ -38,7 +38,7 @@ if !instance_exists(mainmenu) {
 	draw_set_color(c_black)
 	draw_roundrect(buttonX-2,buttonY-2,buttonX+button_width+2,buttonY+button_height+2,false)
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,buttonX,buttonY,buttonX+button_width,buttonY+button_height) {
-		button_mouseover = true
+		if !done button_mouseover = true
 		draw_set_color(c_gray)	
 	
 		if input.mouse_left_press {

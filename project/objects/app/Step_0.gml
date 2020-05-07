@@ -18,6 +18,11 @@ if seconds >= 60 {
 	minutes_switch = 0	
 }
 
+///	Center the window on html5
+if os_browser != browser_not_a_browser {
+	window_center()	
+}
+
 ini_open(working_directory + "savedgame.ini")
 var savedgame = ini_read_real("General","Saved Game",0)
 ini_close()
