@@ -91,7 +91,7 @@ var radius = 384
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2,radius)
 
 var name = "Cerberus Wallet 2FA"
-var _string = ""
+var _string = "An Ethereum wallet that only allows withdrawals after a 2-Factor Authentication"
 var reward = 10
 var price = 0
 var portrait = s_portrait_cerberus
@@ -107,7 +107,7 @@ var Contract_type2 = contract_types.hackathon
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "Backerr"
-var _string = ""
+var _string = "A fully decentralized alternative to Patreon. Hosted on IPFS and payments are through a blockchain"
 var reward = 10
 var price = 0
 var portrait = s_portrait_backerr
@@ -123,7 +123,7 @@ var Contract_type2 = contract_types.hackathon
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "TokenSet"
-var _string = ""
+var _string = "Automated asset management strategies"
 var reward = 12
 var price = 500
 var portrait = s_portrait_tokenset
@@ -139,7 +139,7 @@ var Contract_type2 = contract_types.hackathon
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "Smart Marketing Campaign"
-var _string = ""
+var _string = "Allows for payment of marketing campaigns based on analytics"
 var reward = 12
 var price = 500
 var portrait = s_portrait_smartmarketing
@@ -155,7 +155,7 @@ var Contract_type2 = contract_types.hackathon
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "Synthetix"
-var _string = ""
+var _string = "Crypto-backed synthetic asset platform that provides exposure to real-world currencies, commodities, stocks and indices."
 var reward = 21
 var price = 4500
 var portrait = s_portrait_synthetix
@@ -171,7 +171,7 @@ var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "Compound"
-var _string = ""
+var _string = "Algorithmic, autonomous interest rate protocol built for developers"
 var reward = 24
 var price = 4500
 var portrait = s_portrait_compound
@@ -188,7 +188,7 @@ var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "Maker"
-var _string = ""
+var _string = "A DAO on Ethereum that backs the stablecoin Dai"
 var reward = 15
 var price = 2500
 var portrait = s_portrait_maker
@@ -204,7 +204,7 @@ var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "OpenLaw"
-var _string = ""
+var _string = "Borderless commercial systems on the blockchain"
 var reward = 16
 var price = 2500
 var portrait = s_portrait_openlaw
@@ -220,7 +220,7 @@ var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "eSports Tournament"
-var _string = ""
+var _string = "Automated payouts to eSports teams based on their performance in a tournament"
 var reward = 30
 var price = 5500
 var portrait = s_portrait_esports
@@ -236,7 +236,7 @@ var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "Revenue Share"
-var _string = ""
+var _string = "Revenue from a digital asset is distributed amongst tokenholders"
 var reward = 17
 var price = 2500
 var portrait = s_portrait_revenueshare
@@ -252,7 +252,7 @@ var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "Loopring"
-var _string = ""
+var _string = "Scalable zkRollup exchange protocol"
 var reward = 30
 var price = 5500
 var portrait = s_portrait_loopring
@@ -270,7 +270,7 @@ var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "Wrapped Bitcoin"
-var _string = ""
+var _string = "Port Bitcoins to the Ethereum blockchain"
 var reward = 30
 var price = 7000
 var portrait = s_portrait_bitcoin
@@ -287,7 +287,7 @@ var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "Etherisc"
-var _string = ""
+var _string = "Automatic flight insurance"
 var reward = 19
 var price = 4500
 var portrait = s_portrait_etherisc
