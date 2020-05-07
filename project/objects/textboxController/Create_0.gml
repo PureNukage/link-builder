@@ -15,6 +15,9 @@ barY = -1
 bar_width = 64
 bar_height = -1
 
+surface = 0
+surface_offsetY = 0
+
 draw_active = true
 
 handleX = -1

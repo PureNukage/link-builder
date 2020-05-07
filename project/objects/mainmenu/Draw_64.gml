@@ -41,6 +41,8 @@ switch(menu)
 			draw_text(_x,_yy,"Smart Contract Builder")
 			draw_set_font(-1)
 			//draw_sprite(s_logo,0,_x,_y-200)
+			
+			if app.resolution_height == 720 and os_browser == browser_not_a_browser _y -= 120
 		
 			for(var i=0;i<array_height_2d(mainMenu);i++) {
 				var menu_string = mainMenu[i, menu_name]
