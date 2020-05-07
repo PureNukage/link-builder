@@ -12,6 +12,32 @@ if !game.vision and !game.temp_vision {
 	//	Hero
 	else {
 		draw_sprite_ext(personController.heros[hero, hero_sprite],0,x,y,image_xscale,1,0,c_white,1)
+		
+		//	Speech
+		if current_speech > -1 {
+			var myLine = personController.heroSpeech[hero, current_speech]
+			var width = string_width(myLine) + 64
+			var height = string_height(myLine) + 64
+			
+			var sWidth = sprite_get_width(s_speech2)
+			var sHeight = sprite_get_height(s_speech2)
+			
+			var adjust = width / 24
+			
+			sWidth *= adjust
+			sHeight *= adjust
+			
+			var X = x-width/2
+			var Y = y-80-sHeight
+			draw_set_alpha(current_speech_alpha)
+			draw_sprite_ext(s_speech2,0,X,Y,adjust,adjust,0,c_white,current_speech_alpha)
+			
+			draw_set_color(c_black)
+			draw_set_halign(fa_center)
+			draw_set_valign(fa_bottom)
+			draw_text(X+sWidth/2,Y+sHeight/3+12,myLine)
+			draw_set_alpha(1)
+		}
 	}
 }
 

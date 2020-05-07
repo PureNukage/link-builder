@@ -12,6 +12,12 @@ pissed = false
 
 hero = -1
 
+new_speech = -1
+current_speech = -1
+current_speech_timer = 120
+current_speech_fade_up = false
+current_speech_alpha = 0
+
 states = states.idle
 
 //sprite = choose(s_man0,s_man1)

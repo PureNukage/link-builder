@@ -11,6 +11,8 @@ if in_game {
 	var xx = display_get_gui_width()/2 - width/2
 	var yy = display_get_gui_height()/6
 	
+	if app.resolution_height == 720 yy -= 100
+	
 	draw_set_color(c_gray)
 	draw_rectangle(xx,yy,xx+width,yy+height,false)
 	draw_set_alpha(1)

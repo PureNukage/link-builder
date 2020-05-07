@@ -194,6 +194,25 @@ var sprite = s_hero_pepe
 var sprite_head = s_hero_pepe_head
 create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
 
+heroSpeech[hero.rory, 0] = "Check the Pivotal Tracker"
+heroSpeech[hero.rory, 1] = "Chainlink is cool!"
+
+heroSpeech[hero.thomas, 0] = "If you're a developer check out docs.chain.link"
+
+heroSpeech[hero.adelyn, 0] = "AI is the future!"
+
+heroSpeech[hero.chicocrypto, 0] = "Cheers, I'll see ya next time"
+
+heroSpeech[hero.pomp, 0] = "How large is your cash position?"
+
+heroSpeech[hero.aaronwright, 0] = "Check out The LAO"
+
+heroSpeech[hero.cz, 0] = "Funds are safu"
+
+heros_talking = 0
+heros_talking_max = 2
+canTalk = true
+
 hero_newCheck()
 
 

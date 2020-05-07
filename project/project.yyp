@@ -1391,6 +1391,14 @@
             }
         },
         {
+            "Key": "6bd6f997-7fac-4d38-9085-aacff6ddd6a5",
+            "Value": {
+                "id": "89ff3fd5-432f-4b80-8428-07e124f9054c",
+                "resourcePath": "sprites\\s_speech\\s_speech.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "6e4b06ea-de1d-451e-bb76-a135b71a8647",
             "Value": {
                 "id": "4096c0ea-b1a1-4502-b45a-44ea57df0664",
@@ -2092,6 +2100,14 @@
                 "id": "bcac542e-fe92-41cb-b4f2-1ee8a1811bea",
                 "resourcePath": "options\\amazonfire\\options_amazonfire.yy",
                 "resourceType": "GMAmazonFireOptions"
+            }
+        },
+        {
+            "Key": "a1d76a52-b259-48ad-86e6-2358f47f06d6",
+            "Value": {
+                "id": "2a520f67-99e2-4275-ab11-2bbf16d7cdf6",
+                "resourcePath": "sprites\\s_speech2\\s_speech2.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

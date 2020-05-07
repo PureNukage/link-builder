@@ -405,16 +405,16 @@ if data_open {
 			draw_set_color(c_black)
 			draw_set_halign(fa_left)
 			
-			//	Scrollbar click
-			if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) {
-				if input.mouse_left_press or input.mouse_left {
-					var Y = gui_mouse_y
-					Y = ((Y - 272) / bar_height)*(surface_height-page_height)
-					data_surface_offsetY = Y
-				}
-			}
-			
 			if surface_height > page_height and handle_height < bar_height {
+				
+				//	Scrollbar click
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) {
+					if input.mouse_left_press or input.mouse_left {
+						var Y = gui_mouse_y
+						Y = ((Y - 272) / bar_height)*(surface_height-page_height)
+						data_surface_offsetY = Y
+					}
+				}
 			
 				draw_set_color(c_gray4)
 				draw_roundrect(barX,barY,barX+bar_width,barY+bar_height,false)

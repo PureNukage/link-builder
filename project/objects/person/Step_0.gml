@@ -209,6 +209,23 @@ if !game.game_over {
 								}
 								goal_current = -1
 								states = states.idle
+								
+								////	If hero, check for speech
+								if hero > -1 and current_speech = -1 and personController.canTalk {
+									var Random = irandom_range(1,100)
+									if Random > 95 {
+										var how_many_lines = array_length_2d(personController.heroSpeech,hero)
+										if how_many_lines > 1 var my_line = irandom_range(0,how_many_lines-1)
+										else if how_many_lines == 1 my_line = 0
+										else if how_many_lines <= 0 my_line = -1
+										if my_line > -1 {
+											new_speech = my_line
+											current_speech_timer = 120
+											personController.heros_talking++
+										}
+									}
+										
+								}
 						
 							break
 							#endregion
@@ -352,6 +369,30 @@ if !game.game_over {
 
 	//	Constants
 	if cooldown > 0 cooldown--
+	
+	//	Hero Speech
+	if new_speech > -1 {
+		current_speech = new_speech
+		new_speech = -1
+		current_speech_fade_up = true
+	}
+	if current_speech > -1 {
+		var alpha = 0.05
+		if current_speech_fade_up {
+			if current_speech_alpha >= 1 {
+				current_speech_timer--
+				if current_speech_timer <= 0 current_speech_fade_up = false
+			}
+		} else {
+			alpha = alpha * -1
+			if current_speech_alpha <= 0 {
+				current_speech = -1
+				current_speech_timer = -1
+				personController.heros_talking--
+			}
+		}
+		current_speech_alpha += alpha
+	}
 } 
 //	Game is over, disperse
 else {

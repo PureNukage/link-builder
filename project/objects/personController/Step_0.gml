@@ -37,7 +37,11 @@ if needed_population > population {
 	
 }
 
-//	Heros
+////	Heros 
+//	Hero speech
+if heros_talking < heros_talking_max canTalk = true else canTalk = false
+
+//	Heros spawn
 if time.stream >= hero_check_timer {
 	hero_check_time = time.stream + hero_check_timer
 	for(var h=0;h<array_height_2d(heros);h++) {

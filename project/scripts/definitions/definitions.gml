@@ -158,6 +158,8 @@ enum conditions {
 #macro tutorial_name 0
 #macro tutorial_selected 1
 
+#macro macro_linkpal 28
+
 #macro contract_name 0
 #macro contract_online 5
 #macro contract_kiosk 2

@@ -348,7 +348,7 @@ switch(tutorial)
 						shop.item_node[1,node_available] = true
 						//shop.item_node[2,node_available] = false
 						shop.item_data[0,item_available] = true
-						shop.item_data[19,item_available] = true
+						shop.item_data[macro_linkpal,item_available] = true
 						stage++
 					}
 					
@@ -418,7 +418,7 @@ switch(tutorial)
 				
 					var Node1 = item_create(node,0,0,0,"BryceMathsters",s_portrait_node,0)
 					var Node2 = item_create(node,0,0,1,"Feetsy",s_portrait_node,0)
-					var Paypal = item_create(data,0,0,19,"PayPal",s_portrait_paypal,0)
+					var Paypal = item_create(data,0,0,macro_linkpal,"PayPal",s_portrait_paypal,0)
 					var ethusd = item_create(data,0,0,6,"BraveNewCoin ETH/USD",s_portrait_ethereum,0)
 					var Contract = item_create(kiosk,0,0,1,"LinkPal",s_portrait_linkpal,0,1)
 					

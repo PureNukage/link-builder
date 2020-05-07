@@ -56,6 +56,6 @@ if amount < 0 _string = string_replace(_string,"-","")
 
 if app.tutorial == -1 and amount != 0 create_popup(xx,yy,_string,_color,1,3,_icon,_gui)
 
-with system {
+if instance_exists(system) with system {
 	system_dataflow_check()	
 }
