@@ -9,6 +9,8 @@ if current_level == array_length_1d(levels)-1 {
 	var needed_runs = levels[current_level+1]
 }
 
+var jobruns = shop.item_node[item_index, node_jobruns]
+
 if jobruns >= needed_runs {
 	shop.item_node[item_index, node_level]++
 	leveled_up = true
