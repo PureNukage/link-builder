@@ -352,7 +352,8 @@ switch(menu)
 							app.world_width = 1920
 							app.world_height = 1088		
 							var String = string(i)
-							ga_addProgressionEvent(GA_PROGRESSIONSTATUS_START, String)
+							var String = menu_string
+							ga_addProgressionEvent(GA_PROGRESSIONSTATUS_START, "Tutorial", String)
 							room_goto_next()
 
 						}
@@ -470,7 +471,7 @@ switch(menu)
 				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-string_width(_string)/2,_y,_x+string_width(_string)/2+string_width(_string),_y+string_height(_string)) {
 					draw_set_color(c_white)
 					if mouse_check_button_pressed(mb_left) {
-						if app.tutorial > -1 ga_addProgressionEvent(GA_PROGRESSIONSTATUS_FAIL, "Main Menu")
+						if app.tutorial > -1 ga_addProgressionEvent(GA_PROGRESSIONSTATUS_FAIL, "Tutorial", tutorials[app.tutorial, tutorial_name])
 						back_to_mainmenu()	
 					}
 				} else {
@@ -516,7 +517,11 @@ switch(menu)
 					app.tutorials = -1
 					app.world_width = 2560
 					app.world_height = 2048
-					app.data_corruption = mode.on			
+					app.data_corruption = mode.on		
+					
+					////	GAME ANALYTICS Progression game start
+					ga_addProgressionEvent(GA_PROGRESSIONSTATUS_START, "Game")
+					
 					room_goto_next()
 				}
 			} else {

@@ -218,6 +218,23 @@ else {
 		}
 	
 	}
+	
+	var String = ini_read_string("Contracts","New State",0)
+	if is_string(String) {
+		var list = ds_list_create()
+		ds_list_read(list,String)
+		
+		var newstate = list[| 0]
+		
+		if is_array(newstate) {
+			for(var c=0;c<array_height_2d(contracts.contract);c++) {
+				contracts.contract[c, contract_virgin] = newstate[c]
+			}
+		}
+		
+		ds_list_destroy(list)
+		
+	}
 
 	var section = "Contracts"
 	for(var c=0;c<contract_count;c++) {

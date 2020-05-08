@@ -17,6 +17,13 @@ if timer == -1 and stage == -1 {
 	script_index = 0
 			
 }	
+
+var tutorials = []
+tutorials[0] = "1. Smart Contract Builder basics"
+tutorials[1] = "2. The Oracle Problem, or Your First dApp"
+tutorials[2] = "3. The Need to Decentralize"
+
+
 switch(tutorial)
 {
 	#region #1 Smart Contract Builder intro
@@ -286,7 +293,7 @@ switch(tutorial)
 				//	Wait for the OK button to be hit and send them back to the main menu
 				case 17:
 					if textbox_in_history(6969) {
-						ga_addProgressionEvent(GA_PROGRESSIONSTATUS_COMPLETE, "Main Menu")
+						ga_addProgressionEvent(GA_PROGRESSIONSTATUS_COMPLETE, "Tutorial", tutorials[tutorial])
 						back_to_mainmenu()	
 					}
 				break
@@ -393,7 +400,7 @@ switch(tutorial)
 				//	Return to main menu
 				case 6:
 					if textbox_in_history(1234) {
-						ga_addProgressionEvent(GA_PROGRESSIONSTATUS_COMPLETE, "Main Menu")
+						ga_addProgressionEvent(GA_PROGRESSIONSTATUS_COMPLETE, "Tutorial", tutorials[tutorial])
 						back_to_mainmenu()	
 					}
 				break
@@ -585,7 +592,7 @@ switch(tutorial)
 				//	Wait to return to main menu
 				case 12:
 					if textbox_in_history(123456) {
-						ga_addProgressionEvent(GA_PROGRESSIONSTATUS_COMPLETE, "Main Menu")
+						ga_addProgressionEvent(GA_PROGRESSIONSTATUS_COMPLETE, "Tutorial", tutorials[tutorial])
 						back_to_mainmenu()	
 					}
 					

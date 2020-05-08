@@ -289,6 +289,16 @@ for(var i=0;i<ds_list_size(parts);i++) {
 						contracts.contract[_kiosk.smartcontract, contract_online] = true
 						ds_list_add(contracts.contracts_online,_kiosk.smartcontract)
 						debug_log("Kiosk "+string(_kiosk)+" is now active with smartcontract ["+contracts.contract[_kiosk.smartcontract, contract_name]+"]")
+						if contracts.contract[_kiosk.smartcontract, contract_virgin] {
+							
+							////	GAME ANALYTICS Resource drop for value
+							var Value = contracts.contract[_kiosk.smartcontract, contract_price]
+							var cName = contracts.contract[_kiosk.smartcontract, contract_name]
+							
+							ga_addResourceEvent(GA_RESOURCEFLOWTYPE_SOURCE, "value", Value, "contract online", cName)
+							
+							contracts.contract[_kiosk.smartcontract, contract_virgin] = false
+						}
 					}
 				} else {
 					_kiosk.active = false	

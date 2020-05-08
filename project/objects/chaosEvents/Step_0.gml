@@ -99,7 +99,12 @@ if ds_list_empty(affected_data) {
 				if placed and is_price(name) and is_price(name,true) == "ETH/USD" {
 					ds_list_add(list,d)
 				}
-			}	
+			}
+			
+			////	GAME ANALYTICS Custom ETH chaosEvent
+			if data_eth_amount > 0 {
+				ga_addDesignEvent("chaos events:eth", data_eth_amount)
+			}
 				
 			while data_eth_amount > 0 {
 				if !ds_list_empty(list) {
@@ -141,6 +146,11 @@ if ds_list_empty(affected_data) {
 					ds_list_add(list,d)
 				}
 			}	
+			
+			////	GAME ANALYTICS Custom ETH chaosEvent
+			if data_link_amount > 0 {
+				ga_addDesignEvent("chaos events:link", data_link_amount)
+			}
 			
 			while data_link_amount > 0 {
 				if !ds_list_empty(list) {

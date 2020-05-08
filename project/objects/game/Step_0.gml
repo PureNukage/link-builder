@@ -30,6 +30,9 @@ if in_debt and app.tutorial == -1 {
 			bailout2_amount_trigger = bailout1_amount_net
 			resource_changed("$$",-bailout1_amount,app.resolution_width/2,app.resolution_height/2,true)
 			create_textbox("Mr. SN has given you a $"+string(bailout1_amount)+" bailout. You only have one more of these.",s_event_sn)
+			
+			////	GAME ANALYTICS Resource packet
+			ga_addResourceEvent(GA_RESOURCEFLOWTYPE_SOURCE, "money", bailout1_amount, "bailout", "first")
 		}
 		
 		//	Trigger the Second bailout
@@ -38,12 +41,18 @@ if in_debt and app.tutorial == -1 {
 			lose_game_trigger = bailout2_amount_net
 			resource_changed("$$",-bailout2_amount,app.resolution_width/2,app.resolution_height/2,true)
 			create_textbox("Mr. SN tosses you $"+string(bailout2_amount)+". You're on your own from here",s_event_sn)
+			
+			////	GAME ANALYTICS Resource packet
+			ga_addResourceEvent(GA_RESOURCEFLOWTYPE_SOURCE, "money", bailout2_amount, "bailout", "second")			
 		}
 		
 		//	Check for losing the game
 		if player.money < (lose_game_trigger*-1) and bailout2_amount_net > -1 and !game_over {
 			game_over = true
 			create_textbox("Mr. SN has left as an investor. This truly is the darkest timeline.",s_event_gameover)
+			
+			////	GAME ANALYTICS Progression game start
+			ga_addProgressionEvent(GA_PROGRESSIONSTATUS_FAIL, "Game")
 		}
 		
 		if game_over {

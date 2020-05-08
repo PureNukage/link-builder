@@ -7,7 +7,14 @@ switch(object_index)
 		shop.item_node[item_index, node_object_index] = id
 	break
 	case data:
-		if !replace resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)
+		
+		////	GAME ANALYTICS	update resources if this is a new data purchase
+		if input.selection = id and app.tutorial == -1 and !shop.item_data[item_index, item_purchased] {
+			var Price = shop.item_data[item_index, item_price]
+			ga_addResourceEvent(GA_RESOURCEFLOWTYPE_SINK, "money", Price, "purchase", name)
+		}
+	
+		if !replace	resource_changed("$$",price,gui_mouse_x,gui_mouse_y,true)	
 		shop.item_data[item_index, item_placed] = true
 		shop.item_data[item_index, item_purchased] = true
 		shop.item_data[item_index, item_object_index] = id

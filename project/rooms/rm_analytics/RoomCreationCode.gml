@@ -18,6 +18,11 @@ ga_configureBuild(platform+" "+ version)
 var array = ga_array("value", "money", "link", "eth")
 ga_configureAvailableResourceCurrencies(array)
 
+var array = ga_array("bailout", "purchase", "contract online")
+ga_configureAvailableResourceItemTypes(array)
+
+//ga_addDesignEvent("")
+
 ga_setEnabledVerboseLog(true)
 ga_setEnabledInfoLog(true)
 

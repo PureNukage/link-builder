@@ -114,50 +114,6 @@ var string_encoded = ds_list_write(list)
 ini_write_string(section,"Nodes DB",string_encoded)
 ds_list_destroy(list)
 
-////	save the items that are in the level
-//var previous_index = -1
-//var ID = 0
-//with all {
-//	if (object_index == node or object_index == kiosk or object_index == data) and states == states.placed {
-//		//	Start of a new loop with a new index
-//		if previous_index != object_index {
-//			previous_index = object_index
-//			var ID = 0
-//		}
-//		//	Looping through objects in the level and saving their information
-//		else {
-//			if object_index == node var section = "Nodes"
-//			if object_index == kiosk var section = "Contracts"
-//			if object_index == data var section = "Data"
-//			var key_base = string(ID)+"'s: "
-//			ini_write_real(section,key_base+"x",center_cell_x)
-//			ini_write_real(section,key_base+"y",center_cell_y)
-			
-//			//	if node or db, use item index
-//			if object_index == node or object_index == data 
-//			ini_write_real(section,key_base+"item_index",item_index)
-//			else if object_index == kiosk 
-//			ini_write_real(section,key_base+"item_index",smartcontract)
-			
-//			//	convert ports array into a ds_list and then encode it into a string
-//			var list = ds_list_create()
-//			var Ports = ports
-//			var Sockets = sockets
-//			for(var p=0;p<ports_count;p++) {
-//				Ports[p,port_object] = -1
-//			}
-//			list[| 0] = Ports
-//			list[| 1] = Sockets
-//			var string_encoded = ds_list_write(list)
-//			ini_write_string(section,key_base+"ports",string_encoded)
-//			ds_list_destroy(list)
-			
-//			ID++
-			
-//		}
-//	}
-//}
-
 //	save the nodes that are in the level
 var ID = 0
 var section = "Nodes"
@@ -245,6 +201,20 @@ else {
 
 var ID = 0
 var section = "Contracts"
+var newstate = []
+
+////	New State
+for(var c=0;c<array_height_2d(contracts.contract);c++) {
+	newstate[c] = contracts.contract[c, contract_virgin]
+}	
+
+var list = ds_list_create()
+list[| 0] = newstate
+var list_string = ds_list_write(list)
+ini_write_string(section,"New State",list_string)
+ds_list_destroy(list)
+
+
 if instance_exists(kiosk) {
 	with kiosk {
 		if states == states.placed {
