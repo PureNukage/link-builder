@@ -109,8 +109,8 @@ if exchange_active {
 	var window_width = 320
 	var window_height = 120
 	if app.resolution_width == 1280 {
-		var windowX = exchangeX - window_width/5
-		var windowY = exchangeY + sh + 48
+		var windowX = exchangeX - window_width/4
+		var windowY = exchangeY + sh + 80
 	} else if app.resolution_width == 1920 {
 		var windowX = exchangeX + sw + 10
 		var windowY = exchangeY 
@@ -148,7 +148,12 @@ if exchange_active {
 		draw_rectangle(XX-2,YY-2,XX+button_width+2,YY+button_height+2,false)
 		
 		if point_in_rectangle(gui_mouse_x,gui_mouse_y,XX,YY,XX+button_width,YY+button_height) {
-			if exchange_currency == "LINK" draw_set_color(c_yellow) else draw_set_color(c_ltgray)
+			//if exchange_currency == "LINK" {
+			//	draw_set_color(c_yellow) 
+			//} else {
+			//	draw_set_color(c_ltgray)
+			//}
+			draw_set_color(c_orange)
 			if input.mouse_left_press {
 				exchange_currency = "LINK"
 			}
@@ -164,7 +169,8 @@ if exchange_active {
 		draw_rectangle(XX-2,YY-2,XX+button_width+2,YY+button_height+2,false)
 		
 		if point_in_rectangle(gui_mouse_x,gui_mouse_y,XX,YY,XX+button_width,YY+button_height) {
-			if exchange_currency == "ETH" draw_set_color(c_yellow) else draw_set_color(c_ltgray)
+			//if exchange_currency == "ETH" draw_set_color(c_yellow) else draw_set_color(c_ltgray)
+			draw_set_color(c_orange)
 			if input.mouse_left_press {
 				exchange_currency = "ETH"
 			}
@@ -237,7 +243,7 @@ if exchange_active {
 		draw_set_color(c_black)
 
 		//	Scrollbar
-		var bar_width = 120
+		var bar_width = 110
 		var bar_height = 20
 		var barX = amountX+amount_width+(spacer*11)
 		var barY = priceY-16
@@ -249,14 +255,37 @@ if exchange_active {
 		
 		bar_width += handle_width
 		
-		if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX,barY,barX+bar_width,barY+bar_height) {
+		var money_amount = 50
+		
+		var segmentSize = bar_width / money_amount
+		
+		var extra_space = handle_width/3
+		
+		var handle_color = c_white
+		
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX-extra_space,barY,barX+bar_width+extra_space,barY+bar_height) {
 			if input.mouse_left_press or input.mouse_left {
-				for(var s=0;s<51;s++) {
-					if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX+(s*(handle_width-16)),barY,barX+(s*(handle_width-16))+handle_width-16,barY+bar_height) {
-						if exchange_currency == "LINK" {
-							link_trade = s
-						} else {
-							eth_trade = s
+				handle_color = c_ltgray
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX-extra_space,barY,barX,barY+bar_height) {
+					if exchange_currency == "LINK" {
+						link_trade = 0
+					} else {
+						eth_trade = 0
+					}	
+				} else if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX+bar_width,barY,barX+bar_width+extra_space,barY+bar_height) {
+					if exchange_currency == "LINK" {
+						link_trade = money_amount
+					} else {
+						eth_trade = money_amount
+					}
+				} else {
+					for(var s=0;s<51;s++) {
+						if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX+(s*(handle_width-16)),barY,barX+(s*(handle_width-16))+handle_width-16,barY+bar_height) {
+							if exchange_currency == "LINK" {
+								link_trade = s
+							} else {
+								eth_trade = s
+							}
 						}
 					}
 				}
@@ -264,7 +293,12 @@ if exchange_active {
 		}
 		draw_rectangle(barX,barY,barX+bar_width,barY+bar_height,false)
 		
-		draw_set_color(c_gray)
+		if point_in_rectangle(gui_mouse_x,gui_mouse_y,handleX,handleY,handleX+handle_width,handleY+handle_height) and handle_color == c_white {
+			handle_color = c_ltgray	
+		} else if handle_color == c_white {
+			handle_color = c_dkgray
+		}
+		draw_set_color(handle_color)
 		draw_rectangle(handleX,handleY,handleX+handle_width,handleY+handle_height,false)
 		
 		//	Purchase Button
@@ -273,26 +307,37 @@ if exchange_active {
 		var purchase_width = string_width("Buy") + spacer + 40
 		var purchase_height = string_height("Buy") + spacer
 		var purchaseX = windowX+window_width-purchase_width-20
-		var purchaseY = windowY+window_height-purchase_height-4
+		var purchaseY = windowY+window_height-purchase_height-8
 		
 		draw_set_color(c_black)
 		draw_roundrect(purchaseX-2,purchaseY-2,purchaseX+purchase_width+2,purchaseY+purchase_height+2,false)
 		
+		draw_set_alpha(.6)
 		if point_in_rectangle(gui_mouse_x,gui_mouse_y,purchaseX,purchaseY,purchaseX+purchase_width,purchaseY+purchase_height) {
-			draw_set_color(c_green)
+			draw_set_alpha(.9)
+			if currency_amount * currency_price > player.money {
+				draw_set_color(c_red)
+			} else {
+				draw_set_color(c_green)	
+			}
 			if currency_amount * currency_price > player.money draw_set_color(c_red)
 			var amount_of_money = currency_amount * currency_price
 			if input.mouse_left_press {
+				draw_set_color(c_white)
 				resource_changed("$$",amount_of_money,gui_mouse_x,gui_mouse_y+128,true)
 				resource_changed(exchange_currency,-currency_amount,gui_mouse_x,gui_mouse_y+256,true)
 			}
 		} else {
-			draw_set_color(c_green)
-			if currency_amount * currency_price > player.money draw_set_color(c_red)
+			if currency_amount * currency_price > player.money {
+				draw_set_color(c_red)
+			} else {
+				draw_set_color(c_green)	
+			}
 		}
 		draw_roundrect(purchaseX,purchaseY,purchaseX+purchase_width,purchaseY+purchase_height,false)
+		draw_set_alpha(1)
 		
-		draw_set_color(c_black)
+		draw_set_color(c_white)
 		draw_text(purchaseX+purchase_width/2+1,purchaseY+purchase_height/2,"Buy")
 		
 	}
