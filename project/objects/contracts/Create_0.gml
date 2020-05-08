@@ -57,7 +57,7 @@ var Contract_type2 = contract_types.hackathon
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
 
 var name = "ETH/USD Price Feed"
-var _string = "Price Feeds can generate\na Decentralized price that nearby Contracts may use"
+var _string = "Price Feeds can generate a Decentralized price that nearby Contracts may use"
 var reward = 0
 var price = 500
 var portrait = s_portrait_pricefeed
@@ -74,7 +74,7 @@ var radius = 384
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2,radius)
 
 var name = "LINK/USD Price Feed"
-var _string = "Price Feeds can generate\na Decentralized price that nearby Contracts may use"
+var _string = "Price Feeds can generate a Decentralized price that nearby Contracts may use"
 var reward = 0
 var price = 4500
 var portrait = s_portrait_pricefeed
