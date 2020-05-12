@@ -457,6 +457,7 @@
 
 	var _string = "A ChainLink node.\n\nSome say its the 4th industrial revolution\nOthers say its made of cheese"
 	var levels = create_levels(0, 75, 400, 1200, 3500, 10000)
+	
 	create_node("YorkyRoad",_string,100,0,0,levels,false)
 	
 	create_node("Gonsinator",_string,350,0,0,levels,false)
@@ -471,7 +472,7 @@
 	var available = false
 	create_node(name,_string,price,jobruns,level,levels,available)
 	
-	var name = "Wagyu"
+	var name = "Infura"
 	var _string = ""
 	var price = 0
 	var jobruns = 0 
@@ -495,7 +496,7 @@
 	var available = false
 	create_node(name,_string,price,jobruns,level,levels,available)
 	
-	var name = "Sugoi"
+	var name = "Omniscience"
 	var _string = ""
 	var price = 0
 	var jobruns = 0 

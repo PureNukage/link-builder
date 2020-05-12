@@ -34,27 +34,27 @@ if ds_list_empty(affected_data) {
 			if total_wealth >= ethusd_data_price {
 				//	the Player is squatting with 1 ETH/USD source
 				if ethusd_sources == 1 {
-					debug_log("The Player is squatting with 1 ETH/USD source")
+					if time.seconds_switch debug_log("The Player is squatting with 1 ETH/USD source")
 					data_eth_amount = 1
 				}
 				
 				//	the Player is squatting with 2 or 3 ETH/USD sources
 				if ethusd_sources > 1 and ethusd_sources < 4 {
-					debug_log("The Player is squatting with 2 or 3 ETH/USD sources")
+					if time.seconds_switch debug_log("The Player is squatting with 2 or 3 ETH/USD sources")
 					if ethusd_sources == 2 data_eth_amount = 1
 					if ethusd_sources == 3 data_eth_amount = 2
 				}
 				
 				//	the Player is squatting with 4 or 5 ETH/USD sources
 				if ethusd_sources > 3 and ethusd_sources < 6 {
-					debug_log("The Player is squatting with 4 or 5 ETH/USD sources")
+					if time.seconds_switch debug_log("The Player is squatting with 4 or 5 ETH/USD sources")
 					if (player.money > 5000 or eth_wealth > 2500 or link_wealth > 2500) data_eth_amount = 3
 					else data_eth_amount = 2
 				}
 				
 				//	the Player is squatting with more than 5 ETH/USD sources
 				if ethusd_sources > 5 {
-					debug_log("The Player is squatting with more than 5 ETH/USD sources")
+					if time.seconds_switch debug_log("The Player is squatting with more than 5 ETH/USD sources")
 					data_eth_amount = 3	
 				}	
 								
