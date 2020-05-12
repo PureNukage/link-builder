@@ -21,9 +21,6 @@ ini_write_string(section,"Version",version)
 
 //	level screenshot
 if app.platform == "windows" { 
-	var width = surface_get_width(application_surface)
-	var height = surface_get_height(application_surface)
-	
 	surface_save(application_surface,"Saved Game Screenshot")
 }
 

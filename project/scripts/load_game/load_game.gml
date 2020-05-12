@@ -227,8 +227,11 @@ else {
 		var newstate = list[| 0]
 		
 		if is_array(newstate) {
-			for(var c=0;c<array_height_2d(contracts.contract);c++) {
-				contracts.contract[c, contract_virgin] = newstate[c]
+			var height = array_height_2d(contracts.contract)
+			if height == array_length_1d(newstate) {
+				for(var c=0;c<array_height_2d(contracts.contract);c++) {
+					contracts.contract[c, contract_virgin] = newstate[c]
+				}
 			}
 		}
 		

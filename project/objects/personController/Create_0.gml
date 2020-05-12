@@ -156,7 +156,7 @@ create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
 
 var Enum = hero.pomp
 var name = "Pomp"
-var String = "Have a BTC/USD Price Feed with 9 APIs"
+var String = "Have a BTC/USD Price Feed with 3 APIs"
 var available = true
 var acquired = false
 var hidden = true
@@ -164,15 +164,35 @@ var sprite = s_hero_pomp
 var sprite_head = s_hero_pomp_head
 create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
 
-var Enum = hero.gaben
-var name = "Gabe Newell"
-var String = "Build the eSports Tournament Contract"
-var available = true
-var acquired = false
-var hidden = true
-var sprite = s_hero_gaben
-var sprite_head = s_hero_gaben_head
-create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
+//var Enum = hero.pomp
+//var name = "Andreas A."
+//var String = "Have a BTC/USD Price Feed with 6 APIs"
+//var available = true
+//var acquired = false
+//var hidden = true
+//var sprite = s_hero_pomp
+//var sprite_head = s_hero_pomp_head
+//create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
+
+//var Enum = hero.pomp
+//var name = "Satoshi"
+//var String = "Have a BTC/USD Price Feed with 9 APIs"
+//var available = true
+//var acquired = false
+//var hidden = true
+//var sprite = s_hero_pomp
+//var sprite_head = s_hero_pomp_head
+//create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
+
+//var Enum = hero.gaben
+//var name = "Gaben"
+//var String = "Build the eSports Tournament Contract"
+//var available = false
+//var acquired = false
+//var hidden = true
+//var sprite = s_hero_gaben
+//var sprite_head = s_hero_gaben_head
+//create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
 
 var Enum = hero.duck
 var name = "Duck"

@@ -122,6 +122,27 @@ switch(menu)
 				draw_text(_x,_y+box_height/2,menu_string)
 			}
 			
+			////	Credits
+			
+			var testString = "test"
+			var height = string_height(testString)
+			
+			var spacer = 4
+			
+			var xx = 16
+			var yy = display_get_gui_height()-((height+spacer)*3)
+			
+			yy += spacer
+			
+			draw_set_halign(fa_left)
+			draw_set_valign(fa_bottom)
+			
+			draw_text(xx,yy,"created by " + app.me)					yy += height+spacer
+			
+			draw_text(xx,yy,"music by wombocombo, kharsus")		yy += height+spacer
+			
+			draw_text(xx,yy,"thanks to my testers: kharsus, palatine, halcyonfields, Leo_the_Potato")
+			
 			
 		break
 	#endregion
@@ -643,7 +664,11 @@ if os_browser != browser_not_a_browser and !in_game {
 //	Version and credential
 //var version = app.version
 var credit = app.me
-var total_string = "v"+ version + " by " + credit
+if in_game {
+	var total_string = "v"+ version + " by " + credit
+} else {
+	var total_string = "v" + version	
+}
 var _string_width = string_width(total_string)
 var _string_height = string_height(total_string)
 var _xx = display_get_gui_width() - _string_width - 48

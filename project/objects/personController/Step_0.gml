@@ -72,7 +72,7 @@ if time.stream >= hero_check_timer {
 							if contracts.contract[smartcontract, contract_name] == "LinkPal" amount++
 							if contracts.contract[smartcontract, contract_name] == "BountiBot" amount++
 							if contracts.contract[smartcontract, contract_name] == "Smart Marketing Campaign" amount++
-							if contracts.contract[smartcontract, contract_name] == "TokenSet" amount++
+							if contracts.contract[smartcontract, contract_name] == "SmartPiggies" amount++
 						}
 					}
 					if heros[hero.rory, hero_acquired] amount++
@@ -130,15 +130,15 @@ if time.stream >= hero_check_timer {
 						}
 					}
 				break
-				case hero.gaben:
-					var required = 1
-					if instance_exists(kiosk) with kiosk {
-						if contracts.contract[smartcontract, contract_online]
-						and contracts.contract[smartcontract, contract_name] == "eSports Tournament" {
-							amount++	
-						}
-					}
-				break
+				//case hero.gaben:
+				//	var required = 1
+				//	if instance_exists(kiosk) with kiosk {
+				//		if contracts.contract[smartcontract, contract_online]
+				//		and contracts.contract[smartcontract, contract_name] == "eSports Tournament" {
+				//			amount++	
+				//		}
+				//	}
+				//break
 				case hero.duck:
 					var required = 1
 					if instance_exists(kiosk) with kiosk {

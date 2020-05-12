@@ -882,26 +882,26 @@ if contracts_open and !instance_exists(mainmenu) {
 		draw_text(typeX+type_width/2,typeY+type_height/2,"DeFi")
 		
 		
-		//	Enterprise
-		var typeX = windowX+window_width-((type_width*1)+(6*1))
+		////	Enterprise
+		//var typeX = windowX+window_width-((type_width*1)+(6*1))
 		
-		if point_in_rectangle(gui_mouse_x,gui_mouse_y,typeX,typeY,typeX+type_width,typeY+type_height) {
-			if contract_types == contract_types.enterprise draw_set_color(c_ltgray)
-			else draw_set_color(c_gray)
-			if input.mouse_left_press {
-				contract_types = contract_types.enterprise
-				surface_offsetX = 0
-				surface_offsetY = 0
-				menu_change = true
-			}
-		} else {
-			if contract_types == contract_types.enterprise draw_set_color(c_gray) 
-			else draw_set_color(c_gray4)	
-		}
-		draw_roundrect(typeX,typeY,typeX+type_width,typeY+type_height,false)
+		//if point_in_rectangle(gui_mouse_x,gui_mouse_y,typeX,typeY,typeX+type_width,typeY+type_height) {
+		//	if contract_types == contract_types.enterprise draw_set_color(c_ltgray)
+		//	else draw_set_color(c_gray)
+		//	if input.mouse_left_press {
+		//		contract_types = contract_types.enterprise
+		//		surface_offsetX = 0
+		//		surface_offsetY = 0
+		//		menu_change = true
+		//	}
+		//} else {
+		//	if contract_types == contract_types.enterprise draw_set_color(c_gray) 
+		//	else draw_set_color(c_gray4)	
+		//}
+		//draw_roundrect(typeX,typeY,typeX+type_width,typeY+type_height,false)
 	
-		draw_set_color(c_black)
-		draw_text(typeX+type_width/2,typeY+type_height/2,"Enterprise")
+		//draw_set_color(c_black)
+		//draw_text(typeX+type_width/2,typeY+type_height/2,"Enterprise")
 	
 	
 	
@@ -941,12 +941,17 @@ if contracts_open and !instance_exists(mainmenu) {
 	value_array[i,2] = 0
 	value_array[i,3] = false
 	i += 1
-	value_array[i,0] = 7000
+	value_array[i,0] = 8500
 	value_array[i,1] = 0
 	value_array[i,2] = 0
 	value_array[i,3] = false
 	i += 1
 	value_array[i,0] = 10000
+	value_array[i,1] = 0
+	value_array[i,2] = 0
+	value_array[i,3] = false
+	i += 1
+	value_array[i,0] = 100000
 	value_array[i,1] = 0
 	value_array[i,2] = 0
 	value_array[i,3] = false

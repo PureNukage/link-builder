@@ -24,14 +24,14 @@ if app.tutorial == -1 {
 					if !shop.item_data[d, item_available] shop.item_data[d, item_available] = true		
 				}
 			break
-			case "Videogame API":
-				if player.value >= 5500 {
-					if !shop.item_data[d, item_available] shop.item_data[d, item_available] = true		
-				}
+			//case "Videogame API":
+			//	if player.value >= 5500 {
+			//		if !shop.item_data[d, item_available] shop.item_data[d, item_available] = true		
+			//	}
 		
-			break
-//			case "Swift GPI Payment":
-//			case "Shipment Temperature API":
+			//break
+			//case "Swift GPI Payment":
+			//case "Shipment Temperature API":
 			//	if player.value >= 4000 {
 			//		if !shop.item_data[d, item_available] shop.item_data[d, item_available] = true		
 			//	}

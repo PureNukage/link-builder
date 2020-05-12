@@ -14,8 +14,8 @@ for(var h=0;h<array_height_2d(personController.heros);h++) {
 			if player.value >= 4500 heros[h, hero_hidden] = false
 		break
 		case hero.krown:
-		case hero.gaben:
-			if player.value >= 5500 heros[h, hero_hidden] = false
-		break
+		//case hero.gaben:
+		//	if player.value >= 5500 heros[h, hero_hidden] = false
+		//break
 	}
 }
