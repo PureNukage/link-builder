@@ -82,8 +82,10 @@ if !game.game_over {
 						new_item.smartcontract = smartcontract
 						new_item.portrait = portrait
 						new_item.data_needed = data_needed
+						new_item.ports_count_max = ports_count_max
 						new_item.ports_count = ports_count
 						new_item.rotation = rotation
+						new_item.sockets = sockets
 						new_item.name = name
 						ds_list_copy(new_item.contracts_supporting,contracts_supporting)
 					
@@ -100,6 +102,8 @@ if !game.game_over {
 							new_item.ports[p,port_y] = ports[p,port_y]
 							new_item.ports[p,port_x_diff] = ports[p,port_x_diff]
 							new_item.ports[p,port_y_diff] = ports[p,port_y_diff]
+							new_item.ports[p,port_object] = -1
+							new_item.sockets[p] = -1
 						}
 					
 						with new_item {

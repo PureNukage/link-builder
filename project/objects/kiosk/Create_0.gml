@@ -23,6 +23,8 @@ data_held_ids = ds_list_create()
 smartcontract = -1
 active = false
 
+ports_count_max = 1
+
 data_needed = []
 
 busy = false

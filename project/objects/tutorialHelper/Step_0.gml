@@ -329,6 +329,10 @@ switch(tutorial)
 							item_move(22,12)
 							item_place()
 						}
+						
+						with _kiosk {
+							port_add(center_cell_x+3,center_cell_y,id)	
+						}
 						stage++
 					}					
 					
@@ -434,6 +438,7 @@ switch(tutorial)
 						ports_xyupdate_movement()
 						item_check_sockets()
 						item_place()
+						port_add(center_cell_x+3,center_cell_y,id)	
 					}
 					with Node1 {
 						item_move(29, 10)
@@ -545,8 +550,9 @@ switch(tutorial)
 						shop.wire_active = true
 						with node {
 							if name == "Feetsy" {
-								port_add(center_cell_x-1,topleft_cell_y-1,id)
-								port_add(center_cell_x+1,topleft_cell_y-1,id)
+								//port_add(center_cell_x-1,topleft_cell_y-1,id)
+								//port_add(center_cell_x+1,topleft_cell_y-1,id)
+								ports_count_max = 4
 							}
 						}
 					}
@@ -557,8 +563,59 @@ switch(tutorial)
 						stage++
 					}
 				break
-				//	Wait for them to connect the other 2 ETH/USD sources and then reset the Contracts reliability to 100
+				//	Put a finger pointing at the node
 				case 10:
+					
+					with node {
+						if name == "Feetsy" {
+							var xx = x
+							var yy = y
+						}
+					}
+
+					create_pointer(xx,yy-192,xx,yy,false,123456)
+					
+					stage++
+				
+				break
+				case 11:
+					
+					var imSelected = false
+					
+					with node if name == "Feetsy" {
+						if selected {
+							
+							other.stage++
+							
+							if instance_exists(finger) with finger instance_destroy()
+							
+							var xx = display_get_gui_width()/2+160
+							var yy = display_get_gui_height()-45
+							
+							create_pointer(xx,yy,xx-128,yy,true,9999)
+							
+						}
+					}			
+					
+				break
+				case 12:
+					if instance_exists(finger) with finger if uniqueID == 9999 {
+						with node if name == "Feetsy" {
+							selected = true
+							if ds_list_find_index(input.selections,id) == -1 {
+								ds_list_add(input.selections,id)	
+							}
+							if input.selection != id input.selection = id
+							
+							if ports_count == 4 {
+								destroy_pointer(9999)
+								tutorialHelper.stage++
+							}
+						}
+					}
+				break
+				//	Wait for them to connect the other 2 ETH/USD sources and then reset the Contracts reliability to 100
+				case 13:
 					var sources = 0
 					with node {
 						for(var d=0;d<ds_list_size(data_held);d++) {
@@ -583,14 +640,14 @@ switch(tutorial)
 					
 				break
 				//	Wait for 4 seconds then allow them to return to the main menu
-				case 11:
+				case 14:
 					if time.stream >= timer {
 						create_textbox(script[# tutorial, script_index],-1,-1,123456,-1,-1,snd_dialogue_1_13)
 						stage++
 					}
 				break
 				//	Wait to return to main menu
-				case 12:
+				case 15:
 					if textbox_in_history(123456) {
 						ga_addProgressionEvent(GA_PROGRESSIONSTATUS_COMPLETE, "Tutorial", tutorials[tutorial])
 						back_to_mainmenu()	

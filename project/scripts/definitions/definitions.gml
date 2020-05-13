@@ -191,6 +191,7 @@ enum conditions {
 #macro contract_type2 28
 #macro contract_new 29
 #macro contract_virgin 31
+#macro contract_ports_max 32
 
 enum contract_types {
 	people,

@@ -1114,9 +1114,12 @@ if contracts_open and !instance_exists(mainmenu) {
 								input.selection.smartcontract = c
 								input.selection.data_needed = contracts.contract[c, contract_data]	
 								input.selection.portrait = contracts.contract[c, contract_portrait]
-								var level = contracts.contract[c, contract_level]
-								var ports_level = contracts.contract[c, contract_level_ports]
-								input.selection.ports_count = ports_level[level]
+								var maxPorts = contracts.contract[c, contract_ports_max]
+								if maxPorts > 0 input.selection.ports_count = 1 else input.selection.ports_count = 0
+								input.selection.ports_count_max = maxPorts
+								//var level = contracts.contract[c, contract_level]
+								//var ports_level = contracts.contract[c, contract_level_ports]
+								//input.selection.ports_count = ports_level[level]
 								if ds_list_find_index(input.selections,input.selection) == -1 {
 									ds_list_add(input.selections,input.selection)	
 								}	

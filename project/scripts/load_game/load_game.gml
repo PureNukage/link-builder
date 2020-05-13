@@ -269,6 +269,10 @@ else {
 				Contract.ports = Ports
 				Contract.sockets = Sockets
 				Contract.ports_count = array_height_2d(Ports)
+				if contracts.contract[Smartcontract, contract_ports_max] == 0 {
+					Contract.ports_count = 0
+					Contract.ports_count_max = 0	
+				}
 			}
 			item_move(xx,yy)
 			ports_xyupdate_movement()

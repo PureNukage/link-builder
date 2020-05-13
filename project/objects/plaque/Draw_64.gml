@@ -476,21 +476,21 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 						draw_set_color(c_white)	
 					}
 					
-					draw_roundrect_ext(profitX,profitY,profitX+name_width,profitY+48,25,25,false)
+					draw_roundrect_ext(profitX,profitY,profitX+name_width,profitY+40,25,25,false)
 				
 					draw_set_color(c_black)
 					draw_set_halign(fa_center)
 					var String = string(profit)
-					draw_text(profitX+name_width/2,profitY+24,String)
+					draw_text(profitX+name_width/2,profitY+20,String)
 					draw_set_color(c_green)
 					var String = "$$"
-					draw_text(profitX+name_width/2+48,profitY+24,String)
+					draw_text(profitX+name_width/2+48,profitY+20,String)
 
 
 					//	value
 					var valueX = profitX
-					var valueY = profitY+48+p_offset
-					if point_in_rectangle(gui_mouse_x,gui_mouse_y,valueX,valueY,valueX+name_width,valueY+48) {		
+					var valueY = profitY+40+p_offset
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,valueX,valueY,valueX+name_width,valueY+40) {		
 						draw_set_color(c_white)
 						var largest_string = 0
 						var largest_value = 0
@@ -539,17 +539,17 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 					} else {
 						draw_set_color(c_white)	
 					}
-					draw_roundrect_ext(valueX,valueY,valueX+name_width,valueY+48,25,25,false)
+					draw_roundrect_ext(valueX,valueY,valueX+name_width,valueY+40,25,25,false)
 					draw_set_color(c_black)
 					var String = string(value)
-					draw_text(valueX+name_width/2,valueY+24,String)
-					draw_sprite(s_resource_value_shop,0,valueX+name_width/2+48,valueY+24)
+					draw_text(valueX+name_width/2,valueY+21,String)
+					draw_sprite(s_resource_value_shop,0,valueX+name_width/2+48,valueY+21)
 
 					//	reliability
 					var relyX = valueX
-					var relyY = valueY+48+p_offset
+					var relyY = valueY+40+p_offset
 					draw_set_color(c_white)
-					draw_roundrect_ext(relyX,relyY,relyX+name_width,relyY+48,25,25,false)
+					draw_roundrect_ext(relyX,relyY,relyX+name_width,relyY+40,25,25,false)
 					var rely_pixels = floor(name_width * reliability)
 					if reliability > .79 {
 						draw_set_color(c_green)	
@@ -559,18 +559,18 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 						draw_set_color(c_red)	
 					}
 					draw_set_alpha(.50)
-					draw_roundrect_ext(relyX,relyY,relyX+rely_pixels,relyY+48,25,25,false)
+					draw_roundrect_ext(relyX,relyY,relyX+rely_pixels,relyY+40,25,25,false)
 					draw_set_alpha(1)
 					draw_set_color(c_black)
 					var String = string(reliability*100)
-					draw_text(relyX+name_width/2,relyY+24,String)
-					draw_text(relyX+name_width/2+48,relyY+24,"%")
+					draw_text(relyX+name_width/2,relyY+20,String)
+					draw_text(relyX+name_width/2+48,relyY+20,"%")
 					
-					//	rebrand
-					var rebrandX = valueX
-					var rebrandY = relyY+48+p_offset
-					if (reliability*100) < 100 {
-						if point_in_rectangle(gui_mouse_x,gui_mouse_y,rebrandX,rebrandY,rebrandX+name_width,rebrandY+30) {
+					////	rebrand
+					var rebrandX = windowX + 10
+					var rebrandY = relyY+40+p_offset
+					//if (reliability*100) < 100 {
+						if point_in_rectangle(gui_mouse_x,gui_mouse_y,rebrandX,rebrandY,rebrandX+184,rebrandY+30) {
 							draw_set_color(c_ltgray)
 							#region Rebrand Sub Menu
 								draw_set_color(c_dkgray)
@@ -603,14 +603,71 @@ if ((input.selection > -1 and instance_exists(input.selection) and input.selecti
 								
 							}
 						} else {
-							draw_set_color(c_gray)	
+							draw_set_color(c_dkgray)	
 						}
-						draw_roundrect_ext(rebrandX,rebrandY,rebrandX+name_width,rebrandY+30,25,25,false)
-						draw_set_color(c_black)
+						draw_roundrect_ext(rebrandX,rebrandY,rebrandX+184,rebrandY+30,25,25,false)
+						draw_set_color(c_white)
 						draw_set_halign(fa_center)
 						draw_set_font(fnt_shop)
-						draw_text(rebrandX+name_width/2,rebrandY+30/2,"Rebrand")
+						draw_text(rebrandX+184/2,rebrandY+30/2,"Rebrand")
+					//}
+					
+					
+					
+					////	Ports button
+					var String = "Ports"
+					var ports_width = name_width
+					var ports_height = 40
+					var portsX = valueX
+					var portsY = rebrandY
+					
+					draw_set_color(c_black)
+					draw_roundrect(portsX-2,portsY-2,portsX+ports_width+2,portsY+ports_height+2,false)
+					
+					if point_in_rectangle(gui_mouse_x,gui_mouse_y,portsX-2,portsY-2,portsX+ports_width+2,portsY+ports_height+2) {
+						draw_set_color(c_ltgray)
+						if input.mouse_left_press {
+							if input.selection_mode == selection_mode.port_placement {
+								input.selection_mode = selection_mode.free	
+							} else {
+								input.selection_mode = selection_mode.port_placement
+							}
+							if node_level_open node_level_open = false
+						}
+					} else {
+						draw_set_color(c_gray)	
 					}
+					if input.selection_mode == selection_mode.port_placement draw_set_color(c_ltgray)
+					draw_roundrect(portsX,portsY,portsX+ports_width,portsY+ports_height,false)
+					
+					draw_set_color(c_black)
+					draw_set_halign(fa_center)
+					draw_set_valign(fa_middle)
+					draw_set_font(fnt_plaque_name)
+					draw_text(portsX+ports_width/2,portsY+ports_height/2+1,String)
+					
+					//	Draw Ports
+					if input.selection_mode == selection_mode.port_placement {
+						var p_width = 260
+						var p_height = 60
+						var pX = windowX
+						var pY = windowY - p_height - 8
+					
+						draw_set_color(c_dkgray)
+						draw_roundrect(pX,pY,pX+p_width,pY+p_height,false)
+					
+						var max_ports = input.selection.ports_count_max
+						var used_ports = input.selection.ports_count
+						var available_ports = max_ports - used_ports
+						var ports_string = "Ports: "+string(used_ports)+"/"+string(max_ports)
+						draw_set_color(c_white)						
+						draw_set_halign(fa_left)
+						draw_text(pX+12,pY+p_height/2,ports_string)
+						
+						draw_text(pX+36+string_width(ports_string),pY+p_height/2,"Free: "+string(available_ports))
+						
+					}
+					
 					
 
 					//	data

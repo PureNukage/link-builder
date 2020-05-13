@@ -31,9 +31,12 @@ if Item.object_index == node {
 if argument_count >= 8 {
 	Item.smartcontract = Smartcontract
 	Item.data_needed = contracts.contract[Smartcontract, contract_data]
-	var level = contracts.contract[Smartcontract, contract_level]
-	var ports_level = contracts.contract[Smartcontract, contract_level_ports]
-	Item.ports_count = ports_level[level]
+	//var level = contracts.contract[Smartcontract, contract_level]
+	//var ports_level = contracts.contract[Smartcontract, contract_level_ports]
+	var maxPorts = contracts.contract[Smartcontract, contract_ports_max]
+	if maxPorts > 0 input.selection.ports_count = 1 else input.selection.ports_count = 0
+	Item.ports_count_max = maxPorts
+	//Item.ports_count = Item.ports_count_max
 }	
 
 if Item.object_index == data {

@@ -39,6 +39,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
 var Contract_type2 = contract_types.hackathon
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 2
 
 var name = "BountiBot"
 var _string = "An open-source software contributor is paid when their code gets merged into a project"
@@ -55,6 +56,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
 var Contract_type2 = contract_types.hackathon
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 2
 
 var name = "ETH/USD Price Feed"
 var _string = "Price Feeds can generate a Decentralized price that nearby Contracts may use"
@@ -72,6 +74,7 @@ var Conditions = create_conditions(conditions.cnd_active,0)
 var Contract_type2 = contract_types.utility
 var radius = 384 
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2,radius)
+contract[array_height_2d(contract)-1, contract_ports_max] = 1
 
 var name = "LINK/USD Price Feed"
 var _string = "Price Feeds can generate a Decentralized price that nearby Contracts may use"
@@ -89,6 +92,7 @@ var Conditions = create_conditions(conditions.cnd_active,0)
 var Contract_type2 = contract_types.utility
 var radius = 384 
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2,radius)
+contract[array_height_2d(contract)-1, contract_ports_max] = 1
 
 var name = "BTC/USD Price Feed"
 var _string = "Price Feeds can generate a Decentralized price that nearby Contracts may use"
@@ -106,6 +110,7 @@ var Conditions = create_conditions(conditions.cnd_active,0)
 var Contract_type2 = contract_types.utility
 var radius = 384 
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2,radius)
+contract[array_height_2d(contract)-1, contract_ports_max] = 1
 
 var name = "Cerberus Wallet 2FA"
 var _string = "An Ethereum wallet that only allows withdrawals after a 2-Factor Authentication"
@@ -122,6 +127,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,125,conditions.cnd_reliability_high,125)
 var Contract_type2 = contract_types.hackathon
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 1
 
 var name = "Backerr"
 var _string = "A fully decentralized alternative to Patreon. Hosted on IPFS and payments are through a blockchain"
@@ -138,6 +144,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,125,conditions.cnd_reliability_high,125)
 var Contract_type2 = contract_types.hackathon
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 1
 
 var name = "SmartPiggies"
 var _string = "A SmartPiggy can be thought of as a tradable digital piggy bank into which money can be deposited, and which is smart enough to distribute its funds between an owner and creator based on pre-agreed terms."
@@ -154,6 +161,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
 var Contract_type2 = contract_types.hackathon
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 2
 
 var name = "Smart Marketing Campaign"
 var _string = "Allows for payment of marketing campaigns based on analytics"
@@ -170,10 +178,11 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
 var Contract_type2 = contract_types.hackathon
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 2
 
 var name = "TokenSet"
 var _string = "Automated asset management strategies"
-var reward = 12
+var reward = 20
 var price = 4500
 var portrait = s_portrait_tokenset
 var channel_time = 2
@@ -186,10 +195,11 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
 var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 0
 
 var name = "Compound"
 var _string = "Algorithmic, autonomous interest rate protocol built for developers"
-var reward = 24
+var reward = 22
 var price = 4500
 var portrait = s_portrait_compound
 var channel_time = 2
@@ -203,6 +213,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,250)
 var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 0
 
 var name = "Maker"
 var _string = "A DAO on Ethereum that backs the stablecoin Dai"
@@ -219,6 +230,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,250)
 var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 0
 
 var name = "OpenLaw"
 var _string = "Borderless commercial systems on the blockchain"
@@ -235,6 +247,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,250)
 var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 2
 
 var name = "eSports Tournament"
 var _string = "Automated payouts to eSports teams based on their performance in a tournament"
@@ -251,6 +264,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
 var Contract_type2 = contract_types.enterprise
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 2
 
 var name = "Revenue Share"
 var _string = "Revenue from a digital asset is distributed amongst tokenholders"
@@ -267,10 +281,11 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,250)
 var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 2
 
 var name = "Synthetix"
 var _string = "Crypto-backed synthetic asset platform that provides exposure to real-world currencies, commodities, stocks and indices."
-var reward = 21
+var reward = 28
 var price = 8500
 var portrait = s_portrait_synthetix
 var channel_time = 2
@@ -285,6 +300,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
 var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 0
 
 var name = "Loopring"
 var _string = "Scalable zkRollup exchange protocol"
@@ -303,10 +319,11 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,1000,conditions.cnd_reliability_high,500)
 var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 0
 
 var name = "Wrapped Bitcoin"
 var _string = "Port Bitcoins to the Ethereum blockchain"
-var reward = 30
+var reward = 36
 var price = 10000
 var portrait = s_portrait_bitcoin
 var channel_time = 2
@@ -320,6 +337,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
 var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 0
 
 var name = "Etherisc"
 var _string = "Automatic flight insurance"
@@ -336,6 +354,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,500,conditions.cnd_reliability_high,500)
 var Contract_type2 = contract_types.defi
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 3
 
 var name = "Bank Bond"
 var _string = ""
@@ -352,6 +371,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
 var Contract_type2 = contract_types.enterprise
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 2
 
 var name = "Crop Insurance"
 var _string = ""
@@ -368,6 +388,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
 var Contract_type2 = contract_types.enterprise
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 2
 
 var name = "Cyber Security Insurance"
 var _string = ""
@@ -384,6 +405,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
 var Contract_type2 = contract_types.enterprise
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 2
 
 var name = "Tesla Car Insurance"
 var _string = ""
@@ -400,6 +422,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
 var Contract_type2 = contract_types.enterprise
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 2
 
 var name = "Supply-Chain Agriculture Workflow"
 var _string = ""
@@ -416,6 +439,7 @@ var available = true
 var Conditions = create_conditions(conditions.cnd_active,250,conditions.cnd_reliability_high,250)
 var Contract_type2 = contract_types.enterprise
 create_contract(name,_string,reward,price,portrait,channel_time,max_traffic,line_size,Contract_type,levels,_data,available,Conditions,Contract_type2)
+contract[array_height_2d(contract)-1, contract_ports_max] = 2
 
 //	GUI stuff
 menu_width = 340
