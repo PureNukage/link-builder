@@ -50,8 +50,6 @@ switch(states)
 			draw_sprite(sprite,-1,x,y)
 		
 			//	Determine if I have unassigned new ports, if so make flash me gold!
-			//var level = shop.item_node[item_index, node_level]
-			//var ports_level = shop.item_node[item_index, node_levels]
 			var amount = 0.04
 			//	I have unassigned ports!
 			if skillpoints > 0 and time.stream >= gold_flash_cd {

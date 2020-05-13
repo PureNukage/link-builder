@@ -31,8 +31,6 @@ states = states.placed
 			
 item_placeindex()
 item_placeid()
-
-//if !replace with shop shop_refresh()
 			
 var _x1 = gridController.grid_positions_x[topleft_cell_x]+(cell_width/2)
 var _y1 = gridController.grid_positions_y[topleft_cell_y]+(cell_height/2)
@@ -104,7 +102,7 @@ if (replace and instance_exists(replace_id)) or multireplace {
 			
 system_set()
 
-fogCheck()
+//fogCheck()
 
 check_availableData()
 pricedata_priceCheck()
