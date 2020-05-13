@@ -125,8 +125,94 @@ if time.stream >= hero_check_timer {
 					if instance_exists(kiosk) with kiosk {
 						if contracts.contract[smartcontract, contract_online] and 
 						(contracts.contract[smartcontract, contract_name] == "Loopring"
-						or contracts.contract[smartcontract, contract_name] == "Synthetix") {
+						or contracts.contract[smartcontract, contract_name] == "Synthetix") 
+						or contracts.contract[smartcontract, contract_name] == "TradingSet" 
+						or contracts.contract[smartcontract, contract_name] == "" {
 							amount++	
+						}
+					}
+				break
+				case hero.pomp:
+					var required = 3
+					if instance_exists(kiosk) with kiosk {
+						if contracts.contract[smartcontract, contract_name] == "BTC/USD Price Feed" {
+							for(var d=0;d<ds_list_size(data_held);d++) {
+								var data_index = data_held[| d]
+								var data_name = shop.item_data[data_index, item_name]
+								if is_price(data_name) and is_price(data_name,true) == "BTC/USD" {
+									amount++	
+								}
+							}
+						}
+					}
+				break
+				case hero.andreas:
+					var required = 6
+					if instance_exists(kiosk) with kiosk {
+						if contracts.contract[smartcontract, contract_name] == "BTC/USD Price Feed" {
+							for(var d=0;d<ds_list_size(data_held);d++) {
+								var data_index = data_held[| d]
+								var data_name = shop.item_data[data_index, item_name]
+								if is_price(data_name) and is_price(data_name,true) == "BTC/USD" {
+									amount++	
+								}
+							}
+						}
+					}
+				break
+				case hero.satoshi:
+					var required = 9
+					if instance_exists(kiosk) with kiosk {
+						if contracts.contract[smartcontract, contract_name] == "BTC/USD Price Feed" {
+							for(var d=0;d<ds_list_size(data_held);d++) {
+								var data_index = data_held[| d]
+								var data_name = shop.item_data[data_index, item_name]
+								if is_price(data_name) and is_price(data_name,true) == "BTC/USD" {
+									amount++	
+								}
+							}
+						}
+					}
+				break
+				case hero.coventry:
+					var required = 6
+					if instance_exists(kiosk) with kiosk {
+						if contracts.contract[smartcontract, contract_name] == "LINK/USD Price Feed" {
+							for(var d=0;d<ds_list_size(data_held);d++) {
+								var data_index = data_held[| d]
+								var data_name = shop.item_data[data_index, item_name]
+								if is_price(data_name) and is_price(data_name,true) == "LINK/USD" {
+									amount++	
+								}
+							}
+						}
+					}
+				break
+				case hero.sergey:
+					var required = 9
+					if instance_exists(kiosk) with kiosk {
+						if contracts.contract[smartcontract, contract_name] == "LINK/USD Price Feed" {
+							for(var d=0;d<ds_list_size(data_held);d++) {
+								var data_index = data_held[| d]
+								var data_name = shop.item_data[data_index, item_name]
+								if is_price(data_name) and is_price(data_name,true) == "LINK/USD" {
+									amount++	
+								}
+							}
+						}
+					}
+				break
+				case hero.vitalik:
+					var required = 9
+					if instance_exists(kiosk) with kiosk {
+						if contracts.contract[smartcontract, contract_name] == "ETH/USD Price Feed" {
+							for(var d=0;d<ds_list_size(data_held);d++) {
+								var data_index = data_held[| d]
+								var data_name = shop.item_data[data_index, item_name]
+								if is_price(data_name) and is_price(data_name,true) == "ETH/USD" {
+									amount++	
+								}
+							}
 						}
 					}
 				break

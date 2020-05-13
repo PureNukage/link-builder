@@ -136,7 +136,7 @@ create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
 
 var Enum = hero.krown
 var name = "Krown"
-var String = "Build both of the Trading Contracts"
+var String = "Build two of the Trading Contracts"
 var available = true
 var acquired = false
 var hidden = true
@@ -164,25 +164,55 @@ var sprite = s_hero_pomp
 var sprite_head = s_hero_pomp_head
 create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
 
-//var Enum = hero.pomp
-//var name = "Andreas A."
-//var String = "Have a BTC/USD Price Feed with 6 APIs"
-//var available = true
-//var acquired = false
-//var hidden = true
-//var sprite = s_hero_pomp
-//var sprite_head = s_hero_pomp_head
-//create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
+var Enum = hero.andreas
+var name = "Andreas A."
+var String = "Have a BTC/USD Price Feed with 6 APIs"
+var available = true
+var acquired = false
+var hidden = true
+var sprite = s_hero_andreas
+var sprite_head = s_hero_andreas_head
+create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
 
-//var Enum = hero.pomp
-//var name = "Satoshi"
-//var String = "Have a BTC/USD Price Feed with 9 APIs"
-//var available = true
-//var acquired = false
-//var hidden = true
-//var sprite = s_hero_pomp
-//var sprite_head = s_hero_pomp_head
-//create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
+var Enum = hero.satoshi
+var name = "Satoshi"
+var String = "Have a BTC/USD Price Feed with 9 APIs"
+var available = true
+var acquired = false
+var hidden = true
+var sprite = s_hero_satoshi
+var sprite_head = s_hero_satoshi_head
+create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
+
+var Enum = hero.coventry
+var name = "Coventry"
+var String = "Have a LINK/USD Price Feed with 6 APIs"
+var available = true
+var acquired = false
+var hidden = true
+var sprite = s_hero_coventry
+var sprite_head = s_hero_coventry_head
+create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
+
+var Enum = hero.sergey
+var name = "Sergey"
+var String = "Have a LINK/USD Price Feed with 9 APIs"
+var available = true
+var acquired = false
+var hidden = true
+var sprite = s_hero_sergey
+var sprite_head = s_hero_sergey_head
+create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
+
+var Enum = hero.vitalik
+var name = "Vitalik"
+var String = "Have a ETH/USD Price Feed with 9 APIs"
+var available = true
+var acquired = false
+var hidden = true
+var sprite = s_hero_vitalik
+var sprite_head = s_hero_vitalik_head
+create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
 
 //var Enum = hero.gaben
 //var name = "Gaben"

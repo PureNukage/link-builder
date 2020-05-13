@@ -503,6 +503,14 @@
             }
         },
         {
+            "Key": "2b795a4e-5ab4-4ffd-9cb8-be8e5c36037a",
+            "Value": {
+                "id": "427c3667-ab5c-4f2b-81df-c89c122c4ee1",
+                "resourcePath": "sprites\\s_hero_satoshi\\s_hero_satoshi.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "2be330d8-bed5-4b5e-9d66-ecf9a49281b4",
             "Value": {
                 "id": "87af5556-7154-43f7-96c2-be84e396ca8e",
@@ -523,6 +531,14 @@
             "Value": {
                 "id": "4459e851-8abb-4cc9-b98b-1f6818002760",
                 "resourcePath": "sprites\\s_kiosk_light\\s_kiosk_light.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "2cd60068-b47c-471e-91a5-b329cdeea507",
+            "Value": {
+                "id": "cbb9e4c6-6b96-4ef3-9fd0-ff87eb779708",
+                "resourcePath": "sprites\\s_hero_andreas\\s_hero_andreas.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -611,6 +627,14 @@
             "Value": {
                 "id": "dd1c3492-4c85-468c-afca-0a7d030813bb",
                 "resourcePath": "sprites\\s_chainlink_stand\\s_chainlink_stand.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "3306181f-4de8-46df-9095-799997bc1e53",
+            "Value": {
+                "id": "2b88f022-aec3-47d2-8476-9e5ccecfa02b",
+                "resourcePath": "sprites\\s_hero_coventry_head\\s_hero_coventry_head.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -2487,6 +2511,14 @@
             }
         },
         {
+            "Key": "ba0f8a0e-a9da-47cf-90f2-210a77731883",
+            "Value": {
+                "id": "b0c5f754-6320-47f0-bc20-a974f634173d",
+                "resourcePath": "sprites\\s_hero_coventry\\s_hero_coventry.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "bab2a9f3-6184-4aca-8dad-a75713d876d4",
             "Value": {
                 "id": "50840f7f-fd9c-4d1b-93f0-d74fc6f42f85",
@@ -3351,6 +3383,14 @@
             }
         },
         {
+            "Key": "f20125e1-156a-40ba-b991-885fcae25443",
+            "Value": {
+                "id": "1a87b75f-0fa4-4630-ab50-27bd7e0f2b71",
+                "resourcePath": "sprites\\s_hero_andreas_head\\s_hero_andreas_head.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "f251d325-d8cc-4dff-86fe-17a4504ad02b",
             "Value": {
                 "id": "8dcf1eeb-8e4a-4600-b928-d25340a7f41b",
@@ -3460,6 +3500,14 @@
                 "id": "81bd40b6-256f-4474-a1b3-cc012c3eafa4",
                 "resourcePath": "sounds\\snd_dialogue_0_4\\snd_dialogue_0_4.yy",
                 "resourceType": "GMSound"
+            }
+        },
+        {
+            "Key": "f5ea7863-d538-484f-9c4b-049da675c4cb",
+            "Value": {
+                "id": "c789cba8-3199-4748-9f19-5d4d0b6f2c3e",
+                "resourcePath": "sprites\\s_hero_satoshi_head\\s_hero_satoshi_head.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

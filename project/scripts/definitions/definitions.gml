@@ -265,11 +265,13 @@ enum hero {
 	pomp,
 	cz,
 	krown,
-	//gaben,
+	coventry,
+	andreas,
+	satoshi,
+	vitalik,
+	sergey,
 	duck,
 	pepe,
-	//sergey,
-	//vitalik
 	
 }
 
