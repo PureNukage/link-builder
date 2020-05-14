@@ -21,8 +21,8 @@ new_dialogue_volume = 0
 
 //	Check load file
 ini_open(working_directory + "savedgame.ini")
-var music = ini_read_real("Sound","Music",0)
-var dialogue = ini_read_real("Sound","Dialogue",0)
+var music = ini_read_real("Sound","Music",0.5)
+var dialogue = ini_read_real("Sound","Dialogue",0.5)
 ini_close()
 
 new_volume = music

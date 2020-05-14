@@ -145,7 +145,7 @@ var sprite_head = s_hero_krown_head
 create_hero(Enum,name,String,available,acquired,hidden,sprite,sprite_head)
 
 var Enum = hero.aaronwright
-var name = "Aaron Wright"
+var name = "Aaron"
 var String = "Build the Openlaw Contract"
 var available = true
 var acquired = false
