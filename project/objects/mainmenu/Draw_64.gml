@@ -489,7 +489,7 @@ switch(menu)
 				var _string = "EXIT to Main Menu (WARNING: will lose current game session)"
 				var xx = _x - string_width(_string)/2
 				
-				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-string_width(_string)/2,_y,_x+string_width(_string)/2+string_width(_string),_y+string_height(_string)) {
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,_y,_x+string_width(_string)/2,_y+string_height(_string)) {
 					draw_set_color(c_white)
 					if mouse_check_button_pressed(mb_left) {
 						if app.tutorial > -1 ga_addProgressionEvent(GA_PROGRESSIONSTATUS_FAIL, "Tutorial", tutorials[app.tutorial, tutorial_name])

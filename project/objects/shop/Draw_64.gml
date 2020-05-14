@@ -50,7 +50,7 @@ if instance_exists(c_item) {
 	var _xx = topmenu.contractsX+topmenu.contracts_width+16 + sprite_get_width(s_wire_socket) + 40
 	var _yy = 0
 
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+64,_yy+30) {
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+64,_yy+30) and !instance_exists(mainmenu)  {
 		altmode_mouseover = true
 		draw_set_color(c_ltgray)
 		if input.mouse_left_press {
@@ -87,7 +87,7 @@ if exchange_active {
 	var sw = string_width(String) + 16
 	var sh = string_height(String) + 16
 	
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,exchangeX,exchangeY,exchangeX+sw,exchangeY+sh) {
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,exchangeX,exchangeY,exchangeX+sw,exchangeY+sh) and !instance_exists(mainmenu)  {
 		draw_set_color(c_ltgray)
 		if input.mouse_left_press {
 			exchange_open = !exchange_open
@@ -115,7 +115,7 @@ if exchange_active {
 		var windowX = exchangeX + sw + 10
 		var windowY = exchangeY 
 	}
-	if exchange_open {
+	if exchange_open and !instance_exists(mainmenu) {
 		
 		draw_set_color(c_black)
 		draw_roundrect(windowX-2,windowY-2,windowX+window_width+2,windowY+window_height+2,false)

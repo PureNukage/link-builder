@@ -119,7 +119,7 @@ if resources_active {
 	draw_set_font(fnt_shop)
 	
 	/////	LINK
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,linkX,linkY,linkX+link_width,linkY+link_height) {
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,linkX,linkY,linkX+link_width,linkY+link_height) and !instance_exists(mainmenu)  {
 		draw_set_color(c_ltgray)
 		if !shop.exchange_open or shop.exchange_currency != "LINK" {
 			var String = "Open Exchange"
@@ -153,7 +153,7 @@ if resources_active {
 	draw_sprite(s_resource_link_shop,0,linkX+8,linkY+4)
 	
 	////	ETH
-	if point_in_rectangle(gui_mouse_x,gui_mouse_y,ethX,ethY,ethX+eth_width,ethY+eth_height) {
+	if point_in_rectangle(gui_mouse_x,gui_mouse_y,ethX,ethY,ethX+eth_width,ethY+eth_height) and !instance_exists(mainmenu)  {
 		draw_set_color(c_ltgray)
 		if !shop.exchange_open or shop.exchange_currency != "ETH" {
 			var String = "Open Exchange"
