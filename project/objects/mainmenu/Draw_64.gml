@@ -139,9 +139,9 @@ switch(menu)
 			
 			draw_text(xx,yy,"created by " + app.me)					yy += height+spacer
 			
-			draw_text(xx,yy,"music by wombocombo, kharsus")		yy += height+spacer
+			draw_text(xx,yy,"music by wombocombo, @ConcernedBears")		yy += height+spacer
 			
-			draw_text(xx,yy,"thanks to my testers: kharsus, palatine, halcyonfields, Leo_the_Potato")
+			draw_text(xx,yy,"thanks to my testers: @ConcernedBears, palatine, halcyonfields, Leo_the_Potato")
 			
 			
 		break
