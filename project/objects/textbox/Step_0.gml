@@ -27,12 +27,24 @@ if fade == 0 {
 }
 
 if !done {
-	if timer > 0 timer--
-	if timer == 0 {
+	if timer > 0 {
+		timer--
+		debug_log("textbox: "+string(timer)+" seconds left!")
+	} else if timer == 0 {
 		fade = 1
 		timer = -1
 		if dialogue > -1 and audio_is_playing(dialogue) {
 			audio_stop_sound(dialogue)
 		}
+	}
+}
+
+//	If we're a chaos event and our object isn't affected anymore, lets go away 
+if event_types == event_types.chaos_event_eth and object_id > -1 {
+	var corruption = shop.item_data[object_id, item_corruption]	
+	if corruption == 0 {
+		fade = 1
+		object_id = -1
+		event_types = -1
 	}
 }

@@ -132,7 +132,8 @@ enum event_types {
 	sn_debt1,
 	sn_debt2,
 	sn_debt3,
-	sn_lose
+	sn_lose,
+	chaos_event_eth,
 	
 }
 

@@ -3,7 +3,7 @@ if !ds_list_empty(message_queue) and current_message == -1 {
 	var buffer = buffer_base64_decode(buffer_encoded)
 	var _text = buffer_read(buffer,buffer_string)
 	var _icon = buffer_read(buffer,buffer_s8)
-	var _timer = buffer_read(buffer,buffer_s8)
+	var _timer = buffer_read(buffer,buffer_s32)
 	var _uniqueID = buffer_read(buffer,buffer_s32)
 	var Event_type = buffer_read(buffer,buffer_s8)
 	var Object_id = buffer_read(buffer,buffer_s32)

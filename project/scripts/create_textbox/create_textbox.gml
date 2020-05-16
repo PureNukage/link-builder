@@ -21,7 +21,7 @@ buffer_seek(buffer,buffer_seek_start,0)
 //	Pack data into our buffer
 buffer_write(buffer,buffer_string,text)
 buffer_write(buffer,buffer_s8,icon)
-buffer_write(buffer,buffer_s8,timer)
+buffer_write(buffer,buffer_s32,timer)
 buffer_write(buffer,buffer_s32,_uniqueID)
 buffer_write(buffer,buffer_s8,Event_type)
 buffer_write(buffer,buffer_s32,Object_id)
@@ -30,3 +30,5 @@ buffer_write(buffer,buffer_s8,Dialogue)
 var buffer_encoded = buffer_base64_encode(buffer,0,buffer_tell(buffer))
 
 ds_list_add(textboxController.message_queue,buffer_encoded)
+
+buffer_delete(buffer)

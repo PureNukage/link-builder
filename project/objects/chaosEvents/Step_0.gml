@@ -88,6 +88,10 @@ if ds_list_empty(affected_data) {
 	#endregion	
 		
 	if time.minutes >= timer and total_wealth_trigger > -1 and total_wealth > total_wealth_trigger {
+		
+		var max_wait = 1
+		timer = time.minutes + irandom_range(1,max_wait)
+		var time_in_frames = 3600
 			
 		#region ETH/USD
 			var list = ds_list_create()
@@ -123,12 +127,12 @@ if ds_list_empty(affected_data) {
 						shop.item_data[d,item_corruption] = 100
 						ds_list_add(affected_data,d)
 						data_eth_amount--
-						create_textbox(name+" is experiencing an API outage",s_event_outage)
+						create_textbox(name+" is experiencing an API outage",s_event_outage,-1,-1,event_types.chaos_event_eth,d)
 					} else {
 						shop.item_data[d,item_corruption] = 50
 						ds_list_add(affected_data,d)
 						data_eth_amount--
-						create_textbox(name+" is experiencing an API degradation",s_event_outage)
+						create_textbox(name+" is experiencing an API degradation",s_event_outage,-1,-1,event_types.chaos_event_eth,d)
 					}
 				}
 			}
@@ -169,12 +173,12 @@ if ds_list_empty(affected_data) {
 						shop.item_data[d,item_corruption] = 100
 						ds_list_add(affected_data,d)
 						data_link_amount--
-						create_textbox(name+" is experiencing an API outage",s_event_outage)
+						create_textbox(name+" is experiencing an API outage",s_event_outage,time_in_frames)
 					} else {
 						shop.item_data[d,item_corruption] = 50
 						ds_list_add(affected_data,d)
 						data_link_amount--
-						create_textbox(name+" is experiencing an API degradation",s_event_outage)
+						create_textbox(name+" is experiencing an API degradation",s_event_outage,time_in_frames)
 					}
 				}
 			}
@@ -182,8 +186,6 @@ if ds_list_empty(affected_data) {
 			
 		#endregion
 			
-		var max_wait = 1
-		timer = time.minutes + irandom_range(1,max_wait)
 		ds_list_destroy(list)
 	} else {
 		var max_wait = 1
