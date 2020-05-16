@@ -215,9 +215,11 @@ else {
 			for(var _part=0;_part<ds_list_size(master_system_object.parts);_part++) {
 				var part = master_system_object.parts[| _part]
 				//	recalc sockets
-				for(var _port=0;_port<part.ports_count;_port++) {
-					if part.sockets[_port] > -1 and part.ports[_port,port_object] == -1 {
-						part.sockets[_port] = -1	
+				if instance_exists(part) {
+					for(var _port=0;_port<part.ports_count;_port++) {
+						if part.sockets[_port] > -1 and instance_exists(part.sockets[_port]) and part.ports[_port,port_object] == -1 {
+							part.sockets[_port] = -1	
+						}
 					}
 				}
 			}
