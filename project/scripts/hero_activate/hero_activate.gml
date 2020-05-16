@@ -22,14 +22,16 @@ if heros[index, hero_id] == -1 and index != hero.duck and !heros[index, hero_acq
 }
 
 if index == hero.duck {
+	heros[index, hero_acquired] = true
+	heros[index, hero_new] = false
 	var amount = 0
 	var ducks = 0
 	var free_people = 0
 	//	How many ducks should we have?
 	if instance_exists(kiosk) with kiosk {
 		if contracts.contract[smartcontract, contract_online]
-		and contracts.contract[smartcontract, contract_name] == "OpenLaw"
-		and contracts.contract[smartcontract, contract_name] == "Etherisc" {
+		and (contracts.contract[smartcontract, contract_name] == "OpenLaw"
+		or contracts.contract[smartcontract, contract_name] == "Etherisc") {
 			amount++	
 		}
 	}
