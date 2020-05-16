@@ -28,7 +28,8 @@ if index == hero.duck {
 	//	How many ducks should we have?
 	if instance_exists(kiosk) with kiosk {
 		if contracts.contract[smartcontract, contract_online]
-		and contracts.contract[smartcontract, contract_name] == "OpenLaw" {
+		and contracts.contract[smartcontract, contract_name] == "OpenLaw"
+		and contracts.contract[smartcontract, contract_name] == "Etherisc" {
 			amount++	
 		}
 	}
