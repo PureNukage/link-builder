@@ -474,7 +474,7 @@ for(var i=0;i<ds_list_size(parts);i++) {
 						var Contract_name = contracts.contract[_kiosk.smartcontract, contract_name]
 						if player.link < contracts.contract[_kiosk.smartcontract, contract_linkfee] {
 							if !textbox_in_queue(time.seconds) and !textbox_active(time.seconds) and !textbox_in_history(time.seconds) {
-								create_textbox("Out of LINK!",s_event_out_of_link,event_duration,time.seconds,event_types.out_of_link)
+								create_textbox("Out of LINK!",s_event_out_of_link,event_duration,time.seconds,event_types.out_of_link,_kiosk)
 							}
 						}
 						//	Check if out of ETH

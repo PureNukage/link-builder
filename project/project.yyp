@@ -2103,6 +2103,14 @@
             }
         },
         {
+            "Key": "a08ec444-9b88-4ac2-8676-8e3949185a3b",
+            "Value": {
+                "id": "ea7ff6b9-e76a-451e-a3bb-f478f07fc5f2",
+                "resourcePath": "sprites\\s_portrait_smartpiggies\\s_portrait_smartpiggies.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "a0c3973f-5ecd-43f1-8522-f48de5db7bbb",
             "Value": {
                 "id": "fde2b867-eee7-47d8-be79-84128a887d4b",

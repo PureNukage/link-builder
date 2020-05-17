@@ -59,7 +59,7 @@ for(var l=0;l<ds_list_size(selected_list);l++) {
 	newID.sockets = oldID.sockets
 	newID.ports = oldID.ports
 	newID.ports_count = oldID.ports_count
-	if Object_index == node newID.ports_count_max = oldID.ports_count_max
+	if Object_index == node or Object_index == kiosk newID.ports_count_max = oldID.ports_count_max
 	for(var p=0;p<newID.ports_count;p++) {
 		if oldID.ports[p,port_object] > -1 {
 			var connected_id = oldID.ports[p,port_object]

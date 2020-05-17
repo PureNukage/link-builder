@@ -91,10 +91,10 @@ if heromenu_active {
 						}
 						contract_mouseover = h
 						//	DEBUG acquire hero
-						if input.mouse_right_press {
-							if heros[h, hero_hidden] heros[h, hero_hidden] = false
-							else hero_activate(h)
-						}
+						//if input.mouse_right_press {
+						//	if heros[h, hero_hidden] heros[h, hero_hidden] = false
+						//	else hero_activate(h)
+						//}
 						draw_set_color(c_ltgray)
 					} else {
 						if new and !hidden and !acquired  {

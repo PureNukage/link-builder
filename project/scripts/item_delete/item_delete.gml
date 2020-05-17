@@ -238,19 +238,22 @@ else {
 			for(var p=0;p<ds_list_size(final_system);p++) {
 				var part = final_system[| p]
 				
-				//	delete this parts old system object if it exists
-				if instance_exists(part.System) instance_destroy(part.System)
+				if instance_exists(part) {
 				
-				//	set this parts system to our new system object
-				part.System = new_system_object
+					//	delete this parts old system object if it exists
+					if instance_exists(part.System) instance_destroy(part.System)
 				
-				//	add this part to our new system objects parts list
-				if instance_exists(new_system_object) ds_list_add(new_system_object.parts,part)
+					//	set this parts system to our new system object
+					part.System = new_system_object
 				
-				//	recalc sockets
-				for(var _port=0;_port<part.ports_count;_port++) {
-					if part.sockets[_port] > -1 and part.ports[_port,port_object] == -1 {
-						part.sockets[_port] = -1	
+					//	add this part to our new system objects parts list
+					if instance_exists(new_system_object) ds_list_add(new_system_object.parts,part)
+				
+					//	recalc sockets
+					for(var _port=0;_port<part.ports_count;_port++) {
+						if part.sockets[_port] > -1 and part.ports[_port,port_object] == -1 {
+							part.sockets[_port] = -1	
+						}
 					}
 				}
 					

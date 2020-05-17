@@ -29,10 +29,10 @@ Event_duration = 60
 
 clickfix = false
 
-if app.tutorial == -1 {
-	//	Welcome message
-	create_textbox("Welcome to Smart Contract Builder\nThis game is in ALPHA and may contain bugs")
-}
+//if app.tutorial == -1 {
+//	//	Welcome message
+//	create_textbox("Welcome to Smart Contract Builder\nThis game is in ALPHA and may contain bugs")
+//}
 
 if app.new_game and app.tutorial == -1 {
 	//app.new_game = false
