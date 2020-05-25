@@ -51,121 +51,22 @@ for(var i=0;i<ds_list_size(parts);i++) {
 		
 		var db = databases[| i]
 		
-		//	loop through ports
-		for(var p=0;p<db.ports_count;p++) {
-			//	there is something connected to this port
-			if db.ports[p,port_object] > -1 {
+		if instance_exists(db) {
+			//	loop through ports
+			for(var p=0;p<db.ports_count;p++) {
+				//	there is something connected to this port
+				if db.ports[p,port_object] > -1 {
 					
-				var previous_loop = db
-				var current_loop = db.ports[p,port_object]
-				var loop = true
-				while loop == true {
-					
-					var _object_index = current_loop.object_index
-					
-					if _object_index == wire {
-								
-						current_loop.color = c_white
-						
-						//	check this wires ports
-						for(var loop_port=0;loop_port<current_loop.ports_count;loop_port++) {
-							var other_port = loop_port
-							other_port = !other_port
-							//	this port is empty, this is a dead end!
-							if current_loop.ports[loop_port,port_object] == -1 {
-								loop = false
-								current_loop.ports[other_port,port_direction] = in
-								current_loop.ports[loop_port,port_direction] = out
-								loop_port = current_loop.ports_count
-							} 
-							//	there is something attached to this wire and its not the previous
-							else if current_loop.ports[loop_port,port_object] > -1 and current_loop.ports[loop_port,port_object] != previous_loop {
-								//	set my port In and Out directions
-								current_loop.ports[loop_port,port_direction] = out
-								current_loop.ports[other_port,port_direction] = in
-									
-								previous_loop = current_loop
-								current_loop = current_loop.ports[loop_port,port_object]
-								loop_port = current_loop.ports_count
-							} else if current_loop.ports[other_port,port_object] > -1 and current_loop.ports[loop_port,port_object] == previous_loop {
-								current_loop.ports[loop_port,port_direction] = in 
-								current_loop.ports[other_port,port_direction] = out
-									
-								previous_loop = current_loop
-								current_loop = current_loop.ports[other_port,port_object]
-								loop_port = current_loop.ports_count
-							}
-									
-							//	if this is connecting to something NOT a wire, set its incoming port to "in"
-							if current_loop.object_index != wire {
-								for(var a=0;a<current_loop.ports_count;a++) {
-									if current_loop.ports[a,port_x] == previous_loop.center_cell_x and current_loop.ports[a,port_y] == previous_loop.center_cell_y { 
-										current_loop.ports[a,port_direction] = in
-												
-									}
-								}
-							}
-									
-						}
-					} else if _object_index == node {
-						//	toss this dbs type into the nodes held list
-						if ds_list_find_index(current_loop.data_held,db.data_generated) == -1 {
-							ds_list_add(current_loop.data_held,db.data_generated)
-							ds_list_add(nodes,current_loop)
-							db.connected = true
-							current_loop.connected = true
-						}
-								
-						//	set the connected port direction
-						for(var d=0;d<current_loop.ports_count;d++) {
-							if current_loop.ports[d,port_object] == previous_loop {
-								current_loop.ports[d,port_direction] = in	
-							}
-						}
-								
-						loop = false
-						
-					} else {
-						//	databases and kiosks...
-						loop = false
-						db.connected = connected.incorrect_connected
-					}
-						
-						
-				}	
-			}
-		}
-		
-		
-	}
-
-#endregion
-
-#region Node loops
-
-	if ds_list_empty(nodes) {
-	
-	} else if !ds_list_empty(nodes) { //and !ds_list_empty(kiosks) {
-	
-		while ds_list_size(nodes) > 0 {
-			var current_node = nodes[| 0]
-		
-			//	Loop through ports
-			for(var p=0;p<current_node.ports_count;p++) {
-				if current_node.ports[p,port_object] > -1 and current_node.ports[p,port_direction] != in {
-				
-					var previous_loop = current_node
-					var current_loop = current_node.ports[p,port_object]
+					var previous_loop = db
+					var current_loop = db.ports[p,port_object]
 					var loop = true
 					while loop == true {
 					
 						var _object_index = current_loop.object_index
 					
 						if _object_index == wire {
-							
-							//if _object_index.color != c_white {
-								current_loop.color = c_sergey_blue
-							//}
+								
+							current_loop.color = c_white
 						
 							//	check this wires ports
 							for(var loop_port=0;loop_port<current_loop.ports_count;loop_port++) {
@@ -203,51 +104,154 @@ for(var i=0;i<ds_list_size(parts);i++) {
 											current_loop.ports[a,port_direction] = in
 												
 										}
-											
 									}
 								}
 									
 							}
-							
 						} else if _object_index == node {
-						
-							//	we connect to ourselves!
-							if current_loop == current_node {
-
+							//	toss this dbs type into the nodes held list
+							if ds_list_find_index(current_loop.data_held,db.data_generated) == -1 {
+								ds_list_add(current_loop.data_held,db.data_generated)
+								ds_list_add(nodes,current_loop)
+								db.connected = true
+								current_loop.connected = true
 							}
-							loop = false
-						
-						} else if _object_index == kiosk {
-						
-							//	loop for putting data into kiosk
-							for(var d=0;d<ds_list_size(current_node.data_held);d++) {
-								if ds_list_find_index(current_loop.data_held,current_node.data_held[| d]) == -1 {
-									//	putting this data into the kiosk!
-									ds_list_add(current_loop.data_held,current_node.data_held[| d])
-									ds_list_add(current_loop.data_held_ids,current_node)
-								} else {
-									//	data is already in this kiosk!	
-								}
-							}
-							loop = false
-							
+								
 							//	set the connected port direction
 							for(var d=0;d<current_loop.ports_count;d++) {
 								if current_loop.ports[d,port_object] == previous_loop {
 									current_loop.ports[d,port_direction] = in	
 								}
 							}
+								
+							loop = false
 						
 						} else {
-							//	databases...
+							//	databases and kiosks...
 							loop = false
+							db.connected = connected.incorrect_connected
 						}
-					}
-				
-				
+						
+						
+					}	
 				}
-				if p == current_node.ports_count - 1 {
-					ds_list_delete(nodes,ds_list_find_index(nodes,current_node))	
+			}
+		}
+		
+		
+	}
+
+#endregion
+
+#region Node loops
+
+	if ds_list_empty(nodes) {
+	
+	} else if !ds_list_empty(nodes) { //and !ds_list_empty(kiosks) {
+	
+		while ds_list_size(nodes) > 0 {
+			var current_node = nodes[| 0]
+		
+			if instance_exists(current_node) {
+				//	Loop through ports
+				for(var p=0;p<current_node.ports_count;p++) {
+					if current_node.ports[p,port_object] > -1 and current_node.ports[p,port_direction] != in {
+				
+						var previous_loop = current_node
+						var current_loop = current_node.ports[p,port_object]
+						var loop = true
+						while loop == true {
+					
+							var _object_index = current_loop.object_index
+					
+							if _object_index == wire {
+							
+								//if _object_index.color != c_white {
+									current_loop.color = c_sergey_blue
+								//}
+						
+								//	check this wires ports
+								for(var loop_port=0;loop_port<current_loop.ports_count;loop_port++) {
+									var other_port = loop_port
+									other_port = !other_port
+									//	this port is empty, this is a dead end!
+									if current_loop.ports[loop_port,port_object] == -1 {
+										loop = false
+										current_loop.ports[other_port,port_direction] = in
+										current_loop.ports[loop_port,port_direction] = out
+										loop_port = current_loop.ports_count
+									} 
+									//	there is something attached to this wire and its not the previous
+									else if current_loop.ports[loop_port,port_object] > -1 and current_loop.ports[loop_port,port_object] != previous_loop {
+										//	set my port In and Out directions
+										current_loop.ports[loop_port,port_direction] = out
+										current_loop.ports[other_port,port_direction] = in
+									
+										previous_loop = current_loop
+										current_loop = current_loop.ports[loop_port,port_object]
+										loop_port = current_loop.ports_count
+									} else if current_loop.ports[other_port,port_object] > -1 and current_loop.ports[loop_port,port_object] == previous_loop {
+										current_loop.ports[loop_port,port_direction] = in 
+										current_loop.ports[other_port,port_direction] = out
+									
+										previous_loop = current_loop
+										current_loop = current_loop.ports[other_port,port_object]
+										loop_port = current_loop.ports_count
+									}
+									
+									//	if this is connecting to something NOT a wire, set its incoming port to "in"
+									if current_loop.object_index != wire {
+										for(var a=0;a<current_loop.ports_count;a++) {
+											if current_loop.ports[a,port_x] == previous_loop.center_cell_x and current_loop.ports[a,port_y] == previous_loop.center_cell_y { 
+												current_loop.ports[a,port_direction] = in
+												
+											}
+											
+										}
+									}
+									
+								}
+							
+							} else if _object_index == node {
+						
+								//	we connect to ourselves!
+								if current_loop == current_node {
+
+								}
+								loop = false
+						
+							} else if _object_index == kiosk {
+						
+								//	loop for putting data into kiosk
+								for(var d=0;d<ds_list_size(current_node.data_held);d++) {
+									if ds_list_find_index(current_loop.data_held,current_node.data_held[| d]) == -1 {
+										//	putting this data into the kiosk!
+										ds_list_add(current_loop.data_held,current_node.data_held[| d])
+										ds_list_add(current_loop.data_held_ids,current_node)
+									} else {
+										//	data is already in this kiosk!	
+									}
+								}
+								loop = false
+							
+								//	set the connected port direction
+								for(var d=0;d<current_loop.ports_count;d++) {
+									if current_loop.ports[d,port_object] == previous_loop {
+										current_loop.ports[d,port_direction] = in	
+									}
+								}
+						
+							} else {
+								//	databases...
+								loop = false
+							}
+						}
+				
+				
+					}
+					if p == current_node.ports_count - 1 {
+						ds_list_delete(nodes,ds_list_find_index(nodes,current_node))	
+					}
 				}
 			}
 		
