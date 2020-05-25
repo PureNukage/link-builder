@@ -17,3 +17,19 @@ if seconds >= 60 {
 } else {
 	minutes_switch = 0	
 }
+
+var timer = 180
+
+if outOfETH_timer < timer {
+	outOfETH_timer++	
+} else if outOfETH_timer == timer {
+	outOfETH_timer = 0
+	outOfETH++
+}
+
+if outOfLINK_timer < timer {
+	outOfLINK_timer++
+} else if outOfLINK_timer == timer {
+	outOfLINK_timer = 0
+	outOfLINK++
+}

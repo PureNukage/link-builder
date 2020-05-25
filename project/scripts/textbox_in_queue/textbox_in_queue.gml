@@ -10,11 +10,11 @@ if argument_count >= 2 {
 
 var found_it = false
 for(var i=0;i<ds_list_size(textboxController.message_queue);i++) {
-	var buffer_encoded = textboxController.message_queue[| 0]
+	var buffer_encoded = textboxController.message_queue[| i]
 	var buffer = buffer_base64_decode(buffer_encoded)
 	var _text = buffer_read(buffer,buffer_string)
 	var _icon = buffer_read(buffer,buffer_s8)
-	var _timer = buffer_read(buffer,buffer_s8)
+	var _timer = buffer_read(buffer,buffer_s32)
 	var UniqueID = buffer_read(buffer,buffer_s32)
 	var _Event_type = buffer_read(buffer,buffer_s8)
 	var _Object_id = buffer_read(buffer,buffer_s32)

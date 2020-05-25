@@ -14,7 +14,7 @@ if argument_count >= 5 var Event_type = argument[4] else var Event_type = -1
 if argument_count >= 6 var Object_id = argument[5] else var Object_id = -1
 if argument_count >= 7 var Dialogue = argument[6] else var Dialogue = -1
 
-var buffer = buffer_create(1024,buffer_fixed,1)
+var buffer = buffer_create(1024,buffer_grow,1)
 
 buffer_seek(buffer,buffer_seek_start,0)
 

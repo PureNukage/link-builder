@@ -473,14 +473,16 @@ for(var i=0;i<ds_list_size(parts);i++) {
 						//	Check if out of LINK
 						var Contract_name = contracts.contract[_kiosk.smartcontract, contract_name]
 						if player.link < contracts.contract[_kiosk.smartcontract, contract_linkfee] {
-							if !textbox_in_queue(time.seconds) and !textbox_active(time.seconds) and !textbox_in_history(time.seconds) {
-								create_textbox("Out of LINK!",s_event_out_of_link,event_duration,time.seconds,event_types.out_of_link,_kiosk)
+							if !textbox_in_queue(time.outOfLINK) and !textbox_active(time.outOfLINK) and !textbox_in_history(time.outOfLINK) {
+								debug_log("AHHHHHH IM OUT OF LINK AHHHHH")
+								create_textbox("Out of LINK!",s_event_out_of_link,event_duration,time.outOfLINK,event_types.out_of_link,_kiosk)
 							}
 						}
 						//	Check if out of ETH
 						if player.eth < contracts.contract[_kiosk.smartcontract, contract_gasfee_total] {
-							if !textbox_in_queue(time.seconds) and !textbox_active(time.seconds) and !textbox_in_history(time.seconds) {
-								create_textbox("Out of ETH!",s_event_out_of_eth,event_duration,time.seconds,event_types.out_of_eth,_kiosk)
+							if !textbox_in_queue(time.outOfETH) and !textbox_active(time.outOfETH) and !textbox_in_history(time.outOfETH) {
+								debug_log("AHHHHHH IM OUT OF ETH AHHHHH")
+								create_textbox("Out of ETH!",s_event_out_of_eth,event_duration,time.outOfETH,event_types.out_of_eth,_kiosk)
 							}
 						}
 						
