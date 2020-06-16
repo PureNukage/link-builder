@@ -15,6 +15,7 @@ if !game.game_over {
 				// Placement
 				if input.mouse_left_press and placeable and !multireplace {				
 					item_place()
+					playSoundEffect(snd_place_item_1)
 				}
 		
 				//	Rotation

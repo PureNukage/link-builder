@@ -21,7 +21,7 @@ new_dialogue_volume = 0
 
 //	Sound effects
 current_sound_effect_volume = 100
-new_sound_effect_volume = 0
+new_sound_effect_volume = 0.5
 //soundEffect[sounds.click1] = snd_click_1
 //soundEffect[sounds.click2] = snd_click_2
 //soundEffect[sounds.click3] = snd_click_3

@@ -3,6 +3,8 @@ if !instance_exists(camera) instance_create_layer(0,0,"Instances",camera)
 in_game = false
 clickDelay = 5
 
+buttonMouseover = false				//	Used to fire a sound effect just once
+
 mainMenu = []
 
 mainMenu[0, menu_name] = "Play"

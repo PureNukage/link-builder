@@ -21,7 +21,8 @@ if !game.game_over {
 				}
 	
 				if input.mouse_left_press and placeable and !multireplace  {
-					item_place()			
+					item_place()		
+					playSoundEffect(snd_place_item_1)
 				}	
 	
 				if input.mouse_right_press and !(app.tutorial == tutorial.basics and tutorialHelper.stage < 7) {

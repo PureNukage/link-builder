@@ -44,6 +44,7 @@ switch(menu)
 			
 			if app.resolution_height == 720 and os_browser == browser_not_a_browser _y -= 120
 		
+			var number_of_mouseovers = 0
 			for(var i=0;i<array_height_2d(mainMenu);i++) {
 				var menu_string = mainMenu[i, menu_name]
 				var _width = string_width(menu_string)
@@ -56,7 +57,13 @@ switch(menu)
 				draw_set_color(c_black)
 				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height) {
 					draw_set_alpha(.3)
+					number_of_mouseovers++
+					if buttonMouseover == false {
+						buttonMouseover = true
+						playSoundEffect(snd_click_3)
+					}
 					if mouse_check_button_pressed(mb_left) {
+						playSoundEffect(snd_click_1)
 						switch(i)
 						{
 							case 0:	//	Play
@@ -103,11 +110,22 @@ switch(menu)
 				draw_set_color(c_black)
 				if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height) {
 					draw_set_alpha(.3)
+					number_of_mouseovers++
+					if buttonMouseover == false {
+						buttonMouseover = true
+						playSoundEffect(snd_click_3)
+					}
 					if mouse_check_button_pressed(mb_left) {
 						game_end()	
 					}
 				} else {
 					draw_set_alpha(.5)
+				}
+				//	Sound Effect mouseover spam fix
+				if number_of_mouseovers == 0 {
+					if buttonMouseover {
+						buttonMouseover = false	
+					}	
 				}
 				
 				draw_roundrect(_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height,false)
@@ -316,6 +334,50 @@ switch(menu)
 			
 			_y += 128
 			
+			////	Sound Effects volume bar
+			//	Draw bar rectangle
+			var bar_width = 256
+			var bar_height = 32
+			var barX = _x - bar_width/2
+			var barY = _y - 24
+			draw_set_color(c_dkgray)
+			draw_roundrect(barX,barY,barX+bar_width,barY+bar_height,false)
+			
+			//	Draw volume amount
+			draw_set_color(c_black)
+			draw_text(_x,_y-48,"Sound Effects: "+string(soundSystem.current_sound_effect_volume*100)+"%")
+			
+			//	Draw volume handle
+			var segment = round(bar_width / 10)
+			var handleX = barX-segment + ((soundSystem.current_sound_effect_volume*10) * segment)
+			var handleY = barY
+			var handle_width = segment
+			//var handle_height = 48
+			draw_set_color(c_gray)
+			draw_circle(handleX+(handle_width/2),handleY+(handle_width/2),handle_width,false)
+			
+			var xx = barX-segment
+			var yy = barY
+			var number_of_mouseovers = 0
+			for(var i=0;i<=10;i++) {
+				if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy,barX+bar_width,yy+bar_height) {
+					if mouse_check_button(mb_left) {
+						soundSystem.new_sound_effect_volume = i/10
+						number_of_mouseovers++
+						if !buttonMouseover { 
+							buttonMouseover = true
+							playSoundEffect(snd_click_1)
+						}
+					}
+				}
+				xx += segment
+			}
+			if buttonMouseover and number_of_mouseovers == 0 {
+				buttonMouseover = false	
+			}
+			
+			_y += 128
+			
 			//	Back button
 			//if in_game {
 			//	var _string = "Back to Game"	
@@ -354,6 +416,7 @@ switch(menu)
 			var _y = display_get_gui_height()/2 - (array_height_2d(tutorials) * 32)
 			var buffer = 32
 		
+			var number_of_mouseovers = 0
 			for(var i=0;i<array_height_2d(tutorials);i++) {
 				if tutorials[i, tutorial_selected] {
 			
@@ -366,6 +429,11 @@ switch(menu)
 					draw_set_color(c_black)
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-buffer,_y-buffer,xx+menu_string_width+buffer,_y+menu_string_height+buffer) {
 						draw_set_alpha(.3)	
+						number_of_mouseovers++
+						if !buttonMouseover {
+							buttonMouseover = true
+							playSoundEffect(snd_click_3)
+						}
 					
 						if mouse_check_button_pressed(mb_left) {	
 							camera.camera_mode = camera_mode.free
@@ -376,6 +444,7 @@ switch(menu)
 							var String = menu_string
 							ga_addProgressionEvent(GA_PROGRESSIONSTATUS_START, "Tutorial", String)
 							room_goto_next()
+							playSoundEffect(snd_start_game)
 
 						}
 					
@@ -396,6 +465,10 @@ switch(menu)
 				}
 			}
 			draw_set_alpha(1)
+			
+			if buttonMouseover and number_of_mouseovers == 0 {
+				buttonMouseover = false	
+			}
 			
 			//	Back button
 			var _string = "Back to Main Menu"
@@ -529,9 +602,16 @@ switch(menu)
 			var box_width = _width + buffer
 			var box_height = _height + buffer
 			
+			var number_of_mouseovers = 0
+			
 			draw_set_color(c_black)
 			if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height) { 
 				draw_set_alpha(.3)
+				number_of_mouseovers++
+				if !buttonMouseover {
+					buttonMouseover = true
+					playSoundEffect(snd_click_3)
+				}
 				if mouse_check_button_pressed(mb_left) {
 					app.new_game = true	
 					camera.camera_mode = camera_mode.free
@@ -544,6 +624,8 @@ switch(menu)
 					ga_addProgressionEvent(GA_PROGRESSIONSTATUS_START, "Game")
 					
 					room_goto_next()
+					
+					playSoundEffect(snd_start_game)
 				}
 			} else {
 				draw_set_alpha(.5)	
@@ -600,6 +682,11 @@ switch(menu)
 					}
 				}
 				draw_set_alpha(.3)
+				number_of_mouseovers++
+				if !buttonMouseover {
+					buttonMouseover = true
+					playSoundEffect(snd_click_3)
+				}
 				if mouse_check_button_pressed(mb_left) and savedgame {
 					app.new_game = false
 					camera.camera_mode = camera_mode.free
@@ -609,6 +696,7 @@ switch(menu)
 					app.data_corruption = mode.on		
 					app.load_game_please = true
 					room_goto_next()
+					playSoundEffect(snd_start_game)
 				}
 			} else {
 				draw_set_alpha(.5)	
@@ -627,6 +715,10 @@ switch(menu)
 			draw_text(_x,_y+box_height/2,menu_string)
 			
 			_y += box_height + buffer
+			
+			if buttonMouseover and number_of_mouseovers == 0 {
+				buttonMouseover = false	
+			}
 			
 			if point_in_rectangle(gui_mouse_x,gui_mouse_y,_x-14,_y-14,_x+14,_y+14) {
 				draw_set_color(c_white)
