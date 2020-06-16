@@ -148,18 +148,20 @@ switch(menu)
 			var spacer = 4
 			
 			var xx = 16
-			var yy = display_get_gui_height()-((height+spacer)*3)
+			var yy = display_get_gui_height()-((height+spacer)*4)
 			
 			yy += spacer
 			
 			draw_set_halign(fa_left)
 			draw_set_valign(fa_bottom)
 			
-			draw_text(xx,yy,"created by " + app.me)					yy += height+spacer
+			draw_text(xx,yy,"created by " + app.me)						yy += height+spacer
 			
 			draw_text(xx,yy,"music by wombocombo, @ConcernedBears")		yy += height+spacer
 			
-			draw_text(xx,yy,"thanks to my testers: @ConcernedBears, palatine, halcyonfields, Leo_the_Potato")
+			draw_text(xx,yy,"sound effects by @WormholeOracle")			yy += height+spacer
+			
+			draw_text(xx,yy,"thanks to my testers: @ConcernedBears, lacronda.link, palatine, halcyonfields, Leo_the_Potato")
 			
 			
 		break
@@ -366,7 +368,7 @@ switch(menu)
 						number_of_mouseovers++
 						if !buttonMouseover { 
 							buttonMouseover = true
-							playSoundEffect(snd_click_1)
+							playSoundEffect(snd_click_2)
 						}
 					}
 				}
