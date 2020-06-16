@@ -49,6 +49,17 @@ enum camera_mode {
 	fixed,
 }
 
+enum sounds {
+	click1,
+	click2,
+	click3,
+	hover1,
+	hover2,
+	place1,
+	place2,
+	startGame,
+}
+
 enum data_types {
 	binance_ETHUSD,	
 	cryptocompare_ETHUSD,

@@ -40,3 +40,9 @@ if current_dialogue_volume != new_dialogue_volume {
 	current_dialogue_volume = new_dialogue_volume
 	audio_sound_gain(current_dialogue,current_dialogue_volume,0)
 }
+
+
+//	Sound Effect Volume Changed
+if current_sound_effect_volume != new_sound_effect_volume {
+	current_sound_effect_volume = new_sound_effect_volume
+}
