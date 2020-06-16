@@ -121,12 +121,6 @@ switch(menu)
 				} else {
 					draw_set_alpha(.5)
 				}
-				//	Sound Effect mouseover spam fix
-				if number_of_mouseovers == 0 {
-					if buttonMouseover {
-						buttonMouseover = false	
-					}	
-				}
 				
 				draw_roundrect(_x-box_width/2,_y,_x-box_width/2+box_width,_y+box_height,false)
 				draw_set_color(c_black)
@@ -138,6 +132,13 @@ switch(menu)
 				draw_set_halign(fa_center)
 				draw_set_valign(fa_middle)
 				draw_text(_x,_y+box_height/2,menu_string)
+			}
+			
+			//	Sound Effect mouseover spam fix
+			if number_of_mouseovers == 0 {
+				if buttonMouseover {
+					buttonMouseover = false	
+				}	
 			}
 			
 			////	Credits
@@ -378,7 +379,7 @@ switch(menu)
 				buttonMouseover = false	
 			}
 			
-			_y += 128
+			_y += 64
 			
 			//	Back button
 			//if in_game {
