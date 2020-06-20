@@ -3,11 +3,18 @@ if live_call() return live_result
 var xx = display_get_gui_width() - sprite_get_width(s_alarm) - 16
 var yy = contracts.buttonY
 
+var menu_mouseovers = 0
 if draw_active {
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-4,yy-4,xx+sprite_get_width(s_alarm)+4,yy+sprite_get_height(s_alarm)+4) and !instance_exists(mainmenu) {
 		button_mouseover = true
 		draw_set_color(c_gray)
+		menu_mouseovers++
+		if !buttonMouseover {
+			buttonMouseover = true
+			playSoundEffect(snd_ingamehover)
+		}
 		if input.mouse_left_press {
+			playSoundEffect(snd_click_1)
 			if !clickfix {
 				messages_open = !messages_open	
 				if messages_open {
@@ -164,4 +171,8 @@ if draw_active {
 		}
 	
 	}
+}
+
+if menu_mouseovers == 0 and buttonMouseover {
+	buttonMouseover = false	
 }

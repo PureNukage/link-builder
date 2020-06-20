@@ -26,10 +26,18 @@ contractsY = menuY
 var contracts_string = "Contracts"
 contracts_width = string_width(contracts_string) + (buffer*2)
 
+var menu_mouseovers = 0
 #region	menu
 if point_in_rectangle(gui_mouse_x,gui_mouse_y,menuX,menuY,menuX+menu_width-1,menuY+48) {
 	draw_set_color(c_ltgray)
+	menu_mouseovers++
+	if !buttonMouseover or whichButton != 0 {
+		buttonMouseover = true
+		whichButton = 0
+		playSoundEffect(snd_ingamehover)
+	}
 	if input.mouse_left_press {
+		playSoundEffect(snd_click_1)
 		if instance_exists(mainmenu) instance_destroy(mainmenu)
 		else {
 			var _menu = instance_create_layer(0,0,"Instances",mainmenu)
@@ -54,7 +62,14 @@ if data_active {
 	//	button
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,dataX+1,dataY,dataX+data_width-1,dataY+48) and !instance_exists(mainmenu) {
 		draw_set_color(c_ltgray)
+		menu_mouseovers++
+		if !buttonMouseover or whichButton != 1 {
+			buttonMouseover = true
+			whichButton = 1
+			playSoundEffect(snd_ingamehover)
+		}
 		if input.mouse_left_press {
+			playSoundEffect(snd_click_1)
 			data_open = !data_open	
 			nodes_open = false
 			contracts_open = false
@@ -253,11 +268,19 @@ if data_open {
 						if point_in_rectangle(gui_mouse_x,gui_mouse_y,XX-2,YY-2,XX+line_width+2,YY+line_height+2) {
 							draw_set_color(c_ltgray)
 							
+							menu_mouseovers++
+							if !buttonMouseover or whichButton != d {
+								buttonMouseover = true
+								whichButton = d
+								playSoundEffect(snd_ingamehover)
+							}
+							
 							if shop.item_data[index, item_new] {
 								shop.item_data[index, item_new] = false
 							}
 						
 							if input.mouse_left_press {
+								playSoundEffect(snd_click_1)
 								if shop.item_data[index, item_object_index] == -1 {
 									//	Delete the item we're currently placing if there is one 
 									if ds_list_size(input.selections) > 0 {
@@ -454,7 +477,14 @@ if nodes_active {
 	//	button
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,nodesX+1,nodesY,nodesX+nodes_width-1,nodesY+48) and !instance_exists(mainmenu) {
 		draw_set_color(c_ltgray)	
+		menu_mouseovers++
+		if !buttonMouseover or whichButton != 2 {
+			buttonMouseover = true
+			whichButton = 2
+			playSoundEffect(snd_ingamehover)
+		}
 		if input.mouse_left_press {
+			playSoundEffect(snd_click_1)
 			nodes_open = !nodes_open
 			data_open = false
 			contracts_open = false
@@ -587,6 +617,13 @@ if nodes_open {
 					draw_roundrect(listX-2,listY-2,listX+list_width+2,listY+list_height+2,false)
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,listX-2,listY-2,listX+list_width+2,listY+list_height+2) {
 						
+						menu_mouseovers++
+						if !buttonMouseover or whichButton != n {
+							buttonMouseover = true
+							whichButton = n
+							playSoundEffect(snd_ingamehover)
+						}
+						
 						if shop.item_node[n, node_new] shop.item_node[n, node_new] = false
 					
 						if !plaqueCheck() {
@@ -602,6 +639,7 @@ if nodes_open {
 					
 						draw_set_color(c_ltgray)
 						if input.mouse_left_press {
+							playSoundEffect(snd_click_1)
 							if shop.item_node[n, node_object_index] == -1 {
 								//	Delete the item we're currently placing if there is one 
 								if ds_list_size(input.selections) > 0 {
@@ -759,7 +797,14 @@ if contracts_active {
 	//	button
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,contractsX+1,contractsY,contractsX+contracts_width-1,contractsY+48) and !instance_exists(mainmenu) {
 		draw_set_color(c_ltgray)
+		menu_mouseovers++
+		if !buttonMouseover or whichButton != 3 {
+			buttonMouseover = true
+			whichButton = 3
+			playSoundEffect(snd_ingamehover)
+		}
 		if input.mouse_left_press {
+			playSoundEffect(snd_click_1)
 			contracts_open = !contracts_open
 			data_open = false
 			nodes_open = false
@@ -1055,6 +1100,13 @@ if contracts_open and !instance_exists(mainmenu) {
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx-surface_offsetX,yy-surface_offsetY,xx+name_width-surface_offsetX,yy+name_height-surface_offsetY) and player.value >= price 
 					and point_in_rectangle(gui_mouse_x,gui_mouse_y,pageX,pageY,pageX+page_width,pageY+page_height) {
 						
+						menu_mouseovers++
+						if !buttonMouseover or whichButton != c {
+							buttonMouseover = true
+							whichButton = c
+							playSoundEffect(snd_ingamehover)
+						}
+						
 						if contracts.contract[c, contract_new] and player.value >= price contracts.contract[c, contract_new] = false
 						
 						//	Plaque check
@@ -1081,6 +1133,7 @@ if contracts_open and !instance_exists(mainmenu) {
 						
 						draw_set_color(c_ltgray)	
 						if input.mouse_left_press {
+							playSoundEffect(snd_click_1)
 							if contracts.contract[c, contract_kiosk] == -1 {
 								if plaqueCheck() {
 									instance_destroy(Plaque)
@@ -1367,3 +1420,8 @@ if contracts_open and !instance_exists(mainmenu) {
 }
 
 #endregion
+
+if menu_mouseovers == 0 and buttonMouseover {
+	buttonMouseover = false	
+	whichButton = -1
+}

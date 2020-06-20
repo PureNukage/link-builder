@@ -8,6 +8,9 @@ spawners = ds_list_create()
 
 heromenu_active = true
 
+buttonMouseover = false
+whichButton = -1
+
 for(var i=0;i<4;i++) {
 	switch(i)
 	{

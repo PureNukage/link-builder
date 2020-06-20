@@ -138,6 +138,7 @@ if resources_active {
 			} else if shop.exchange_open and shop.exchange_currency == "LINK" {
 				resource_changed("LINK",-shop.link_trade,0,0,false)
 				resource_changed("$$",shop.link_price * shop.link_trade,0,0,false)
+				playSoundEffect(snd_money)
 			}
 		}
 	
@@ -172,6 +173,7 @@ if resources_active {
 			} else if shop.exchange_open and shop.exchange_currency == "ETH" {
 				resource_changed("ETH",-shop.eth_trade,0,0,false)
 				resource_changed("$$",shop.eth_trade * shop.eth_price,0,0,false)
+				playSoundEffect(snd_money)
 			}
 		}
 	

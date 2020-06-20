@@ -10,6 +10,9 @@ price_button = true
 web_button = true
 owned_button = 0
 
+buttonMouseover = false			//	Used when playing a hover sound effect
+whichButton = -1
+
 data_mouseover = false
 data_barclickY1 = -1
 data_barclickY2 = -1

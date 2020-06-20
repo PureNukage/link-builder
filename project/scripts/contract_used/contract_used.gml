@@ -153,6 +153,12 @@ if contract_misfire > 0 {
 	contracts.contract[Smartcontract, contract_misfires]++
 	ds_list_add(contracts.contract[Smartcontract, contract_uses],false)
 	
+	if !audio_is_playing(snd_angryuser_1) and !audio_is_playing(snd_angryuser_2)
+	and !audio_is_playing(snd_angryuser_3) and !audio_is_playing(snd_angryuser_4) {
+		var Sound = choose(snd_angryuser_1, snd_angryuser_2, snd_angryuser_3, snd_angryuser_4)
+		playSoundEffect(Sound)
+	}
+	
 	//	Calculate new reliability percentage
 	//var _misfires = contracts.contract[Smartcontract, contract_misfires]
 	//var _successes = contracts.contract[smartcontract, contract_uses] - _misfires
@@ -195,6 +201,7 @@ if !contract_misfire {
 	//player.money += contracts.contract[smartcontract, contract_reward]
 	var _points = contracts.contract[Smartcontract, contract_reward]
 	debug_log("CONTRACT USED Player to receive: "+string(_points)+" points")
+	if app.tutorial == -1 playSoundEffect(snd_contractpay)
 } else {
 	resource_changed("$$",contracts.contract[Smartcontract, contract_reward],_kiosk.x,_kiosk.y-64,false)
 	resource_changed("ETH",contracts.contract[Smartcontract, contract_gasfee_base],_kiosk.x,_kiosk.y-128,false)

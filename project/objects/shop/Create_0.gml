@@ -1,5 +1,7 @@
 #region Data 
 
+	buttonMouseover = false
+
 	//	CREATE DATA 
 	item_data = 0
 

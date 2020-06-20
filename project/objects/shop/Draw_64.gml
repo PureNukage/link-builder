@@ -1,5 +1,7 @@
 if live_call() return live_result
 
+var menu_mouseovers = 0
+
 #region Wire button
 
 if wire_active {
@@ -10,8 +12,15 @@ if wire_active {
 	//	Draw background
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,_xx,_yy,_xx+64,_yy+40) and !instance_exists(mainmenu) {
 		button_wire_mouseover = true
-		draw_set_color(c_gray)	
+		draw_set_color(c_gray)
+		menu_mouseovers++
+		if !buttonMouseover {
+			buttonMouseover = true
+			playSoundEffect(snd_ingamehover)
+		}
 		if input.mouse_left_press {
+			
+			playSoundEffect(snd_click_1)
 			
 			if input.selection_mode != selection_mode.free input.selection_mode = selection_mode.free
 			
@@ -88,8 +97,14 @@ if exchange_active {
 	var sh = string_height(String) + 16
 	
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,exchangeX,exchangeY,exchangeX+sw,exchangeY+sh) and !instance_exists(mainmenu)  {
+		menu_mouseovers++
+		if !buttonMouseover {
+			buttonMouseover = true
+			playSoundEffect(snd_ingamehover)
+		}
 		draw_set_color(c_ltgray)
 		if input.mouse_left_press {
+			playSoundEffect(snd_click_1)
 			exchange_open = !exchange_open
 			if exchange_open {
 				if personController.hero_menu_open personController.hero_menu_open = false
@@ -122,6 +137,8 @@ if exchange_active {
 		
 		if point_in_rectangle(gui_mouse_x,gui_mouse_y,windowX-2,windowY-2,windowX+window_width+2,windowY+window_height+2) {
 			exchange_mouseover = true
+			var old_link_trade = link_trade
+			var old_eth_trade = eth_trade
 			if input.scroll_up or input.scroll_down {
 				if exchange_currency == "LINK" {
 					link_trade += input.scroll_up - input.scroll_down
@@ -130,6 +147,7 @@ if exchange_active {
 					eth_trade += input.scroll_up - input.scroll_down
 					eth_trade = clamp(eth_trade,0,50)
 				}
+				if old_link_trade != link_trade or old_eth_trade != eth_trade and !audio_is_playing(snd_money_short) playSoundEffect(snd_money_short)
 			}
 		} else exchange_mouseover = false
 		
@@ -264,6 +282,8 @@ if exchange_active {
 		var handle_color = c_white
 		
 		if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX-extra_space,barY,barX+bar_width+extra_space,barY+bar_height) {
+			var old_link_trade = link_trade
+			var old_eth_trade = eth_trade
 			if input.mouse_left_press or input.mouse_left {
 				handle_color = c_ltgray
 				if point_in_rectangle(gui_mouse_x,gui_mouse_y,barX-extra_space,barY,barX,barY+bar_height) {
@@ -290,6 +310,7 @@ if exchange_active {
 					}
 				}
 			}
+			if old_link_trade != link_trade or old_eth_trade != eth_trade and !audio_is_playing(snd_money_short) playSoundEffect(snd_money_short)
 		}
 		draw_rectangle(barX,barY,barX+bar_width,barY+bar_height,false)
 		
@@ -326,6 +347,7 @@ if exchange_active {
 				draw_set_color(c_white)
 				resource_changed("$$",amount_of_money,gui_mouse_x,gui_mouse_y+128,true)
 				resource_changed(exchange_currency,-currency_amount,gui_mouse_x,gui_mouse_y+256,true)
+				playSoundEffect(snd_money)
 			}
 		} else {
 			if currency_amount * currency_price > player.money {
@@ -345,8 +367,11 @@ if exchange_active {
 	
 }
 
-
 #endregion
+
+if buttonMouseover and menu_mouseovers == 0 {
+	buttonMouseover = false	
+}
 
 draw_set_font(-1)
 draw_set_halign(fa_left)

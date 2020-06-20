@@ -3,6 +3,8 @@ message_queue = ds_list_create()
 
 current_message = -1
 
+buttonMouseover = false
+
 button_mouseover = false
 messages_open = false
 messages_mouseover = false

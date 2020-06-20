@@ -43,6 +43,8 @@ switch(states)
 				cell_x2 = input.grid_x
 				cell_y2 = input.grid_y
 				
+				if !audio_is_playing(snd_wirereel) playSoundEffect(snd_wirereel)
+				
 				//	Port 2
 				if port2 > -1 ds_list_clear(port2)
 				port2 = ports_check(cell_x2,cell_y2)
@@ -577,6 +579,7 @@ switch(states)
 						for(var i=0;i<ds_list_size(path_objects);i++) {
 							var _wire = path_objects[| i]
 							if i == 0 and port1 > -1 {
+								if !audio_is_playing(snd_wiredock) playSoundEffect(snd_wiredock)
 								var connecting_item = port1[| 0]
 								//	Set connecting_items port too
 								for(var p=0;p<connecting_item.ports_count;p++) {
@@ -586,10 +589,11 @@ switch(states)
 								}
 							} else if i == ds_list_size(path_points_x)-1 and i != 0 and port2 > -1 {
 								var connecting_item = port2[| 0]
+								if !audio_is_playing(snd_wiredock) playSoundEffect(snd_wiredock)
 								//	Set connecting_items port too
 								for(var p=0;p<connecting_item.ports_count;p++) {
 									if connecting_item.ports[p,port_x] == _wire.center_cell_x and connecting_item.ports[p,port_y] == _wire.center_cell_y {
-										connecting_item.ports[p,port_object] = _wire	
+										connecting_item.ports[p,port_object] = _wire
 									}
 								}
 							}

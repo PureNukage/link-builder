@@ -42,6 +42,7 @@ if !instance_exists(mainmenu) {
 		draw_set_color(c_gray)	
 	
 		if input.mouse_left_press {
+			playSoundEffect(snd_click_1)
 			//	put our ID into the previous_message list and wait for eventual cleanup	
 			if textboxController.current_message == id {
 				textboxController.current_message = -1	

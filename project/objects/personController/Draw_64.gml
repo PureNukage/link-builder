@@ -3,11 +3,18 @@ if live_call() return live_result
 var xx = display_get_gui_width() - sprite_get_width(s_alarm) - 16 - 80
 var yy = contracts.buttonY
 
+var menu_mouseover = 0
 if heromenu_active { 
 
 	if point_in_rectangle(gui_mouse_x,gui_mouse_y,xx,yy-4,xx+64,yy+64) and !instance_exists(mainmenu) {
 		draw_set_color(c_gray)
+		menu_mouseover++
+		if !buttonMouseover {
+			buttonMouseover = true
+			playSoundEffect(snd_ingamehover)
+		}
 		if input.mouse_left_press {
+			playSoundEffect(snd_click_1)
 			hero_menu_open = !hero_menu_open
 			if hero_menu_open {
 				if textboxController.messages_open textboxController.messages_open = false
@@ -85,6 +92,12 @@ if heromenu_active {
 				draw_roundrect(XX-2,YY-2,XX+longest_width+2,YY+66,false)
 				if point_in_rectangle(gui_mouse_x,gui_mouse_y,pageX,pageY,pageX+page_width,pageY+page_height) {
 					if point_in_rectangle(gui_mouse_x,gui_mouse_y,_XX-2,_YY-2-hero_surface_offsetY,_XX+longest_width+2,_YY+66-hero_surface_offsetY) {
+						menu_mouseover++
+						if !buttonMouseover or whichButton != h {
+							buttonMouseover = true
+							whichButton = h
+							playSoundEffect(snd_ingamehover)
+						}
 						if new and !hidden {
 							heros[h, hero_new] = false
 							hero_newCheck()	
@@ -228,4 +241,9 @@ if heromenu_active {
 	
 	
 	}
+}
+
+if menu_mouseover == 0 and buttonMouseover {
+	buttonMouseover = false
+	whichButton = -1
 }
