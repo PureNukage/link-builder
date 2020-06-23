@@ -421,6 +421,11 @@ for(var i=0;i<ds_list_size(parts);i++) {
 								create_textbox(Contract_name+" is now online!",-1,event_duration,time.seconds,event_types.online,_kiosk)	
 							}
 							contracts.contract[_kiosk.smartcontract, contract_virgin] = false	
+							//	Play a random sound effect
+							if !audio_is_playing(snd_contractOnline1) and !audio_is_playing(snd_contractOnline2) and !audio_is_playing(snd_contractOnline3) {
+								var Sound = choose(snd_contractOnline1, snd_contractOnline2, snd_contractOnline3)
+								playSoundEffect(Sound)
+							}
 						}
 					}
 				} 

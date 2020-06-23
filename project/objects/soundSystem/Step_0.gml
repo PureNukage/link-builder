@@ -46,3 +46,12 @@ if current_dialogue_volume != new_dialogue_volume {
 if current_sound_effect_volume != new_sound_effect_volume {
 	current_sound_effect_volume = new_sound_effect_volume
 }
+
+////	People chattering
+if camera.zoom_level <= 0.9 and personController.population > 0 {
+	var chatterVolume = 1 - camera.zoom_level
+	chatterVolume = clamp(chatterVolume,0,current_sound_effect_volume)
+	audio_sound_gain(snd_chatter,chatterVolume,0)
+} else {
+	audio_sound_gain(snd_chatter,0,0)
+}

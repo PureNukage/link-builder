@@ -35,6 +35,11 @@ if needed_population > population {
 	
 	var _person = instance_create_layer(_x,_y,"Instances",person)
 	
+	if !audio_is_playing(snd_chatter_short_1) and !audio_is_playing(snd_chatter_short_2) and !audio_is_playing(snd_chatter_short_3) {
+		var Sound = choose(snd_chatter_short_1, snd_chatter_short_2, snd_chatter_short_3)	
+		playSoundEffect(Sound)
+	}
+	
 }
 
 ////	Heros 

@@ -76,7 +76,7 @@ scroll_down = mouse_wheel_down()
 
 delete_press = keyboard_check_pressed(vk_delete)
 
-//control_press = keyboard_check_pressed(vk_control)
+control_press = keyboard_check_pressed(vk_control)
 
 //give_money = keyboard_check_pressed(vk_home)
 

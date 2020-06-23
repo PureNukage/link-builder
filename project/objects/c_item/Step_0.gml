@@ -55,7 +55,8 @@ switch(states)
 			item_index_priority()
 			
 			if selected and input.delete_press and app.tutorial == -1 {				
-				item_delete()				
+				item_delete()
+				if !audio_is_playing(snd_remove_item) playSoundEffect(snd_remove_item)
 			}
 			
 		break

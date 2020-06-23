@@ -407,6 +407,14 @@
             }
         },
         {
+            "Key": "26bddaa5-74d6-4477-a6b7-6581547afd5e",
+            "Value": {
+                "id": "615d756f-62e8-4fe7-84bc-a972a6f02ca2",
+                "resourcePath": "sounds\\snd_chatter_short_2\\snd_chatter_short_2.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "27103a27-dd37-4776-9c44-89d9b19ea9b8",
             "Value": {
                 "id": "d6fac72d-9936-4da9-add8-7bbb52bc7945",
@@ -623,6 +631,14 @@
             }
         },
         {
+            "Key": "31ef59c4-4e8b-4b8a-9c94-8354fe223a02",
+            "Value": {
+                "id": "9208d613-fe31-43f0-8d75-977c4133e1e3",
+                "resourcePath": "sounds\\snd_chatter_short_3\\snd_chatter_short_3.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "32d3df78-795d-4cbb-a6a8-c3321bf087aa",
             "Value": {
                 "id": "dd1c3492-4c85-468c-afca-0a7d030813bb",
@@ -716,6 +732,14 @@
                 "id": "24cdbcba-d39c-4b07-924b-235c1bb649ac",
                 "resourcePath": "sprites\\s_reference_feed_background\\s_reference_feed_background.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "39d210f0-d64d-4eff-b16c-1c594d6bda99",
+            "Value": {
+                "id": "75c7e597-8b68-4cc5-ba14-4a7caaa022c7",
+                "resourcePath": "sounds\\snd_remove_item\\snd_remove_item.yy",
+                "resourceType": "GMSound"
             }
         },
         {
@@ -1236,6 +1260,14 @@
                 "id": "f43bdbc9-2bd1-448e-8e83-ed15cf79125e",
                 "resourcePath": "scripts\\draw_altmode\\draw_altmode.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "5cc103df-f25d-413e-9061-25ffc0390206",
+            "Value": {
+                "id": "7eb69334-f3fc-4f33-91b9-992d9b7e752f",
+                "resourcePath": "sounds\\snd_chatter\\snd_chatter.yy",
+                "resourceType": "GMSound"
             }
         },
         {
@@ -1972,6 +2004,14 @@
                 "id": "9910f429-c9a7-4989-bd5d-d244e6a26ce3",
                 "resourcePath": "sprites\\s_portrait_tesla\\s_portrait_tesla.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "8f88876a-4026-4599-baa6-63beb1c8ca44",
+            "Value": {
+                "id": "1cc7817e-3942-4caf-bdb4-d29fd656d568",
+                "resourcePath": "sounds\\snd_contractOnline3\\snd_contractOnline3.yy",
+                "resourceType": "GMSound"
             }
         },
         {
@@ -2799,6 +2839,14 @@
             }
         },
         {
+            "Key": "c0fc379d-f6b2-430b-b10d-14affab489b9",
+            "Value": {
+                "id": "be4ad888-8b88-45a1-b18f-b4e42a04def3",
+                "resourcePath": "sounds\\snd_chatter_short_1\\snd_chatter_short_1.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "c134a8ec-165c-48a9-9a36-3a59d357366e",
             "Value": {
                 "id": "ee4dd8bc-e0a6-4813-9991-b4cc894f32fb",
@@ -3223,6 +3271,14 @@
             }
         },
         {
+            "Key": "da8d5422-4d12-4e32-a33b-8ad45f6bee7f",
+            "Value": {
+                "id": "c1093cc0-c766-45d1-956f-48ece60382cb",
+                "resourcePath": "sounds\\snd_contractOnline1\\snd_contractOnline1.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "da9770b8-96b8-4b51-85a5-17ddae5654df",
             "Value": {
                 "id": "63a17594-e3b4-4ae1-842f-99f8ec8c8892",
@@ -3332,6 +3388,14 @@
                 "id": "1c7308e8-c565-40df-a9bc-a15bfc1ce1d3",
                 "resourcePath": "objects\\shop\\shop.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "e313c16f-1c0d-4561-b2b8-c93774b774d3",
+            "Value": {
+                "id": "3fc467c7-b09e-46f4-be5d-10a41278cf8e",
+                "resourcePath": "sounds\\snd_contractOnline2\\snd_contractOnline2.yy",
+                "resourceType": "GMSound"
             }
         },
         {
