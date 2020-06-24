@@ -201,7 +201,7 @@ if !contract_misfire {
 	//player.money += contracts.contract[smartcontract, contract_reward]
 	var _points = contracts.contract[Smartcontract, contract_reward]
 	debug_log("CONTRACT USED Player to receive: "+string(_points)+" points")
-	if app.tutorial == -1 playSoundEffect(snd_contractpay)
+	if app.tutorial == -1 playSoundEffect(snd_contractpay2)
 } else {
 	resource_changed("$$",contracts.contract[Smartcontract, contract_reward],_kiosk.x,_kiosk.y-64,false)
 	resource_changed("ETH",contracts.contract[Smartcontract, contract_gasfee_base],_kiosk.x,_kiosk.y-128,false)

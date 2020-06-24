@@ -16,7 +16,7 @@ if wire_active {
 		menu_mouseovers++
 		if !buttonMouseover {
 			buttonMouseover = true
-			playSoundEffect(snd_ingamehover2)
+			playSoundEffect(choose(snd_hover1, snd_hover2, snd_hover3, snd_hover4))
 		}
 		if input.mouse_left_press {
 			
@@ -100,7 +100,7 @@ if exchange_active {
 		menu_mouseovers++
 		if !buttonMouseover {
 			buttonMouseover = true
-			playSoundEffect(snd_ingamehover2)
+			playSoundEffect(choose(snd_hover1, snd_hover2, snd_hover3, snd_hover4))
 		}
 		draw_set_color(c_ltgray)
 		if input.mouse_left_press {
@@ -347,7 +347,7 @@ if exchange_active {
 				draw_set_color(c_white)
 				resource_changed("$$",amount_of_money,gui_mouse_x,gui_mouse_y+128,true)
 				resource_changed(exchange_currency,-currency_amount,gui_mouse_x,gui_mouse_y+256,true)
-				playSoundEffect(snd_money)
+				playSoundEffect(snd_cashregister)
 			}
 		} else {
 			if currency_amount * currency_price > player.money {

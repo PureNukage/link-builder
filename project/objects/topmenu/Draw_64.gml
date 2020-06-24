@@ -34,7 +34,7 @@ if point_in_rectangle(gui_mouse_x,gui_mouse_y,menuX,menuY,menuX+menu_width-1,men
 	if !buttonMouseover or whichButton != 0 {
 		buttonMouseover = true
 		whichButton = 0
-		playSoundEffect(snd_ingamehover2)
+		playSoundEffect(choose(snd_hover1, snd_hover2, snd_hover3, snd_hover4))
 	}
 	if input.mouse_left_press {
 		playSoundEffect(snd_click_1)
@@ -66,7 +66,7 @@ if data_active {
 		if !buttonMouseover or whichButton != 1 {
 			buttonMouseover = true
 			whichButton = 1
-			playSoundEffect(snd_ingamehover2)
+			playSoundEffect(choose(snd_hover1, snd_hover2, snd_hover3, snd_hover4))
 		}
 		if input.mouse_left_press {
 			playSoundEffect(snd_click_1)
@@ -272,7 +272,7 @@ if data_open {
 							if !buttonMouseover or whichButton != d {
 								buttonMouseover = true
 								whichButton = d
-								playSoundEffect(snd_ingamehover2)
+								playSoundEffect(choose(snd_hover1, snd_hover2, snd_hover3, snd_hover4))
 							}
 							
 							if shop.item_data[index, item_new] {
@@ -481,7 +481,7 @@ if nodes_active {
 		if !buttonMouseover or whichButton != 2 {
 			buttonMouseover = true
 			whichButton = 2
-			playSoundEffect(snd_ingamehover2)
+			playSoundEffect(choose(snd_hover1, snd_hover2, snd_hover3, snd_hover4))
 		}
 		if input.mouse_left_press {
 			playSoundEffect(snd_click_1)
@@ -621,7 +621,7 @@ if nodes_open {
 						if !buttonMouseover or whichButton != n {
 							buttonMouseover = true
 							whichButton = n
-							playSoundEffect(snd_ingamehover2)
+							playSoundEffect(choose(snd_hover1, snd_hover2, snd_hover3, snd_hover4))
 						}
 						
 						if shop.item_node[n, node_new] shop.item_node[n, node_new] = false
@@ -801,7 +801,7 @@ if contracts_active {
 		if !buttonMouseover or whichButton != 3 {
 			buttonMouseover = true
 			whichButton = 3
-			playSoundEffect(snd_ingamehover2)
+			playSoundEffect(choose(snd_hover1, snd_hover2, snd_hover3, snd_hover4))
 		}
 		if input.mouse_left_press {
 			playSoundEffect(snd_click_1)
@@ -1104,7 +1104,7 @@ if contracts_open and !instance_exists(mainmenu) {
 						if !buttonMouseover or whichButton != c {
 							buttonMouseover = true
 							whichButton = c
-							playSoundEffect(snd_ingamehover2)
+							playSoundEffect(choose(snd_hover1, snd_hover2, snd_hover3, snd_hover4))
 						}
 						
 						if contracts.contract[c, contract_new] and player.value >= price contracts.contract[c, contract_new] = false

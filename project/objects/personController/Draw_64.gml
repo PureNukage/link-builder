@@ -11,7 +11,7 @@ if heromenu_active {
 		menu_mouseover++
 		if !buttonMouseover {
 			buttonMouseover = true
-			playSoundEffect(snd_ingamehover2)
+			playSoundEffect(choose(snd_hover1, snd_hover2, snd_hover3, snd_hover4))
 		}
 		if input.mouse_left_press {
 			playSoundEffect(snd_click_1)
@@ -96,7 +96,7 @@ if heromenu_active {
 						if !buttonMouseover or whichButton != h {
 							buttonMouseover = true
 							whichButton = h
-							playSoundEffect(snd_ingamehover2)
+							playSoundEffect(choose(snd_hover1, snd_hover2, snd_hover3, snd_hover4))
 						}
 						if new and !hidden {
 							heros[h, hero_new] = false
@@ -104,10 +104,10 @@ if heromenu_active {
 						}
 						contract_mouseover = h
 						//	DEBUG acquire hero
-						//if input.mouse_right_press {
-						//	if heros[h, hero_hidden] heros[h, hero_hidden] = false
-						//	else hero_activate(h)
-						//}
+						if input.mouse_right_press {
+							if heros[h, hero_hidden] heros[h, hero_hidden] = false
+							else hero_activate(h)
+						}
 						draw_set_color(c_ltgray)
 					} else {
 						if new and !hidden and !acquired  {

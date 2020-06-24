@@ -18,6 +18,7 @@
         "645b7613-db1b-4df8-8eac-3ee82c039e35",
         "e763650f-6288-456e-91c3-59e893fd838b",
         "a9d6f4cf-5474-4f89-92f7-a1cad06da71c",
+        "cab0c273-39b6-4cea-b901-07551d06b8f7",
         "884c4e07-cbe9-45bc-8f8a-542bd8176dbe",
         "50e14403-99e2-4d76-ba83-73c61feb4b2e",
         "7b8c6aaf-33af-4664-9e55-4b0d50f5e1f9",
@@ -45,7 +46,13 @@
         "39d210f0-d64d-4eff-b16c-1c594d6bda99",
         "c0fc379d-f6b2-430b-b10d-14affab489b9",
         "26bddaa5-74d6-4477-a6b7-6581547afd5e",
-        "31ef59c4-4e8b-4b8a-9c94-8354fe223a02"
+        "31ef59c4-4e8b-4b8a-9c94-8354fe223a02",
+        "e3649ecd-f07b-406c-a30f-461f59265b7c",
+        "de887148-75ac-4b6d-a310-b33f7efae195",
+        "0b0428cd-2b60-4849-a736-2eb0c95cb217",
+        "e184f6b0-07b2-4f64-82e1-658da3b8cb23",
+        "eba8f9de-f383-48c7-b814-ec0dc9fe2a8b",
+        "bcc6e9e4-0d32-427e-99b2-57889e9eff3b"
     ],
     "filterType": "GMSound",
     "folderName": "Sound Effects",

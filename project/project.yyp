@@ -159,6 +159,14 @@
             }
         },
         {
+            "Key": "0b0428cd-2b60-4849-a736-2eb0c95cb217",
+            "Value": {
+                "id": "f52851cb-aeca-4e1c-bb1b-794986bda435",
+                "resourcePath": "sounds\\snd_hover1\\snd_hover1.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "0c2d1e8b-648a-4ee6-836f-63e2ec0995a2",
             "Value": {
                 "id": "4c51eb70-1031-4ef3-80e9-93c2e0cea552",
@@ -2823,6 +2831,14 @@
             }
         },
         {
+            "Key": "bcc6e9e4-0d32-427e-99b2-57889e9eff3b",
+            "Value": {
+                "id": "29b908eb-ed45-46e8-95d7-8a327493787b",
+                "resourcePath": "sounds\\snd_hover4\\snd_hover4.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "bdbc8c8e-b195-4056-a061-a84d63cab500",
             "Value": {
                 "id": "510ad21b-a07f-4905-8eb3-1ffd84d655ed",
@@ -3135,6 +3151,14 @@
             }
         },
         {
+            "Key": "cab0c273-39b6-4cea-b901-07551d06b8f7",
+            "Value": {
+                "id": "c4431e9e-e8f7-46e5-8d74-96d3ed3bf9cc",
+                "resourcePath": "sounds\\snd_contractpay2\\snd_contractpay2.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "caddd160-e3f6-41b3-81f0-27333437afc5",
             "Value": {
                 "id": "c0cb7676-b427-4396-9e74-2284cb593a6d",
@@ -3423,6 +3447,14 @@
             }
         },
         {
+            "Key": "de887148-75ac-4b6d-a310-b33f7efae195",
+            "Value": {
+                "id": "5b129535-41f0-454f-8401-4aeb73285b7f",
+                "resourcePath": "sounds\\snd_cashregister\\snd_cashregister.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "e030e958-7658-4953-be18-57cff79b4bd3",
             "Value": {
                 "id": "ded885f4-fa12-465c-be4a-851f4693ff5d",
@@ -3436,6 +3468,14 @@
                 "id": "3e45a53a-6ecb-4fd5-9bf8-668ac77f3bfe",
                 "resourcePath": "sprites\\s_hair_1\\s_hair_1.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "e184f6b0-07b2-4f64-82e1-658da3b8cb23",
+            "Value": {
+                "id": "3fdcb1c1-e45b-4713-95c6-969f8837b36c",
+                "resourcePath": "sounds\\snd_hover2\\snd_hover2.yy",
+                "resourceType": "GMSound"
             }
         },
         {
@@ -3483,6 +3523,14 @@
             "Value": {
                 "id": "3fc467c7-b09e-46f4-be5d-10a41278cf8e",
                 "resourcePath": "sounds\\snd_contractOnline2\\snd_contractOnline2.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
+            "Key": "e3649ecd-f07b-406c-a30f-461f59265b7c",
+            "Value": {
+                "id": "034f5000-78e3-4f3e-8134-c6001eb94a1d",
+                "resourcePath": "sounds\\snd_alert\\snd_alert.yy",
                 "resourceType": "GMSound"
             }
         },
@@ -3627,6 +3675,14 @@
             "Value": {
                 "id": "f26de682-8c63-4270-b866-631cf4c44955",
                 "resourcePath": "sounds\\snd_dialogue_0_15\\snd_dialogue_0_15.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
+            "Key": "eba8f9de-f383-48c7-b814-ec0dc9fe2a8b",
+            "Value": {
+                "id": "1cbb596f-bd73-4b90-b140-d352514d0111",
+                "resourcePath": "sounds\\snd_hover3\\snd_hover3.yy",
                 "resourceType": "GMSound"
             }
         },
