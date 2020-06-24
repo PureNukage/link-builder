@@ -422,8 +422,11 @@ for(var i=0;i<ds_list_size(parts);i++) {
 							}
 							contracts.contract[_kiosk.smartcontract, contract_virgin] = false	
 							//	Play a random sound effect
-							if !audio_is_playing(snd_contractOnline1) and !audio_is_playing(snd_contractOnline2) and !audio_is_playing(snd_contractOnline3) {
-								var Sound = choose(snd_contractOnline1, snd_contractOnline2, snd_contractOnline3)
+							if !audio_is_playing(snd_contractOnline1) and !audio_is_playing(snd_contractOnline2) and !audio_is_playing(snd_contractOnline3) and !audio_is_playing(snd_contractOnline4) and !audio_is_playing(snd_contractOnline5)
+							and !audio_is_playing(snd_contractOnline6) and !audio_is_playing(snd_contractOnline7) and !audio_is_playing(snd_contractOnline8) and !audio_is_playing(snd_contractOnline9) and !audio_is_playing(snd_contractOnline10)
+							and !audio_is_playing(snd_contractOnline11) and !audio_is_playing(snd_contractOnline12) and !audio_is_playing(snd_contractOnline13) and !audio_is_playing(snd_contractOnline14) {
+								var Sound = choose(snd_contractOnline1, snd_contractOnline2, snd_contractOnline3, snd_contractOnline4, snd_contractOnline5, snd_contractOnline6, snd_contractOnline7, snd_contractOnline8, snd_contractOnline9,
+								snd_contractOnline10, snd_contractOnline11, snd_contractOnline12, snd_contractOnline13, snd_contractOnline14)
 								playSoundEffect(Sound)
 							}
 						}

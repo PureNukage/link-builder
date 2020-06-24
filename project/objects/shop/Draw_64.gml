@@ -16,7 +16,7 @@ if wire_active {
 		menu_mouseovers++
 		if !buttonMouseover {
 			buttonMouseover = true
-			playSoundEffect(snd_ingamehover)
+			playSoundEffect(snd_ingamehover2)
 		}
 		if input.mouse_left_press {
 			
@@ -100,7 +100,7 @@ if exchange_active {
 		menu_mouseovers++
 		if !buttonMouseover {
 			buttonMouseover = true
-			playSoundEffect(snd_ingamehover)
+			playSoundEffect(snd_ingamehover2)
 		}
 		draw_set_color(c_ltgray)
 		if input.mouse_left_press {

@@ -60,7 +60,7 @@ switch(menu)
 					number_of_mouseovers++
 					if buttonMouseover == false {
 						buttonMouseover = true
-						playSoundEffect(snd_ingamehover)
+						playSoundEffect(snd_ingamehover2)
 					}
 					if mouse_check_button_pressed(mb_left) {
 						playSoundEffect(snd_click_1)
@@ -113,7 +113,7 @@ switch(menu)
 					number_of_mouseovers++
 					if buttonMouseover == false {
 						buttonMouseover = true
-						playSoundEffect(snd_ingamehover)
+						playSoundEffect(snd_ingamehover2)
 					}
 					if mouse_check_button_pressed(mb_left) {
 						game_end()	
@@ -435,7 +435,7 @@ switch(menu)
 						number_of_mouseovers++
 						if !buttonMouseover {
 							buttonMouseover = true
-							playSoundEffect(snd_ingamehover)
+							playSoundEffect(snd_ingamehover2)
 						}
 					
 						if mouse_check_button_pressed(mb_left) {	
@@ -613,7 +613,7 @@ switch(menu)
 				number_of_mouseovers++
 				if !buttonMouseover {
 					buttonMouseover = true
-					playSoundEffect(snd_ingamehover)
+					playSoundEffect(snd_ingamehover2)
 				}
 				if mouse_check_button_pressed(mb_left) {
 					app.new_game = true	
@@ -688,7 +688,7 @@ switch(menu)
 				number_of_mouseovers++
 				if !buttonMouseover {
 					buttonMouseover = true
-					playSoundEffect(snd_ingamehover)
+					playSoundEffect(snd_ingamehover2)
 				}
 				if mouse_check_button_pressed(mb_left) and savedgame {
 					app.new_game = false

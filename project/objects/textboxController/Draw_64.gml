@@ -11,7 +11,7 @@ if draw_active {
 		menu_mouseovers++
 		if !buttonMouseover {
 			buttonMouseover = true
-			playSoundEffect(snd_ingamehover)
+			playSoundEffect(snd_ingamehover2)
 		}
 		if input.mouse_left_press {
 			playSoundEffect(snd_click_1)

@@ -11,7 +11,7 @@ if heromenu_active {
 		menu_mouseover++
 		if !buttonMouseover {
 			buttonMouseover = true
-			playSoundEffect(snd_ingamehover)
+			playSoundEffect(snd_ingamehover2)
 		}
 		if input.mouse_left_press {
 			playSoundEffect(snd_click_1)
@@ -96,7 +96,7 @@ if heromenu_active {
 						if !buttonMouseover or whichButton != h {
 							buttonMouseover = true
 							whichButton = h
-							playSoundEffect(snd_ingamehover)
+							playSoundEffect(snd_ingamehover2)
 						}
 						if new and !hidden {
 							heros[h, hero_new] = false

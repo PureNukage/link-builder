@@ -335,6 +335,14 @@
             }
         },
         {
+            "Key": "199f244e-3016-4727-9d50-5a85033f365d",
+            "Value": {
+                "id": "8485e83a-ccce-48b9-b129-c0bcf0465bf3",
+                "resourcePath": "sounds\\snd_ingamehover2\\snd_ingamehover2.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "19a9900b-9d0b-4c7b-a28c-5ffcee309fa0",
             "Value": {
                 "id": "973dc9ed-fc52-4690-b38e-14634ed612a3",
@@ -372,6 +380,14 @@
                 "id": "5405e7a8-2198-487b-9340-875883907331",
                 "resourcePath": "views\\2284ffcf-174c-4429-8617-b103552689ab.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "23aaf927-87b0-4ea7-9610-f64b023d4ba6",
+            "Value": {
+                "id": "55f8a72e-4ae8-41c1-8305-b29fe519c426",
+                "resourcePath": "sounds\\snd_contractOnline10\\snd_contractOnline10.yy",
+                "resourceType": "GMSound"
             }
         },
         {
@@ -887,6 +903,14 @@
             }
         },
         {
+            "Key": "438f5a1f-0883-4c15-936b-b8b02be0719b",
+            "Value": {
+                "id": "4f736019-b8d9-4815-abd8-c9d483a7f01f",
+                "resourcePath": "sounds\\snd_contractOnline4\\snd_contractOnline4.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "439ac76c-6e4e-4e39-b2e3-73f710eface2",
             "Value": {
                 "id": "2832a1ac-d5d5-4b15-907c-cf08d49c5fb3",
@@ -1063,6 +1087,14 @@
             }
         },
         {
+            "Key": "4f70dcf1-2570-40a0-93f3-12663f1547bd",
+            "Value": {
+                "id": "3dd9d0f1-68c8-4adb-832d-60a0532b5b96",
+                "resourcePath": "sounds\\snd_contractOnline12\\snd_contractOnline12.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "4f71946f-8e0c-43b2-b86a-a4c5779c5484",
             "Value": {
                 "id": "4198293e-565a-42b5-a812-1da32065702c",
@@ -1231,6 +1263,14 @@
             }
         },
         {
+            "Key": "5be7d72d-a883-4206-85ae-bb7a2df04155",
+            "Value": {
+                "id": "855cf20b-64ed-442d-aa78-31c00f52629e",
+                "resourcePath": "sounds\\snd_contractOnline14\\snd_contractOnline14.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "5be8aa08-e9e6-47e1-954d-72d7980140e4",
             "Value": {
                 "id": "ccc9f294-8b8b-4c4b-9aa0-d0fc6c962894",
@@ -1391,6 +1431,14 @@
             }
         },
         {
+            "Key": "644cd96d-afc5-4556-b360-8b5c59fa31e4",
+            "Value": {
+                "id": "22db3530-4df9-4f78-a09f-278a4dabed19",
+                "resourcePath": "sounds\\snd_contractOnline5\\snd_contractOnline5.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "645b7613-db1b-4df8-8eac-3ee82c039e35",
             "Value": {
                 "id": "c8828023-ec0e-4188-a213-d656a0ae7c7f",
@@ -1532,6 +1580,14 @@
                 "id": "eb04378a-082e-4cba-afad-cb9059402d0e",
                 "resourcePath": "scripts\\ports_xyupdate_rotation\\ports_xyupdate_rotation.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "72ed4427-9cd4-4e00-9c82-800f80454831",
+            "Value": {
+                "id": "4f87a0cd-718d-4dff-ba06-20e9aeb4c137",
+                "resourcePath": "sounds\\snd_contractOnline9\\snd_contractOnline9.yy",
+                "resourceType": "GMSound"
             }
         },
         {
@@ -1780,6 +1836,14 @@
                 "id": "6d61964d-9750-450e-8fef-fa879f4bd292",
                 "resourcePath": "scripts\\ga_configureUserId\\ga_configureUserId.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "81a555e4-2e69-44a6-93f6-e6cdc67069d6",
+            "Value": {
+                "id": "3deca002-df09-4742-8a5b-c3d6d555de95",
+                "resourcePath": "sounds\\snd_contractOnline11\\snd_contractOnline11.yy",
+                "resourceType": "GMSound"
             }
         },
         {
@@ -2063,6 +2127,14 @@
             }
         },
         {
+            "Key": "92eb0aaa-2e89-4f78-a8dc-ace4fd19dbfa",
+            "Value": {
+                "id": "2b4ff21c-5ad8-4d36-aea8-ac92d2e7b6c4",
+                "resourcePath": "sounds\\snd_contractOnline13\\snd_contractOnline13.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "9342044f-0b6c-4749-a90e-9ce2aba52115",
             "Value": {
                 "id": "bbda138b-6d82-4078-8a23-197d88b15d63",
@@ -2155,6 +2227,14 @@
             "Value": {
                 "id": "49276f05-4e88-424e-9554-e66aa0cc1e63",
                 "resourcePath": "sounds\\snd_dialogue_1_2\\snd_dialogue_1_2.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
+            "Key": "99919865-15d1-42fe-a44d-94ea3b270593",
+            "Value": {
+                "id": "052a54d6-b381-449e-b114-6fc026f26b19",
+                "resourcePath": "sounds\\snd_contractOnline7\\snd_contractOnline7.yy",
                 "resourceType": "GMSound"
             }
         },
@@ -3183,6 +3263,14 @@
             }
         },
         {
+            "Key": "d3e1e7cb-d084-4501-b02c-4f429b254204",
+            "Value": {
+                "id": "9e66909f-61d4-4b7a-815d-cf73eb3e556a",
+                "resourcePath": "sounds\\snd_contractOnline6\\snd_contractOnline6.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "d4d8635b-7f29-4482-8ef4-fb5ee2f9d475",
             "Value": {
                 "id": "136c794a-859c-4c65-a153-8973b2d33207",
@@ -3523,6 +3611,14 @@
             "Value": {
                 "id": "1735cbe6-14bd-4787-becd-1950e8d07e43",
                 "resourcePath": "sounds\\snd_dialogue_0_17\\snd_dialogue_0_17.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
+            "Key": "eaccb3a8-0949-4879-b00a-dee3ddd9dda9",
+            "Value": {
+                "id": "ea7210d4-1392-4f95-ba42-9cf0f77ef4a0",
+                "resourcePath": "sounds\\snd_contractOnline8\\snd_contractOnline8.yy",
                 "resourceType": "GMSound"
             }
         },
