@@ -251,6 +251,9 @@ if !game.game_over {
 									used = true
 							
 									price_feed_push()
+									
+									////	Sound - Sonar noise
+									playSoundEffect(choose(snd_sonar1, snd_sonar2, snd_sonar3))
 						
 									var got_at_least_one = 0
 									var how_many_sources = 0

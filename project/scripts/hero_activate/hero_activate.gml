@@ -14,6 +14,7 @@ if heros[index, hero_id] == -1 and index != hero.duck and !heros[index, hero_acq
 			if other.heros[index, hero_virgin] {
 				other.heros[index, hero_virgin]	= false
 				other.new_hero = true
+				playSoundEffect(snd_herounlock)
 			}
 		}
 	}} else {
@@ -53,6 +54,7 @@ if index == hero.duck {
 				if other.heros[index, hero_virgin] {
 					other.heros[index, hero_virgin]	= false
 					other.new_hero = true
+					playSoundEffect(snd_herounlock)
 				}
 				amount--
 			}
